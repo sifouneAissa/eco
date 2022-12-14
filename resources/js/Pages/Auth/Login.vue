@@ -1,4 +1,3 @@
-<script src="../../../../../../../work/code/school/resources/js/app.js"></script>
 <script setup>
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import AuthenticationCard from '@/Components/AuthenticationCard.vue';
