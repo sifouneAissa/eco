@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <GuestLayout title="Dashboard">
+    <GuestLayout :title="$t('dashboard')">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard

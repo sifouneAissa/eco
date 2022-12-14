@@ -12,16 +12,19 @@ import '../../public/vendor/select2/css/select2.min.css';
 import '../../public/vendor/owl-carousel/owl.carousel.css';
 import '../../public/vendor/owl-carousel/owl.theme.css';
 
+import messages from './translation/translation';
+
 
 
 
 
 import { createApp, h } from 'vue';
-import { createInertiaApp } from '@inertiajs/inertia-vue3';
+import { createInertiaApp,usePage } from '@inertiajs/inertia-vue3';
 
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import {createI18n}  from 'vue-i18n'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -29,8 +32,17 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, app, props, plugin }) {
+
+        const i18n = createI18n({
+            locale: props.initialPage.props.locale, // user locale by props
+            fallbackLocale: "en", // set fallback locale
+            messages: messages, // set locale messages
+        });
+
+
         return createApp({ render: () => h(app, props) })
             .use(plugin)
+            .use(i18n)
             .use(ZiggyVue, Ziggy)
             .mount(el);
     },
@@ -38,4 +50,7 @@ createInertiaApp({
 
 InertiaProgress.init({ color: '#4B5563' });
 
+    const { value } =  usePage().valueOf().props;
+
+console.log(value)
 
