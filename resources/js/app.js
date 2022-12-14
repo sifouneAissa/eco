@@ -2,8 +2,8 @@ import './bootstrap';
 // import '../css/app.css';
 
 import  '../../public/vendor/jquery/jquery-3.3.1.slim.min.js';
-import    '../../public/vendor/select2/js/select2.min.js';
-import    '../../public/vendor/bootstrap/js/bootstrap.bundle.min.js';
+import  '../../public/vendor/select2/js/select2.min.js';
+import  '../../public/vendor/bootstrap/js/bootstrap.bundle.min.js';
 import '../../public/vendor/owl-carousel/owl.carousel.js';
 import '../../public/vendor/bootstrap/css/bootstrap.min.css';
 import '../../public/vendor/fontawesome/css/all.min.css';
@@ -18,6 +18,7 @@ import '../../public/vendor/owl-carousel/owl.theme.css';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
+
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
@@ -36,3 +37,5 @@ createInertiaApp({
 });
 
 InertiaProgress.init({ color: '#4B5563' });
+
+
