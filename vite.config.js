@@ -8,10 +8,11 @@ export default defineConfig({
             input: [
                 // 'resources/js/app.js',
                 // template js
-                'vendor/jquery/jquery-3.3.1.slim.min.js',
-                'ltr/js/custom.js',
-                'vendor/select2/js/select2.min.js',
-                'vendor/bootstrap/js/bootstrap.bundle.min.js'
+                // 'vendor/jquery/jquery-3.3.1.slim.min.js',
+                // 'ltr/js/custom.js',
+                // 'vendor/select2/js/select2.min.js',
+                // 'vendor/bootstrap/js/bootstrap.bundle.min.js',
+                // 'vendor/owl-carousel/owl.carousel.js',
             ],
             refresh: true,
         }),
