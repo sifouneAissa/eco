@@ -24,6 +24,11 @@ Route::get('/', function () {
     ]);
 });
 
+
+Route::get("/test",function (){
+    return \inertia("test");
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -33,3 +38,6 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+
+

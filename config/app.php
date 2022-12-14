@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -214,4 +214,14 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    // for locales
+    'locales' => [
+        'rtl' => [
+            'ar'
+        ],
+        'ltr' => [
+            'en',
+            'fr'
+        ]
+    ]
 ];

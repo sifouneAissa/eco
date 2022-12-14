@@ -1,5 +1,10 @@
 import './bootstrap';
 import '../css/app.css';
+import '../../public/vendor/bootstrap/css/bootstrap.min.css';
+import '../../public/vendor/fontawesome/css/all.min.css';
+import '../../public/vendor/icofont/icofont.min.css';
+import '../../public/vendor/select2/css/select2.min.css';
+
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
