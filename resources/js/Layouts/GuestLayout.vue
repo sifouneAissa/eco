@@ -70,9 +70,12 @@ const logout = () => {
                         </li>
                         <li v-if="$page.props.auth" class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img alt="Generic placeholder image" src="img/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                                <img alt="Generic placeholder image" :src="$page.props.user.profile_photo_url" class="nav-osahan-pic rounded-pill"> {{$page.props.auth.name}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+<!--                                <Link :href="route('profile.show')">-->
+                                    <a class="dropdown-item" :href="route('profile.show')"><i class="icofont-user"></i> Profile</a>
+<!--                                </Link>-->
                                 <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Orders</a>
                                 <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i> Offers</a>
                                 <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i> Favourites</a>

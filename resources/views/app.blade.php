@@ -17,9 +17,9 @@
         @else
             @vite(['resources/js/ltr.js'])
         @endif
-{{--        @if(in_array($page['component'],["Auth/Login","Auth/Register","Dashboard"]) )--}}
-{{--            @vite(['resources/css/app.css'])--}}
-{{--        @endif--}}
+        @if(in_array($page['component'],["Profile/Show"]) )
+            @vite(['resources/css/app.css'])
+        @endif
 
         @inertiaHead
     </head>
