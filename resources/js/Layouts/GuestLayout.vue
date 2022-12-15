@@ -19,6 +19,10 @@ const setLocale = (lang) => {
     });
 };
 
+
+const logout = () => {
+    Inertia.post(route('logout'));
+};
 </script>
 
 <template>
@@ -64,19 +68,23 @@ const setLocale = (lang) => {
                                 <a class="dropdown-item" href="extra.html">Extra :)</a>
                             </div>
                         </li>
-<!--                        <li class="nav-item dropdown">-->
-<!--                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                <img alt="Generic placeholder image" src="img/user/4.png" class="nav-osahan-pic rounded-pill"> My Account-->
-<!--                            </a>-->
-<!--                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">-->
-<!--                                <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Orders</a>-->
-<!--                                <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i> Offers</a>-->
-<!--                                <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i> Favourites</a>-->
-<!--                                <a class="dropdown-item" href="orders.html#payments"><i class="icofont-credit-card"></i> Payments</a>-->
-<!--                                <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Addresses</a>-->
-<!--                            </div>-->
-<!--                        </li>-->
-                        <li class="nav-item dropdown dropdown-cart">
+                        <li v-if="$page.props.auth" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img alt="Generic placeholder image" src="img/user/4.png" class="nav-osahan-pic rounded-pill"> My Account
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                                <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Orders</a>
+                                <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i> Offers</a>
+                                <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i> Favourites</a>
+                                <a class="dropdown-item" href="orders.html#payments"><i class="icofont-credit-card"></i> Payments</a>
+                                <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Addresses</a>
+<!--                                <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Log out</a>-->
+                                <form @submit.prevent="logout">
+                                    <button type="submit" class="dropdown-item" ><i class="icofont-logout"></i> Log out</button>
+                                </form>
+                            </div>
+                        </li>
+                        <li v-if="$page.props.auth" class="nav-item dropdown dropdown-cart">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-basket"></i> Cart
                                 <span class="badge badge-success">5</span>
@@ -116,10 +124,13 @@ const setLocale = (lang) => {
                             </div>
                         </li>
 
-                        <li class="nav-item">
+                        <li v-if="!$page.props.auth" class="nav-item">
                             <a class="nav-link " :href="route('login')" role="button" >
                                 Login
                             </a>
+<!--                            <Link  :href="route('login')" class="nav-link">-->
+<!--                                Login-->
+<!--                            </Link>-->
                         </li>
 
 

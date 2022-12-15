@@ -4,7 +4,15 @@ const ar = {
         en : 'الانجلزية',
         fr : 'الفرنسية'
     },
-    dashboard : "اللصفحة الرئيسية"
+    dashboard : "اللصفحة الرئيسية",
+    login : {
+        welcome : 'مرحبا',
+        email : 'البريد الالكتروني',
+        password : 'كلمة السر',
+        login : 'تسجيل الدخول',
+        register : 'تسجيل',
+        remember_me : 'تدكرني'
+    }
 };
 
 export default ar;
