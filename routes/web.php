@@ -22,7 +22,7 @@ use Inertia\Inertia;
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
         ]);
-    });
+    })->name('welcome');
 
 
 Route::get("/test",function (){

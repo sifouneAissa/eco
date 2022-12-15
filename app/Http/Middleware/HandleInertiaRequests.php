@@ -40,7 +40,8 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             //
             'locale' => Session::get('locale') ? Session::get('locale') : config("app.locale"),
-            'locales' => config('app.locales.all')
+            'locales' => config('app.locales.all'),
+            'auth' => auth()->user()
         ]);
     }
 }

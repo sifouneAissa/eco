@@ -17,13 +17,13 @@
         @else
             @vite(['resources/js/ltr.js'])
         @endif
-        @if(in_array($page['component'],["Auth/Login","Auth/Register","Dashboard"]) )
+        @if(in_array($page['component'],["Profile/Show"]) )
             @vite(['resources/css/app.css'])
         @endif
 
         @inertiaHead
     </head>
-    <body class="font-sans antialiased">
+    <body  class="font-sans antialiased">
         @inertia
     </body>
 </html>
