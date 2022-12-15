@@ -26,6 +26,7 @@ use Inertia\Inertia;
 
 
 Route::get("/test",function (){
+
     return \inertia("test");
 });
 
