@@ -13,19 +13,12 @@ defineProps({
     title: String,
 });
 
-const showingNavigationDropdown = ref(false);
-
-const switchToTeam = (team) => {
-    Inertia.put(route('current-team.update'), {
-        team_id: team.id,
-    }, {
-        preserveState: false,
+const setLocale = (lang) => {
+    Inertia.post(route('setLocale'),{locale : lang},{
+        onSuccess : () => window.location.reload()
     });
 };
 
-const logout = () => {
-    Inertia.post(route('logout'));
-};
 </script>
 
 <template>
@@ -112,6 +105,17 @@ const logout = () => {
                             </div>
                         </li>
 
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<!--                                <i class="fas fa-shopping-basket"></i>-->
+                                {{$t("locales."+$page.props.locale)}}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                                <a  v-for="lang in this.$page.props.locales" :key="lang" @click="setLocale(lang)" class="dropdown-item" href="#">{{$t("locales."+lang)}}</a>
+                            </div>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link " :href="route('login')" role="button" >
                                 Login
@@ -141,3 +145,4 @@ const logout = () => {
 
     </div>
 </template>
+
