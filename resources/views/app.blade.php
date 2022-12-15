@@ -17,7 +17,6 @@
         @else
             @vite(['resources/js/ltr.js'])
         @endif
-{{--        {{dd($page)}}--}}
         @if(in_array($page['component'],["Auth/Login","Auth/Register","Dashboard"]) )
             @vite(['resources/css/app.css'])
         @endif
