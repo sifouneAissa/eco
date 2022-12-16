@@ -75,12 +75,11 @@ const logout = () => {
                             <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
 <!--                                <Link :href="route('profile.show')">-->
                                     <a class="dropdown-item" :href="route('profile.show')"><i class="icofont-user"></i> Profile</a>
-<!--                                </Link>-->
-                                <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Orders</a>
-                                <a class="dropdown-item" href="orders.html#offers"><i class="icofont-sale-discount"></i> Offers</a>
-                                <a class="dropdown-item" href="orders.html#favourites"><i class="icofont-heart"></i> Favourites</a>
-                                <a class="dropdown-item" href="orders.html#payments"><i class="icofont-credit-card"></i> Payments</a>
-                                <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Addresses</a>
+                                    <Link  :href="route('account')+'#orders'" class="dropdown-item" ><i class="icofont-food-cart"></i> My Account</Link>
+<!--                                    <Link  :href="route('account')+'#offers'" class="dropdown-item" ><i class="icofont-food-cart"></i> Offers</Link>-->
+<!--                                    <Link  :href="route('account')+'#favourites'" class="dropdown-item" ><i class="icofont-food-cart"></i> Favourites</Link>-->
+<!--                                    <Link  :href="route('account')+'#payments'" class="dropdown-item" ><i class="icofont-food-cart"></i> Payments</Link>-->
+<!--                                    <Link  :href="route('account')+'#addresses'" class="dropdown-item" ><i class="icofont-food-cart"></i> Addresses</Link>-->
 <!--                                <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Log out</a>-->
                                 <form @submit.prevent="logout">
                                     <button type="submit" class="dropdown-item" ><i class="icofont-logout"></i> Log out</button>
