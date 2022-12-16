@@ -20,6 +20,7 @@
     });
 
     const submit = () => {
+
         form.transform(data => ({
             ...data,
             remember: form.remember ? 'on' : '',

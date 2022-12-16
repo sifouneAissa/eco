@@ -13,6 +13,6 @@ class setLocale extends Controller
 
         Session::put('locale',$request->input('locale'));
 
-        return redirect()->to('/');
+//        return redirect()->to('/');
     }
 }
