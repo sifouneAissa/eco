@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <ClientLayout :title="$t('dashboard')">
+    <ClientLayout title="test">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
