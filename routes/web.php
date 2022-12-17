@@ -40,6 +40,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/account', [\App\Http\Controllers\UserAccountController::class,'index'])->name('account');
+
+    // user addresses
+    Route::resource('address',\App\Http\Controllers\UserAddressController::class)->only([
+        'index','store','update','destroy'
+    ]);
+
 });
 
 

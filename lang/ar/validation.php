@@ -170,5 +170,7 @@ return [
         'time'                  => 'الوقت',
         'available'             => 'مُتاح',
         'size'                  => 'الحجم',
+        'telephone'             => 'الرقم السلكي',
+        'postal_code' => 'الرمز البريدي'
     ],
 ];
