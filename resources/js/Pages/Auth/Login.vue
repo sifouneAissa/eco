@@ -49,7 +49,7 @@
                             {{ status }}
                         </div>
 
-                        <form >@submit.prevent="submit"
+                        <form @submit.prevent="submit">
                             <div class="form-label-group">
                                 <input v-model="form.email" autofocus type="email" id="inputEmail" required class="form-control" :placeholder="$t('login.email')">
                                 <label for="inputEmail">{{$t('login.email')}}</label>
