@@ -45,4 +45,20 @@ Route::middleware([
 
 Route::post('setlocale',[\App\Http\Controllers\setLocale::class,'setLocale'])->name('setLocale')->withoutMiddleware('set.locale');
 
+// Company pages components
+Route::get("/contact-us",function (){
 
+    return \inertia("CompanyPages/ContactUs");
+});
+Route::get("/about-us",function (){
+
+    return \inertia("CompanyPages/AboutUs");
+});
+Route::get("/privacy-policy",function (){
+
+    return \inertia("CompanyPages/PrivacyPolicy");
+});
+Route::get("/faq",function (){
+
+    return \inertia("CompanyPages/Faq");
+});

@@ -63,6 +63,8 @@ const logout = () => {
                                 <a class="dropdown-item" href="track-order.html">Track Order</a>
                                 <a class="dropdown-item" href="invoice.html">Invoice</a>
                                 <a class="dropdown-item" href="login.html">Login</a>
+                                <a class="dropdown-item" href="/contact-us">Contact Us</a>
+                                <a class="dropdown-item" href="/about-us">About Us</a>
                                 <a class="dropdown-item" href="register.html">Register</a>
                                 <a class="dropdown-item" href="404.html">404</a>
                                 <a class="dropdown-item" href="extra.html">Extra :)</a>
