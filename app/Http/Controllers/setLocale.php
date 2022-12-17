@@ -15,4 +15,9 @@ class setLocale extends Controller
 
 //        return redirect()->to('/');
     }
+
+
+    public function setCurrency(Request $request){
+        Session::put('currency',$request->input('currency'));
+    }
 }

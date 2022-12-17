@@ -19,6 +19,12 @@ const setLocale = (lang) => {
     });
 };
 
+const setCurrency = (currency) => {
+    Inertia.post(route('setCurrency'),{currency : currency},{
+        onSuccess : () => window.location.reload()
+    });
+};
+
 
 const logout = () => {
     Inertia.post(route('logout'));
@@ -124,6 +130,16 @@ const logout = () => {
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
                                 <a  v-for="lang in this.$page.props.locales" :key="lang" @click="setLocale(lang)" class="dropdown-item" href="#">{{$t("locales."+lang)}}</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <!--                                <i class="fas fa-shopping-basket"></i>-->
+                                {{$t("currencies."+$page.props.currency)}}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                                <a  v-for="currency in this.$page.props.currencies" :key="currency" @click="setCurrency(currency)" class="dropdown-item" href="#">{{$t("currencies."+currency)}}</a>
                             </div>
                         </li>
 

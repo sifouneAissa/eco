@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 class OrderDetail extends Model
 {
@@ -14,7 +15,8 @@ class OrderDetail extends Model
         'delivered_date',
         'names',
         'order_number',
-        'qnames'
+        'qnames',
+        'price'
     ];
 
     public function paymentDetail(){
@@ -81,5 +83,17 @@ class OrderDetail extends Model
 
     public function getOrderNumberAttribute(){
         return '#'.str_pad($this->id, 8, "0", STR_PAD_LEFT);
+    }
+
+    public function getPriceAttribute(){
+
+        $tExchange = Currency::where('code',Session::get('currency'))->first()->exchange_rate;
+        $value = 0;
+
+        try {
+            $value= floor($this->total/$tExchange);
+        } catch (\Exception $e){};
+
+        return $value;
     }
 }

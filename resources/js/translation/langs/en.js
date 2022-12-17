@@ -4,6 +4,11 @@ const en = {
         en : 'English',
         fr : 'French'
     },
+    currencies : {
+        dzd : 'Dinar',
+        euro : 'Euro',
+        dollar : 'Dollar'
+    },
     dashboard : "Dashboard 1",
     login : {
         welcome : "Welcome",

@@ -4,6 +4,11 @@ const fr = {
         en : 'Anglais',
         fr : 'Français'
     },
+    currencies : {
+        dzd : 'Dinar',
+        euro : 'Euro',
+        dollar : 'Dollar'
+    },
     dashboard : "Accuil",
     login : {
         Welcome : 'Bienvenue',
