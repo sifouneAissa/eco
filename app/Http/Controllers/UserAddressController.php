@@ -13,7 +13,7 @@ class UserAddressController extends Controller
     public function index()
     {
         //
-        UserAddress::where('user_id',auth()->user()->id)->get();
+        UserAddress::where('user_id',auth()->user()->id);
     }
 
     /**
