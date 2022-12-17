@@ -24,7 +24,7 @@
 </script>
 <template>
     <div  class="container-fluid" style="background-color: white">
-        <Head title="Register" />
+        <Head :title="$t('register.welcome')" />
         <div class="row no-gutter">
             <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
             <div class="col-md-8 col-lg-6">
@@ -33,12 +33,12 @@
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
 
-                                <h3 class="login-heading mb-4">Welcome !</h3>
+                                <h3 class="login-heading mb-4">{{$t('register.welcome')}} !</h3>
 
                                 <form @submit.prevent="submit">
                                     <div class="form-label-group">
-                                        <input v-model="form.name" type="text" id="inputName" class="form-control" placeholder="Name">
-                                        <label for="inputName">Name</label>
+                                        <input v-model="form.name" type="text" id="inputName" class="form-control" :placeholder="$t('register.name')">
+                                        <label for="inputName">{{$t('register.name')}}</label>
                                         <div v-show="form.errors.name">
                                             <p class="text-sm " style="color: red">
                                                 {{ form.errors.name }}
@@ -46,8 +46,8 @@
                                         </div>
                                     </div>
                                     <div class="form-label-group">
-                                        <input v-model="form.email" type="email" id="inputEmail" class="form-control" placeholder="Email address">
-                                        <label for="inputEmail">Email address / Mobile</label>
+                                        <input v-model="form.email" type="email" id="inputEmail" class="form-control" :placeholder="$t('register.email')">
+                                        <label for="inputEmail">{{$t('register.email')}}</label>
                                         <div v-show="form.errors.email">
                                             <p class="text-sm text-red-600" style="color: red">
                                                 {{ form.errors.email }}
@@ -55,8 +55,8 @@
                                         </div>
                                     </div>
                                     <div class="form-label-group">
-                                        <input v-model="form.password" type="password" id="inputPassword" class="form-control" placeholder="Password">
-                                        <label for="inputPassword">Password</label>
+                                        <input v-model="form.password" type="password" id="inputPassword" class="form-control" :placeholder="$t('register.password')">
+                                        <label for="inputPassword">{{$t('register.password')}}</label>
                                         <div v-show="form.errors.password">
                                             <p class="text-sm text-red-600" style="color: red">
                                                 {{ form.errors.password }}
@@ -64,8 +64,8 @@
                                         </div>
                                     </div>
                                     <div class="form-label-group">
-                                        <input v-model="form.password_confirmation" type="password" id="inputPasswordCofirmation" class="form-control" placeholder="Password">
-                                        <label for="inputPasswordCofirmation">Password Confirmation</label>
+                                        <input v-model="form.password_confirmation" type="password" id="inputPasswordCofirmation" class="form-control" :placeholder="$t('register.password_confirmation')">
+                                        <label for="inputPasswordCofirmation">{{$t('register.password_confirmation')}}</label>
                                         <div v-show="form.errors.password_confirmation">
                                             <p class="text-sm text-red-600">
                                                 {{ form.errors.password_confirmation }}
@@ -76,7 +76,7 @@
                                     <!--                                    <input type="text" id="ptext" class="form-control" placeholder="Promocode">-->
                                     <!--                                    <label for="ptext">Promocode</label>-->
                                     <!--                                </div>-->
-                                    <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign Up</button>
+                                    <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">{{$t('register.sign_up')}}</button>
                                     <!--                                <div class="text-center pt-3">-->
                                     <!--                                    Already have an Account? <a class="font-weight-bold" href="login.html">Sign In</a>-->
                                     <!--                                </div>-->

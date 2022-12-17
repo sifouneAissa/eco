@@ -4,7 +4,7 @@
 
 <template>
     <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-        <h4 class="font-weight-bold mt-0 mb-4">Past Orders</h4>
+        <h4 class="font-weight-bold mt-0 mb-4">{{$t('account.orders.past_orders')}}</h4>
         <OrderCard v-for="model in $page.props.orders" :key="model.id" :model="model" />
 <!--        <div class="bg-white card mb-4 order-list shadow-sm">-->
 <!--            <div class="gold-members p-4">-->

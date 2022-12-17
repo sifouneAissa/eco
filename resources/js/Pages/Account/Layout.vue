@@ -40,7 +40,7 @@
                                         <p class="mb-1">{{$page.props.auth.email}}</p>
 <!--                                        <p>iamosahan@gmail.com</p>-->
                                         <a :href="route('profile.show')">
-                                            <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" ><i class="icofont-ui-edit"></i> EDIT</a></p>
+                                            <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" ><i class="icofont-ui-edit"></i> {{$t('account.edit_button')}}</a></p>
                                         </a>
                                     </div>
                                 </div>
@@ -48,19 +48,19 @@
                         </div>
                         <ul class="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true"><i class="icofont-food-cart"></i> Orders</a>
+                                <a class="nav-link active" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true"><i class="icofont-food-cart"></i> {{$t('account.menu.orders')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="offers-tab" data-toggle="tab" href="#offers" role="tab" aria-controls="offers" aria-selected="false"><i class="icofont-sale-discount"></i> Offers</a>
+                                <a class="nav-link" id="offers-tab" data-toggle="tab" href="#offers" role="tab" aria-controls="offers" aria-selected="false"><i class="icofont-sale-discount"></i> {{$t('account.menu.offers')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="favourites-tab" data-toggle="tab" href="#favourites" role="tab" aria-controls="favourites" aria-selected="false"><i class="icofont-heart"></i> Favourites</a>
+                                <a class="nav-link" id="favourites-tab" data-toggle="tab" href="#favourites" role="tab" aria-controls="favourites" aria-selected="false"><i class="icofont-heart"></i> {{$t('account.menu.favourites')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="payments-tab" data-toggle="tab" href="#payments" role="tab" aria-controls="payments" aria-selected="false"><i class="icofont-credit-card"></i> Payments</a>
+                                <a class="nav-link" id="payments-tab" data-toggle="tab" href="#payments" role="tab" aria-controls="payments" aria-selected="false"><i class="icofont-credit-card"></i> {{$t('account.menu.payments')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="addresses-tab" data-toggle="tab" href="#addresses" role="tab" aria-controls="addresses" aria-selected="false"><i class="icofont-location-pin"></i> Addresses</a>
+                                <a class="nav-link" id="addresses-tab" data-toggle="tab" href="#addresses" role="tab" aria-controls="addresses" aria-selected="false"><i class="icofont-location-pin"></i> {{$t('account.menu.addresses')}}</a>
                             </li>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
                             <Orders />
                             <Offers />
                             <div class="tab-pane fade" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
-                                <h4 class="font-weight-bold mt-0 mb-4">Favourites</h4>
+                                <h4 class="font-weight-bold mt-0 mb-4">{{$t('account.menu.favourites')}}</h4>
                                 <div class="row">
                                     <div class="col-md-4 col-sm-6 mb-4 pb-2">
                                         <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
@@ -235,7 +235,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h5 class="m-0">Operate food store or restaurants? <a href="login.html">Work With Us</a></h5>
+                    <h5 class="m-0">Operate food store or restaurants? <a href="/login">Work With Us</a></h5>
                 </div>
             </div>
         </div>

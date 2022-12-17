@@ -30,7 +30,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="add-address">Add Delivery Address</h5>
+                    <h5 class="modal-title" id="add-address">{{$t("account.addresses.add_card.title")}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -39,9 +39,9 @@
                     <form @submit.prevent="submit">
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="address_line_1">Address line 1</label>
+                                <label for="address_line_1">{{$t("account.addresses.add_card.address1")}}</label>
                                 <div class="input-group">
-                                    <input required type="text" v-model="add_form.address_line_1" class="form-control" id="address_line_1" placeholder="Delivery Area">
+                                    <input required type="text" v-model="add_form.address_line_1" class="form-control" id="address_line_1" :placeholder="$t('account.addresses.add_card.address1')">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="icofont-ui-pointer"></i></button>
                                     </div>
@@ -55,9 +55,9 @@
 
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="address_line_1">Address line 2</label>
+                                <label for="address_line_1">{{$t("account.addresses.add_card.address2")}}</label>
                                 <div class="input-group">
-                                    <input required type="text" v-model="add_form.address_line_2" class="form-control" id="address_line_2" placeholder="Delivery Area">
+                                    <input required type="text" v-model="add_form.address_line_2" class="form-control" id="address_line_2" :placeholder="$t('account.addresses.add_card.address2')">
                                 </div>
 
                                 <div v-show="add_form.errors.address_line_2">
@@ -68,9 +68,9 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="city">City</label>
+                                <label for="city">{{$t("account.addresses.add_card.city")}}</label>
                                 <div class="input-group">
-                                    <input required type="text" v-model="add_form.city" class="form-control" id="city" placeholder="Delivery Area">
+                                    <input required type="text" v-model="add_form.city" class="form-control" id="city" :placeholder="$t('account.addresses.add_card.city')">
                                 </div>
 
                                 <div v-show="add_form.errors.city">
@@ -80,9 +80,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="Country">Country</label>
+                                <label for="Country">{{$t("account.addresses.add_card.country")}}</label>
                                 <div class="input-group">
-                                    <input required type="text" v-model="add_form.country" class="form-control" id="Country" placeholder="Delivery Area">
+                                    <input required type="text" v-model="add_form.country" class="form-control" id="Country" :placeholder="$t('account.addresses.add_card.country')">
                                 </div>
 
                                 <div v-show="add_form.errors.country">
@@ -93,9 +93,9 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="mobile">Mobile</label>
+                                <label for="mobile">{{$t("account.addresses.add_card.mobile")}}</label>
                                 <div class="input-group">
-                                    <input required type="text" v-model="add_form.mobile" class="form-control" id="mobile" placeholder="Delivery Area">
+                                    <input required type="text" v-model="add_form.mobile" class="form-control" id="mobile" :placeholder="$t('account.addresses.add_card.mobile')">
                                 </div>
 
                                 <div v-show="add_form.errors.mobile">
@@ -105,9 +105,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="telephone">Telephone</label>
+                                <label for="telephone">{{$t("account.addresses.add_card.telephone")}}</label>
                                 <div class="input-group">
-                                    <input required type="text" v-model="add_form.telephone" class="form-control" id="telephone" placeholder="Delivery Area">
+                                    <input required type="text" v-model="add_form.telephone" class="form-control" id="telephone" :placeholder="$t('account.addresses.add_card.telephone')">
                                 </div>
 
                                 <div v-show="add_form.errors.telephone">
@@ -117,9 +117,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="postal_code">Postal Code</label>
+                                <label for="postal_code">{{$t("account.addresses.add_card.postal_code")}}</label>
                                 <div class="input-group">
-                                    <input required type="text" v-model="add_form.postal_code" class="form-control" id="postal_code" placeholder="Delivery Area">
+                                    <input required type="text" v-model="add_form.postal_code" class="form-control" id="postal_code" :placeholder="$t('account.addresses.add_card.postal_code')">
                                 </div>
 
                                 <div v-show="add_form.errors.postal_code">
@@ -131,8 +131,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary" data-dismiss="modal">CANCEL
-                            </button><button  type="submit" class="btn d-flex w-50 text-center justify-content-center btn-primary">SUBMIT</button>
+                            <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
+                            </button><button  type="submit" class="btn d-flex w-50 text-center justify-content-center btn-primary">{{$t("account.addresses.add_card.save")}}</button>
                         </div>
                     </form>
                 </div>

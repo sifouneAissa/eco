@@ -1,6 +1,6 @@
 <template>
     <div class="tab-pane fade" id="payments" role="tabpanel" aria-labelledby="payments-tab">
-        <h4 class="font-weight-bold mt-0 mb-4">Payments</h4>
+        <h4 class="font-weight-bold mt-0 mb-4">{{$t('account.menu.payments')}}</h4>
         <div class="row">
             <div class="col-md-6">
                 <div class="bg-white card payments-item mb-4 shadow-sm">

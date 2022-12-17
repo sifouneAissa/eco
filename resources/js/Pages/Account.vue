@@ -10,14 +10,14 @@
 </script>
 
 <template>
-    <GuestLayout title="My Account">
+    <GuestLayout :title="$t('account.account')">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Account
+                {{$t('account.account')}}
             </h2>
         </template>
 
-        <AccountLayout title="My Account" />
+        <AccountLayout :title="$t('account.account')" />
 
     </GuestLayout>
 </template>

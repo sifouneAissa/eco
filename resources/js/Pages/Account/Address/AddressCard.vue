@@ -23,7 +23,7 @@
                             <p class="text-black">{{model.address_line_1}} {{model.address_line_2}}</p>
                             <p class="text-black">{{model.mobile}} {{model.telephone}}</p>
 
-                            <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" :data-target="'#update-address-modal-'+model.id"  href="#"><i class="icofont-ui-edit"></i> EDIT</a> <a class="text-danger" data-toggle="modal" :data-target="'#delete-address-modal-'+model.id" href="#"><i class="icofont-ui-delete"></i> DELETE</a></p>
+                            <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" :data-target="'#update-address-modal-'+model.id"  href="#"><i class="icofont-ui-edit"></i> {{$t("account.addresses.edit_card.edit")}}</a> <a class="text-danger" data-toggle="modal" :data-target="'#delete-address-modal-'+model.id" href="#"><i class="icofont-ui-delete"></i> {{$t("account.addresses.delete_card.delete")}}</a></p>
                         </div>
                     </div>
                 </div>
