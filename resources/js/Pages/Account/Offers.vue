@@ -1,6 +1,6 @@
 <template>
     <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
-        <h4 class="font-weight-bold mt-0 mb-4">Offers</h4>
+        <h4 class="font-weight-bold mt-0 mb-4">{{$t('account.menu.offers')}}</h4>
         <div class="row mb-4 pb-2">
             <div class="col-md-6">
                 <div class="card offer-card shadow-sm">
