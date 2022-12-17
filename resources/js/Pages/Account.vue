@@ -2,6 +2,11 @@
     import GuestLayout from '@/Layouts/GuestLayout.vue';
     import AccountLayout from '@/Pages/Account/Layout.vue';
     import DashboardContent from '@/Pages/Dashboard-components/DashboardContent.vue';
+
+    defineProps({
+        addresses: Array,
+    });
+
 </script>
 
 <template>
@@ -11,9 +16,8 @@
                 Account
             </h2>
         </template>
-        <AccountLayout title="My Account">
 
-        </AccountLayout>
+        <AccountLayout title="My Account" />
 
     </GuestLayout>
 </template>

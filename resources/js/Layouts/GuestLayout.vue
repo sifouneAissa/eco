@@ -23,6 +23,7 @@ const setLocale = (lang) => {
 const logout = () => {
     Inertia.post(route('logout'));
 };
+
 </script>
 
 <template>

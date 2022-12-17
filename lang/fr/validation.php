@@ -170,5 +170,7 @@ return [
         'time'                  => 'heure',
         'available'             => 'disponible',
         'size'                  => 'taille',
+        'telephone'             => 'Téléphone',
+        'postal_code' => 'Code postal'
     ],
 ];
