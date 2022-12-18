@@ -16,7 +16,10 @@ class OrderDetail extends Model
         'names',
         'order_number',
         'qnames',
-        'price'
+        'price',
+        'received',
+        'confirmed',
+        'picked_up'
     ];
 
     public function paymentDetail(){
@@ -25,6 +28,10 @@ class OrderDetail extends Model
 
     public function products(){
         return $this->belongsToMany(Product::class,'order_items','order_id');
+    }
+
+    public function orderItems(){
+        return $this->hasMany(OrderItem::class,'order_id');
     }
 
     public function orderTracks(){
@@ -96,4 +103,17 @@ class OrderDetail extends Model
 
         return $value;
     }
+
+    public function getConfirmedAttribute(){
+        return $this->orderTracks->where("status","onway")->first();
+    }
+
+    public function getReceivedAttribute(){
+        return $this->orderTracks->where("status","instore")->first();
+    }
+
+    public function getPickedUpAttribute(){
+        return $this->orderTracks->where("status","delivered")->first();
+    }
+
 }

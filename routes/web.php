@@ -70,3 +70,4 @@ Route::get("/faq",function (){
 
     return \inertia("CompanyPages/Faq");
 });
+Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
