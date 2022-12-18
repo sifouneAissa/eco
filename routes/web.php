@@ -51,6 +51,7 @@ Route::middleware([
 
 
 Route::post('setlocale',[\App\Http\Controllers\setLocale::class,'setLocale'])->name('setLocale')->withoutMiddleware('set.locale');
+Route::post('setcurrency',[\App\Http\Controllers\setLocale::class,'setCurrency'])->name('setCurrency')->withoutMiddleware('set.locale');
 
 // Company pages components
 Route::get("/contact-us",function (){
@@ -69,3 +70,4 @@ Route::get("/faq",function (){
 
     return \inertia("CompanyPages/Faq");
 });
+Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');

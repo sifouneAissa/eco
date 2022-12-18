@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 class OrderDetail extends Model
 {
@@ -14,7 +15,11 @@ class OrderDetail extends Model
         'delivered_date',
         'names',
         'order_number',
-        'qnames'
+        'qnames',
+        'price',
+        'received',
+        'confirmed',
+        'picked_up'
     ];
 
     public function paymentDetail(){
@@ -23,6 +28,10 @@ class OrderDetail extends Model
 
     public function products(){
         return $this->belongsToMany(Product::class,'order_items','order_id');
+    }
+
+    public function orderItems(){
+        return $this->hasMany(OrderItem::class,'order_id');
     }
 
     public function orderTracks(){
@@ -82,4 +91,29 @@ class OrderDetail extends Model
     public function getOrderNumberAttribute(){
         return '#'.str_pad($this->id, 8, "0", STR_PAD_LEFT);
     }
+
+    public function getPriceAttribute(){
+
+        $tExchange = Currency::where('code',Session::get('currency'))->first()->exchange_rate;
+        $value = 0;
+
+        try {
+            $value= floor($this->total/$tExchange);
+        } catch (\Exception $e){};
+
+        return $value;
+    }
+
+    public function getConfirmedAttribute(){
+        return $this->orderTracks->where("status","onway")->first();
+    }
+
+    public function getReceivedAttribute(){
+        return $this->orderTracks->where("status","instore")->first();
+    }
+
+    public function getPickedUpAttribute(){
+        return $this->orderTracks->where("status","delivered")->first();
+    }
+
 }

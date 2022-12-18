@@ -55,12 +55,12 @@ createInertiaApp({
         if(props.initialPage.props.isRtl) {
             // for lazy importation
             let script = document.createElement('script');
-            script.src = "rtl/js/custom.js";
+            script.src = "/rtl/js/custom.js";
             document.body.append(script); // (*)
         }
         else {
             let script = document.createElement('script');
-            script.src = "ltr/js/custom.js";
+            script.src = "/ltr/js/custom.js";
             document.body.append(script); // (*)
         }
 

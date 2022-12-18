@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shopping_sessions', function (Blueprint $table) {
-            $table->id();
+        Schema::table('users', function (Blueprint $table) {
+            //
 
-            $table->string('total');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('lang')->after('profile_photo_path')->default(config("app.locale"));
+            $table->string('currency')->after('profile_photo_path')->default(config("app.currency"));
 
-            $table->timestamps();
         });
     }
 
@@ -31,6 +29,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shopping_sessions');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

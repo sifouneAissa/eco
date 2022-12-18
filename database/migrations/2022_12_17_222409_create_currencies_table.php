@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shopping_sessions', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-
-            $table->string('total');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->string('name');
+            $table->string('currency_code')->unique();
+            $table->string('exchange_rate');
+            $table->string('code')->unique();
+            // accept true or false (1,0)
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shopping_sessions');
+        Schema::dropIfExists('currencies');
     }
 };

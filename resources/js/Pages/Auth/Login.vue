@@ -26,6 +26,7 @@
             remember: form.remember ? 'on' : '',
         })).post(route('login'), {
             onFinish: () => form.reset('password'),
+            onSuccess : () => window.location.reload()
         });
     };
 </script>

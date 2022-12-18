@@ -27,7 +27,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'lang',
+        'currency'
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,5 +61,15 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'shopping_session'
     ];
+
+    public function shoppingSessions(){
+        return $this->hasMany(ShoppingSession::class,'user_id');
+    }
+
+
+    public function getShoppingSessionAttribute(){
+        return $this->shoppingSessions()->with(['cartItems.product'])->where('is_current',true)->first();
+    }
 }

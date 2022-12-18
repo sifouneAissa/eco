@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Inertia\Middleware;
@@ -39,12 +40,20 @@ class HandleInertiaRequests extends Middleware
     {
         $cLocale= Session::get('locale') ? Session::get('locale') : config("app.locale");
 
+        $currency = Session::get('currency') ? Session::get('currency') : config('app.currency');
+
+        $code = Currency::where("code",$currency)->first()->currency_code;
         return array_merge(parent::share($request), [
+
             //
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
             'auth' => auth()->user(),
-            'isRtl' => isRtl($cLocale)
+            'isRtl' => isRtl($cLocale),
+            'currency' => $currency,
+            'currencies' => config('app.currencies'),
+            'currency_code' => $code,
+            'shopping_session' => auth()->user() ? auth()->user()->shoppingSession : null
         ]);
     }
 }
