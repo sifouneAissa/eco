@@ -39,7 +39,9 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $cLocale= Session::get('locale') ? Session::get('locale') : config("app.locale");
+
         $currency = Session::get('currency') ? Session::get('currency') : config('app.currency');
+
         $code = Currency::where("code",$currency)->first()->currency_code;
         return array_merge(parent::share($request), [
 
@@ -50,7 +52,8 @@ class HandleInertiaRequests extends Middleware
             'isRtl' => isRtl($cLocale),
             'currency' => $currency,
             'currencies' => config('app.currencies'),
-            'currency_code' => $code
+            'currency_code' => $code,
+            'shopping_session' => auth()->user() ? auth()->user()->shoppingSession : null
         ]);
     }
 }

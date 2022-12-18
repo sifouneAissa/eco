@@ -36,6 +36,22 @@ class setLocale
 
         Session::put('currency',$currency);
 
+//        $user = auth()->user();
+//
+//        if($user) {
+//            if ($lang !== $user->lang)
+//                $user->update([
+//                    'lang' => $lang
+//                ]);
+//
+//            if ($currency !== $user->currency)
+//                $user->update([
+//                    'currency' => $currency
+//                ]);
+//        }
+
+
+
 
         return $next($request);
     }

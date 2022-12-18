@@ -13,11 +13,22 @@ class setLocale extends Controller
 
         Session::put('locale',$request->input('locale'));
 
-//        return redirect()->to('/');
+        if(auth()->user())
+        auth()->user()->update([
+            'lang' => $request->input('locale')
+        ]);
+
     }
 
 
     public function setCurrency(Request $request){
         Session::put('currency',$request->input('currency'));
+
+        if(auth()->user())
+        auth()->user()->update([
+            'currency' => $request->input('currency')
+        ]);
+
+
     }
 }

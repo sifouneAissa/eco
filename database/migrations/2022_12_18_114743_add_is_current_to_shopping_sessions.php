@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shopping_sessions', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('total');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-            $table->timestamps();
+        Schema::table('shopping_sessions', function (Blueprint $table) {
+            //
+            $table->boolean('is_current')->default(true);
         });
     }
 
@@ -31,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shopping_sessions');
+        Schema::table('shopping_sessions', function (Blueprint $table) {
+            //
+        });
     }
 };
