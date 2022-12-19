@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('quantity')->default(1);
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
             $table->unsignedBigInteger('shopping_session_id');
             $table->foreign('shopping_session_id')->references('id')->on('shopping_sessions')->onDelete('cascade');
