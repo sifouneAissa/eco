@@ -71,6 +71,56 @@ const fr = {
             }
 
         },
+    },
+    profile:{
+        page_title:"Profil",
+        save:"Sauvegarder",
+        cancel:"Annuler",
+        saved:"Enregistré",
+        done:"Fait",
+        disable:"Désactiver",
+        confirm:"Confirmer",
+        info:{
+            title:"Informations sur le profil",
+            description:"Modifier les informations de profil et l'adresse e-mail de votre compte. ",
+            photo:"Photo",
+            select_photo:"Sélectionnez une nouvelle photo",
+            name:"Nom",
+            email:"E-mail",
+            remove_photo:"Retirer la photo",
+            msg1:"Votre adresse e-mail n'est pas vérifiée.",
+            msg2:" Cliquez ici pour renvoyer l'e-mail de vérification.",
+            msg3:"Un nouveau lien de vérification a été envoyé à votre adresse e-mail.",
+        },
+        password:{
+            title:"Modifier le mot de passe ",
+            description:"Assurez-vous que votre compte utilise un mot de passe long et aléatoire pour rester en sécurité.",
+            current_password:"Mot de passe actuel",
+            new_password:"Nouveau mot de passe",
+            password_confirmation:"Confirmez le mot de passe",
+        },
+        two_factor_authentication:{
+            title:"Authentification à deux facteurs",
+            description:"Ajoutez une sécurité supplémentaire à votre compte en utilisant l'authentification à deux facteurs. ",
+            card_title:"Vous n'avez pas activé l'authentification à deux facteurs.",
+            card_content:"Lorsque l'authentification à deux facteurs est activée, vous serez invité à saisir un jeton aléatoire sécurisé lors de l'authentification. Vous pouvez récupérer ce jeton depuis l'application Google Authenticator de votre téléphone.",
+            enable:"Activer",
+        },
+        browser:{
+            title:"Sessions de navigateur ",
+            description:"Gérez et déconnectez-vous de vos sessions actives sur d'autres navigateurs et appareils.",
+            card_content:"Si nécessaire, vous pouvez vous déconnecter de toutes vos autres sessions de navigation sur tous vos appareils. Certaines de vos sessions récentes sont répertoriées ci-dessous ; cependant, cette liste peut ne pas être exhaustive. Si vous pensez que votre compte a été compromis, vous devez également mettre à jour votre mot de passe.",
+            log_out:"Se déconnecter des autres sessions du navigateur",
+            msg:"Veuillez entrer votre mot de passe pour confirmer que vous souhaitez vous déconnecter de vos autres sessions de navigation sur tous vos appareils."
+        },
+        delete_account:{
+            title:" Supprimer le compte ",
+            description:"Supprimer définitivement votre compte. ",
+            card_content:"Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Avant de supprimer votre compte, veuillez télécharger les données ou informations que vous souhaitez conserver. ",
+            delete:"  Supprimer le compte  ",
+            card_delete_content:" Êtes-vous sûr de vouloir supprimer votre compte ? Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Veuillez saisir votre mot de passe pour confirmer que vous souhaitez supprimer définitivement votre compte."
+
+        },
     }
 };
 
