@@ -1,0 +1,178 @@
+
+<template>
+    <div class="col-md-9">
+        <div class="owl-carousel owl-carousel-category owl-theme list-cate-page mb-4">
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/1.png" alt="">
+                        <h6>American</h6>
+                        <p>156</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/2.png" alt="">
+                        <h6>Pizza</h6>
+                        <p>120</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/3.png" alt="">
+                        <h6>Healthy</h6>
+                        <p>130</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/4.png" alt="">
+                        <h6>Vegetarian</h6>
+                        <p>120</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/5.png" alt="">
+                        <h6>Chinese</h6>
+                        <p>111</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/6.png" alt="">
+                        <h6>Hamburgers</h6>
+                        <p>958</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/7.png" alt="">
+                        <h6>Dessert</h6>
+                        <p>56</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/8.png" alt="">
+                        <h6>Chicken</h6>
+                        <p>40</p>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="osahan-category-item">
+                    <a href="#">
+                        <img class="img-fluid" src="img/list/9.png" alt="">
+                        <h6>Indian</h6>
+                        <p>156</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div v-for="(product,index) in $page.props.products" :key="product.id" class="col-md-4 col-sm-6 mb-4">
+                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                    <div class="list-card-image">
+                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
+                        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+                        <a href="#">
+                            <img src="img/list/8.png" class="img-fluid item-img">
+                        </a>
+                    </div>
+                    <div class="p-3 position-relative">
+                        <div class="list-card-body">
+                            <h6 class="mb-1"><a href="#" class="text-black">{{product.name}}
+                            </a>
+                            </h6>
+                            <p class="text-gray mb-2">Hamburgers • Indian</p>
+                            <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">{{$page.props.currency_code}} {{product.cprice}} </a> <span class="badge badge-primary">NEW</span> <span class="float-right">
+                                             <span class="count-number">
+                                             <button @click="incrQP(product,- 1)" class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
+                                             <input v-model="product.quantity" class="count-number-input" type="text"  readonly="">
+                                             <button @click="incrQP(product,+ 1)" class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
+                                             </span>
+                                            <button class="btn btn-outline-secondary btn-sm m-2" @click="submit(product)" >ADD</button>
+                                             </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center load-more">
+                <button class="btn btn-primary" type="button" disabled>
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    import { Inertia, } from '@inertiajs/inertia';
+    import {useForm} from "@inertiajs/inertia-vue3";
+
+    export default {
+        name: "listing.vue",
+        date(){
+            return {
+                quantity: []
+            }
+        },
+        created() {
+
+            setInterval(function () {
+                Inertia.reload(route("listing"), {
+                    only: ['products'],
+                    preserveScroll: true,
+                })
+            }, 20000)
+        },
+        methods : {
+            incrQP(model,by){
+                model.quantity = model.quantity + by;
+                if(!model.quantity) model.quantity = 1;
+            },
+            submit : function (model) {
+                let form = useForm({
+                    product_id : model.id,
+                    quantity: model.quantity
+                });
+
+                form.transform(data => ({
+                    ...data,
+                })).post(route('addProduct'), {
+                    // onFinish: () => add_form.reset(),
+                    onSuccess : function () {
+                    }
+                });
+            },
+        }
+    }
+
+
+
+
+
+</script>
+
+<style scoped>
+
+</style>

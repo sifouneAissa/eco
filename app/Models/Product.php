@@ -11,7 +11,8 @@ class Product extends Model
     use HasFactory;
 
     protected $appends = [
-        'cprice'
+        'cprice',
+        'quantity'
     ];
 
 
@@ -25,5 +26,10 @@ class Product extends Model
         } catch (\Exception $e){};
 
         return $value;
+    }
+
+
+    public function getQuantityAttribute(){
+        return 1;
     }
 }

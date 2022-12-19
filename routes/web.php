@@ -40,15 +40,20 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
     Route::get('/account', [\App\Http\Controllers\UserAccountController::class,'index'])->name('account');
+//    Route::get('/store', [\App\Http\Controllers\UserStoreController::class,'index'])->name('store');
 
     // user addresses
     Route::resource('address',\App\Http\Controllers\UserAddressController::class)->only([
         'index','store','update','destroy'
     ]);
 
+    // product
+    Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
 });
 
+Route::get('/listing', [\App\Http\Controllers\UserListingController::class,'index'])->name('listing');
 
 Route::post('setlocale',[\App\Http\Controllers\setLocale::class,'setLocale'])->name('setLocale')->withoutMiddleware('set.locale');
 Route::post('setcurrency',[\App\Http\Controllers\setLocale::class,'setCurrency'])->name('setCurrency')->withoutMiddleware('set.locale');

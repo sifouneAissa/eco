@@ -10,6 +10,10 @@ class ShoppingSession extends Model
 {
     use HasFactory;
 
+    protected  $fillable = [
+        'user_id'
+    ];
+
     protected $casts = [
         'total' =>  'double'
     ];
