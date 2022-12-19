@@ -119,6 +119,25 @@ const en = {
             delete:"  Delete Account  ",
             card_delete_content:" Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account."
         },
+    },
+    track_order:{
+        order:"Order",
+        help:"Help",
+        items:"Items",
+        details:"Order Details",
+        from:"From",
+        other:"Other",
+        deliver_to:"DELIVER TO",
+        total_bill:"TOTAL BILL",
+        paid_via:"Paid via",
+        off:"Off",
+        order_received:"Order Received",
+        order_confirmed:"Order Confirmed",
+        order_picked_up:"Order Picked Up",
+        now:"Now",
+        checked:"Checked",
+        later:"Later",
+
     }
 };
 
