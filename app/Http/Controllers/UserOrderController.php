@@ -23,6 +23,7 @@ class UserOrderController extends Controller
 
             if(!$s_session){
                 $s_session = ShoppingSession::create([
+                        'total' => 0,
                          'user_id' => auth()->user()->id
                 ]);
             }

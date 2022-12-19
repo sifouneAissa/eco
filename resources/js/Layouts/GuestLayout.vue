@@ -53,7 +53,8 @@ const logout = () => {
                             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Offers <span class="badge badge-danger">New</span></a>
+<!--                            <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Products <span class="badge badge-danger">New</span></a>-->
+                            <Link  :href="route('listing')" class="nav-link" ><i class="icofont-sale-discount"></i> Products <span class="badge badge-danger">New</span></Link>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
