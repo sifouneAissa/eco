@@ -24,6 +24,7 @@ import  '../assets/vendor/select2/js/select2.min';
 //     ,'resources/assets/vendor/owl-carousel/owl.carousel.js'
 //     ,'resources/assets/vendor/select2/js/select2.min.js'
 //     ,'resources/assets/ltr/js/custom.js'
+
 import messages from './translation/translation';
 
 

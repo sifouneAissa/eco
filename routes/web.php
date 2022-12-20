@@ -51,6 +51,9 @@ Route::middleware([
 
     // product
     Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
+
+    Route::get('redirects', [\App\Http\Controllers\LoginRedirectionController::class,'redirect']);
+
 });
 
 Route::get('/listing', [\App\Http\Controllers\UserListingController::class,'index'])->name('listing');
@@ -76,3 +79,6 @@ Route::get("/faq",function (){
     return \inertia("CompanyPages/Faq");
 });
 Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
+
+
+require __DIR__. "/admin.php";

@@ -21,10 +21,9 @@
         @if(in_array($page['component'],["Profile/Show"]) )
             @vite(['resources/css/app.css'])
         @endif
-
         @inertiaHead
     </head>
-    <body  class="font-sans antialiased">
+    <body  class="bg-primary">
         @inertia
     </body>
 </html>

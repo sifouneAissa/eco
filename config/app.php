@@ -234,5 +234,7 @@ return [
         'dzd',
         'euro',
         'dollar'
-    ]
+    ],
+
+    'admin-prefix' => 'admin-dash'
 ];

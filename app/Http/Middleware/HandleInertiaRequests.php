@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Inertia\Inertia;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -43,6 +44,7 @@ class HandleInertiaRequests extends Middleware
         $currency = Session::get('currency') ? Session::get('currency') : config('app.currency');
 
         $code = Currency::where("code",$currency)->first()->currency_code;
+
         return array_merge(parent::share($request), [
 
             //

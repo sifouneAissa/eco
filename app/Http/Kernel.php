@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\setAdmin;
 use App\Http\Middleware\setLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -66,6 +67,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'set.locale' => setLocale::class
+        'set.locale' => setLocale::class,
+        'inertia_share_user' => \App\Http\Middleware\HandleInertiaRequests::class,
+        'inertia_share_admin' => \App\Http\Middleware\AdminHandleInertiaRequest::class,
+        'set.admin' => setAdmin::class
     ];
 }
