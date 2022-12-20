@@ -1,4 +1,26 @@
 const ar = {
+    nav_menu:{
+        help:{
+           help:"مساعدة",
+           contact_us:"اتصل بنا",
+           about_us:"معلومات عنا",
+           faq:"أسئلة وأجوبة",
+           privacy_policy:"سياسة الخصوصية",
+           terms_conditions:"الأحكام والشروط",
+           shipping_policy:"سياسة الإرجاع والشحن",
+        },
+        pages:{
+           pages:"الصفحات",
+           login:"تسجيل الدخول",
+           register:" التسجيل" ,
+           home:"الصفحة الرئيسية",
+           logout:"تسجيل خروج",
+           profile:"الملف الشخصي",
+           account:"حسابي",
+           products:"المنتجات",
+           new:"جديد",
+        }
+       },
     locales : {
         ar : 'العربية',
         en : 'الانجلزية',
@@ -140,6 +162,13 @@ const ar = {
         checked:"تم التحقق ",
         later:"لاحقاً",
 
+    },
+    contact_us:{
+        send:"ارسل رسالة",
+        phone : 'رقم الهاتف',
+        name : 'الإسم ',
+        email : 'البريد الالكتروني',
+        message : 'رسالة',
     }
 };
 

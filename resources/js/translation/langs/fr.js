@@ -1,4 +1,26 @@
 const fr = {
+    nav_menu:{
+        help:{
+           help:"Aider",
+           contact_us:"Contacter nous",
+           about_us:"À propos de nous",
+           faq:"Faq",
+           privacy_policy:"Politique de confidentialité",
+           terms_conditions:"Termes et conditions",
+           shipping_policy:"Politique de retour et d'expédition",
+        },
+        pages:{
+           pages:"Pages",
+           login:"Se connecter",
+           register:"S'inscrire",
+           home:"Accueil",
+           logout:"Se déconnecter",
+           profile:"Profil",
+           account:"Mon compte",
+           products:"Produits",
+           new:"Nouveau",
+        }
+       },
     locales : {
         ar : 'Arabe',
         en : 'Anglais',
@@ -140,6 +162,13 @@ const fr = {
         checked:"Vérifié",
         later:"Plus tard",
 
+    },
+    contact_us:{
+        send:"Envoyer un message",
+        phone : 'Numéro de téléphone',
+        name : 'Nom',
+        email : 'E-mail',
+        message : 'Message',
     }
 };
 
