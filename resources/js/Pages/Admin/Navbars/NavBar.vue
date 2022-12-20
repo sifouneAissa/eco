@@ -135,13 +135,13 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                 <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="img-profile rounded-circle" src="img/user/1.png">
+                    <img class="img-profile rounded-circle" :src="$page.props.user.profile_photo_url">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow-sm">
                     <div class="p-3 d-flex align-items-center">
                         <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="img/user/1.png" alt="">
+                            <img class="rounded-circle" :src="$page.props.user.profile_photo_url" alt="">
                             <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
