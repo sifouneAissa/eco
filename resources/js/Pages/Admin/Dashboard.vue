@@ -1,13 +1,18 @@
+<script setup>
+    import AdminLayout from '@/Pages/Admin/Layout/AdminLayout.vue';
+</script>
 <template>
-    <h1>Aissa bob dani</h1>
+
+    <AdminLayout title="Dashboard">
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Dashboard
+            </h2>
+        </template>
+        <!--        page content -->
+        <h1>
+            Hello Admin
+        </h1>
+    </AdminLayout>
 </template>
 
-<script>
-    export default {
-        name: "Dashboard"
-    }
-</script>
-
-<style scoped>
-
-</style>

@@ -52,7 +52,7 @@ Route::middleware([
     // product
     Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
 
-    Route::get('redirects', [\App\Http\Controllers\LoginRedirectionController::class,'redirect']);
+    Route::get('redirects', [\App\Http\Controllers\LoginRedirectionController::class,'redirect'])->name('redirects');
 
 });
 
