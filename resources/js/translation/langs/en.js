@@ -1,4 +1,26 @@
 const en = {
+    nav_menu:{
+     help:{
+        help:"Help",
+        contact_us:"Contact Us",
+        about_us:"About Us",
+        faq:"Faq",
+        privacy_policy:"Privacy policy",
+        terms_conditions:"Terms and conditions",
+        shipping_policy:"Return and shipping policy",
+     },
+     pages:{
+        pages:"Pages",
+        login:"Login",
+        register:"Register",
+        home:"Home",
+        logout:"Log Out",
+        profile:"Profile",
+        account:"My account",
+        products:"Products",
+        new:"New",
+     }
+    },
     locales : {
         ar : 'Arabic',
         en : 'English',
@@ -119,6 +141,32 @@ const en = {
             delete:"  Delete Account  ",
             card_delete_content:" Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account."
         },
+    },
+    track_order:{
+        order:"Order",
+        help:"Help",
+        items:"Items",
+        details:"Order Details",
+        from:"From",
+        other:"Other",
+        deliver_to:"DELIVER TO",
+        total_bill:"TOTAL BILL",
+        paid_via:"Paid via",
+        off:"Off",
+        order_received:"Order Received",
+        order_confirmed:"Order Confirmed",
+        order_picked_up:"Order Picked Up",
+        now:"Now",
+        checked:"Checked",
+        later:"Later",
+
+    },
+    contact_us:{
+        send:"Send message",
+        name : 'Name',
+        phone : 'Phone',
+        email : 'Email',
+        message : 'Message',
     }
 };
 

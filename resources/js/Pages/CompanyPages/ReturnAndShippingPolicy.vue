@@ -3,10 +3,10 @@ import GuestLayout from "@/Layouts/GuestLayout.vue";
 </script>
 
 <template>
-  <GuestLayout :title="$t('nav_menu.help.terms_conditions')">
+  <GuestLayout :title="$t('nav_menu.help.sipping_policy')">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ $t("nav_menu.help.terms_conditions") }}
+        {{ $t("nav_menu.help.sipping_policy") }}
       </h2>
     </template>
     <section
@@ -15,7 +15,7 @@ import GuestLayout from "@/Layouts/GuestLayout.vue";
          background-image: url('https://himpies.com/wp-content/uploads/2021/09/himpies-banner-scaled.jpg');
       "
     >
-      <h1 class="text-white">{{ $t("nav_menu.help.terms_conditions") }}</h1>
+      <h1 class="text-white">{{ $t("nav_menu.help.sipping_policy") }}</h1>
     </section>
     <section class="section pt-5 pb-5"></section>
   </GuestLayout>

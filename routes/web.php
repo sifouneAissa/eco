@@ -74,6 +74,14 @@ Route::get("/privacy-policy",function (){
 
     return \inertia("CompanyPages/PrivacyPolicy");
 });
+Route::get("/terms-conditions",function (){
+
+    return \inertia("CompanyPages/TermsAndConditions");
+});
+Route::get("/shipping-policy",function (){
+
+    return \inertia("CompanyPages/ReturnAndShippingPolicy");
+});
 Route::get("/faq",function (){
 
     return \inertia("CompanyPages/Faq");

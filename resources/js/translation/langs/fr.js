@@ -1,4 +1,26 @@
 const fr = {
+    nav_menu:{
+        help:{
+           help:"Aider",
+           contact_us:"Contacter nous",
+           about_us:"À propos de nous",
+           faq:"Faq",
+           privacy_policy:"Politique de confidentialité",
+           terms_conditions:"Termes et conditions",
+           shipping_policy:"Politique de retour et d'expédition",
+        },
+        pages:{
+           pages:"Pages",
+           login:"Se connecter",
+           register:"S'inscrire",
+           home:"Accueil",
+           logout:"Se déconnecter",
+           profile:"Profil",
+           account:"Mon compte",
+           products:"Produits",
+           new:"Nouveau",
+        }
+       },
     locales : {
         ar : 'Arabe',
         en : 'Anglais',
@@ -121,6 +143,32 @@ const fr = {
             card_delete_content:" Êtes-vous sûr de vouloir supprimer votre compte ? Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Veuillez saisir votre mot de passe pour confirmer que vous souhaitez supprimer définitivement votre compte."
 
         },
+    },
+    track_order:{
+        order:"Commande",
+        help:"Aider",
+        items:"Articles",
+        details:"Détails de la commande",
+        from:"De",
+        other:"Autre",
+        deliver_to:"LIVRER À",
+        total_bill:"FACTURE TOTALE",
+        paid_via:"Payé via",
+        off:"de rabais",
+        order_received:"Ordre reçu",
+        order_confirmed:"Commande confirmée",
+        order_picked_up:"Commande récupérée",
+        now:"Maintenant",
+        checked:"Vérifié",
+        later:"Plus tard",
+
+    },
+    contact_us:{
+        send:"Envoyer un message",
+        phone : 'Numéro de téléphone',
+        name : 'Nom',
+        email : 'E-mail',
+        message : 'Message',
     }
 };
 
