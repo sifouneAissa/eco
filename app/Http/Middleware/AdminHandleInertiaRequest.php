@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Currency;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
 class AdminHandleInertiaRequest extends HandleInertiaRequests
@@ -38,7 +39,8 @@ class AdminHandleInertiaRequest extends HandleInertiaRequests
         return array_merge(parent::share($request), [
             'auth' => $user,
             'auth.permissions' => $user ? $user->getAllPermissions()->pluck("name") : null,
-            'auth.roles' => $user ? $user->getRoleNames() : null
+            'auth.roles' => $user ? $user->getRoleNames() : null,
+            'route.current.name' => Route::currentRouteName()
         ]);
     }
 }

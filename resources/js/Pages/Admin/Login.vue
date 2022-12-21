@@ -1,3 +1,4 @@
+<script src="../../common/sidebar.js"></script>
 <script setup>
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import AuthenticationCard from '@/Components/AuthenticationCard.vue';

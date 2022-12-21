@@ -8,6 +8,7 @@ use \Illuminate\Support\Facades\Route;
 
     \Illuminate\Support\Facades\Route::group(['middleware' => 'set.admin'], function () {
         Route::get('/',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('index');
+        Route::get('/test',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('test');
     });
 });
 
