@@ -66,7 +66,6 @@ createInertiaApp({
         }
 
 
-
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(i18n)

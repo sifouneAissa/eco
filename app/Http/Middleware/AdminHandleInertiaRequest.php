@@ -33,8 +33,12 @@ class AdminHandleInertiaRequest extends HandleInertiaRequests
      */
     public function share(Request $request): array
     {
+        $user = auth()->user();
+
         return array_merge(parent::share($request), [
-            'auth' => auth()->user(),
+            'auth' => $user,
+            'auth.permissions' => $user ? $user->getAllPermissions()->pluck("name") : null,
+            'auth.roles' => $user ? $user->getRoleNames() : null
         ]);
     }
 }
