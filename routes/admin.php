@@ -9,6 +9,19 @@ use \Illuminate\Support\Facades\Route;
     \Illuminate\Support\Facades\Route::group(['middleware' => 'set.admin'], function () {
         Route::get('/',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('index');
         Route::get('/test',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('test');
+
+        // roles and permissions
+//        Route::get('/role',[\App\Http\Controllers\admin\RoleController::class,'index'])->name('role.index');
+        Route::resource('/role',\App\Http\Controllers\admin\RoleController::class)->only([
+            'update','index'
+        ]);
+        Route::get('/roles',[\App\Http\Controllers\admin\RoleController::class,'datatables'])->name('roles.index');
+
+
+//        Route::get("/test",function (){
+//
+//            return view('Datatable.btn');
+//        });
     });
 });
 

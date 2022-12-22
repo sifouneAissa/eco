@@ -9,17 +9,21 @@ import '../../public/admin/vendor/dataTables/dataTables/css/dataTables.bootstrap
 import '../../public/admin/vendor/jquery/jquery.min';
 import '../../public/admin/vendor/fontawesome/js/all.min.js';
 import '../../public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js';
+// import 'datatables.net-dt';
+
 
 // import 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js';
-import '../../public/admin/js/scripts.js';
+
 // import '../../public/admin/assets/demo/chart-area-demo.js';
 // import '../../public/admin/assets/demo/chart-bar-demo.js';
 // import '../../public/admin/assets/demo/chart-pie-demo.js';
-// import '../../public/admin/vendor/dataTables/dataTables/js/jquery.dataTables.min.js';
+import '../../public/admin/vendor/dataTables/dataTables/js/jquery.dataTables.min.js';
 // import '../../public/admin/vendor/dataTables/dataTables/js/dataTables.bootstrap.min.js';
 // import '../../public/admin/assets/demo/datatables-demo.js';
 // import '../../public/admin/vendor/dropzone/dist/min/dropzone.min.js';
 // import 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js';
+
+import '../../public/admin/js/scripts.js';
 import messages from './translation/translation';
 
 
@@ -46,16 +50,23 @@ createInertiaApp({
         });
 
 
+        let script = document.createElement('script');
+        script.src = "/admin/vendor/dataTables/dataTables/js/dataTables.bootstrap.min.js";
+        document.body.append(script); // (*)
         const myApp = createApp({render: () => h(app, props)})
             .use(plugin)
             .use(i18n)
             .use(ZiggyVue, Ziggy);
+
         // declare this can before mount the application
         myApp.config.globalProperties.$can = function (permission) {
             return props.initialPage.props.auth.permissions.some((per) => per === permission);
         };
         // mount the application
         myApp.mount(el);
+
+        // myApp.component('btn-page', () => import('./Pages/Admin/Btn.vue'));
+
         return myApp;
     },
 });
@@ -63,6 +74,4 @@ createInertiaApp({
 InertiaProgress.init({color: '#4B5563'});
 
 const {value} = usePage().valueOf().props;
-
-console.log(value)
 

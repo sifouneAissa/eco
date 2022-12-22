@@ -25,11 +25,6 @@ use Inertia\Inertia;
     })->name('welcome');
 
 
-Route::get("/test",function (){
-
-    return \inertia("test");
-});
-
 
 
 Route::middleware([

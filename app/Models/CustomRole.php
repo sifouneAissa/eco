@@ -9,4 +9,17 @@ use Spatie\Permission\Models\Role;
 class CustomRole extends Role
 {
     use HasFactory;
+
+    protected $appends = [
+            'modal_ids'
+    ];
+
+
+    public  function getModalIdsAttribute(){
+        return [
+            'edit' => 'edit-role',
+            'delete' => 'delete-role',
+            'add' => 'add-role'
+        ];
+    }
 }

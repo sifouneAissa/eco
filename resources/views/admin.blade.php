@@ -8,7 +8,7 @@
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 {{--        {{dd($page)}}--}}
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+{{--        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">--}}
         <!-- Scripts -->
         @routes
         @vite(['resources/js/app-admin.js', "resources/js/Pages/Admin/{$page['component']}.vue"])
@@ -20,4 +20,6 @@
     <body  class="font-sans antialiased">
         @inertia
     </body>
+
+
 </html>

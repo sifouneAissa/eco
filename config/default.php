@@ -7,6 +7,11 @@ return[
             'view dashboard',
         ],
         'admin' => [
+            'view settings',
+            'view roles',
+            'edit role',
+            'show role',
+            'delete role'
         ],
         'publisher' => [
 
