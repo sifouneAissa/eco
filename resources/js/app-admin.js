@@ -9,7 +9,7 @@ import '../../public/admin/vendor/dataTables/dataTables/css/dataTables.bootstrap
 import '../../public/admin/vendor/jquery/jquery.min';
 import '../../public/admin/vendor/fontawesome/js/all.min.js';
 import '../../public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js';
-// import 'datatables.net-dt';
+
 
 
 // import 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js';
@@ -17,11 +17,22 @@ import '../../public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js';
 // import '../../public/admin/assets/demo/chart-area-demo.js';
 // import '../../public/admin/assets/demo/chart-bar-demo.js';
 // import '../../public/admin/assets/demo/chart-pie-demo.js';
-import '../../public/admin/vendor/dataTables/dataTables/js/jquery.dataTables.min.js';
+
 // import '../../public/admin/vendor/dataTables/dataTables/js/dataTables.bootstrap.min.js';
+import '../../public/admin/vendor/dataTables/dataTables/js/jquery.dataTables.min.js';
 // import '../../public/admin/assets/demo/datatables-demo.js';
 // import '../../public/admin/vendor/dropzone/dist/min/dropzone.min.js';
 // import 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js';
+
+
+import '../../public/admin/vendor/dataTables/dataTables.buttons.min.js';
+import '../../public/admin/vendor/dataTables/jszip.min.js';
+import '../../public/admin/vendor/dataTables/pdfmake.min.js'
+import '../../public/admin/vendor/dataTables/buttons.html5.min.js';
+import '../../public/admin/vendor/dataTables/buttons.print.min.js';
+import '../../public/admin/vendor/dataTables/buttons.colVis';
+import '../../public/admin/vendor/dataTables/css/buttons.bootstrap.css';
+
 
 import '../../public/admin/js/scripts.js';
 import messages from './translation/translation';
@@ -53,6 +64,13 @@ createInertiaApp({
         let script = document.createElement('script');
         script.src = "/admin/vendor/dataTables/dataTables/js/dataTables.bootstrap.min.js";
         document.body.append(script); // (*)
+
+
+        script = document.createElement('script');
+        script.src = "/admin/vendor/dataTables/vfs_fonts.js";
+        document.body.append(script); // (*)
+
+
         const myApp = createApp({render: () => h(app, props)})
             .use(plugin)
             .use(i18n)

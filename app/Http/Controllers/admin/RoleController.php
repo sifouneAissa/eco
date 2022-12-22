@@ -27,6 +27,7 @@ class RoleController extends Controller
 
 
     public function datatables(Request $request) {
+
         $permissions = [
             'edit' => 'edit role',
             'show' => 'show role',
@@ -39,6 +40,9 @@ class RoleController extends Controller
             ->addColumn('action',function ($model) use ($permissions){
                 return view('Datatable.btn',compact('model','permissions'));
             })
+            ->addColumn('permissions',function ($model){
+                return view('Roles.permissions',compact('model'));
+            })
             ->toArray();
 
         return response()->json($datatables);
@@ -48,7 +52,8 @@ class RoleController extends Controller
         return [
             ['data' => 'id','name' => 'Id'],
             ['data' => 'name' , 'name' => 'Name'],
-            ['data' => 'action' , 'name' => 'action'],
+            ['data' => 'permissions' , 'name' => 'Permissions','searchable' => false],
+            ['data' => 'action' , 'name' => 'Action','searchable' => false],
 //            ['data' => 'email']
         ];
     }
@@ -57,6 +62,7 @@ class RoleController extends Controller
         return [
             'ID',
             'Name',
+            'Permissions',
             'Action'
 //            'Email'
         ];

@@ -1,6 +1,7 @@
 <script >
     import EditModal from '@/Pages/Admin/DataTable/Modals/Update.vue';
 
+
     export  default {
         props : [
             'datatableHeaders',
@@ -25,15 +26,67 @@
             //   },
         },
         mounted() {
+
+
             let  app = this;
 
             let datatable = $("#dataTable").dataTable({
+                dom: 'Bfrtip',
+                responsive: true,
+                buttons: {
+                    dom: {
+
+                        button: {
+                            className: 'btn btn-rounded m-2'
+                        }
+                    },
+
+                    buttons: [
+                        {
+                            // copy
+                            extend: 'csv',
+                            text: '<i class="fas fa-file-csv"></i> CSV',
+                            className: 'btn-success ',
+                        },
+                        {
+                            // copy
+                            extend: 'excel',
+                            text: '<i class="fas fa-file-excel"></i> Excel',
+                            className: 'btn-success '
+                        },
+                        {
+                            // copy
+                            extend: 'pdf',
+                            text: '<i class="fas fa-file-pdf"></i> PDF',
+                            className: 'btn-danger '
+                        },
+                        {
+                            // copy
+                            extend: 'print',
+                            text: '<i class="fas fa-print"></i> Print',
+                            className: 'btn-light '
+                        },
+                        {
+                            // copy
+                            extend: 'copy',
+                            text: '<i class="fas fa-copy"></i> Copy',
+                            className: 'btn-primary '
+                        },
+                        {
+                            extend: 'colvis',
+                            className: 'btn btn-secondary dropdown-toggle'
+                        },
+                    ]
+                },
+
                 ajax: {
                     url: this.datatableUrl,
                 },
                 columns : this.datatableColumns,
                 processing: true,
-                serverSide : true
+                serverSide : true,
+                paging : true,
+                pageLength  :   12
             })
 
             $(document).on('click','#btn-edit',function (){
@@ -74,3 +127,4 @@
     </div>
 
 </template>
+
