@@ -59,12 +59,17 @@ class ProductController extends Controller
     }
 
     public function update(ProductRequest $request,$id){
+
         $inputs = $this->filterRequest($request->all());
 
         $product = Product::find($id);
 
         $product->update($inputs);
 
+    }
+
+    public function destroy($id){
+        Product::find($id)->delete();
     }
 
     public function datatables(Request $request) {

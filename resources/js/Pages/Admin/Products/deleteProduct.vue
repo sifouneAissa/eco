@@ -1,6 +1,6 @@
 
 <template>
-    <Delete @resetModel="resetModel"  :id="model.modal_ids.delete" title="Delete User">
+    <Delete @resetModel="resetModel"  :id="model.modal_ids.delete" title="Delete Product">
         <div  class="modal-body mx-3 bg" >
             <form @submit.prevent="submit">
                 <div class="modal-body">
@@ -52,7 +52,7 @@
             },
             submit : function () {
                 // this.form
-                Inertia.delete(route('admin.user.destroy',{
+                Inertia.delete(route('admin.product.destroy',{
                     id : this.model.id
                 }), {
                     onFinish: () => {

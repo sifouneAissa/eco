@@ -3,7 +3,7 @@
     import Datatable from '@/Pages/Admin/DataTable/Datatable.vue';
     import editProduct from '@/Pages/Admin/Products/editProduct.vue';
     // import showRole from '@/Pages/Admin/Roles/showRole.vue';
-    // import deleteUser from '@/Pages/Admin/Clients/deleteUser.vue';
+    import deleteProduct from '@/Pages/Admin/Products/deleteProduct.vue';
     import addProduct from '@/Pages/Admin/Products/addProduct.vue';
 
     export default {
@@ -12,7 +12,7 @@
             Datatable,
             // addUser,
             editProduct,
-            // deleteUser,
+            deleteProduct,
             addProduct
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
@@ -65,7 +65,7 @@
         <Datatable  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Products table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
         <editProduct @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editProduct>
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
-<!--        <deleteUser @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteUser>-->
+        <deleteProduct @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteProduct>
         <addProduct @ResetModel="resetModel" v-if="modelToAdd!=null"></addProduct>
 
     </AdminLayout>
