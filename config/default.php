@@ -18,7 +18,11 @@ return[
             'delete user',
             'view users',
             'add role',
-            'add user'
+            'add user',
+            'add client',
+            'edit client',
+            'delete client',
+            'view clients'
         ],
         'publisher' => [
 

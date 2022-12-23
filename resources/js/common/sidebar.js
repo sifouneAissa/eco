@@ -12,6 +12,12 @@ const sidebar = [
         icon : 'feather-users'
     },
     {
+        name : 'Clients',
+        route : 'admin.client.index',
+        permission : 'view clients',
+        icon : 'feather-users'
+    },
+    {
         name : "Settings",
         permission : 'view roles',
         icon : 'feather-settings',

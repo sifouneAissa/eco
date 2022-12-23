@@ -11,7 +11,7 @@ use \Illuminate\Support\Facades\Route;
         Route::get('/test',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('test');
 
         // roles and permissions
-//        Route::get('/role',[\App\Http\Controllers\admin\RoleController::class,'index'])->name('role.index');
+
         Route::resource('/role',\App\Http\Controllers\admin\RoleController::class)->only([
             'update','index','destroy','store'
         ]);
@@ -26,6 +26,11 @@ use \Illuminate\Support\Facades\Route;
             'index','store','update','destroy'
         ]);
         Route::get('/users',[\App\Http\Controllers\admin\UserController::class,'datatables'])->name('users.index');
+
+        Route::resource('/client',\App\Http\Controllers\admin\ClientController::class)->only([
+            'index','store','update','destroy'
+        ]);
+        Route::get('/clients',[\App\Http\Controllers\admin\ClientController::class,'datatables'])->name('clients.index');
 
     });
 });

@@ -61,8 +61,8 @@ trait DatatableTrait {
 
             $fillable = app(User::class)->getFillable();
 
-            return array_filter($inputs,function ($item) use ($fillable){
-                return in_array($item,$fillable);
+            return array_filter($inputs,function ($item) use ($fillable,$inputs){
+                return in_array($item,$fillable) && $inputs[$item] ;
             },ARRAY_FILTER_USE_KEY);
     }
 }
