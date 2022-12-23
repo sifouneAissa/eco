@@ -1,6 +1,6 @@
 
 <template>
-    <Add @resetModel="resetModel"  :id="model.modal_ids.edit" title="Edit User">
+    <Update @resetModel="resetModel"  :id="model.modal_ids.edit" title="Edit User">
         <div  class="modal-body mx-3 bg" >
             <form @submit.prevent="submit">
                 <div class="mb-5 form-label-group">
@@ -61,22 +61,22 @@
                 </div>
 
                 <div class="modal-footer d-flex  ">
-                    <button type="button" class="btn btn-outline-primary" @click="resetModel" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
-                    </button><button  type="submit" class="btn btn-primary">{{$t("account.addresses.add_card.save")}}</button>
+                    <button type="button" class="btn btn-outline-warning" @click="resetModel" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
+                    </button><button  type="submit" class="btn btn-warning">{{$t("account.addresses.add_card.save")}}</button>
                 </div>
             </form>
 
         </div>
-    </Add>
+    </Update>
 </template>
 <script>
-    import Add from '@/Pages/Admin/DataTable/Modals/Add.vue';
+    import Update from '@/Pages/Admin/DataTable/Modals/Update.vue';
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
 
     export default  {
         components : {
-            Add,
+            Update,
             Multiselect
         },
         props : {

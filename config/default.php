@@ -26,7 +26,8 @@ return[
             'add product',
             'edit product',
             'delete product',
-            'view products'
+            'view products',
+            'show product'
         ],
         'publisher' => [
 

@@ -80,10 +80,6 @@ class ProductController extends Controller
             'delete' => 'delete product'
         ];
 
-        $without = [
-            'show'
-        ];
-
         $datatables = $this->getDataTables()
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('name', fn($model) => $model->name)
@@ -91,10 +87,10 @@ class ProductController extends Controller
             ->addColumn('price',fn($model) => $model->price)
             ->addColumn('category',fn($model) => $model->category->name)
             ->addColumn('inventory',fn($model) => $model->inventory->quantity)
-            ->addColumn('action',function ($model) use ($permissions,$without){
+            ->addColumn('action',function ($model) use ($permissions){
                 $model['category'] = $model->category;
                 $model['inventory'] = $model->inventory;
-                return view('Datatable.btn',compact('model','permissions','without'));
+                return view('Datatable.btn',compact('model','permissions'));
             })
             ->toArray();
 

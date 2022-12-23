@@ -1,6 +1,6 @@
 
 <template>
-    <Delete @resetModel="resetModel"  :id="model.modal_ids.delete" title="Delete User">
+    <Delete @resetModel="resetModel"  :id="model.modal_ids.delete" title="Delete Client">
         <div  class="modal-body mx-3 bg" >
             <form @submit.prevent="submit">
                 <div class="modal-body">

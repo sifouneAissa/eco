@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="modal-footer d-flex  ">
-                    <button type="button" class="btn btn-outline-primary" @click="resetModel" data-dismiss="modal">Close
+                    <button type="button" class="btn btn-outline-success" @click="resetModel" data-dismiss="modal">Close
                     </button>
                 </div>
 <!--            </form>-->
