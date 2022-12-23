@@ -55,4 +55,14 @@ trait DatatableTrait {
 //            'Email'
         ];
     }
+
+
+    public function filterRequest($inputs){
+
+            $fillable = app(User::class)->getFillable();
+
+            return array_filter($inputs,function ($item) use ($fillable){
+                return in_array($item,$fillable);
+            },ARRAY_FILTER_USE_KEY);
+    }
 }
