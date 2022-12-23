@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\ProductRequest;
 use App\Models\CustomRole;
 use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\ProductInventory;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Spatie\Permission\Models\Permission;
 
 class ProductController extends Controller
 {
@@ -26,11 +31,32 @@ class ProductController extends Controller
         $this->middleware(['permission:delete product'])->only(['destroy']);
     }
 
-    public function getUrl(){
-        return route('admin.products.index');
+    public function index(Request $request)
+    {
+
+        $categories = ProductCategory::with([])->get();
+        $inventories = ProductInventory::with([])->get();
+
+        return Inertia::render(self::COMPONENT)
+            ->with('datatableUrl', $this->getUrl())
+            ->with('datatableColumns', $this->getColumns())
+            ->with('datatableHeaders', $this->getHeaders())
+            ->with('categories',$categories)
+            ->with('inventories',$inventories);
     }
 
 
+    public function getUrl(){
+
+        return route('admin.products.index');
+    }
+
+    public function store(ProductRequest $request){
+
+        $inputs = $this->filterRequest($request->all());
+        $product = Product::create($inputs);
+
+    }
 
     public function datatables(Request $request) {
 

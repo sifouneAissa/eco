@@ -4,7 +4,7 @@
     // import editUser from '@/Pages/Admin/Clients/editUser.vue';
     // import showRole from '@/Pages/Admin/Roles/showRole.vue';
     // import deleteUser from '@/Pages/Admin/Clients/deleteUser.vue';
-    // import addUser from '@/Pages/Admin/Clients/addUser.vue';
+    import addProduct from '@/Pages/Admin/Products/addProduct.vue';
 
     export default {
         components :{
@@ -12,7 +12,8 @@
             Datatable,
             // addUser,
             // editUser,
-            // deleteUser
+            // deleteUser,
+            addProduct
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -65,7 +66,7 @@
 <!--        <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>-->
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
 <!--        <deleteUser @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteUser>-->
-<!--        <addUser @ResetModel="resetModel" v-if="modelToAdd!=null"></addUser>-->
+        <addProduct @ResetModel="resetModel" v-if="modelToAdd!=null"></addProduct>
 
     </AdminLayout>
 </template>

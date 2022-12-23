@@ -59,7 +59,7 @@ trait DatatableTrait {
 
     public function filterRequest($inputs){
 
-            $fillable = app(User::class)->getFillable();
+            $fillable = app(self::MODEL)->getFillable();
 
             return array_filter($inputs,function ($item) use ($fillable,$inputs){
                 return in_array($item,$fillable) && $inputs[$item] ;

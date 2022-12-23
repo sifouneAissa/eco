@@ -10,6 +10,14 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'price',
+        'desc',
+        'product_category_id',
+        'product_inventory_id'
+    ];
+
     protected $appends = [
         'cprice',
         'quantity',
