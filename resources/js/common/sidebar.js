@@ -9,7 +9,7 @@ const sidebar = [
         name : 'Users',
         route : 'admin.user.index',
         permission : 'view users',
-        icon : 'feather-home'
+        icon : 'feather-users'
     },
     {
         name : "Settings",

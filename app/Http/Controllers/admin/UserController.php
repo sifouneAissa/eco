@@ -39,6 +39,10 @@ class UserController extends Controller
         $user->roles()->sync($inputs['roles']);
     }
 
+    public function destroy($id){
+        User::find($id)->delete();
+    }
+
 
 
 
@@ -72,6 +76,9 @@ class UserController extends Controller
             'delete' => 'delete user'
         ];
 
+        $without = [
+            'show'
+        ];
 
         $datatables = $this->getDataTables()
             ->addColumn('id', fn($model) => $model->id)
@@ -80,11 +87,11 @@ class UserController extends Controller
             ->addColumn('roles',function ($model) {
                 return view('Users.roles',compact('model'));
             })
-            ->addColumn('action',function ($model) use ($permissions){
+            ->addColumn('action',function ($model) use ($permissions,$without){
 
                 $model['permissions'] = $model->roles;
 
-                return view('Datatable.btn',compact('model','permissions'));
+                return view('Datatable.btn',compact('model','permissions','without'));
             })
             ->toArray();
 

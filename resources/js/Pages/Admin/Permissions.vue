@@ -52,7 +52,7 @@
             </h2>
         </template>
 
-        <Datatable @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Permissions table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Permissions table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" :without="['add']" />
 <!--        <editRole @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editRole>-->
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
 <!--        <deleteRole @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteRole>-->
