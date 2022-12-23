@@ -24,6 +24,7 @@
                                     label="name"
                                     track-by="name"
                                     :multiple="true"
+                                    placeholder="Select Permissions"
                         ></multiselect>
                         <div v-show="form.errors.permissions">
                             <p class="text-sm " style="color: red">
@@ -69,7 +70,6 @@
             })
 
             modal.modal('show');
-            console.log("hello");
         },
         data(){
             return {
@@ -85,24 +85,6 @@
         methods : {
             resetModel : function (){
                 this.$emit('ResetModel');
-            },
-            submit : function () {
-                // this.form
-                this.form.transform((data) => ({
-                    name : data.name,
-                    permissions : data.permissions.map(item => item.id)
-                })).patch(route('admin.role.update',{
-                    id : this.model.id
-                }), {
-                    onFinish: () => {
-                    },
-                    onSuccess : () => {
-
-                        $('#'+this.model.modal_ids.show).modal('hide');
-                        // $('#dataTable').DataTable().ajax.reload()
-                        this.$emit('ResetModel');
-                    }
-                });
             }
         }
     }

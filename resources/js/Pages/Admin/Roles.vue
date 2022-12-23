@@ -4,13 +4,15 @@
     import Datatable from '@/Pages/Admin/DataTable/Datatable.vue';
     import editRole from '@/Pages/Admin/Roles/editRole.vue';
     import showRole from '@/Pages/Admin/Roles/showRole.vue';
+    import deleteRole from '@/Pages/Admin/Roles/deleteRole.vue';
 
     export default {
         components :{
             AdminLayout,
             Datatable,
             editRole,
-            showRole
+            showRole,
+            deleteRole
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -20,15 +22,20 @@
             ShowShowModel : function (data){
                 this.modelToShow = data;
             },
+            ShowDeleteModel : function (data){
+                this.modelToDelete = data;
+            },
             resetModel : function (){
                 this.modelToUpdate = null;
                 this.modelToShow = null;
+                this.modelToDelete = null
             }
         },
         data(){
             return {
                 modelToUpdate : null,
                 modelToShow : null,
+                modelToDelete : null
             }
         },
         computed : {
@@ -49,9 +56,10 @@
             </h2>
         </template>
 
-        <Datatable @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Roles table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Roles table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
         <editRole @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editRole>
         <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>
+        <deleteRole @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteRole>
 
     </AdminLayout>
 </template>

@@ -102,7 +102,7 @@
 
             $(document).on('click','#btn-delete',function (){
                 let model = $(this).data('id');
-                console.log(model)
+                app.$emit('ShowDeleteModel',model);
             })
         }
     }

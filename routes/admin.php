@@ -13,7 +13,7 @@ use \Illuminate\Support\Facades\Route;
         // roles and permissions
 //        Route::get('/role',[\App\Http\Controllers\admin\RoleController::class,'index'])->name('role.index');
         Route::resource('/role',\App\Http\Controllers\admin\RoleController::class)->only([
-            'update','index'
+            'update','index','destroy'
         ]);
         Route::get('/roles',[\App\Http\Controllers\admin\RoleController::class,'datatables'])->name('roles.index');
         Route::get('/permissions',[\App\Http\Controllers\admin\PermissionController::class,'permissions'])->name('permissions.get');

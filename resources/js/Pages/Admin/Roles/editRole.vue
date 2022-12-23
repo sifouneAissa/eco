@@ -23,6 +23,7 @@
                                     label="name"
                                     track-by="name"
                                     :multiple="true"
+                                    placeholder="Select Permissions"
                         ></multiselect>
                         <div v-show="form.errors.permissions">
                             <p class="text-sm " style="color: red">

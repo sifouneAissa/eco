@@ -43,6 +43,11 @@ class RoleController extends Controller
         $role->permissions()->sync($inputs['permissions']);
     }
 
+    public function destroy($id){
+        // get the role
+        CustomRole::find($id)->delete();
+    }
+
 
     public function datatables(Request $request) {
 
