@@ -11,7 +11,8 @@ return[
             'view roles',
             'edit role',
             'show role',
-            'delete role'
+            'delete role',
+            'view permissions'
         ],
         'publisher' => [
 

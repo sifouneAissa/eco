@@ -8,10 +8,7 @@
     export default {
         components :{
             AdminLayout,
-            Datatable,
-            editRole,
-            showRole,
-            deleteRole
+            Datatable
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -48,17 +45,17 @@
 </script>
 
 <template>
-    <AdminLayout  title="Roles">
+    <AdminLayout  title="Permissions">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Roles
+                Permissions
             </h2>
         </template>
 
-        <Datatable @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Roles table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
-        <editRole @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editRole>
-        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>
-        <deleteRole @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteRole>
+        <Datatable @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Permissions table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+<!--        <editRole @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editRole>-->
+<!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
+<!--        <deleteRole @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteRole>-->
 
     </AdminLayout>
 </template>

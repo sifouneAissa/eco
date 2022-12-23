@@ -21,6 +21,12 @@ const sidebar = [
                 route : 'admin.role.index',
                 permission : 'view roles',
                 icon : 'feather-sliders'
+            },
+            {
+                name : "Permissions",
+                route : 'admin.permission.index',
+                permission : 'view permissions',
+                icon : 'feather-sliders'
             }
         ]
     }

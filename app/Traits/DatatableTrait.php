@@ -20,7 +20,6 @@ trait DatatableTrait {
         $datatables = $this->getDataTables()
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('name', fn($model) => $model->name)
-//            ->addColumn('email', fn($user) => $user->email)
             ->toArray();
 
         return response()->json($datatables);
@@ -29,7 +28,7 @@ trait DatatableTrait {
 
     public function index(Request $request)
     {
-        return Inertia::render('Roles')
+        return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders());

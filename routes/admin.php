@@ -16,8 +16,11 @@ use \Illuminate\Support\Facades\Route;
             'update','index','destroy'
         ]);
         Route::get('/roles',[\App\Http\Controllers\admin\RoleController::class,'datatables'])->name('roles.index');
-        Route::get('/permissions',[\App\Http\Controllers\admin\PermissionController::class,'permissions'])->name('permissions.get');
 
+        Route::resource('/permission',\App\Http\Controllers\admin\PermissionController::class)->only([
+            'index'
+        ]);
+        Route::get('/permissions',[\App\Http\Controllers\admin\PermissionController::class,'datatables'])->name('permissions.index');
 
     });
 });
