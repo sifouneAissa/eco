@@ -9,12 +9,12 @@ use Inertia\Inertia;
 class DashboardController extends Controller
 {
     //
-
+    public function __construct()
+    {
+        $this->middleware(['permission:view dashboard'])->only(['index']);
+    }
 
     public function index(){
-
-        // can view dashboard using spatie
-        $this->middleware('can:view dashboard');
 
         return Inertia::render('Dashboard');
     }

@@ -70,6 +70,10 @@ class Kernel extends HttpKernel
         'set.locale' => setLocale::class,
         'inertia_share_user' => \App\Http\Middleware\HandleInertiaRequests::class,
         'inertia_share_admin' => \App\Http\Middleware\AdminHandleInertiaRequest::class,
-        'set.admin' => setAdmin::class
+        'set.admin' => setAdmin::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
     ];
 }

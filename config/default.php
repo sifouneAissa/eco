@@ -16,7 +16,9 @@ return[
             'show user',
             'edit user',
             'delete user',
-            'view users'
+            'view users',
+            'add role',
+            'add user'
         ],
         'publisher' => [
 

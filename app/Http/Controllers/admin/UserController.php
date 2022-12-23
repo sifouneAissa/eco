@@ -21,6 +21,14 @@ class UserController extends Controller
     public const MODEL = User::class;
     public const COMPONENT = 'Users';
 
+    public function __construct()
+    {
+        $this->middleware(['permission:view users'])->only(['index','datatables']);
+        $this->middleware(['permission:edit user'])->only(['update']);
+        $this->middleware(['permission:add user'])->only(['store']);
+        $this->middleware(['permission:delete user'])->only(['destroy']);
+    }
+
     public function store(UserRequest $request){
         // get all inputs in the request
         $inputs = $request->all();

@@ -20,9 +20,17 @@ class RoleController extends Controller
 
     public const MODEL = CustomRole::class;
 
+    public function __construct()
+    {
+        $this->middleware(['permission:view roles'])->only(['index','datatables']);
+        $this->middleware(['permission:edit role'])->only(['update']);
+        $this->middleware(['permission:add role'])->only(['store']);
+        $this->middleware(['permission:delete role'])->only(['destroy']);
+    }
 
     public function index(Request $request)
     {
+
         $permissions = Permission::with([])->get();
 
         return Inertia::render('Roles')
