@@ -3,11 +3,13 @@
     @if(!(isset($without) && in_array('edit',$without)))
         @can($permissions['edit'])
             <a
+                href="javascript: void(0)"
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
-                title="Modifier"
+                title="Edit"
                 id="btn-edit"
                 data-id="{{json_encode($model->toArray())}}"
+
             >
                 <i
                     class="feather-edit h4 text-warning"></i>
@@ -16,12 +18,14 @@
     @endif
     @if(!(isset($without) && in_array('show',$without)))
         @can($permissions['show'])
-            <a href="#detail-model-{{$model->id}}"
+            <a
+               href="javascript: void(0)"
                data-bs-toggle="tooltip"
                data-bs-placement="top"
-               title="Detail"
+               title="Show"
                id="btn-show"
                data-id="{{$model}}"
+
             >
                 <i class="feather-eye h4 text-success"></i>
 
@@ -31,12 +35,14 @@
 
     @if(!(isset($without) && in_array('delete',$without)))
         @can($permissions['delete'])
-            <a href="#delete-model-{{$model->id}}"
+            <a
+               href="javascript: void(0)"
                data-bs-toggle="tooltip"
                data-bs-placement="top"
                title="Delete"
                id="btn-delete"
                data-id="{{$model}}"
+
             >
                 <i class="feather-trash-2 h4 text-danger"></i>
             </a>
