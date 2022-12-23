@@ -12,6 +12,12 @@ const sidebar = [
         icon : 'feather-user'
     },
     {
+        name : 'Products',
+        route : 'admin.product.index',
+        permission : 'view products',
+        icon : 'feather-box'
+    },
+    {
         name : 'Clients',
         route : 'admin.client.index',
         permission : 'view clients',

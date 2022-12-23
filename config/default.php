@@ -22,7 +22,11 @@ return[
             'add client',
             'edit client',
             'delete client',
-            'view clients'
+            'view clients',
+            'add product',
+            'edit product',
+            'delete product',
+            'view products'
         ],
         'publisher' => [
 

@@ -12,8 +12,14 @@ class Product extends Model
 
     protected $appends = [
         'cprice',
-        'quantity'
+        'quantity',
+        'modal_ids'
     ];
+
+
+    public function category(){
+        return $this->belongsTo(ProductCategory::class,'product_category_id');
+    }
 
 
     public function getCpriceAttribute(){
@@ -32,4 +38,16 @@ class Product extends Model
     public function getQuantityAttribute(){
         return 1;
     }
+
+
+    public  function getModalIdsAttribute(){
+        return [
+            'edit' => 'edit-product',
+            'delete' => 'delete-product',
+            'add' => 'add-product',
+            'show' => 'show-product'
+        ];
+    }
+
+
 }
