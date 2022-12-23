@@ -6,6 +6,8 @@
     import addProduct from '@/Pages/Admin/Products/addProduct.vue';
     import showProduct from '@/Pages/Admin/Products/showProduct.vue';
 
+    import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+
     export default {
         components :{
             AdminLayout,
@@ -55,7 +57,7 @@
 </script>
 
 <template>
-    <AdminLayout  title="Users">
+    <AdminLayout  :title="'Products'">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Users

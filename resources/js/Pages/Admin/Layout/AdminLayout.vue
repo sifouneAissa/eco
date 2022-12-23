@@ -4,9 +4,12 @@
     import SideBar from '@/Pages/Admin/Navbars/SideBar.vue';
     import Footer from '@/Pages/Admin/Footer.vue';
     import { Head, Link } from "@inertiajs/inertia-vue3";
-
+    defineProps({
+        title : String
+    })
 </script>
 <template>
+    <Head :title="title" />
     <NavBar/>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">

@@ -54,7 +54,7 @@
 </script>
 
 <template>
-    <AdminLayout  title="Users">
+    <AdminLayout  :title="'Users'">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Users

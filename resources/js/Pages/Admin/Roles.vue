@@ -5,6 +5,7 @@
     import showRole from '@/Pages/Admin/Roles/showRole.vue';
     import deleteRole from '@/Pages/Admin/Roles/deleteRole.vue';
     import addRole from '@/Pages/Admin/Roles/addRole.vue';
+    import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
     export default {
         components :{
@@ -13,7 +14,8 @@
             editRole,
             showRole,
             deleteRole,
-            addRole
+            addRole,
+            Head
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -56,7 +58,7 @@
 </script>
 
 <template>
-    <AdminLayout  title="Roles">
+    <AdminLayout  :title="'Roles'">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Roles
