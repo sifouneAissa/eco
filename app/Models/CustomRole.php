@@ -19,7 +19,8 @@ class CustomRole extends Role
         return [
             'edit' => 'edit-role',
             'delete' => 'delete-role',
-            'add' => 'add-role'
+            'add' => 'add-role',
+            'show' => 'show-role'
         ];
     }
 }

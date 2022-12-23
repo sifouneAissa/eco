@@ -1,12 +1,12 @@
 
 <template>
-    <Update @resetModel="resetModel"  :id="'edit-role'" title="Edit Role">
+    <Show @resetModel="resetModel"  :id="model.modal_ids.show" title="Show Role">
         <div  class="modal-body mx-3 bg" >
-            <form @submit.prevent="submit">
+<!--            <form @submit.prevent="submit">-->
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
                         <label>Name</label>
-                        <input v-model="form.name" type="text" class="form-control" placeholder="Role Name">
+                        <input disabled="true" v-model="form.name" type="text" class="form-control" placeholder="Role Name">
                         <div v-show="form.errors.name">
                             <p class="text-sm " style="color: red">
                                 {{ form.errors.name }}
@@ -18,6 +18,7 @@
                     <div class="form-group">
                         <label>Permissions</label>
                         <multiselect
+                                    :disabled="true"
                                     v-model="form.permissions"
                                     :options="options"
                                     label="name"
@@ -33,22 +34,22 @@
                 </div>
 
                 <div class="modal-footer d-flex  ">
-                    <button type="button" class="btn btn-outline-primary" @click="resetModel" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
-                    </button><button  type="submit" class="btn btn-primary">{{$t("account.addresses.add_card.save")}}</button>
+                    <button type="button" class="btn btn-outline-primary" @click="resetModel" data-dismiss="modal">Close
+                    </button>
                 </div>
-            </form>
+<!--            </form>-->
 
         </div>
-    </Update>
+    </Show>
 </template>
 <script>
-    import Update from '@/Pages/Admin/DataTable/Modals/Update.vue';
+    import Show from '@/Pages/Admin/DataTable/Modals/Show.vue';
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
 
     export default  {
         components : {
-            Update,
+            Show,
             Multiselect
         },
         props : {
@@ -61,13 +62,14 @@
         },
         mounted() {
             let app = this;
+            let modal = $('#'+this.model.modal_ids.show);
 
-            $('#edit-role').on('hidden.bs.modal',function (){
+            modal.on('hidden.bs.modal',function (){
                 app.$emit('ResetModel');
             })
 
-            $('#'+this.model.modal_ids.edit).modal('show');
-            console.log(this.model);
+            modal.modal('show');
+            console.log("hello");
         },
         data(){
             return {
@@ -96,8 +98,8 @@
                     },
                     onSuccess : () => {
 
-                        $('#edit-role').modal('hide');
-                        $('#dataTable').DataTable().ajax.reload()
+                        $('#'+this.model.modal_ids.show).modal('hide');
+                        // $('#dataTable').DataTable().ajax.reload()
                         this.$emit('ResetModel');
                     }
                 });

@@ -10,6 +10,7 @@ use Cassandra\Custom;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Laravel\Jetstream\Rules\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -18,11 +19,28 @@ class RoleController extends Controller
 
     public const MODEL = CustomRole::class;
 
+
+    public function index(Request $request)
+    {
+        $permissions = Permission::with([])->get();
+
+        return Inertia::render('Roles')
+            ->with('datatableUrl', $this->getUrl())
+            ->with('datatableColumns', $this->getColumns())
+            ->with('datatableHeaders', $this->getHeaders())
+            ->with('permissions',$permissions);
+    }
+
+
     public function update(RoleRequest $request,$id){
-
+        // get all inputs in the request
         $inputs = $request->all();
-
-        CustomRole::find($id)->update($inputs);
+        // get the role
+        $role = CustomRole::find($id);
+        // update data general of the role
+        $role->update($inputs);
+        // attach the role with permissions
+        $role->permissions()->sync($inputs['permissions']);
     }
 
 
@@ -38,6 +56,7 @@ class RoleController extends Controller
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('name', fn($model) => $model->name)
             ->addColumn('action',function ($model) use ($permissions){
+                $model['permissions'] = $model->permissions;
                 return view('Datatable.btn',compact('model','permissions'));
             })
             ->addColumn('permissions',function ($model){

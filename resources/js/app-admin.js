@@ -34,6 +34,8 @@ import '../../public/admin/vendor/dataTables/buttons.colVis';
 import '../../public/admin/vendor/dataTables/css/buttons.bootstrap.css';
 
 
+import Multiselect from 'vue-multiselect'
+
 import '../../public/admin/js/scripts.js';
 import messages from './translation/translation';
 
@@ -76,6 +78,9 @@ createInertiaApp({
             .use(i18n)
             .use(ZiggyVue, Ziggy);
 
+
+        myApp.component('Multiselect', () => import('vue-multiselect'));
+
         // declare this can before mount the application
         myApp.config.globalProperties.$can = function (permission) {
             return props.initialPage.props.auth.permissions.some((per) => per === permission);
@@ -83,7 +88,6 @@ createInertiaApp({
         // mount the application
         myApp.mount(el);
 
-        // myApp.component('btn-page', () => import('./Pages/Admin/Btn.vue'));
 
         return myApp;
     },

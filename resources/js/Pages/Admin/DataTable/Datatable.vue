@@ -14,7 +14,7 @@
         },
         data () {
             return {
-                modelToUpdate : null
+                modelToUpdate : null,
             }
         },
         watch : {
@@ -97,7 +97,7 @@
 
             $(document).on('click','#btn-show',function (){
                 let model = $(this).data('id');
-                console.log(model)
+                app.$emit('ShowShowModel',model);
             })
 
             $(document).on('click','#btn-delete',function (){
