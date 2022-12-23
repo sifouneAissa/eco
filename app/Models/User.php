@@ -64,7 +64,8 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
-        'shopping_session'
+        'shopping_session',
+        'modal_ids'
     ];
 
     public function shoppingSessions(){
@@ -74,5 +75,16 @@ class User extends Authenticatable
 
     public function getShoppingSessionAttribute(){
         return $this->shoppingSessions()->with(['cartItems.product'])->where('is_current',true)->first();
+    }
+
+
+
+    public  function getModalIdsAttribute(){
+        return [
+            'edit' => 'edit-user',
+            'delete' => 'delete-user',
+            'add' => 'add-user',
+            'show' => 'show-user'
+        ];
     }
 }

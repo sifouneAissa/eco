@@ -23,7 +23,7 @@ use \Illuminate\Support\Facades\Route;
         Route::get('/permissions',[\App\Http\Controllers\admin\PermissionController::class,'datatables'])->name('permissions.index');
 
         Route::resource('/user',\App\Http\Controllers\admin\UserController::class)->only([
-            'index','store'
+            'index','store','update'
         ]);
         Route::get('/users',[\App\Http\Controllers\admin\UserController::class,'datatables'])->name('users.index');
 

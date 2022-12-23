@@ -1,7 +1,7 @@
 <script>
     import AdminLayout from '@/Pages/Admin/Layout/AdminLayout.vue';
     import Datatable from '@/Pages/Admin/DataTable/Datatable.vue';
-    import editRole from '@/Pages/Admin/Roles/editRole.vue';
+    import editUser from '@/Pages/Admin/Users/editUser.vue';
     import showRole from '@/Pages/Admin/Roles/showRole.vue';
     import deleteRole from '@/Pages/Admin/Roles/deleteRole.vue';
     import addUser from '@/Pages/Admin/Users/addUser.vue';
@@ -10,7 +10,8 @@
         components :{
             AdminLayout,
             Datatable,
-            addUser
+            addUser,
+            editUser
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -60,7 +61,7 @@
         </template>
 
         <Datatable  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Users table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
-<!--        <editRole @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editRole>-->
+        <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
 <!--        <deleteRole @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteRole>-->
         <addUser @ResetModel="resetModel" v-if="modelToAdd!=null"></addUser>

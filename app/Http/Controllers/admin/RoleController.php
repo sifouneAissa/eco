@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\RoleRequest;
+use App\Http\Requests\admin\UpdateRoleRequest;
 use App\Models\CustomRole;
 use App\Traits\DatatableTrait;
 use Cassandra\Custom;
@@ -32,7 +33,7 @@ class RoleController extends Controller
     }
 
 
-    public function update(RoleRequest $request,$id){
+    public function update(UpdateRoleRequest $request,$id){
         // get all inputs in the request
         $inputs = $request->all();
         // get the role

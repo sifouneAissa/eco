@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\RoleRequest;
+use App\Http\Requests\admin\UpdateUserRequest;
 use App\Http\Requests\admin\UserRequest;
 use App\Models\CustomRole;
 use App\Models\User;
@@ -28,6 +29,17 @@ class UserController extends Controller
         // attach the role with permissions
         $user->roles()->sync($inputs['roles']);
     }
+
+    public function update(UpdateUserRequest $request,$id){
+        $inputs = $request->all();
+        $user = User::find($id);
+        // get the role
+        $user->update($this->filterRequest($request->all()));
+        // attach the role with permissions
+        $user->roles()->sync($inputs['roles']);
+    }
+
+
 
 
     public function index(Request $request)
