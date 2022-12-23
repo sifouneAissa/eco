@@ -6,9 +6,9 @@ const sidebar = [
         icon : 'feather-home',
     },
     {
-        name : 'Messages',
-        route : 'admin.test',
-        permission : 'view dashboard',
+        name : 'Users',
+        route : 'admin.user.index',
+        permission : 'view users',
         icon : 'feather-home'
     },
     {

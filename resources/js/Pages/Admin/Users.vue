@@ -4,16 +4,11 @@
     import editRole from '@/Pages/Admin/Roles/editRole.vue';
     import showRole from '@/Pages/Admin/Roles/showRole.vue';
     import deleteRole from '@/Pages/Admin/Roles/deleteRole.vue';
-    import addRole from '@/Pages/Admin/Roles/addRole.vue';
 
     export default {
         components :{
             AdminLayout,
-            Datatable,
-            editRole,
-            showRole,
-            deleteRole,
-            addRole
+            Datatable
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -26,23 +21,17 @@
             ShowDeleteModel : function (data){
                 this.modelToDelete = data;
             },
-            ShowAddModel : function (){
-
-                this.modelToAdd = true;
-            },
             resetModel : function (){
                 this.modelToUpdate = null;
                 this.modelToShow = null;
                 this.modelToDelete = null
-                this.modelToAdd = null;
             }
         },
         data(){
             return {
                 modelToUpdate : null,
                 modelToShow : null,
-                modelToDelete : null,
-                modelToAdd : null
+                modelToDelete : null
             }
         },
         computed : {
@@ -56,18 +45,17 @@
 </script>
 
 <template>
-    <AdminLayout  title="Roles">
+    <AdminLayout  title="Users">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Roles
+                Users
             </h2>
         </template>
 
-        <Datatable @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Roles table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
-        <editRole @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editRole>
-        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>
-        <deleteRole @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteRole>
-        <addRole @ResetModel="resetModel" v-if="modelToAdd!=null"></addRole>
+        <Datatable @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Users table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+<!--        <editRole @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editRole>-->
+<!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
+<!--        <deleteRole @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteRole>-->
 
     </AdminLayout>
 </template>

@@ -1,4 +1,5 @@
 
+@if(($model instanceof \App\Models\User  && (auth()->user()->id!== $model->id)) || !($model instanceof \App\Models\User))
 @can($permissions['edit'])
 <a
    data-bs-toggle="tooltip"
@@ -35,4 +36,4 @@
     <i class="feather-trash-2 h4 text-danger"></i>
 </a>
 @endcan
-
+@endif

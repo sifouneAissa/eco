@@ -48,6 +48,18 @@ class RoleController extends Controller
         CustomRole::find($id)->delete();
     }
 
+    public function store(RoleRequest $request){
+
+        // get all inputs in the request
+        $inputs = $request->all();
+        // get the role
+        $role = CustomRole::create([
+            'name' => $inputs['name']
+        ]);
+        // attach the role with permissions
+        $role->permissions()->sync($inputs['permissions']);
+    }
+
 
     public function datatables(Request $request) {
 

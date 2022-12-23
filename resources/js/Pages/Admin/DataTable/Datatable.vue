@@ -1,23 +1,23 @@
-<script >
+<script>
     import EditModal from '@/Pages/Admin/DataTable/Modals/Update.vue';
 
 
-    export  default {
-        props : [
+    export default {
+        props: [
             'datatableHeaders',
             'datatableColumns',
             'datatableUrl',
             'title'
         ],
-        components : {
+        components: {
             EditModal
         },
-        data () {
+        data() {
             return {
-                modelToUpdate : null,
+                modelToUpdate: null,
             }
         },
-        watch : {
+        watch: {
             // modelToUpdate : {
             //       handler(val){
             //       console.log("check");
@@ -28,7 +28,7 @@
         mounted() {
 
 
-            let  app = this;
+            let app = this;
 
             let datatable = $("#dataTable").dataTable({
                 dom: 'Bfrtip',
@@ -82,27 +82,27 @@
                 ajax: {
                     url: this.datatableUrl,
                 },
-                columns : this.datatableColumns,
+                columns: this.datatableColumns,
                 processing: true,
-                serverSide : true,
-                paging : true,
-                pageLength  :   12
+                serverSide: true,
+                paging: true,
+                pageLength: 12
             })
 
-            $(document).on('click','#btn-edit',function (){
+            $(document).on('click', '#btn-edit', function () {
                 this.modelToUpdate = $(this).data('id');
-                app.$emit('ShowEditModel',this.modelToUpdate);
+                app.$emit('ShowEditModel', this.modelToUpdate);
             })
 
 
-            $(document).on('click','#btn-show',function (){
+            $(document).on('click', '#btn-show', function () {
                 let model = $(this).data('id');
-                app.$emit('ShowShowModel',model);
+                app.$emit('ShowShowModel', model);
             })
 
-            $(document).on('click','#btn-delete',function (){
+            $(document).on('click', '#btn-delete', function () {
                 let model = $(this).data('id');
-                app.$emit('ShowDeleteModel',model);
+                app.$emit('ShowDeleteModel', model);
             })
         }
     }
@@ -114,15 +114,20 @@
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
             {{title}}
+            <div class="float-right">
+                <button @click="$emit('ShowAddModel', model)" class="btn btn-primary"><h6><i class="feather-plus"></i>Add</h6></button>
+            </div>
         </div>
         <div class="card-body">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr><th v-for="(h,index) in datatableHeaders" :key="index">{{ h}}</th></tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th v-for="(h,index) in datatableHeaders" :key="index">{{ h}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
 

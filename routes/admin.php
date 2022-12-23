@@ -13,7 +13,7 @@ use \Illuminate\Support\Facades\Route;
         // roles and permissions
 //        Route::get('/role',[\App\Http\Controllers\admin\RoleController::class,'index'])->name('role.index');
         Route::resource('/role',\App\Http\Controllers\admin\RoleController::class)->only([
-            'update','index','destroy'
+            'update','index','destroy','store'
         ]);
         Route::get('/roles',[\App\Http\Controllers\admin\RoleController::class,'datatables'])->name('roles.index');
 
@@ -21,6 +21,11 @@ use \Illuminate\Support\Facades\Route;
             'index'
         ]);
         Route::get('/permissions',[\App\Http\Controllers\admin\PermissionController::class,'datatables'])->name('permissions.index');
+
+        Route::resource('/user',\App\Http\Controllers\admin\UserController::class)->only([
+            'index'
+        ]);
+        Route::get('/users',[\App\Http\Controllers\admin\UserController::class,'datatables'])->name('users.index');
 
     });
 });

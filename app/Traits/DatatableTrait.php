@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\CustomRole;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,6 +29,7 @@ trait DatatableTrait {
 
     public function index(Request $request)
     {
+
         return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())

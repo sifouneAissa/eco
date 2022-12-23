@@ -12,7 +12,11 @@ return[
             'edit role',
             'show role',
             'delete role',
-            'view permissions'
+            'view permissions',
+            'show user',
+            'edit user',
+            'delete user',
+            'view users'
         ],
         'publisher' => [
 
