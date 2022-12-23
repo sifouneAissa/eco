@@ -9,13 +9,13 @@ const sidebar = [
         name : 'Users',
         route : 'admin.user.index',
         permission : 'view users',
-        icon : 'feather-users'
+        icon : 'feather-user'
     },
     {
         name : 'Clients',
         route : 'admin.client.index',
         permission : 'view clients',
-        icon : 'feather-users'
+        icon : 'feather-user-check'
     },
     {
         name : "Settings",
