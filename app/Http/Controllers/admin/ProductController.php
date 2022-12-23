@@ -58,6 +58,15 @@ class ProductController extends Controller
 
     }
 
+    public function update(ProductRequest $request,$id){
+        $inputs = $this->filterRequest($request->all());
+
+        $product = Product::find($id);
+
+        $product->update($inputs);
+
+    }
+
     public function datatables(Request $request) {
 
         $permissions = [
@@ -76,7 +85,10 @@ class ProductController extends Controller
 //            ->addColumn('desc',fn($model) => $model->desc)
             ->addColumn('price',fn($model) => $model->price)
             ->addColumn('category',fn($model) => $model->category->name)
+            ->addColumn('inventory',fn($model) => $model->inventory->quantity)
             ->addColumn('action',function ($model) use ($permissions,$without){
+                $model['category'] = $model->category;
+                $model['inventory'] = $model->inventory;
                 return view('Datatable.btn',compact('model','permissions','without'));
             })
             ->toArray();
@@ -91,6 +103,7 @@ class ProductController extends Controller
 //            ['data' => 'desc' , 'name' => 'Description','searchable' => true],
             ['data' => 'price' , 'name' => 'Price','searchable' => true],
             ['data' => 'category' , 'name' => 'Category','searchable' => true],
+            ['data' => 'inventory' , 'name' => 'Inventory','searchable' => true],
             ['data' => 'action' , 'name' => 'Action','searchable' => false]
         ];
     }
@@ -101,6 +114,7 @@ class ProductController extends Controller
             'Name',
             'Price',
             'Category',
+            'Inventory',
 //            'Roles',
             'Action'
         ];

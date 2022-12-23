@@ -28,6 +28,11 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(ProductCategory::class,'product_category_id');
     }
+    public function inventory(){
+        return $this->belongsTo(ProductInventory::class,'product_inventory_id');
+    }
+
+
 
 
     public function getCpriceAttribute(){

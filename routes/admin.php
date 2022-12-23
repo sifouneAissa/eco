@@ -35,7 +35,8 @@ use \Illuminate\Support\Facades\Route;
         Route::resource('/product',\App\Http\Controllers\admin\ProductController::class)->only([
             'index'
             ,'store'
-//,'update','destroy'
+            ,'update'
+//            ,'destroy'
         ]);
         Route::get('/products',[\App\Http\Controllers\admin\ProductController::class,'datatables'])->name('products.index');
 

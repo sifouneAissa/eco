@@ -1,12 +1,12 @@
 
 <template>
-    <Add @resetModel="resetModel"  :id="model.modal_ids.edit" title="Edit User">
+    <Update @resetModel="resetModel"  :id="model.modal_ids.edit" title="Add Product">
         <div  class="modal-body mx-3 bg" >
             <form @submit.prevent="submit">
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
                         <label>Name</label>
-                        <input v-model="form.name" type="text" class="form-control" placeholder="User Name">
+                        <input v-model="form.name" type="text" class="form-control" placeholder="Product Name">
                         <div v-show="form.errors.name">
                             <p class="text-sm " style="color: red">
                                 {{ form.errors.name }}
@@ -14,47 +14,60 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input v-model="form.email" type="email" id="inputEmail" class="form-control" placeholder="email">
-                        <div v-show="form.errors.email">
+                        <label>Price</label>
+                        <input v-model="form.price" type="number" id="inputEmail" class="form-control" placeholder="0000.0">
+                        <div v-show="form.errors.price">
                             <p class="text-sm text-red-600" style="color: red">
-                                {{ form.errors.email }}
+                                {{ form.errors.price }}
                             </p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input v-model="form.password" type="password"  class="form-control" placeholder="********">
-                        <div v-show="form.errors.password">
+                        <label>Description</label>
+                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>
+                        <div v-show="form.errors.desc">
                             <p class="text-sm text-red-600" style="color: red">
-                                {{ form.errors.password }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Password confirmation</label>
-                        <input v-model="form.password_confirmation" type="password"  class="form-control" placeholder="********">
-                        <div v-show="form.errors.password_confirmation">
-                            <p class="text-sm text-red-600" style="color: red">
-                                {{ form.errors.password_confirmation }}
+                                {{ form.errors.desc }}
                             </p>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
-                        <label>Permissions</label>
+                        <label>Category</label>
                         <multiselect
-                                    v-model="form.roles"
-                                    :options="options"
-                                    label="name"
-                                    track-by="name"
-                                    :multiple="true"
-                                    placeholder="Select Roles"
+                            v-model="form.category"
+                            :options="options1"
+                            label="name"
+                            track-by="name"
+                            :multiple="false"
+                            placeholder="Select Category"
                         ></multiselect>
-                        <div v-show="form.errors.roles">
+                        <div v-show="form.errors.product_category_id">
                             <p class="text-sm " style="color: red">
-                                {{ form.errors.roles }}
+                                {{ form.errors.product_category_id }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-5 form-label-group">
+                    <div class="form-group">
+                        <label>Inventory</label>
+                        <multiselect
+                            v-model="form.inventory"
+                            :options="options2"
+                            label="name"
+                            track-by="name"
+                            :multiple="false"
+                            placeholder="Select Inventory"
+                        ></multiselect>
+                        <div v-show="form.errors.product_inventory_id">
+                            <p class="text-sm " style="color: red">
+                                {{ form.errors.product_inventory_id }}
                             </p>
                         </div>
                     </div>
@@ -67,16 +80,16 @@
             </form>
 
         </div>
-    </Add>
+    </Update>
 </template>
 <script>
-    import Add from '@/Pages/Admin/DataTable/Modals/Add.vue';
+    import Update from '@/Pages/Admin/DataTable/Modals/Update.vue';
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
 
     export default  {
         components : {
-            Add,
+            Update,
             Multiselect
         },
         props : {
@@ -84,28 +97,25 @@
         },
         mounted() {
             let app = this;
-
-            let modal = $("#"+this.model.modal_ids.edit);
-
-
-            modal.modal('show');
-
+            let modal = $('#'+this.model.modal_ids.edit);
 
             modal.on('hidden.bs.modal',function (){
                 app.$emit('ResetModel');
             })
+            modal.modal('show');
         },
         data(){
             return {
                 form : useForm({
                     name: this.model.name,
-                    email : this.model.email,
-                    password: '',
-                    password_confirmation: '',
-                    roles : this.model.roles.map(function (item){return {name : item.name,id : item.id};})
+                    desc: this.model.desc,
+                    price: this.model.price,
+                    inventory : {name : this.model.inventory.quantity,id : this.model.inventory.id},
+                    category:  {name : this.model.category.name,id : this.model.category.id}
                 }),
                 selected : null,
-                options: this.$page.props.roles.map(function (item){return {name : item.name,id : item.id};})
+                options1: this.$page.props.categories.map(function (item){return {name : item.name,id : item.id};}),
+                options2: this.$page.props.inventories.map(function (item){return {name : item.quantity,id : item.id};})
             }
 
         },
@@ -117,18 +127,17 @@
                 // this.form
                 this.form.transform((data) => ({
                     name : data.name,
-                    roles : data.roles.map(item => item.id),
-                    email : data.email,
-                    password : data.password,
-                    password_confirmation: data.password_confirmation
-                })).patch(route('admin.user.update',{
+                    product_category_id : data.category.id,
+                    product_inventory_id : data.inventory.id,
+                    desc : data.desc,
+                    price : data.price
+                })).patch(route('admin.product.update',{
                     id : this.model.id
                 }), {
                     onFinish: () => {
-                        this.form.reset('password', 'password_confirmation')
                     },
                     onSuccess : () => {
-                        $("#"+this.model.modal_ids.edit).modal('hide');
+                        $('#'+this.model.modal_ids.edit).modal('hide');
                         $('#dataTable').DataTable().ajax.reload()
                         this.$emit('ResetModel');
                     }
