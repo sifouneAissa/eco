@@ -1,6 +1,6 @@
 <template>
 
-    <AdminLayout :title="'Media'">
+    <AdminLayout :title="'Media'" :urls="urls">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Media
@@ -14,7 +14,7 @@
                     <dropzone :doRefresh="true" :model="$page.props.model" :model_id="$page.props.model_id" >
                     </dropzone>
                 </div>
-                <div class="card bg-transparent rounded">
+                <div v-if="$page.props.medias.length" class="card bg-transparent rounded">
                     <div class="card-header ">
                         <center><h1>Medias of {{$page.props.modelData.name}}</h1></center>
                     </div>
@@ -78,6 +78,16 @@
             return {
                 mediaToUpdate : null,
                 mediaToDelete : null,
+                urls : [
+                    {
+                        name : 'Product',
+                        route : this.route('admin.product.index')
+                    },
+                    {
+                        name : 'Product Media of : '+this.$page.props.modelData.name,
+                        route : '#'
+                    }
+                ]
             }
         },
     }

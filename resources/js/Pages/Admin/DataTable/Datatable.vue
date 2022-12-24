@@ -106,6 +106,11 @@
                 let model = $(this).data('id');
                 app.$emit('ShowDeleteModel', model);
             })
+
+            $(document).on('click', '#btn-media', function () {
+                let model = $(this).data('id');
+                app.$emit('ShowImagePage', model);
+            })
         }
     }
 

@@ -7,6 +7,7 @@
     import showProduct from '@/Pages/Admin/Products/showProduct.vue';
 
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+    import {Inertia} from "@inertiajs/inertia";
 
     export default {
         components :{
@@ -31,6 +32,15 @@
             ShowAddModel : function (){
                 this.modelToAdd = true;
             },
+            ShowImagePage : function (data){
+
+                Inertia.visit(this.route('admin.media.index',{
+                    model : data.model,
+                    model_id : data.model_id
+                }))
+
+            },
+
             resetModel : function (){
                 this.modelToUpdate = null;
                 this.modelToShow = null;
@@ -60,11 +70,11 @@
     <AdminLayout  :title="'Products'">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Users
+                Products
             </h2>
         </template>
 
-        <Datatable  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Products table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowImagePage="ShowImagePage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Products table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
         <editProduct @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editProduct>
         <showProduct @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showProduct>
         <deleteProduct @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteProduct>

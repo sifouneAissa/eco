@@ -77,7 +77,8 @@ class ProductController extends Controller
         $permissions = [
             'edit' => 'edit product',
             'show' => 'show product',
-            'delete' => 'delete product'
+            'delete' => 'delete product',
+            'media' =>  'edit product'
         ];
 
         $datatables = $this->getDataTables()

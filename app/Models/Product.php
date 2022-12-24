@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
@@ -12,6 +13,9 @@ class Product extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use MediaTrait;
+
+
 
     protected $fillable = [
         'name',

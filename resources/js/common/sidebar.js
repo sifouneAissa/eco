@@ -21,7 +21,10 @@ const sidebar = [
         name : 'Products',
         route : 'admin.product.index',
         permission : 'view products',
-        icon : 'feather-box'
+        icon : 'feather-box',
+        urls : [
+            '/media/product'
+        ],
     },
     {
         name : "Settings",

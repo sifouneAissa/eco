@@ -7,7 +7,7 @@
 
 </script>
 <template>
-    <Link v-if="$can(link.permission) && !(link.children && link.children.length)" :class="'nav-link '+ ($page.props.route.current.name === link.route ? 'active' : '' ) " :href="route(link.route)">
+    <Link v-if="$can(link.permission) && !(link.children && link.children.length)" :class="'nav-link '+ ((($page.props.route.current.name === link.route) || (link.urls && link.urls.map((item) => $page.url.includes(item)))) ? 'active' : '' ) " :href="route(link.route)">
         <div class="sb-nav-link-icon"><i :class="link.icon"></i></div>
         {{link.name}}
     </Link>
@@ -17,7 +17,7 @@
             {{link.name}}
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
         </a>
-        <div :class="'collapse ' + (link.children.some((item) => $page.props.route.current.name === item.route) ? 'show' : '')" :id="'collapseLayoutss'+link.name" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+        <div :class="'collapse ' + ((link.children.some((item) => $page.props.route.current.name === item.route)) ? 'show' : '')" :id="'collapseLayoutss'+link.name" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
                 <LinkCard v-for="linkC in link.children" :link="linkC" :key="linkC.name" />
             </nav>

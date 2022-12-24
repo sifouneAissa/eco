@@ -5,7 +5,8 @@
     import Footer from '@/Pages/Admin/Footer.vue';
     import { Head, Link } from "@inertiajs/inertia-vue3";
     defineProps({
-        title : String
+        title : String,
+        urls : Array
     })
 </script>
 <template>
@@ -18,11 +19,18 @@
         </div>
         <div id="layoutSidenav_content">
             <div class="container-fluid">
-                <div v-if="$page.props.route.current.name !== 'admin.index'">
+                <div  v-if="($page.props.route.current.name !== 'admin.index') && !urls">
                     <h1 class="mt-4">{{$page.component}}</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><Link :href="route('admin.index')">Dashboard</Link></li>
-                        <li  class="breadcrumb-item active">{{$page.component}}</li>
+                        <li  class="breadcrumb-item active"><Link :href="'#'">{{$page.component}}</Link></li>
+                    </ol>
+                </div>
+                <div  v-else-if="urls">
+                    <h1 class="mt-4">{{$page.component}}</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><Link :href="route('admin.index')">Dashboard</Link></li>
+                        <li v-for="(url,index) in urls" :key="url.name"  :class="'breadcrumb-item '"><Link :href="url.route">{{url.name}}</Link></li>
                     </ol>
                 </div>
                 <main>

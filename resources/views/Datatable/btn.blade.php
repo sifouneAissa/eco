@@ -48,4 +48,18 @@
             </a>
         @endcan
     @endif
+    @if(!(isset($without) && in_array('media',$without)))
+        @can($permissions['media'])
+            <a
+                href="javascript: void(0)"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Media"
+                id="btn-media"
+                data-id="{{json_encode(['model' => $model->mediaProvider(),'model_id' => $model->id])}}"
+            >
+                <i class="feather-image h4"></i>
+            </a>
+        @endcan
+    @endif
 @endif
