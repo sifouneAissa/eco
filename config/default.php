@@ -31,7 +31,12 @@ return[
                 'edit product',
                 'delete product',
                 'view products',
-                'show product'
+                'show product',
+                'edit order',
+                'add order',
+                'show order',
+                'view orders',
+                'delete order'
             ],
             mediaPermissions(\App\Models\Product::class,'product')
         ),

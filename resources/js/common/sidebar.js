@@ -6,6 +6,12 @@ const sidebar = [
         icon : 'feather-home',
     },
     {
+        name : 'Orders',
+        route : 'admin.order.index',
+        permission : 'view orders',
+        icon : 'feather-truck'
+    },
+    {
         name : 'Clients',
         route : 'admin.client.index',
         permission : 'view clients',

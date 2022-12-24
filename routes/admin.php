@@ -49,6 +49,12 @@ use \Illuminate\Support\Facades\Route;
             'store','destroy'
         ]);
 
+        Route::resource('/order',\App\Http\Controllers\admin\OrderDetailController::class)->only([
+            'index'
+        ]);
+        Route::get('/orders',[\App\Http\Controllers\admin\OrderDetailController::class,'datatables'])->name('orders.index');
+
+
     });
 });
 
