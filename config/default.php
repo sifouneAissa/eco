@@ -1,7 +1,11 @@
 <?php
 use \Illuminate\Support\Facades\Hash;
 return[
-
+    'media' => [
+            'product' => [
+                'builder' => \App\Models\Product::class
+            ]
+    ],
     'permissions' => [
         'all' => [
             'view dashboard',

@@ -9,7 +9,10 @@ import '../../public/admin/vendor/dataTables/dataTables/css/dataTables.bootstrap
 import '../../public/admin/vendor/jquery/jquery.min';
 import '../../public/admin/vendor/fontawesome/js/all.min.js';
 import '../../public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js';
-
+// import vue2Dropzone from 'vue2-dropzone'
+// import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+// import '../../public/admin/vendor/dropzone/dist/dropzone.css'
+// import '../../public/admin/vendor/summernote/summernote-bs4.min.css'
 
 
 // import 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js';
@@ -22,6 +25,7 @@ import '../../public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js';
 import '../../public/admin/vendor/dataTables/dataTables/js/jquery.dataTables.min.js';
 // import '../../public/admin/assets/demo/datatables-demo.js';
 // import '../../public/admin/vendor/dropzone/dist/min/dropzone.min.js';
+// import '../../public/admin/vendor/summernote/summernote-bs4.min.js';
 // import 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js';
 
 
@@ -71,6 +75,15 @@ createInertiaApp({
         script = document.createElement('script');
         script.src = "/admin/vendor/dataTables/vfs_fonts.js";
         document.body.append(script); // (*)
+
+
+        // script = document.createElement('script');
+        // script.src = "/admin/vendor/dropzone/dist/min/dropzone.min.js";
+        // document.body.append(script); // (*)
+        //
+        // script = document.createElement('script');
+        // script.src = "/admin/vendor/summernote/summernote-bs4.min.js";
+        // document.body.append(script); // (*)
 
 
         const myApp = createApp({render: () => h(app, props)})

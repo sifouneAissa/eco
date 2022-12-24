@@ -40,6 +40,15 @@ use \Illuminate\Support\Facades\Route;
         ]);
         Route::get('/products',[\App\Http\Controllers\admin\ProductController::class,'datatables'])->name('products.index');
 
+        // media
+        Route::get('/media/{model}',[\App\Http\Controllers\admin\MediaController::class,'index'])->name('media.index');
+
+        Route::post('/media/{id}',[\App\Http\Controllers\admin\MediaController::class,'update'])->name('media.update');
+
+        Route::resource('/media',\App\Http\Controllers\admin\MediaController::class)->only([
+            'store','destroy'
+        ]);
+
     });
 });
 
