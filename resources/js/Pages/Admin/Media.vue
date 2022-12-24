@@ -9,7 +9,7 @@
         <!-- /row-->
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
+                <div v-if="$can('add '+$page.props.modelData.provider+' media')" class="form-group">
                     <label>Add new images</label>
                     <dropzone :doRefresh="true" :model="$page.props.model" :model_id="$page.props.model_id" >
                     </dropzone>
@@ -27,8 +27,8 @@
                                     <div class="list-card-image">
                                         <!--                                <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> 3.1 (300+)</span></div>-->
                                         <div class="favourite-heart text-danger position-absolute">
-                                            <a @click="this.mediaToUpdate=img"><i class="feather-edit text-warning"></i></a>
-                                            <a @click="this.mediaToDelete=img"><i class="feather-delete text-danger"></i></a>
+                                            <a v-if="$can('edit '+$page.props.modelData.provider+' media')" @click="this.mediaToUpdate=img"><i class="feather-edit text-warning"></i></a>
+                                            <a v-if="$can('delete '+$page.props.modelData.provider+' media')" @click="this.mediaToDelete=img"><i class="feather-delete text-danger"></i></a>
                                         </div>
                                         <center>
                                             <a target="_blank" :href="img.full_url">
@@ -73,6 +73,9 @@
                 this.mediaToUpdate = null;
                 this.mediaToDelete = null;
             }
+        },
+        mounted() {
+            console.log(this.$page.props.modelData.provider);
         },
         data() {
             return {

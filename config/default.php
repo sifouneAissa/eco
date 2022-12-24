@@ -1,5 +1,4 @@
 <?php
-use \Illuminate\Support\Facades\Hash;
 return[
     'media' => [
             'product' => [
@@ -10,29 +9,32 @@ return[
         'all' => [
             'view dashboard',
         ],
-        'admin' => [
-            'view settings',
-            'view roles',
-            'edit role',
-            'show role',
-            'delete role',
-            'view permissions',
-            'show user',
-            'edit user',
-            'delete user',
-            'view users',
-            'add role',
-            'add user',
-            'add client',
-            'edit client',
-            'delete client',
-            'view clients',
-            'add product',
-            'edit product',
-            'delete product',
-            'view products',
-            'show product'
-        ],
+        'admin' => array_merge(
+            [
+                'view settings',
+                'view roles',
+                'edit role',
+                'show role',
+                'delete role',
+                'view permissions',
+                'show user',
+                'edit user',
+                'delete user',
+                'view users',
+                'add role',
+                'add user',
+                'add client',
+                'edit client',
+                'delete client',
+                'view clients',
+                'add product',
+                'edit product',
+                'delete product',
+                'view products',
+                'show product'
+            ],
+            mediaPermissions(\App\Models\Product::class,'product')
+        ),
         'publisher' => [
 
         ]

@@ -14,8 +14,23 @@ class MediaController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $provider = request()->model;
+        $models = array_keys(config('default.media'));
+        $model_id = request()->input('model_id');
+
+        if(!$provider  || !$model_id || !in_array($provider,$models)) abort(404);
+
+        $this->middleware(['permission:view '.$provider.' media'])->only(['index']);
+        $this->middleware(['permission:edit '.$provider.' media'])->only(['update']);
+        $this->middleware(['permission:add '.$provider.' media'])->only(['store']);
+        $this->middleware(['permission:delete '.$provider.' media'])->only(['destroy']);
+    }
+
 
     private function getBuilder($model){
+
         return config('default.media.'.$model.'.builder');
     }
 
@@ -44,11 +59,14 @@ class MediaController extends Controller
                     return $item;
             });
 
+            $modelData = ($this->getBuilder($model))::find($model_id);
+            $modelData['provider'] = $modelData->mediaProvider();
+
             return Inertia::render('Media',[
                 'medias' => $medias,
                 'model_id' => $model_id,
                 'model' => $model,
-                'modelData' => ($this->getBuilder($model))::find($model_id)
+                'modelData' => $modelData
             ]);
     }
 

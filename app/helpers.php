@@ -11,6 +11,27 @@ if (!function_exists('getLocales')) {
     }
 }
 
+if (!function_exists('mediaPermissions')) {
+
+    function mediaPermissions($modelBuilder,$provider=null)
+    {
+        $actions = [
+            'edit',
+            'add',
+            'delete',
+            'view'
+        ];
+
+        if(!$provider)
+        $provider = app($modelBuilder)->mediaProvider();
+
+        foreach($actions as $action){
+            $to_return[] = $action." ".$provider." media";
+        }
+
+        return $to_return;
+    }
+}
 
 
 if(!function_exists('translateDate')) {

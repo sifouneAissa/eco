@@ -16,7 +16,6 @@ class Product extends Model implements HasMedia
     use MediaTrait;
 
 
-
     protected $fillable = [
         'name',
         'price',

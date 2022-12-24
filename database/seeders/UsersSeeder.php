@@ -67,7 +67,9 @@ class UsersSeeder extends Seeder
         $this->assignPermissions($all,$roles);
         // assign permission by roles
         foreach($roles as $role){
+
             $permissions = config('default.permissions.'.$role->name);
+
             if($permissions) $this->assignPermissions($permissions,[$role]);
 
         }
