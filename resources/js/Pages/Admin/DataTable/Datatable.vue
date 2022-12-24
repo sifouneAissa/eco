@@ -49,30 +49,45 @@
                             extend: 'csv',
                             text: '<i class="fas fa-file-csv"></i> CSV',
                             className: 'btn-success ',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
                         },
                         {
                             // copy
                             extend: 'excel',
                             text: '<i class="fas fa-file-excel"></i> Excel',
-                            className: 'btn-success '
+                            className: 'btn-success ',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
                         },
                         {
                             // copy
                             extend: 'pdf',
                             text: '<i class="fas fa-file-pdf"></i> PDF',
-                            className: 'btn-danger '
+                            className: 'btn-danger ',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
                         },
                         {
                             // copy
                             extend: 'print',
                             text: '<i class="fas fa-print"></i> Print',
-                            className: 'btn-light '
+                            className: 'btn-light ',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
                         },
                         {
                             // copy
                             extend: 'copy',
                             text: '<i class="fas fa-copy"></i> Copy',
-                            className: 'btn-primary '
+                            className: 'btn-primary ',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
                         },
                         {
                             extend: 'colvis',
