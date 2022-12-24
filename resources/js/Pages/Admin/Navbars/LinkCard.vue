@@ -7,7 +7,7 @@
 
 </script>
 <template>
-    <Link v-if="$can(link.permission) && !(link.children && link.children.length)" :class="'nav-link '+ ((($page.props.route.current.name === link.route) || (link.urls && link.urls.map((item) => $page.url.includes(item)))) ? 'active' : '' ) " :href="route(link.route)">
+    <Link v-if="$can(link.permission) && !(link.children && link.children.length)" :class="'nav-link '+ ((($page.props.route.current.name === link.route) || (link.urls && link.urls.some((item) => $page.url.includes(item)))) ? 'active' : '' ) " :href="route(link.route)">
         <div class="sb-nav-link-icon"><i :class="link.icon"></i></div>
         {{link.name}}
     </Link>

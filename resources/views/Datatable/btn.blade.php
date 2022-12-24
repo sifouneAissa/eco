@@ -48,7 +48,8 @@
             </a>
         @endcan
     @endif
-    @if(!(isset($without) && in_array('media',$without)))
+
+    @if(!(isset($without) && (in_array('media',$without))) && array_key_exists('media',$permissions))
         @can($permissions['media'])
             <a
                 href="javascript: void(0)"

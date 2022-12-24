@@ -78,13 +78,12 @@ class ProductController extends Controller
             'edit' => 'edit product',
             'show' => 'show product',
             'delete' => 'delete product',
-            'media' =>  'edit product'
+            'media' =>  'view product media'
         ];
 
         $datatables = $this->getDataTables()
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('name', fn($model) => $model->name)
-//            ->addColumn('desc',fn($model) => $model->desc)
             ->addColumn('price',fn($model) => $model->price)
             ->addColumn('category',fn($model) => $model->category->name)
             ->addColumn('inventory',fn($model) => $model->inventory->quantity)
