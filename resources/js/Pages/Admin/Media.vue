@@ -83,7 +83,7 @@
                 mediaToDelete : null,
                 urls : [
                     {
-                        name : 'Product',
+                        name : 'Products',
                         route : this.route('admin.product.index')
                     },
                     {

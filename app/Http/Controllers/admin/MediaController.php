@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\CustomMedia;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 use Spatie\MediaLibrary\FileManipulator;
 use Inertia\Inertia;
 use Spatie\MediaLibrary\MediaCollections\Filesystem;
@@ -16,16 +17,15 @@ class MediaController extends Controller
 
     public function __construct()
     {
-        $provider = request()->model;
-        $models = array_keys(config('default.media'));
-        $model_id = request()->input('model_id');
-
-        if(!$provider  || !$model_id || !in_array($provider,$models)) abort(404);
-
-        $this->middleware(['permission:view '.$provider.' media'])->only(['index']);
-        $this->middleware(['permission:edit '.$provider.' media'])->only(['update']);
-        $this->middleware(['permission:add '.$provider.' media'])->only(['store']);
-        $this->middleware(['permission:delete '.$provider.' media'])->only(['destroy']);
+//        $provider = request()->model;
+//        $models = array_keys(config('default.media'));
+//        $model_id = request()->input('model_id');
+//        if(!$provider  || !$model_id || !in_array($provider,$models)) abort(404);
+//
+//        $this->middleware(['permission:view '.$provider.' media'])->only(['index']);
+//        $this->middleware(['permission:edit '.$provider.' media'])->only(['update']);
+//        $this->middleware(['permission:add '.$provider.' media'])->only(['store']);
+//        $this->middleware(['permission:delete '.$provider.' media'])->only(['destroy']);
     }
 
 
@@ -35,6 +35,8 @@ class MediaController extends Controller
     }
 
     public function index(Request $request,$model){
+
+            if(!auth()->user()->can('view '.$model.' media')) abort(401);
 
             $models = array_keys(config('default.media'));
             $model_id = $request->input('model_id');
@@ -72,6 +74,8 @@ class MediaController extends Controller
 
     public function store(Request $request){
 
+        if(!auth()->user()->can('add '.$request->model.' media')) abort(401);
+
         $builder = $this->getBuilder($request->input('model'));
         $model_id = $request->input('model_id');
         $model = $builder::find($model_id);
@@ -81,11 +85,16 @@ class MediaController extends Controller
 
     }
 
-    public function destroy($id){
+    public function destroy(Request $request,$id){
+//        if(!auth()->user()->can('delete '.$request->model.' media')) abort(401);
+
         CustomMedia::find($id)->delete();
     }
 
     public function update(Request $request,$id){
+
+        if(!auth()->user()->can('edit '.$request->model.' media')) abort(401);
+
         $media = CustomMedia::find($id);
         if($request->has('file'))
             $this->updateFile($request->file,$id);

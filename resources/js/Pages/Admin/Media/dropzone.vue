@@ -55,7 +55,9 @@
             return {
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 dropzoneOptions: {
-                    url: this.url ? this.url : this.route('admin.media.store'),
+                    url: this.url ? this.url : this.route('admin.media.store',{
+                        model : this.model
+                    }),
                     thumbnailWidth: 150,
                     maxFilesize: 2,
                     addRemoveLinks: true,

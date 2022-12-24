@@ -53,11 +53,14 @@
             submit : function () {
                 // this.form
                 Inertia.delete(route('admin.media.destroy',{
-                    id : this.model.id
+                    id : this.model.id,
+                    model: this.$page.props.model,
+                    model_id: this.$page.props.model_id
                   }), {
                     onFinish: () => {
                     },
                     onSuccess : () => {
+
                         $('#delete-media').modal('hide');
 
                         Inertia.visit(this.route('admin.media.index',{
