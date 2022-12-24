@@ -50,7 +50,7 @@ use \Illuminate\Support\Facades\Route;
         ]);
 
         Route::resource('/order',\App\Http\Controllers\admin\OrderDetailController::class)->only([
-            'index'
+            'index','show'
         ]);
         Route::get('/orders',[\App\Http\Controllers\admin\OrderDetailController::class,'datatables'])->name('orders.index');
 

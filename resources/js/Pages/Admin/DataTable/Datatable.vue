@@ -108,18 +108,26 @@
 
             $(document).on('click', '#btn-edit', function () {
                 this.modelToUpdate = $(this).data('id');
-                app.$emit('ShowEditModel', this.modelToUpdate);
+                if (this.modelToUpdate.modal)
+                    app.$emit('ShowEditModel', this.modelToUpdate);
+                else
+                    app.$emit('ShowEditPage', this.modelToUpdate);
+
             })
 
 
             $(document).on('click', '#btn-show', function () {
                 let model = $(this).data('id');
-                app.$emit('ShowShowModel', model);
+                if (model.modal)
+                    app.$emit('ShowShowModel', model);
+                else app.$emit('ShowShowPage', model);
             })
 
             $(document).on('click', '#btn-delete', function () {
                 let model = $(this).data('id');
-                app.$emit('ShowDeleteModel', model);
+                if (model.modal)
+                    app.$emit('ShowDeleteModel', model);
+                else app.$emit('ShowDeletePage', model);
             })
 
             $(document).on('click', '#btn-media', function () {
@@ -137,7 +145,8 @@
             <i class="fas fa-table mr-1"></i>
             {{title}}
             <div v-if="(!without || !without.some(item => item === 'add'))" class="float-right">
-                <button @click="$emit('ShowAddModel', model)" class="btn btn-primary"><h6><i class="feather-plus"></i>Add</h6></button>
+                <button @click="$emit('ShowAddModel', model)" class="btn btn-primary"><h6><i class="feather-plus"></i>Add
+                </h6></button>
             </div>
         </div>
         <div class="card-body">

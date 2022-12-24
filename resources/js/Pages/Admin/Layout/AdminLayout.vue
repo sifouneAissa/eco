@@ -20,17 +20,17 @@
         <div id="layoutSidenav_content">
             <div class="container-fluid">
                 <div  v-if="($page.props.route.current.name !== 'admin.index') && !urls">
-                    <h1 class="mt-4">{{$page.component}}</h1>
+                    <h1 class="mt-4">{{title}}</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><Link :href="route('admin.index')">Dashboard</Link></li>
-                        <li  class="breadcrumb-item active"><Link :href="'#'">{{$page.component}}</Link></li>
+                        <li  class="breadcrumb-item active"><Link class="text-dark" :href="'#'">{{title}}</Link></li>
                     </ol>
                 </div>
                 <div  v-else-if="urls">
-                    <h1 class="mt-4">{{$page.component}}</h1>
+                    <h1 class="mt-4">{{title}}</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><Link :href="route('admin.index')">Dashboard</Link></li>
-                        <li v-for="(url,index) in urls" :key="url.name"  :class="'breadcrumb-item '"><Link :href="url.route">{{url.name}}</Link></li>
+                        <li v-for="(url,index) in urls" :key="url.name"  :class="'breadcrumb-item '"><Link :class="(index === urls.length-1) ? 'text-dark':''" :href="url.route">{{url.name}}</Link></li>
                     </ol>
                 </div>
                 <main>

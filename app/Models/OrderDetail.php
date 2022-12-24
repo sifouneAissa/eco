@@ -19,7 +19,8 @@ class OrderDetail extends Model
         'price',
         'received',
         'confirmed',
-        'picked_up'
+        'picked_up',
+        'modal_ids'
     ];
 
     public function paymentDetail(){
@@ -116,4 +117,14 @@ class OrderDetail extends Model
         return $this->orderTracks->where("status","delivered")->first();
     }
 
+
+
+    public  function getModalIdsAttribute(){
+        return [
+            'edit' => 'edit-user',
+            'delete' => 'delete-user',
+            'add' => 'add-user',
+            'show' => 'admin.order.show'
+        ];
+    }
 }

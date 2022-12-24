@@ -5,6 +5,7 @@
     import showRole from '@/Pages/Admin/Roles/showRole.vue';
     import deleteUser from '@/Pages/Admin/Users/deleteUser.vue';
     import addUser from '@/Pages/Admin/Users/addUser.vue';
+    import {Inertia} from "@inertiajs/inertia";
 
     export default {
         components :{
@@ -27,6 +28,19 @@
             },
             ShowAddModel : function (){
                 this.modelToAdd = true;
+            },
+            ShowDeletePage : function (data){
+                console.log('this is delete action');
+            },
+            ShowShowPage : function (data){
+                Inertia.visit(this.route(data.modal_ids.show,{
+                    id : data.id
+                }))
+            },
+            ShowEditPage : function (data){
+                Inertia.visit(this.route(data.modal_ids.edit,{
+                    id : data.id
+                }))
             },
             resetModel : function (){
                 this.modelToUpdate = null;
@@ -61,7 +75,7 @@
             </h2>
         </template>
 
-        <Datatable  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Orders table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowEditPage="ShowEditPage" @ShowShowPage="ShowShowPage" @ShowDeletePage="ShowDeletePage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Orders table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
 <!--        <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>-->
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
 <!--        <deleteUser @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteUser>-->

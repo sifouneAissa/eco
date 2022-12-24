@@ -25,6 +25,17 @@ class OrderDetailController extends Controller
         $this->middleware(['permission:edit order'])->only(['update']);
         $this->middleware(['permission:add order'])->only(['store']);
         $this->middleware(['permission:delete order'])->only(['destroy']);
+
+        $this->middleware(['permission:show order'])->only(['show']);
+    }
+
+    public function show($id){
+
+        $order = OrderDetail::find($id);
+
+        return Inertia::render('Orders/showOrder',[
+            'order' => $order
+        ]);
     }
 
 
