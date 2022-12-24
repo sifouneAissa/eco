@@ -43,7 +43,7 @@
                 </div>
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
-                        <label>Permissions</label>
+                        <label>Roles</label>
                         <multiselect
                                     v-model="form.roles"
                                     :options="options"
