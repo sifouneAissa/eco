@@ -38,9 +38,12 @@
                                         <hr>
                                         <div class="float-right">
 <!--                                            <a href="messages.html" class="btn btn-sm btn-warning"><i class="feather-message-circle"></i> Message</a>-->
-                                            <a href="#0" class="btn btn-sm btn-success m-1"><i class="feather-check-circle"></i> Order Received</a>
-                                            <a href="#0" class="btn btn-sm btn-info m-1" data-toggle="modal" data-target="#edit_booking"><i class="feather-truck"></i> Order Confirmed</a>
-                                            <a href="#0" class="btn btn-sm btn-outline-success m-1"><i class="feather-user-check"></i> Order Picked Up</a>
+                                            <i v-if="order.received" class="feather-check-circle"></i>
+                                            <a @click="submit('instore')" class="btn btn-sm btn-success m-1"><i class="feather-check-circle"></i> Order Received</a>
+                                            <i v-if="order.confirmed" class="feather-check-circle"></i>
+                                            <a @click="submit('onway')" class="btn btn-sm btn-info m-1" data-toggle="modal" data-target="#edit_booking"><i class="feather-truck"></i> Order Confirmed</a>
+                                            <i v-if="order.picked_up" class="feather-check-circle text-success"></i>
+                                            <a @click="submit('delivered')" class="btn btn-sm btn-outline-success m-1"><i class="feather-user-check"></i> Order Picked Up</a>
                                         </div>
                                         <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold"> Total Paid:</span>  {{order.total}}
                                         </p>
@@ -96,14 +99,32 @@
 <script>
 
     import AdminLayout from '@/Pages/Admin/Layout/AdminLayout.vue';
+    import {useForm} from "@inertiajs/inertia-vue3";
     export default {
         name: "showOrder.vue",
         components : {
             AdminLayout
         },
+        methods :{
+            submit : function (status) {
+                // this.form
+                this.form.status = status;
+                this.form.post(route('admin.trackorder.store',{}), {
+                    onFinish: () => {
+                    },
+                    onSuccess : () => {
+
+                    }
+                });
+            }
+        },
         props : ['order'],
         data(){
             return {
+                form : useForm({
+                    status : '',
+                    order_id : this.order.id
+                }),
                 urls : [
                     {
                         name : 'Orders',

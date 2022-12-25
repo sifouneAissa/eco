@@ -11,6 +11,19 @@ if (!function_exists('getLocales')) {
     }
 }
 
+if (!function_exists('filterRequest')) {
+
+
+     function filterRequest($inputs,$model){
+
+        $fillable = app($model)->getFillable();
+
+        return array_filter($inputs,function ($item) use ($fillable,$inputs){
+            return in_array($item,$fillable) && $inputs[$item] ;
+        },ARRAY_FILTER_USE_KEY);
+    }
+}
+
 if (!function_exists('mediaPermissions')) {
 
     function mediaPermissions($modelBuilder,$provider=null)

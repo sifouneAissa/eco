@@ -10,4 +10,9 @@ class OrderTrack extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+      'order_id',
+      'status',
+      'date'
+    ];
 }

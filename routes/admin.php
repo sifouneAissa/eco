@@ -65,6 +65,9 @@ use \Illuminate\Support\Facades\Route;
             ,'destroy'
         ]);
 
+        Route::resource('/trackorder',\App\Http\Controllers\admin\OrderTruckController::class)->only([
+            'store'
+        ]);
     });
 });
 
