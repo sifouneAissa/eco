@@ -136,6 +136,14 @@ class OrderDetail extends Model
     }
 
 
+    public function getCurrentStatusAttribute(){
+        if($this->picked_up) return 'Picked up';
+        else if ($this->confirmed) return 'Confirmed';
+        else if($this->received) return 'Received';
+
+        return 'Waiting';
+    }
+
 
     public  function getModalIdsAttribute(){
         return [

@@ -70,6 +70,7 @@ class OrderDetailController extends Controller
             ->addColumn('email',fn($model) => $model->userAddress->user->email)
             ->addColumn('count',fn($model) => $model->products->count())
             ->addColumn('total',fn($model) => $model->total)
+            ->addColumn('status',fn($model) => $model->current_status)
             ->addColumn('created_at',fn($model) => translateDate($model->created_at))
 //            ->addColumn('roles',function ($model) {
 //                return view('Users.roles',compact('model'));
@@ -93,6 +94,7 @@ class OrderDetailController extends Controller
             ['data' => 'email' , 'name' => 'Email','searchable' => true],
             ['data' => 'count' , 'name' => 'Products Count','searchable' => false],
             ['data' => 'total' , 'name' => 'total','searchable' => false],
+            ['data' => 'status' , 'name' => 'Status','searchable' => false],
             ['data' => 'created_at' , 'name' => 'Created at','searchable' => false],
 //            ['data' => 'roles' , 'name' => 'Roles','searchable' => false],
             ['data' => 'action' , 'name' => 'Action','searchable' => false]
@@ -106,6 +108,7 @@ class OrderDetailController extends Controller
             'Email',
             'Products Count',
             'Total',
+            'Status',
             'Created at',
 //            'Roles',
             'Action'
