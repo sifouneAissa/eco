@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\CustomRole;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 trait DatatableTrait {
@@ -64,5 +65,13 @@ trait DatatableTrait {
             return array_filter($inputs,function ($item) use ($fillable,$inputs){
                 return in_array($item,$fillable) && $inputs[$item] ;
             },ARRAY_FILTER_USE_KEY);
+    }
+
+    public function getModel(){
+        $model = app(self::MODEL);
+        $model['models_ids'] = $model->modal_ids;
+        $model['add'] = 'add '.$model->provider;
+        $model['modal'] = !Route::has($model->modal_ids['add']) ;
+        return $model;
     }
 }

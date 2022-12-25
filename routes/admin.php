@@ -54,6 +54,15 @@ use \Illuminate\Support\Facades\Route;
         ]);
         Route::get('/orders',[\App\Http\Controllers\admin\OrderDetailController::class,'datatables'])->name('orders.index');
 
+        Route::get('/blogs',[\App\Http\Controllers\admin\BlogController::class,'datatables'])->name('blogs.index');
+        Route::resource('/blog',\App\Http\Controllers\admin\BlogController::class)->only([
+            'index',
+            'create'
+            ,'store'
+            , 'edit'
+            ,'update'
+//            ,'destroy'
+        ]);
 
     });
 });

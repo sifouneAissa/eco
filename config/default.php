@@ -36,7 +36,12 @@ return[
                 'add order',
                 'show order',
                 'view orders',
-                'delete order'
+                'delete order',
+                'add blog',
+                'delete blog',
+                'show blog',
+                'view blogs',
+                'edit blog'
             ],
             mediaPermissions(\App\Models\Product::class,'product')
         ),

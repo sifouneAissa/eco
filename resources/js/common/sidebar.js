@@ -33,6 +33,15 @@ const sidebar = [
         ],
     },
     {
+        name : 'Blogs',
+        route : 'admin.blog.index',
+        permission : 'view blogs',
+        icon : 'feather-file-text',
+        urls : [
+            '/blog/create'
+        ]
+    },
+    {
         name : "Settings",
         permission : 'view roles',
         icon : 'feather-settings',
