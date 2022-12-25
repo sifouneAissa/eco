@@ -41,7 +41,8 @@ return[
                 'delete blog',
                 'show blog',
                 'view blogs',
-                'edit blog'
+                'edit blog',
+                'update order status'
             ],
             mediaPermissions(\App\Models\Product::class,'product')
         ),

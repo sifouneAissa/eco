@@ -36,7 +36,7 @@
                                         <p class="text-dark">{{order.qnames}}
                                         </p>
                                         <hr>
-                                        <div class="float-right">
+                                        <div v-if="$can('update order status')" class="float-right">
 <!--                                            <a href="messages.html" class="btn btn-sm btn-warning"><i class="feather-message-circle"></i> Message</a>-->
                                             <i v-if="order.received" class="feather-check-circle"></i>
                                             <a @click="submit('instore')" class="btn btn-sm btn-success m-1"><i class="feather-check-circle"></i> Order Received</a>

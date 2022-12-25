@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class OrderTruckController extends Controller
 {
     //
+    public function __construct()
+    {
+
+        $this->middleware(['permission:update order status'])->only(['store']);
+    }
 
     public function store(Request $request){
 
