@@ -9,7 +9,10 @@ const sidebar = [
         name : 'Orders',
         route : 'admin.order.index',
         permission : 'view orders',
-        icon : 'feather-truck'
+        icon : 'feather-truck',
+        urls : [
+            'order/'
+        ]
     },
     {
         name : 'Clients',

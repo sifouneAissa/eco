@@ -31,8 +31,7 @@ class OrderDetailController extends Controller
 
     public function show($id){
 
-        $order = OrderDetail::find($id);
-
+        $order = OrderDetail::find($id)->load(['orderItems.product','paymentDetail']);
         return Inertia::render('Orders/showOrder',[
             'order' => $order
         ]);

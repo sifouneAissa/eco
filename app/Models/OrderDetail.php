@@ -20,7 +20,10 @@ class OrderDetail extends Model
         'received',
         'confirmed',
         'picked_up',
-        'modal_ids'
+        'modal_ids',
+        'address',
+        'created_date',
+        'fimage'
     ];
 
     public function paymentDetail(){
@@ -43,7 +46,19 @@ class OrderDetail extends Model
         return $this->belongsTo(UserAddress::class,'address_id');
     }
 
+    public function getAddressAttribute(){
+        return $this->userAddress;
+    }
 
+    public function getFimageAttribute(){
+        $image = '/img/checkout.png';
+
+        try{
+            $image = $this->products->first()->media()->first()->getFullUrl();
+        }catch(\Exception $e){}
+
+        return $image;
+    }
 
     public function getDeliveredDateAttribute(){
         $order_tracks = $this->orderTracks->filter(function ($item){
@@ -53,6 +68,9 @@ class OrderDetail extends Model
         if($order_tracks->isNotEmpty()) return translateDate($order_tracks->first()->created_at);
 
         return null;
+    }
+    public function getCreatedDateAttribute(){
+        return translateDate($this->created_at);
     }
 
     public function getNamesAttribute(){
