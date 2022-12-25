@@ -83,19 +83,19 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Category</label>
-                                        <div>
-                                            <select class="custom-select">
-                                                <option>Italian</option>
-                                                <option>Japanese</option>
-                                                <option>Vegetarian</option>
-                                                <option>Chinese</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label>Category</label>-->
+<!--                                        <div>-->
+<!--                                            <select class="custom-select">-->
+<!--                                                <option>Italian</option>-->
+<!--                                                <option>Japanese</option>-->
+<!--                                                <option>Vegetarian</option>-->
+<!--                                                <option>Chinese</option>-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                             <div class="form-group">
                                 <Editor @Writing="Writing" :initValue="form.blog"/>

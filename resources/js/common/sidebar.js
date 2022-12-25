@@ -38,7 +38,7 @@ const sidebar = [
         permission : 'view blogs',
         icon : 'feather-file-text',
         urls : [
-            '/blog/create'
+            '/blog/'
         ]
     },
     {

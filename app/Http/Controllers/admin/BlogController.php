@@ -28,6 +28,7 @@ class BlogController extends Controller
         $this->middleware(['permission:view blogs'])->only(['index','datatables']);
         $this->middleware(['permission:edit blog'])->only(['update','edit']);
         $this->middleware(['permission:add blog'])->only(['store']);
+        $this->middleware(['permission:show blog'])->only(['show']);
         $this->middleware(['permission:delete blog'])->only(['destroy']);
     }
 
@@ -59,10 +60,10 @@ class BlogController extends Controller
 //        $role->permissions()->sync($inputs['permissions']);
 //    }
 
-//    public function destroy($id){
-//        // get the role
-//        CustomRole::find($id)->delete();
-//    }
+    public function destroy($id){
+        // get the role
+        Blog::find($id)->delete();
+    }
 
     public function store(BlogRequest $request){
 
@@ -75,6 +76,12 @@ class BlogController extends Controller
 
     public function edit($id){
         return Inertia::render('Blogs/editBlog',[
+            'model' => Blog::find($id)
+        ]);
+    }
+
+    public function show($id){
+        return Inertia::render('Blogs/showBlog',[
             'model' => Blog::find($id)
         ]);
     }

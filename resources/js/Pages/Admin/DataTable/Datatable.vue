@@ -108,7 +108,7 @@
 
             $(document).on('click', '#btn-edit', function () {
                 this.modelToUpdate = $(this).data('id');
-                if (this.modelToUpdate.modal)
+                if (this.modelToUpdate.ShowEditModal)
                     app.$emit('ShowEditModel', this.modelToUpdate);
                 else
                     app.$emit('ShowEditPage', this.modelToUpdate);
@@ -118,14 +118,14 @@
 
             $(document).on('click', '#btn-show', function () {
                 let model = $(this).data('id');
-                if (model.modal)
+                if (model.ShowShowModal)
                     app.$emit('ShowShowModel', model);
                 else app.$emit('ShowShowPage', model);
             })
 
             $(document).on('click', '#btn-delete', function () {
                 let model = $(this).data('id');
-                if (model.modal)
+                if (model.ShowDeleteModal) 
                     app.$emit('ShowDeleteModel', model);
                 else app.$emit('ShowDeletePage', model);
             })

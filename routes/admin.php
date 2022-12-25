@@ -61,7 +61,8 @@ use \Illuminate\Support\Facades\Route;
             ,'store'
             , 'edit'
             ,'update'
-//            ,'destroy'
+            ,'show'
+            ,'destroy'
         ]);
 
     });

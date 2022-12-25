@@ -4,7 +4,7 @@
     import {Inertia} from "@inertiajs/inertia";
     // import editUser from '@/Pages/Admin/Clients/editUser.vue';
     // import showRole from '@/Pages/Admin/Roles/showRole.vue';
-    // import deleteUser from '@/Pages/Admin/Clients/deleteUser.vue';
+    import deleteBlog from '@/Pages/Admin/Blogs/deleteBlog.vue';
     // import addUser from '@/Pages/Admin/Clients/addUser.vue';
 
     export default {
@@ -13,7 +13,7 @@
             Datatable,
             // addUser,
             // editUser,
-            // deleteUser
+            deleteBlog
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -24,6 +24,7 @@
                 this.modelToShow = data;
             },
             ShowDeleteModel : function (data){
+                console.log("check");
                 this.modelToDelete = data;
             },
             ShowAddModel : function (){
@@ -31,6 +32,11 @@
             },
             ShowEditPage : function (data){
                 Inertia.visit(this.route(data.modal_ids.edit,{
+                    id : data.id
+                }))
+            },
+            ShowShowPage : function (data){
+                Inertia.visit(this.route(data.modal_ids.show,{
                     id : data.id
                 }))
             },
@@ -70,10 +76,10 @@
             </h2>
         </template>
 
-        <Datatable  @ShowEditPage="ShowEditPage"  @ShowAddPage="ShowAddPage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Clients table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowShowPage="ShowShowPage" @ShowEditPage="ShowEditPage"  @ShowAddPage="ShowAddPage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Blogs table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
 <!--        <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>-->
         <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
-<!--        <deleteUser @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteUser>-->
+        <deleteBlog @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteBlog>
 <!--        <addUser @ResetModel="resetModel" v-if="modelToAdd!=null"></addUser>-->
 
     </AdminLayout>

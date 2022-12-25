@@ -23,9 +23,9 @@ class Blog extends Model
     public  function getModalIdsAttribute(){
         return [
             'edit' => 'admin.blog.edit',
-            'delete' => 'delete-user',
+            'delete' => 'delete-blog',
             'add' => 'admin.blog.create',
-            'show' => 'show-user'
+            'show' => 'admin.blog.show'
         ];
     }
 }
