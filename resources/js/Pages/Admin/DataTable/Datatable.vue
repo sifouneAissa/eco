@@ -125,7 +125,7 @@
 
             $(document).on('click', '#btn-delete', function () {
                 let model = $(this).data('id');
-                if (model.ShowDeleteModal) 
+                if (model.ShowDeleteModal)
                     app.$emit('ShowDeleteModel', model);
                 else app.$emit('ShowDeletePage', model);
             })
@@ -145,7 +145,7 @@
             <i class="fas fa-table mr-1"></i>
             {{title}}
             <div v-if="(!without || !without.some(item => item === 'add'))" class="float-right">
-                <button @click="$page.props.model.modal ? $emit('ShowAddModel',$page.props.model) : $emit('ShowAddPage',$page.props.model) " class="btn btn-primary"><h6><i class="feather-plus"></i>Add
+                <button @click="(!$page.props.model || !$page.props.model.is_page) ? $emit('ShowAddModel',$page.props.model) : $emit('ShowAddPage',$page.props.model) " class="btn btn-primary"><h6><i class="feather-plus"></i>Add
                 </h6></button>
             </div>
         </div>

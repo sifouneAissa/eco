@@ -71,7 +71,7 @@ trait DatatableTrait {
         $model = app(self::MODEL);
         $model['models_ids'] = $model->modal_ids;
         $model['add'] = 'add '.$model->provider;
-        $model['modal'] = !Route::has($model->modal_ids['add']) ;
+        $model['is_page'] = Route::has($model->modal_ids['add']) ;
         return $model;
     }
 }
