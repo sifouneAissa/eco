@@ -44,12 +44,14 @@ Route::middleware([
         'index','store','update','destroy'
     ]);
 
-    // product
-    Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
 
     Route::get('redirects', [\App\Http\Controllers\LoginRedirectionController::class,'redirect'])->name('redirects');
 
 });
+
+// product
+Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
+
 
 Route::get('/listing', [\App\Http\Controllers\UserListingController::class,'index'])->name('listing');
 

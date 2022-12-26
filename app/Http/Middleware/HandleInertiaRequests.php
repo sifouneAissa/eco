@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Currency;
+use App\Models\ShoppingSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -55,7 +56,7 @@ class HandleInertiaRequests extends Middleware
             'currency' => $currency,
             'currencies' => config('app.currencies'),
             'currency_code' => $code,
-            'shopping_session' => auth()->user() ? auth()->user()->shoppingSession : null
+            'shopping_session' => auth()->user() ? auth()->user()->shoppingSession : ShoppingSession::where('ip',$request->ip())->with(['cartItems.product'])->first()
         ]);
     }
 }

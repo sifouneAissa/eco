@@ -190,7 +190,7 @@ const logout = () => {
                 </form>
               </div>
             </li>
-            <li v-if="$page.props.auth" class="nav-item dropdown dropdown-cart">
+            <li  class="nav-item dropdown dropdown-cart">
               <Cart />
             </li>
 

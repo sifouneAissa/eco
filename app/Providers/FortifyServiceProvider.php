@@ -6,6 +6,7 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Models\ShoppingSession;
 use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -65,6 +66,13 @@ class FortifyServiceProvider extends ServiceProvider
 
             if ($user &&
                 Hash::check($request->password, $user->password)) {
+
+                // after login check if the user has a shopping list
+                if(!$user->shoppingSession && $current_shopping = ShoppingSession::where('ip',$request->ip())->first()) {
+                    $current_shopping->user_id = $user->id;
+                    $current_shopping->save();
+                }
+
                 return $user;
             }
         });
