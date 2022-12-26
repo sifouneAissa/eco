@@ -93,7 +93,7 @@
                         <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
                         <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
                         <a href="#">
-                            <img src="img/list/8.png" class="img-fluid item-img">
+                            <img :src="product.fimage" class="img-fluid item-img" style="width: 100%;height: 10vw;">
                         </a>
                     </div>
                     <div class="p-3 position-relative">
@@ -101,7 +101,7 @@
                             <h6 class="mb-1"><a href="#" class="text-black">{{product.name}}
                             </a>
                             </h6>
-                            <p class="text-gray mb-2">Hamburgers • Indian</p>
+                            <p class="text-gray mb-2">{{product.desc}}</p>
                             <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">{{$page.props.currency_code}} {{product.cprice}} </a> <span class="badge badge-primary">NEW</span> <span class="float-right">
                                              <span class="count-number">
                                              <button @click="incrQP(product,- 1)" class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>

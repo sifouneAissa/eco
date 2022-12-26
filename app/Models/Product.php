@@ -27,10 +27,17 @@ class Product extends Model implements HasMedia
     protected $appends = [
         'cprice',
         'quantity',
-        'modal_ids'
+        'modal_ids',
+        'fimage'
     ];
 
+    public function getFimageAttribute(){
+        $image = env('APP_URL').'/img/checkout.png';
 
+        if($media = $this->media->first())
+            $image = $media->getFullUrl();
+            return $image;
+    }
     public function category(){
         return $this->belongsTo(ProductCategory::class,'product_category_id');
     }
