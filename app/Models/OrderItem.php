@@ -13,4 +13,10 @@ class OrderItem extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function inventoryOrderItems(){
+        return $this->belongsToMany(ProductInventory::class,'inventory_id');
+    }
+
+
+
 }

@@ -45,6 +45,10 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(ProductInventory::class,'product_inventory_id');
     }
 
+    public function isA(){
+        return $this->inventory->isAvailable($this->id);
+    }
+
 
 
 

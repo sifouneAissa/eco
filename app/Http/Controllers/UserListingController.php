@@ -12,14 +12,17 @@ class UserListingController extends Controller
 
     public function index(){
 
-        $products  = Product::get();
+        $products  = Product::get()->filter(function ($product){
+                $isA = $product->isA();
+                $product['isA'] = $isA;
+
+                return $isA['isA'];
+        });
+
 
         return Inertia::render('Listing',[
             'products' => $products
         ]);
     }
-//
-//    public function products(){
-//        $products  = Product::get();
-//    }
+
 }

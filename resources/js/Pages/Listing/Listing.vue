@@ -89,9 +89,10 @@
             <div v-for="(product,index) in $page.props.products" :key="product.id" class="col-md-4 col-sm-6 mb-4">
                 <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                     <div class="list-card-image">
-                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+<!--                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>-->
+<!--                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>-->
+                        <div v-if="product.isA.remain === 1" class="member-plan position-absolute"><span class="badge badge-danger">One Product</span></div>
+                        <div v-else-if="product.isA.remain <= 5" class="member-plan position-absolute"><span class="badge badge-warning">The quantity is limited</span></div>
                         <a href="#">
                             <img :src="product.fimage" class="img-fluid item-img" style="width: 100%;height: 10vw;">
                         </a>
@@ -148,6 +149,8 @@
         methods : {
             incrQP(model,by){
                 model.quantity = model.quantity + by;
+                if(model.quantity > model.isA.remain) model.quantity = model.isA.remain;
+
                 if(!model.quantity) model.quantity = 1;
             },
             submit : function (model) {
