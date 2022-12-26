@@ -2,87 +2,7 @@
 <template>
     <div class="col-md-9">
         <div class="owl-carousel owl-carousel-category owl-theme list-cate-page mb-4">
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/1.png" alt="">
-                        <h6>American</h6>
-                        <p>156</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/2.png" alt="">
-                        <h6>Pizza</h6>
-                        <p>120</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/3.png" alt="">
-                        <h6>Healthy</h6>
-                        <p>130</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/4.png" alt="">
-                        <h6>Vegetarian</h6>
-                        <p>120</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/5.png" alt="">
-                        <h6>Chinese</h6>
-                        <p>111</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/6.png" alt="">
-                        <h6>Hamburgers</h6>
-                        <p>958</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/7.png" alt="">
-                        <h6>Dessert</h6>
-                        <p>56</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/8.png" alt="">
-                        <h6>Chicken</h6>
-                        <p>40</p>
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="osahan-category-item">
-                    <a href="#">
-                        <img class="img-fluid" src="img/list/9.png" alt="">
-                        <h6>Indian</h6>
-                        <p>156</p>
-                    </a>
-                </div>
-            </div>
+            <Categories/>
         </div>
 
         <div class="row">
@@ -129,9 +49,11 @@
 <script>
     import { Inertia, } from '@inertiajs/inertia';
     import {useForm} from "@inertiajs/inertia-vue3";
+    import Categories from "@/Pages/Listing/Categories.vue";
 
     export default {
         name: "listing.vue",
+        components: {Categories},
         date(){
             return {
                 quantity: []

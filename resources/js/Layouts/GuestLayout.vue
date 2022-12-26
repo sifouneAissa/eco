@@ -9,6 +9,8 @@ import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import Cart from "@/Pages/GuestLayout/Cart.vue";
+import { usePage } from '@inertiajs/inertia-vue3';
+
 
 defineProps({
   title: String,
