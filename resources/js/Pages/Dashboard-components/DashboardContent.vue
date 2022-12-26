@@ -1,7 +1,7 @@
 <script setup>
 
     import { useForm } from '@inertiajs/inertia-vue3';
-
+    import Categories from "@/Pages/Listing/Categories.vue";
     const form  = useForm({
         query : {
             category : '',
@@ -61,15 +61,7 @@
                     </div>
                     <h6 class="mt-4 text-shadow font-weight-normal">Categories</h6>
                     <div class="owl-carousel owl-carousel-category owl-theme">
-                        <div v-for="category in $page.props.categories" class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" :src="category.fimage" alt="">
-                                    <h6>{{category.name}}</h6>
-                                    <p>{{category.count}}</p>
-                                </a>
-                            </div>
-                        </div>
+                        <Categories />
 <!--                        <div class="item">-->
 <!--                            <div class="osahan-category-item">-->
 <!--                                <a href="#">-->

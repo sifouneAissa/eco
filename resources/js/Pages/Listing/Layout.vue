@@ -1,10 +1,38 @@
-<script setup>
+<script >
 
     import PListing from '@/Pages/Listing/Listing.vue'
+    import { Inertia } from '@inertiajs/inertia';
+    import {useForm} from '@inertiajs/inertia-vue3';
 
-    defineProps({
-        title: String,
-    });
+    export default {
+        props : ['title'],
+        components : {
+            PListing
+        },
+        data(){
+            return {
+                // values : []
+            }
+        },
+        mounted() {
+        },
+        watch : {
+        },
+        methods : {
+            setCategory: function (cat){
+                return !!(this.$page.props.query && (cat.name === this.$page.props.query.category || cat.name === this.$page.props.query));
+            },
+            submit : function (category,event){
+
+                let app = this;
+                useForm({
+                    query : event.target.checked ? category.name : ''
+                }).get(route('listing'));
+
+
+            }
+        }
+    }
 </script>
 
 <template>
@@ -52,7 +80,7 @@
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                         <div class="filters-card-body card-shop-filters">
                                             <div v-for="category in $page.props.categories" :key="category.id" class="custom-control custom-checkbox">
-                                                <input :checked="!!($page.props.query && (category.name === $page.props.query.category))" type="checkbox" class="custom-control-input" id="cb1">
+                                                <input @click="submit(category,$event)" :checked="setCategory(category)"  type="checkbox" class="custom-control-input" id="cb1">
                                                 <label class="custom-control-label" for="cb1">{{category.name}} <small class="text-black-50">({{category.count}})</small>
                                                 </label>
                                             </div>

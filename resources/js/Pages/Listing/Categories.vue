@@ -1,7 +1,7 @@
 <template>
-    <div v-for="category in $page.props.categories" class="item">
+    <div @click="submit(category.name)" v-for="category in $page.props.categories" class="item">
         <div class="osahan-category-item">
-            <a href="#">
+            <a  href="#">
                 <img class="img-fluid" :src="category.fimage" alt="">
                 <h6>{{category.name}}</h6>
                 <p>{{category.count}}</p>
@@ -10,9 +10,14 @@
     </div>
 </template>
 
-<script>
-    export default {
-        name: "Categories"
+<script setup>
+    import  {Inertia} from '@inertiajs/inertia';
+
+    const submit = (name) => {
+
+        Inertia.get(route("listing",{
+            query : name
+        }));
     }
 </script>
 
