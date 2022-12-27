@@ -75,9 +75,11 @@ class UpdateOrder extends Notification
      */
     public function toBroadcast($notifiable)
     {
+        $n = $notifiable->notifications()->latest()->first();
+        $n['date'] = translateDate($n->created_at);
 
         return new BroadcastMessage([
-            'notification' => $notifiable->notifications()->latest()->first()
+            'notification' => $n
         ]);
     }
 }

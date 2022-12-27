@@ -45,14 +45,20 @@ class HandleInertiaRequests extends Middleware
         $currency = Session::get('currency') ? Session::get('currency') : config('app.currency');
 
         $code = Currency::where("code",$currency)->first()->currency_code;
+        $notifications = auth()->user()?->notifications()->orderBy('id','desc')->get();
 
+        if($notifications)
+            $notifications = $notifications->map(function ($item){
+                $item['date'] = translateDate($item->created_at);
+                return $item;
+            });
         return array_merge(parent::share($request), [
 
             //
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
             'auth' => auth()->user(),
-            'auth.notifications' => auth()->user()?->notifications,
+            'auth.notifications' => $notifications,
             'isRtl' => isRtl($cLocale),
             'currency' => $currency,
             'currencies' => config('app.currencies'),
