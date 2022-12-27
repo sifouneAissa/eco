@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class UserOrderController extends Controller
 {
-    //
 
 
     public function addProduct(Request $request){
