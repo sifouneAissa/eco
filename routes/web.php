@@ -78,5 +78,6 @@ Route::get("/faq",function (){
 });
 Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
 
+Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');
 
 require __DIR__. "/admin.php";

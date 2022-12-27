@@ -18,6 +18,7 @@ class TrackOrderController extends Controller
         }
 
         if(!$order) abort(404);
+        
 
         return Inertia::render('TrackOrder',[
             'order' => $order

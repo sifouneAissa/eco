@@ -52,6 +52,7 @@ class HandleInertiaRequests extends Middleware
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
             'auth' => auth()->user(),
+            'auth.notifications' => auth()->user()?->notifications,
             'isRtl' => isRtl($cLocale),
             'currency' => $currency,
             'currencies' => config('app.currencies'),

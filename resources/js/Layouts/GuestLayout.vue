@@ -9,6 +9,7 @@ import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import Cart from "@/Pages/GuestLayout/Cart.vue";
+import Notification from "@/Pages/GuestLayout/Notification.vue";
 import { usePage } from '@inertiajs/inertia-vue3';
 
 
@@ -194,6 +195,9 @@ const logout = () => {
             </li>
             <li  class="nav-item dropdown dropdown-cart">
               <Cart />
+            </li>
+            <li v-if="$page.props.auth"  class="nav-item dropdown dropdown-cart">
+              <Notification />
             </li>
 
             <li class="nav-item dropdown">
