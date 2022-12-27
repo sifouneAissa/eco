@@ -11,6 +11,26 @@ if (!function_exists('getLocales')) {
     }
 }
 
+if (!function_exists('getSearchable')) {
+
+    /**
+     * get all columns and associate with their values (used in custom searchableAs scout package)
+     * @param $model
+     * @param array $without
+     * @param array $with
+     * @return array
+     */
+    function getSearchable($model, $without = [], $with = [])
+    {
+        $fillable = array_values(array_merge(array_filter($model->getFillable(), fn($item) => !in_array($item, $without)), $with));
+        $keys = [];
+        foreach ($fillable as $item)
+            $keys = array_merge([$item => $model[$item]], $keys);
+        return $keys;
+    }
+}
+
+
 if (!function_exists('filterRequest')) {
 
 
@@ -26,7 +46,7 @@ if (!function_exists('filterRequest')) {
 
 if (!function_exists('mediaPermissions')) {
 
-    function mediaPermissions($modelBuilder,$provider=null)
+    function mediaPermissions($modelBuilder, $provider = null)
     {
         $actions = [
             'edit',
@@ -35,11 +55,11 @@ if (!function_exists('mediaPermissions')) {
             'view'
         ];
 
-        if(!$provider)
-        $provider = app($modelBuilder)->mediaProvider();
+        if (!$provider)
+            $provider = app($modelBuilder)->mediaProvider();
 
-        foreach($actions as $action){
-            $to_return[] = $action." ".$provider." media";
+        foreach ($actions as $action) {
+            $to_return[] = $action . " " . $provider . " media";
         }
 
         return $to_return;
@@ -69,4 +89,77 @@ if(!function_exists('translateDate')) {
         return $date;
     }
 }
+
+if (!function_exists('getValues')) {
+
+        function getValues($value)
+        {
+            $arr = [' - '];
+            $r = $value;
+            foreach ($arr as $a)
+                if (str_contains($value, $a))
+                    $r = explode($a, $value);
+
+            return $r;
+        }
+    }
+
+
+if (!function_exists('searchInModel')) {
+        /**
+         * search in queries using scout package
+         * @param $request
+         * @param $with_pagination
+         * @return mixed
+         */
+        function searchInModel($request, $builder = 'App\Models\Product',$filterCallback=null)
+        {
+
+
+                $params = is_array($request) ? $request : $request->only(['query']); // <-- Change the query for testing.
+//                dd($params);
+                $query = isset($params['query']) ? $params['query'] : null;
+
+                $res = null;
+
+                $data = $builder::get();
+
+                if(is_array($query) && $query){
+
+                    $ids = [];
+                    foreach($query as $q) {
+
+                        $res = $builder::search($q);
+                        if($ids) $res->whereIn('id', $ids);
+
+                        $ids = array_merge($ids,$res->get()->pluck("id")->toArray());
+                    }
+
+                    $ids = array_unique($ids);
+
+                    $data = $res->whereIn('id',$ids)->get();
+                }
+                else if($query)
+                $data =  $builder::search($query)->get();
+
+
+
+                return $data->filter($filterCallback);
+
+        }
+
+    }
+
+
+
+
+if (!function_exists('makePaginator')) {
+
+    function makePaginator($values,$perpage,$count,$options=[])
+    {
+        return  new \Illuminate\Pagination\LengthAwarePaginator($values,$count,$perpage,null,$options);
+    }
+}
+
+
 

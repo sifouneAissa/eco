@@ -2,13 +2,13 @@
     <div>
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-shopping-basket"></i> Cart
-            <span class="badge badge-success">5</span>
+            <span class="badge badge-success">{{ $page.props.shopping_session ? $page.props.shopping_session.cart_items.length : 0}}</span>
         </a>
         <div v-if="$page.props.shopping_session" class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
             <div class="dropdown-cart-top-header p-4">
                 <img class="img-fluid mr-3" alt="osahan" src="img/cart.jpg">
                 <h6 class="mb-0">{{$page.props.shopping_session.names}}</h6>
-                <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>
+<!--                <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>-->
                 <small><a class="text-primary font-weight-bold" href="#">View Full Menu</a></small>
             </div>
             <div class="dropdown-cart-top-body border-top p-4">

@@ -1,3 +1,29 @@
+<script setup>
+
+    import { useForm } from '@inertiajs/inertia-vue3';
+    import Categories from "@/Pages/Listing/Categories.vue";
+    const form  = useForm({
+        query : {
+            category : '',
+            search : ''
+        }
+    })
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        let s = $('select');
+        s.select2({
+            placeholder : 'Select an category',
+        });
+
+        s.on('select2:select', function (e) {
+            form.query.category = e.params.data.text;
+        });
+    });
+    const submit = () => {
+        form.get(route("listing"));
+    }
+</script>
+
 <template>
 <div>
 
@@ -16,110 +42,44 @@
                                 <div class="col-lg-3 col-md-3 col-sm-12 form-group">
                                     <div class="location-dropdown">
                                         <i class="icofont-location-arrow"></i>
-                                        <select class="custom-select form-control-lg">
-                                            <option> Quick Searches </option>
-                                            <option> Breakfast </option>
-                                            <option> Lunch </option>
-                                            <option> Dinner </option>
-                                            <option> Cafés </option>
-                                            <option> Delivery </option>
+                                        <select v-model="form.query.category" v-for="category in $page.props.categories" :key="category.id" class="custom-select form-control-lg">
+                                            <option disabled> Quick Searches </option>
+                                            <option :value="category.name"> {{category.name}} </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-12 form-group">
-                                    <input type="text" placeholder="Enter your delivery location" class="form-control form-control-lg">
-                                    <a class="locate-me" href="#"><i class="icofont-ui-pointer"></i> Locate Me</a>
+                                    <input v-model="form.query.search" type="text" placeholder="Search by name" class="form-control form-control-lg">
+<!--                                    <a class="locate-me" href="#"><i class="icofont-ui-pointer"></i> Locate Me</a>-->
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 form-group">
-                                    <a href="listing.html" class="btn btn-primary btn-block btn-lg btn-gradient">Search</a>
+                                    <a @click="submit" class="btn btn-primary btn-block btn-lg btn-gradient">Search</a>
                                     <!--<button type="submit" class="btn btn-primary btn-block btn-lg btn-gradient">Search</button>-->
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <h6 class="mt-4 text-shadow font-weight-normal">E.g. Beverages, Pizzas, Chinese, Bakery, Indian...</h6>
+                    <h6 class="mt-4 text-shadow font-weight-normal">Categories</h6>
                     <div class="owl-carousel owl-carousel-category owl-theme">
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/1.png" alt="">
-                                    <h6>American</h6>
-                                    <p>156</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/2.png" alt="">
-                                    <h6>Pizza</h6>
-                                    <p>120</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/3.png" alt="">
-                                    <h6>Healthy</h6>
-                                    <p>130</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/4.png" alt="">
-                                    <h6>Vegetarian</h6>
-                                    <p>120</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/5.png" alt="">
-                                    <h6>Chinese</h6>
-                                    <p>111</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/6.png" alt="">
-                                    <h6>Hamburgers</h6>
-                                    <p>958</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/7.png" alt="">
-                                    <h6>Dessert</h6>
-                                    <p>56</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/8.png" alt="">
-                                    <h6>Chicken</h6>
-                                    <p>40</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="osahan-category-item">
-                                <a href="#">
-                                    <img class="img-fluid" src="img/list/9.png" alt="">
-                                    <h6>Indian</h6>
-                                    <p>156</p>
-                                </a>
-                            </div>
-                        </div>
+                        <Categories />
+<!--                        <div class="item">-->
+<!--                            <div class="osahan-category-item">-->
+<!--                                <a href="#">-->
+<!--                                    <img class="img-fluid" src="img/list/1.png" alt="">-->
+<!--                                    <h6>American</h6>-->
+<!--                                    <p>156</p>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="item">-->
+<!--                            <div class="osahan-category-item">-->
+<!--                                <a href="#">-->
+<!--                                    <img class="img-fluid" src="img/list/2.png" alt="">-->
+<!--                                    <h6>Pizza</h6>-->
+<!--                                    <p>120</p>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -140,32 +100,32 @@
             </div>
         </div>
     </section>
-    <section class="section pt-5 pb-5 bg-white homepage-add-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-6">
-                    <div class="products-box">
-                        <a href="listing.html"><img alt="" src="img/pro1.jpg" class="img-fluid rounded"></a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="products-box">
-                        <a href="listing.html"><img alt="" src="img/pro2.jpg" class="img-fluid rounded"></a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="products-box">
-                        <a href="listing.html"><img alt="" src="img/pro3.jpg" class="img-fluid rounded"></a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="products-box">
-                        <a href="listing.html"><img alt="" src="img/pro4.jpg" class="img-fluid rounded"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--    <section class="section pt-5 pb-5 bg-white homepage-add-section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-3 col-6">-->
+<!--                    <div class="products-box">-->
+<!--                        <a href="listing.html"><img alt="" src="img/pro1.jpg" class="img-fluid rounded"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-3 col-6">-->
+<!--                    <div class="products-box">-->
+<!--                        <a href="listing.html"><img alt="" src="img/pro2.jpg" class="img-fluid rounded"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-3 col-6">-->
+<!--                    <div class="products-box">-->
+<!--                        <a href="listing.html"><img alt="" src="img/pro3.jpg" class="img-fluid rounded"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-3 col-6">-->
+<!--                    <div class="products-box">-->
+<!--                        <a href="listing.html"><img alt="" src="img/pro4.jpg" class="img-fluid rounded"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
     <section class="section pt-5 pb-5 products-section">
         <div class="container">
             <div class="section-header text-center">
@@ -306,7 +266,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <a href="register.html" class="btn btn-success btn-lg">
+                    <a :href="route('register')" class="btn btn-success btn-lg">
                         Create an Account <i class="fa fa-chevron-circle-right"></i>
                     </a>
                 </div>

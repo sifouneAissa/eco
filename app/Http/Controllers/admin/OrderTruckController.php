@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderDetail;
 use App\Models\OrderTrack;
+use App\Notifications\UpdateOrder;
 use Illuminate\Http\Request;
 
 class OrderTruckController extends Controller
@@ -16,7 +18,7 @@ class OrderTruckController extends Controller
     }
 
     public function store(Request $request){
-
+        $el = null;
         if($request->input('status') === "instore")
         OrderTrack::whereIn('status',[
            'onway','delivered','instore'
@@ -32,7 +34,11 @@ class OrderTruckController extends Controller
 
         $inputs = filterRequest($request->all(),OrderTrack::class);
 
-        OrderTrack::create($inputs);
+        $el = OrderTrack::create($inputs);
+        $user = OrderDetail::find($request->input('order_id'))->user;
+
+        // lunch the event
+        event(new \App\Events\UpdateOrder($user,$el));
 
     }
 }

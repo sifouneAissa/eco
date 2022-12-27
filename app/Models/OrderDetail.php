@@ -46,6 +46,11 @@ class OrderDetail extends Model
         return $this->belongsTo(UserAddress::class,'address_id');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+
     public function getAddressAttribute(){
         return $this->userAddress;
     }
@@ -54,7 +59,7 @@ class OrderDetail extends Model
         $image = '/img/checkout.png';
 
         try{
-            $image = $this->products->first()->media()->first()->getFullUrl();
+            $image = $this->products->first()->media->first()->getFullUrl();
         }catch(\Exception $e){}
 
         return $image;

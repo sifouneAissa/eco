@@ -15,14 +15,7 @@ use Inertia\Inertia;
 |
 */
 
-    Route::get('/', function () {
-        return Inertia::render('Welcome', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
-        ]);
-    })->name('welcome');
+    Route::get('/', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcome');
 
 
 
@@ -44,12 +37,15 @@ Route::middleware([
         'index','store','update','destroy'
     ]);
 
-    // product
-    Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
 
     Route::get('redirects', [\App\Http\Controllers\LoginRedirectionController::class,'redirect'])->name('redirects');
 
 });
+
+// product
+Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
+Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class,'show'])->name('product.show');
+
 
 Route::get('/listing', [\App\Http\Controllers\UserListingController::class,'index'])->name('listing');
 
@@ -83,5 +79,6 @@ Route::get("/faq",function (){
 });
 Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
 
+Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');
 
 require __DIR__. "/admin.php";

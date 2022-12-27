@@ -12,7 +12,9 @@ class ShoppingSession extends Model
 
     protected  $fillable = [
         'user_id',
-        'total'
+        'total',
+        'type',
+        'ip'
     ];
 
     protected $casts = [

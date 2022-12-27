@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -37,15 +39,23 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+
+        $product = Product::query()->findOrFail($id)->load(['category']);
+        if(!$product->isA()['isA'])  abort(404);
+
+        $product['media'] = $product->media->map(function ($item){
+            $item['url'] = $item->getFullUrl();
+            return $item;
+        });
+
+        $product['isA'] = $product->isA();
+        $product['quantity'] = 1;
+
+        return Inertia::render('ProductDetail',[
+            'product' => $product
+        ]);
     }
 
     /**

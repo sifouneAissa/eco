@@ -6,6 +6,7 @@ use App\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Laravel\Scout\Searchable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -14,6 +15,7 @@ class Product extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
     use MediaTrait;
+    use Searchable;
 
 
     protected $fillable = [
@@ -27,15 +29,26 @@ class Product extends Model implements HasMedia
     protected $appends = [
         'cprice',
         'quantity',
-        'modal_ids'
+        'modal_ids',
+        'fimage'
     ];
 
+    public function getFimageAttribute(){
+        $image = env('APP_URL').'/img/checkout.png';
 
+        if($media = $this->media->first())
+            $image = $media->getFullUrl();
+            return $image;
+    }
     public function category(){
         return $this->belongsTo(ProductCategory::class,'product_category_id');
     }
     public function inventory(){
         return $this->belongsTo(ProductInventory::class,'product_inventory_id');
+    }
+
+    public function isA(){
+        return $this->inventory->isAvailable($this->id);
     }
 
 
@@ -67,6 +80,27 @@ class Product extends Model implements HasMedia
             'show' => 'show-product'
         ];
     }
+
+
+    // search in model
+    // searchable
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = getSearchable($this,[
+        ],[
+            'created_at'
+        ]);
+
+        $array['category'] = $this->category->name;
+        return $array;
+    }
+
 
 
 }

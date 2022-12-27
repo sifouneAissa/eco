@@ -15,4 +15,8 @@ class OrderTrack extends Model
       'status',
       'date'
     ];
+
+    public function order(){
+        return $this->belongsTo(OrderDetail::class,'order_id');
+    }
 }
