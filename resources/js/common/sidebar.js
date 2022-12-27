@@ -27,13 +27,27 @@ const sidebar = [
         icon : 'feather-user'
     },
     {
-        name : 'Products',
-        route : 'admin.product.index',
+        name : "Products",
         permission : 'view products',
+        icon : 'feather-products',
         icon : 'feather-box',
-        urls : [
-            '/media/product'
-        ],
+        children : [
+            {
+                name : 'Products',
+                route : 'admin.product.index',
+                permission : 'view products',
+                icon : 'feather-box',
+                urls : [
+                    '/media/product'
+                ],
+            },
+            {
+                name : 'Categories',
+                route : 'admin.product.category.index',
+                permission : 'view product_categories',
+                icon : 'feather-box',
+            }
+        ]
     },
     {
         name : 'Blogs',
@@ -59,6 +73,12 @@ const sidebar = [
                 name : "Permissions",
                 route : 'admin.permission.index',
                 permission : 'view permissions',
+                icon : 'feather-sliders'
+            },
+            {
+                name : "Settings",
+                route : 'admin.setting.index',
+                permission : 'view settings',
                 icon : 'feather-sliders'
             }
         ]
