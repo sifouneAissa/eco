@@ -41,7 +41,10 @@ class ProductController extends Controller
 
     public function show($id)
     {
+
         $product = Product::query()->findOrFail($id)->load(['category']);
+        if(!$product->isA()['isA'])  abort(404);
+
         $product['media'] = $product->media->map(function ($item){
             $item['url'] = $item->getFullUrl();
             return $item;
