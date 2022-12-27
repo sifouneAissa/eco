@@ -14,13 +14,15 @@
                             </p>
                         </div>
                     </div>
-<!--                    <div class="col-md-4">-->
-<!--                        <div class="restaurant-detailed-header-right text-right">-->
-<!--                            <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> 25–35 min-->
-<!--                            </button>-->
-<!--                            <h6 class="text-white mb-0 restaurant-detailed-ratings"><span class="generator-bg rounded text-white"><i class="icofont-star"></i> 3.1</span> 23 Ratings  <i class="ml-3 icofont-speech-comments"></i> 91 reviews</h6>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="col-md-4">
+                        <div class="restaurant-detailed-header-right text-right">
+                            <h6 class="text-white mb-0 restaurant-detailed-ratings">
+                                <div v-if="$page.props.product.isA.remain === 0" class=""><span class="badge badge-dark">Not Available</span></div>
+                                <div v-if="$page.props.product.isA.remain === 1" class=""><span class="badge badge-danger">One Product</span></div>
+                                <div v-else-if="$page.props.product.isA.isA && $page.props.product.isA.remain <= 5" class=""><span class="badge badge-warning">The quantity is limited</span></div>
+                            </h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

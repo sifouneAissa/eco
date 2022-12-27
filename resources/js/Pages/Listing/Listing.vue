@@ -23,7 +23,9 @@
                             </a>
                             </h6>
                             <p class="text-gray mb-2">{{product.desc}}</p>
-                            <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">{{$page.props.currency_code}} {{product.cprice}} </a> <span class="badge badge-primary">NEW</span> <span class="float-right">
+                            <p class="text-gray time mb-0">
+                                                <a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">{{$page.props.currency_code}} {{product.cprice}} </a> <span class="badge badge-primary">NEW</span>
+                                            <span class="float-right">
                                              <span class="count-number">
                                              <button @click="incrQP(product,- 1)" class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
                                              <input v-model="product.quantity" class="count-number-input" type="text"  readonly="">

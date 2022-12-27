@@ -47,6 +47,9 @@ class ProductController extends Controller
             return $item;
         });
 
+        $product['isA'] = $product->isA();
+        $product['quantity'] = 1;
+
         return Inertia::render('ProductDetail',[
             'product' => $product
         ]);
