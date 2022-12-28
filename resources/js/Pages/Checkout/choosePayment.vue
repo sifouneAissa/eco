@@ -24,32 +24,42 @@
                                        <i class="icofont-visa-alt"></i> <i class="icofont-mastercard-alt"></i> <i class="icofont-american-express-alt"></i> <i class="icofont-payoneer-alt"></i> <i class="icofont-apple-pay-alt"></i> <i class="icofont-bank-transfer-alt"></i> <i class="icofont-discover-alt"></i> <i class="icofont-jcb-alt"></i>
                                        </span>
                         </p>
-                        <form @submit.prevent="SelectPaymentMethod('credit')">
+                        <form method="post" class="card-form">
                             <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="inputPassword4">Card number</label>
-                                    <div class="input-group">
-                                        <input required v-model="credit.card_number" type="number" class="form-control" placeholder="Card number">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="icofont-card"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-8">
-                                    <label>Valid through(MM/YY)
-                                    </label>
-                                    <input required v-model="credit.date" type="number" class="form-control" placeholder="Enter Valid through(MM/YY)">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label>CVV
-                                    </label>
-                                    <input required v-model="credit.cvv" type="number" class="form-control" placeholder="Enter CVV Number">
-                                </div>
+<!--                                <input type="hidden" name="_token" :value="csrf">-->
+<!--                                <input type="hidden" v-model="credit.paymentMethod"  name="payment_method" class="payment-method">-->
                                 <div class="form-group col-md-12">
                                     <label>Name on card
                                     </label>
-                                    <input required v-model="credit.name" type="text" class="form-control" placeholder="Enter Card number">
+                                    <input name="card_holder_name" required v-model="credit.name" type="text" class="form-control" placeholder="Enter Card name">
                                 </div>
+
+                                <div class="form-group col-md-12">
+                                    <div id="card-element"></div>
+                                </div>
+
+                                <div id="card-errors" role="alert"></div>
+
+<!--                                <div class="form-group col-md-12">-->
+<!--                                    <label for="inputPassword4">Card number</label>-->
+<!--                                    <div class="input-group">-->
+<!--                                        <input required v-model="credit.card_number" type="number" class="form-control" placeholder="Card number">-->
+<!--                                        <div class="input-group-append">-->
+<!--                                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="icofont-card"></i></button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="form-group col-md-8">-->
+<!--                                    <label>Valid through(MM/YY)-->
+<!--                                    </label>-->
+<!--                                    <input required v-model="credit.date" type="number" class="form-control" placeholder="Enter Valid through(MM/YY)">-->
+<!--                                </div>-->
+<!--                                <div class="form-group col-md-4">-->
+<!--                                    <label>CVV-->
+<!--                                    </label>-->
+<!--                                    <input required v-model="credit.cvv" type="number" class="form-control" placeholder="Enter CVV Number">-->
+<!--                                </div>-->
+
                                 <div class="form-group col-md-12">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
@@ -57,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12 mb-0">
-                                    <button type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                                    <button type="submit" class="btn btn-success btn-block btn-lg pay">PAY {{props.currency_code}} {{model.citotal}}
                                         <i class="icofont-long-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -136,7 +146,7 @@
 <!--                    </div>-->
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <h6 class="mb-3 mt-0 mb-3">Netbanking</h6>
-                        <form @submit.prevent="SelectPaymentMethod('netbanking')">
+                        <form >
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-outline-primary active">
                                     <input type="radio" name="options" id="option1" autocomplete="off" checked> HDFC <i class="icofont-check-circled"></i>
@@ -180,12 +190,82 @@
                 </div>
             </div>
         </div>
+<!--        <form method="POST"  class="card-form mt-3 mb-3">-->
+<!--            <input type="hidden" name="_token" :value="csrf">-->
+<!--            <input type="hidden" name="payment_method" class="payment-method">-->
+<!--            <input class="StripeElement mb-3" name="card_holder_name" placeholder="Card holder name" required>-->
+<!--            <div class="col-lg-4 col-md-6">-->
+<!--                <div id="card-element"></div>-->
+<!--            </div>-->
+<!--            <div id="card-errors" role="alert"></div>-->
+<!--            <div class="form-group mt-3">-->
+<!--                <button type="submit" class="btn btn-primary pay">-->
+<!--                    Purchase-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </form>-->
     </div>
 </template>
 
 
 <script >
+    import 'https://js.stripe.com/v3/'
     export  default  {
+
+        mounted() {
+            let app = this;
+            $( document ).ready(function() {
+                let stripe = Stripe(app.$page.props.STRIPE_KEY)
+                let elements = stripe.elements()
+                let style = {
+                    base: {
+                        color: '#32325d',
+                        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                        fontSmoothing: 'antialiased',
+                        fontSize: '16px',
+                        '::placeholder': {
+                            color: '#aab7c4'
+                        }
+                    },
+                    invalid: {
+                        color: '#fa755a',
+                        iconColor: '#fa755a'
+                    }
+                }
+                let card = elements.create('card', {style: style})
+                card.mount('#card-element')
+                let paymentMethod = null
+                $('.card-form').on('submit', function (e) {
+                    $('button.pay').attr('disabled', true)
+                    if (paymentMethod) {
+                        return true
+                    }
+                    stripe.confirmCardSetup(
+                        app.$page.props.intent.client_secret,
+                        {
+                            payment_method: {
+                                card: card,
+                                billing_details: {name: $('.card_holder_name').val()}
+                            }
+                        }
+                    ).then(function (result) {
+                        if (result.error) {
+                            $('#card-errors').text(result.error.message)
+                            $('button.pay').removeAttr('disabled')
+                        } else {
+                            paymentMethod = result.setupIntent.payment_method
+                            $('.payment-method').val(paymentMethod)
+                            // $('.card-form').submit()
+                            app.credit.paymentMethod = paymentMethod
+                            $('button.pay').removeAttr('disabled')
+                            app.SelectPaymentMethod('credit');
+
+                        }
+                    })
+                    return false
+                })
+            });
+        },
         computed : {
             model : function () {
                 return this.props.shopping_session;
@@ -198,11 +278,14 @@
         ,
         data (){
             return {
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 credit : {
                     card_number : null,
                     date : null,
                     cvv : null,
-                    name : null
+                    name : null,
+                    paymentMethod : null,
+                    _token : this.csrf
                 },
                 netbank : {
                     bank : null
@@ -226,3 +309,26 @@
         }
     }
 </script>
+
+<style scoped>
+    .StripeElement {
+        box-sizing: border-box;
+        height: 40px;
+        padding: 10px 12px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: white;
+        box-shadow: 0 1px 3px 0 #e6ebf1;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+    }
+    .StripeElement--focus {
+        box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+    .StripeElement--invalid {
+        border-color: #fa755a;
+    }
+    .StripeElement--webkit-autofill {
+        background-color: #fefde5 !important;
+    }
+</style>

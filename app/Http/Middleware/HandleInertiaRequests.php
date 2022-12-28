@@ -64,7 +64,9 @@ class HandleInertiaRequests extends Middleware
             'currency' => $currency,
             'currencies' => config('app.currencies'),
             'currency_code' => $code,
-            'shopping_session' => $shopping
+            'shopping_session' => $shopping,
+            'STRIPE_KEY' => env('STRIPE_KEY'),
+            'intent' => auth()->user()?->createSetupIntent()
         ]);
     }
 }
