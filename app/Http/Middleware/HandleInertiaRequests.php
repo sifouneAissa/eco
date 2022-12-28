@@ -56,8 +56,12 @@ class HandleInertiaRequests extends Middleware
             });
 
         $client_secret = null;
-        if($user = auth()->user()) $client_secret = $user?->createSetupIntent()->client_secret;
-        else $client_secret = app(User::class)?->createSetupIntent()->client_secret;
+
+        try {
+            if($user = auth()->user()) $client_secret = $user?->createSetupIntent()->client_secret;
+            else $client_secret = app(User::class)?->createSetupIntent()->client_secret;
+        }catch (\Exception $exception){}
+
 
         return array_merge(parent::share($request), [
             //
