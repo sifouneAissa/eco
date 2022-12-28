@@ -59,7 +59,7 @@ class ShoppingSession extends Model
         $image = '/img/checkout.png';
 
         try{
-            $image = $this->products->first()->media->first()->getFullUrl();
+            $image = $this->products?->first()?->media?->first()?->getFullUrl();
         }catch(\Exception $e){}
 
         return $image;
