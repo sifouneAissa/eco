@@ -29,7 +29,6 @@ const sidebar = [
     {
         name : "Products",
         permission : 'view products',
-        icon : 'feather-products',
         icon : 'feather-box',
         children : [
             {
