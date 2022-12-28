@@ -570,7 +570,7 @@
         </nav>
 
         <!-- Page Content -->
-        <main>
+        <main class="bg-light">
             <slot/>
         </main>
 

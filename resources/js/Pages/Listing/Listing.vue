@@ -64,11 +64,11 @@
         created() {
 
             setInterval(function () {
-                Inertia.reload(route("listing"), {
+                Inertia.reload({
                     only: ['products'],
                     preserveScroll: true,
                 })
-            }, 20000)
+            }, 30000)
         },
         methods : {
             incrQP(model,by){

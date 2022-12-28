@@ -1,4 +1,4 @@
-import './bootstrap';
+// import './bootstrap';
 // import '../css/app.css';
 
 import '../../public/vendor/bootstrap/css/bootstrap.min.css';
@@ -88,9 +88,18 @@ createInertiaApp({
     },
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({
+    // The delay after which the progress bar will
+    // appear during navigation, in milliseconds.
+    delay: 250,
 
-    const { value } =  usePage().valueOf().props;
+    // The color of the progress bar.
+    color: '#29d',
 
-console.log(value)
+    // Whether to include the default NProgress styles.
+    includeCSS: true,
+
+    // Whether the NProgress spinner will be shown.
+    showSpinner: true,
+});
 
