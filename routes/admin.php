@@ -39,6 +39,14 @@ use \Illuminate\Support\Facades\Route;
             ,'destroy'
         ]);
         Route::get('/products',[\App\Http\Controllers\admin\ProductController::class,'datatables'])->name('products.index');
+        Route::resource('/setting',\App\Http\Controllers\admin\SettingController::class)->only([
+            'index'
+            // ,'store'
+            ,'update'
+            // ,'destroy'
+        ]);
+        Route::get('/settings',[\App\Http\Controllers\admin\SettingController::class,'datatables'])->name('settings.index');
+        // Route::patch('/setting/update/{id}',[\App\Http\Controllers\admin\SettingController::class,'update'])->name('setting.update');
 
         // media
         Route::get('/media/{model}',[\App\Http\Controllers\admin\MediaController::class,'index'])->name('media.index');
