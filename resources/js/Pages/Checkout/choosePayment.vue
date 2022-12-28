@@ -146,7 +146,7 @@
 <!--                    </div>-->
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <h6 class="mb-3 mt-0 mb-3">Netbanking</h6>
-                        <form >
+                        <form @submit.prevent="SelectPaymentMethod('netbanking')">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-outline-primary active">
                                     <input type="radio" name="options" id="option1" autocomplete="off" checked> HDFC <i class="icofont-check-circled"></i>
@@ -183,8 +183,8 @@
                         <p>Please keep exact change handy to help us serve you better</p>
                         <hr>
                         <form>
-                            <a @click="SelectPaymentMethod('payondelivery')" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
-                                <i class="icofont-long-arrow-right"></i></a>
+                            <button @click="SelectPaymentMethod('payondelivery')" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                                <i class="icofont-long-arrow-right"></i></button>
                         </form>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                         return true
                     }
                     stripe.confirmCardSetup(
-                        app.$page.props.intent.client_secret,
+                        app.$page.props.client_secret,
                         {
                             payment_method: {
                                 card: card,

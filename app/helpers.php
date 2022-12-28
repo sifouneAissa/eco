@@ -43,6 +43,25 @@ if (!function_exists('filterRequest')) {
         },ARRAY_FILTER_USE_KEY);
     }
 }
+
+if (!function_exists('priceByDollar')) {
+
+
+    function priceByDollar($price){
+
+        $tExchange = \App\Models\Currency::where('code','dollar')->first()->exchange_rate;
+        $value = 0;
+
+        try {
+            $value= floor($price/$tExchange);
+        } catch (\Exception $e){};
+
+        return $value;
+    }
+}
+
+
+
 if (!function_exists('startTransaction')) {
 
     function startTransaction($callback)

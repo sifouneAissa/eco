@@ -19,6 +19,7 @@ class UserOrderController extends Controller
     public function store(UserOrderRequest $request){
         startTransaction(function () use ($request){
 
+            dd($request->all());
 
 //            $user_id = $request->input('user_id');
 //
@@ -26,29 +27,16 @@ class UserOrderController extends Controller
 //                // create address , account for the user
 //
 //            }
-
+            dd($request->all());
             $shopping = getShoppingSession();
             $cartItems = $shopping->cartItems;
             $inputs = $request->all();
             $inputs['user_id'] = auth()->user()->id;
             $inputs['total'] = $shopping->ptotal;
-
             $user = $request->user();
-            $paymentInfo = $request->input('paymentInfo');
-            $paymentMethod = $paymentInfo['paymentMethod'];
 
-            try {
-                $user->createOrGetStripeCustomer();
-                if(!$user->hasPaymentMethod())
-                    $user->addPaymentMethod($paymentMethod);
-                else
-                    $user->updateDefaultPaymentMethod($paymentMethod);
-
-                $user->charge($shopping->ptotal * 100, $paymentMethod);
-
-            } catch (\Exception $exception) {
-                dd($exception->getMessage());
-            }
+            // if payment method === credit
+            $this->stripeAmount($shopping->ptotal,$request,$user);
 
 //
 //            $shopping = getShoppingSession();
@@ -162,5 +150,29 @@ class UserOrderController extends Controller
             'addresses' => $addresses,
             'products' => $products
         ]);
+    }
+
+
+    private function stripeAmount($amount,$request,$user){
+        $is_credit = $request->input('provider')==='credit';
+
+        if($is_credit) {
+            $paymentInfo = $request->input('paymentInfo');
+            $paymentMethod = $paymentInfo['paymentMethod'];
+
+            try {
+                $user->createOrGetStripeCustomer();
+                if (!$user->hasPaymentMethod())
+                    $user->addPaymentMethod($paymentMethod);
+                else
+                    $user->updateDefaultPaymentMethod($paymentMethod);
+
+                $user->charge(priceByDollar($amount) * 100, $paymentMethod);
+
+            } catch (\Exception $exception) {
+                dd($exception->getMessage());
+            }
+        }
+
     }
 }
