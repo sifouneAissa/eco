@@ -10,6 +10,11 @@ class OrderDetail extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'address_id',
+        'total'
+    ];
 
     protected $appends = [
         'delivered_date',

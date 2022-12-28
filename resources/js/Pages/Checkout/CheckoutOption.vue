@@ -3,6 +3,7 @@
     import choosePayment from '@/Pages/Checkout/choosePayment.vue'
     import ProductCarousel from '@/Pages/Listing/ProductCarousel.vue'
     import CartMenu from '@/Pages/Checkout/CartMenu.vue'
+    import  {useForm} from "@inertiajs/inertia-vue3";
 
     export  default  {
         components : {
@@ -10,6 +11,31 @@
             choosePayment,
             ProductCarousel,
             CartMenu
+        },
+        data () {
+            return {
+                form : useForm({
+                        address_id : null,
+                        user_id : this.$page.props.auth,
+                        provider : null,
+                        paymentInfo : null
+                    }
+                )
+            }
+        },
+        methods : {
+            setSelectedAddress (model){
+                this.form.address_id = model.id;
+            },
+            SelectPaymentMethod (data){
+
+                this.form.provider = data.type;
+                this.form.paymentInfo = data.data;
+
+                this.form.post(route('order.store'),{
+
+                })
+            }
         }
     }
 </script>
@@ -26,9 +52,9 @@
                             </div>
 
                             <div class="pt-2"></div>
-                            <chooseAddress :models="$page.props.addresses" />
+                            <chooseAddress @setSelectedAddress="setSelectedAddress" :models="$page.props.addresses" />
                             <div class="pt-2"></div>
-                            <choosePayment   />
+                            <choosePayment @SelectPaymentMethod="SelectPaymentMethod"  />
                         </div>
                     </div>
                     <div class="col-md-4">

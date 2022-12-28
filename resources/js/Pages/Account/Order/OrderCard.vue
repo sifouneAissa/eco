@@ -3,7 +3,7 @@
         <div class="gold-members p-4">
             <a href="#">
                 <div class="media">
-                    <img class="mr-4" src="img/3.jpg" alt="Generic placeholder image">
+                    <img class="mr-4" :src="model.fimage" alt="Generic placeholder image">
                     <div class="media-body">
                         <span class="float-right text-info">{{model.delivered_date}}<i class="icofont-check-circled text-success"></i></span>
                         <h6 class="mb-2">
@@ -12,7 +12,7 @@
                         <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> {{model.user_address.address_line_1}},{{model.user_address.address_line_2}}, {{model.user_address.city}}, {{model.user_address.country}}
                         </p>
                         <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER {{model.order_number}} <i class="icofont-clock-time ml-2"></i> {{model.delivered_date}}</p>
-                        <p class="text-dark">{{model.qnames}}
+                        <p class="text-dark">{{model.qnames}} <span :class="'badge badge-pill ' + (model.payment_detail.status === 'paid' ? 'badge-success' : 'badge-warning')">{{model.payment_detail.status === 'paid' ? 'Paid' : 'Unpaid'}}</span>
                         </p>
                         <hr>
                         <div class="float-right">

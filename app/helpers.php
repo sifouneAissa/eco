@@ -43,6 +43,25 @@ if (!function_exists('filterRequest')) {
         },ARRAY_FILTER_USE_KEY);
     }
 }
+if (!function_exists('startTransaction')) {
+
+    function startTransaction($callback)
+    {
+        return \Illuminate\Support\Facades\DB::transaction($callback);
+    }
+}
+
+
+if (!function_exists('getShoppingSession')) {
+
+
+    function getShoppingSession(){
+
+        return auth()->user() ? auth()->user()->shoppingSession : \App\Models\ShoppingSession::where('ip',request()->ip());
+    }
+}
+
+
 
 if (!function_exists('mediaPermissions')) {
 

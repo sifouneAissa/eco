@@ -9,6 +9,11 @@ class InventoryOrderItem extends Model
 {
     use HasFactory;
 
+    protected  $fillable = [
+        'order_item_id',
+        'inventory_id'
+    ];
+
     public function inventory(){
         return $this->belongsTo(InventoryOrderItem::class,'inventory_id');
     }

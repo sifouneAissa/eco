@@ -27,4 +27,8 @@ class CartItem extends Model
     public function getQpriceAttribute(){
         return $this->product->cprice * $this->quantity;
     }
+
+    public function getPriceAttribute(){
+        return $this->product->price * $this->quantity;
+    }
 }

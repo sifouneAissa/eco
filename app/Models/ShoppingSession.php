@@ -27,7 +27,8 @@ class ShoppingSession extends Model
         'tprice',
         'fimage',
         'names',
-        'citotal'
+        'citotal',
+        'ptotal'
     ];
 
     public function products(){
@@ -108,6 +109,21 @@ class ShoppingSession extends Model
 
         foreach ($items as $item){
             $total = $item->qprice +  $total;
+        }
+
+
+
+        return $total;
+    }
+
+    public function getPtotalAttribute(){
+
+        $total = 0;
+
+        $items = $this->cartItems;
+
+        foreach ($items as $item){
+            $total = $item->price +  $total;
         }
 
 

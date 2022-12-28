@@ -13,7 +13,7 @@
                                 <h6 class="mb-1 text-secondary">{{model.city}}</h6>
                                 <p>{{model.address_line_1}},{{model.city}},{{model.country}}
                                 </p>
-                                <p class="mb-0 text-black font-weight-bold"><a href="javascript: void(0)" @click="selectedA=model" :class="'btn btn-sm mr-2 '+ ( selectedA.id === model.id ? 'btn-success' : 'btn-secondary' )"> DELIVER HERE</a>
+                                <p class="mb-0 text-black font-weight-bold"><a href="javascript: void(0)" @click="setSelectedAddress(model)" :class="'btn btn-sm mr-2 '+ ( selectedA.id === model.id ? 'btn-success' : 'btn-secondary' )"> DELIVER HERE</a>
 <!--                                    <span>{{model.mobi}}</span>-->
                                 </p>
                             </div>
@@ -32,9 +32,18 @@
         props : [
             'models'
         ],
+        mounted() {
+                this.setSelectedAddress(this.models[0])
+        },
         data(){
             return {
                 selectedA : this.models[0]
+            }
+        },
+        methods : {
+            setSelectedAddress(model){
+                this.selectedA = model;
+                this.$emit('SetSelectedAddress',model);
             }
         }
     }

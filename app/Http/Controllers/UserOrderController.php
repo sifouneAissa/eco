@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserOrderRequest;
 use App\Models\CartItem;
+use App\Models\InventoryOrderItem;
+use App\Models\OrderDetail;
+use App\Models\OrderItem;
+use App\Models\PaymentDetail;
 use App\Models\Product;
 use App\Models\ShoppingSession;
 use App\Models\UserAddress;
@@ -11,14 +16,66 @@ use Inertia\Inertia;
 
 class UserOrderController extends Controller
 {
+    public function store(UserOrderRequest $request){
 
+        startTransaction(function () use ($request){
+            $user_id = $request->input('user_id');
+
+            if(!auth()->user()){
+                // create address , account for the user
+
+            }
+
+            $shopping = getShoppingSession();
+            $cartItems = $shopping->cartItems;
+            $inputs = $request->all();
+            $inputs['user_id'] = auth()->user()->id;
+            $inputs['total'] = $shopping->ptotal;
+            // create the order
+            $order = OrderDetail::query()->create(filterRequest($inputs,OrderDetail::class));
+
+            $isPaid = $request->input('provider') === 'payondelivery';
+            // create order items
+            foreach ($cartItems as $item){
+                $orderItem = OrderItem::query()->create([
+                    'quantity' => $item->quantity,
+                    'product_id' => $item->product_id,
+                    'order_id' => $order->id,
+                ]);
+                // attach every order item with his inventory
+                InventoryOrderItem::query()->create([
+                    'inventory_id' => $item->product->product_inventory_id,
+                    'order_item_id' => $orderItem->id
+                ]);
+
+            }
+
+            // create the payment
+            PaymentDetail::query()->create([
+                'amount' => $shopping->ptotal,
+                'provider' => $request->input('provider'),
+                'status' => $isPaid ? 'waiting' : 'paid',
+                'order_id' => $order->id
+            ]);
+
+            // make it not the current
+            $shopping->is_current = false;
+            $shopping->save();
+
+            ShoppingSession::query()->create([
+                'user_id' => auth()->user()->id,
+            ]);
+
+
+            // payment info transaction
+            $paymentInfo = $request->input('paymentInfo');
+        });
+
+
+    }
 
     public function addProduct(Request $request){
-        // format
-        //        item = [
-        //            'quantity' => '',
-        //            'product_id' => ''
-        //        ]
+
         $item = $request->all();
 
         $is_auth = auth()->user();
@@ -66,13 +123,14 @@ class UserOrderController extends Controller
         $addresses = auth()?->user()?->addresses;
         $products = null;
 
-        $categories = auth()?->user()?->shopping_session->products->map(function ($item){
+        $shopping_session = getShoppingSession();
+
+        $categories = $shopping_session?->products->map(function ($item){
             return $item->category->id;
         })->unique();
 
-        if(!$categories) $products = Product::query()->whereIn('product_category_id',$categories)->get()->filter($callbackIsA)->map($callback);
+        if($categories) $products = Product::query()->whereIn('product_category_id',$categories)->get()->filter($callbackIsA)->map($callback);
         else $products = Product::query()->get()->filter($callbackIsA)->map($callback);
-
 
         return Inertia::render('Checkout',[
             'addresses' => $addresses,

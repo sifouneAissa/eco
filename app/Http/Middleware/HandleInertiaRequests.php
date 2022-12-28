@@ -47,15 +47,14 @@ class HandleInertiaRequests extends Middleware
         $code = Currency::where("code",$currency)->first()->currency_code;
         $notifications = auth()->user()?->notifications()->orderBy('id','desc')->get();
 
-        $shopping = (auth()->user() ? auth()->user()->shoppingSession : ShoppingSession::where('ip',$request->ip())->with(['cartItems.product'])->first());
-
+//        $shopping = (auth()->user() ? auth()->user()->shoppingSession : ShoppingSession::where('ip',$request->ip())->with(['cartItems.product'])->first());
+        $shopping = getShoppingSession();
         if($notifications)
             $notifications = $notifications->map(function ($item){
                 $item['date'] = translateDate($item->created_at);
                 return $item;
             });
         return array_merge(parent::share($request), [
-
             //
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
