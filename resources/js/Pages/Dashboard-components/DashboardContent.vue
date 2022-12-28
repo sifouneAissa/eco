@@ -1,26 +1,31 @@
-<script setup>
-
+<script >
     import { useForm } from '@inertiajs/inertia-vue3';
     import Categories from "@/Pages/Listing/Categories.vue";
-    const form  = useForm({
-        query : {
-            category : '',
-            search : ''
-        }
-    })
-    // In your Javascript (external .js resource or <script> tag)
-    $(document).ready(function() {
-        let s = $('select');
-        s.select2({
-            placeholder : 'Select an category',
-        });
+    import {Inertia} from "@inertiajs/inertia";
+    import {ref, onMounted} from "vue";
 
-        s.on('select2:select', function (e) {
-            form.query.category = e.params.data.text;
-        });
-    });
-    const submit = () => {
-        form.get(route("listing"));
+    export default  {
+        components : {
+            Categories
+        },
+        created() {
+        },
+        data (){
+            return {
+                form  : useForm({
+                    query : {
+                        category : '',
+                        search : ''
+                    }
+                }),
+
+            }
+        },
+        methods : {
+            submit : function (){
+                this.form.get(route("listing"));
+            }
+        }
     }
 </script>
 
@@ -60,7 +65,7 @@
                         </form>
                     </div>
                     <h6 class="mt-4 text-shadow font-weight-normal">Categories</h6>
-                    <div class="owl-carousel owl-carousel-category owl-theme">
+                    <div  class="owl-carousel owl-carousel-category owl-theme">
                         <Categories />
 <!--                        <div class="item">-->
 <!--                            <div class="osahan-category-item">-->
@@ -84,7 +89,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="osahan-slider pl-4 pt-3">
-                        <div class="owl-carousel homepage-ad owl-theme">
+                        <div id="myhome" class="owl-carousel homepage-ad owl-theme">
                             <div class="item">
                                 <a href="listing.html"><img class="img-fluid rounded" src="img/slider.png"></a>
                             </div>

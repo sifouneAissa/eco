@@ -101,6 +101,19 @@ class Product extends Model implements HasMedia
         return $array;
     }
 
+    public function buyersCount(){
+         $items = $this->orderItems;
+         $q = 0;
+         foreach($items as $item) $q = $q+$item->quantity;
+
+         return $q;
+    }
+
+
+    public function orderItems(){
+        return $this->hasMany(OrderItem::class,'product_id');
+    }
+
 
 
 }

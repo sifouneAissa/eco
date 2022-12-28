@@ -1,4 +1,4 @@
-import './bootstrap';
+// import './bootstrap';
 // import '../css/app.css';
 
 import '../../public/vendor/bootstrap/css/bootstrap.min.css';
@@ -66,18 +66,18 @@ createInertiaApp({
             fallbackLocale: "en", // set fallback locale
             messages: messages, // set locale messages
         });
-
-        if(props.initialPage.props.isRtl) {
-            // for lazy importation
-            let script = document.createElement('script');
-            script.src = "/rtl/js/custom.js";
-            document.body.append(script); // (*)
-        }
-        else {
-            let script = document.createElement('script');
-            script.src = "/ltr/js/custom.js";
-            document.body.append(script); // (*)
-        }
+        //
+        // if(props.initialPage.props.isRtl) {
+        //     // for lazy importation
+        //     let script = document.createElement('script');
+        //     script.src = "/rtl/js/custom.js";
+        //     document.body.append(script); // (*)
+        // }
+        // else {
+        //     let script = document.createElement('script');
+        //     script.src = "/ltr/js/custom.js";
+        //     document.body.append(script); // (*)
+        // }
 
 
         return createApp({ render: () => h(app, props) })
@@ -88,9 +88,18 @@ createInertiaApp({
     },
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({
+    // The delay after which the progress bar will
+    // appear during navigation, in milliseconds.
+    delay: 250,
 
-    const { value } =  usePage().valueOf().props;
+    // The color of the progress bar.
+    color: '#dd3226',
 
-console.log(value)
+    // Whether to include the default NProgress styles.
+    includeCSS: true,
+
+    // Whether the NProgress spinner will be shown.
+    showSpinner: true
+});
 
