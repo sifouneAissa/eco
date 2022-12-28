@@ -45,16 +45,36 @@ class ProductController extends Controller
         $product = Product::query()->findOrFail($id)->load(['category']);
         if(!$product->isA()['isA'])  abort(404);
 
+        $callbackIsA = function ($item){
+            return $item->isA()['isA'];
+        };
+        $callback = function ($item){
+            $item['isA'] = $item->isA();
+            $item['quantity'] = 1;
+            return $item;
+        };
+
+        $bestSellers = Product::query()->whereNot('id',$id)->get()->filter($callbackIsA)->sort(function ($item){
+            return $item->buyersCount();
+        })->take(3)->map($callback);
+
+        $sameCategory = Product::query()->where('product_category_id',$product->product_category_id)->get()->filter($callbackIsA)->map($callback);
+
+
         $product['media'] = $product->media->map(function ($item){
             $item['url'] = $item->getFullUrl();
             return $item;
         });
 
+        $bestSellers->map($callback);
+
         $product['isA'] = $product->isA();
         $product['quantity'] = 1;
 
         return Inertia::render('ProductDetail',[
-            'product' => $product
+            'product' => $product,
+            'bestSellers' => $bestSellers,
+            'sameCategory' => $sameCategory
         ]);
     }
 

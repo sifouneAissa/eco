@@ -1,5 +1,8 @@
 <script setup>
     import Cart from '@/Pages/Products/Cart.vue'
+    import ProductCard from '@/Pages/Listing/ProductCard.vue'
+    import ProductCarousel from '@/Pages/Listing/ProductCarousel.vue';
+
 </script>
 
 <template>
@@ -22,306 +25,182 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <h6 class="mb-3">Most Popular  <span class="badge badge-success"><i class="icofont-tags"></i> 15% Off All Items </span></h6>
-                                    <div class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">
-                                        <div class="item">
-                                            <div class="mall-category-item">
-                                                <a href="#">
-                                                    <img class="img-fluid" src="/img/list/1.png">
-                                                    <h6>Burgers</h6>
-                                                    <small>5 ITEMS</small>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="mall-category-item">
-                                                <a href="#">
-                                                    <img class="img-fluid" src="/img/list/2.png">
-                                                    <h6>Sandwiches</h6>
-                                                    <small>8 ITEMS</small>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="mall-category-item">
-                                                <a href="#">
-                                                    <img class="img-fluid" src="/img/list/3.png">
-                                                    <h6>Soups</h6>
-                                                    <small>2 ITEMS</small>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="mall-category-item">
-                                                <a href="#">
-                                                    <img class="img-fluid" src="/img/list/4.png">
-                                                    <h6>Pizzas</h6>
-                                                    <small>56 ITEMS</small>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="mall-category-item">
-                                                <a href="#">
-                                                    <img class="img-fluid" src="/img/list/5.png">
-                                                    <h6>Pastas</h6>
-                                                    <small>10 ITEMS</small>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="mall-category-item">
-                                                <a href="#">
-                                                    <img class="img-fluid" src="/img/list/6.png">
-                                                    <h6>Chinese</h6>
-                                                    <small>25 ITEMS</small>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <h6 class="mb-3">Recommend  <span class="badge badge-success"><i class="icofont-tags"></i> same category </span></h6>
+                                    <ProductCarousel :models="$page.props.sameCategory" />
                                 </div>
                                 <div class="row">
                                     <h5 class="mb-4 mt-3 col-md-12">Best Sellers</h5>
-                                    <div class="col-md-4 col-sm-6 mb-4">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                                <a href="#">
-                                                    <img src="/img/list/7.png" class="img-fluid item-img">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="#" class="text-black">Bite Me Sandwiches</a></h6>
-                                                    <p class="text-gray mb-2">North Indian • Indian</p>
-                                                    <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">$550 </a> <span class="badge badge-success">NEW</span> <span class="float-right">
-                                             <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
-                                             </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-4">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                                <a href="#">
-                                                    <img src="/img/list/8.png" class="img-fluid item-img">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="#" class="text-black">Famous Dave's Bar-B
-                                                    </a>
-                                                    </h6>
-                                                    <p class="text-gray mb-2">Hamburgers • Indian</p>
-                                                    <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">$250 </a> <span class="badge badge-primary">NEW</span> <span class="float-right">
-                                             <span class="count-number">
-                                             <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                             <input class="count-number-input" type="text" value="1" readonly="">
-                                             <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                             </span>
-                                             </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-4">
-                                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                            <div class="list-card-image">
-                                                <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                                <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                                <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                                <a href="#">
-                                                    <img src="/img/list/9.png" class="img-fluid item-img">
-                                                </a>
-                                            </div>
-                                            <div class="p-3 position-relative">
-                                                <div class="list-card-body">
-                                                    <h6 class="mb-1"><a href="#" class="text-black">Bite Me Sandwiches</a></h6>
-                                                    <p class="text-gray mb-2">North Indian • Indian</p>
-                                                    <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">$250 </a> <span class="badge badge-info">NEW</span> <span class="float-right">
-                                             <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
-                                             </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div v-for="product in $page.props.bestSellers" :key="product.id" class="col-md-4 col-sm-6 mb-4">
+                                        <ProductCard :model="product" />
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <h5 class="mb-4 mt-3 col-md-12">Quick Bites <small class="h6 text-black-50">3 ITEMS</small></h5>
-                                    <div class="col-md-12">
-                                        <div class="bg-white rounded border shadow-sm mb-4">
-                                            <div class="gold-members p-3 border-bottom">
-                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Chicken Tikka Sub</h6>
-                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gold-members p-3 border-bottom">
-                                       <span class="count-number float-right">
-                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                       <input class="count-number-input" type="text" value="1" readonly="">
-                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                       </span>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Cheese corn Roll <span class="badge badge-danger">BESTSELLER</span></h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gold-members p-3">
-                                       <span class="count-number float-right">
-                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                       <input class="count-number-input" type="text" value="1" readonly="">
-                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                       </span>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Cheese Spinach corn Roll <span class="badge badge-success">Pure Veg</span></h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <h5 class="mb-4 mt-3 col-md-12">Starters <small class="h6 text-black-50">3 ITEMS</small></h5>
-                                    <div class="col-md-12">
-                                        <div class="bg-white rounded border shadow-sm mb-4">
-                                            <div class="menu-list p-3 border-bottom">
-                                       <span class="count-number float-right">
-                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                       <input class="count-number-input" type="text" value="1" readonly="">
-                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                       </span>
-                                                <div class="media">
-                                                    <img class="mr-3 rounded-pill" src="/img/5.jpg" alt="Generic placeholder image">
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Veg Spring Roll</h6>
-                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-list p-3 border-bottom">
-                                       <span class="count-number float-right">
-                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                       <input class="count-number-input" type="text" value="1" readonly="">
-                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                       </span>
-                                                <div class="media">
-                                                    <img class="mr-3 rounded-pill" src="/img/2.jpg" alt="Generic placeholder image">
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Stuffed Mushroom <span class="badge badge-danger">BESTSELLER</span></h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-list p-3">
-                                       <span class="count-number float-right">
-                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                       <input class="count-number-input" type="text" value="1" readonly="">
-                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                       </span>
-                                                <div class="media">
-                                                    <img class="mr-3 rounded-pill" src="/img/3.jpg" alt="Generic placeholder image">
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Honey Chilli Potato
-                                                            <span class="badge badge-success">Pure Veg</span>
-                                                        </h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <h5 class="mb-4 mt-3 col-md-12">Soups <small class="h6 text-black-50">8 ITEMS</small></h5>
-                                    <div class="col-md-12">
-                                        <div class="bg-white rounded border shadow-sm">
-                                            <div class="gold-members p-3 border-bottom">
-                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Tomato Dhania Shorba</h6>
-                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gold-members p-3 border-bottom">
-                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Veg Manchow Soup</h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gold-members p-3 border-bottom">
-                                       <span class="count-number float-right">
-                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-                                       <input class="count-number-input" type="text" value="1" readonly="">
-                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
-                                       </span>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Lemon Coriander Soup</h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gold-members p-3 border-bottom">
-                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Tomato Dhania Shorba</h6>
-                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gold-members p-3 border-bottom">
-                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Veg Manchow Soup</h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gold-members p-3">
-                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
-                                                <div class="media">
-                                                    <div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Lemon Coriander Soup</h6>
-                                                        <p class="text-gray mb-0">$600</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="row">-->
+<!--                                    <h5 class="mb-4 mt-3 col-md-12">Quick Bites <small class="h6 text-black-50">3 ITEMS</small></h5>-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <div class="bg-white rounded border shadow-sm mb-4">-->
+<!--                                            <div class="gold-members p-3 border-bottom">-->
+<!--                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Chicken Tikka Sub</h6>-->
+<!--                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="gold-members p-3 border-bottom">-->
+<!--                                       <span class="count-number float-right">-->
+<!--                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>-->
+<!--                                       <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>-->
+<!--                                       </span>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Cheese corn Roll <span class="badge badge-danger">BESTSELLER</span></h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="gold-members p-3">-->
+<!--                                       <span class="count-number float-right">-->
+<!--                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>-->
+<!--                                       <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>-->
+<!--                                       </span>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Cheese Spinach corn Roll <span class="badge badge-success">Pure Veg</span></h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <h5 class="mb-4 mt-3 col-md-12">Starters <small class="h6 text-black-50">3 ITEMS</small></h5>-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <div class="bg-white rounded border shadow-sm mb-4">-->
+<!--                                            <div class="menu-list p-3 border-bottom">-->
+<!--                                       <span class="count-number float-right">-->
+<!--                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>-->
+<!--                                       <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>-->
+<!--                                       </span>-->
+<!--                                                <div class="media">-->
+<!--                                                    <img class="mr-3 rounded-pill" src="/img/5.jpg" alt="Generic placeholder image">-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Veg Spring Roll</h6>-->
+<!--                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="menu-list p-3 border-bottom">-->
+<!--                                       <span class="count-number float-right">-->
+<!--                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>-->
+<!--                                       <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>-->
+<!--                                       </span>-->
+<!--                                                <div class="media">-->
+<!--                                                    <img class="mr-3 rounded-pill" src="/img/2.jpg" alt="Generic placeholder image">-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Stuffed Mushroom <span class="badge badge-danger">BESTSELLER</span></h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="menu-list p-3">-->
+<!--                                       <span class="count-number float-right">-->
+<!--                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>-->
+<!--                                       <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>-->
+<!--                                       </span>-->
+<!--                                                <div class="media">-->
+<!--                                                    <img class="mr-3 rounded-pill" src="/img/3.jpg" alt="Generic placeholder image">-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Honey Chilli Potato-->
+<!--                                                            <span class="badge badge-success">Pure Veg</span>-->
+<!--                                                        </h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <h5 class="mb-4 mt-3 col-md-12">Soups <small class="h6 text-black-50">8 ITEMS</small></h5>-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <div class="bg-white rounded border shadow-sm">-->
+<!--                                            <div class="gold-members p-3 border-bottom">-->
+<!--                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Tomato Dhania Shorba</h6>-->
+<!--                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="gold-members p-3 border-bottom">-->
+<!--                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Veg Manchow Soup</h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="gold-members p-3 border-bottom">-->
+<!--                                       <span class="count-number float-right">-->
+<!--                                       <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>-->
+<!--                                       <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                       <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>-->
+<!--                                       </span>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Lemon Coriander Soup</h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="gold-members p-3 border-bottom">-->
+<!--                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Tomato Dhania Shorba</h6>-->
+<!--                                                        <p class="text-gray mb-0">$314 - 12" (30 cm)</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="gold-members p-3 border-bottom">-->
+<!--                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Veg Manchow Soup</h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="gold-members p-3">-->
+<!--                                                <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>-->
+<!--                                                <div class="media">-->
+<!--                                                    <div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>-->
+<!--                                                    <div class="media-body">-->
+<!--                                                        <h6 class="mb-1">Lemon Coriander Soup</h6>-->
+<!--                                                        <p class="text-gray mb-0">$600</p>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                             <div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
                                 <div id="gallery" class="bg-white rounded shadow-sm p-4 mb-4">

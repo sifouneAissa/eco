@@ -66,18 +66,18 @@ createInertiaApp({
             fallbackLocale: "en", // set fallback locale
             messages: messages, // set locale messages
         });
-
-        if(props.initialPage.props.isRtl) {
-            // for lazy importation
-            let script = document.createElement('script');
-            script.src = "/rtl/js/custom.js";
-            document.body.append(script); // (*)
-        }
-        else {
-            let script = document.createElement('script');
-            script.src = "/ltr/js/custom.js";
-            document.body.append(script); // (*)
-        }
+        //
+        // if(props.initialPage.props.isRtl) {
+        //     // for lazy importation
+        //     let script = document.createElement('script');
+        //     script.src = "/rtl/js/custom.js";
+        //     document.body.append(script); // (*)
+        // }
+        // else {
+        //     let script = document.createElement('script');
+        //     script.src = "/ltr/js/custom.js";
+        //     document.body.append(script); // (*)
+        // }
 
 
         return createApp({ render: () => h(app, props) })

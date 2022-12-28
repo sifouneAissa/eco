@@ -13,9 +13,9 @@
 <!--                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>-->
                         <div v-if="product.isA.remain === 1" class="member-plan position-absolute"><span class="badge badge-danger">One Product</span></div>
                         <div v-else-if="product.isA.remain <= 5" class="member-plan position-absolute"><span class="badge badge-warning">The quantity is limited</span></div>
-                        <a href="#">
+                        <Link :href="route('product.show',{id : product.id})">
                             <img :src="product.fimage" class="img-fluid item-img" style="width: 100%;height: 10vw;">
-                        </a>
+                        </Link>
                     </div>
                     <div class="p-3 position-relative">
                         <div class="list-card-body">
@@ -50,12 +50,12 @@
 
 <script>
     import { Inertia, } from '@inertiajs/inertia';
-    import {useForm} from "@inertiajs/inertia-vue3";
+    import {useForm,Head, Link} from "@inertiajs/inertia-vue3";
     import Categories from "@/Pages/Listing/Categories.vue";
 
     export default {
         name: "listing.vue",
-        components: {Categories},
+        components: {Categories,Link},
         date(){
             return {
                 quantity: []

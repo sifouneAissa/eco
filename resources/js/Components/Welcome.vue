@@ -1,5 +1,8 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import {ref, onMounted} from "vue";
+import {usePage} from "@inertiajs/inertia-vue3";
+
+
 </script>
 
 <template>
