@@ -363,7 +363,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="/"><img alt="logo" src="img/logo.png"/></a>
+                <Link class="navbar-brand" href="/"><img alt="logo" src="img/logo.png"/></Link>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -378,8 +378,8 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/"
-                            >{{ $t("nav_menu.pages.home") }} <span class="sr-only">(current)</span></a
+                            <Link class="nav-link" href="/"
+                            >{{ $t("nav_menu.pages.home") }} <span class="sr-only">(current)</span></Link
                             >
                         </li>
                         <li class="nav-item">

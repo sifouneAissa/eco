@@ -94,12 +94,12 @@ InertiaProgress.init({
     delay: 250,
 
     // The color of the progress bar.
-    color: '#29d',
+    color: '#dd3226',
 
     // Whether to include the default NProgress styles.
     includeCSS: true,
 
     // Whether the NProgress spinner will be shown.
-    showSpinner: true,
+    showSpinner: true
 });
 
