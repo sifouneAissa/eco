@@ -88,4 +88,8 @@ class User extends Authenticatable
             'show' => 'show-user'
         ];
     }
+
+    public function addresses(){
+        return $this->hasMany(UserAddress::class,'user_id');
+    }
 }

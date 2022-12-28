@@ -22,7 +22,7 @@
         @endif
         @inertiaHead
     </head>
-    <body  class="bg-primary">
+    <body >
         @inertia
     </body>
 </html>
