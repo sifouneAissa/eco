@@ -49,6 +49,7 @@
                 Inertia.get(route('product.show',{id : this.model.id}))
             },
             submit : function (model) {
+                let app = this;
                 let form = useForm({
                     product_id : model.id,
                     quantity: model.quantity
@@ -58,7 +59,8 @@
                     ...data,
                 })).post(route('addProduct'), {
                     // onFinish: () => add_form.reset(),
-                    onSuccess : function () {
+                    onSuccess : function (res) {
+                        Inertia.reload();
                     }
                 });
             },

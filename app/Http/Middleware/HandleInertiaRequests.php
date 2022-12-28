@@ -47,6 +47,8 @@ class HandleInertiaRequests extends Middleware
         $code = Currency::where("code",$currency)->first()->currency_code;
         $notifications = auth()->user()?->notifications()->orderBy('id','desc')->get();
 
+        $shopping = (auth()->user() ? auth()->user()->shoppingSession : ShoppingSession::where('ip',$request->ip())->with(['cartItems.product'])->first());
+
         if($notifications)
             $notifications = $notifications->map(function ($item){
                 $item['date'] = translateDate($item->created_at);
@@ -63,7 +65,7 @@ class HandleInertiaRequests extends Middleware
             'currency' => $currency,
             'currencies' => config('app.currencies'),
             'currency_code' => $code,
-            'shopping_session' => auth()->user() ? auth()->user()->shoppingSession : ShoppingSession::where('ip',$request->ip())->with(['cartItems.product'])->first()
+            'shopping_session' => $shopping
         ]);
     }
 }

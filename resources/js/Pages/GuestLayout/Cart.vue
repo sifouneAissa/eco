@@ -1,3 +1,18 @@
+<script setup>
+
+    import {Inertia} from "@inertiajs/inertia"
+    import {Link} from "@inertiajs/inertia-vue3";
+
+    const submitD = function (item) {
+
+        Inertia.delete(route('cartitem.destroy',{
+            id : item.id
+        }), {
+            onSuccess :  (res) =>  {
+            }
+        });
+    }
+</script>
 <template>
     <div>
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -9,11 +24,11 @@
                 <img class="img-fluid mr-3" alt="osahan" src="img/cart.jpg">
                 <h6 class="mb-0">{{$page.props.shopping_session.names}}</h6>
 <!--                <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>-->
-                <small><a class="text-primary font-weight-bold" href="#">View Full Menu</a></small>
+                <small><Link :href="route('checkout.show')" class="text-primary font-weight-bold" href="#">View Full Menu</Link></small>
             </div>
             <div class="dropdown-cart-top-body border-top p-4">
                 <div v-for="item in $page.props.shopping_session.cart_items" :key="item.id">
-                    <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> {{item.product.name}} x {{item.quantity}}   <span class="float-right text-secondary">{{$page.props.currency_code}} {{item.product.cprice}}</span></p>
+                    <p class="mb-2"><i @click="submitD(item)" class="icofont-delete text-danger food-item"></i> {{item.product.name}} x {{item.quantity}}   <span class="float-right text-secondary">{{$page.props.currency_code}} {{item.product.cprice}}</span></p>
                 </div>
 <!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1   <span class="float-right text-secondary">$209</span></p>-->
 <!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1  <span class="float-right text-secondary">$133</span></p>-->
