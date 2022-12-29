@@ -145,7 +145,7 @@ class UserOrderController extends Controller
             return $item->category->id;
         })->unique();
 
-        if($categories) $products = Product::query()->whereIn('product_category_id',$categories)->get()->filter($callbackIsA)->map($callback);
+        if($categories->isNotEmpty()) $products = Product::query()->whereIn('product_category_id',$categories)->get()->filter($callbackIsA)->map($callback);
         else $products = Product::query()->get()->filter($callbackIsA)->map($callback);
 
 

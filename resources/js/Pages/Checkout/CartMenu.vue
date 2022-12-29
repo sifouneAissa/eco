@@ -56,7 +56,7 @@
                 <i class="icofont-long-arrow-right"></i></a>
         </div>
 <!--        <div class="pt-2"></div>-->
-        <div  v-else-if="!model || model.citotal"  class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
+        <div  v-else  class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
             <div  class="d-flex mb-4 osahan-cart-item-profile">
                 <img class="img-fluid mr-3 rounded-pill" alt="osahan" src="/img/checkout.png">
                 <div class="d-flex flex-column">
