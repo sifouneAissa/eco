@@ -405,9 +405,7 @@
 <template>
     <div>
         <Head :title="title"/>
-
         <Banner/>
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
             <div class="container">
                 <Link class="navbar-brand" href="/"><img alt="logo" src="img/logo.png"/></Link>

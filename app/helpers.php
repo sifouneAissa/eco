@@ -76,7 +76,14 @@ if (!function_exists('getShoppingSession')) {
 
     function getShoppingSession(){
 
-        return auth()->user() ? auth()->user()->shoppingSession : \App\Models\ShoppingSession::where('ip',request()->ip());
+        return auth()->user() ? auth()->user()->shoppingSession : \App\Models\ShoppingSession::where([
+            [
+                'ip',request()->ip()
+            ],
+            [
+                'is_current' , true
+            ]
+        ])->first();
     }
 }
 

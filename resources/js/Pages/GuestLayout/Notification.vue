@@ -50,7 +50,7 @@
         },
         data (){
             return {
-                notifications : this.$page.props.auth.notifications,
+                notifications : this.$page.props.notifications,
             }
         },
         computed : {
@@ -75,7 +75,7 @@
             readall(){
                 useForm().post(route('notification.readall'),{
                     onSuccess: (res) => {
-                        this.notifications = res.props.auth.notifications
+                        this.notifications = res.props.notifications
                     },
                 });
             }

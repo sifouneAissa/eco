@@ -3,38 +3,46 @@
     import choosePayment from '@/Pages/Checkout/choosePayment.vue'
     import ProductCarousel from '@/Pages/Listing/ProductCarousel.vue'
     import CartMenu from '@/Pages/Checkout/CartMenu.vue'
-    import  {useForm} from "@inertiajs/inertia-vue3";
+    import {useForm} from "@inertiajs/inertia-vue3";
 
-    export  default  {
-        components : {
+    export default {
+        components: {
             chooseAddress,
             choosePayment,
             ProductCarousel,
             CartMenu
         },
-        data () {
+        data() {
             return {
-                form : useForm({
-                        address_id : null,
-                        user_id : this.$page.props.auth,
-                        provider : null,
-                        paymentInfo : null
+                form: useForm({
+                        address_id: null,
+                        user_id: this.$page.props.auth,
+                        provider: null,
+                        paymentInfo: null,
+                        email : null
                     }
                 )
             }
         },
-        methods : {
-            setSelectedAddress (model){
-                this.form.address_id = model.id;
+        methods: {
+            setSelectedAddress(model) {
+                if (model.toCreate)
+                    this.form.address_id = model;
+                else
+                    this.form.address_id = model.id;
             },
-            SelectPaymentMethod (data){
+            SelectPaymentMethod(data) {
 
                 this.form.provider = data.type;
                 this.form.paymentInfo = data.data;
-
-                this.form.post(route('order.store'),{
-
-                })
+                this.form.email = data.data.email;
+                this.form.post(route('order.store'), {})
+            },
+            Pay(){
+                if(!this.form.address_id)
+                    window.location.href = window.location.href.split('#')[0] + "#address";
+                else
+                    window.location.href = window.location.href.split('#')[0] + "#payment";
             }
         }
     }
@@ -52,17 +60,17 @@
                             </div>
 
                             <div class="pt-2"></div>
-                            <chooseAddress @setSelectedAddress="setSelectedAddress" :models="$page.props.addresses" />
+                            <chooseAddress v-if="$page.props.shopping_session && $page.props.shopping_session.citotal" @setSelectedAddress="setSelectedAddress" :models="$page.props.addresses"/>
                             <div class="pt-2"></div>
-                            <choosePayment @SelectPaymentMethod="SelectPaymentMethod"  />
+                            <choosePayment v-if="$page.props.shopping_session && $page.props.shopping_session.citotal" :form="form" :disable="this.form.address_id===null" @SelectPaymentMethod="SelectPaymentMethod"/>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <CartMenu />
-<!--                        <div class="pt-2"></div>-->
-<!--                        <div class="text-center pt-2">-->
-<!--                            <img class="img-fluid" src="https://dummyimage.com/352x504/ccc/ffffff.png&text=Google+ads">-->
-<!--                        </div>-->
+                        <CartMenu @Pay="Pay"/>
+                        <!--                        <div class="pt-2"></div>-->
+                        <!--                        <div class="text-center pt-2">-->
+                        <!--                            <img class="img-fluid" src="https://dummyimage.com/352x504/ccc/ffffff.png&text=Google+ads">-->
+                        <!--                        </div>-->
                     </div>
                 </div>
             </div>

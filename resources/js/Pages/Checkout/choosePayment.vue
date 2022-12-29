@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="bg-white rounded shadow-sm p-4 osahan-payment">
+    <div id="payment"  v-if="model && model.citotal" :class="'bg-white rounded shadow-sm p-4 osahan-payment ' + (disable ? 'ddiv' : '')">
         <h4 class="mb-1">Choose payment method</h4>
         <h6 class="mb-3 text-black-50">Credit/Debit Cards</h6>
         <div class="row">
@@ -32,6 +32,11 @@
                                     <label>Name on card
                                     </label>
                                     <input name="card_holder_name" required v-model="credit.name" type="text" class="form-control" placeholder="Enter Card name">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Email
+                                    </label>
+                                    <input  required v-model="credit.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -171,8 +176,18 @@
                                         <option value="3">Three</option>
                                     </select>
                                 </div>
+                                <div class="form-group col-md-12">
+                                    <label>Name on card
+                                    </label>
+                                    <input  required v-model="netbank.name" type="text" class="form-control" placeholder="Enter Card name">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Email
+                                    </label>
+                                    <input  required v-model="netbank.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
+                                </div>
                                 <div class="form-group col-md-12 mb-0">
-                                    <button  class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                                    <button type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
                                         <i class="icofont-long-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -182,8 +197,23 @@
                         <h6 class="mb-3 mt-0 mb-3">Cash</h6>
                         <p>Please keep exact change handy to help us serve you better</p>
                         <hr>
-                        <form>
-                            <button @click="SelectPaymentMethod('payondelivery')" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                        <form @submit.prevent="SelectPaymentMethod('payondelivery')">
+                            <div class="form-group col-md-12">
+                                <label>Name
+                                </label>
+                                <input  required v-model="payonD.name" type="text" class="form-control" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Email
+                                </label>
+                                <input  required v-model="payonD.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
+                                <div v-show="form.errors.email">
+                                    <p class="text-sm text-red-600" style="color: red">
+                                        {{ form.errors.email }}
+                                    </p>
+                                </div>
+                            </div>
+                            <button  type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
                                 <i class="icofont-long-arrow-right"></i></button>
                         </form>
                     </div>
@@ -211,7 +241,9 @@
 <script >
     import 'https://js.stripe.com/v3/'
     export  default  {
-
+        props : [
+            'disable','form'
+        ],
         mounted() {
             let app = this;
             $( document ).ready(function() {
@@ -285,12 +317,18 @@
                     cvv : null,
                     name : null,
                     paymentMethod : null,
-                    _token : this.csrf
+                    _token : this.csrf,
+                    email : null
                 },
                 netbank : {
-                    bank : null
+                    bank : null,
+                    email : null,
+                    name : null
                 },
-                payonD : null
+                payonD : {
+                    email : null,
+                    name : null
+                }
             }
         },
         methods : {
@@ -330,5 +368,10 @@
     }
     .StripeElement--webkit-autofill {
         background-color: #fefde5 !important;
+    }
+    .ddiv {
+        pointer-events:none;
+
+        opacity: 0.4;
     }
 </style>

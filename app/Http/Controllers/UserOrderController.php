@@ -10,7 +10,9 @@ use App\Models\OrderItem;
 use App\Models\PaymentDetail;
 use App\Models\Product;
 use App\Models\ShoppingSession;
+use App\Models\User;
 use App\Models\UserAddress;
+use Faker\Provider\Address;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,69 +21,66 @@ class UserOrderController extends Controller
     public function store(UserOrderRequest $request){
         startTransaction(function () use ($request){
 
-            dd($request->all());
-
-//            $user_id = $request->input('user_id');
-//
-//            if(!auth()->user()){
-//                // create address , account for the user
-//
-//            }
-            dd($request->all());
-            $shopping = getShoppingSession();
-            $cartItems = $shopping->cartItems;
-            $inputs = $request->all();
-            $inputs['user_id'] = auth()->user()->id;
-            $inputs['total'] = $shopping->ptotal;
             $user = $request->user();
+            $inputs = $request->all();
+            $shopping = getShoppingSession();
 
+
+            if(!auth()->user()){
+                // create address , account for the user
+                $paymentInfo = $request->input('paymentInfo');
+                $user = User::query()->create(filterRequest($paymentInfo,User::class));
+
+                if(is_array($addressInputs = $request->input('address_id'))) {
+                    $addressInputs['user_id'] = $user->id;
+                    $inputs['address_id'] = UserAddress::query()->create(filterRequest($addressInputs, UserAddress::class))->id;
+                }
+            }
+
+            $cartItems = $shopping->cartItems;
+            $inputs['user_id'] = $user->id;
+            $inputs['total'] = $shopping->ptotal;
             // if payment method === credit
             $this->stripeAmount($shopping->ptotal,$request,$user);
+            $inputs['user_id'] = $user->id;
+            // create the order
+            $order = OrderDetail::query()->create(filterRequest($inputs,OrderDetail::class));
 
-//
-//            $shopping = getShoppingSession();
-//            $cartItems = $shopping->cartItems;
-//            $inputs = $request->all();
-//            $inputs['user_id'] = auth()->user()->id;
-//            $inputs['total'] = $shopping->ptotal;
-//            // create the order
-//            $order = OrderDetail::query()->create(filterRequest($inputs,OrderDetail::class));
-//
-//            $isPaid = $request->input('provider') === 'payondelivery';
-//            // create order items
-//            foreach ($cartItems as $item){
-//                $orderItem = OrderItem::query()->create([
-//                    'quantity' => $item->quantity,
-//                    'product_id' => $item->product_id,
-//                    'order_id' => $order->id,
-//                ]);
-//                // attach every order item with his inventory
-//                InventoryOrderItem::query()->create([
-//                    'inventory_id' => $item->product->product_inventory_id,
-//                    'order_item_id' => $orderItem->id
-//                ]);
-//
-//            }
-//
-//            // create the payment
-//            PaymentDetail::query()->create([
-//                'amount' => $shopping->ptotal,
-//                'provider' => $request->input('provider'),
-//                'status' => $isPaid ? 'waiting' : 'paid',
-//                'order_id' => $order->id
-//            ]);
-//
-//            // make it not the current
-//            $shopping->is_current = false;
-//            $shopping->save();
-//
-//            ShoppingSession::query()->create([
-//                'user_id' => auth()->user()->id,
-//            ]);
+            $isPaid = $request->input('provider') === 'payondelivery';
+            // create order items
+            foreach ($cartItems as $item){
+                $orderItem = OrderItem::query()->create([
+                    'quantity' => $item->quantity,
+                    'product_id' => $item->product_id,
+                    'order_id' => $order->id,
+                ]);
+                // attach every order item with his inventory
+                InventoryOrderItem::query()->create([
+                    'inventory_id' => $item->product->product_inventory_id,
+                    'order_item_id' => $orderItem->id
+                ]);
+
+            }
+
+            // create the payment
+            PaymentDetail::query()->create([
+                'amount' => $shopping->ptotal,
+                'provider' => $request->input('provider'),
+                'status' => $isPaid ? 'waiting' : 'paid',
+                'order_id' => $order->id
+            ]);
+            // make it not the current
+            $shopping->is_current = false;
+            $shopping->save();
+
+            ShoppingSession::query()->create([
+                'user_id' => $user->id,
+                'total' => 0
+            ]);
 
 
-            // payment info transaction
-//            $paymentInfo = $request->input('paymentInfo');
+//             payment info transaction
+            $paymentInfo = $request->input('paymentInfo');
         });
 
 
@@ -94,8 +93,12 @@ class UserOrderController extends Controller
         $is_auth = auth()->user();
         if($is_auth)
         $s_session = auth()->user()->shopping_session;
-        else
-        $s_session = ShoppingSession::where('ip',$request->ip())->first();
+        else {
+            $s_session = ShoppingSession::where('ip', $request->ip())->first();
+            $s_session->cartItems()->delete();
+            $s_session->is_current = true;
+            $s_session->save();
+        }
 
         if(!$s_session){
                 $data = [

@@ -62,14 +62,12 @@ class HandleInertiaRequests extends Middleware
             else $client_secret = app(User::class)?->createSetupIntent()->client_secret;
         }catch (\Exception $exception){}
 
-//        dd(isRtl($cLocale));
-
         return array_merge(parent::share($request), [
             //
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
             'auth' => auth()->user(),
-            'auth.notifications' => $notifications,
+            'notifications' => $notifications,
             'isRtl' => isRtl($cLocale),
             'currency' => $currency,
             'currencies' => config('app.currencies'),
