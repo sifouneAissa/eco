@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Currency;
 use App\Models\ShoppingSession;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -47,13 +48,23 @@ class HandleInertiaRequests extends Middleware
         $code = Currency::where("code",$currency)->first()->currency_code;
         $notifications = auth()->user()?->notifications()->orderBy('id','desc')->get();
 
+        $shopping = getShoppingSession();
         if($notifications)
             $notifications = $notifications->map(function ($item){
                 $item['date'] = translateDate($item->created_at);
                 return $item;
             });
-        return array_merge(parent::share($request), [
 
+        $client_secret = null;
+
+        try {
+            if($user = auth()->user()) $client_secret = $user?->createSetupIntent()->client_secret;
+            else $client_secret = app(User::class)?->createSetupIntent()->client_secret;
+        }catch (\Exception $exception){}
+
+//        dd(isRtl($cLocale));
+
+        return array_merge(parent::share($request), [
             //
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
@@ -63,7 +74,9 @@ class HandleInertiaRequests extends Middleware
             'currency' => $currency,
             'currencies' => config('app.currencies'),
             'currency_code' => $code,
-            'shopping_session' => auth()->user() ? auth()->user()->shoppingSession : ShoppingSession::where('ip',$request->ip())->with(['cartItems.product'])->first()
+            'shopping_session' => $shopping,
+            'STRIPE_KEY' => env('STRIPE_KEY'),
+            'client_secret' => $client_secret
         ]);
     }
 }

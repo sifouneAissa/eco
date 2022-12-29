@@ -44,6 +44,44 @@ if (!function_exists('filterRequest')) {
     }
 }
 
+if (!function_exists('priceByDollar')) {
+
+
+    function priceByDollar($price){
+
+        $tExchange = \App\Models\Currency::where('code','dollar')->first()->exchange_rate;
+        $value = 0;
+
+        try {
+            $value= floor($price/$tExchange);
+        } catch (\Exception $e){};
+
+        return $value;
+    }
+}
+
+
+
+if (!function_exists('startTransaction')) {
+
+    function startTransaction($callback)
+    {
+        return \Illuminate\Support\Facades\DB::transaction($callback);
+    }
+}
+
+
+if (!function_exists('getShoppingSession')) {
+
+
+    function getShoppingSession(){
+
+        return auth()->user() ? auth()->user()->shoppingSession : \App\Models\ShoppingSession::where('ip',request()->ip());
+    }
+}
+
+
+
 if (!function_exists('mediaPermissions')) {
 
     function mediaPermissions($modelBuilder, $provider = null)

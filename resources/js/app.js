@@ -80,6 +80,12 @@ createInertiaApp({
         // }
 
 
+        //     // for lazy importation
+        //     let script = document.createElement('script');
+        //     script.src = "https://js.stripe.com/v3/";
+        //     document.body.append(script); // (*)
+
+
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(i18n)

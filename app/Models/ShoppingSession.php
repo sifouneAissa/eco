@@ -24,7 +24,11 @@ class ShoppingSession extends Model
     protected $appends = [
         'names',
         'price',
-        'tprice'
+        'tprice',
+        'fimage',
+        'names',
+        'citotal',
+        'ptotal'
     ];
 
     public function products(){
@@ -37,6 +41,7 @@ class ShoppingSession extends Model
 
 
     public function getNamesAttribute(){
+
         $names = "";
         $products = $this->products;
 
@@ -44,11 +49,21 @@ class ShoppingSession extends Model
             $names =  $product->name.' , '.$names;
         }
 
+
         $names = rtrim($names,' , ');
 
         return $names;
     }
 
+    public function getFimageAttribute(){
+        $image = '/img/checkout.png';
+
+        try{
+            $image = $this->products?->first()?->media?->first()?->getFullUrl();
+        }catch(\Exception $e){}
+
+        return $image;
+    }
 
     public function getPriceAttribute(){
 
@@ -85,6 +100,37 @@ class ShoppingSession extends Model
 
         return $value;
     }
+
+    public function getCitotalAttribute(){
+
+        $total = 0;
+
+        $items = $this->cartItems;
+
+        foreach ($items as $item){
+            $total = $item->qprice +  $total;
+        }
+
+
+
+        return $total;
+    }
+
+    public function getPtotalAttribute(){
+
+        $total = 0;
+
+        $items = $this->cartItems;
+
+        foreach ($items as $item){
+            $total = $item->price +  $total;
+        }
+
+
+
+        return $total;
+    }
+
 
 
 

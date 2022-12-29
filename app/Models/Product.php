@@ -30,7 +30,8 @@ class Product extends Model implements HasMedia
         'cprice',
         'quantity',
         'modal_ids',
-        'fimage'
+        'fimage',
+        'isA'
     ];
 
     public function getFimageAttribute(){
@@ -52,7 +53,9 @@ class Product extends Model implements HasMedia
     }
 
 
-
+    public function getIsAAttribute(){
+        return $this->isA();
+    }
 
     public function getCpriceAttribute(){
 

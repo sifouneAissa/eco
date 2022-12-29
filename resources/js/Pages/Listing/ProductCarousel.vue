@@ -6,12 +6,16 @@
 
 <script>
     import ProductCard  from "@/Pages/Listing/ProductCard.vue";
+    import  {Inertia} from "@inertiajs/inertia";
+
     export default {
         name: "ProductCarousel.vue",
         components : {
             ProductCard
         },
-        props : ['models']
+        props : ['models'],
+        created() {
+        }
     }
 </script>
 

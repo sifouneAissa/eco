@@ -10,6 +10,11 @@ class OrderDetail extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'address_id',
+        'total'
+    ];
 
     protected $appends = [
         'delivered_date',
@@ -59,7 +64,7 @@ class OrderDetail extends Model
         $image = '/img/checkout.png';
 
         try{
-            $image = $this->products->first()->media->first()->getFullUrl();
+            $image = $this->products?->first()?->media?->first()->getFullUrl();
         }catch(\Exception $e){}
 
         return $image;

@@ -15,8 +15,20 @@ class CartItem extends Model
         'quantity'
     ];
 
+    protected $appends = [
+        'qprice'
+    ];
+
 
     public function product(){
         return $this->belongsTo(Product::class,'product_id');
+    }
+
+    public function getQpriceAttribute(){
+        return $this->product->cprice * $this->quantity;
+    }
+
+    public function getPriceAttribute(){
+        return $this->product->price * $this->quantity;
     }
 }

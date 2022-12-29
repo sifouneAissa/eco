@@ -15,7 +15,7 @@ use Inertia\Inertia;
 |
 */
 
-    Route::get('/', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcome');
+Route::get('/', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcome');
 
 
 
@@ -45,8 +45,17 @@ Route::middleware([
 // product
 Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
 Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class,'show'])->name('product.show');
+Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('product.index');
+Route::get('/checkout', [\App\Http\Controllers\UserOrderController::class,'checkout'])->name('checkout.show');
 
 
+
+Route::resource('/cartitem',\App\Http\Controllers\CartItemController::class)->only(
+    'update','destroy'
+);
+Route::resource('/order',\App\Http\Controllers\UserOrderController::class)->only(
+    'store'
+);
 Route::get('/listing', [\App\Http\Controllers\UserListingController::class,'index'])->name('listing');
 
 Route::post('setlocale',[\App\Http\Controllers\setLocale::class,'setLocale'])->name('setLocale')->withoutMiddleware('set.locale');
