@@ -52,7 +52,7 @@ export default {
     <Datatable
       @ShowEditModel="ShowEditModel"
       :title="'Settings table'"
-      :datatableHeaders="datatableHeaders"
+      :datatableHeaders="datatableHeadeNrs"
       :datatableColumns="datatableColumns"
       :datatableUrl="datatableUrl"
       :without="without"

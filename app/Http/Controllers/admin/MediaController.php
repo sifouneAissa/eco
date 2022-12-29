@@ -63,6 +63,7 @@ class MediaController extends Controller
 
             $modelData = ($this->getBuilder($model))::find($model_id);
             $modelData['provider'] = $modelData->mediaProvider();
+            $modelData['crumb'] = $modelData->crumb();
 
             return Inertia::render('Media',[
                 'medias' => $medias,

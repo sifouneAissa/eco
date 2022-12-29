@@ -34,6 +34,8 @@ class SettingController extends Controller
         $without = [
             'add'
         ];
+        
+
         return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())

@@ -15,6 +15,11 @@ class Setting extends Model implements HasMedia
     use InteractsWithMedia;
     use MediaTrait;
 
+
+    public const SNAME = 'Settings';
+    public const INAME = 'Setting';
+
+
     protected $fillable = [
         'name',
         'code',

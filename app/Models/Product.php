@@ -17,6 +17,8 @@ class Product extends Model implements HasMedia
     use MediaTrait;
     use Searchable;
 
+    public const SNAME = 'Products';
+    public const INAME = 'Product';
 
     protected $fillable = [
         'name',
