@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCategory extends Model
 {
     use HasFactory;
-
+    
+    protected $fillable = [
+        'name',
+        'desc',
+    ];
     protected $appends = [
         'count',
-        'fimage'
+        'fimage',
+        'modal_ids',
     ];
 
     public function products(){
@@ -25,4 +30,13 @@ class ProductCategory extends Model
     public function getFimageAttribute(){
         return $this->products->first()->fimage;
     }
+    public  function getModalIdsAttribute(){
+        return [
+            'edit' => 'edit-product-category',
+            'delete' => 'delete-product-category',
+            'add' => 'add-product-category',
+            'show' => 'show-product-category'
+        ];
+    }
+
 }

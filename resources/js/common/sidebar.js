@@ -43,8 +43,8 @@ const sidebar = [
             },
             {
                 name : 'Categories',
-                route : 'admin.product.category.index',
-                permission : 'view product_categories',
+                route : 'admin.category.index',
+                permission : 'view product categories',
                 icon : 'feather-box',
             }
         ]
