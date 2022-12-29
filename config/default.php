@@ -3,6 +3,9 @@ return[
     'media' => [
             'product' => [
                 'builder' => \App\Models\Product::class
+            ],
+            'setting' => [
+                'builder' => \App\Models\Setting::class
             ]
     ],
     'permissions' => [
@@ -48,7 +51,8 @@ return[
                 'edit blog',
                 'update order status'
             ],
-            mediaPermissions(\App\Models\Product::class,'product')
+            mediaPermissions(\App\Models\Product::class,'product'),
+            mediaPermissions(\App\Models\Setting::class,'setting')
         ),
         'publisher' => [
 

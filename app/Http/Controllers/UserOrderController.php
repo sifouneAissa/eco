@@ -160,6 +160,7 @@ class UserOrderController extends Controller
 
 
     private function stripeAmount($amount,$request,$user){
+
         $is_credit = $request->input('provider')==='credit';
 
         if($is_credit) {

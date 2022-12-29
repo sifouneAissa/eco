@@ -74,7 +74,7 @@ class SettingController extends Controller
             'edit' => 'edit setting',
             'show' => 'show setting',
             'delete' => 'delete setting',
-           
+            'media' =>  'view setting media'
         ];
         $without = [
             'show',

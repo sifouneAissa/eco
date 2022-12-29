@@ -104,14 +104,13 @@
             'models'
         ],
         created() {
-                if(this.models) {
+                if(this.models && this.models.length) {
                     this.setSelectedAddress(this.models[0])
                     this.selectedA = this.models[0];
                 }
 
                 this.add = (this.selectedA === null);
 
-                console.log(this.add);
         },
         data(){
             return {

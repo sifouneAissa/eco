@@ -78,7 +78,10 @@ const sidebar = [
                 name : "Settings",
                 route : 'admin.setting.index',
                 permission : 'view settings',
-                icon : 'feather-sliders'
+                icon : 'feather-sliders',
+                urls : [
+                    '/media/setting'
+                ],
             }
         ]
     }
