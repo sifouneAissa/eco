@@ -19,7 +19,8 @@ use Inertia\Inertia;
 class UserOrderController extends Controller
 {
     public function store(UserOrderRequest $request){
-        startTransaction(function () use ($request){
+
+        $order = startTransaction(function () use ($request){
 
             $user = $request->user();
             $inputs = $request->all();
@@ -79,10 +80,12 @@ class UserOrderController extends Controller
             ]);
 
 
-//             payment info transaction
-            $paymentInfo = $request->input('paymentInfo');
+            return $order;
         });
 
+        return redirect()->route('listing',[
+            'query' => $order->products->first()->category->name
+        ]);
 
     }
 
