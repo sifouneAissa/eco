@@ -40,6 +40,9 @@
                 }))
 
             },
+            ShowOrdersPage : function(model){
+                Inertia.visit(model.route)
+            },
 
             resetModel : function (){
                 this.modelToUpdate = null;
@@ -74,7 +77,7 @@
             </h2>
         </template>
 
-        <Datatable @ShowImagePage="ShowImagePage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Products table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowOrdersPage="ShowOrdersPage" @ShowImagePage="ShowImagePage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Products table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
         <editProduct @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editProduct>
         <showProduct @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showProduct>
         <deleteProduct @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteProduct>

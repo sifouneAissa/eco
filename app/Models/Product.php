@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\MediaTrait;
+use App\Traits\OrdersTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
@@ -19,6 +20,7 @@ class Product extends Model implements HasMedia
 
     public const SNAME = 'Products';
     public const INAME = 'Product';
+
 
     protected $fillable = [
         'name',

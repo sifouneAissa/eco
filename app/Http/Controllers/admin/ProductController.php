@@ -106,6 +106,7 @@ class ProductController extends Controller
             ->addColumn('action', function ($model) use ($permissions) {
                 $model['category'] = $model->category;
                 $model['inventory'] = $model->inventory;
+
                 return view('Datatable.btn', compact('model', 'permissions'));
             })
             ->toArray();

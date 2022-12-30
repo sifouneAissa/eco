@@ -134,6 +134,11 @@
                 let model = $(this).data('id');
                 app.$emit('ShowImagePage', model);
             })
+
+            $(document).on('click', '#btn-orders', function () {
+                let model = $(this).data('id');
+                app.$emit('ShowOrdersPage', model);
+            })
         }
     }
 

@@ -77,6 +77,8 @@ use \Illuminate\Support\Facades\Route;
         Route::resource('/trackorder',\App\Http\Controllers\admin\OrderTruckController::class)->only([
             'store'
         ]);
+
+
     });
 });
 

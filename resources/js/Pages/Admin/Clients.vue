@@ -5,6 +5,7 @@
     import showRole from '@/Pages/Admin/Roles/showRole.vue';
     import deleteUser from '@/Pages/Admin/Clients/deleteUser.vue';
     import addUser from '@/Pages/Admin/Clients/addUser.vue';
+    import {Inertia} from "@inertiajs/inertia";
 
     export default {
         components :{
@@ -33,7 +34,10 @@
                 this.modelToShow = null;
                 this.modelToDelete = null;
                 this.modelToAdd = null;
-            }
+            },
+            ShowOrdersPage : function(model){
+                Inertia.visit(model.route)
+            },
         },
         data(){
             return {
@@ -61,7 +65,7 @@
             </h2>
         </template>
 
-        <Datatable  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Clients table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowOrdersPage="ShowOrdersPage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Clients table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
         <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
         <deleteUser @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteUser>

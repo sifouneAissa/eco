@@ -85,4 +85,19 @@
             </a>
         @endcan
     @endif
+
+    @if(!(isset($without) && (in_array('orders',$without))) && in_array(\App\Traits\OrdersTrait::class, class_uses_recursive(get_class($model))))
+        @can('view user orders')
+        <a
+            href="javascript: void(0)"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Orders"
+            id="btn-orders"
+            data-id="{{json_encode($model->ordersBtn())}}"
+        >
+            <i class="feather-truck h4"></i>
+        </a>
+       @endcan
+    @endif
 @endif
