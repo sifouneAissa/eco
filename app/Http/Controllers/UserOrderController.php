@@ -51,7 +51,9 @@ class UserOrderController extends Controller
             if (!auth()->user()) {
                 // create address , account for the user
                 $paymentInfo = $request->input('paymentInfo');
-                $user = User::query()->create(filterRequest($paymentInfo, User::class));
+                if(!$shopping->user_id)
+                    $user = User::query()->create(filterRequest($paymentInfo, User::class));
+                else $user = User::find($shopping->user_id);
 
                 if (is_array($addressInputs = $request->input('address_id'))) {
                     $addressInputs['user_id'] = $user->id;
@@ -230,7 +232,9 @@ class UserOrderController extends Controller
         if (!auth()->user()) {
             // create address , account for the user
             $paymentInfo = $request->input('paymentInfo');
+            if(!$shopping_session->user_id)
             $user = User::query()->create(filterRequest($paymentInfo, User::class));
+            else $user = User::find($shopping_session->user_id);
 
             if (is_array($addressInputs = $request->input('address_id'))) {
                 $addressInputs['user_id'] = $user->id;

@@ -33,7 +33,7 @@
                                     </label>
                                     <input name="card_holder_name" required v-model="credit.name" type="text" class="form-control" placeholder="Enter Card name">
                                 </div>
-                                <div class="form-group col-md-12">
+                                <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
                                     <label>Email
                                     </label>
                                     <input  required v-model="credit.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
@@ -181,7 +181,7 @@
                                     </label>
                                     <input  required v-model="netbank.name" type="text" class="form-control" placeholder="Enter Card name">
                                 </div>
-                                <div class="form-group col-md-12">
+                                <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
                                     <label>Email
                                     </label>
                                     <input  required v-model="netbank.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
@@ -203,7 +203,7 @@
                                 </label>
                                 <input  required v-model="payonD.name" type="text" class="form-control" placeholder="Enter your name">
                             </div>
-                            <div class="form-group col-md-12">
+                            <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
                                 <label>Email
                                 </label>
                                 <input  required v-model="payonD.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
