@@ -1,4 +1,18 @@
+<script setup>
 
+    import {Inertia} from "@inertiajs/inertia";
+
+    const logout = function () {
+        Inertia.post(
+            route("admin.logout"),
+            {},
+            {
+                // onSuccess: () => Inertia.visit(route('admin.login')),
+            }
+        );
+    };
+
+</script>
 <template>
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
         <a   class="navbar-brand" href="index.html"><img alt="logo" src="/img/logo.png"></a>
@@ -154,7 +168,9 @@
                     <a class="dropdown-item" :href="route('profile.show')"><i class="feather-edit"></i> My Account</a>
 <!--                    <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>-->
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out"></i> Logout</a>
+                    <form @submit.prevent="logout">
+                        <button class="dropdown-item" type="submit" ><i class="feather-log-out"></i> Logout</button>
+                    </form>
                 </div>
             </li>
         </ul>

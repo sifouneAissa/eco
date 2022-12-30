@@ -40,7 +40,7 @@
                 <small class="text-info">Extra charges may apply</small>
             </div>
             <div class="dropdown-cart-top-footer border-top p-2">
-                <a class="btn btn-success btn-block btn-lg" href="checkout.html"> Checkout</a>
+                <Link class="btn btn-success btn-block btn-lg" :href="route('checkout.show')"> Checkout</Link>
             </div>
         </div>
         <div v-else class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
