@@ -74,7 +74,8 @@ class HandleInertiaRequests extends Middleware
             'currency_code' => $code,
             'shopping_session' => $shopping,
             'STRIPE_KEY' => env('STRIPE_KEY'),
-            'client_secret' => $client_secret
+            'client_secret' => $client_secret,
+            'addresses' => auth()->user()?->addresses
         ]);
     }
 }

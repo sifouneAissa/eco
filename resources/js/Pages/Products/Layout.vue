@@ -7,9 +7,10 @@
             </h2>
         </template>
             <banner/>
-            <tabs/>
+            <tabs @ShowCheckout="ShowCheckout" />
             <recommended/>
             <footer/>
+            <CheckoutCard :model="model" v-if="model && checkout" />
     </GuestLayout>
 </template>
 
@@ -20,16 +21,32 @@
     import banner from '@/Pages/Products/banner.vue';
     import recommended from '@/Pages/Products/recomended.vue';
     import tabs from '@/Pages/Products/tabs.vue';
+    import CheckoutCard from "@/Pages/Checkout/CheckoutCard.vue";
+
     export default {
         components : {
             GuestLayout,
             footer,
             banner,
             recommended,
-            tabs
+            tabs,
+            CheckoutCard
         },
         props : ['title'],
-        name: "Layout.vue"
+        name: "Layout.vue",
+        data(){
+            return {
+                checkout : false,
+                model : null
+            }
+        },
+        methods : {
+            ShowCheckout : function (data) {
+                    this.checkout = true;
+                    this.model = data;
+                    window.location.href = window.location.href.split('#')[0] + "#checkout-payment";
+            }
+        }
     }
 </script>
 

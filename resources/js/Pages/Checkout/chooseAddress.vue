@@ -4,7 +4,7 @@
         <h4 class="mb-1">Choose a delivery address</h4>
         <h6 class="mb-3 text-black-50">Multiple addresses in this location</h6>
         <div  class="row">
-            <div v-for="model in sModels" :key="model.mobile" class="col-md-6">
+            <div v-for="model in sModels" :key="model.mobile" :class="card_class ? card_class : 'col-md-6'">
                 <div class="bg-white card addresses-item">
 
                     <div class="gold-members p-4">
@@ -101,7 +101,8 @@
 
     export  default  {
         props : [
-            'models'
+            'models',
+            'card_class'
         ],
         created() {
                 if(this.models && this.models.length) {

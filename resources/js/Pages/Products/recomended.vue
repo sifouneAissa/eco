@@ -28,7 +28,7 @@
                                     <h6 class="mb-3">Recommend  <span class="badge badge-success"><i class="icofont-tags"></i> same category </span></h6>
                                     <ProductCarousel :models="$page.props.sameCategory" />
                                 </div>
-                                <div class="row">
+                                <div v-if="$page.props.bestSellers.length" class="row">
                                     <h5 class="mb-4 mt-3 col-md-12">Best Sellers</h5>
                                     <div v-for="product in $page.props.bestSellers" :key="product.id" class="col-md-4 col-sm-6 mb-4">
                                         <ProductCard :model="product" />

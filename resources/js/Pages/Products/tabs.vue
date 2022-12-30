@@ -12,7 +12,7 @@
 
                         </div>
                           <button class="btn btn-outline-secondary btn-sm right inc ml-2" @click="submit(model)" >ADD <i class="icofont-shopping-cart"></i></button>
-                          <button class="btn btn-outline-success btn-sm right inc ml-2" >CHECKOUT <i class="icofont-long-arrow-right"></i></button>
+                          <button @click="ShowCheckout" class="btn btn-outline-success btn-sm right inc ml-2" >CHECKOUT <i class="icofont-long-arrow-right"></i></button>
 
                       </span>
 
@@ -54,6 +54,9 @@
         created() {
         },
         methods : {
+            ShowCheckout : function (){
+                this.$emit('ShowCheckout',this.$page.props.product);
+            },
             incrQP(by){
                 this.$page.props.product.quantity = this.$page.props.product.quantity + by;
                 if(this.$page.props.product.quantity > this.$page.props.product.isA.remain) this.$page.props.product.quantity = this.$page.props.product.isA.remain;

@@ -21,11 +21,8 @@ class UserOrderController extends Controller
     public function store(UserOrderRequest $request){
 
         $order = startTransaction(function () use ($request){
-
             $user = $request->user();
             $inputs = $request->all();
-            $shopping = getShoppingSession();
-
 
             if(!auth()->user()){
                 // create address , account for the user
@@ -38,12 +35,16 @@ class UserOrderController extends Controller
                 }
             }
 
+            $withProduct = $request->input('withProduct');
+
+            if($withProduct) return $this->payOnProduct($user,$inputs,$request);
+
+            $shopping = getShoppingSession();
             $cartItems = $shopping->cartItems;
             $inputs['user_id'] = $user->id;
             $inputs['total'] = $shopping->ptotal;
             // if payment method === credit
             $this->stripeAmount($shopping->ptotal,$request,$user);
-            $inputs['user_id'] = $user->id;
             // create the order
             $order = OrderDetail::query()->create(filterRequest($inputs,OrderDetail::class));
 
@@ -96,6 +97,8 @@ class UserOrderController extends Controller
         $is_auth = auth()->user();
         if($is_auth)
         $s_session = auth()->user()->shopping_session;
+
+
         else {
             $s_session = ShoppingSession::where('ip', $request->ip())->first();
             $s_session->cartItems()->delete();
@@ -180,6 +183,46 @@ class UserOrderController extends Controller
                 dd($exception->getMessage());
             }
         }
+
+    }
+
+    public function payOnProduct($user,$inputs,$request){
+
+        $data = $request->input('withProduct');
+        $product_id = $data['product_id'];
+        $quantity = $data['quantity'];
+
+        $product = Product::find($product_id);
+        $inputs['user_id'] = $user->id;
+        $inputs['total'] = $product->price * $quantity;
+        // if payment method === credit
+        $this->stripeAmount($product->price * $quantity,$request,$user);
+        // create the order
+        $order = OrderDetail::query()->create(filterRequest($inputs,OrderDetail::class));
+
+        $isPaid = $request->input('provider') === 'payondelivery';
+
+            $orderItem = OrderItem::query()->create([
+                'quantity' => $quantity,
+                'product_id' => $product_id,
+                'order_id' => $order->id,
+            ]);
+            // attach every order item with his inventory
+            InventoryOrderItem::query()->create([
+                'inventory_id' => $product->product_inventory_id,
+                'order_item_id' => $orderItem->id
+            ]);
+
+
+            // create the payment
+            PaymentDetail::query()->create([
+                'amount' => $inputs['total'] ,
+                'provider' => $request->input('provider'),
+                'status' => $isPaid ? 'waiting' : 'paid',
+                'order_id' => $order->id
+            ]);
+
+            return $order;
 
     }
 }
