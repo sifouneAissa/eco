@@ -91,6 +91,7 @@
 <script>
     import {useForm,Link} from "@inertiajs/inertia-vue3";
     import {Inertia} from "@inertiajs/inertia"
+    import { useToast } from "vue-toastification";
 
     export default  {
         components : {
@@ -109,11 +110,16 @@
         },
         methods : {
             incrQP(item,by){
+
+                const toast = useToast();
                 let q = item.quantity;
                 let product = item.product;
                 item.quantity = item.quantity + by;
 
-                if(item.quantity > product.isA.remain) item.quantity = product.isA.remain;
+                if(item.quantity > product.isA.remain) {
+                    item.quantity = product.isA.remain
+                    toast.warning('Max Quantity of product : ' + product.name);
+                };
 
                 if(!item.quantity) item.quantity = 1;
 
