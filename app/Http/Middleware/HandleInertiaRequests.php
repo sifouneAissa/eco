@@ -62,6 +62,10 @@ class HandleInertiaRequests extends Middleware
             else $client_secret = app(User::class)?->createSetupIntent()->client_secret;
         }catch (\Exception $exception){}
 
+        $addresses = auth()->user()?->addresses;
+
+        if(!$addresses) $addresses = $shopping?->user?->addresses;
+
         return array_merge(parent::share($request), [
             //
             'locale' => $cLocale,
@@ -75,7 +79,7 @@ class HandleInertiaRequests extends Middleware
             'shopping_session' => $shopping,
             'STRIPE_KEY' => env('STRIPE_KEY'),
             'client_secret' => $client_secret,
-            'addresses' => auth()->user()?->addresses
+            'addresses' => $addresses
         ]);
     }
 }

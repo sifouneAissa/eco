@@ -105,6 +105,7 @@
             'card_class'
         ],
         created() {
+                console.log(this.models);
                 if(this.models && this.models.length) {
                     this.setSelectedAddress(this.models[0])
                     this.selectedA = this.models[0];

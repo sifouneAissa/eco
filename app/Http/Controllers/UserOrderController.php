@@ -163,10 +163,12 @@ class UserOrderController extends Controller
         };
 
 
-        $addresses = auth() ?->user() ?->addresses;
         $products = null;
 
         $shopping_session = getShoppingSession();
+
+//        $addresses = auth() ?->user() ?->addresses;
+//        if(!$addresses) $addresses = $shopping_session?->user?->addresess;
 
         $categories = $shopping_session ?->products->map(function ($item) {
         return $item->category->id;
@@ -177,7 +179,7 @@ class UserOrderController extends Controller
 
 
         return Inertia::render('Checkout', [
-            'addresses' => $addresses,
+//            'addresses' => $addresses,
             'products' => $products
         ]);
     }
@@ -215,6 +217,7 @@ class UserOrderController extends Controller
         $product_id = $data['product_id'];
         $quantity = $data['quantity'];
         $product = Product::find($product_id);
+        $shopping_session = getShoppingSession();
 
         if ($product->isA()['remain'] < $quantity)
             return redirect()->back()->withErrors([
@@ -263,6 +266,9 @@ class UserOrderController extends Controller
             'status' => $isPaid ? 'waiting' : 'paid',
             'order_id' => $order->id
         ]);
+
+        $shopping_session->user_id = $user->id;
+        $shopping_session->save();
 
         event(new NewOrder($order));
 
