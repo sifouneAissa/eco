@@ -96,4 +96,13 @@ class User extends Authenticatable
     public function addresses(){
         return $this->hasMany(UserAddress::class,'user_id');
     }
+
+    public function orders(){
+        return $this->hasMany(OrderDetail::class,'user_id');
+    }
+
+
+    public function ordersCount($count){
+        return $this->orders->count() >= $count;
+    }
 }

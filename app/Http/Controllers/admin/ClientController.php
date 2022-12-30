@@ -94,7 +94,7 @@ class ClientController extends Controller
 
         $datatables = $this->getDataTables()
             ->addColumn('id', fn($model) => $model->id)
-            ->addColumn('name', fn($model) => $model->name)
+            ->addColumn('name', fn($model) => view('Clients.name',compact('model')))
             ->addColumn('email',fn($model) => $model->email)
 //            ->addColumn('roles',function ($model) {
 //                return view('Users.roles',compact('model'));
