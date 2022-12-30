@@ -1,7 +1,7 @@
 <template>
 
 
-    <div id="payment"  v-if="model && model.citotal" :class="'bg-white rounded shadow-sm p-4 osahan-payment ' + (disable ? 'ddiv' : '')">
+    <div id="payment"  v-if="model && price" :class="'bg-white rounded shadow-sm p-4 osahan-payment ' + (disable ? 'ddiv' : '')">
         <h4 class="mb-1">Choose payment method</h4>
         <h6 class="mb-3 text-black-50">Credit/Debit Cards</h6>
         <div class="row">
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12 mb-0">
-                                    <button type="submit" class="btn btn-success btn-block btn-lg pay">PAY {{props.currency_code}} {{model.citotal}}
+                                    <button type="submit" class="btn btn-success btn-block btn-lg pay">PAY {{props.currency_code}} {{price}}
                                         <i class="icofont-long-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                                     <input  required v-model="netbank.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
                                 </div>
                                 <div class="form-group col-md-12 mb-0">
-                                    <button type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                                    <button type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{price}}
                                         <i class="icofont-long-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <button  type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                            <button  type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{price}}
                                 <i class="icofont-long-arrow-right"></i></button>
                         </form>
                     </div>
@@ -242,7 +242,7 @@
     import 'https://js.stripe.com/v3/'
     export  default  {
         props : [
-            'disable','form'
+            'disable','form','smodel'
         ],
         mounted() {
             let app = this;
@@ -300,10 +300,13 @@
         },
         computed : {
             model : function () {
-                return this.props.shopping_session;
+                return this.smodel ? this.smodel : this.props.shopping_session;
             },
             props : function (){
                 return this.$page.props;
+            },
+            price : function (){
+                return this.smodel ? (this.smodel.cprice * this.model.quantity) : this.model.citotal;
             }
 
         }

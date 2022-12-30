@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\NewOrder;
 use App\Events\UpdateOrder;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -21,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UpdateOrder::class => [
             \App\Listeners\UpdateOrder::class
+        ],
+        NewOrder::class => [
+            \App\Listeners\NewOrder::class
         ]
     ];
 

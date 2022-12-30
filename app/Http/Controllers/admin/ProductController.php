@@ -73,6 +73,7 @@ class ProductController extends Controller
         $product->update($inputs);
 
         if ($start_over) {
+            // delete this to start over
             $inventory = ProductInventory::find($request->input('product_inventory_id'));
             $orderItems = $inventory->orderItems()->where('product_id', $product->id)->get();
             InventoryOrderItem::where('inventory_id', $inventory->id)->whereIn('order_item_id', $orderItems->pluck('id'))->delete();

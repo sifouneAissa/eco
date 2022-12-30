@@ -51,6 +51,21 @@ import {InertiaProgress} from '@inertiajs/progress';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 import {ZiggyVue} from '../../vendor/tightenco/ziggy/dist/vue.m';
 import {createI18n} from 'vue-i18n'
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
+
+window.Pusher = Pusher;
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 12345,
+    wsHost: window.location.hostname,
+    wsPort: 6001,
+    forceTLS: false,
+    disableStats: true,
+    cluster: 'mt1',
+});
+
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 

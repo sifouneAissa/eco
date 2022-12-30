@@ -108,12 +108,11 @@
                             <div class="col-6">
                                 <chooseAddress
                                     :card_class="'col-12'"
-                                    v-if="$page.props.shopping_session && $page.props.shopping_session.citotal"
                                     @setSelectedAddress="setSelectedAddress" :models="$page.props.addresses"/>
                             </div>
                             <div class="col-6">
                                 <choosePayment
-                                    v-if="$page.props.shopping_session && $page.props.shopping_session.citotal"
+                                    :smodel="model"
                                     :form="form" :disable="this.form.address_id===null"
                                     @SelectPaymentMethod="SelectPaymentMethod"/>
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewOrder;
 use App\Http\Requests\UserOrderRequest;
 use App\Models\CartItem;
 use App\Models\InventoryOrderItem;
@@ -83,6 +84,9 @@ class UserOrderController extends Controller
 
             return $order;
         });
+
+        // lunch event
+        event(new NewOrder($order));
 
         return redirect()->route('listing',[
             'query' => $order->products->first()->category->name
