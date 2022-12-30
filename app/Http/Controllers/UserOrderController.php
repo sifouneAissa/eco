@@ -19,18 +19,21 @@ use Inertia\Inertia;
 
 class UserOrderController extends Controller
 {
-    public function store(UserOrderRequest $request){
+    public function store(UserOrderRequest $request)
+    {
 
-        $order = startTransaction(function () use ($request){
+
+        return startTransaction(function () use ($request) {
+
             $user = $request->user();
             $inputs = $request->all();
 
-            if(!auth()->user()){
+            if (!auth()->user()) {
                 // create address , account for the user
                 $paymentInfo = $request->input('paymentInfo');
-                $user = User::query()->create(filterRequest($paymentInfo,User::class));
+                $user = User::query()->create(filterRequest($paymentInfo, User::class));
 
-                if(is_array($addressInputs = $request->input('address_id'))) {
+                if (is_array($addressInputs = $request->input('address_id'))) {
                     $addressInputs['user_id'] = $user->id;
                     $inputs['address_id'] = UserAddress::query()->create(filterRequest($addressInputs, UserAddress::class))->id;
                 }
@@ -38,20 +41,20 @@ class UserOrderController extends Controller
 
             $withProduct = $request->input('withProduct');
 
-            if($withProduct) return $this->payOnProduct($user,$inputs,$request);
+            if ($withProduct) return $this->payOnProduct($user, $inputs, $request);
 
             $shopping = getShoppingSession();
             $cartItems = $shopping->cartItems;
             $inputs['user_id'] = $user->id;
             $inputs['total'] = $shopping->ptotal;
             // if payment method === credit
-            $this->stripeAmount($shopping->ptotal,$request,$user);
+            $this->stripeAmount($shopping->ptotal, $request, $user);
             // create the order
-            $order = OrderDetail::query()->create(filterRequest($inputs,OrderDetail::class));
+            $order = OrderDetail::query()->create(filterRequest($inputs, OrderDetail::class));
 
             $isPaid = $request->input('provider') === 'payondelivery';
             // create order items
-            foreach ($cartItems as $item){
+            foreach ($cartItems as $item) {
                 $orderItem = OrderItem::query()->create([
                     'quantity' => $item->quantity,
                     'product_id' => $item->product_id,
@@ -82,25 +85,23 @@ class UserOrderController extends Controller
             ]);
 
 
-            return $order;
+            event(new NewOrder($order));
+
+            return redirect()->route('listing', [
+                'query' => $order->products->first()->category->name
+            ]);
         });
-
-        // lunch event
-        event(new NewOrder($order));
-
-        return redirect()->route('listing',[
-            'query' => $order->products->first()->category->name
-        ]);
 
     }
 
-    public function addProduct(Request $request){
+    public function addProduct(Request $request)
+    {
 
         $item = $request->all();
 
         $is_auth = auth()->user();
-        if($is_auth)
-        $s_session = auth()->user()->shopping_session;
+        if ($is_auth)
+            $s_session = auth()->user()->shopping_session;
 
 
         else {
@@ -110,67 +111,69 @@ class UserOrderController extends Controller
             $s_session->save();
         }
 
-        if(!$s_session){
-                $data = [
-                    'total' => 0,
-                    'user_id' => $is_auth ? auth()->user()->id : 0
-                ];
+        if (!$s_session) {
+            $data = [
+                'total' => 0,
+                'user_id' => $is_auth ? auth()->user()->id : 0
+            ];
 
-                if(!$is_auth) {
-                    $data ['type'] = 'guest';
-                    $data['ip'] = $request->ip();
-                }
-
-                $s_session = ShoppingSession::create($data);
+            if (!$is_auth) {
+                $data ['type'] = 'guest';
+                $data['ip'] = $request->ip();
             }
 
-            // add item
-            CartItem::create([
-                'quantity' => isset($item['quantity']) ? $item['quantity'] : 1,
-                'product_id' => $item['product_id'],
-                'shopping_session_id' => $s_session->id
-            ]);
+            $s_session = ShoppingSession::create($data);
+        }
+
+        // add item
+        CartItem::create([
+            'quantity' => isset($item['quantity']) ? $item['quantity'] : 1,
+            'product_id' => $item['product_id'],
+            'shopping_session_id' => $s_session->id
+        ]);
     }
 
 
-    public function checkout(){
+    public function checkout()
+    {
 
-        $callbackIsA = function ($item){
+        $callbackIsA = function ($item) {
             return $item->isA()['isA'];
         };
 
-        $callback = function ($item){
+        $callback = function ($item) {
             $item['isA'] = $item->isA();
             $item['quantity'] = 1;
             return $item;
         };
 
 
-        $addresses = auth()?->user()?->addresses;
+        $addresses = auth() ?->user() ?->addresses;
         $products = null;
 
         $shopping_session = getShoppingSession();
 
-        $categories = $shopping_session?->products->map(function ($item){
-            return $item->category->id;
-        })->unique();
+        $categories = $shopping_session ?->products->map(function ($item) {
+        return $item->category->id;
+    })->unique();
 
-        if($categories->isNotEmpty()) $products = Product::query()->whereIn('product_category_id',$categories)->get()->filter($callbackIsA)->map($callback);
+        if ($categories->isNotEmpty()) $products = Product::query()->whereIn('product_category_id', $categories)->get()->filter($callbackIsA)->map($callback);
         else $products = Product::query()->get()->filter($callbackIsA)->map($callback);
 
 
-        return Inertia::render('Checkout',[
+        return Inertia::render('Checkout', [
             'addresses' => $addresses,
             'products' => $products
         ]);
     }
 
 
-    private function stripeAmount($amount,$request,$user){
+    private function stripeAmount($amount, $request, $user)
+    {
 
-        $is_credit = $request->input('provider')==='credit';
+        $is_credit = $request->input('provider') === 'credit';
 
-        if($is_credit) {
+        if ($is_credit) {
             $paymentInfo = $request->input('paymentInfo');
             $paymentMethod = $paymentInfo['paymentMethod'];
 
@@ -190,43 +193,52 @@ class UserOrderController extends Controller
 
     }
 
-    public function payOnProduct($user,$inputs,$request){
+    public function payOnProduct($user, $inputs, $request)
+    {
 
         $data = $request->input('withProduct');
         $product_id = $data['product_id'];
         $quantity = $data['quantity'];
-
         $product = Product::find($product_id);
+        if ($product->isA()['remain'] < $quantity)
+            return redirect()->back()->withErrors([
+                'error' => 'Quantity is not available'
+            ]);
+
         $inputs['user_id'] = $user->id;
         $inputs['total'] = $product->price * $quantity;
         // if payment method === credit
-        $this->stripeAmount($product->price * $quantity,$request,$user);
+        $this->stripeAmount($product->price * $quantity, $request, $user);
         // create the order
-        $order = OrderDetail::query()->create(filterRequest($inputs,OrderDetail::class));
+        $order = OrderDetail::query()->create(filterRequest($inputs, OrderDetail::class));
 
         $isPaid = $request->input('provider') === 'payondelivery';
 
-            $orderItem = OrderItem::query()->create([
-                'quantity' => $quantity,
-                'product_id' => $product_id,
-                'order_id' => $order->id,
-            ]);
-            // attach every order item with his inventory
-            InventoryOrderItem::query()->create([
-                'inventory_id' => $product->product_inventory_id,
-                'order_item_id' => $orderItem->id
-            ]);
+        $orderItem = OrderItem::query()->create([
+            'quantity' => $quantity,
+            'product_id' => $product_id,
+            'order_id' => $order->id,
+        ]);
+        // attach every order item with his inventory
+        InventoryOrderItem::query()->create([
+            'inventory_id' => $product->product_inventory_id,
+            'order_item_id' => $orderItem->id
+        ]);
 
 
-            // create the payment
-            PaymentDetail::query()->create([
-                'amount' => $inputs['total'] ,
-                'provider' => $request->input('provider'),
-                'status' => $isPaid ? 'waiting' : 'paid',
-                'order_id' => $order->id
-            ]);
+        // create the payment
+        PaymentDetail::query()->create([
+            'amount' => $inputs['total'],
+            'provider' => $request->input('provider'),
+            'status' => $isPaid ? 'waiting' : 'paid',
+            'order_id' => $order->id
+        ]);
 
-            return $order;
+        event(new NewOrder($order));
+
+        return redirect()->route('listing', [
+            'query' => $order->products->first()->category->name
+        ]);
 
     }
 }

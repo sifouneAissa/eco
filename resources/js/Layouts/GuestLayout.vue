@@ -12,6 +12,8 @@
     import Notification from "@/Pages/GuestLayout/Notification.vue";
     import './../../assets/vendor/owl-carousel/owl.carousel';
 
+
+
     import {usePage} from '@inertiajs/inertia-vue3';
 
     export default {
@@ -57,6 +59,7 @@
         },
         props : ['title'],
         mounted() {
+
             let app = this;
             $(document).ready(function () {
                 if (app.$page.props.isRtl) {

@@ -70,6 +70,8 @@
             model : Object
         },
         mounted() {
+
+
             let app = this;
             let modal = $('#'+this.model.modal_ids.edit);
 

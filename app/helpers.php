@@ -11,6 +11,16 @@ if (!function_exists('getLocales')) {
     }
 }
 
+
+if (!function_exists('getSetting')) {
+
+    function getSetting($code)
+    {
+        return  \App\Models\Setting::query()->where('code',$code)->first();
+    }
+}
+
+
 if (!function_exists('getSearchable')) {
 
     /**

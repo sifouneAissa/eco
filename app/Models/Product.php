@@ -112,6 +112,7 @@ class Product extends Model implements HasMedia
          $items = $this->orderItems;
          $q = 0;
          foreach($items as $item) $q = $q+$item->quantity;
+         foreach($items as $item) $q = $q+$item->quantity;
 
          return $q;
     }

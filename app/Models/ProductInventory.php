@@ -9,6 +9,10 @@ class ProductInventory extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'quantity'
+    ];
+
 
     public function orderItems(){
         return $this->belongsToMany(OrderItem::class,'inventory_order_items','inventory_id');

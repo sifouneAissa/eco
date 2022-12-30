@@ -36,7 +36,7 @@ class ProductController extends Controller
     {
 
         $categories = ProductCategory::with([])->get();
-        $inventories = ProductInventory::with([])->get();
+        $inventories = ProductInventory::orderBy('quantity')->get();
 
         return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $this->getUrl())

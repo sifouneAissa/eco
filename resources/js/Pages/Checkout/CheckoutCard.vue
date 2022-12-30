@@ -4,6 +4,7 @@
     import ProductCarousel from '@/Pages/Listing/ProductCarousel.vue'
     import CartMenu from '@/Pages/Checkout/CartMenu.vue'
     import {useForm} from "@inertiajs/inertia-vue3";
+    import { useToast } from "vue-toastification";
 
     export default {
         components: {
@@ -57,6 +58,8 @@
             },
             SelectPaymentMethod(data) {
 
+                const toast = useToast();
+
                 this.form.provider = data.type;
                 this.form.paymentInfo = data.data;
                 this.form.email = data.data.email;
@@ -65,7 +68,14 @@
                     product_id : this.model.id,
                     quantity : this.model.quantity
                 };
-                this.form.post(route('order.store'), {})
+                this.form.post(route('order.store'), {
+                    onSuccess: () => {
+                        toast.success('Operation successful')
+                    },
+                    onError: (errors) => {
+                        toast.error(errors.error);
+                    }
+                })
             },
             Pay() {
                 if (!this.form.address_id)
