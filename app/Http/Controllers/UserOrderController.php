@@ -25,6 +25,26 @@ class UserOrderController extends Controller
 
         return startTransaction(function () use ($request) {
 
+
+            $withProduct = $request->input('withProduct');
+
+            if ($withProduct) return $this->payOnProduct($request);
+
+            $shopping = getShoppingSession();
+            $cartItems = $shopping->cartItems;
+            $q_av = true;
+
+            foreach ($cartItems as $item) {
+                $product = Product::find($item->product_id);
+                $q_av = $product->isA()['remain'] >= $item->quantity;
+                if (!$q_av) break;
+            }
+
+            if (!$q_av)
+                return redirect()->back()->withErrors([
+                    'error' => 'Quantity is not available'
+                ]);
+
             $user = $request->user();
             $inputs = $request->all();
 
@@ -39,12 +59,7 @@ class UserOrderController extends Controller
                 }
             }
 
-            $withProduct = $request->input('withProduct');
 
-            if ($withProduct) return $this->payOnProduct($user, $inputs, $request);
-
-            $shopping = getShoppingSession();
-            $cartItems = $shopping->cartItems;
             $inputs['user_id'] = $user->id;
             $inputs['total'] = $shopping->ptotal;
             // if payment method === credit
@@ -193,17 +208,32 @@ class UserOrderController extends Controller
 
     }
 
-    public function payOnProduct($user, $inputs, $request)
+    public function payOnProduct($request)
     {
 
         $data = $request->input('withProduct');
         $product_id = $data['product_id'];
         $quantity = $data['quantity'];
         $product = Product::find($product_id);
+
         if ($product->isA()['remain'] < $quantity)
             return redirect()->back()->withErrors([
                 'error' => 'Quantity is not available'
             ]);
+
+        $user = $request->user();
+        $inputs = $request->all();
+
+        if (!auth()->user()) {
+            // create address , account for the user
+            $paymentInfo = $request->input('paymentInfo');
+            $user = User::query()->create(filterRequest($paymentInfo, User::class));
+
+            if (is_array($addressInputs = $request->input('address_id'))) {
+                $addressInputs['user_id'] = $user->id;
+                $inputs['address_id'] = UserAddress::query()->create(filterRequest($addressInputs, UserAddress::class))->id;
+            }
+        }
 
         $inputs['user_id'] = $user->id;
         $inputs['total'] = $product->price * $quantity;
