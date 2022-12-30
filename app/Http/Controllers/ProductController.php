@@ -44,8 +44,6 @@ class ProductController extends Controller
         $product = Product::query()->findOrFail($id)->load(['category']);
         if(!$product->isA()['isA'])  abort(404);
 
-        // lunch event
-        event(new NewOrder(OrderDetail::first()));
 
         $callbackIsA = function ($item){
             return $item->isA()['isA'];
