@@ -9,7 +9,6 @@
 
     export default  {
         methods : {
-
             submit : function (cat) {
                 let param = {};
                 if(cat) param = {
