@@ -1,6 +1,6 @@
 <template>
         <button v-if="showMe('unordered')" @click="submit('unordered')"  class="mr-1 btn btn-warning"><h6><i class="feather-user"></i> Unordered</h6></button>
-        <button v-if="showMe('unregistered')" @click="submit('unregistered')" class="mr-1 btn btn-dark"><h6><i class="feather-user-check"></i> Unregistered</h6></button>
+        <button v-if="showMe('unregistered')" @click="submit('unregistered')" class="mr-1 btn btn-dark"><h6><i class="feather-user-minus"></i> Unregistered</h6></button>
         <button v-if="showMe(null)" @click="submit()" class="mr-1 btn btn-light"><h6><i class="feather-user-check"></i> All</h6></button>
 </template>
 
