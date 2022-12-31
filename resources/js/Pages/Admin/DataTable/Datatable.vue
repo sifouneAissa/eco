@@ -1,17 +1,46 @@
 <script>
     import EditModal from '@/Pages/Admin/DataTable/Modals/Update.vue';
 
+    import ClientFilterBtns from '@/Pages/Admin/Clients/FilterBtns.vue';
 
     export default {
-        props: [
-            'datatableHeaders',
-            'datatableColumns',
-            'datatableUrl',
-            'title',
-            'without'
-        ],
+        // props: [
+        //     'datatableHeaders',
+        //     'datatableColumns',
+        //     'datatableUrl',
+        //     'title',
+        //     'without',
+        //     'Btns'
+        // ],
+        props: {
+            datatableHeaders: {
+                type: [Array],
+                default: [],
+            },
+            datatableColumns: {
+                type: [Array],
+                default: [],
+            },
+            datatableUrl: {
+                type: [String],
+                default: '#',
+            },
+            title: {
+                type: [String],
+                default: 'Table',
+            },
+            without: {
+                type: [Array],
+                default: [],
+            },
+            Btns: {
+                type: [String],
+                default: null,
+            },
+        },
         components: {
-            EditModal
+            EditModal,
+            ClientFilterBtns
         },
         data() {
             return {
@@ -29,6 +58,7 @@
         },
         mounted() {
 
+            console.log(this.Btns);
 
             let app = this;
 
@@ -150,6 +180,8 @@
             <i class="fas fa-table mr-1"></i>
             {{title}}
             <div v-if="(!without || !without.some(item => item === 'add'))" class="float-right">
+
+                <ClientFilterBtns v-if="Btns==='ClientFilterBtns'"/>
                 <button @click="(!$page.props.model || !$page.props.model.is_page) ? $emit('ShowAddModel',$page.props.model) : $emit('ShowAddPage',$page.props.model) " class="btn btn-primary"><h6><i class="feather-plus"></i>Add
                 </h6></button>
             </div>

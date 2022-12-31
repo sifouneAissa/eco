@@ -5,6 +5,7 @@
     import showRole from '@/Pages/Admin/Roles/showRole.vue';
     import deleteUser from '@/Pages/Admin/Clients/deleteUser.vue';
     import addUser from '@/Pages/Admin/Clients/addUser.vue';
+    import FilterBtns from '@/Pages/Admin/Clients/FilterBtns.vue';
     import {Inertia} from "@inertiajs/inertia";
 
     export default {
@@ -13,7 +14,8 @@
             Datatable,
             addUser,
             editUser,
-            deleteUser
+            deleteUser,
+            FilterBtns
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
@@ -65,7 +67,7 @@
             </h2>
         </template>
 
-        <Datatable @ShowOrdersPage="ShowOrdersPage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Clients table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable :Btns="'ClientFilterBtns'" @ShowOrdersPage="ShowOrdersPage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Clients table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
         <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
         <deleteUser @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteUser>
