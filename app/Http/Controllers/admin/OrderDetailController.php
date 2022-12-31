@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\OrderDetail;
+use App\Models\User;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -22,7 +23,8 @@ class OrderDetailController extends Controller
     public const FORS = [
         'delivered', // delivered
         'onway', // onway
-        'received'// instore
+        'received',// instore
+        'waiting'
     ];
 
 
@@ -114,6 +116,7 @@ class OrderDetailController extends Controller
             else if($for==="received") $builder = $builder->whereHas('orderTracks',function ($b){
                 $b->where('status','instore');
             });
+            else if($for==="waiting") $builder = $builder->whereDoesntHave('orderTracks');
         }
         $builder = datatables()->of($builder);
 
