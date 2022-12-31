@@ -21,7 +21,7 @@
         </a>
         <div v-if="$page.props.shopping_session" class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
             <div class="dropdown-cart-top-header p-4">
-                <img class="img-fluid mr-3" alt="osahan" src="img/cart.jpg">
+                <img class="img-fluid mr-3" alt="osahan" src="/img/checkout.png">
                 <h6 class="mb-0">{{$page.props.shopping_session.names}}</h6>
 <!--                <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>-->
                 <small><Link :href="route('checkout.show')" class="text-primary font-weight-bold" href="#">View Full Menu</Link></small>
@@ -62,7 +62,7 @@
 <!--                <small class="text-info">Extra charges may apply</small>-->
             </div>
             <div class="dropdown-cart-top-footer border-top p-2">
-                <a class="btn btn-success btn-block btn-lg" href="checkout.html">Add Product</a>
+                <Link class="btn btn-success btn-block btn-lg" :href="route('listing')" >Add Product</Link>
             </div>
         </div>
 
