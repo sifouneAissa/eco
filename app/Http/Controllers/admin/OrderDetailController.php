@@ -19,6 +19,12 @@ class OrderDetailController extends Controller
 
     public const COMPONENT = 'Orders';
 
+    public const FORS = [
+        'delivered', // delivered
+        'onway', // onway
+        'received'// instore
+    ];
+
 
     public function __construct()
     {
@@ -42,6 +48,7 @@ class OrderDetailController extends Controller
     {
         $url = $this->getUrl();
 
+
         $keys  = array_values(array_map(function ($item){
             return $item['key'];
         },config("default.orders")));
@@ -52,6 +59,13 @@ class OrderDetailController extends Controller
             $url = $url.'?'.$params;
         }
 
+        $for = $request->input('for');
+
+        if(in_array($for,self::FORS))
+            if(str_contains('?',$url))
+            $url = $url . "&for=". $for;
+            else
+            $url = $url . "?for=". $for;
 
         return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $url)
@@ -87,6 +101,20 @@ class OrderDetailController extends Controller
             }
         }
 
+        $for = $request->input('for');
+
+        if(in_array($for,self::FORS))
+        {
+            if($for==="delivered") $builder = $builder->whereHas('orderTracks',function ($b){
+                $b->where('status','delivered');
+            });
+            else if($for==="onway") $builder = $builder->whereHas('orderTracks',function ($b){
+                $b->where('status','onway');
+            });
+            else if($for==="received") $builder = $builder->whereHas('orderTracks',function ($b){
+                $b->where('status','instore');
+            });
+        }
         $builder = datatables()->of($builder);
 
         $datatables = $builder

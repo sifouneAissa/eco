@@ -2,6 +2,7 @@
     import EditModal from '@/Pages/Admin/DataTable/Modals/Update.vue';
 
     import ClientFilterBtns from '@/Pages/Admin/Clients/FilterBtns.vue';
+    import OrderFilterBtns from '@/Pages/Admin/Orders/FilterBtns.vue';
 
     export default {
         // props: [
@@ -40,7 +41,8 @@
         },
         components: {
             EditModal,
-            ClientFilterBtns
+            ClientFilterBtns,
+            OrderFilterBtns
         },
         data() {
             return {
@@ -182,6 +184,7 @@
             <div v-if="(!without || !without.some(item => item === 'add'))" class="float-right">
 
                 <ClientFilterBtns v-if="Btns==='ClientFilterBtns'"/>
+                <OrderFilterBtns v-if="Btns==='OrderFilterBtns'"/>
                 <button @click="(!$page.props.model || !$page.props.model.is_page) ? $emit('ShowAddModel',$page.props.model) : $emit('ShowAddPage',$page.props.model) " class="btn btn-primary"><h6><i class="feather-plus"></i>Add
                 </h6></button>
             </div>
