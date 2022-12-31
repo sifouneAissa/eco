@@ -10,14 +10,16 @@
     import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
     import Cart from "@/Pages/GuestLayout/Cart.vue";
     import Notification from "@/Pages/GuestLayout/Notification.vue";
+    import setPassword from "@/Pages/Password/setPassword.vue";
     import './../../assets/vendor/owl-carousel/owl.carousel';
 
 
-
+    import {useToast} from 'vue-toastification'
     import {usePage} from '@inertiajs/inertia-vue3';
 
     export default {
         components : {
+            setPassword,
             Notification,
             Cart,
             ResponsiveNavLink,
@@ -61,6 +63,13 @@
         mounted() {
 
             let app = this;
+
+            if(this.$page.props.setPassword)
+            {
+                let modal = $('#set-password');
+                modal.modal('show');
+            }
+
             $(document).ready(function () {
                 if (app.$page.props.isRtl) {
                     // ===========Select2============
@@ -621,7 +630,7 @@
         <main class="bg-light">
             <slot/>
         </main>
-
+        <setPassword/>
 
 
         <footer class="pt-4 pb-4 text-center">

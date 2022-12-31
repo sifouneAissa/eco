@@ -65,6 +65,11 @@ class HandleInertiaRequests extends Middleware
         $addresses = auth()->user()?->addresses;
 
         if(!$addresses) $addresses = $shopping?->user?->addresses;
+        $set_password = false;
+
+        if(Session::get('setPassword'))
+            $set_password = true;
+
 
         return array_merge(parent::share($request), [
             //
@@ -79,7 +84,9 @@ class HandleInertiaRequests extends Middleware
             'shopping_session' => $shopping,
             'STRIPE_KEY' => env('STRIPE_KEY'),
             'client_secret' => $client_secret,
-            'addresses' => $addresses
+            'addresses' => $addresses,
+            'setPassword' => $set_password,
+            'shopping_user' => $shopping?->user
         ]);
     }
 }

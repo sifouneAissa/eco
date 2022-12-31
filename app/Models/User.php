@@ -126,4 +126,8 @@ class User extends Authenticatable
         return 0;
 
     }
+
+    public function passwordExist(){
+        return $this->password !==null;
+    }
 }

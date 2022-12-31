@@ -15,13 +15,18 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcome');
+Route::get('/', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcome')->middleware('set.password');
+Route::post('/skipsetpassword',function (){
+    $time = \Illuminate\Support\Carbon::now();
+    \Illuminate\Support\Facades\Session::put('time',$time);
+})->name('skipsetpassword');
 
 
 
 
 Route::middleware([
     'auth:sanctum',
+    'set.password',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
@@ -42,52 +47,56 @@ Route::middleware([
 
 });
 
-// product
-Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
-Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class,'show'])->name('product.show');
-Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('product.index');
-Route::get('/checkout', [\App\Http\Controllers\UserOrderController::class,'checkout'])->name('checkout.show');
+Route::middleware([
+ 'set.password'
+])->group(function (){
+    // product
+    Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
+    Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class,'show'])->name('product.show');
+    Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('product.index');
+    Route::get('/checkout', [\App\Http\Controllers\UserOrderController::class,'checkout'])->name('checkout.show');
 
 
 
-Route::resource('/cartitem',\App\Http\Controllers\CartItemController::class)->only(
-    'update','destroy'
-);
-Route::resource('/order',\App\Http\Controllers\UserOrderController::class)->only(
-    'store'
-);
-Route::get('/listing', [\App\Http\Controllers\UserListingController::class,'index'])->name('listing');
+    Route::resource('/cartitem',\App\Http\Controllers\CartItemController::class)->only(
+        'update','destroy'
+    );
+    Route::resource('/order',\App\Http\Controllers\UserOrderController::class)->only(
+        'store'
+    );
+    Route::get('/listing', [\App\Http\Controllers\UserListingController::class,'index'])->name('listing');
 
-Route::post('setlocale',[\App\Http\Controllers\setLocale::class,'setLocale'])->name('setLocale')->withoutMiddleware('set.locale');
-Route::post('setcurrency',[\App\Http\Controllers\setLocale::class,'setCurrency'])->name('setCurrency')->withoutMiddleware('set.locale');
+    Route::post('setlocale',[\App\Http\Controllers\setLocale::class,'setLocale'])->name('setLocale')->withoutMiddleware('set.locale');
+    Route::post('setcurrency',[\App\Http\Controllers\setLocale::class,'setCurrency'])->name('setCurrency')->withoutMiddleware('set.locale');
 
 // Company pages components
-Route::get("/contact-us",function (){
+    Route::get("/contact-us",function (){
 
-    return \inertia("CompanyPages/ContactUs");
+        return \inertia("CompanyPages/ContactUs");
+    });
+    Route::get("/about-us",function (){
+
+        return \inertia("CompanyPages/AboutUs");
+    });
+    Route::get("/privacy-policy",function (){
+
+        return \inertia("CompanyPages/PrivacyPolicy");
+    });
+    Route::get("/terms-conditions",function (){
+
+        return \inertia("CompanyPages/TermsAndConditions");
+    });
+    Route::get("/shipping-policy",function (){
+
+        return \inertia("CompanyPages/ReturnAndShippingPolicy");
+    });
+    Route::get("/faq",function (){
+
+        return \inertia("CompanyPages/Faq");
+    });
+    Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
+
+    Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');
+
 });
-Route::get("/about-us",function (){
-
-    return \inertia("CompanyPages/AboutUs");
-});
-Route::get("/privacy-policy",function (){
-
-    return \inertia("CompanyPages/PrivacyPolicy");
-});
-Route::get("/terms-conditions",function (){
-
-    return \inertia("CompanyPages/TermsAndConditions");
-});
-Route::get("/shipping-policy",function (){
-
-    return \inertia("CompanyPages/ReturnAndShippingPolicy");
-});
-Route::get("/faq",function (){
-
-    return \inertia("CompanyPages/Faq");
-});
-Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
-
-Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');
-
 require __DIR__. "/admin.php";

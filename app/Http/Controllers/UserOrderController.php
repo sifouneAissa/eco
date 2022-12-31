@@ -13,8 +13,10 @@ use App\Models\Product;
 use App\Models\ShoppingSession;
 use App\Models\User;
 use App\Models\UserAddress;
+use Carbon\Carbon;
 use Faker\Provider\Address;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 class UserOrderController extends Controller
@@ -97,11 +99,14 @@ class UserOrderController extends Controller
 
             ShoppingSession::query()->create([
                 'user_id' => $user->id,
-                'total' => 0
+                'total' => 0,
+                'current' => true,
+                'ip' => $request->ip()
             ]);
 
 
             event(new NewOrder($order));
+
 
             return redirect()->route('listing', [
                 'query' => $order->products->first()->category->name
