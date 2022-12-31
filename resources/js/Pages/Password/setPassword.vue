@@ -4,8 +4,9 @@
      export default {
         mounted() {
                 let modal = $('#set-password');
+                let app = this;
                 modal.on('hidden.bs.modal',function (){
-                    this.skip()
+                    app.skip()
                 })
         },
          data() {
