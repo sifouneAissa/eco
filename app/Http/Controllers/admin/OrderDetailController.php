@@ -31,7 +31,7 @@ class OrderDetailController extends Controller
 
     public function show($id){
 
-        $order = OrderDetail::find($id)->load(['orderItems.product','paymentDetail']);
+        $order = OrderDetail::find($id)->load(['orderItems.product','paymentDetail','user']);
         return Inertia::render('Orders/showOrder',[
             'order' => $order
         ]);
@@ -67,7 +67,7 @@ class OrderDetailController extends Controller
 
     public function datatables(Request $request) {
 
-        $builder = (self::MODEL)::query();
+        $builder = (self::MODEL)::query()->orderBy('created_at','desc');
 
         $permissions = [
             'edit' => 'edit order',

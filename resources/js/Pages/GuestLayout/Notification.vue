@@ -9,7 +9,7 @@
             <div class="dropdown-cart-top-body border-top p-4">
                 <div  v-for="(notification,index) in notifications" :key="notification.id">
                     <div v-if="index<6">
-                        <div >
+                        <div  >
                             <div class="small text-gray-500">{{notification.date}}</div>
                             <!--                        <span class="font-weight-bold">A new monthly report is ready to download!</span>-->
                         </div>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="dropdown-cart-top-footer border-top p-2">
-                <a class="btn btn-success btn-block btn-lg" href="checkout.html">View All {{notifications.length}} notifications</a>
+                <a class="btn btn-success btn-block btn-lg" href="#">View All {{notifications.length}} notifications</a>
             </div>
         </div>
 

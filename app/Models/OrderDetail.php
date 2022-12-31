@@ -67,7 +67,9 @@ class OrderDetail extends Model
 
         try{
             $image = $this->products?->first()?->media?->first()?->getFullUrl();
+            if(!$image) $image = '/img/checkout.png';
         }catch(\Exception $e){}
+
 
         return $image;
     }

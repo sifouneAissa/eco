@@ -105,4 +105,25 @@ class User extends Authenticatable
     public function ordersCount($count){
         return $this->orders->count() >= $count;
     }
+
+    public function stars($count,$min){
+        $stars  = [
+            1,
+            2,
+            3,
+            4,
+            5
+        ];
+        $i = 1;
+        $best = $this->ordersCount($count);
+        $count = $this->orders->count();
+
+        if($best) return $stars[$i+3];
+        else if(!$best && $count>$min) return $stars[$i+2];
+        else if(!$best && $count === $min ) return $stars[$i+1];
+        else if(!$best && $count<$min && $count>$min + 1) return $stars[$i];
+
+        return 0;
+
+    }
 }

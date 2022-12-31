@@ -12,7 +12,7 @@
                 Alerts Center
             </h6>
             <div v-for="(notification,index) in notifications" :key="notification.id">
-                <a v-if="index<6" :class="'dropdown-item d-flex align-items-center ' + (!notification.read_at ? 'bg-light' : '')" href="#">
+                <a @click="go(notification.data.order)" v-if="index<6" :class="'dropdown-item d-flex align-items-center ' + (!notification.read_at ? 'bg-light' : '')" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-primary">
                             <i class="fas fa-box-open text-white"></i>
@@ -30,6 +30,7 @@
 </template>
 <script>
     import {useForm} from "@inertiajs/inertia-vue3";
+    import {Inertia} from '@inertiajs/inertia';
 
     export default {
         mounted() {
@@ -66,6 +67,10 @@
 
         },
         methods: {
+            go : function (order){
+                Inertia.visit(this.route('admin.order.show',
+                    {id : order.id}));
+            },
             getOrderStatus(s) {
                 let status = {
                     delivered: 'confirmed',

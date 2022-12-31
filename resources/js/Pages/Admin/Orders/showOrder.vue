@@ -18,37 +18,50 @@
                             <div class="gold-members p-4">
                                 <a href="#">
                                 </a>
-                                <div class="media">
-                                    <a href="#">
-                                        <img class="mr-4" :src="order.fimage" alt="Generic placeholder image">
-                                    </a>
-                                    <div class="media-body">
+                                    <div class="media">
                                         <a href="#">
-                                            <span class="float-right text-success">{{order.delivered_date}}<i class="feather-check-circle text-success"></i></span>
+                                            <img class="mr-4" :src="order.fimage" alt="Generic placeholder image">
                                         </a>
-                                        <h6 class="mb-3"><a href="#">
-                                        </a><a href="detail.html" class="text-dark">{{order.names}}
-                                        </a>
-                                        </h6>
-                                        <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> {{order.address.address_line_1}}, {{order.address.city}}, {{order.address.country}}
-                                        </p>
-                                        <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER {{order.order_number}} <i class="feather-clock ml-2"></i> {{order.created_date}}</p>
-                                        <p class="text-dark">{{order.qnames}}
-                                        </p>
-                                        <hr>
-                                        <div v-if="$can('update order status')" class="float-right">
-<!--                                            <a href="messages.html" class="btn btn-sm btn-warning"><i class="feather-message-circle"></i> Message</a>-->
-                                            <i v-if="order.received" class="feather-check-circle"></i>
-                                            <a @click="submit('instore')" class="btn btn-sm btn-success m-1"><i class="feather-check-circle"></i> Order Received</a>
-                                            <i v-if="order.confirmed" class="feather-check-circle"></i>
-                                            <a @click="submit('onway')" class="btn btn-sm btn-info m-1" data-toggle="modal" data-target="#edit_booking"><i class="feather-truck"></i> Order Confirmed</a>
-                                            <i v-if="order.picked_up" class="feather-check-circle text-success"></i>
-                                            <a @click="submit('delivered')" class="btn btn-sm btn-outline-success m-1"><i class="feather-user-check"></i> Order Picked Up</a>
+                                        <div class="media-body">
+                                            <a href="#">
+                                                <span class="float-right text-success">{{order.delivered_date}}<i class="feather-check-circle text-success"></i></span>
+                                            </a>
+                                            <h6 class="mb-3"><a href="#">
+                                            </a>
+                                            <a href="detail.html" class="text-dark">{{order.names}}
+                                            </a>
+
+                                            </h6>
+                                            <p v-if="order.user" class="text-black-50 mb-1"><i class="feather-user"></i> {{order.user.name}}
+                                            </p>
+                                            <p v-if="order.payment_detail" class="text-black-50 mb-1"><i class="feather-dollar-sign"></i> <span :class="'badge ' +  (order.payment_detail.status === 'waiting' ? 'badge-warning' : 'badge-success' )">{{order.payment_detail.status === 'waiting' ? 'On delivery' : 'Paid'}}</span>
+                                            </p>
+                                            <p class="text-black-50 mb-1"><i class="feather-map-pin"></i> {{order.address.address_line_1}}, {{order.address.city}}, {{order.address.country}}
+                                            </p>
+                                            <p class="text-black-50 mb-1"><i class="feather-phone"></i> {{order.address.telephone}}, {{order.address.mobile}}
+                                            </p>
+                                            <p v-if="order.user" class="text-black-50 mb-1"><i class="feather-mail"></i> {{order.user.email}}
+                                            </p>
+
+
+                                            <p class="text-black-50 mb-3"><i class="feather-list"></i> ORDER {{order.order_number}} <i class="feather-clock ml-2"></i> {{order.created_date}}</p>
+                                            <p class="text-dark">{{order.qnames}}
+                                            </p>
+                                            <hr>
+                                            <div v-if="$can('update order status')" class="float-right">
+                                                <!--                                            <a href="messages.html" class="btn btn-sm btn-warning"><i class="feather-message-circle"></i> Message</a>-->
+                                                <i v-if="order.received" class="feather-check-circle"></i>
+                                                <a @click="submit('instore')" class="btn btn-sm btn-success m-1"><i class="feather-check-circle"></i> Order Received</a>
+                                                <i v-if="order.confirmed" class="feather-check-circle"></i>
+                                                <a @click="submit('onway')" class="btn btn-sm btn-info m-1" data-toggle="modal" data-target="#edit_booking"><i class="feather-truck"></i> Order Confirmed</a>
+                                                <i v-if="order.picked_up" class="feather-check-circle text-success"></i>
+                                                <a @click="submit('delivered')" class="btn btn-sm btn-outline-success m-1"><i class="feather-user-check"></i> Order Picked Up</a>
+                                            </div>
+                                            <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold"> Total Paid:</span>  {{order.total}}
+                                            </p>
                                         </div>
-                                        <p class="mb-0 text-dark text-dark pt-2"><span class="text-dark font-weight-bold"> Total Paid:</span>  {{order.total}}
-                                        </p>
                                     </div>
-                                </div>
+
                             </div>
                         </div>
                         <div class="table-responsive">
