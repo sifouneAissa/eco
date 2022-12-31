@@ -21,7 +21,6 @@
                     let url = window.location.href;
                     let for_cat = url.split("?")[1];
                     if(!cat) return for_cat!=null;
-
                     return !(for_cat === 'for='+cat);
             }
         },
