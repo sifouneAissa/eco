@@ -1,8 +1,15 @@
 <template>
 
     <div id="address"  class="bg-white rounded shadow-sm p-4 mb-4">
-        <h4 class="mb-1">Choose a delivery address</h4>
-        <h6 class="mb-3 text-black-50">Multiple addresses in this location</h6>
+        <div>
+            <h4 class="mb-1">
+                Choose a delivery address
+                <button v-if="showAdd" class="float-right btn btn-outline-danger" @click="add=true">Add</button>
+            </h4>
+            <h6 class="mb-3 text-black-50">Multiple addresses in this location</h6>
+        </div>
+
+
         <div  class="row">
             <div v-for="model in sModels" :key="model.mobile" :class="card_class ? card_class : 'col-md-6'">
                 <div class="bg-white card addresses-item">
@@ -14,11 +21,8 @@
                                 <h6 class="mb-1 text-secondary">{{model.city}}</h6>
                                 <p>{{model.address_line_1}},{{model.city}},{{model.country}}
                                 </p>
-                                    <p v-if="!model.toCreate" class="mb-0 text-black font-weight-bold"><a href="javascript: void(0)" @click="setSelectedAddress(model)" :class="'btn btn-sm mr-2 '+ ( selectedA.id === model.id ? 'btn-success' : 'btn-secondary' )"> DELIVER HERE</a>
-                                    </p>
-                                    <p  v-if="model.toCreate" class="mb-0 text-black font-weight-bold"><a href="javascript: void(0)" @click="add=true" :class="'btn btn-sm mr-2 btn-danger'"> EDIT</a>
-                                        <!--                                    <span>{{model.mobi}}</span>-->
-                                    </p>
+                                    <p class="mb-0 text-black font-weight-bold"><a href="javascript: void(0)" @click="setSelectedAddress(model)" :class="'btn btn-sm mr-2 '+ ( selectedA.id === model.id || (selectedA.toCreate===true && model.toCreate) ? 'btn-success' : 'btn-secondary' )"> DELIVER HERE</a></p>
+                                    <p  v-if="model.toCreate" class="mb-0 text-black font-weight-bold"><a href="javascript: void(0)" @click="add=true" :class="'btn btn-sm mr-2 btn-danger'"> EDIT</a></p>
                             </div>
                         </div>
                     </div>
@@ -105,7 +109,8 @@
             'card_class'
         ],
         created() {
-                console.log(this.models);
+                console.log("this.showAdd");
+                console.log(this.showAdd);
                 if(this.models && this.models.length) {
                     this.setSelectedAddress(this.models[0])
                     this.selectedA = this.models[0];
@@ -132,14 +137,23 @@
 
         }
         },
+        computed : {
+            showAdd : function (){
+                return !this.sModels.filter(function (item){
+                    return item.toCreate;
+                }).length ;
+            }
+        },
         methods : {
             setSelectedAddress(model){
-                    this.selectedA = model;
+                this.selectedA = model;
+
                     if(model.toCreate) {
-                        if(!this.sModels.length)
-                            this.sModels.push(model);
+                        if(this.showAdd)
+                        this.sModels.push(model);
                         this.add = false;
                     }
+
                     this.$emit('SetSelectedAddress', model);
 
             }

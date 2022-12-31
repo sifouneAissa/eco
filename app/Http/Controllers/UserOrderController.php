@@ -25,7 +25,6 @@ class UserOrderController extends Controller
 
         return startTransaction(function () use ($request) {
 
-
             $withProduct = $request->input('withProduct');
 
             if ($withProduct) return $this->payOnProduct($request);
@@ -176,7 +175,7 @@ class UserOrderController extends Controller
         return $item->category->id;
     })->unique();
 
-        if ($categories->isNotEmpty()) $products = Product::query()->whereIn('product_category_id', $categories)->get()->filter($callbackIsA)->map($callback);
+        if ($categories?->isNotEmpty()) $products = Product::query()->whereIn('product_category_id', $categories)->get()->filter($callbackIsA)->map($callback);
         else $products = Product::query()->get()->filter($callbackIsA)->map($callback);
 
 
