@@ -28,7 +28,7 @@
             </div>
             <div class="dropdown-cart-top-body border-top p-4">
                 <div v-for="item in $page.props.shopping_session.cart_items" :key="item.id">
-                    <p class="mb-2"><i @click="submitD(item)" class="icofont-delete text-danger food-item"></i> {{item.product.name}} x {{item.quantity}}   <span class="float-right text-secondary">{{$page.props.currency_code}} {{item.product.cprice}}</span></p>
+                    <p class="mb-2"><i @click="submitD(item)" class="icofont-delete text-danger food-item"></i> {{item.product.name}} x {{item.quantity}}   <span class="float-right text-secondary">{{$page.props.currency_code}} {{item.qprice}}</span></p>
                 </div>
 <!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas Salad x 1   <span class="float-right text-secondary">$209</span></p>-->
 <!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6" (15 cm) x 1  <span class="float-right text-secondary">$133</span></p>-->
@@ -36,7 +36,7 @@
 <!--                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad x 1   <span class="float-right text-secondary">$209</span></p>-->
             </div>
             <div class="dropdown-cart-top-footer border-top p-4">
-                <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">{{$page.props.currency_code}}  {{$page.props.shopping_session.tprice}}</span></p>
+                <p class="mb-0 font-weight-bold text-secondary">Sub Total <span class="float-right text-dark">{{$page.props.currency_code}}  {{$page.props.shopping_session.citotal}}</span></p>
                 <small class="text-info">Extra charges may apply</small>
             </div>
             <div class="dropdown-cart-top-footer border-top p-2">

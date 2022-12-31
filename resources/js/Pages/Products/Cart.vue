@@ -1,5 +1,6 @@
 <script setup>
     import  CartMenu from "@/Pages/Checkout/CartMenu.vue";
+    import {Inertia} from "@inertiajs/inertia"
 
 
 
@@ -16,6 +17,6 @@
                 </div>
             </div>
         </div>
-        <CartMenu/>
+        <CartMenu @Pay="Inertia.visit(route('checkout.show'))"/>
     </div>
 </template>
