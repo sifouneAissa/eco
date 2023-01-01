@@ -62,6 +62,8 @@ Route::post('setlocale',[\App\Http\Controllers\setLocale::class,'setLocale'])->n
 Route::post('setcurrency',[\App\Http\Controllers\setLocale::class,'setCurrency'])->name('setCurrency')->withoutMiddleware('set.locale');
 
 // Company pages components
+Route::get('/blogs', [\App\Http\Controllers\BlogController::class,'index'])->name('blog.index');
+
 Route::get("/contact-us",function (){
 
     return \inertia("CompanyPages/ContactUs");
