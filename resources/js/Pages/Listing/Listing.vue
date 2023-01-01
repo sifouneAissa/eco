@@ -52,6 +52,7 @@
     import { Inertia, } from '@inertiajs/inertia';
     import {useForm,Head, Link} from "@inertiajs/inertia-vue3";
     import Categories from "@/Pages/Listing/Categories.vue";
+    import {useToast} from "vue-toastification";
 
     export default {
         name: "listing.vue",
@@ -72,8 +73,13 @@
         },
         methods : {
             incrQP(model,by){
+
+                const toast = useToast();
                 model.quantity = model.quantity + by;
-                if(model.quantity > model.isA.remain) model.quantity = model.isA.remain;
+                if(model.quantity > model.isA.remain) {
+                    model.quantity = model.isA.remain;
+                    toast.warning('Max Quantity of product : ' + model.name);
+                }
 
                 if(!model.quantity) model.quantity = 1;
             },
