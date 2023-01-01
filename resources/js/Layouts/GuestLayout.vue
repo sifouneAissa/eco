@@ -63,10 +63,14 @@
         mounted() {
 
             let app = this;
-
             if(this.$page.props.setPassword)
             {
                 let modal = $('#set-password');
+
+                modal.on('hidden.bs.modal',function (){
+                    app.$emit('ResetModel');
+                })
+
                 modal.modal('show');
             }
 

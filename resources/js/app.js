@@ -26,6 +26,7 @@ import  '../assets/vendor/select2/js/select2.min';
 //     ,'resources/assets/ltr/js/custom.js'
 
 import messages from './translation/translation';
+import { VueBotUI}  from 'vue-bot-ui'
 
 
 
