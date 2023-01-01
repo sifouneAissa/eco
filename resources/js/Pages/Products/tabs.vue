@@ -12,7 +12,7 @@
 
                         </div>
                           <button class="btn btn-outline-secondary btn-sm right inc ml-2" @click="submit(model)" >ADD <i class="icofont-shopping-cart"></i></button>
-                          <button class="btn btn-outline-success btn-sm right inc ml-2" >CHECKOUT <i class="icofont-long-arrow-right"></i></button>
+                          <button @click="ShowCheckout" class="btn btn-outline-success btn-sm right inc ml-2" >CHECKOUT <i class="icofont-long-arrow-right"></i></button>
 
                       </span>
 
@@ -43,6 +43,7 @@
 <script>
     import { Inertia, } from '@inertiajs/inertia';
     import {useForm} from "@inertiajs/inertia-vue3";
+    import {useToast} from "vue-toastification";
 
     export default {
         name: "listing.vue",
@@ -54,9 +55,18 @@
         created() {
         },
         methods : {
+            ShowCheckout : function (){
+                this.$emit('ShowCheckout',this.$page.props.product);
+            },
             incrQP(by){
+
+                const toast = useToast();
                 this.$page.props.product.quantity = this.$page.props.product.quantity + by;
-                if(this.$page.props.product.quantity > this.$page.props.product.isA.remain) this.$page.props.product.quantity = this.$page.props.product.isA.remain;
+                if(this.$page.props.product.quantity > this.$page.props.product.isA.remain) {
+                    this.$page.props.product.quantity = this.$page.props.product.isA.remain;
+                    toast.warning('Max Quantity of product : ' + this.$page.props.product.name);
+
+                }
 
                 if(!this.$page.props.product.quantity) this.$page.props.product.quantity = 1;
             },

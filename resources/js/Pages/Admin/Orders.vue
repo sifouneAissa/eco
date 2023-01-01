@@ -75,7 +75,7 @@
             </h2>
         </template>
 
-        <Datatable @ShowEditPage="ShowEditPage" @ShowShowPage="ShowShowPage" @ShowDeletePage="ShowDeletePage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Orders table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable :Btns="'OrderFilterBtns'" @ShowEditPage="ShowEditPage" @ShowShowPage="ShowShowPage" @ShowDeletePage="ShowDeletePage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Orders table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
 <!--        <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>-->
 <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
 <!--        <deleteUser @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteUser>-->

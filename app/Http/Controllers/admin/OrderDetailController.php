@@ -4,9 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\OrderDetail;
+use App\Models\User;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use function League\Flysystem\map;
 
 class OrderDetailController extends Controller
 {
@@ -18,6 +20,13 @@ class OrderDetailController extends Controller
 
     public const COMPONENT = 'Orders';
 
+    public const FORS = [
+        'delivered', // delivered
+        'onway', // onway
+        'received',// instore
+        'waiting'
+    ];
+
 
     public function __construct()
     {
@@ -25,13 +34,12 @@ class OrderDetailController extends Controller
         $this->middleware(['permission:edit order'])->only(['update']);
         $this->middleware(['permission:add order'])->only(['store']);
         $this->middleware(['permission:delete order'])->only(['destroy']);
-
         $this->middleware(['permission:show order'])->only(['show']);
     }
 
     public function show($id){
 
-        $order = OrderDetail::find($id)->load(['orderItems.product','paymentDetail']);
+        $order = OrderDetail::find($id)->load(['orderItems.product','paymentDetail','user']);
         return Inertia::render('Orders/showOrder',[
             'order' => $order
         ]);
@@ -40,8 +48,29 @@ class OrderDetailController extends Controller
 
     public function index(Request $request)
     {
+        $url = $this->getUrl();
+
+
+        $keys  = array_values(array_map(function ($item){
+            return $item['key'];
+        },config("default.orders")));
+
+        if($request->hasAny($keys)){
+            $arr = explode('?',$request->fullUrl());
+            $params = $arr[count($arr)-1];
+            $url = $url.'?'.$params;
+        }
+
+        $for = $request->input('for');
+
+        if(in_array($for,self::FORS))
+            if(str_contains('?',$url))
+            $url = $url . "&for=". $for;
+            else
+            $url = $url . "?for=". $for;
+
         return Inertia::render(self::COMPONENT)
-            ->with('datatableUrl', $this->getUrl())
+            ->with('datatableUrl', $url)
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
 //            ->with('roles',$roles)
@@ -54,17 +83,44 @@ class OrderDetailController extends Controller
 
     public function datatables(Request $request) {
 
+        $builder = (self::MODEL)::query()->orderBy('created_at','desc');
+
         $permissions = [
             'edit' => 'edit order',
             'show' => 'show order',
             'delete' => 'delete order'
         ];
 
-//        $without = [
-//            'show'
-//        ];
 
-        $datatables = $this->getDataTables()
+        $keys  = array_values(array_map(function ($item){
+            return $item['key'];
+        },config("default.orders")));
+
+        if($request->hasAny($keys)){
+            foreach ($request->all() as $key => $value) {
+                if (in_array($key, $keys))
+                    $builder = $builder->where($key,$value);
+            }
+        }
+
+        $for = $request->input('for');
+
+        if(in_array($for,self::FORS))
+        {
+            if($for==="delivered") $builder = $builder->whereHas('orderTracks',function ($b){
+                $b->where('status','delivered');
+            });
+            else if($for==="onway") $builder = $builder->whereHas('orderTracks',function ($b){
+                $b->where('status','onway');
+            });
+            else if($for==="received") $builder = $builder->whereHas('orderTracks',function ($b){
+                $b->where('status','instore');
+            });
+            else if($for==="waiting") $builder = $builder->whereDoesntHave('orderTracks');
+        }
+        $builder = datatables()->of($builder);
+
+        $datatables = $builder
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('user_name', fn($model) => $model->userAddress->user->name)
             ->addColumn('email',fn($model) => $model->userAddress->user->email)
@@ -72,13 +128,7 @@ class OrderDetailController extends Controller
             ->addColumn('total',fn($model) => $model->total)
             ->addColumn('status',fn($model) => $model->current_status)
             ->addColumn('created_at',fn($model) => translateDate($model->created_at))
-//            ->addColumn('roles',function ($model) {
-//                return view('Users.roles',compact('model'));
-//            })
             ->addColumn('action',function ($model) use ($permissions){
-
-//                $model['permissions'] = $model->roles;
-
                 return view('Datatable.btn',compact('model','permissions'));
             })
             ->toArray();

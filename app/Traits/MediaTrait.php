@@ -19,4 +19,20 @@ trait MediaTrait {
 
         return null;
     }
+
+
+    public function crumb(){
+        return [
+            [
+                'name' => self::SNAME,
+                'route' => route('admin.'.$this->mediaProvider().'.index')
+            ],
+            [
+                'name' => self::INAME.' Media of : ' . $this->name,
+                'route' => '#'
+            ]
+        ];
+    }
+
+
 }

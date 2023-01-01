@@ -1,17 +1,16 @@
 <template>
 
 
-    <div class="bg-white rounded shadow-sm p-4 osahan-payment">
+    <div id="payment"  v-if="model && price" :class="'bg-white rounded shadow-sm p-4 osahan-payment ' + (disable ? 'ddiv' : '')">
         <h4 class="mb-1">Choose payment method</h4>
         <h6 class="mb-3 text-black-50">Credit/Debit Cards</h6>
         <div class="row">
             <div class="col-sm-4 pr-0">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="icofont-credit-card"></i> Credit/Debit Cards</a>
-<!--                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#
-
-" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="icofont-id-card"></i> Food Cards</a>-->
-<!--                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="icofont-card"></i> Credit</a>-->
+                    <!--                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#
+                    " role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="icofont-id-card"></i> Food Cards</a>-->
+                    <!--                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="icofont-card"></i> Credit</a>-->
                     <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="icofont-bank-alt"></i> Netbanking</a>
                     <a class="nav-link" id="v-pills-cash-tab" data-toggle="pill" href="#v-pills-cash" role="tab" aria-controls="v-pills-cash" aria-selected="false"><i class="icofont-money"></i> Pay on Delivery</a>
                 </div>
@@ -32,6 +31,11 @@
                                     <label>Name on card
                                     </label>
                                     <input name="card_holder_name" required v-model="credit.name" type="text" class="form-control" placeholder="Enter Card name">
+                                </div>
+                                <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
+                                    <label>Email
+                                    </label>
+                                    <input  required v-model="credit.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -67,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12 mb-0">
-                                    <button type="submit" class="btn btn-success btn-block btn-lg pay">PAY {{props.currency_code}} {{model.citotal}}
+                                    <button type="submit" class="btn btn-success btn-block btn-lg pay">PAY {{props.currency_code}} {{price}}
                                         <i class="icofont-long-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -171,8 +175,18 @@
                                         <option value="3">Three</option>
                                     </select>
                                 </div>
+                                <div class="form-group col-md-12">
+                                    <label>Name on card
+                                    </label>
+                                    <input  required v-model="netbank.name" type="text" class="form-control" placeholder="Enter Card name">
+                                </div>
+                                <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
+                                    <label>Email
+                                    </label>
+                                    <input  required v-model="netbank.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
+                                </div>
                                 <div class="form-group col-md-12 mb-0">
-                                    <button  class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                                    <button type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{price}}
                                         <i class="icofont-long-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -182,8 +196,23 @@
                         <h6 class="mb-3 mt-0 mb-3">Cash</h6>
                         <p>Please keep exact change handy to help us serve you better</p>
                         <hr>
-                        <form>
-                            <button @click="SelectPaymentMethod('payondelivery')" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{model.citotal}}
+                        <form @submit.prevent="SelectPaymentMethod('payondelivery')">
+                            <div class="form-group col-md-12">
+                                <label>Name
+                                </label>
+                                <input  required v-model="payonD.name" type="text" class="form-control" placeholder="Enter your name">
+                            </div>
+                            <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
+                                <label>Email
+                                </label>
+                                <input  required v-model="payonD.email" type="email" class="form-control" placeholder="xxxx@xxx.xx">
+                                <div v-show="form.errors.email">
+                                    <p class="text-sm text-red-600" style="color: red">
+                                        {{ form.errors.email }}
+                                    </p>
+                                </div>
+                            </div>
+                            <button  type="submit" class="btn btn-success btn-block btn-lg">PAY {{props.currency_code}} {{price}}
                                 <i class="icofont-long-arrow-right"></i></button>
                         </form>
                     </div>
@@ -211,7 +240,9 @@
 <script >
     import 'https://js.stripe.com/v3/'
     export  default  {
-
+        props : [
+            'disable','form','smodel'
+        ],
         mounted() {
             let app = this;
             $( document ).ready(function() {
@@ -268,10 +299,13 @@
         },
         computed : {
             model : function () {
-                return this.props.shopping_session;
+                return this.smodel ? this.smodel : this.props.shopping_session;
             },
             props : function (){
                 return this.$page.props;
+            },
+            price : function (){
+                return this.smodel ? (this.smodel.cprice * this.model.quantity) : this.model.citotal;
             }
 
         }
@@ -285,12 +319,18 @@
                     cvv : null,
                     name : null,
                     paymentMethod : null,
-                    _token : this.csrf
+                    _token : this.csrf,
+                    email : null
                 },
                 netbank : {
-                    bank : null
+                    bank : null,
+                    email : null,
+                    name : null
                 },
-                payonD : null
+                payonD : {
+                    email : null,
+                    name : null
+                }
             }
         },
         methods : {
@@ -330,5 +370,10 @@
     }
     .StripeElement--webkit-autofill {
         background-color: #fefde5 !important;
+    }
+    .ddiv {
+        pointer-events:none;
+
+        opacity: 0.4;
     }
 </style>

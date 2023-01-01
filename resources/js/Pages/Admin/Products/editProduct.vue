@@ -55,23 +55,32 @@
 
 
                 <div class="mb-5 form-label-group">
-                    <div class="form-group">
-                        <label>Inventory</label>
-                        <multiselect
-                            v-model="form.inventory"
-                            :options="options2"
-                            label="name"
-                            track-by="name"
-                            :multiple="false"
-                            placeholder="Select Inventory"
-                        ></multiselect>
-                        <div v-show="form.errors.product_inventory_id">
-                            <p class="text-sm " style="color: red">
-                                {{ form.errors.product_inventory_id }}
-                            </p>
+                    <div class="row ">
+                        <div class="col-12 form-group">
+                            <label>Inventory</label>
+                            <div class=" float-right custom-control custom-radio custom-control-inline">
+                                <input v-model="form.start_over" type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                <label class="custom-control-label " for="customRadioInline1">Start over</label>
+                            </div>
+                            <multiselect
+                                v-model="form.inventory"
+                                :options="options2"
+                                label="name"
+                                track-by="name"
+                                :multiple="false"
+                                placeholder="Select Inventory"
+                            ></multiselect>
+                            <div v-show="form.errors.product_inventory_id">
+                                <p class="text-sm " style="color: red">
+                                    {{ form.errors.product_inventory_id }}
+                                </p>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
+
 
                 <div class="modal-footer d-flex  ">
                     <button type="button" class="btn btn-outline-warning" @click="resetModel" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
@@ -110,6 +119,7 @@
                     name: this.model.name,
                     desc: this.model.desc,
                     price: this.model.price,
+                    start_over : !this.model.isA.isA,
                     inventory : {name : this.model.inventory.quantity,id : this.model.inventory.id},
                     category:  {name : this.model.category.name,id : this.model.category.id}
                 }),
@@ -130,7 +140,8 @@
                     product_category_id : data.category.id,
                     product_inventory_id : data.inventory.id,
                     desc : data.desc,
-                    price : data.price
+                    price : data.price,
+                    start_over : data.start_over
                 })).patch(route('admin.product.update',{
                     id : this.model.id
                 }), {

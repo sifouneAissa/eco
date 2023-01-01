@@ -3,7 +3,19 @@ return[
     'media' => [
             'product' => [
                 'builder' => \App\Models\Product::class
+            ],
+            'setting' => [
+                'builder' => \App\Models\Setting::class
             ]
+    ],
+    'orders' => [
+        'user' => [
+            // key in products table
+            'origin_key' => 'id',
+            // key in orders table
+            'key' => 'user_id',
+            'builder' => \App\Models\User::class
+        ]
     ],
     'permissions' => [
         'all' => [
@@ -51,9 +63,11 @@ return[
                 'show blog',
                 'view blogs',
                 'edit blog',
-                'update order status'
+                'update order status',
+                'view user orders'
             ],
-            mediaPermissions(\App\Models\Product::class,'product')
+            mediaPermissions(\App\Models\Product::class,'product'),
+            mediaPermissions(\App\Models\Setting::class,'setting')
         ),
         'publisher' => [
 

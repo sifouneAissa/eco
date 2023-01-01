@@ -81,16 +81,7 @@
             return {
                 mediaToUpdate : null,
                 mediaToDelete : null,
-                urls : [
-                    {
-                        name : 'Products',
-                        route : this.route('admin.product.index')
-                    },
-                    {
-                        name : 'Product Media of : '+this.$page.props.modelData.name,
-                        route : '#'
-                    }
-                ]
+                urls : this.$page.props.modelData.crumb
             }
         },
     }

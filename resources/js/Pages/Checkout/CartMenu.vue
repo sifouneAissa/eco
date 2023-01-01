@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
-            <div class="d-flex mb-4 osahan-cart-item-profile">
+        <div  v-if="model && model.citotal"  class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
+            <div  class="d-flex mb-4 osahan-cart-item-profile">
                 <img class="img-fluid mr-3 rounded-pill" alt="osahan" :src="model.fimage">
                 <div class="d-flex flex-column">
                     <h6 class="mb-1 text-white">{{model.names}}
@@ -52,21 +52,51 @@
                 <hr />
                 <h6 class="font-weight-bold mb-0">TO PAY  <span class="float-right">{{$page.props.currency_code}} {{model.citotal}}</span></h6>
             </div>
-            <a href="thanks.html" class="btn btn-success btn-block btn-lg">PAY {{$page.props.currency_code}} {{model.citotal}}
+            <a @click="Pay"  class="btn btn-success btn-block btn-lg">PAY {{$page.props.currency_code}} {{model.citotal}}
                 <i class="icofont-long-arrow-right"></i></a>
         </div>
-        <div class="pt-2"></div>
-<!--        <div class="alert alert-success" role="alert">-->
+<!--        <div class="pt-2"></div>-->
+        <div  v-else  class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
+            <div  class="d-flex mb-4 osahan-cart-item-profile">
+                <img class="img-fluid mr-3 rounded-pill" alt="osahan" src="/img/checkout.png">
+                <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-white">Empty list
+                    </h6>
+                    <!--                    <p class="mb-0 text-white"><i class="icofont-location-pin"></i> 2036 2ND AVE, NEW YORK, NY 10029</p>-->
+                </div>
+            </div>
+            <div class="mb-2 bg-white rounded p-2 clearfix">
+                <p class="mb-1">Item Total <span class="float-right text-dark">{{$page.props.currency_code}} 0</span></p>
+                <!--                <p class="mb-1">Restaurant Charges <span class="float-right text-dark">$62.8</span></p>-->
+                <!--                <p class="mb-1">Delivery Fee <span class="text-info" data-toggle="tooltip" data-placement="top" title="Total discount breakup">-->
+                <!--                           <i class="icofont-info-circle"></i>-->
+                <!--                           </span> <span class="float-right text-dark">$10</span>-->
+                <!--                </p>-->
+                <!--                <p class="mb-1 text-success">Total Discount-->
+                <!--                    <span class="float-right text-success">$1884</span>-->
+                <!--                </p>-->
+                <hr />
+                <h6  class="font-weight-bold mb-0">TO PAY  <span class="float-right">{{$page.props.currency_code}} 0</span></h6>
+            </div>
+            <Link :href="route('listing')" class="btn btn-success btn-block btn-lg">Add Products
+                <i class="icofont-long-arrow-right"></i></Link>
+        </div>
+
+        <!--        <div class="alert alert-success" role="alert">-->
 <!--            You have saved <strong>$1,884</strong> on the bill-->
 <!--        </div>-->
     </div>
 </template>
 
 <script>
-    import {useForm} from "@inertiajs/inertia-vue3";
+    import {useForm,Link} from "@inertiajs/inertia-vue3";
     import {Inertia} from "@inertiajs/inertia"
+    import { useToast } from "vue-toastification";
 
     export default  {
+        components : {
+            Link
+        },
         data () {
             return {
                 // model : this.$page.props.shopping_session
@@ -80,11 +110,16 @@
         },
         methods : {
             incrQP(item,by){
+
+                const toast = useToast();
                 let q = item.quantity;
                 let product = item.product;
                 item.quantity = item.quantity + by;
 
-                if(item.quantity > product.isA.remain) item.quantity = product.isA.remain;
+                if(item.quantity > product.isA.remain) {
+                    item.quantity = product.isA.remain
+                    toast.warning('Max Quantity of product : ' + product.name);
+                };
 
                 if(!item.quantity) item.quantity = 1;
 
@@ -113,6 +148,9 @@
                     onSuccess :  (res) =>  {
                     }
                 });
+            },
+            Pay(){
+                this.$emit('Pay');
             }
         }
     }

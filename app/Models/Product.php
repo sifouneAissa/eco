@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\MediaTrait;
+use App\Traits\OrdersTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
@@ -16,6 +17,9 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
     use MediaTrait;
     use Searchable;
+
+    public const SNAME = 'Products';
+    public const INAME = 'Product';
 
 
     protected $fillable = [
@@ -107,6 +111,7 @@ class Product extends Model implements HasMedia
     public function buyersCount(){
          $items = $this->orderItems;
          $q = 0;
+         foreach($items as $item) $q = $q+$item->quantity;
          foreach($items as $item) $q = $q+$item->quantity;
 
          return $q;

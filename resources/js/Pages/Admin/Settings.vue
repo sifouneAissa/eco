@@ -20,6 +20,15 @@ export default {
     resetModel: function () {
       this.modelToUpdate = null;
     },
+
+      ShowImagePage : function (data){
+
+          Inertia.visit(this.route('admin.media.index',{
+              model : data.model,
+              model_id : data.model_id
+          }))
+
+      },
   },
   data() {
     return {
@@ -43,10 +52,11 @@ export default {
     <Datatable
       @ShowEditModel="ShowEditModel"
       :title="'Settings table'"
-      :datatableHeaders="datatableHeaders"
+      :datatableHeaders="datatableHeadeNrs"
       :datatableColumns="datatableColumns"
       :datatableUrl="datatableUrl"
       :without="without"
+      @ShowImagePage="ShowImagePage"
     />
     <editSetting
       @ResetModel="resetModel"

@@ -23,6 +23,10 @@ class ClientController extends Controller
     public const MODEL = User::class;
 
     public const COMPONENT = 'Clients';
+    public const FORS = [
+        'unordered',
+        'unregistered'
+    ];
 
     public function __construct()
     {
@@ -62,8 +66,14 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
+        $url = $this->getUrl();
+        $for = $request->input('for');
+
+        if(in_array($for,self::FORS))
+            $url = $url . "?for=". $for;
+
         return Inertia::render(self::COMPONENT)
-            ->with('datatableUrl', $this->getUrl())
+            ->with('datatableUrl', $url)
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
 //            ->with('roles',$roles)
@@ -82,6 +92,16 @@ class ClientController extends Controller
 
     public function datatables(Request $request) {
 
+        $builder = User::query()->where('is_admin',false);
+
+        $for = $request->input('for');
+
+        if(in_array($for,self::FORS))
+        {
+            if($for==="unordered") $builder = $builder->whereDoesntHave('orders');
+            else if($for==="unregistered") $builder = $builder->whereNull('password');
+        }
+
         $permissions = [
             'edit' => 'edit client',
             'show' => 'show client',
@@ -92,9 +112,9 @@ class ClientController extends Controller
             'show'
         ];
 
-        $datatables = $this->getDataTables()
+        $datatables = datatables()->of($builder)
             ->addColumn('id', fn($model) => $model->id)
-            ->addColumn('name', fn($model) => $model->name)
+            ->addColumn('name', fn($model) => view('Clients.name',compact('model')))
             ->addColumn('email',fn($model) => $model->email)
 //            ->addColumn('roles',function ($model) {
 //                return view('Users.roles',compact('model'));

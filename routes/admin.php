@@ -9,6 +9,7 @@ use \Illuminate\Support\Facades\Route;
     \Illuminate\Support\Facades\Route::group(['middleware' => 'set.admin'], function () {
         Route::get('/',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('index');
         Route::get('/test',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('test');
+        Route::post('/logout',[\App\Http\Controllers\admin\AdminLoginController::class,'logout'])->name('logout');
 
         // roles and permissions
 
@@ -83,6 +84,8 @@ use \Illuminate\Support\Facades\Route;
         Route::resource('/trackorder',\App\Http\Controllers\admin\OrderTruckController::class)->only([
             'store'
         ]);
+
+
     });
 });
 

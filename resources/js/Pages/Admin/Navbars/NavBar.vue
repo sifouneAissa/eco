@@ -1,4 +1,25 @@
+<script >
 
+    import {Inertia} from "@inertiajs/inertia";
+    import Notifications from "@/Pages/Admin/Navbars/Notifications.vue";
+    export  default {
+        components : {
+            Notifications
+        },
+        methods : {
+            logout : function () {
+                Inertia.post(
+                    route("admin.logout"),
+                    {},
+                    {
+                        // onSuccess: () => Inertia.visit(route('admin.login')),
+                    }
+                );
+            }
+        }
+    }
+
+</script>
 <template>
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
         <a   class="navbar-brand" href="index.html"><img alt="logo" src="/img/logo.png"></a>
@@ -86,53 +107,7 @@
                     <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                 </div>
             </li>
-            <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="feather-bell"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-info badge-counter">6</span>
-                </a>
-                <!-- Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow-sm">
-                    <h6 class="dropdown-header">
-                        Alerts Center
-                    </h6>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-primary">
-                                <i class="fas fa-download text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 12, 2020</div>
-                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-success">
-                                <i class="fas fa-edit text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 7, 2020</div>
-                            $290.29 has been deposited into your account!
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-warning">
-                                <i class="fas fa-folder text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 2, 2020</div>
-                            Spending Alert: We've noticed unusually high spending for your account.
-                        </div>
-                    </a>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                </div>
-            </li>
+           <notifications/>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                 <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,7 +129,9 @@
                     <a class="dropdown-item" :href="route('profile.show')"><i class="feather-edit"></i> My Account</a>
 <!--                    <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>-->
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out"></i> Logout</a>
+                    <form @submit.prevent="logout">
+                        <button class="dropdown-item" type="submit" ><i class="feather-log-out"></i> Logout</button>
+                    </form>
                 </div>
             </li>
         </ul>

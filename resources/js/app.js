@@ -41,6 +41,15 @@ import {createI18n}  from 'vue-i18n'
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
+import Toast from "vue-toastification";
+// Import the CSS or use your own!
+import "vue-toastification/dist/index.css";
+
+const options = {
+    // You can set your default options here
+};
+
+
 window.Pusher = Pusher;
 
 window.Echo = new Echo({
@@ -89,8 +98,10 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(i18n)
+            .use(Toast)
             .use(ZiggyVue, Ziggy)
-            .mount(el);
+            .mount(el)
+            ;
     },
 });
 

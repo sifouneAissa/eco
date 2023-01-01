@@ -11,6 +11,16 @@ if (!function_exists('getLocales')) {
     }
 }
 
+
+if (!function_exists('getSetting')) {
+
+    function getSetting($code)
+    {
+        return  \App\Models\Setting::query()->where('code',$code)->first();
+    }
+}
+
+
 if (!function_exists('getSearchable')) {
 
     /**
@@ -76,7 +86,14 @@ if (!function_exists('getShoppingSession')) {
 
     function getShoppingSession(){
 
-        return auth()->user() ? auth()->user()->shoppingSession : \App\Models\ShoppingSession::where('ip',request()->ip());
+        return auth()->user() ? auth()->user()->shoppingSession : \App\Models\ShoppingSession::where([
+            [
+                'ip',request()->ip()
+            ],
+            [
+                'is_current' , true
+            ]
+        ])->first();
     }
 }
 

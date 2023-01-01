@@ -62,21 +62,31 @@ class HandleInertiaRequests extends Middleware
             else $client_secret = app(User::class)?->createSetupIntent()->client_secret;
         }catch (\Exception $exception){}
 
-//        dd(isRtl($cLocale));
+        $addresses = auth()->user()?->addresses;
+
+        if(!$addresses) $addresses = $shopping?->user?->addresses;
+        $set_password = false;
+
+        if(Session::get('setPassword'))
+            $set_password = true;
+
 
         return array_merge(parent::share($request), [
             //
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
             'auth' => auth()->user(),
-            'auth.notifications' => $notifications,
+            'notifications' => $notifications,
             'isRtl' => isRtl($cLocale),
             'currency' => $currency,
             'currencies' => config('app.currencies'),
             'currency_code' => $code,
             'shopping_session' => $shopping,
             'STRIPE_KEY' => env('STRIPE_KEY'),
-            'client_secret' => $client_secret
+            'client_secret' => $client_secret,
+            'addresses' => $addresses,
+            'setPassword' => $set_password,
+            'shopping_user' => $shopping?->user
         ]);
     }
 }

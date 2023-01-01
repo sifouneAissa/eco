@@ -93,7 +93,8 @@ class UserController extends Controller
         ];
 
         $without = [
-            'show'
+            'show',
+            'orders'
         ];
 
         $datatables = $this->getDataTables()

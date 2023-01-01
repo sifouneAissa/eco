@@ -24,7 +24,8 @@ class UserOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'address_id' => 'required|exists:user_addresses,id'
+            'address_id' => 'required',
+            'email' => 'unique:users,email'
         ];
     }
 }

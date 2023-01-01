@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Session;
 
 class OrderDetail extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $fillable = [
         'user_id',
@@ -64,8 +66,10 @@ class OrderDetail extends Model
         $image = '/img/checkout.png';
 
         try{
-            $image = $this->products?->first()?->media?->first()->getFullUrl();
+            $image = $this->products?->first()?->media?->first()?->getFullUrl();
+            if(!$image) $image = '/img/checkout.png';
         }catch(\Exception $e){}
+
 
         return $image;
     }

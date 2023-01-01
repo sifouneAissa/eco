@@ -9,9 +9,13 @@ class ProductInventory extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'quantity'
+    ];
+
 
     public function orderItems(){
-        return $this->belongsToMany(OrderItem::class,'order_item_id');
+        return $this->belongsToMany(OrderItem::class,'inventory_order_items','inventory_id');
     }
 
     public function products(){
@@ -35,7 +39,7 @@ class ProductInventory extends Model
 
         return [
             'isA' => $this->quantity > $q,
-            'remain' => $this->quantity - $q
+            'remain' => ($this->quantity - $q)>0 ? $this->quantity - $q : 0
         ];
     }
 

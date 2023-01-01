@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\OrdersTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,6 +22,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
     use Billable;
+    use OrdersTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -93,5 +95,39 @@ class User extends Authenticatable
 
     public function addresses(){
         return $this->hasMany(UserAddress::class,'user_id');
+    }
+
+    public function orders(){
+        return $this->hasMany(OrderDetail::class,'user_id');
+    }
+
+
+    public function ordersCount($count){
+        return $this->orders->count() >= $count;
+    }
+
+    public function stars($count,$min){
+        $stars  = [
+            1,
+            2,
+            3,
+            4,
+            5
+        ];
+        $i = 1;
+        $best = $this->ordersCount($count);
+        $count = $this->orders->count();
+
+        if($best) return $stars[$i+3];
+        else if(!$best && $count>$min) return $stars[$i+2];
+        else if(!$best && $count === $min ) return $stars[$i+1];
+        else if(!$best && $count<$min && $count>$min + 1) return $stars[$i];
+
+        return 0;
+
+    }
+
+    public function passwordExist(){
+        return $this->password !==null;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewOrder;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,8 +40,10 @@ class ProductController extends Controller
     public function show($id)
     {
 
+
         $product = Product::query()->findOrFail($id)->load(['category']);
-        if(!$product->isA()['isA'])  abort(404);
+//        if(!$product->isA()['isA'])  abort(404);
+
 
         $callbackIsA = function ($item){
             return $item->isA()['isA'];
