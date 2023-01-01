@@ -14,6 +14,8 @@ class UserAccountController extends Controller
 
     public function index(){
         $auth = auth()->user();
+        $paymentMethods = $auth->paymentMethods();
+//        dd($paymentMethods->toArray());
         // addresses of the user
         $addresses = UserAddress::where("user_id",$auth->id)->get();
         // get only paid orders
@@ -23,7 +25,8 @@ class UserAccountController extends Controller
 //       dd($orders);
         return Inertia::render('Account',[
             'addresses' => $addresses,
-            'orders' => $orders
+            'orders' => $orders,
+            'paymentMethods' => $paymentMethods
         ]);
     }
 }
