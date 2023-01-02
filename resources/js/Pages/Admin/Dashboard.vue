@@ -5,7 +5,7 @@
         components : {
             AdminLayout
         },
-        props : ['weeksD'],
+        props : ['weeksD','monthsD'],
         mounted() {
                 let labels = this.$page.props.weeksD.map(item => function (){
                     return item.s + '' + item.e;
@@ -28,8 +28,18 @@
                 // Set new default font family and font color to mimic Bootstrap's default styling
                 // Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
                 // Chart.defaults.global.defaultFontColor = '#292b2c';
-                // Area Chart Example
                 var ctx = document.getElementById("myAreaChart");
+                     let Mmax = 0;
+                     let Mmin = 0;
+                     let Mlabels = app.monthsD.map((item) => {
+                        return item.month;
+                    });
+                     let Mdata = app.monthsD.map((item) => {
+                         Mmax = Mmax>=item.amount ? Mmax : item.amount;
+                         Mmin = Mmin<=item.amount ? Mmin : item.amount;
+                        return item.amount;
+                    });
+
                 var myLineChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -85,12 +95,12 @@
                     var myLineChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ["January", "February", "March", "April", "May", "June"],
+                            labels: Mlabels,
                             datasets: [{
                                 label: "Revenue",
                                 backgroundColor: "rgba(2,117,216,1)",
                                 borderColor: "rgba(2,117,216,1)",
-                                data: [4215, 5312, 6251, 7841, 9821, 14984],
+                                data: Mdata,
                             }],
                         },
                         options: {
@@ -103,13 +113,13 @@
                                         display: false
                                     },
                                     ticks: {
-                                        maxTicksLimit: 6
+                                        maxTicksLimit: 12
                                     }
                                 }],
                                 yAxes: [{
                                     ticks: {
-                                        min: 0,
-                                        max: 15000,
+                                        min: Mmin,
+                                        max: Mmax,
                                         maxTicksLimit: 5
                                     },
                                     gridLines: {

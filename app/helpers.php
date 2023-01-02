@@ -31,6 +31,32 @@ if (!function_exists('getDateWeekSE')) {
     }
 }
 
+if (!function_exists('getDateYearSE')) {
+
+    function getDateYearSE($month,$year=2023) {
+
+        $start = CarbonImmutable::parse("first day of $month $year");
+        $end = CarbonImmutable::parse("last day of $month $year");
+
+        return ['s' => $start->format('d-m-Y'), 'e' => $end->format('d-m-Y')];
+    }
+}
+
+if (!function_exists('getAllMonths')) {
+
+    function getAllMonths() {
+        $month = [];
+
+        for ($m=1; $m<=12; $m++) {
+            $month[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+        }
+        return $month;
+  }
+}
+
+
+
+
 
 
 

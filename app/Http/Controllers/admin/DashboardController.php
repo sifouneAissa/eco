@@ -27,7 +27,9 @@ class DashboardController extends Controller
         $weeksD = [];
         $index = 0;
         $max = 0;
+        // per weeks
         foreach($weeks as $key){
+
             $se = getDateWeekSE($key);
 
 
@@ -40,15 +42,32 @@ class DashboardController extends Controller
 
             foreach($orders as $order)
                     $amount = $amount + $order->total;
-            $max = $max>=$amount ? $max : $amount;
             $weeksD[$index]['amount'] = $amount;
             $weeksD[$index]['count'] = $orders->count();
             $index++;
         }
 
+        $months = getAllMonths();
+        $monthsD = [];
+        $index = 0;
+
+        foreach($months as $month){
+            $se = getDateYearSE($month);
+            $orders = OrderDetail::whereBetween('created_at', [Carbon::parse($se['s']), Carbon::parse($se['e'])])->get();
+            $monthsD[$index]['month'] = $month;
+            $amount = 0;
+
+            foreach($orders as $order)
+                $amount = $amount + $order->total;
+
+            $monthsD[$index]['amount'] = $amount;
+            $monthsD[$index]['count'] = $orders->count();
+            $index++;
+        }
 
         return Inertia::render('Dashboard',[
-            'weeksD' => $weeksD
+            'weeksD' => $weeksD,
+            'monthsD' => $monthsD
         ]);
     }
 
