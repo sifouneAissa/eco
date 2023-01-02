@@ -72,6 +72,13 @@ export default {
           preserveScroll: true,
         });
       }, 20000);
+    } else if(this.$page.component==="Blogs") {
+        window.idleIntervalTimer = setInterval(function () {
+            Inertia.reload({
+                only: ["blogs"],
+                preserveScroll: true,
+            });
+        }, 20000);
     }
 
     let app = this;
@@ -455,7 +462,8 @@ export default {
     <Banner />
     <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
       <div class="container">
-        <Link class="navbar-brand" href="/"><img alt="logo" src="img/logo.png" /></Link>
+        <Link class="navbar-brand" href="/"><img alt="logo" class="nav-osahan-pic" :src="$page.props.logo" />
+        </Link>
         <button
           class="navbar-toggler"
           type="button"
@@ -514,7 +522,7 @@ export default {
                 {{ $t("nav_menu.pages.pages") }}
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                <a class="dropdown-item" href="track-order.html">Track Order</a>
+                <Link class="dropdown-item" href="track-order.html">Track Order</Link>
                 <a class="dropdown-item" href="invoice.html">Invoice</a>
                 <a class="dropdown-item" :href="route('login')">{{
                   $t("nav_menu.pages.login")
@@ -538,24 +546,24 @@ export default {
                 {{ $t("nav_menu.help.help") }}
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                <a class="dropdown-item" :href="route('contact-us')">{{
+                <Link class="dropdown-item" :href="route('contact-us')">{{
                   $t("nav_menu.help.contact_us")
-                }}</a>
-                <a class="dropdown-item" :href="route('about-us')">{{
+                }}</Link>
+                <Link class="dropdown-item" :href="route('about-us')">{{
                   $t("nav_menu.help.about_us")
-                }}</a>
-                <a class="dropdown-item" :href="route('faq')">{{
+                }}</Link>
+                <Link class="dropdown-item" :href="route('faq')">{{
                   $t("nav_menu.help.faq")
-                }}</a>
-                <a class="dropdown-item" :href="route('privacy-policy')">{{
+                }}</Link>
+                <Link class="dropdown-item" :href="route('privacy-policy')">{{
                   $t("nav_menu.help.privacy_policy")
-                }}</a>
-                <a class="dropdown-item" :href="route('shipping-policy')">{{
+                }}</Link>
+                <Link class="dropdown-item" :href="route('shipping-policy')">{{
                   $t("nav_menu.help.shipping_policy")
-                }}</a>
-                <a class="dropdown-item" :href="route('terms-conditions')">{{
+                }}</Link>
+                <Link class="dropdown-item" :href="route('terms-conditions')">{{
                   $t("nav_menu.help.terms_conditions")
-                }}</a>
+                }}</Link>
               </div>
             </li>
             <li v-if="$page.props.auth" class="nav-item dropdown">

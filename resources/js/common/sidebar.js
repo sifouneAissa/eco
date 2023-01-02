@@ -45,6 +45,9 @@ const sidebar = [
                 route : 'admin.category.index',
                 permission : 'view product categories',
                 icon : 'feather-box',
+                urls : [
+                    '/media/category'
+                ]
             }
         ]
     },
@@ -54,7 +57,8 @@ const sidebar = [
         permission : 'view blogs',
         icon : 'feather-file-text',
         urls : [
-            '/blog/'
+            '/blog/',
+            '/media/blog'
         ]
     },
     {

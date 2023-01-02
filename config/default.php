@@ -9,6 +9,9 @@ return[
             ],
             'category' => [
                 'builder' => \App\Models\ProductCategory::class
+            ],
+            'blog' => [
+                'builder' => \App\Models\Blog::class
             ]
     ],
     'orders' => [
@@ -76,6 +79,7 @@ return[
             mediaPermissions(\App\Models\Product::class,'product'),
             mediaPermissions(\App\Models\Setting::class,'setting'),
             mediaPermissions(\App\Models\ProductCategory::class,'category'),
+            mediaPermissions(\App\Models\Blog::class,'blog'),
         ),
         'publisher' => [
 

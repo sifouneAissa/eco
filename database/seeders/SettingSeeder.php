@@ -45,6 +45,11 @@ class SettingSeeder extends Seeder
             'code' => 'max_inventory_value',
             'content' => 100,
         ],
+        [
+            'name' => 'Logo',
+            'code' => 'logo',
+            'content' => '',
+        ],
     ];
     /**
      * Run the database seeds.

@@ -27,8 +27,19 @@ class Setting extends Model implements HasMedia
     ];
 
     protected $appends = [
-        'modal_ids'
+        'modal_ids',
+        'fimage'
     ];
+
+    public function getFimageAttribute(){
+        $img = '/img/logo.png';
+
+        if($f = $this->media?->first()?->getFullUrl())
+             return $f;
+
+        return $img;
+    }
+
 
     public  function getModalIdsAttribute(){
         return [

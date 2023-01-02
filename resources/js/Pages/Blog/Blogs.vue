@@ -14,27 +14,27 @@
             </Link>
           </div> -->
           <div class="list-card-image">
-            <a :href="route('blog.show', { id: blog.id })">
-              <img src="" class="img-fluid item-img" style="width: 100%; height: 10vw" />
-            </a>
+            <Link :href="route('blog.show', { id: blog.id })">
+              <img :src="blog.fimage" class="img-fluid item-img" style="width: 100%; height: 10vw" />
+            </Link>
           </div>
           <div class="p-3 position-relative">
             <div class="list-card-body">
               <h6 class="mb-1">
-                <a :href="route('blog.show', { id: blog.id })" class="text-black"
+                <Link :href="route('blog.show', { id: blog.id })" class="text-black"
                   >{{ blog.title }}
-                </a>
+                </Link>
               </h6>
               <!-- <p class="text-gray mb-2">{{ blog.desc }}</p> -->
 
               <p>
                 <span>
-                  <a
+                  <Link
                     :href="route('blog.show', { id: blog.id })"
                     class="btn btn-outline-secondary btn-sm m-2 float-right"
                   >
                     {{ $t("blog.details") }}
-                  </a>
+                  </Link>
                 </span>
               </p>
             </div>
@@ -66,12 +66,12 @@ export default {
     return {};
   },
   created() {
-    setInterval(function () {
-      Inertia.reload({
-        only: ["blogs"],
-        preserveScroll: true,
-      });
-    }, 30000);
+    // setInterval(function () {
+    //   Inertia.reload({
+    //     only: ["blogs"],
+    //     preserveScroll: true,
+    //   });
+    // }, 30000);
   },
   methods: {},
 };

@@ -17,6 +17,14 @@
         } ,
         props : ['datatableUrl','datatableColumns','datatableHeaders'],
         methods :{
+            ShowImagePage : function (data){
+
+                Inertia.visit(this.route('admin.media.index',{
+                    model : data.model,
+                    model_id : data.model_id
+                }))
+
+            },
             ShowEditModel : function (data){
                 this.modelToUpdate = data;
             },
@@ -43,6 +51,7 @@
             ShowAddPage : function (data){
                 Inertia.visit(this.route(data.modal_ids.add))
             },
+
             resetModel : function (){
                 this.modelToUpdate = null;
                 this.modelToShow = null;
@@ -76,7 +85,7 @@
             </h2>
         </template>
 
-        <Datatable @ShowShowPage="ShowShowPage" @ShowEditPage="ShowEditPage"  @ShowAddPage="ShowAddPage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Blogs table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
+        <Datatable @ShowImagePage="ShowImagePage" @ShowShowPage="ShowShowPage" @ShowEditPage="ShowEditPage"  @ShowAddPage="ShowAddPage"  @ShowAddModel="ShowAddModel" @ShowDeleteModel="ShowDeleteModel" @ShowShowModel="ShowShowModel"  @ShowEditModel="ShowEditModel" :title="'Blogs table'" :datatableHeaders="datatableHeaders" :datatableColumns="datatableColumns" :datatableUrl="datatableUrl" />
 <!--        <editUser @ResetModel="resetModel" v-if="model" :model="modelToUpdate"></editUser>-->
         <!--        <showRole @ResetModel="resetModel" v-if="modelToShow!=null" :model="modelToShow"></showRole>-->
         <deleteBlog @ResetModel="resetModel" v-if="modelToDelete!=null" :model="modelToDelete"></deleteBlog>

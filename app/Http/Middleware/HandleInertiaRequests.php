@@ -86,6 +86,7 @@ class HandleInertiaRequests extends Middleware
             'client_secret' => $client_secret,
             'addresses' => $addresses,
             'setPassword' => $set_password,
+            'logo' => getSetting('logo')->fimage,
             'shopping_user' => $shopping?->user
         ]);
     }

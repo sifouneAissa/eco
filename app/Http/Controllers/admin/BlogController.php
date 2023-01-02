@@ -21,6 +21,7 @@ class BlogController extends Controller
 
 
 
+
     public const MODEL = Blog::class;
 
     public function __construct()
@@ -99,7 +100,8 @@ class BlogController extends Controller
         $permissions = [
             'edit' => 'edit blog',
             'show' => 'show blog',
-            'delete' => 'delete blog'
+            'delete' => 'delete blog',
+            'media' => 'view blog media'
         ];
 
         $datatables = $this->getDataTables()
