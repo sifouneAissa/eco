@@ -181,7 +181,7 @@
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
             {{title}}
-            <div v-if="(!without || !without.some(item => item === 'add'))" class="float-right">
+            <div v-if="$page.component!=='Dashboard' && (!without || !without.some(item => item === 'add'))" class="float-right">
 
                 <ClientFilterBtns v-if="Btns==='ClientFilterBtns'"/>
                 <OrderFilterBtns v-if="Btns==='OrderFilterBtns'"/>
