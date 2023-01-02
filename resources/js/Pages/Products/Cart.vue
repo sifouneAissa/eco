@@ -1,13 +1,10 @@
 <script setup>
-    import  CartMenu from "@/Pages/Checkout/CartMenu.vue";
-    import {Inertia} from "@inertiajs/inertia"
-
-
-
+import CartMenu from "@/Pages/Checkout/CartMenu.vue";
+import { Inertia } from "@inertiajs/inertia";
 </script>
 <template>
-    <div>
-        <div class="pb-2">
+  <div>
+    <!-- <div class="pb-2">
             <div class="bg-white rounded shadow-sm text-white mb-4 p-4 clearfix restaurant-detailed-earn-pts card-icon-overlap">
                 <img class="img-fluid float-left mr-3" src="/img/earn-score-icon.png">
                 <h6 class="pt-0 text-primary mb-1 font-weight-bold">OFFER</h6>
@@ -16,7 +13,7 @@
                     <i class="icofont-sale-discount"></i>
                 </div>
             </div>
-        </div>
-        <CartMenu @Pay="Inertia.visit(route('checkout.show'))"/>
-    </div>
+        </div> -->
+    <CartMenu @Pay="Inertia.visit(route('checkout.show'))" />
+  </div>
 </template>
