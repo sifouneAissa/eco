@@ -1,6 +1,5 @@
 // import './bootstrap';
 // import '../css/app.css';
-
 // import '../../public/chat/chat.min.css';
 import '../../public/vendor/bootstrap/css/bootstrap.min.css';
 import '../../public/vendor/fontawesome/css/all.min.css';
@@ -16,20 +15,7 @@ import '../assets/vendor/owl-carousel/owl.carousel';
 import '../assets/vendor/select2/js/select2.min';
 
 
-// import '../../public/chat/widget';
-
-// import scriptrtl from '../assets/ltr/js/custom';
-
-
-// 'resources/assets/vendor/jquery/jquery-3.3.1.slim.min.js'
-//     ,'resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'
-//     ,'resources/assets/vendor/owl-carousel/owl.carousel.js'
-//     ,'resources/assets/vendor/select2/js/select2.min.js'
-//     ,'resources/assets/ltr/js/custom.js'
-
 import messages from './translation/translation';
-
-
 import {createApp, h} from 'vue';
 import {createInertiaApp, usePage} from '@inertiajs/inertia-vue3';
 
@@ -39,15 +25,9 @@ import {ZiggyVue} from '../../vendor/tightenco/ziggy/dist/vue.m';
 import {createI18n} from 'vue-i18n'
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
-
 import Toast from "vue-toastification";
 // Import the CSS or use your own!
 import "vue-toastification/dist/index.css";
-
-const options = {
-    // You can set your default options here
-};
-
 
 window.Pusher = Pusher;
 
@@ -74,28 +54,16 @@ createInertiaApp({
             fallbackLocale: "en", // set fallback locale
             messages: messages, // set locale messages
         });
-        //
-        // if(props.initialPage.props.isRtl) {
-        //     // for lazy importation
-        //     let script = document.createElement('script');
-        //     script.src = "/rtl/js/custom.js";
-        //     document.body.append(script); // (*)
-        // }
-        // else {
-        //     let script = document.createElement('script');
-        //     script.src = "/ltr/js/custom.js";
-        //     document.body.append(script); // (*)
-        // }
 
         // for lazy importation
-        let script = document.createElement('script');
-        script.src = "./chat/init.js";
-        document.body.append(script); // (*)
+        let script1 = document.createElement('script');
+        script1.src = "./chat/init.js";
+        document.body.append(script1); // (*)
 
         // for lazy importation
-        script = document.createElement('script');
-        script.src = "./chat/widget.js";
-        document.body.append(script); // (*)
+        let script2 = document.createElement('script');
+        script2.src = "./chat/widget.js";
+        document.body.append(script2); // (*)
 
 
         return createApp({render: () => h(app, props)})
