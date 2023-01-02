@@ -2,6 +2,7 @@
 
 
 use App\Models\Product;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Carbon;
 
 if (!function_exists('getLocales')) {
@@ -20,6 +21,17 @@ if (!function_exists('getSetting')) {
         return  \App\Models\Setting::query()->where('code',$code)->first();
     }
 }
+
+if (!function_exists('getDateWeekSE')) {
+
+    function getDateWeekSE($position) {
+        $start = CarbonImmutable::parse("$position Monday of this month");
+
+        return ['s' => $start->format('d-m-Y'), 'e' => $start->next('Sunday, 12:00am')->format('d-m-Y')];
+    }
+}
+
+
 
 
 if (!function_exists('BestSellers')) {

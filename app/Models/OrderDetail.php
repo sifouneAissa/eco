@@ -18,6 +18,10 @@ class OrderDetail extends Model
         'total'
     ];
 
+    protected $casts = [
+        'total' => 'double'
+    ];
+
     protected $appends = [
         'delivered_date',
         'names',

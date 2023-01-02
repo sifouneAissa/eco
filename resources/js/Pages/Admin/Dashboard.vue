@@ -5,8 +5,26 @@
         components : {
             AdminLayout
         },
+        props : ['weeksD'],
         mounted() {
+                let labels = this.$page.props.weeksD.map(item => function (){
+                    return item.s + '' + item.e;
+                });
+                let app = this;
                 window.onload = function (){
+                    let max = 0;
+                    let min = 0;
+                    let labels = app.weeksD.map((item) => {
+
+                        return item.s + ' -> ' + item.e;
+                    });
+                    let data = app.weeksD.map((item) => {
+
+                        max = max>=item.amount ? max : item.amount;
+                        min = min<=item.amount ? min : item.amount;
+
+                        return item.amount;
+                    })
                 // Set new default font family and font color to mimic Bootstrap's default styling
                 // Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
                 // Chart.defaults.global.defaultFontColor = '#292b2c';
@@ -15,7 +33,8 @@
                 var myLineChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+                        // labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+                        labels: labels,
                         datasets: [{
                             label: "Sessions",
                             lineTension: 0.3,
@@ -28,7 +47,8 @@
                             pointHoverBackgroundColor: "rgba(2,117,216,1)",
                             pointHitRadius: 50,
                             pointBorderWidth: 2,
-                            data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+                            // data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+                            data: data,
                         }],
                     },
                     options: {
@@ -41,14 +61,14 @@
                                     display: false
                                 },
                                 ticks: {
-                                    maxTicksLimit: 7
+                                    maxTicksLimit: 4
                                 }
                             }],
                             yAxes: [{
                                 ticks: {
-                                    min: 0,
-                                    max: 40000,
-                                    maxTicksLimit: 5
+                                    min: min,
+                                    max: max,
+                                    maxTicksLimit: 4
                                 },
                                 gridLines: {
                                     color: "rgba(0, 0, 0, .125)",

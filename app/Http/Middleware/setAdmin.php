@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -18,8 +20,7 @@ class setAdmin
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user() ;
-
-        if(!($user && $user->is_admin)){
+           if(!($user && $user->is_admin)){
 
             if($request->route()->getPrefix()===config("app.admin-prefix"))
                 return redirect()->route('admin.login');
