@@ -62,15 +62,6 @@
                 quantity: []
             }
         },
-        created() {
-
-            setInterval(function () {
-                Inertia.reload({
-                    only: ['products'],
-                    preserveScroll: true,
-                })
-            }, 30000)
-        },
         methods : {
             incrQP(model,by){
 

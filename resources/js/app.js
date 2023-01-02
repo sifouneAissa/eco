@@ -57,12 +57,12 @@ createInertiaApp({
 
         // for lazy importation
         let script1 = document.createElement('script');
-        script1.src = "./chat/init.js";
+        script1.src = "/chat/init.js";
         document.body.append(script1); // (*)
 
         // for lazy importation
         let script2 = document.createElement('script');
-        script2.src = "./chat/widget.js";
+        script2.src = "/chat/widget.js";
         document.body.append(script2); // (*)
 
 

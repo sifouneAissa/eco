@@ -61,6 +61,18 @@
         },
         props : ['title'],
         mounted() {
+            // clear interval
+            clearInterval(window.idleIntervalTimer);
+
+            if(this.$page.component==="Listing"){
+                clearInterval(window.idleIntervalTimer)
+                window.idleIntervalTimer = setInterval(function () {
+                        Inertia.reload({
+                            only: ['products'],
+                            preserveScroll: true,
+                        })
+                    }, 5000);
+            }
 
             let app = this;
             if(this.$page.props.setPassword)
