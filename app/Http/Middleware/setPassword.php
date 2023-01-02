@@ -20,6 +20,8 @@ class setPassword
     {
         $shopping = getShoppingSession();
 
+//        $botman->star('some text again','#user-id','web');
+
         $shopping_user = $shopping?->user;
         $time = Session::get('time');
         $skipped = false;

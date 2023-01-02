@@ -1,6 +1,7 @@
 // import './bootstrap';
 // import '../css/app.css';
 
+// import '../../public/chat/chat.min.css';
 import '../../public/vendor/bootstrap/css/bootstrap.min.css';
 import '../../public/vendor/fontawesome/css/all.min.css';
 import '../../public/vendor/icofont/icofont.min.css';
@@ -14,6 +15,9 @@ import  '../assets/vendor/bootstrap/js/bootstrap.bundle.min';
 import '../assets/vendor/owl-carousel/owl.carousel';
 import  '../assets/vendor/select2/js/select2.min';
 
+
+// import '../../public/chat/widget';
+
 // import scriptrtl from '../assets/ltr/js/custom';
 
 
@@ -26,7 +30,6 @@ import  '../assets/vendor/select2/js/select2.min';
 //     ,'resources/assets/ltr/js/custom.js'
 
 import messages from './translation/translation';
-import { VueBotUI}  from 'vue-bot-ui'
 
 
 
@@ -89,11 +92,15 @@ createInertiaApp({
         //     document.body.append(script); // (*)
         // }
 
+        // for lazy importation
+            let script = document.createElement('script');
+            script.src = "./chat/init.js";
+            document.body.append(script); // (*)
 
-        //     // for lazy importation
-        //     let script = document.createElement('script');
-        //     script.src = "https://js.stripe.com/v3/";
-        //     document.body.append(script); // (*)
+            // for lazy importation
+            script = document.createElement('script');
+            script.src = "./chat/widget.js";
+            document.body.append(script); // (*)
 
 
         return createApp({ render: () => h(app, props) })
