@@ -9,6 +9,7 @@ import '../../public/admin/vendor/dataTables/dataTables/css/dataTables.bootstrap
 import '../../public/admin/vendor/jquery/jquery.min';
 import '../../public/admin/vendor/fontawesome/js/all.min.js';
 import '../../public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js';
+// import '../../public/admin/js/Chart.min';
 // import vue2Dropzone from 'vue2-dropzone'
 // import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 // import '../../public/admin/vendor/dropzone/dist/dropzone.css'
@@ -89,6 +90,10 @@ createInertiaApp({
 
         script = document.createElement('script');
         script.src = "/admin/vendor/dataTables/vfs_fonts.js";
+        document.body.append(script); // (*)
+
+        script = document.createElement('script');
+        script.src = "/admin/js/Chart.min.js";
         document.body.append(script); // (*)
 
 

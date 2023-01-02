@@ -28,7 +28,8 @@
             Dropdown,
             Banner,
             ApplicationMark,
-            Link
+            Link,
+            Head
         },
         methods : {
             setLocale : function (lang) {
@@ -436,7 +437,7 @@
         <Banner/>
         <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
             <div class="container">
-                <Link class="navbar-brand" href="/"><img alt="logo" src="img/logo.png"/></Link>
+                <Link class="navbar-brand" href="/"><img alt="logo" src="/img/logo.png"/></Link>
                 <button
                     class="navbar-toggler"
                     type="button"

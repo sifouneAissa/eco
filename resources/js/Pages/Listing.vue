@@ -9,14 +9,14 @@
 </script>
 
 <template>
-    <GuestLayout title="Listing">
+    <GuestLayout :title="'Listing'">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Listing
             </h2>
         </template>
 
-        <ListingLayout title="Listing" />
+        <ListingLayout :title="'Listing'" />
 
     </GuestLayout>
 </template>
