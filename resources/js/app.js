@@ -10,17 +10,15 @@ import '../../public/vendor/select2/css/select2.min.css';
 import '../../public/vendor/owl-carousel/owl.carousel.css';
 import '../../public/vendor/owl-carousel/owl.theme.css';
 
-import  '../assets/vendor/jquery/jquery-3.3.1.slim.min';
-import  '../assets/vendor/bootstrap/js/bootstrap.bundle.min';
+import '../assets/vendor/jquery/jquery-3.3.1.slim.min';
+import '../assets/vendor/bootstrap/js/bootstrap.bundle.min';
 import '../assets/vendor/owl-carousel/owl.carousel';
-import  '../assets/vendor/select2/js/select2.min';
+import '../assets/vendor/select2/js/select2.min';
 
 
 // import '../../public/chat/widget';
 
 // import scriptrtl from '../assets/ltr/js/custom';
-
-
 
 
 // 'resources/assets/vendor/jquery/jquery-3.3.1.slim.min.js'
@@ -32,16 +30,13 @@ import  '../assets/vendor/select2/js/select2.min';
 import messages from './translation/translation';
 
 
+import {createApp, h} from 'vue';
+import {createInertiaApp, usePage} from '@inertiajs/inertia-vue3';
 
-
-
-import { createApp, h } from 'vue';
-import { createInertiaApp,usePage } from '@inertiajs/inertia-vue3';
-
-import { InertiaProgress } from '@inertiajs/progress';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-import {createI18n}  from 'vue-i18n'
+import {InertiaProgress} from '@inertiajs/progress';
+import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
+import {ZiggyVue} from '../../vendor/tightenco/ziggy/dist/vue.m';
+import {createI18n} from 'vue-i18n'
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
@@ -72,7 +67,7 @@ createInertiaApp({
 
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-    setup({ el, app, props, plugin }) {
+    setup({el, app, props, plugin}) {
 
         const i18n = createI18n({
             locale: props.initialPage.props.locale, // user locale by props
@@ -93,17 +88,17 @@ createInertiaApp({
         // }
 
         // for lazy importation
-            let script = document.createElement('script');
-            script.src = "./chat/init.js";
-            document.body.append(script); // (*)
+        let script = document.createElement('script');
+        script.src = "./chat/init.js";
+        document.body.append(script); // (*)
 
-            // for lazy importation
-            script = document.createElement('script');
-            script.src = "./chat/widget.js";
-            document.body.append(script); // (*)
+        // for lazy importation
+        script = document.createElement('script');
+        script.src = "./chat/widget.js";
+        document.body.append(script); // (*)
 
 
-        return createApp({ render: () => h(app, props) })
+        return createApp({render: () => h(app, props)})
             .use(plugin)
             .use(i18n)
             .use(Toast)

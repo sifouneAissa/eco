@@ -634,8 +634,8 @@
         <main class="bg-light">
             <slot/>
         </main>
-        <setPassword/>
 
+        <setPassword/>
 
         <footer class="pt-4 pb-4 text-center">
             <div class="container">
