@@ -43,7 +43,7 @@
                 <a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#"
                   >{{ $page.props.currency_code }} {{ product.cprice }}
                 </a>
-                <span class="badge badge-primary">{{ $t("listing.new") }}</span>
+                <span class="badge badge-primary">NEW</span>
                 <span class="float-right">
                   <span class="count-number">
                     <button
@@ -69,7 +69,7 @@
                     class="btn btn-outline-secondary btn-sm m-2"
                     @click="submit(product)"
                   >
-                    {{ $t("listing.add") }}
+                    ADD
                   </button>
                 </span>
               </p>
@@ -84,7 +84,7 @@
             role="status"
             aria-hidden="true"
           ></span>
-          {{ $t("listing.loading") }}...
+          Loading...
         </button>
       </div>
     </div>
@@ -95,6 +95,7 @@
 import { Inertia } from "@inertiajs/inertia";
 import { useForm, Head, Link } from "@inertiajs/inertia-vue3";
 import Categories from "@/Pages/Listing/Categories.vue";
+import { useToast } from "vue-toastification";
 
 export default {
   name: "listing.vue",
@@ -104,18 +105,14 @@ export default {
       quantity: [],
     };
   },
-  created() {
-    setInterval(function () {
-      Inertia.reload({
-        only: ["products"],
-        preserveScroll: true,
-      });
-    }, 30000);
-  },
   methods: {
     incrQP(model, by) {
+      const toast = useToast();
       model.quantity = model.quantity + by;
-      if (model.quantity > model.isA.remain) model.quantity = model.isA.remain;
+      if (model.quantity > model.isA.remain) {
+        model.quantity = model.isA.remain;
+        toast.warning("Max Quantity of product : " + model.name);
+      }
 
       if (!model.quantity) model.quantity = 1;
     },

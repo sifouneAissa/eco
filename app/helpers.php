@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\Product;
 use Illuminate\Support\Carbon;
 
 if (!function_exists('getLocales')) {
@@ -19,6 +20,31 @@ if (!function_exists('getSetting')) {
         return  \App\Models\Setting::query()->where('code',$code)->first();
     }
 }
+
+
+if (!function_exists('BestSellers')) {
+
+    function BestSellers($count = 5)
+    {
+
+        $callbackIsA = function ($item){
+            return $item->isA()['isA'];
+        };
+
+        $callback = function ($item){
+            $item['isA'] = $item->isA();
+            $item['quantity'] = 1;
+            return $item;
+        };
+
+        return Product::query()->get()->filter($callbackIsA)->sort(function ($item){
+            return $item->buyersCount();
+        })->take($count)->map($callback);
+    }
+}
+
+
+
 
 
 if (!function_exists('getSearchable')) {

@@ -7,6 +7,8 @@
     "require": {
         "php": "^8.0.2",
         "beyondcode/laravel-websockets": "^1.13",
+        "botman/botman": "^2.7",
+        "botman/driver-web": "^1.5",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.3",

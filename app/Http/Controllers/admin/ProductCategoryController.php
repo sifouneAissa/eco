@@ -79,7 +79,7 @@ class ProductCategoryController extends Controller
         $datatables = $this->getDataTables()
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('name', fn($model) => $model->name)
-            ->addColumn('desc',fn($model) => $model->content)
+            ->addColumn('desc',fn($model) => $model->desc)
             ->addColumn('action',function ($model) use ($permissions,$without){
                 return view('Datatable.btn',compact('model','permissions','without'));
             })
@@ -96,12 +96,12 @@ class ProductCategoryController extends Controller
             ['data' => 'action' , 'name' => 'Action','searchable' => false]
         ];
     }
-
     public function getHeaders(){
         return [
             'ID',
             'Name',
-            'desc',
+            'Description',
+            'Action'
         ];
     }
 

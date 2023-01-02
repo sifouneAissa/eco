@@ -113,7 +113,8 @@ class OrderDetailController extends Controller
             else if($for==="onway") $builder = $builder->whereHas('orderTracks',function ($b){
                 $b->where('status','onway');
             });
-            else if($for==="received") $builder = $builder->whereHas('orderTracks',function ($b){
+            else if($for==="received") $builder = $builder->whereHas(
+'orderTracks',function ($b){
                 $b->where('status','instore');
             });
             else if($for==="waiting") $builder = $builder->whereDoesntHave('orderTracks');

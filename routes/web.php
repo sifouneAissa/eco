@@ -101,4 +101,13 @@ Route::get("/contact-us",function (){
     Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');
 
 });
+
+
+//...
+
+Route::match(['get', 'post'], 'botman', [\App\Http\Controllers\BotManController::class, 'handle']);
+Route::get('/test/chat',function (){
+    return view('chat');
+});
+
 require __DIR__. "/admin.php";

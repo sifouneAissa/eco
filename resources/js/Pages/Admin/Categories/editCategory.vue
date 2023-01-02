@@ -22,7 +22,7 @@
             <textarea
               class="form-control"
               v-model="form.desc"
-              placeholder="Desc"
+              placeholder="Description"
             ></textarea>
             <div v-show="form.errors.desc">
               <p class="text-sm text-red-600" style="color: red">

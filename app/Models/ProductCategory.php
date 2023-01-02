@@ -15,7 +15,7 @@ class ProductCategory extends Model
     ];
     protected $appends = [
         'count',
-        'fimage',
+        // 'fimage',
         'modal_ids',
     ];
 

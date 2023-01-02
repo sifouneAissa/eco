@@ -55,8 +55,8 @@ class ProductController extends Controller
         };
 
         $bestSellers = Product::query()->whereNot('id',$id)->get()->filter($callbackIsA)->sort(function ($item){
-            return $item->buyersCount();
-        })->take(3)->map($callback);
+        return $item->buyersCount();
+    })->take(3)->map($callback);
 
         $sameCategory = Product::query()->where('product_category_id',$product->product_category_id)->get()->filter($callbackIsA)->map($callback);
 

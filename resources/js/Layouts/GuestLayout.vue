@@ -61,12 +61,28 @@
         },
         props : ['title'],
         mounted() {
+            // clear interval
+            clearInterval(window.idleIntervalTimer);
+
+            if(this.$page.component==="Listing"){
+                clearInterval(window.idleIntervalTimer)
+                window.idleIntervalTimer = setInterval(function () {
+                        Inertia.reload({
+                            only: ['products'],
+                            preserveScroll: true,
+                        })
+                    }, 20000);
+            }
 
             let app = this;
-
             if(this.$page.props.setPassword)
             {
                 let modal = $('#set-password');
+
+                modal.on('hidden.bs.modal',function (){
+                    app.$emit('ResetModel');
+                })
+
                 modal.modal('show');
             }
 
@@ -630,8 +646,8 @@
         <main class="bg-light">
             <slot/>
         </main>
-        <setPassword/>
 
+        <setPassword/>
 
         <footer class="pt-4 pb-4 text-center">
             <div class="container">
