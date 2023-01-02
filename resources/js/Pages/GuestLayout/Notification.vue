@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!$page.props.auth.is_admin">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell"></i>
             <span class="badge badge-danger badge-counter">{{count}}</span>

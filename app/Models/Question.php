@@ -17,6 +17,11 @@ class Question extends Model
         'answer'
     ];
 
+
+    protected $appends = [
+        'modal_ids'
+    ];
+
     /**
      * Get the indexable data array for the model.
      *
@@ -30,5 +35,15 @@ class Question extends Model
             'created_at'
         ]);
 
+    }
+
+
+    public  function getModalIdsAttribute(){
+        return [
+            'edit' => 'edit-question',
+            'delete' => 'delete-blog',
+            'add' => 'add-question',
+            'show' => 'show-question'
+        ];
     }
 }

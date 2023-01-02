@@ -82,7 +82,14 @@ const sidebar = [
                 urls : [
                     '/media/setting'
                 ],
+            },
+            {
+                name : "Bot Questions",
+                route : 'admin.question.index',
+                permission : 'view questions',
+                icon : 'feather-help-circle'
             }
+
         ]
     }
 ];

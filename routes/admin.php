@@ -47,7 +47,15 @@ use \Illuminate\Support\Facades\Route;
             // ,'destroy'
         ]);
         Route::get('/settings',[\App\Http\Controllers\admin\SettingController::class,'datatables'])->name('settings.index');
-     
+
+        Route::resource('/question',\App\Http\Controllers\admin\QuestionController::class)->only([
+            'index'
+             ,'store'
+            ,'update'
+             ,'destroy'
+        ]);
+        Route::get('/questions',[\App\Http\Controllers\admin\QuestionController::class,'datatables'])->name('questions.index');
+
         Route::resource('/category',\App\Http\Controllers\admin\ProductCategoryController::class)->only([
             'index'
             ,'store'
@@ -55,7 +63,7 @@ use \Illuminate\Support\Facades\Route;
             ,'destroy'
         ]);
         Route::get('/categories',[\App\Http\Controllers\admin\ProductCategoryController::class,'datatables'])->name('categories.index');
-     
+
         // media
         Route::get('/media/{model}',[\App\Http\Controllers\admin\MediaController::class,'index'])->name('media.index');
 

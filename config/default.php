@@ -64,7 +64,11 @@ return[
                 'view blogs',
                 'edit blog',
                 'update order status',
-                'view user orders'
+                'view user orders',
+                'view questions',
+                'edit question',
+                'add question',
+                'delete question'
             ],
             mediaPermissions(\App\Models\Product::class,'product'),
             mediaPermissions(\App\Models\Setting::class,'setting')
