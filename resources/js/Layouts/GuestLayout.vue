@@ -71,7 +71,7 @@
                             only: ['products'],
                             preserveScroll: true,
                         })
-                    }, 5000);
+                    }, 20000);
             }
 
             let app = this;
