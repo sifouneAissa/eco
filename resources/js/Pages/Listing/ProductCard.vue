@@ -6,10 +6,10 @@
       <!--                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>-->
       <!--                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>-->
       <div v-if="model.isA.remain === 1" class="member-plan position-absolute">
-        <span class="badge badge-danger">One Product</span>
+        <span class="badge badge-danger">{{ $t("listing.one_product") }}</span>
       </div>
       <div v-else-if="model.isA.remain <= 5" class="member-plan position-absolute">
-        <span class="badge badge-warning">The quantity is limited</span>
+        <span class="badge badge-warning">{{ $t("listing.limited") }}</span>
       </div>
       <a @click="go()">
         <img

@@ -172,6 +172,13 @@ const ar = {
     },
     listing:{
         page_title:"القائمة ",
+        page_detail_title:"تفاصيل المنتج",
+        add_products:"إضافة منتجات",
+        cart:"عربة التسوق",
+        full_menu:"عرض القائمة الكاملة",
+        list_empty:"القائمة فارغة",
+        view_all:"عرض كل",
+        notifications:"الإشعارات",
         desc1:"عروض بالقرب منك",
         desc2:"أفضل العروض لمنتجاتك المفضلة",
         products:"منتج/منتجات",
@@ -192,6 +199,8 @@ const ar = {
         pay:"يدفع",
         search:"البحث",
         checkout:"الدفع",
+        one_product:"منتج واحد",
+        limited:"الكمية محدودة",
         tabs:{
             order:"اطلب عبر الإنترنت",
             gallery:"معرض الصور",
@@ -225,7 +234,14 @@ const ar = {
             total:"المجموع",
             pay:"الدفع",
           }
-      }
+      },
+      blog:{
+       page_title:"المدونات",
+       page_detail_title:"تفاصيل المدونة",
+       title:"المدونة",
+       blogs:"مدونة / المدونات",
+       details:"تفاصيل",
+      },
 };
 
 export default ar;

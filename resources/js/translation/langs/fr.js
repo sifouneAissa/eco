@@ -172,6 +172,13 @@ const fr = {
     },
     listing:{
         page_title:"Liste",
+        page_detail_title:"Les détails du produit",
+        add_products:"Ajouter produits",
+        cart:"Panier",
+        full_menu:"Afficher le menu complet",
+        list_empty:"Liste vide",
+        view_all:"Voir tout",
+        notifications:"Notifications",
         desc1:"Offres près de chez vous",
         desc2:"Meilleures offres sur vos produits préférés",
         products:"Produits",
@@ -192,6 +199,8 @@ const fr = {
         pay:"PAYER",
         search:"Chercher",     
         checkout:"Payer",
+        one_product:"Un produit",
+        limited:"La quantité est limitée",
         tabs:{
             order:"Commander en ligne",
             gallery:"Galerie",
@@ -225,7 +234,14 @@ const fr = {
             total:"Total",
             pay:"PAYER",
           }
-      }
+      },
+      blog:{
+       page_title:"Blogs",
+       page_detail_title:"Détail du blog",
+       title:"Blog",
+       blogs:"Blogs",
+       details:"Détails",
+      },
 };
 
 export default fr;

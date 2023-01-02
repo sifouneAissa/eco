@@ -170,6 +170,13 @@ const en = {
     },
     listing:{
       page_title:"Listing",
+      page_detail_title:"Product detail",
+      add_products:"Add products",
+      cart:"Cart",
+      full_menu:"View Full Menu",
+      list_empty:"List empty",
+      view_all:"View All",
+      notifications:"Notifications",
       desc1:"Offers Near You",
       desc2:"Best deals at your favourite products",
       products:"Products",
@@ -180,7 +187,7 @@ const en = {
       add:"Add",
       new:"New",
       loading:"Loading",
-      checkout:"CHECKOUT",
+      checkout:"Checkout",
       best_sellers:"Best Sellers",
       recommended:"Recommended",
       recommend:"Recommend",
@@ -190,6 +197,8 @@ const en = {
       pay:"PAY",
       search:"Search",
       checkout:"Checkout",
+      one_product:"One Product",
+      limited:"The quantity is limited",
       tabs:{
         order:"Order Online",
         gallery:"Gallery",
@@ -223,7 +232,14 @@ const en = {
         total:"Total",
         pay:"Pay",
       }
-    }
+    },
+    blog:{
+     page_title:"Blogs",
+     page_detail_title:"Blog detail",
+     title:"Blog",
+     blogs:"Blogs",
+     details:"Details",
+    },
 };
 
 export default en;

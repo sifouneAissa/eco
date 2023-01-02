@@ -10,7 +10,11 @@
         <!-- <p class="text-gray mb-2">{{ model.desc }}</p> -->
         <p class="text-gray time mb-0">
           <span class="float-right">
-            <button class="btn btn-outline-secondary btn-sm m-2">Details</button>
+            <a
+              :href="route('blog.show', { id: blog.id })"
+              class="btn btn-outline-secondary btn-sm m-2"
+              >Details</a
+            >
           </span>
         </p>
       </div>

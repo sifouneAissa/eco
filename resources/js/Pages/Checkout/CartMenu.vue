@@ -116,11 +116,12 @@
         <!--                </p>-->
         <hr />
         <h6 class="font-weight-bold mb-0">
-          TO PAY <span class="float-right">{{ $page.props.currency_code }} 0</span>
+          {{ $t("listing.to_pay")
+          }}<span class="float-right">{{ $page.props.currency_code }} 0</span>
         </h6>
       </div>
       <Link :href="route('listing')" class="btn btn-success btn-block btn-lg"
-        >Add Products <i class="icofont-long-arrow-right"></i
+        >{{ $t("listing.add_products") }} <i class="icofont-long-arrow-right"></i
       ></Link>
     </div>
 

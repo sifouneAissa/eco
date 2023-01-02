@@ -24,4 +24,12 @@ class BlogController extends Controller
             'count' => $count
         ]);
     }
+    public function show($id)
+    {
+        $blog = Blog::query()->findOrFail($id);
+
+        return Inertia::render('BlogDetail',[
+            'blog' => $blog,
+        ]);
+    }
 }
