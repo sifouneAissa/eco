@@ -6,6 +6,9 @@ return[
             ],
             'setting' => [
                 'builder' => \App\Models\Setting::class
+            ],
+            'category' => [
+                'builder' => \App\Models\ProductCategory::class
             ]
     ],
     'orders' => [
@@ -71,7 +74,8 @@ return[
                 'delete question'
             ],
             mediaPermissions(\App\Models\Product::class,'product'),
-            mediaPermissions(\App\Models\Setting::class,'setting')
+            mediaPermissions(\App\Models\Setting::class,'setting'),
+            mediaPermissions(\App\Models\ProductCategory::class,'category'),
         ),
         'publisher' => [
 

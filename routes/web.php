@@ -71,31 +71,32 @@ Route::middleware([
 
 // Company pages components
 Route::get('/blogs', [\App\Http\Controllers\BlogController::class,'index'])->name('blog.index');
+Route::get('/blogs/{id}', [\App\Http\Controllers\BlogController::class,'show'])->name('blog.show');
 
 Route::get("/contact-us",function (){
 
         return \inertia("CompanyPages/ContactUs");
-    });
+    })->name('contact-us');
     Route::get("/about-us",function (){
 
         return \inertia("CompanyPages/AboutUs");
-    });
+    })->name('about-us');
     Route::get("/privacy-policy",function (){
 
         return \inertia("CompanyPages/PrivacyPolicy");
-    });
+    })->name('privacy-policy');
     Route::get("/terms-conditions",function (){
 
         return \inertia("CompanyPages/TermsAndConditions");
-    });
+    })->name('terms-conditions');
     Route::get("/shipping-policy",function (){
 
         return \inertia("CompanyPages/ReturnAndShippingPolicy");
-    });
+    })->name('shipping-policy');
     Route::get("/faq",function (){
 
         return \inertia("CompanyPages/Faq");
-    });
+    })->name('faq');
     Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
 
     Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');

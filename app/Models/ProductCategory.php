@@ -2,22 +2,31 @@
 
 namespace App\Models;
 
+use App\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class ProductCategory extends Model
+class ProductCategory extends Model implements HasMedia
 {
     use HasFactory;
-    
+    use MediaTrait;
+    use InteractsWithMedia;
+
     protected $fillable = [
         'name',
         'desc',
     ];
     protected $appends = [
         'count',
-        'fimage',
+         'fimage',
         'modal_ids',
     ];
+
+
+    public const SNAME = 'Product categories';
+    public const INAME = 'Product category';
 
     public function products(){
         return $this->hasMany(Product::class,'product_category_id');
@@ -28,7 +37,12 @@ class ProductCategory extends Model
     }
 
     public function getFimageAttribute(){
-        return $this->products->first()->fimage;
+        $img = '/img/categories.png';
+
+        if($f = $this->media?->first()?->getFullUrl())
+             return $f;
+
+        return $img;
     }
     public  function getModalIdsAttribute(){
         return [

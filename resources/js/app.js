@@ -65,6 +65,10 @@ createInertiaApp({
         script2.src = "/chat/widget.js";
         document.body.append(script2); // (*)
 
+        // for lazy importation
+        // let script3 = document.createElement('script');
+        // script3.src = "https://js.stripe.com/v3";
+        // document.body.append(script3); // (*)
 
         return createApp({render: () => h(app, props)})
             .use(plugin)

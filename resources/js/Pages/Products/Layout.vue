@@ -22,7 +22,7 @@
     import recommended from '@/Pages/Products/recomended.vue';
     import tabs from '@/Pages/Products/tabs.vue';
     import CheckoutCard from "@/Pages/Checkout/CheckoutCard.vue";
-    import {useToast} from "vue-toastification";
+    // import {useToast} from "vue-toastification";
 
     export default {
         components : {
@@ -43,16 +43,16 @@
         },
         created() {
 
-            const toast = useToast();
-            console.log("this.$page.props.message")
-            console.log(this.$page.props.message)
-            if(!this.toast)
-            toast("I'm a toast!");
+            // const toast = useToast();
+            // console.log("this.$page.props.message")
+            // console.log(this.$page.props.message)
+            // if(!this.toast)
+            // toast("I'm a toast!");
         },
         computed : {
-            toast : function (){
-                return !this.$page.props.message;
-            }
+            // toast : function (){
+            //     return !this.$page.props.message;
+            // }
         },
         methods : {
             ShowCheckout : function (data) {

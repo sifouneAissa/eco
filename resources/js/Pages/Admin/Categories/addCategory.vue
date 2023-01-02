@@ -1,5 +1,5 @@
 <template>
-  <Add @resetModel="resetModel" :id="'add-product'" title="Add Category">
+  <Add @resetModel="resetModel" :id="'add-product-category'" title="Add Category">
     <div class="modal-body mx-3 bg">
       <form @submit.prevent="submit">
         <div class="mb-5 form-label-group">
@@ -22,7 +22,7 @@
             <textarea
               class="form-control"
               v-model="form.desc"
-              placeholder="Desc"
+              placeholder="Description"
             ></textarea>
             <div v-show="form.errors.desc">
               <p class="text-sm text-red-600" style="color: red">

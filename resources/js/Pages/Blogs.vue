@@ -7,10 +7,12 @@ defineProps({
 </script>
 
 <template>
-  <GuestLayout title="Blogs">
+  <GuestLayout :title="$t('blog.page_title')">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Blogs</h2>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{ $t("blog.page_title") }}
+      </h2>
     </template>
-    <BlogLayout title="Blogs" />
+    <BlogLayout :title="$t('blog.page_title')" />
   </GuestLayout>
 </template>
