@@ -1,7 +1,29 @@
-<script setup>
+<script >
 import Cart from "@/Pages/Products/Cart.vue";
 import ProductCard from "@/Pages/Listing/ProductCard.vue";
 import ProductCarousel from "@/Pages/Listing/ProductCarousel.vue";
+import {useForm} from "@inertiajs/inertia-vue3";
+export default  {
+    components : {
+        Cart,
+        ProductCarousel,
+        ProductCard
+    },
+    data (){
+        return {
+            form  : useForm({
+                query : this.$page.props.query
+            }),
+
+        }
+    },
+    methods : {
+        submit : function (){
+            this.form.get(route("product.show",{id : this.$page.props.product.id}));
+        }
+    }
+}
+
 </script>
 
 <template>
@@ -22,15 +44,16 @@ import ProductCarousel from "@/Pages/Listing/ProductCarousel.vue";
                   class="bg-white rounded shadow-sm p-4 mb-4 explore-outlets"
                 >
                   <h5 class="mb-4">{{ $t("listing.recommended") }}</h5>
-                  <form class="explore-outlets-search mb-4">
+                  <form @submit.prevent="submit()" class="explore-outlets-search mb-4">
                     <div class="input-group">
                       <input
+                        v-model="form.query"
                         type="text"
                         :placeholder="$t('listing.search')"
                         class="form-control"
                       />
                       <div class="input-group-append">
-                        <button type="button" class="btn btn-link">
+                        <button type="submit" class="btn btn-link">
                           <i class="icofont-search"></i>
                         </button>
                       </div>

@@ -37,7 +37,7 @@ class ProductController extends Controller
         //
     }
 
-    public function show($id)
+    public function show(Request $request,$id)
     {
 
 
@@ -58,7 +58,7 @@ class ProductController extends Controller
         return $item->buyersCount();
     })->take(3)->map($callback);
 
-        $sameCategory = Product::query()->where('product_category_id',$product->product_category_id)->get()->filter($callbackIsA)->map($callback);
+        $sameCategory = Product::search($request->input('query'))->where('product_category_id',$product->product_category_id)->get()->filter($callbackIsA)->map($callback);
 
 
         $product['media'] = $product->media->map(function ($item){
@@ -74,7 +74,8 @@ class ProductController extends Controller
         return Inertia::render('ProductDetail',[
             'product' => $product,
             'bestSellers' => $bestSellers,
-            'sameCategory' => $sameCategory
+            'sameCategory' => $sameCategory,
+            'query' => $request->input('query')
         ]);
     }
 
