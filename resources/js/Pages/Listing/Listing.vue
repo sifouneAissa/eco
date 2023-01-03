@@ -84,7 +84,7 @@
             role="status"
             aria-hidden="true"
           ></span>
-          Loading...
+          {{$t('listing.loading')}} ...
         </button>
       </div>
     </div>
