@@ -1,10 +1,13 @@
 <script >
 
     import {Inertia} from "@inertiajs/inertia";
+    import {Link} from "@inertiajs/inertia-vue3";
+
     import Notifications from "@/Pages/Admin/Navbars/Notifications.vue";
     export  default {
         components : {
-            Notifications
+            Notifications,
+            Link
         },
         methods : {
             logout : function () {
@@ -22,7 +25,7 @@
 </script>
 <template>
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-        <a   class="navbar-brand" href="index.html"><img alt="logo" src="/img/logo.png"></a>
+        <Link   class="navbar-brand" :href="route('admin.index')"><img alt="logo"  style="width: 40%; height: 3vw" :src="$page.props.logo"></Link>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">

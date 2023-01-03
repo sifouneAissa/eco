@@ -9,12 +9,11 @@
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Core</div>
                 <LinkCard v-for="link in sidebar" :link="link" :key="link.name" />
-
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Ask Bootstrap
+            <div class="h6">Logged in as : </div>
+            <h6><span v-for="role in $page.props.auth.roles" :key="role" class="badge badge-success">{{role}}</span></h6>
         </div>
     </nav>
 </template>
