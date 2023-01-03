@@ -48,7 +48,7 @@
                         // labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
                         labels: labels,
                         datasets: [{
-                            label: "Sessions",
+                            label: "Weekly Revenue",
                             lineTension: 0.3,
                             backgroundColor: "rgba(2,117,216,0.2)",
                             borderColor: "rgba(2,117,216,1)",
@@ -99,7 +99,7 @@
                         data: {
                             labels: Mlabels,
                             datasets: [{
-                                label: "Revenue",
+                                label: "Monthly Revenue",
                                 backgroundColor: "rgba(2,117,216,1)",
                                 borderColor: "rgba(2,117,216,1)",
                                 data: Mdata,
