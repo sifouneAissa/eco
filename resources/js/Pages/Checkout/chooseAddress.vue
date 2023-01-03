@@ -84,6 +84,11 @@
               <!--                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="icofont-ui-pointer"></i></button>-->
               <!--                                </div>-->
             </div>
+              <div v-if="this.submited && !isText(add_form.address_line_1)">
+                  <p class="text-sm " style="color: red">
+                      {{ errors.address_line_1 }}
+                  </p>
+              </div>
           </div>
           <div class="form-group col-md-6">
             <label for="address_line_1">{{
@@ -99,6 +104,11 @@
                 :placeholder="$t('account.addresses.add_card.address2')"
               />
             </div>
+              <div v-if="this.submited && !isText(add_form.address_line_2)">
+                  <p class="text-sm " style="color: red">
+                      {{ errors.address_line_2}}
+                  </p>
+              </div>
           </div>
 
           <div class="form-group col-md-6">
@@ -113,6 +123,11 @@
                 :placeholder="$t('account.addresses.add_card.city')"
               />
             </div>
+              <div v-if="this.submited && !isText(add_form.city)">
+                  <p class="text-sm " style="color: red">
+                      {{ errors.city }}
+                  </p>
+              </div>
           </div>
           <div class="form-group col-md-6">
             <label for="Country">{{ $t("account.addresses.add_card.country") }}</label>
@@ -126,6 +141,11 @@
                 :placeholder="$t('account.addresses.add_card.country')"
               />
             </div>
+              <div v-if="this.submited && !isText(add_form.country)">
+                  <p class="text-sm " style="color: red">
+                      {{ errors.country }}
+                  </p>
+              </div>
           </div>
 
           <div class="form-group col-md-6">
@@ -140,6 +160,11 @@
                 :placeholder="$t('account.addresses.add_card.mobile')"
               />
             </div>
+              <div v-if="this.submited && !isPhone(add_form.mobile)">
+                  <p class="text-sm " style="color: red">
+                      {{ errors.mobile }}
+                  </p>
+              </div>
           </div>
           <div class="form-group col-md-6">
             <label for="telephone">{{
@@ -155,6 +180,12 @@
                 :placeholder="$t('account.addresses.add_card.telephone')"
               />
             </div>
+
+              <div v-if="this.submited && !isPhone(add_form.telephone)">
+                  <p class="text-sm " style="color: red">
+                      {{ errors.telephone }}
+                  </p>
+              </div>
           </div>
           <div class="form-group col-md-6">
             <label for="postal_code">{{
@@ -170,6 +201,12 @@
                 :placeholder="$t('account.addresses.add_card.postal_code')"
               />
             </div>
+
+              <div v-if="this.submited && !postalCode()">
+                  <p class="text-sm " style="color: red">
+                      {{ errors.postal_code }}
+                  </p>
+              </div>
           </div>
         </div>
 
@@ -193,8 +230,6 @@ import { useForm } from "@inertiajs/inertia-vue3";
 export default {
   props: ["models", "card_class"],
   created() {
-    console.log("this.showAdd");
-    console.log(this.showAdd);
     if (this.models && this.models.length) {
       this.setSelectedAddress(this.models[0]);
       this.selectedA = this.models[0];
@@ -204,6 +239,7 @@ export default {
   },
   data() {
     return {
+      submited : false,
       selectedA: null,
       sModels: this.models ? this.models : [],
       add_form: {
@@ -216,10 +252,28 @@ export default {
         telephone: "",
         toCreate: true,
       },
+      errors : {
+          address_line_1 : 'Please correct this field',
+          address_line_2 : 'Please correct this field',
+          city : 'Please correct this field',
+          postal_code : 'Please insert a valid code postal',
+          country : 'Please correct this field',
+          mobile : 'Please insert a valid mobile number',
+          telephone :'Please inert a valid telephone number'
+      },
       add: false,
     };
   },
   computed: {
+      vData : function (){
+           return  this.isText(this.add_form.address_line_1)
+                        && this.isText(this.add_form.address_line_2)
+                        && this.isText(this.add_form.city)
+                        && this.isText(this.add_form.country)
+                        && this.isPhone(this.add_form.mobile)
+                        && this.isPhone(this.add_form.telephone)
+                        && this.postalCode()
+      },
     showAdd: function () {
       return !this.sModels.filter(function (item) {
         return item.toCreate;
@@ -227,16 +281,31 @@ export default {
     },
   },
   methods: {
+
+      isPhone : function (value){
+          return value.match(/^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/g);
+      },
+      isText : function (value){
+          return value.length >2;
+      },
+      postalCode : function (){
+          return this.add_form.postal_code.match(/^[0-9]{5}(?:-[0-9]{4})?$/)
+      },
+
     setSelectedAddress(model) {
-      this.selectedA = model;
 
-      if (model.toCreate) {
-        if (this.showAdd) this.sModels.push(model);
-        this.add = false;
+      this.submited = model.toCreate === true;
+      if(!model.toCreate || (model.toCreate && this.vData)) {
+          this.selectedA = model;
+
+          if (model.toCreate) {
+              if (this.showAdd) this.sModels.push(model);
+              this.add = false;
+          }
+
+          this.$emit("SetSelectedAddress", model);
       }
-
-      this.$emit("SetSelectedAddress", model);
-    },
+      },
   },
 };
 </script>

@@ -24,7 +24,6 @@ class UserOrderController extends Controller
     public function store(UserOrderRequest $request)
     {
 
-
         return startTransaction(function () use ($request) {
 
             $withProduct = $request->input('withProduct');
