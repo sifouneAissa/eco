@@ -25,6 +25,7 @@ export default {
     },
     submit: function (category, event) {
       let app = this;
+      console.log(category.name);
       useForm({
         query: event.target.checked ? category.name : "",
       }).get(route("listing"));
@@ -115,9 +116,9 @@ export default {
                           :checked="setCategory(category)"
                           type="checkbox"
                           class="custom-control-input"
-                          id="cb1"
+                          :id="'cb'+category.id"
                         />
-                        <label class="custom-control-label" for="cb1"
+                        <label class="custom-control-label" :for="'cb'+category.id"
                           >{{ category.name }}
                           <small class="text-black-50">({{ category.count }})</small>
                         </label>
