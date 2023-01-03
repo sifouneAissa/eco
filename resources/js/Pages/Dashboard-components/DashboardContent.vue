@@ -47,9 +47,9 @@
                                 <div class="col-lg-3 col-md-3 col-sm-12 form-group">
                                     <div class="location-dropdown">
                                         <i class="icofont-location-arrow"></i>
-                                        <select v-model="form.query.category" v-for="category in $page.props.categories" :key="category.id" class="custom-select form-control-lg">
+                                        <select v-model="form.query.category"  class="custom-select form-control-lg">
                                             <option disabled> Quick Searches </option>
-                                            <option :value="category.name"> {{category.name}} </option>
+                                            <option v-for="category in $page.props.categories" :key="category.id" :value="category.name"> {{category.name}} </option>
                                         </select>
                                     </div>
                                 </div>
