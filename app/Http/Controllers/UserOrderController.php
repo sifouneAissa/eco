@@ -110,7 +110,7 @@ class UserOrderController extends Controller
 
             return redirect()->route('listing', [
                 'query' => $order->products->first()->category->name
-            ]);
+            ])->with('thanks',true);
         });
 
     }
@@ -282,7 +282,7 @@ class UserOrderController extends Controller
 
         return redirect()->route('listing', [
             'query' => $order->products->first()->category->name
-        ]);
+        ])->with('thanks',true);
 
     }
 }

@@ -39,7 +39,12 @@ export default {
   <section class="breadcrumb-osahan pt-5 pb-5 bg-dark position-relative text-center">
     <h1 class="text-white">{{ $t("listing.desc1") }}</h1>
     <h6 class="text-white-50">{{ $t("listing.desc2") }}</h6>
+    <div v-if="$page.props.thanks" class="mt-4">
+        <button class="btn btn-success ml-2">Shop more</button>
+        <button class="btn btn-dark">Thank you</button>
+    </div>
   </section>
+
   <section class="section pt-5 pb-5 products-listing">
     <div class="container">
       <div class="row d-none-m">

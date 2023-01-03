@@ -14,7 +14,6 @@ defineProps({
         {{ $t("listing.page_title") }}
       </h2>
     </template>
-
     <ListingLayout :title="$t('listing.page_title')" />
   </GuestLayout>
 </template>

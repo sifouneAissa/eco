@@ -92,9 +92,9 @@ createInertiaApp({
         script.src = "/admin/vendor/dataTables/vfs_fonts.js";
         document.body.append(script); // (*)
 
-        script = document.createElement('script');
-        script.src = "/admin/js/Chart.min.js";
-        document.body.append(script); // (*)
+        // script = document.createElement('script');
+        // script.src = "/admin/js/Chart.min.js";
+        // document.body.append(script); // (*)
 
 
         // script = document.createElement('script');

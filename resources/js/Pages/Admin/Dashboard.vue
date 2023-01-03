@@ -2,7 +2,7 @@
     import AdminLayout from '@/Pages/Admin/Layout/AdminLayout.vue';
     import { Link } from "@inertiajs/inertia-vue3";
     import Datatable from '@/Pages/Admin/DataTable/Datatable.vue';
-
+    import  "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js";
     export default  {
         components : {
             AdminLayout,
@@ -11,11 +11,9 @@
         },
         props : ['weeksD','monthsD','Ndata','datatableUrl','datatableColumns','datatableHeaders'],
         mounted() {
-                let labels = this.$page.props.weeksD.map(item => function (){
-                    return item.s + '' + item.e;
-                });
-                let app = this;
-                window.onload = function (){
+
+            let app = this;
+            $(document).ready( function () {
                     let max = 0;
                     let min = 0;
                     let labels = app.weeksD.map((item) => {
@@ -136,7 +134,7 @@
                             }
                         }
                     });
-            }
+            })
         }
     }
 </script>
