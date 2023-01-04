@@ -1,6 +1,7 @@
 const fr = {
     nav_menu:{
         track_by_id:"Suivre la commande par identifiant..",
+        other:"Autres",
         help:{
            help:"Aide",
            contact_us:"Contacter nous",
@@ -259,6 +260,22 @@ const fr = {
         postal_code:"Veuillez insérer un code postal valide",
         mobile:"Veuillez insérer un numéro de mobile valide",
         telephone:"Veuillez inerter un numéro de téléphone valide",
+    }
+    ,
+    thanks:{
+        congratulations:"Félicitations",
+        msg:"Vous avez passé votre commande avec succès",
+        tomporary_msg:"Ce lien est temporaire (10 minutes) veillez à enregistrer votre identifiant ou",
+        send_email:"Nous envoyons un email à ce mail",
+        view_order:"Voir l'ordre",
+        view_shop:"Achetez plus",
+        account:"Votre compte",
+        set_up:"Configurez",
+        order:"L'identifiant de votre commande est",
+    }
+    ,
+    notifications:{
+        success:"Opération réussie",
     }
 };
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class DashboardController extends Controller
     public function index(){
 
         $categories = ProductCategory::get();
-        $products = Product::get();
+        $blogs = Blog::get();
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
@@ -24,7 +25,7 @@ class DashboardController extends Controller
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
             'categories' => $categories,
-            'products' => $products,
+            'blogs' => $blogs,
         ]);
     }
 }

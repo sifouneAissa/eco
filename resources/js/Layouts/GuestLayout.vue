@@ -477,7 +477,7 @@ export default {
     <Banner />
     <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
       <div class="container">
-        <Link class="navbar-brand " href="/"
+        <Link class="navbar-brand" href="/"
           ><img class="nav-osahan-pic" alt="logo" :src="$page.props.logo" />
         </Link>
         <button
@@ -545,6 +545,9 @@ export default {
                 }}</a>
                 <Link class="dropdown-item" :href="route('register')">{{
                   $t("nav_menu.pages.register")
+                }}</Link>
+                <Link class="dropdown-item" :href="route('blog.index')">{{
+                  $t("blog.page_title")
                 }}</Link>
                 <!-- <a class="dropdown-item" href="404.html">404</a>
                                 <a class="dropdown-item" href="extra.html">Extra :)</a> -->

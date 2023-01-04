@@ -37,7 +37,7 @@ export default {
       this.form.email = data.data.email;
       this.form.post(route("order.store"), {
         onSuccess: () => {
-          toast.success("Operation successful");
+          toast.success(this.$t("notifications.success"));
         },
         onError: (errors) => {
           toast.error(errors.error);

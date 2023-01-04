@@ -2,6 +2,7 @@
 import { useForm } from "@inertiajs/inertia-vue3";
 import Categories from "@/Pages/Listing/Categories.vue";
 import ProductCard from "@/Pages/Listing/ProductCard.vue";
+import Blogs from "@/Pages/Dashboard-components/Blogs.vue";
 import { Inertia } from "@inertiajs/inertia";
 import { ref, onMounted } from "vue";
 
@@ -9,6 +10,7 @@ export default {
   components: {
     Categories,
     ProductCard,
+    Blogs,
   },
   created() {},
   data() {
@@ -136,6 +138,7 @@ export default {
     </section>
     <section class="section pt-5 pb-5 products-section">
       <div class="container">
+        <Blogs />
         <div class="section-header text-center">
           <h2>{{ $t("dashboard.most_requested") }}</h2>
           <p>{{ $t("dashboard.title2") }}</p>
@@ -184,8 +187,8 @@ export default {
     <section class="footer pt-5 pb-5">
       <div class="container">
         <div class="row">
-          <!-- <div class="col-md-4 col-12 col-sm-12">
-            <h6 class="mb-3">Subscribe to our Newsletter</h6>
+          <div class="col-md-2 col-12 col-sm-12">
+            <!-- <h6 class="mb-3">Subscribe to our Newsletter</h6>
             <form class="newsletter-form mb-1">
               <div class="input-group">
                 <input
@@ -197,24 +200,24 @@ export default {
                   <button type="button" class="btn btn-primary">Subscribe</button>
                 </div>
               </div>
-            </form>
-            <p>
+            </form> -->
+            <!-- <p>
               <a class="text-info" href="register.html">Register now</a> to get updates on
               <a href="offers.html">Offers and Coupons</a>
-            </p>
+            </p> -->
             <div class="app">
-              <p class="mb-2">DOWNLOAD APP</p>
+              <!-- <p class="mb-2">DOWNLOAD APP</p> -->
               <a href="#">
-                <img class="img-fluid" src="img/google.png" />
+                <img class="img-fluid" src="img/logo.png" />
               </a>
-              <a href="#">
+              <!-- <a href="#">
                 <img class="img-fluid" src="img/apple.png" />
-              </a>
+              </a> -->
             </div>
-          </div> -->
+          </div>
           <div class="col-md-1 col-sm-6 mobile-none"></div>
           <div class="col-md-2 col-6 col-sm-4">
-            <h6 class="mb-3">About Us</h6>
+            <h6 class="mb-3">{{ $t("nav_menu.help.about_us") }}</h6>
             <ul>
               <li>
                 <a :href="route('contact-us')">{{ $t("nav_menu.help.contact_us") }} </a>
@@ -225,6 +228,11 @@ export default {
               <li>
                 <a :href="route('faq')">{{ $t("nav_menu.help.faq") }} </a>
               </li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-6 col-sm-4">
+            <h6 class="mb-3">{{ $t("nav_menu.other") }}</h6>
+            <ul>
               <li>
                 <a :href="route('privacy-policy')"
                   >{{ $t("nav_menu.help.privacy_policy") }}
@@ -240,18 +248,11 @@ export default {
                   >{{ $t("nav_menu.help.terms_conditions") }}
                 </a>
               </li>
+              <li>
+                <a :href="route('blog.index')">{{ $t("blog.page_title") }} </a>
+              </li>
             </ul>
           </div>
-          <!-- <div class="col-md-2 col-6 col-sm-4">
-            <h6 class="mb-3">For Foodies</h6>
-            <ul>
-              <li><a href="#">Community</a></li>
-              <li><a href="#">Developers</a></li>
-              <li><a href="#">Blogger Help</a></li>
-              <li><a href="#">Verified Users</a></li>
-              <li><a href="#">Code of Conduct</a></li>
-            </ul>
-          </div> -->
           <!-- <div class="col-md-2 m-none col-4 col-sm-4">
             <h6 class="mb-3">For Restaurants</h6>
             <ul>

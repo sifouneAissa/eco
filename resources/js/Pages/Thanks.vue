@@ -4,15 +4,15 @@
             <div class="row">
                 <div class="col-md-12 text-center pt-5 pb-5">
                     <img class="img-fluid mb-5" src="/img/thanks.png" alt="404">
-                    <h1 class="mt-2 mb-2 text-success">Congratulations {{order.user.name}} ! </h1>
-                    <p class="mb-1">You have successfully placed your order</p>
-                    <p class="mb-1">Your Order id is : <div class="badge badge-success">{{order.id}}</div></p>
-                    <p class="mb-5" v-if="order.user.unregistered">This link is temporary (10 min) be sure to save your id or <Link @click="create()">set up</Link> your account</p>
-                    <p class="mb-5">We send an email to this mail : {{order.user.email}}</p>
+                    <h1 class="mt-2 mb-2 text-success">{{$t("thanks.congratulations")}} {{order.user.name}} ! </h1>
+                    <p class="mb-1">{{$t("thanks.msg")}}</p>
+                    <p class="mb-1"> {{$t("thanks.order")}}: <div class="badge badge-success">{{order.id}}</div></p>
+                    <p class="mb-5" v-if="order.user.unregistered"> {{$t("thanks.temporary_msg")}}<Link @click="create()"> {{$t("thanks.set_up")}}</Link>  {{$t("thanks.account")}}</p>
+                    <p class="mb-5"> {{$t("thanks.send_email")}} : {{order.user.email}}</p>
                     <Link class="btn btn-primary btn-lg" :href="route('trackOrder',{
                         id : order.id
-                    })">View Order <i class="icofont-simple-smile"></i></Link>
-                    <Link class="btn btn-success btn-lg" :href="route('listing')">Shop more <i class="icofont-cart"></i></Link>
+                    })"> {{$t("thanks.view_order")}}<i class="icofont-simple-smile"></i></Link>
+                    <Link class="btn btn-success btn-lg" :href="route('listing')">{{$t("thanks.view_shop")}} <i class="icofont-cart"></i></Link>
                 </div>
                 <setPassword />
             </div>
