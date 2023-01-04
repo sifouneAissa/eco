@@ -26,6 +26,13 @@ class UserOrderController extends Controller
 
         $order = OrderDetail::query()->findOrFail($id)->load('user');
 
+
+        $time = $order->created_at;
+        $date = Carbon::now();
+        $min = $date->diffInMinutes($time);
+
+        if($min >= 10) abort(404);
+
         return Inertia::render('Thanks',[
             'order' => $order
         ]);
