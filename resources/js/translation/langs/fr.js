@@ -253,6 +253,12 @@ const fr = {
         quick_search:"Recherches rapides",
         most_requested:"Produits les plus demandés",
        },
+       errors:{
+        correct_field:"Merci de corriger ce champ",
+        postal_code:"Veuillez insérer un code postal valide",
+        mobile:"Veuillez insérer un numéro de mobile valide",
+        telephone:"Veuillez inerter un numéro de téléphone valide",
+    }
 };
 
 export default fr;

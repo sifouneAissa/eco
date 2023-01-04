@@ -251,6 +251,12 @@ const en = {
      quick_search:"Quick searches",
      most_requested:"Most requested products",
     },
+    errors:{
+        correct_field:"Please correct this field",
+        postal_code:"Please insert a valid code postal",
+        mobile:"Please insert a valid mobile number",
+        telephone:"Please inert a valid telephone number",
+    }
 };
 
 export default en;

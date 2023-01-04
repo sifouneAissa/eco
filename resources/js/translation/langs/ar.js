@@ -253,6 +253,12 @@ const ar = {
         quick_search:"بحث سريع",
         most_requested:"المنتجات الأكثر طلبًا",
        },
+       errors:{
+        correct_field:"الرجاء تصحيح هذا الحقل",
+        postal_code:"الرجاء إدخال رمز بريدي صحيح",
+        mobile:"الرجاء إدخال رقم هاتف محمول صحيح",
+        telephone:"الرجاء إدخال رقم هاتف صحيح",
+    }
 };
 
 export default ar;
