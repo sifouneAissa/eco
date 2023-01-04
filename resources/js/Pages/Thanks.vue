@@ -7,7 +7,7 @@
                     <h1 class="mt-2 mb-2 text-success">Congratulations {{order.user.name}} ! </h1>
                     <p class="mb-1">You have successfully placed your order</p>
                     <p class="mb-1">Your Order id is : <div class="badge badge-success">{{order.id}}</div></p>
-                    <p class="mb-5" v-if="order.user.unregistered">This link is temporary (10 min) be sure to save your id or <Link @click="create()">create</Link> an account  </p>
+                    <p class="mb-5" v-if="order.user.unregistered">This link is temporary (10 min) be sure to save your id or <Link @click="create()">set up</Link> your account</p>
                     <p class="mb-5">We send an email to this mail : {{order.user.email}}</p>
                     <Link class="btn btn-primary btn-lg" :href="route('trackOrder',{
                         id : order.id

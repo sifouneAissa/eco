@@ -31,7 +31,7 @@ class UserOrderController extends Controller
         $date = Carbon::now();
         $min = $date->diffInMinutes($time);
 
-        if($min >= 10) abort(404);
+//        if($min >= 10) abort(404);
 
         return Inertia::render('Thanks',[
             'order' => $order
