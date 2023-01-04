@@ -147,7 +147,7 @@ export default {
               class="owl-carousel owl-theme owl-carousel-four offers-interested-carousel mb-3"
             >
               <ProductCard
-                v-for="model in $page.props.products"
+                v-for="model in $page.props.bestSellers"
                 :key="model.id"
                 :model="model"
               />
