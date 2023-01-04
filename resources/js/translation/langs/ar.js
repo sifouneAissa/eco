@@ -162,6 +162,7 @@ const ar = {
         now:"حاليا",
         checked:"تم التحقق ",
         later:"لاحقاً",
+        shop_more : 'تسوق اكثر'
 
     },
     contact_us:{

@@ -21,6 +21,12 @@ Route::post('/skipsetpassword',function (){
     \Illuminate\Support\Facades\Session::put('time',$time);
 })->name('skipsetpassword');
 
+Route::get('/setpassword',function (){
+    \Illuminate\Support\Facades\Session::put('time',0);
+})->name('setpassword');
+
+
+
 
 
 
@@ -55,6 +61,7 @@ Route::middleware([
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class,'show'])->name('product.show');
     Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('product.index');
     Route::get('/checkout', [\App\Http\Controllers\UserOrderController::class,'checkout'])->name('checkout.show');
+    Route::get('/thanks/{id}', [\App\Http\Controllers\UserOrderController::class,'thanks'])->name('thanks.show');
 
 
 

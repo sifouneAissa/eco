@@ -21,6 +21,17 @@ use Inertia\Inertia;
 
 class UserOrderController extends Controller
 {
+
+    public function thanks(Request $request,$id){
+
+        $order = OrderDetail::query()->findOrFail($id)->load('user');
+
+        return Inertia::render('Thanks',[
+            'order' => $order
+        ]);
+    }
+
+
     public function store(UserOrderRequest $request)
     {
 
@@ -106,10 +117,12 @@ class UserOrderController extends Controller
 
             event(new NewOrder($order));
 
-
-            return redirect()->route('listing', [
-                'query' => $order->products->first()->category->name
-            ])->with('thanks',true);
+            return redirect()->route('thanks.show',[
+                'id' => $order->id
+            ]);
+//            return redirect()->route('listing', [
+//                'query' => $order->products->first()->category->name
+//            ])->with('thanks',true);
         });
 
     }
@@ -279,9 +292,12 @@ class UserOrderController extends Controller
 
         event(new NewOrder($order));
 
-        return redirect()->route('listing', [
-            'query' => $order->products->first()->category->name
-        ])->with('thanks',true);
+//        return redirect()->route('listing', [
+//            'query' => $order->products->first()->category->name
+//        ])->with('thanks',true);
+        return redirect()->route('thanks.show',[
+            'id' => $order->id
+        ]);
 
     }
 }

@@ -477,9 +477,8 @@ export default {
     <Banner />
     <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
       <div class="container">
-        <Link class="navbar-brand" href="/"
-          ><img alt="logo" :src="$page.props.logo" />
-          <!-- class="nav-osahan-pic"  -->
+        <Link class="navbar-brand " href="/"
+          ><img class="nav-osahan-pic" alt="logo" :src="$page.props.logo" />
         </Link>
         <button
           class="navbar-toggler"

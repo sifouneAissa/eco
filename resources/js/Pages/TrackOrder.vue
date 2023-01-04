@@ -1,7 +1,14 @@
-<script setup>
-defineProps({
-  order: Object,
-});
+<script >
+    import {Link} from "@inertiajs/inertia-vue3";
+export default {
+    components : {
+        Link
+    },
+    props : ['order'],
+    mounted() {
+        clearInterval(window.idleIntervalTimer);
+    }
+}
 </script>
 <template>
   <section class="section bg-white osahan-track-order-page position-relative">
@@ -16,8 +23,8 @@ defineProps({
             <div class="mb-2">
               <small
                 >{{ $t("track_order.order") }} {{ order.order_number
-                }}<a class="float-right font-weight-bold" href="#"
-                  ><i class="icofont-headphone-alt"></i> {{ $t("track_order.help") }}</a
+                }}<Link class="float-right font-weight-bold" :href="route('listing')"
+                  ><i class="icofont-cart"></i> {{ $t("track_order.shop_more") }}</Link
                 ></small
               >
             </div>

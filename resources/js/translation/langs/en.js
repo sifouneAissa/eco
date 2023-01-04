@@ -160,6 +160,7 @@ const en = {
         now:"Now",
         checked:"Checked",
         later:"Later",
+        shop_more : 'Shop more'
 
     },
     contact_us:{

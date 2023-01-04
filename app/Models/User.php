@@ -70,7 +70,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
         'shopping_session',
-        'modal_ids'
+        'modal_ids',
+        'unregistered'
     ];
 
     public function shoppingSessions(){
@@ -129,5 +130,9 @@ class User extends Authenticatable
 
     public function passwordExist(){
         return $this->password !==null;
+    }
+
+    public function getUnregisteredAttribute(){
+        return !$this->passwordExist();
     }
 }

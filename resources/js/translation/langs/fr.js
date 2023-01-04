@@ -162,6 +162,7 @@ const fr = {
         now:"Maintenant",
         checked:"Vérifié",
         later:"Plus tard",
+        shop_more : "Acheter plus"
 
     },
     contact_us:{
@@ -198,7 +199,7 @@ const fr = {
         total:"Objet total",
         to_pay:"PAYER",
         pay:"PAYER",
-        search:"Chercher",     
+        search:"Chercher",
         checkout:"Payer",
         one_product:"Un produit",
         limited:"La quantité est limitée",

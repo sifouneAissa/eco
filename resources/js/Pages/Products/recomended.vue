@@ -280,34 +280,32 @@ export default  {
                 aria-labelledby="pills-restaurant-info-tab"
               >
                 <div id="restaurant-info" class="bg-white rounded shadow-sm p-4 mb-4">
-                  <div class="address-map float-right ml-5">
-                    <div class="mapouter">
-                      <div class="gmap_canvas">
-                        <iframe
-                          width="300"
-                          height="170"
-                          id="gmap_canvas"
-                          src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=9&ie=UTF8&iwloc=&output=embed"
-                          frameborder="0"
-                          scrolling="no"
-                          marginheight="0"
-                          marginwidth="0"
-                        ></iframe>
-                      </div>
-                    </div>
-                  </div>
+<!--                  <div class="address-map float-right ml-5">-->
+<!--                    <div class="mapouter">-->
+<!--                      <div class="gmap_canvas">-->
+<!--                        <iframe-->
+<!--                          width="300"-->
+<!--                          height="170"-->
+<!--                          id="gmap_canvas"-->
+<!--                          src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=9&ie=UTF8&iwloc=&output=embed"-->
+<!--                          frameborder="0"-->
+<!--                          scrolling="no"-->
+<!--                          marginheight="0"-->
+<!--                          marginwidth="0"-->
+<!--                        ></iframe>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
                   <h5 class="mb-4">{{ $t("listing.tabs.product_info") }}</h5>
                   <p class="mb-3">
                     {{ $page.props.product.name }} <br />
                     {{ $page.props.product.desc }}
                   </p>
                   <p class="mb-2 text-black">
-                    <i class="icofont-phone-circle text-primary mr-2"></i> +91
-                    01234-56789, +91 01234-56789
+                    <i class="icofont-phone-circle text-primary mr-2"></i> {{$page.props.phone}}
                   </p>
                   <p class="mb-2 text-black">
-                    <i class="icofont-email text-primary mr-2"></i> iamosahan@gmail.com,
-                    osahaneat@gmail.com
+                    <i class="icofont-email text-primary mr-2"></i> {{$page.props.email}}
                   </p>
                   <p class="mb-2 text-black">
                     <i class="icofont-label text-primary mr-2"></i>
