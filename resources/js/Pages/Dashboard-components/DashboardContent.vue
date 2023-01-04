@@ -136,9 +136,9 @@ export default {
         </div>
       </div>
     </section>
+    <Blogs />
     <section class="section pt-5 pb-5 products-section">
       <div class="container">
-        <Blogs />
         <div class="section-header text-center">
           <h2>{{ $t("dashboard.most_requested") }}</h2>
           <p>{{ $t("dashboard.title2") }}</p>
@@ -153,6 +153,7 @@ export default {
                 v-for="model in $page.props.bestSellers"
                 :key="model.id"
                 :model="model"
+                class="ml-1 mr-1"
               />
             </div>
           </div>

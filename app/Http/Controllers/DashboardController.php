@@ -18,6 +18,7 @@ class DashboardController extends Controller
 
         $categories = ProductCategory::get();
         $blogs = Blog::get();
+        $products = Product::get();
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
@@ -25,6 +26,7 @@ class DashboardController extends Controller
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
             'categories' => $categories,
+            'products' => $products,
             'blogs' => $blogs,
         ]);
     }
