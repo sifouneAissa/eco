@@ -7,7 +7,7 @@
                     <h1 class="mt-2 mb-2 text-success">{{$t("thanks.congratulations")}} {{order.user.name}} ! </h1>
                     <p class="mb-1">{{$t("thanks.msg")}}</p>
                     <p class="mb-1"> {{$t("thanks.order")}}: <div class="badge badge-success">{{order.id}}</div></p>
-                    <p class="mb-5" v-if="order.user.unregistered"> {{$t("thanks.temporary_msg")}}<Link @click="create()"> {{$t("thanks.set_up")}}</Link>  {{$t("thanks.account")}}</p>
+                    <p class="mb-5" v-if="order.user.unregistered"> {{$t("thanks.temporary_msg")}} <Link @click="create()"> {{$t("thanks.set_up")}}</Link>  {{$t("thanks.account")}}</p>
                     <p class="mb-5"> {{$t("thanks.send_email")}} : {{order.user.email}}</p>
                     <Link class="btn btn-primary btn-lg" :href="route('trackOrder',{
                         id : order.id

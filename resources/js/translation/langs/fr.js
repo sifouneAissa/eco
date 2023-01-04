@@ -265,7 +265,7 @@ const fr = {
     thanks:{
         congratulations:"Félicitations",
         msg:"Vous avez passé votre commande avec succès",
-        tomporary_msg:"Ce lien est temporaire (10 minutes) veillez à enregistrer votre identifiant ou",
+        temporary_msg:"Ce lien est temporaire (10 minutes) veillez à enregistrer votre identifiant ou",
         send_email:"Nous envoyons un email à ce mail",
         view_order:"Voir l'ordre",
         view_shop:"Achetez plus",

@@ -263,7 +263,7 @@ const en = {
     thanks:{
         congratulations:"Congratulations",
         msg:"You have successfully placed your order",
-        tomporary_msg:"This link is temporary (10 min) be sure to save your id or",
+        temporary_msg:"This link is temporary (10 min) be sure to save your id or",
         send_email:"We send an email to this mail",
         view_order:"View Order",
         view_shop:"Shop more",
