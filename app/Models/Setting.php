@@ -28,7 +28,10 @@ class Setting extends Model implements HasMedia
 
     protected $appends = [
         'modal_ids',
-        'fimage'
+        'fimage',
+        'address',
+        'phone',
+        'email',
     ];
 
     public function getFimageAttribute(){
@@ -38,6 +41,21 @@ class Setting extends Model implements HasMedia
              return $f;
 
         return $img;
+    }
+    public function getAddressAttribute(){
+
+        if($this->code==='address')
+             return $this->content;
+    }
+    public function getPhoneAttribute(){
+
+        if($this->code==='phone')
+             return $this->content;
+    }
+    public function getEmailAttribute(){
+
+        if($this->code==='email')
+             return $this->content;
     }
 
 

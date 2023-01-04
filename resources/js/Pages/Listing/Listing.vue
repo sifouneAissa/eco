@@ -43,7 +43,7 @@
                 <a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#"
                   >{{ $page.props.currency_code }} {{ product.cprice }}
                 </a>
-                <span class="badge badge-primary">NEW</span>
+                <span class="badge badge-primary">{{ $t("listing.new") }}</span>
                 <span class="float-right">
                   <span class="count-number">
                     <button
@@ -69,7 +69,7 @@
                     class="btn btn-outline-secondary btn-sm m-2"
                     @click="submit(product)"
                   >
-                    ADD
+                    {{ $t("listing.add") }}
                   </button>
                 </span>
               </p>
@@ -84,7 +84,7 @@
             role="status"
             aria-hidden="true"
           ></span>
-          {{$t('listing.loading')}} ...
+          {{ $t("listing.loading") }} ...
         </button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 const en = {
     nav_menu:{
+     track_by_id:"Track order by id..",
      help:{
         help:"Help",
         contact_us:"Contact Us",
@@ -239,6 +240,16 @@ const en = {
      title:"Blog",
      blogs:"Blogs",
      details:"Details",
+    },
+    dashboard:{
+     page_title:"Dashboard",
+     title1:"Find Awesome Deals",
+     title2:"Lists of top products",
+     categories:"Categories",
+     search:"Search",
+     search_by_name:"Search by name",
+     quick_search:"Quick searches",
+     most_requested:"Most requested products",
     },
 };
 

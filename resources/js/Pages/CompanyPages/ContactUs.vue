@@ -38,7 +38,7 @@ const submit = () => {
                 <i class="fas fa-map-marker-alt"></i>
               </a>
             </h1>
-            <h4 class="text-center">Dubai, UAE</h4>
+            <h4 class="text-center">{{ $page.props.address }}</h4>
           </div>
           <div class="col-md-4 col-sm-6 mb-2">
             <h1 class="text-center">
@@ -46,7 +46,7 @@ const submit = () => {
                 <i class="fas fa-phone"></i>
               </a>
             </h1>
-            <h4 class="text-center">+971557658476</h4>
+            <h4 class="text-center">{{ $page.props.phone }}</h4>
           </div>
           <div class="col-md-4 col-sm-6 mb-2">
             <h1 class="text-center">
@@ -54,7 +54,7 @@ const submit = () => {
                 <i class="fas fa-envelope"></i>
               </a>
             </h1>
-            <h4 class="text-center">a.elnashar1@gmail.com</h4>
+            <h4 class="text-center">{{ $page.props.email }}</h4>
           </div>
         </div>
       </div>

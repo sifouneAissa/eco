@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,13 +16,15 @@ class DashboardController extends Controller
     public function index(){
 
         $categories = ProductCategory::get();
+        $products = Product::get();
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
-            'categories' => $categories
+            'categories' => $categories,
+            'products' => $products,
         ]);
     }
 }

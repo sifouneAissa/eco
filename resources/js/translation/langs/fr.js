@@ -1,7 +1,8 @@
 const fr = {
     nav_menu:{
+        track_by_id:"Suivre la commande par identifiant..",
         help:{
-           help:"Aider",
+           help:"Aide",
            contact_us:"Contacter nous",
            about_us:"À propos de nous",
            faq:"Faq",
@@ -242,6 +243,16 @@ const fr = {
        blogs:"Blogs",
        details:"Détails",
       },
+      dashboard:{
+        page_title:"Tableau de bord",
+        title1:"Trouvez des offres incroyables",
+        title2:"Listes des meilleurs produits",
+        categories:"Catégories",
+        search:"Chercher",
+        search_by_name:"Chercher par nom",
+        quick_search:"Recherches rapides",
+        most_requested:"Produits les plus demandés",
+       },
 };
 
 export default fr;

@@ -381,7 +381,7 @@ defineProps({
                         role="status"
                         aria-hidden="true"
                       ></span>
-                      Loading...
+                      {{ $t("listing.loading") }}...
                     </button>
                   </div>
                 </div>
@@ -394,7 +394,7 @@ defineProps({
       </div>
     </div>
   </section>
-  <section class="section pt-5 pb-5 text-center bg-white">
+  <!-- <section class="section pt-5 pb-5 text-center bg-white">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -404,6 +404,6 @@ defineProps({
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- Modal -->
 </template>

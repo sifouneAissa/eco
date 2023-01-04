@@ -1,5 +1,6 @@
 const ar = {
     nav_menu:{
+        track_by_id:"تتبع الطلب بالمعرف ..",
         help:{
            help:"مساعدة",
            contact_us:"اتصل بنا",
@@ -242,6 +243,16 @@ const ar = {
        blogs:"مدونة / المدونات",
        details:"تفاصيل",
       },
+      dashboard:{
+        page_title:"لوحة القيادة",
+        title1:"اعثر على صفقات رائعة",
+        title2:"قوائم أفضل المنتجات",
+        categories:"الفئات",
+        search:"البحث",
+        search_by_name:"البحث عن طريق الإسم",
+        quick_search:"بحث سريع",
+        most_requested:"المنتجات الأكثر طلبًا",
+       },
 };
 
 export default ar;
