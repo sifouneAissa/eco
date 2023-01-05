@@ -203,7 +203,7 @@ const fr = {
         search:"Chercher",
         checkout:"Payer",
         one_product:"Un produit",
-        limited:"La quantité est limitée",
+        limited:"La quantité est limitée ",
         tabs:{
             order:"Commander en ligne",
             gallery:"Galerie",

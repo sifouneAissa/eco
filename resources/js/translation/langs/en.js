@@ -201,7 +201,7 @@ const en = {
       search:"Search",
       checkout:"Checkout",
       one_product:"One Product",
-      limited:"The quantity is limited",
+      limited:"The quantity is limited ",
       tabs:{
         order:"Order Online",
         gallery:"Gallery",

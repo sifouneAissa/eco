@@ -142,8 +142,6 @@ class UserOrderController extends Controller
         $is_auth = auth()->user();
         if ($is_auth)
             $s_session = auth()->user()->shopping_session;
-
-
         else {
             $s_session = ShoppingSession::where('ip', $request->ip())->first();
             $s_session->cartItems()->delete();

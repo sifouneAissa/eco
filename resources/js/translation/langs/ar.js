@@ -203,7 +203,7 @@ const ar = {
         search:"البحث",
         checkout:"الدفع",
         one_product:"منتج واحد",
-        limited:"الكمية محدودة",
+        limited:"الكمية محدودة ",
         tabs:{
             order:"اطلب عبر الإنترنت",
             gallery:"معرض الصور",

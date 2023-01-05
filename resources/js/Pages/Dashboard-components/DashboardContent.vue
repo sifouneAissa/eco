@@ -5,12 +5,14 @@ import ProductCard from "@/Pages/Listing/ProductCard.vue";
 import Blogs from "@/Pages/Dashboard-components/Blogs.vue";
 import { Inertia } from "@inertiajs/inertia";
 import { ref, onMounted } from "vue";
+import {Link} from "@inertiajs/inertia-vue3";
 
 export default {
   components: {
     Categories,
     ProductCard,
     Blogs,
+    Link
   },
   created() {},
   data() {
@@ -37,7 +39,7 @@ export default {
       <div class="banner-overlay"></div>
       <div class="container">
         <div class="row d-flex align-items-center">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <div class="homepage-search-title">
               <h1 class="mb-2 font-weight-normal">
                 <span class="font-weight-bold">{{ $t("dashboard.title1") }}</span>
@@ -112,31 +114,30 @@ export default {
               <!--                        </div>-->
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="osahan-slider pl-4 pt-3">
-              <div id="myhome" class="owl-carousel homepage-ad owl-theme">
-                <div class="item">
-                  <a href="listing.html"
-                    ><img class="img-fluid rounded" src="img/slider.png"
-                  /></a>
-                </div>
-                <div class="item">
-                  <a href="listing.html"
-                    ><img class="img-fluid rounded" src="img/slider1.png"
-                  /></a>
-                </div>
-                <div class="item">
-                  <a href="listing.html"
-                    ><img class="img-fluid rounded" src="img/slider.png"
-                  /></a>
-                </div>
-              </div>
-            </div>
-          </div>
+<!--          <div class="col-md-4">-->
+<!--            <div class="osahan-slider pl-4 pt-3">-->
+<!--              <div id="myhome" class="owl-carousel homepage-ad owl-theme">-->
+<!--                <div class="item">-->
+<!--                  <a href="listing.html"-->
+<!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
+<!--                  /></a>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                  <a href="listing.html"-->
+<!--                    ><img class="img-fluid rounded" src="img/slider1.png"-->
+<!--                  /></a>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                  <a href="listing.html"-->
+<!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
+<!--                  /></a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
     </section>
-    <Blogs />
     <section class="section pt-5 pb-5 products-section">
       <div class="container">
         <div class="section-header text-center">
@@ -160,6 +161,7 @@ export default {
         </div>
       </div>
     </section>
+    <Blogs />
     <!-- <section class="section pt-5 pb-5 bg-white becomemember-section border-bottom">
         <div class="container">
             <div class="section-header text-center white-text">
@@ -208,9 +210,9 @@ export default {
             </p> -->
             <div class="app">
               <!-- <p class="mb-2">DOWNLOAD APP</p> -->
-              <a href="#">
-                <img class="img-fluid" src="img/logo.png" />
-              </a>
+              <Link href="/">
+                <img class="img-fluid" :src="$page.props.logo" />
+              </Link>
               <!-- <a href="#">
                 <img class="img-fluid" src="img/apple.png" />
               </a> -->

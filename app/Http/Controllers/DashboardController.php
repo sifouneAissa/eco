@@ -19,6 +19,7 @@ class DashboardController extends Controller
         $categories = ProductCategory::get();
         $blogs = Blog::get();
         $products = Product::get();
+        $bestSellers = BestSellers();
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
@@ -28,6 +29,7 @@ class DashboardController extends Controller
             'categories' => $categories,
             'products' => $products,
             'blogs' => $blogs,
+            'bestSellers' => $bestSellers
         ]);
     }
 }

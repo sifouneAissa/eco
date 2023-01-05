@@ -75,7 +75,7 @@ export default {
 
       model.quantity = model.quantity + by;
       if (model.quantity > model.isA.remain) {
-        toast.warning("Max Quantity of product : " + model.name);
+        toast.warning(this.$t("listing.limited")  + model.name);
         model.quantity = model.isA.remain;
       }
 
