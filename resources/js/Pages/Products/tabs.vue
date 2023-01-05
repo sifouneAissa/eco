@@ -115,7 +115,7 @@ export default {
       this.$page.props.product.quantity = this.$page.props.product.quantity + by;
       if (this.$page.props.product.quantity > this.$page.props.product.isA.remain) {
         this.$page.props.product.quantity = this.$page.props.product.isA.remain;
-        toast.warning("Max Quantity of product : " + this.$page.props.product.name);
+        toast.warning(this.$t("listing.limited") + this.$page.props.product.name);
       }
 
       if (!this.$page.props.product.quantity) this.$page.props.product.quantity = 1;

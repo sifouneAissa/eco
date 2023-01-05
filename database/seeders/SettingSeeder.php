@@ -50,6 +50,16 @@ class SettingSeeder extends Seeder
             'code' => 'logo',
             'content' => '',
         ],
+        [
+            'name' => 'Login page image',
+            'code' => 'login_image',
+            'content' => '',
+        ],
+        [
+            'name' => 'Register page image',
+            'code' => 'register_image',
+            'content' => '',
+        ],
     ];
     /**
      * Run the database seeds.

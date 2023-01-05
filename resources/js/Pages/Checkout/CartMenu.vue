@@ -159,7 +159,7 @@ export default {
 
       if (item.quantity > product.isA.remain) {
         item.quantity = product.isA.remain;
-        toast.warning("Max Quantity of product : " + product.name);
+        toast.warning(this.$t("listing.limited")  + product.name);
       }
 
       if (!item.quantity) item.quantity = 1;
