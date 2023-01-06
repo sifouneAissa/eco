@@ -18,7 +18,7 @@ class InventorySeeder extends Seeder
     {
         //
         $max = (int)getSetting('max_inventory_value')->content;
-        $max = $max ? $max : 1000;
+        $max = $max ? $max : 100;
 
         for($i=0;$i<=$max;$i++){
 

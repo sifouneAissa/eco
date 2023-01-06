@@ -1,18 +1,18 @@
 <?php
-return[
+return [
     'media' => [
-            'product' => [
-                'builder' => \App\Models\Product::class
-            ],
-            'setting' => [
-                'builder' => \App\Models\Setting::class
-            ],
-            'category' => [
-                'builder' => \App\Models\ProductCategory::class
-            ],
-            'blog' => [
-                'builder' => \App\Models\Blog::class
-            ]
+        'product' => [
+            'builder' => \App\Models\Product::class
+        ],
+        'setting' => [
+            'builder' => \App\Models\Setting::class
+        ],
+        'category' => [
+            'builder' => \App\Models\ProductCategory::class
+        ],
+        'blog' => [
+            'builder' => \App\Models\Blog::class
+        ]
     ],
     'orders' => [
         'user' => [
@@ -76,14 +76,26 @@ return[
                 'add question',
                 'delete question'
             ],
-            mediaPermissions(\App\Models\Product::class,'product'),
-            mediaPermissions(\App\Models\Setting::class,'setting'),
-            mediaPermissions(\App\Models\ProductCategory::class,'category'),
-            mediaPermissions(\App\Models\Blog::class,'blog'),
+            mediaPermissions(\App\Models\Product::class, 'product'),
+            mediaPermissions(\App\Models\Setting::class, 'setting'),
+            mediaPermissions(\App\Models\ProductCategory::class, 'category'),
+            mediaPermissions(\App\Models\Blog::class, 'blog')
         ),
-        'publisher' => [
-
-        ]
+        'publisher' => array_merge([
+            'add product',
+            'edit product',
+            'delete product',
+            'view products',
+            'show product',
+            'add product category',
+            'edit product category',
+            'delete product category',
+            'view product categories',
+            'show product category',
+        ],
+            mediaPermissions(\App\Models\Product::class, 'product'),
+            mediaPermissions(\App\Models\ProductCategory::class, 'category')
+        )
     ],
     'roles' => [
         'admin' => [

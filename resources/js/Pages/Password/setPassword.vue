@@ -12,8 +12,8 @@
          data() {
              return {
                  form: useForm({
-                     name: this.$page.props.shopping_user.name,
-                     email: this.$page.props.shopping_user.email,
+                     name: this.$page.props.shopping_user?.name,
+                     email: this.$page.props.shopping_user?.email,
                      password: '',
                      password_confirmation: '',
                      terms: false,
