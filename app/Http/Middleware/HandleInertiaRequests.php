@@ -87,9 +87,12 @@ class HandleInertiaRequests extends Middleware
             'addresses' => $addresses,
             'setPassword' => $set_password,
             'logo' => getSetting('logo')->fimage,
+            'login_image' => getSetting('login_image')->fimage,
+            'register_image' => getSetting('register_image')->fimage,
             'address' => getSetting('address')->address,
             'email' => getSetting('email')->email,
             'phone' => getSetting('phone')->phone,
+            'company_name' => getSetting('company_name')->company_name,
             'shopping_user' => $shopping?->user
         ]);
     }

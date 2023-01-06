@@ -32,6 +32,7 @@ class Setting extends Model implements HasMedia
         'address',
         'phone',
         'email',
+        'company_name',
     ];
 
     public function getFimageAttribute(){
@@ -55,6 +56,11 @@ class Setting extends Model implements HasMedia
     public function getEmailAttribute(){
 
         if($this->code==='email')
+             return $this->content;
+    }
+    public function getCompanyNameAttribute(){
+
+        if($this->code==='company_name')
              return $this->content;
     }
 
