@@ -5,14 +5,14 @@ import ProductCard from "@/Pages/Listing/ProductCard.vue";
 import Blogs from "@/Pages/Dashboard-components/Blogs.vue";
 import { Inertia } from "@inertiajs/inertia";
 import { ref, onMounted } from "vue";
-import {Link} from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
   components: {
     Categories,
     ProductCard,
     Blogs,
-    Link
+    Link,
   },
   created() {},
   data() {
@@ -114,27 +114,27 @@ export default {
               <!--                        </div>-->
             </div>
           </div>
-<!--          <div class="col-md-4">-->
-<!--            <div class="osahan-slider pl-4 pt-3">-->
-<!--              <div id="myhome" class="owl-carousel homepage-ad owl-theme">-->
-<!--                <div class="item">-->
-<!--                  <a href="listing.html"-->
-<!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
-<!--                  /></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                  <a href="listing.html"-->
-<!--                    ><img class="img-fluid rounded" src="img/slider1.png"-->
-<!--                  /></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                  <a href="listing.html"-->
-<!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
-<!--                  /></a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div class="col-md-4">-->
+          <!--            <div class="osahan-slider pl-4 pt-3">-->
+          <!--              <div id="myhome" class="owl-carousel homepage-ad owl-theme">-->
+          <!--                <div class="item">-->
+          <!--                  <a href="listing.html"-->
+          <!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
+          <!--                  /></a>-->
+          <!--                </div>-->
+          <!--                <div class="item">-->
+          <!--                  <a href="listing.html"-->
+          <!--                    ><img class="img-fluid rounded" src="img/slider1.png"-->
+          <!--                  /></a>-->
+          <!--                </div>-->
+          <!--                <div class="item">-->
+          <!--                  <a href="listing.html"-->
+          <!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
+          <!--                  /></a>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
         </div>
       </div>
     </section>
@@ -209,7 +209,7 @@ export default {
               <a href="offers.html">Offers and Coupons</a>
             </p> -->
             <div class="app">
-              <!-- <p class="mb-2">DOWNLOAD APP</p> -->
+              <h6 class="mb-3">{{ $page.props.company_name }}</h6>
               <Link href="/">
                 <img class="img-fluid" :src="$page.props.logo" />
               </Link>

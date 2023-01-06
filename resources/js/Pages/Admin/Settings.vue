@@ -21,14 +21,14 @@ export default {
       this.modelToUpdate = null;
     },
 
-      ShowImagePage : function (data){
-
-          Inertia.visit(this.route('admin.media.index',{
-              model : data.model,
-              model_id : data.model_id
-          }))
-
-      },
+    ShowImagePage: function (data) {
+      Inertia.visit(
+        this.route("admin.media.index", {
+          model: data.model,
+          model_id: data.model_id,
+        })
+      );
+    },
   },
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
     <Datatable
       @ShowEditModel="ShowEditModel"
       :title="'Settings table'"
-      :datatableHeaders="datatableHeadeNrs"
+      :datatableHeaders="datatableHeaders"
       :datatableColumns="datatableColumns"
       :datatableUrl="datatableUrl"
       :without="without"

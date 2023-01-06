@@ -11,6 +11,11 @@ class SettingSeeder extends Seeder
 {
     public $settings  = [
         [
+            'name' => 'Company name',
+            'code' => 'company_name',
+            'content' => 'Cover data eco',
+        ],
+        [
             'name' => 'Phone',
             'code' => 'phone',
             'content' => '0998899989',
@@ -59,7 +64,7 @@ class SettingSeeder extends Seeder
             'name' => 'Register page image',
             'code' => 'register_image',
             'content' => '',
-        ],
+        ]
     ];
     /**
      * Run the database seeds.
