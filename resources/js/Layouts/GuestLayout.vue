@@ -540,12 +540,12 @@ export default {
               <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
                 <!-- <Link class="dropdown-item" href="track-order.html">Track Order</Link> -->
                 <!-- <a class="dropdown-item" href="invoice.html">Invoice</a> -->
-                <a class="dropdown-item" :href="route('login')">{{
+                <a v-if="!$page.props.auth" class="dropdown-item" :href="route('login')">{{
                   $t("nav_menu.pages.login")
                 }}</a>
-                <Link class="dropdown-item" :href="route('register')">{{
+                <a v-if="!$page.props.auth" class="dropdown-item" :href="route('register')">{{
                   $t("nav_menu.pages.register")
-                }}</Link>
+                }}</a>
                 <Link class="dropdown-item" :href="route('blog.index')">{{
                   $t("blog.page_title")
                 }}</Link>

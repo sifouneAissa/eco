@@ -24,7 +24,7 @@ class UserAccountController extends Controller
         // get only paid orders
         $orders = OrderDetail::where("user_id",$auth->id)->whereHas('paymentDetail',function ($builder) {
 //                $builder->where('status','paid');
-        })->with(['paymentDetail','products','orderTracks','userAddress'])->get()->toArray();
+        })->with(['paymentDetail','products','orderTracks','userAddress'])->orderBy('created_at','desc')->get()->toArray();
 
         return Inertia::render('Account',[
             'addresses' => $addresses,

@@ -57,7 +57,7 @@ export default {
                       <select
                         v-model="form.query.category"
                         class="custom-select form-control-lg"
-                      >
+                        >
                         <option disabled>{{ $t("dashboard.quick_search") }}</option>
                         <option
                           v-for="category in $page.props.categories"

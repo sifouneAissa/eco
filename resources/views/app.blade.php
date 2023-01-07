@@ -12,7 +12,6 @@
         <!-- Scripts -->
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
-
         @if(isRtl(app()->getLocale()))
             @vite(['resources/js/rtl.js'])
         @else

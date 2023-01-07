@@ -13,8 +13,6 @@ import '../assets/vendor/jquery/jquery-3.3.1.slim.min';
 import '../assets/vendor/bootstrap/js/bootstrap.bundle.min';
 import '../assets/vendor/owl-carousel/owl.carousel';
 import '../assets/vendor/select2/js/select2.min';
-
-
 import messages from './translation/translation';
 import {createApp, h} from 'vue';
 import {createInertiaApp, usePage} from '@inertiajs/inertia-vue3';

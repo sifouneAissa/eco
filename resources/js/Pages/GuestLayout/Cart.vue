@@ -92,14 +92,14 @@ const submitD = function (item) {
       <!--            </div>-->
       <div class="dropdown-cart-top-footer border-top p-4">
         <p class="mb-0 font-weight-bold text-secondary">
-          {{ "listing.list_empty" }}
+          {{ $t("listing.list_empty") }}
           <span class="float-right text-dark">{{ $page.props.currency_code }} 0</span>
         </p>
         <!--                <small class="text-info">Extra charges may apply</small>-->
       </div>
       <div class="dropdown-cart-top-footer border-top p-2">
         <Link class="btn btn-success btn-block btn-lg" :href="route('listing')">{{
-          "listing.add_products"
+          $t("listing.add_products")
         }}</Link>
       </div>
     </div>

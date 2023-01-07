@@ -2,7 +2,9 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "dev.admin": "vite --config vite.admin.config.js",
+        "build.admin": "vite build --config vite.admin.config.js"
     },
     "devDependencies": {
         "@inertiajs/inertia": "^0.11.0",
@@ -31,6 +33,7 @@
         "datatables.net-dt": "^1.13.1",
         "datatables.net-select-dt": "^1.5.0",
         "datatables.net-vue3": "^2.0.0",
+        "jquery": "^3.6.3",
         "vue-bot-ui": "^0.2.8",
         "vue-i18n": "^9.2.2",
         "vue-multiselect": "^3.0.0-alpha.2",
