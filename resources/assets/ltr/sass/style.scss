@@ -1,0 +1,27 @@
+/*
+    Template Name: Arowana
+    Description: Beard Oil Responsive HTML Template
+    Version: 1.0.0
+*/
+
+//== Global Design
+@import "global/mixins";
+@import "global/variables";
+@import "global/global";
+@import "global/gutenberg";
+
+//== Sections
+@import "sections/animation";
+@import "sections/breadcrumb";
+@import "sections/widgets";
+@import "sections/header";
+@import "sections/slider";
+@import "sections/product";
+@import "sections/portfolio";
+@import "sections/main";
+@import "sections/footer";
+
+//== Elements
+@import "elements/preloader";
+@import "elements/search_popup";
+@import "elements/button";

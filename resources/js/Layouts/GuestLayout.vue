@@ -1,748 +1,972 @@
 <script>
-import { ref, onMounted, toRefs } from "vue";
-import { Inertia } from "@inertiajs/inertia";
-import { Head, Link } from "@inertiajs/inertia-vue3";
-import ApplicationMark from "@/Components/ApplicationMark.vue";
-import Banner from "@/Components/Banner.vue";
-import Dropdown from "@/Components/Dropdown.vue";
-import DropdownLink from "@/Components/DropdownLink.vue";
-import NavLink from "@/Components/NavLink.vue";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import Cart from "@/Pages/GuestLayout/Cart.vue";
-import Notification from "@/Pages/GuestLayout/Notification.vue";
-import setPassword from "@/Pages/Password/setPassword.vue";
-import "./../../assets/vendor/owl-carousel/owl.carousel";
+    import { ref, onMounted, toRefs } from "vue";
+    import { Inertia } from "@inertiajs/inertia";
+    import { Head, Link } from "@inertiajs/inertia-vue3";
+    import ApplicationMark from "@/Components/ApplicationMark.vue";
+    import Banner from "@/Components/Banner.vue";
+    import Dropdown from "@/Components/Dropdown.vue";
+    import DropdownLink from "@/Components/DropdownLink.vue";
+    import NavLink from "@/Components/NavLink.vue";
+    import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+    import Cart from "@/Pages/GuestLayout/Cart.vue";
+    import Notification from "@/Pages/GuestLayout/Notification.vue";
+    import setPassword from "@/Pages/Password/setPassword.vue";
+    // import "./../../assets/vendor/owl-carousel/owl.carousel";
+    import $ from 'jquery'
+    import { useToast } from "vue-toastification";
+    import { usePage } from "@inertiajs/inertia-vue3";
 
-import { useToast } from "vue-toastification";
-import { usePage } from "@inertiajs/inertia-vue3";
+    export default {
+        components: {
+            setPassword,
+            Notification,
+            Cart,
+            ResponsiveNavLink,
+            NavLink,
+            DropdownLink,
+            Dropdown,
+            Banner,
+            ApplicationMark,
+            Link,
+            Head,
+        },
+        mounted() {
 
-export default {
-  components: {
-    setPassword,
-    Notification,
-    Cart,
-    ResponsiveNavLink,
-    NavLink,
-    DropdownLink,
-    Dropdown,
-    Banner,
-    ApplicationMark,
-    Link,
-    Head,
-  },
-  data() {
-    return {
-      submited: false,
-      order_id: "",
+            let app = this;
+            $(document).ready(function () {
+                if(app.$page.props.isRtl) {
+                    // for lazy importation
+                    let script1 = document.createElement('script');
+                    script1.src = "/assets/rtl/js/plugins.js";
+                    document.body.append(script1); // (*)
+                    //
+                    // for lazy importation
+                    let script2 = document.createElement('script');
+                    script2.src = "/assets/rtl/js/main.js";
+                    document.body.append(script2); // (*)
+                }
+                else {
+                    // for lazy importation
+                    let script1 = document.createElement('script');
+                    script1.src = "/assets/ltr/js/plugins.js";
+                    document.body.append(script1); // (*)
+
+                    // for lazy importation
+                    let script2 = document.createElement('script');
+                    script2.src = "/assets/ltr/js/main.js";
+                    document.body.append(script2); // (*)
+                }
+            });
+        },
+        data() {
+            return {
+                submited: false,
+                order_id: "",
+            };
+        },
+        computed: {
+            vOrder: function () {
+                return this.order_id.match(/^\d+$/);
+            },
+        },
+        methods: {
+            trackOrder: function () {
+                this.submited = true;
+                if (this.vOrder) Inertia.get(this.route("trackOrder", { id: this.order_id }));
+            },
+            setLocale: function (lang) {
+                Inertia.post(
+                    route("setLocale"),
+                    { locale: lang },
+                    {
+                        onSuccess: () => window.location.reload(),
+                    }
+                );
+            },
+            logout: function () {
+                Inertia.post(
+                    route("logout"),
+                    {},
+                    {
+                        onSuccess: () => window.location.reload(),
+                    }
+                );
+            },
+            setCurrency: function (currency) {
+                Inertia.post(
+                    route("setCurrency"),
+                    { currency: currency },
+                    {
+                        onSuccess: () => window.location.reload(),
+                    }
+                );
+            },
+        },
+        props: ["title"]
     };
-  },
-  computed: {
-    vOrder: function () {
-      return this.order_id.match(/^\d+$/);
-    },
-  },
-  methods: {
-    trackOrder: function () {
-      this.submited = true;
-      if (this.vOrder) Inertia.get(this.route("trackOrder", { id: this.order_id }));
-    },
-    setLocale: function (lang) {
-      Inertia.post(
-        route("setLocale"),
-        { locale: lang },
-        {
-          onSuccess: () => window.location.reload(),
-        }
-      );
-    },
-    logout: function () {
-      Inertia.post(
-        route("logout"),
-        {},
-        {
-          onSuccess: () => window.location.reload(),
-        }
-      );
-    },
-    setCurrency: function (currency) {
-      Inertia.post(
-        route("setCurrency"),
-        { currency: currency },
-        {
-          onSuccess: () => window.location.reload(),
-        }
-      );
-    },
-  },
-  props: ["title"],
-  mounted() {
-    // clear interval
-    clearInterval(window.idleIntervalTimer);
 
-    if (this.$page.component === "Listing") {
-      clearInterval(window.idleIntervalTimer);
-      window.idleIntervalTimer = setInterval(function () {
-        Inertia.reload({
-          only: ["products"],
-          preserveScroll: true,
-        });
-      }, 20000);
-    } else if (this.$page.component === "Blogs") {
-      window.idleIntervalTimer = setInterval(function () {
-        Inertia.reload({
-          only: ["blogs"],
-          preserveScroll: true,
-        });
-      }, 20000);
-    }
-
-    let app = this;
-    if (this.$page.props.setPassword) {
-      let modal = $("#set-password");
-
-      modal.on("hidden.bs.modal", function () {
-        app.$emit("ResetModel");
-      });
-
-      modal.modal("show");
-    }
-
-    $(document).ready(function () {
-      if (app.$page.props.isRtl) {
-        // ===========Select2============
-        $("select").select2();
-
-        // ===========My Account Tabs============
-        $(window).on("hashchange", function () {
-          var url = document.location.toString();
-          if (url.match("#")) {
-            //$('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-            $('a[href="' + window.location.hash + '"]').trigger("click");
-          }
-          $(".nav-tabs a").on("shown", function (e) {
-            window.location.hash = e.target.hash;
-          });
-        });
-        var url = document.location.toString();
-        if (url.match("#")) {
-          //$('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-          $('a[href="' + window.location.hash + '"]').trigger("click");
-        }
-        // Change hash for page-reload
-        $(".nav-tabs a").on("shown", function (e) {
-          window.location.hash = e.target.hash;
-        });
-
-        // Category Owl Carousel
-        const objowlcarousel = $(".owl-carousel-category");
-        if (objowlcarousel.length > 0) {
-          objowlcarousel.owlCarousel({
-            rtl: true,
-            responsive: {
-              0: {
-                items: 3,
-              },
-              600: {
-                items: 4,
-              },
-              1000: {
-                items: 6,
-              },
-              1200: {
-                items: 8,
-              },
-            },
-            loop: true,
-            lazyLoad: true,
-            autoplay: true,
-            dots: false,
-            autoplaySpeed: 1000,
-            autoplayTimeout: 2000,
-            autoplayHoverPause: true,
-            nav: true,
-            navText: [
-              "<i class='fa fa-chevron-left'></i>",
-              "<i class='fa fa-chevron-right'></i>",
-            ],
-          });
-        }
-
-        // Homepage Owl Carousel
-        var fiveobjowlcarousel = $(".owl-carousel-four");
-        if (fiveobjowlcarousel.length > 0) {
-          fiveobjowlcarousel.owlCarousel({
-            rtl: true,
-            responsive: {
-              0: {
-                items: 1,
-              },
-              600: {
-                items: 2,
-              },
-              1000: {
-                items: 4,
-              },
-              1200: {
-                items: 4,
-              },
-            },
-
-            lazyLoad: true,
-            pagination: false,
-            loop: true,
-            dots: false,
-            autoPlay: 2000,
-            nav: true,
-            stopOnHover: true,
-            navText: [
-              "<i class='icofont-thin-left'></i>",
-              "<i class='icofont-thin-right'></i>",
-            ],
-          });
-        }
-
-        // Owl Carousel Five
-        var fiveobjowlcarousel = $(".owl-carousel-five");
-        if (fiveobjowlcarousel.length > 0) {
-          fiveobjowlcarousel.owlCarousel({
-            rtl: true,
-            responsive: {
-              0: {
-                items: 2,
-              },
-              600: {
-                items: 3,
-              },
-              1000: {
-                items: 4,
-              },
-              1200: {
-                items: 5,
-              },
-            },
-            lazyLoad: true,
-            pagination: false,
-            loop: true,
-            dots: false,
-            autoPlay: 2000,
-            nav: true,
-            stopOnHover: true,
-            navText: [
-              "<i class='icofont-thin-left'></i>",
-              "<i class='icofont-thin-right'></i>",
-            ],
-          });
-        }
-
-        // Homepage Ad Owl Carousel
-        const mainslider = $(".homepage-ad");
-        if (mainslider.length > 0) {
-          mainslider.owlCarousel({
-            rtl: true,
-            responsive: {
-              0: {
-                items: 2,
-              },
-              764: {
-                items: 2,
-              },
-              765: {
-                items: 1,
-              },
-              1200: {
-                items: 1,
-              },
-            },
-            lazyLoad: true,
-            loop: true,
-            autoplay: true,
-            autoplaySpeed: 1000,
-            dots: false,
-            autoplayTimeout: 2000,
-            nav: true,
-            navText: [
-              "<i class='fa fa-chevron-left'></i>",
-              "<i class='fa fa-chevron-right'></i>",
-            ],
-            autoplayHoverPause: true,
-          });
-        }
-
-        // Tooltip
-        $('[data-toggle="tooltip"]').tooltip();
-      } else {
-        $("select").select2();
-        // ===========My Account Tabs============
-        $(window).on("hashchange", function () {
-          var url = document.location.toString();
-          if (url.match("#")) {
-            //$('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-            $('a[href="' + window.location.hash + '"]').trigger("click");
-          }
-          $(".nav-tabs a").on("shown", function (e) {
-            window.location.hash = e.target.hash;
-          });
-        });
-        var url = document.location.toString();
-        if (url.match("#")) {
-          //$('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-          $('a[href="' + window.location.hash + '"]').trigger("click");
-        }
-        // Change hash for page-reload
-        $(".nav-tabs a").on("shown", function (e) {
-          window.location.hash = e.target.hash;
-        });
-
-        // Category Owl Carousel
-        const objowlcarousel = $(".owl-carousel-category");
-        if (objowlcarousel.length > 0) {
-          objowlcarousel.owlCarousel({
-            responsive: {
-              0: {
-                items: 3,
-              },
-              600: {
-                items: 4,
-              },
-              1000: {
-                items: 6,
-              },
-              1200: {
-                items: 8,
-              },
-            },
-            loop: true,
-            lazyLoad: true,
-            autoplay: true,
-            dots: false,
-            autoplaySpeed: 1000,
-            autoplayTimeout: 2000,
-            autoplayHoverPause: true,
-            nav: true,
-            navText: [
-              "<i class='fa fa-chevron-left'></i>",
-              "<i class='fa fa-chevron-right'></i>",
-            ],
-          });
-        }
-
-        // Homepage Owl Carousel
-        var fiveobjowlcarousel = $(".owl-carousel-four");
-        if (fiveobjowlcarousel.length > 0) {
-          fiveobjowlcarousel.owlCarousel({
-            responsive: {
-              0: {
-                items: 1,
-              },
-              600: {
-                items: 2,
-              },
-              1000: {
-                items: 4,
-              },
-              1200: {
-                items: 4,
-              },
-            },
-
-            lazyLoad: true,
-            pagination: false,
-            loop: true,
-            dots: false,
-            autoPlay: 2000,
-            nav: true,
-            stopOnHover: true,
-            navText: [
-              "<i class='icofont-thin-left'></i>",
-              "<i class='icofont-thin-right'></i>",
-            ],
-          });
-        }
-
-        // Owl Carousel Five
-        var fiveobjowlcarousel = $(".owl-carousel-five");
-        if (fiveobjowlcarousel.length > 0) {
-          fiveobjowlcarousel.owlCarousel({
-            responsive: {
-              0: {
-                items: 2,
-              },
-              600: {
-                items: 3,
-              },
-              1000: {
-                items: 4,
-              },
-              1200: {
-                items: 5,
-              },
-            },
-            lazyLoad: true,
-            pagination: false,
-            loop: true,
-            dots: false,
-            autoPlay: 2000,
-            nav: true,
-            stopOnHover: true,
-            navText: [
-              "<i class='icofont-thin-left'></i>",
-              "<i class='icofont-thin-right'></i>",
-            ],
-          });
-        }
-
-        // Homepage Ad Owl Carousel
-        const mainslider = $(".homepage-ad");
-        if (mainslider.length > 0) {
-          mainslider.owlCarousel({
-            responsive: {
-              0: {
-                items: 2,
-              },
-              764: {
-                items: 2,
-              },
-              765: {
-                items: 1,
-              },
-              1200: {
-                items: 1,
-              },
-            },
-            lazyLoad: true,
-            loop: true,
-            autoplay: true,
-            autoplaySpeed: 1000,
-            dots: false,
-            autoplayTimeout: 2000,
-            nav: true,
-            navText: [
-              "<i class='fa fa-chevron-left'></i>",
-              "<i class='fa fa-chevron-right'></i>",
-            ],
-            autoplayHoverPause: true,
-          });
-        }
-
-        // Tooltip
-        $('[data-toggle="tooltip"]').tooltip();
-      }
-
-      $(".owl-carousel-category").removeClass("owl-hidden");
-      $(".owl-carousel-four").removeClass("owl-hidden");
-      $(".owl-carousel-five").removeClass("owl-hidden");
-      $(".homepage-ad").removeClass("owl-hidden");
-    });
-  },
-};
-
-// defineProps({
-//     title: String,
-// });
-//
-// const setLocale = (lang) => {
-//     Inertia.post(
-//         route("setLocale"),
-//         {locale: lang},
-//         {
-//             onSuccess: () => window.location.reload(),
-//         }
-//     );
-// };
-//
-// const setCurrency = (currency) => {
-//     Inertia.post(
-//         route("setCurrency"),
-//         {currency: currency},
-//         {
-//             onSuccess: () => window.location.reload(),
-//         }
-//     );
-// };
-//
-// const logout = () => {
-//     Inertia.post(
-//         route("logout"),
-//         {},
-//         {
-//             onSuccess: () => window.location.reload(),
-//         }
-//     );
-// };
 </script>
 
 <template>
-  <div>
-    <Head :title="title" />
-    <Banner />
-    <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
-      <div class="container">
-        <Link class="navbar-brand" href="/"
-          ><img class="nav-osahan-pic" alt="logo" :src="$page.props.logo" />
-        </Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <Link class="nav-link" href="/"
-                >{{ $t("nav_menu.pages.home") }}
-                <span class="sr-only">(current)</span></Link
-              >
-            </li>
-            <li class="nav-item">
-              <!--                            <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Products <span class="badge badge-danger">New</span></a>-->
-              <Link :href="route('listing')" class="nav-link">
-                <!-- <i class="icofont-sale-discount"></i> -->
-                {{ $t("nav_menu.pages.products") }}
-                <!-- <span class="badge badge-danger">{{
-                  $t("nav_menu.pages.new")
-                }}</span> -->
-              </Link>
-            </li>
-            <!-- <li class="nav-item dropdown">
-                                        <a
-                                            class="nav-link dropdown-toggle"
-                                            href="#"
-                                            role="button"
-                                            data-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false"
-                                        >
-                                            Restaurants
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                                            <a class="dropdown-item" href="listing.html">Listing</a>
-                                            <a class="dropdown-item" href="detail.html">Detail + Cart</a>
-                                            <a class="dropdown-item" href="checkout.html">Checkout</a>
-                                        </div>
-                                    </li> -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {{ $t("nav_menu.pages.pages") }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                <!-- <Link class="dropdown-item" href="track-order.html">Track Order</Link> -->
-                <!-- <a class="dropdown-item" href="invoice.html">Invoice</a> -->
-                <a v-if="!$page.props.auth" class="dropdown-item" :href="route('login')">{{
-                  $t("nav_menu.pages.login")
-                }}</a>
-                <a v-if="!$page.props.auth" class="dropdown-item" :href="route('register')">{{
-                  $t("nav_menu.pages.register")
-                }}</a>
-                <Link class="dropdown-item" :href="route('blog.index')">{{
-                  $t("blog.page_title")
-                }}</Link>
-                <!-- <a class="dropdown-item" href="404.html">404</a>
-                                <a class="dropdown-item" href="extra.html">Extra :)</a> -->
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {{ $t("nav_menu.help.help") }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                <Link class="dropdown-item" :href="route('contact-us')"
-                  >{{ $t("nav_menu.help.contact_us") }}
-                </Link>
-                <Link class="dropdown-item" :href="route('about-us')"
-                  >{{ $t("nav_menu.help.about_us") }}
-                </Link>
-                <Link class="dropdown-item" :href="route('faq')"
-                  >{{ $t("nav_menu.help.faq") }}
-                </Link>
-                <Link class="dropdown-item" :href="route('privacy-policy')"
-                  >{{ $t("nav_menu.help.privacy_policy") }}
-                </Link>
-                <Link class="dropdown-item" :href="route('shipping-policy')"
-                  >{{ $t("nav_menu.help.shipping_policy") }}
-                </Link>
-                <Link class="dropdown-item" :href="route('terms-conditions')"
-                  >{{ $t("nav_menu.help.terms_conditions") }}
-                </Link>
-              </div>
-            </li>
+    <div>
+        <Head :title="title" />
+        <Banner />
 
-            <li class="nav-item dropdown dropdown-cart">
-              <Cart />
-            </li>
-            <li v-if="$page.props.auth" class="nav-item dropdown dropdown-cart">
-              <Notification />
-            </li>
+        <header class="ltn__header-area ltn__header-4 ltn__header-6 ltn__header-transparent--- gradient-color-2---">
+            <!-- ltn__header-top-area start -->
+            <div class="ltn__header-top-area top-area-color-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="ltn__top-bar-menu">
+                                <ul>
+                                    <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i> info@webmail.com</a></li>
+                                    <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="top-bar-right text-right">
+                                <div class="ltn__top-bar-menu">
+                                    <ul>
+                                        <li>
+                                            <!-- ltn__language-menu -->
+                                            <div class="ltn__drop-menu ltn__currency-menu ltn__language-menu">
+                                                <ul>
+                                                    <li><a href="#" class="dropdown-toggle"><span class="active-currency">English</span></a>
+                                                        <ul>
+                                                            <li><a href="#">Arabic</a></li>
+                                                            <li><a href="#">Bengali</a></li>
+                                                            <li><a href="#">Chinese</a></li>
+                                                            <li><a href="#">English</a></li>
+                                                            <li><a href="#">French</a></li>
+                                                            <li><a href="#">Hindi</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <!-- ltn__social-media -->
+                                            <div class="ltn__social-media">
+                                                <ul>
+                                                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
 
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <!--                                <i class="fas fa-shopping-basket"></i>-->
-                {{ $t("locales." + $page.props.locale) }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                <a
-                  v-for="lang in this.$page.props.locales"
-                  :key="lang"
-                  @click="setLocale(lang)"
-                  class="dropdown-item"
-                  href="#"
-                  >{{ $t("locales." + lang) }}</a
-                >
-              </div>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <!--                                <i class="fas fa-shopping-basket"></i>-->
-                {{ $t("currencies." + $page.props.currency) }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                <a
-                  v-for="currency in this.$page.props.currencies"
-                  :key="currency"
-                  @click="setCurrency(currency)"
-                  class="dropdown-item"
-                  href="#"
-                  >{{ $t("currencies." + currency) }}</a
-                >
-              </div>
-            </li>
-
-            <li v-if="!$page.props.auth" class="nav-item">
-              <a class="nav-link" :href="route('login')" role="button">
-                {{ $t("nav_menu.pages.login") }}
-              </a>
-            </li>
-            <li v-if="$page.props.auth" class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img
-                  alt="Generic placeholder image"
-                  :src="$page.props.user.profile_photo_url"
-                  class="nav-osahan-pic rounded-pill"
-                />
-                {{ $page.props.auth.name }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-                <!--                                <Link :href="route('profile.show')">-->
-                <a class="dropdown-item" :href="route('profile.show')"
-                  ><i class="icofont-user"></i> {{ $t("nav_menu.pages.profile") }}</a
-                >
-                <Link :href="route('account') + '#orders'" class="dropdown-item"
-                  ><i class="icofont-food-cart"></i>
-                  {{ $t("nav_menu.pages.account") }}
-                </Link>
-                <!--                                    <Link  :href="route('account')+'#offers'" class="dropdown-item" ><i class="icofont-food-cart"></i> Offers</Link>-->
-                <!--                                    <Link  :href="route('account')+'#favourites'" class="dropdown-item" ><i class="icofont-food-cart"></i> Favourites</Link>-->
-                <!--                                    <Link  :href="route('account')+'#payments'" class="dropdown-item" ><i class="icofont-food-cart"></i> Payments</Link>-->
-                <!--                                    <Link  :href="route('account')+'#addresses'" class="dropdown-item" ><i class="icofont-food-cart"></i> Addresses</Link>-->
-                <!--                                <a class="dropdown-item" href="orders.html#addresses"><i class="icofont-location-pin"></i> Log out</a>-->
-                <form @submit.prevent="logout">
-                  <button type="submit" class="dropdown-item">
-                    <i class="icofont-logout"></i> {{ $t("nav_menu.pages.logout") }}
-                  </button>
-                </form>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <div class="nav-link col-12">
-                <form
-                  @submit.prevent="trackOrder()"
-                  class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"
-                >
-                  <div class="input-group">
-                    <input
-                      v-model="order_id"
-                      required
-                      class="form-control"
-                      type="text"
-                      :placeholder="$t('nav_menu.track_by_id')"
-                      aria-label="Search"
-                      aria-describedby="basic-addon2"
-                    />
-                    <div class="input-group-append">
-                      <button class="btn btn-primary btn-sm" type="submit">
-                        <i class="icofont-search"></i>
-                      </button>
+                                                    <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                                    <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </form>
-                <div v-if="submited && !vOrder">
-                  <p class="text-sm" style="color: red">
-                    {{ "Please enter a valid id" }}
-                  </p>
                 </div>
-              </div>
-            </li>
-          </ul>
+            </div>
+            <!-- ltn__header-top-area end -->
+
+            <!-- ltn__header-middle-area start -->
+            <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="site-logo">
+                                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                            </div>
+                        </div>
+                        <div class="col header-menu-column">
+                            <div class="header-menu d-none d-xl-block">
+                                <nav>
+                                    <div class="ltn__main-menu">
+                                        <ul>
+                                            <li class="menu-icon"><a href="#">Home</a>
+                                                <ul>
+                                                    <li><a href="index.html">Home Style - 01</a></li>
+                                                    <li><a href="index-2.html">Home Style - 02</a></li>
+                                                    <li><a href="index-3.html">Home Style - 03  <span class="menu-item-badge">new</span></a></li>
+                                                    <li><a href="index-4.html">Home Style - 04</a></li>
+                                                    <li><a href="index-5.html">Home Style - 05</a></li>
+                                                    <li><a href="index-6.html">Home Style - 06</a></li>
+                                                    <li><a href="index-7.html">Home Style - 07</a></li>
+                                                    <li><a href="index-8.html">Home Style - 08</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-icon"><a href="#">About Us</a>
+                                                <ul>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="faq.html">FAQ</a></li>
+                                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                                    <li><a href="404.html">404</a></li>
+                                                    <li><Link :href="route('welcometest')">Contact</Link></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-icon"><a href="#">Products</a>
+                                                <ul>
+                                                    <li><a href="shop.html">Product</a></li>
+                                                    <li><a href="shop-grid.html">Product Grid</a></li>
+                                                    <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>
+                                                    <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>
+                                                    <li><a href="product-details.html">Product Details</a></li>
+                                                    <li><a href="product-details-no-sidebar.html">Details No Sidebar</a></li>
+                                                    <li><a href="product-details-hover-zoom.html">Details Hover Zoom</a></li>
+                                                    <li><a href="#">Other Pages <span class="float-right">>></span></a>
+                                                        <ul>
+                                                            <li><a href="cart.html">Cart</a></li>
+                                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                                            <li><a href="checkout.html">Checkout</a></li>
+                                                            <li><a href="order-tracking.html">Order Tracking</a></li>
+                                                            <li><a href="account.html">My Account</a></li>
+                                                            <li><a href="login.html">Sign in</a></li>
+                                                            <li><a href="register.html">Register</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-icon"><a href="#">Kits</a>
+                                                <ul class="mega-menu">
+                                                    <li>
+                                                        <div class="menu-product-item">
+                                                            <div class="menu-product-img">
+                                                                <a href="product-details.html"><img src="img/product/13.png" alt="#"></a>
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <h2 class="product-title"><a href="product-details.html">Trimmer Kits</a></h2>
+                                                                <div class="product-price">
+                                                                    <span>$125.00</span>
+                                                                    <del>$142.00</del>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="menu-product-item">
+                                                            <div class="menu-product-img">
+                                                                <a href="product-details.html"><img src="img/product/9.png" alt="#"></a>
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <h2 class="product-title"><a href="product-details.html">Beard Growth Vitamins</a></h2>
+                                                                <div class="product-price">
+                                                                    <span>$135.00</span>
+                                                                    <del>$145.00</del>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="menu-product-item">
+                                                            <div class="menu-product-img">
+                                                                <a href="product-details.html"><img src="img/product/15.png" alt="#"></a>
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <h2 class="product-title"><a href="product-details.html">Beard Scissors</a></h2>
+                                                                <div class="product-price">
+                                                                    <span>$15.00</span>
+                                                                    <del>$18.00</del>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="menu-product-item">
+                                                            <div class="menu-product-img">
+                                                                <a href="product-details.html"><img src="img/product/6.png" alt="#"></a>
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <h2 class="product-title"><a href="product-details.html">Beard Care Oil</a></h2>
+                                                                <div class="product-price">
+                                                                    <span>$149.00</span>
+                                                                    <del>$162.00</del>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-icon"><a href="#">News</a>
+                                                <ul>
+                                                    <li><a href="blog.html">News</a></li>
+                                                    <li><a href="blog-grid.html">News Grid</a></li>
+                                                    <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
+                                                    <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
+                                                    <li><a href="blog-details.html">News details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="ltn__header-options">
+                                <!-- ltn__currency-menu -->
+                                <div class="ltn__drop-menu ltn__currency-menu">
+                                    <ul>
+                                        <li><a href="#" class="dropdown-toggle"><span class="active-currency">USD</span></a>
+                                            <ul>
+                                                <li><a href="login.html">USD - US Dollar</a></li>
+                                                <li><a href="wishlist.html">CAD - Canada Dollar</a></li>
+                                                <li><a href="register.html">EUR - Euro</a></li>
+                                                <li><a href="account.html">GBP - British Pound</a></li>
+                                                <li><a href="wishlist.html">INR - Indian Rupee</a></li>
+                                                <li><a href="wishlist.html">BDT - Bangladesh Taka</a></li>
+                                                <li><a href="wishlist.html">JPY - Japan Yen</a></li>
+                                                <li><a href="wishlist.html">AUD - Australian Dollar</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- header-search-1 -->
+                                <div class="header-search-wrap">
+                                    <div class="header-search-1">
+                                        <div class="search-icon">
+                                            <i class="icon-search for-search-show"></i>
+                                            <i class="icon-cancel  for-search-close"></i>
+                                        </div>
+                                    </div>
+                                    <div class="header-search-1-form">
+                                        <form id="#" method="get"  action="#">
+                                            <input type="text" name="search" value="" placeholder="Search here..."/>
+                                            <button type="submit">
+                                                <span><i class="icon-search"></i></span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- user-menu -->
+                                <div class="ltn__drop-menu user-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="icon-user"></i></a>
+                                            <ul>
+                                                <li><a href="login.html">Sign in</a></li>
+                                                <li><a href="register.html">Register</a></li>
+                                                <li><a href="account.html">My Account</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- mini-cart -->
+                                <div class="mini-cart-icon">
+                                    <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                                        <i class="icon-shopping-cart"></i>
+                                        <sup>2</sup>
+                                    </a>
+                                </div>
+                                <!-- Mobile Menu Button -->
+                                <div class="mobile-menu-toggle d-xl-none">
+                                    <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
+                                        <svg viewBox="0 0 800 600">
+                                            <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+                                            <path d="M300,320 L540,320" id="middle"></path>
+                                            <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ltn__header-middle-area end -->
+        </header>
+        <div class="body-wrapper">
+            <!-- Utilize Cart Menu Start -->
+            <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+                <div class="ltn__utilize-menu-inner ltn__scrollbar">
+                    <div class="ltn__utilize-menu-head">
+                        <span class="ltn__utilize-menu-title">Cart</span>
+                        <button class="ltn__utilize-close">×</button>
+                    </div>
+                    <div class="mini-cart-product-area ltn__scrollbar">
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-img">
+                                <a href="#"><img src="img/product/1.png" alt="Image"></a>
+                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                            </div>
+                            <div class="mini-cart-info">
+                                <h6><a href="#">Beard Care Oil</a></h6>
+                                <span class="mini-cart-quantity">1 x $65.00</span>
+                            </div>
+                        </div>
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-img">
+                                <a href="#"><img src="img/product/15.png" alt="Image"></a>
+                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                            </div>
+                            <div class="mini-cart-info">
+                                <h6><a href="#">Beard Scissors</a></h6>
+                                <span class="mini-cart-quantity">1 x $15.00</span>
+                            </div>
+                        </div>
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-img">
+                                <a href="#"><img src="img/product/9.png" alt="Image"></a>
+                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                            </div>
+                            <div class="mini-cart-info">
+                                <h6><a href="#">Beard Shampoo</a></h6>
+                                <span class="mini-cart-quantity">1 x $92.00</span>
+                            </div>
+                        </div>
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-img">
+                                <a href="#"><img src="img/product/4.png" alt="Image"></a>
+                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                            </div>
+                            <div class="mini-cart-info">
+                                <h6><a href="#">Beard Growth Oil</a></h6>
+                                <span class="mini-cart-quantity">1 x $68.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mini-cart-footer">
+                        <div class="mini-cart-sub-total">
+                            <h5>Subtotal: <span>$310.00</span></h5>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                            <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                        </div>
+                        <p>Free Shipping on All Orders Over $100!</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Utilize Mobile Menu Start -->
+            <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
+                <div class="ltn__utilize-menu-inner ltn__scrollbar">
+                    <div class="ltn__utilize-menu-head">
+                        <div class="site-logo">
+                            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                        </div>
+                        <button class="ltn__utilize-close">×</button>
+                    </div>
+                    <div class="ltn__utilize-menu-search-form">
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="ltn__utilize-menu">
+                        <ul>
+                            <li><a href="#">Home</a>
+                                <ul class="sub-menu">
+                                    <li><a href="index.html">Home Style - 01</a></li>
+                                    <li><a href="index-2.html">Home Style - 02</a></li>
+                                    <li><a href="index-3.html">Home Style - 03  <span class="menu-item-badge">new</span></a></li>
+                                    <li><a href="index-4.html">Home Style - 04</a></li>
+                                    <li><a href="index-5.html">Home Style - 05</a></li>
+                                    <li><a href="index-6.html">Home Style - 06</a></li>
+                                    <li><a href="index-7.html">Home Style - 07</a></li>
+                                    <li><a href="index-8.html">Home Style - 08</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="#">Product</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop.html">Product</a></li>
+                                    <li><a href="shop-grid.html">Product Grid</a></li>
+                                    <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>
+                                    <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>
+                                    <li><a href="product-details.html">Product Details</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="order-tracking.html">Order Tracking</a></li>
+                                    <li><a href="account.html">My Account</a></li>
+                                    <li><a href="login.html">Sign in</a></li>
+                                    <li><a href="register.html">Register</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">News</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog.html">News</a></li>
+                                    <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
+                                    <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
+                                    <li><a href="blog-grid.html">News Grid</a></li>
+                                    <li><a href="blog-details.html">News details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Pages</a>
+                                <ul class="sub-menu">
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="404.html">404</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
+                                    <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
+                                    <li><a href="shop-grid.html">Shop Grid</a></li>
+                                    <li><a href="product-details.html">Shop details </a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="order-tracking.html">Order Tracking</a></li>
+                                    <li><a href="account.html">My Account</a></li>
+                                    <li><a href="login.html">Sign in</a></li>
+                                    <li><a href="register.html">Register</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
+                        <ul>
+                            <li>
+                                <a href="login.html" title="Login">
+                            <span class="utilize-btn-icon">
+                                <i class="far fa-user"></i>
+                            </span>
+                                    Login / Register
+                                </a>
+                            </li>
+                            <li>
+                                <a href="wishlist.html" title="Wishlist">
+                            <span class="utilize-btn-icon">
+                                <i class="far fa-heart"></i>
+                                <sup>3</sup>
+                            </span>
+                                    Wishlist
+                                </a>
+                            </li>
+                            <li>
+                                <a href="cart.html" title="Shoping Cart">
+                            <span class="utilize-btn-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                                <sup>5</sup>
+                            </span>
+                                    Shoping Cart
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ltn__social-media-2">
+                        <ul>
+                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Utilize Mobile Menu End -->
+
+            <div class="ltn__utilize-overlay"></div>
+
+            <main>
+                <slot />
+            </main>
+
+            <!-- FEATURE AREA START ( Feature - 3) -->
+            <div class="ltn__feature-area before-bg-bottom-2 mb--30--- plr--5">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ltn__feature-item-box-wrap ltn__border-between-column white-bg">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 col-12">
+                                        <div class="ltn__feature-item ltn__feature-item-8">
+                                            <div class="ltn__feature-icon">
+                                                <img src="img/icons/svg/4-track.svg" alt="#">
+                                            </div>
+                                            <div class="ltn__feature-info">
+                                                <h4>Free home delivery</h4>
+                                                <p>Provide free home delivery for
+                                                    all product over $100</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-12">
+                                        <div class="ltn__feature-item ltn__feature-item-8">
+                                            <div class="ltn__feature-icon">
+                                                <img src="img/icons/svg/5-madel.svg" alt="#">
+                                            </div>
+                                            <div class="ltn__feature-info">
+                                                <h4>Quality Products</h4>
+                                                <p>We ensure the product quality
+                                                    that is our main goal</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-12">
+                                        <div class="ltn__feature-item ltn__feature-item-8">
+                                            <div class="ltn__feature-icon">
+                                                <img src="img/icons/svg/6-return.svg" alt="#">
+                                            </div>
+                                            <div class="ltn__feature-info">
+                                                <h4>3 Days Return</h4>
+                                                <p>Return product within 3 days
+                                                    for any product you buy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-6 col-12">
+                                        <div class="ltn__feature-item ltn__feature-item-8">
+                                            <div class="ltn__feature-icon">
+                                                <img src="img/icons/svg/7-support.svg" alt="#">
+                                            </div>
+                                            <div class="ltn__feature-info">
+                                                <h4>Online Support</h4>
+                                                <p>We ensure the product quality
+                                                    that you can trust easily</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FEATURE AREA END -->
+
+            <!-- FOOTER AREA START -->
+            <footer class="ltn__footer-area  ">
+                <div class="footer-top-area  section-bg-1 plr--5">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+                                <div class="footer-widget footer-about-widget">
+                                    <div class="footer-logo">
+                                        <div class="site-logo">
+                                            <img src="img/logo.png" alt="Logo">
+                                        </div>
+                                    </div>
+                                    <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
+                                    <div class="footer-address">
+                                        <ul>
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-placeholder"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p>Brooklyn, New York, United States</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-call"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-mail"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p><a href="mailto:example@example.com">example@example.com</a></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ltn__social-media mt-20">
+                                        <ul>
+                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                            <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                                <div class="footer-widget footer-menu-widget clearfix">
+                                    <h4 class="footer-title">Company</h4>
+                                    <div class="footer-menu">
+                                        <ul>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="shop.html">All Products</a></li>
+                                            <li><a href="locations.html">Locations Map</a></li>
+                                            <li><a href="faq.html">FAQ</a></li>
+                                            <li><a href="contact.html">Contact us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                                <div class="footer-widget footer-menu-widget clearfix">
+                                    <h4 class="footer-title">Services.</h4>
+                                    <div class="footer-menu">
+                                        <ul>
+                                            <li><a href="order-tracking.html">Order tracking</a></li>
+                                            <li><a href="wishlist.html">Wish List</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="account.html">My account</a></li>
+                                            <li><a href="about.html">Terms & Conditions</a></li>
+                                            <li><a href="about.html">Promotional Offers</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                                <div class="footer-widget footer-menu-widget clearfix">
+                                    <h4 class="footer-title">Customer Care</h4>
+                                    <div class="footer-menu">
+                                        <ul>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="account.html">My account</a></li>
+                                            <li><a href="wishlist.html">Wish List</a></li>
+                                            <li><a href="order-tracking.html">Order tracking</a></li>
+                                            <li><a href="faq.html">FAQ</a></li>
+                                            <li><a href="contact.html">Contact us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-sm-12 col-12">
+                                <div class="footer-widget footer-newsletter-widget">
+                                    <h4 class="footer-title">Newsletter</h4>
+                                    <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
+                                    <div class="footer-newsletter">
+                                        <form action="#">
+                                            <input type="email" name="email" placeholder="Email*">
+                                            <div class="btn-wrapper">
+                                                <button class="theme-btn-1 btn" type="submit"><i class="fas fa-location-arrow"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <h5 class="mt-30">We Accept</h5>
+                                    <img src="img/icons/payment-4.png" alt="Payment Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ltn__copyright-area ltn__copyright-2 section-bg-2 plr--5">
+                    <div class="container-fluid ltn__border-top-2">
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <div class="ltn__copyright-design clearfix">
+                                    <p>All Rights Reserved @ Company <span class="current-year"></span></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12 align-self-center">
+                                <div class="ltn__copyright-menu text-right">
+                                    <ul>
+                                        <li><a href="#">Terms & Conditions</a></li>
+                                        <li><a href="#">Claim</a></li>
+                                        <li><a href="#">Privacy & Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- FOOTER AREA END -->
+
+            <!-- MODAL AREA START (Quick View Modal) -->
+            <div class="ltn__modal-area ltn__quick-view-modal-area">
+                <div class="modal fade" id="quick_view_modal" tabindex="-1">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    <!-- <i class="fas fa-times"></i> -->
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="ltn__quick-view-modal-inner">
+                                    <div class="modal-product-item">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-12">
+                                                <div class="modal-product-img">
+                                                    <img src="img/product/4.png" alt="#">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="modal-product-info">
+                                                    <div class="product-ratting">
+                                                        <ul>
+                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                            <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                            <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h3>Brand new product</h3>
+                                                    <div class="product-price">
+                                                        <span>$149.00</span>
+                                                        <del>$165.00</del>
+                                                    </div>
+                                                    <div class="modal-product-meta ltn__product-details-menu-1">
+                                                        <ul>
+                                                            <li>
+                                                                <strong>Categories:</strong>
+                                                                <span>
+                                                            <a href="#">Beard</a>
+                                                            <a href="#">Oil</a>
+                                                            <a href="#">Grooming</a>
+                                                            <a href="#">Tools</a>
+                                                        </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="ltn__product-details-menu-2">
+                                                        <ul>
+                                                            <li>
+                                                                <div class="cart-plus-minus">
+                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                    <span>ADD TO CART</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="ltn__product-details-menu-3">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                    <i class="far fa-heart"></i>
+                                                                    <span>Add to Wishlist</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="" title="Compare" data-toggle="modal" data-target="#quick_view_modal">
+                                                                    <i class="fas fa-exchange-alt"></i>
+                                                                    <span>Compare</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="ltn__social-media">
+                                                        <ul>
+                                                            <li>Share:</li>
+                                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL AREA END -->
+
+            <!-- MODAL AREA START (Add To Cart Modal) -->
+            <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+                <div class="modal fade" id="add_to_cart_modal" tabindex="-1">
+                    <div class="modal-dialog modal-md" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="ltn__quick-view-modal-inner">
+                                    <div class="modal-product-item">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="modal-product-img">
+                                                    <img src="img/product/1.png" alt="#">
+                                                </div>
+                                                <div class="modal-product-info">
+                                                    <h5><a href="product-details.html">Brand new product</a></h5>
+                                                    <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Cart</p>
+                                                    <div class="btn-wrapper">
+                                                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                                                        <a href="checkout.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                                                    </div>
+                                                </div>
+                                                <!-- additional-info -->
+                                                <div class="additional-info d-none">
+                                                    <p>We want to give you <b>10% discount</b> for your first order, <br>  Use discount code at checkout</p>
+                                                    <div class="payment-method">
+                                                        <img src="img/icons/payment.png" alt="#">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL AREA END -->
+
+            <!-- MODAL AREA START (Wishlist Modal) -->
+            <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+                <div class="modal fade" id="liton_wishlist_modal" tabindex="-1">
+                    <div class="modal-dialog modal-md" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="ltn__quick-view-modal-inner">
+                                    <div class="modal-product-item">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="modal-product-img">
+                                                    <img src="img/product/7.png" alt="#">
+                                                </div>
+                                                <div class="modal-product-info">
+                                                    <h5><a href="product-details.html">Brand new product</a></h5>
+                                                    <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Wishlist</p>
+                                                    <div class="btn-wrapper">
+                                                        <a href="wishlist.html" class="theme-btn-1 btn btn-effect-1">View Wishlist</a>
+                                                    </div>
+                                                </div>
+                                                <!-- additional-info -->
+                                                <div class="additional-info d-none">
+                                                    <p>We want to give you <b>10% discount</b> for your first order, <br>  Use discount code at checkout</p>
+                                                    <div class="payment-method">
+                                                        <img src="img/icons/payment.png" alt="#">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL AREA END -->
         </div>
-      </div>
-    </nav>
 
-    <!-- Page Content -->
-    <main class="bg-light">
-      <slot />
-    </main>
+        <!-- preloader area start -->
+        <div class="preloader d-none" id="preloader">
+            <div class="preloader-inner">
+                <div class="spinner">
+                    <div class="dot1"></div>
+                    <div class="dot2"></div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader area end -->
+    </div>
 
-    <setPassword />
-
-    <footer class="pt-4 pb-4 text-center">
-      <div class="container">
-        <!-- <p class="mt-0 mb-0">© Copyright 2020 Osahan Eat. All Rights Reserved</p> -->
-        <p class="mt-0 mb-0">©Ecommerce Store.COVERDATA TEAM.</p>
-        <!-- <small class="mt-0 mb-0">
-          Made with <i class="fas fa-heart heart-icon text-danger"></i> by
-          <a
-            class="text-danger"
-            target="_blank"
-            href="https://www.instagram.com/iamgurdeeposahan/"
-            >Gurdeep Osahan</a
-          >
-          -
-          <a class="text-primary" target="_blank" href="https://askbootstrap.com/"
-            >Ask Bootstrap</a
-          >
-        </small> -->
-      </div>
-    </footer>
-  </div>
 </template>

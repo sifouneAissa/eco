@@ -1,3 +1,4 @@
-import '../../public/ltr/css/osahan.css';
-// import '../../public/ltr/js/custom';
-
+import './../assets/ltr/css/font-icons.css';
+import './../assets/ltr/css/plugins.css';
+import './../assets/ltr/css/style.css';
+import './../assets/ltr/css/responsive.css';

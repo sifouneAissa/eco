@@ -1,2 +1,4 @@
-import '../../public/rtl/css/osahan.css';
-// import '../../public/rtl/js/custom';
+import './../assets/rtl/css/font-icons.css';
+import './../assets/rtl/css/plugins.css';
+import './../assets/rtl/css/style.css';
+import './../assets/rtl/css/responsive.css';

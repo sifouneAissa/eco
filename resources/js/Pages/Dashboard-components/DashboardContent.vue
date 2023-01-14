@@ -35,239 +35,1049 @@ export default {
 
 <template>
   <div>
-    <section class="pt-5 pb-5 homepage-search-block position-relative">
-      <div class="banner-overlay"></div>
-      <div class="container">
-        <div class="row d-flex align-items-center">
-          <div class="col-md-12">
-            <div class="homepage-search-title">
-              <h1 class="mb-2 font-weight-normal">
-                <span class="font-weight-bold">{{ $t("dashboard.title1") }}</span>
-              </h1>
-              <h5 class="mb-5 text-secondary font-weight-normal">
-                {{ $t("dashboard.title2") }}
-              </h5>
-            </div>
-            <div class="homepage-search-form">
-              <form class="form-noborder">
-                <div class="form-row">
-                  <div class="col-lg-3 col-md-3 col-sm-12 form-group">
-                    <div class="location-dropdown">
-                      <i class="icofont-location-arrow"></i>
-                      <select
-                        v-model="form.query.category"
-                        class="custom-select form-control-lg"
-                        >
-                        <option disabled>{{ $t("dashboard.quick_search") }}</option>
-                        <option
-                          v-for="category in $page.props.categories"
-                          :key="category.id"
-                          :value="category.name"
-                        >
-                          {{ category.name }}
-                        </option>
-                      </select>
-                    </div>
+      <!-- SLIDER AREA START (slider-1) -->
+      <div class="ltn__slider-area ltn__slider-6 mb-120">
+          <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
+              <!-- ltn__slide-item -->
+              <div class="ltn__slide-item section-bg-1">
+                  <div class="ltn__slide-item-inner">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
+                                  <div class="slide-item-info">
+                                      <div class="slide-item-info-inner  ltn__slide-animation">
+                                          <h4 class="slide-sub-title animated">Welcome to our shop</h4>
+                                          <h1 class="slide-title animated">Explore Top Brand <br> Face Toner!</h1>
+                                          <div class="slide-brief animated">
+                                              <p>Predictive analytics is drastically changing the real estate industry. In the past, providing data for quick</p>
+                                          </div>
+                                          <div class="btn-wrapper animated">
+                                              <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Shop now</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
+                                  <div >
+                                      <a href="shop.html"><img src="img/slider/11.png" alt="Image"></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                  <div class="col-lg-7 col-md-7 col-sm-12 form-group">
-                    <input
-                      v-model="form.query.search"
-                      type="text"
-                      :placeholder="$t('dashboard.search_by_name')"
-                      class="form-control form-control-lg"
-                    />
-                    <!--                                    <a class="locate-me" href="#"><i class="icofont-ui-pointer"></i> Locate Me</a>-->
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 form-group">
-                    <a
-                      @click="submit"
-                      class="btn btn-primary btn-block btn-lg btn-gradient"
-                      >{{ $t("dashboard.search") }}</a
-                    >
-                    <!--<button type="submit" class="btn btn-primary btn-block btn-lg btn-gradient">Search</button>-->
-                  </div>
-                </div>
-              </form>
-            </div>
-            <h6 class="mt-4 text-shadow font-weight-normal">
-              {{ $t("dashboard.categories") }}
-            </h6>
-            <div class="owl-carousel owl-carousel-category owl-theme">
-              <Categories />
-              <!--                        <div class="item">-->
-              <!--                            <div class="osahan-category-item">-->
-              <!--                                <a href="#">-->
-              <!--                                    <img class="img-fluid" src="img/list/1.png" alt="">-->
-              <!--                                    <h6>American</h6>-->
-              <!--                                    <p>156</p>-->
-              <!--                                </a>-->
-              <!--                            </div>-->
-              <!--                        </div>-->
-              <!--                        <div class="item">-->
-              <!--                            <div class="osahan-category-item">-->
-              <!--                                <a href="#">-->
-              <!--                                    <img class="img-fluid" src="img/list/2.png" alt="">-->
-              <!--                                    <h6>Pizza</h6>-->
-              <!--                                    <p>120</p>-->
-              <!--                                </a>-->
-              <!--                            </div>-->
-              <!--                        </div>-->
-            </div>
-          </div>
-          <!--          <div class="col-md-4">-->
-          <!--            <div class="osahan-slider pl-4 pt-3">-->
-          <!--              <div id="myhome" class="owl-carousel homepage-ad owl-theme">-->
-          <!--                <div class="item">-->
-          <!--                  <a href="listing.html"-->
-          <!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
-          <!--                  /></a>-->
-          <!--                </div>-->
-          <!--                <div class="item">-->
-          <!--                  <a href="listing.html"-->
-          <!--                    ><img class="img-fluid rounded" src="img/slider1.png"-->
-          <!--                  /></a>-->
-          <!--                </div>-->
-          <!--                <div class="item">-->
-          <!--                  <a href="listing.html"-->
-          <!--                    ><img class="img-fluid rounded" src="img/slider.png"-->
-          <!--                  /></a>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
-        </div>
-      </div>
-    </section>
-    <section class="section pt-5 pb-5 products-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2>{{ $t("dashboard.most_requested") }}</h2>
-          <p>{{ $t("dashboard.title2") }}</p>
-          <span class="line"></span>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div
-              class="owl-carousel owl-theme owl-carousel-four offers-interested-carousel mb-3"
-            >
-              <ProductCard
-                v-for="model in $page.props.bestSellers"
-                :key="model.id"
-                :model="model"
-                class="ml-1 mr-1"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <Blogs />
-    <!-- <section class="section pt-5 pb-5 bg-white becomemember-section border-bottom">
-        <div class="container">
-            <div class="section-header text-center white-text">
-                <h2>Become a Member</h2>
-                <p>Lorem Ipsum is simply dummy text of</p>
-                <span class="line"></span>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <a :href="route('register')" class="btn btn-success btn-lg">
-                        Create an Account <i class="fa fa-chevron-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section pt-5 pb-5 text-center bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h5 class="m-0">Operate food store or restaurants? <a href="login.html">Work With Us</a></h5>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <section class="footer pt-5 pb-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 col-12 col-sm-12">
-            <!-- <h6 class="mb-3">Subscribe to our Newsletter</h6>
-            <form class="newsletter-form mb-1">
-              <div class="input-group">
-                <input
-                  type="text"
-                  placeholder="Please enter your email"
-                  class="form-control"
-                />
-                <div class="input-group-append">
-                  <button type="button" class="btn btn-primary">Subscribe</button>
-                </div>
               </div>
-            </form> -->
-            <!-- <p>
-              <a class="text-info" href="register.html">Register now</a> to get updates on
-              <a href="offers.html">Offers and Coupons</a>
-            </p> -->
-            <div class="app">
-              <h6 class="mb-3">{{ $page.props.company_name }}</h6>
-              <Link href="/">
-                <img class="img-fluid" :src="$page.props.logo" />
-              </Link>
-              <!-- <a href="#">
-                <img class="img-fluid" src="img/apple.png" />
-              </a> -->
-            </div>
+              <!-- ltn__slide-item -->
+              <div class="ltn__slide-item section-bg-1">
+                  <div class="ltn__slide-item-inner">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
+                                  <div >
+                                      <a href="shop.html"><img src="img/slider/1-1.png" alt="Image"></a>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
+                                  <div class="slide-item-info">
+                                      <div class="slide-item-info-inner ltn__slide-animation">
+                                          <h4 class="slide-sub-title animated">Welcome to our shop</h4>
+                                          <h1 class="slide-title animated">Explore Top Brand <br> Face Toner!</h1>
+                                          <div class="slide-brief animated">
+                                              <p>Predictive analytics is drastically changing the real estate industry. In the past, providing data for quick</p>
+                                          </div>
+                                          <div class="btn-wrapper animated">
+                                              <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Shop now</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="col-md-1 col-sm-6 mobile-none"></div>
-          <div class="col-md-2 col-6 col-sm-4">
-            <h6 class="mb-3">{{ $t("nav_menu.help.about_us") }}</h6>
-            <ul>
-              <li>
-                <a :href="route('contact-us')">{{ $t("nav_menu.help.contact_us") }} </a>
-              </li>
-              <li>
-                <a :href="route('about-us')">{{ $t("nav_menu.help.about_us") }} </a>
-              </li>
-              <li>
-                <a :href="route('faq')">{{ $t("nav_menu.help.faq") }} </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-2 col-6 col-sm-4">
-            <h6 class="mb-3">{{ $t("nav_menu.other") }}</h6>
-            <ul>
-              <li>
-                <a :href="route('privacy-policy')"
-                  >{{ $t("nav_menu.help.privacy_policy") }}
-                </a>
-              </li>
-              <li>
-                <a :href="route('shipping-policy')"
-                  >{{ $t("nav_menu.help.shipping_policy") }}
-                </a>
-              </li>
-              <li>
-                <a :href="route('terms-conditions')"
-                  >{{ $t("nav_menu.help.terms_conditions") }}
-                </a>
-              </li>
-              <li>
-                <a :href="route('blog.index')">{{ $t("blog.page_title") }} </a>
-              </li>
-            </ul>
-          </div>
-          <!-- <div class="col-md-2 m-none col-4 col-sm-4">
-            <h6 class="mb-3">For Restaurants</h6>
-            <ul>
-              <li><a href="#">Advertise</a></li>
-              <li><a href="#">Add a Restaurant</a></li>
-              <li><a href="#">Claim your Listing</a></li>
-              <li><a href="#">For Businesses</a></li>
-              <li><a href="#">Owner Guidelines</a></li>
-            </ul>
-          </div> -->
-        </div>
       </div>
-    </section>
+      <!-- SLIDER AREA END -->
+
+      <!-- ABOUT US AREA START -->
+      <div class="ltn__about-us-area pb-120">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 align-self-center">
+                      <div class="about-us-info-wrap pt-30 pb-30">
+                          <h3>Provide the best</h3>
+                          <h1>Beard Oil For You</h1>
+                          <p>We provide the best Beard oil all over the world. We are the worldd best store for Beard Oil. You can buy our product without any hegitation because we always consus about our product quality and always maintain it properly so your can trust and this is our main goal we belive that...</p>
+
+                          <p>Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy</p>
+                          <div class="btn-wrapper">
+                              <a href="shop.html" class="theme-btn-3 btn btn-effect-4 text-uppercase">View More</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 align-self-center">
+                      <div class="about-us-img-wrap about-img-right">
+                          <img src="img/banner/6.png" alt="Banner Image">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- ABOUT US AREA END -->
+
+      <!-- ABOUT US AREA START -->
+      <div class="ltn__banner-area section-bg-1">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 align-self-center">
+                      <div class="banner-info-wrap beard-growing-kit text-left bg-image" data-bg="img/banner/10.png">
+                          <h5>Grow it</h5>
+                          <h1>Just <br> Starting?</h1>
+                          <div class="btn-wrapper">
+                              <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Try a growth kit</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 align-self-center">
+                      <div class="banner-info-wrap beard-growing-kit text-right bg-image" data-bg="img/banner/11.png">
+                          <h5>Groom IT</h5>
+                          <h1>Luscious
+                              <br> Beard?</h1>
+                          <div class="btn-wrapper">
+                              <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">Try a growth kit</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- ABOUT US AREA END -->
+
+      <!-- PRODUCT TAB AREA START (product-item-3) -->
+      <div class="ltn__product-tab-area ltn__product-gutter pt-110 pb-70">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="section-title-area text-center">
+                          <h1 class="section-title ">Our Products</h1>
+                          <p>There are many variations of passages of Lorem Ipsum available.</p>
+                      </div>
+                      <div class="ltn__tab-menu ltn__tab-menu-2 ltn__tab-menu-top-right-- text-uppercase text-center">
+                          <div class="nav">
+                              <a class="active show" data-toggle="tab" href="#liton_tab_3_1">Popular</a>
+                              <a data-toggle="tab" href="#liton_tab_3_2" class="">New</a>
+                              <a data-toggle="tab" href="#liton_tab_3_3" class="">Best Sale</a>
+                          </div>
+                      </div>
+                      <div class="tab-content">
+                          <div class="tab-pane fade active show" id="liton_tab_3_1">
+                              <div class="ltn__product-tab-content-inner">
+                                  <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Care Oil</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$149.00</span>
+                                                      <del>$162.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Growth Vitamins</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$129.00</span>
+                                                      <del>$145.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Growth Oil</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$119.00</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Facewash</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$125.00</span>
+                                                      <del>$140.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Shampoo</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$165.00</span>
+                                                      <del>$185.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!--  -->
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="tab-pane fade" id="liton_tab_3_2">
+                              <div class="ltn__product-tab-content-inner">
+                                  <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Growth Oil</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$119.00</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Facewash</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$125.00</span>
+                                                      <del>$140.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Care Oil</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$149.00</span>
+                                                      <del>$162.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Growth Vitamins</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$129.00</span>
+                                                      <del>$145.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Shampoo</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$165.00</span>
+                                                      <del>$185.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!--  -->
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="tab-pane fade" id="liton_tab_3_3">
+                              <div class="ltn__product-tab-content-inner">
+                                  <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Facewash</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$125.00</span>
+                                                      <del>$140.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Shampoo</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$165.00</span>
+                                                      <del>$185.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Care Oil</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$149.00</span>
+                                                      <del>$162.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Growth Vitamins</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$129.00</span>
+                                                      <del>$145.00</del>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- ltn__product-item -->
+                                      <div class="col-lg-12">
+                                          <div class="ltn__product-item ltn__product-item-3 text-center">
+                                              <div class="product-img">
+                                                  <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
+                                                  <div class="product-badge">
+                                                      <ul>
+                                                          <li class="sale-badge">New</li>
+                                                      </ul>
+                                                  </div>
+                                                  <div class="product-hover-action">
+                                                      <ul>
+                                                          <li>
+                                                              <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                                                  <i class="far fa-eye"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                  <i class="fas fa-shopping-cart"></i>
+                                                              </a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                  <i class="far fa-heart"></i></a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                              <div class="product-info">
+                                                  <h2 class="product-title"><a href="product-details.html">Beard Growth Oil</a></h2>
+                                                  <div class="product-price">
+                                                      <span>$119.00</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!--  -->
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- PRODUCT TAB AREA END -->
+
+      <!-- CALL TO ACTION START (call-to-action-1) -->
+      <div class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-220 pb-220 mb-110" data-bg="img/bg/3.png">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="call-to-action-inner beard-trimmer text-center">
+                          <h5 class="text-uppercase">Versatile. powerful. perfect.</h5>
+                          <h1>ABC LC991 Trimmer</h1>
+                          <div class="btn-wrapper">
+                              <a class="theme-btn-1 btn btn-effect-1 text-uppercase" href="shop.html">View More</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- CALL TO ACTION END -->
+
+      <!-- PRODUCT AREA START -->
+      <div class="ltn__product-area ltn__product-gutter pb-10">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="section-title-area text-center">
+                          <h1 class="section-title ">Grooming Tools</h1>
+                          <p>There are many variations of passages of Lorem Ipsum available.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="row justify-content-center">
+                  <!-- ltn__product-item -->
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                      <div class="ltn__product-item ltn__product-item-3 text-center">
+                          <div class="product-img">
+                              <a href="product-details.html"><img src="img/product/15.png" alt="#"></a>
+                              <div class="product-badge">
+                                  <ul>
+                                      <li class="sale-badge">New</li>
+                                  </ul>
+                              </div>
+                              <div class="product-hover-action">
+                                  <ul>
+                                      <li>
+                                          <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                              <i class="far fa-eye"></i>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                              <i class="fas fa-shopping-cart"></i>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                              <i class="far fa-heart"></i></a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <div class="product-info">
+                              <h2 class="product-title"><a href="product-details.html">Beard Care Oil</a></h2>
+                              <div class="product-price">
+                                  <span>$149.00</span>
+                                  <del>$162.00</del>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- ltn__product-item -->
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                      <div class="ltn__product-item ltn__product-item-3 text-center">
+                          <div class="product-img">
+                              <a href="product-details.html"><img src="img/product/14.png" alt="#"></a>
+                              <div class="product-badge">
+                                  <ul>
+                                      <li class="sale-badge">New</li>
+                                  </ul>
+                              </div>
+                              <div class="product-hover-action">
+                                  <ul>
+                                      <li>
+                                          <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                              <i class="far fa-eye"></i>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                              <i class="fas fa-shopping-cart"></i>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                              <i class="far fa-heart"></i></a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <div class="product-info">
+                              <h2 class="product-title"><a href="product-details.html">Beard Growth Vitamins</a></h2>
+                              <div class="product-price">
+                                  <span>$129.00</span>
+                                  <del>$145.00</del>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- ltn__product-item -->
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                      <div class="ltn__product-item ltn__product-item-3 text-center">
+                          <div class="product-img">
+                              <a href="product-details.html"><img src="img/product/13.png" alt="#"></a>
+                              <div class="product-badge">
+                                  <ul>
+                                      <li class="sale-badge">New</li>
+                                  </ul>
+                              </div>
+                              <div class="product-hover-action">
+                                  <ul>
+                                      <li>
+                                          <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
+                                              <i class="far fa-eye"></i>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                              <i class="fas fa-shopping-cart"></i>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                              <i class="far fa-heart"></i></a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <div class="product-info">
+                              <h2 class="product-title"><a href="product-details.html">Beard Growth Oil</a></h2>
+                              <div class="product-price">
+                                  <span>$119.00</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!--  -->
+              </div>
+          </div>
+      </div>
+      <!-- PRODUCT SLIDER AREA END -->
+
+      <!-- TESTIMONIAL AREA START -->
+      <div class="ltn__testimonial-area section-bg-1--- pb-70">
+          <div class="container">
+              <div class="row d-none">
+                  <div class="col-lg-12">
+                      <div class="section-title-area text-center">
+                          <h1 class="section-title ">Testimonial</h1>
+                          <p>There are many variations of passages of Lorem Ipsum available.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-10 offset-lg-1 white-bg">
+                      <div class="row ltn__testimonial-slider-active slick-arrow-1 slick-arrow-1-inner">
+                          <div class="col-lg-12">
+                              <div class="ltn__testimonial-item ltn__testimonial-item-6 text-center">
+                                  <div class="ltn__testimoni-img">
+                                      <i class="icon-right-quote"></i>
+                                  </div>
+                                  <div class="ltn__testimonial-info">
+                                      <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio."</p>
+                                      <h4>__ By Jacob William __</h4>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12">
+                              <div class="ltn__testimonial-item ltn__testimonial-item-6 text-center">
+                                  <div class="ltn__testimoni-img">
+                                      <i class="icon-right-quote"></i>
+                                  </div>
+                                  <div class="ltn__testimonial-info">
+                                      <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio."</p>
+                                      <h4>__ Ethan James __</h4>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12">
+                              <div class="ltn__testimonial-item ltn__testimonial-item-6 text-center">
+                                  <div class="ltn__testimoni-img">
+                                      <i class="icon-right-quote"></i>
+                                  </div>
+                                  <div class="ltn__testimonial-info">
+                                      <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio."</p>
+                                      <h4>__ Liam Mason __</h4>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12">
+                              <div class="ltn__testimonial-item ltn__testimonial-item-6 text-center">
+                                  <div class="ltn__testimoni-img">
+                                      <i class="icon-right-quote"></i>
+                                  </div>
+                                  <div class="ltn__testimonial-info">
+                                      <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio."</p>
+                                      <h4>__ Noah Alexander __</h4>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- TESTIMONIAL AREA END -->
+
+      <!-- BANNER AREA START -->
+      <div class="ltn__banner-area pb-90 d-none">
+          <div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-md-6 col-sm-6">
+                      <div class="ltn__banner-item">
+                          <div class="ltn__banner-img">
+                              <a href="shop.html"><img src="img/banner/3.jpg" alt="Image"></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                      <div class="ltn__banner-item">
+                          <div class="ltn__banner-img">
+                              <a href="shop.html"><img src="img/banner/4.jpg" alt="Image"></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- BANNER AREA END -->
+
+      <!-- VIDEO AREA START -->
+      <div class="ltn__video-area section-bg-1 pt-120 pb-120 d-none">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="ltn__video-img">
+                          <img src="img/bg/8.jpg" alt="video popup bg image">
+                          <a class="ltn__video-icon-2 ltn__video-icon-2-border" href="https://www.youtube.com/embed/X7R-q9rsrtU?autoplay=1&showinfo=0"  data-rel="lightcase:myCollection">
+                              <i class="fa fa-play"></i>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- VIDEO AREA END -->
+
+      <!-- NEWSLETTER AREA START -->
+      <div class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-110 pb-90" data-bg="img/bg/8.jpg">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-8 offset-lg-2">
+                      <div class="ltn__newsletter-inner text-center">
+                          <h2>We make your inbox better</h2>
+                          <p>Sign up to our newsletter to receive grooming tips, style inspiration, <br> exclusive access to pre-launch product pricing and more.</p>
+                          <form action="#" class="ltn__form-box">
+                              <input type="email" name="email" placeholder="Email*">
+                              <div class="btn-wrapper">
+                                  <button class="theme-btn-1 btn btn-effect-1 text-uppercase" type="submit">Subscribe</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- NEWSLETTER AREA END -->
+
+
+      <!-- BRAND LOGO AREA START -->
+      <div class="ltn__brand-logo-area ltn__brand-logo-1 pt-110 pb-110 plr--9">
+          <div class="container-fluid">
+              <div class="row ltn__brand-logo-active">
+                  <div class="col-lg-12">
+                      <div class="ltn__brand-logo-item">
+                          <img src="img/brand-logo/1.png" alt="Brand Logo">
+                      </div>
+                  </div>
+                  <div class="col-lg-12">
+                      <div class="ltn__brand-logo-item">
+                          <img src="img/brand-logo/2.png" alt="Brand Logo">
+                      </div>
+                  </div>
+                  <div class="col-lg-12">
+                      <div class="ltn__brand-logo-item">
+                          <img src="img/brand-logo/3.png" alt="Brand Logo">
+                      </div>
+                  </div>
+                  <div class="col-lg-12">
+                      <div class="ltn__brand-logo-item">
+                          <img src="img/brand-logo/4.png" alt="Brand Logo">
+                      </div>
+                  </div>
+                  <div class="col-lg-12">
+                      <div class="ltn__brand-logo-item">
+                          <img src="img/brand-logo/5.png" alt="Brand Logo">
+                      </div>
+                  </div>
+                  <div class="col-lg-12">
+                      <div class="ltn__brand-logo-item">
+                          <img src="img/brand-logo/3.png" alt="Brand Logo">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- BRAND LOGO AREA END -->
+
   </div>
 </template>

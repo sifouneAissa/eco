@@ -1,0 +1,1 @@
+import r from"./CartMenu.91a49b30.js";import{f as o,b as a,u as n,o as s,p as u}from"./app.af699bdb.js";import"./_plugin-vue_export-helper.cdc0426e.js";const l={__name:"Cart",setup(i){return(t,e)=>(s(),o("div",null,[a(r,{onPay:e[0]||(e[0]=p=>n(u.Inertia).visit(t.route("checkout.show")))})]))}};export{l as default};

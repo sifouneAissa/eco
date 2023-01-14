@@ -1,16 +1,7 @@
 // import './bootstrap';
-import '../../public/vendor/bootstrap/css/bootstrap.min.css';
-import '../../public/vendor/fontawesome/css/all.min.css';
-import '../../public/vendor/icofont/icofont.min.css';
-import '../../public/vendor/select2/css/select2.min.css';
-import '../../public/vendor/owl-carousel/owl.carousel.css';
-import '../../public/vendor/owl-carousel/owl.theme.css';
 
-import '../assets/vendor/jquery/jquery-3.3.1.slim.min';
-import '../assets/vendor/bootstrap/js/bootstrap.bundle.min';
-import '../assets/vendor/owl-carousel/owl.carousel';
-import '../assets/vendor/select2/js/select2.min';
 import messages from './translation/translation';
+
 import {createApp, h} from 'vue';
 import {createInertiaApp, usePage} from '@inertiajs/inertia-vue3';
 
@@ -50,20 +41,28 @@ createInertiaApp({
             messages: messages, // set locale messages
         });
 
-        // for lazy importation
-        let script1 = document.createElement('script');
-        script1.src = "/chat/init.js";
-        document.body.append(script1); // (*)
+        if(props.initialPage.props.isRtl) {
+            // for lazy importation
+            let script1 = document.createElement('script');
+            script1.src = "/assets/rtl/js/plugins.js";
+            document.body.append(script1); // (*)
 
-        // for lazy importation
-        let script2 = document.createElement('script');
-        script2.src = "/chat/widget.js";
-        document.body.append(script2); // (*)
+            // for lazy importation
+            let script2 = document.createElement('script');
+            script2.src = "/assets/rtl/js/main.js";
+            document.body.append(script2); // (*)
+        }
+        else {
+            // for lazy importation
+            let script1 = document.createElement('script');
+            script1.src = "/assets/ltr/js/plugins.js";
+            document.body.append(script1); // (*)
 
-        // for lazy importation
-        // let script3 = document.createElement('script');
-        // script3.src = "https://js.stripe.com/v3";
-        // document.body.append(script3); // (*)
+            // for lazy importation
+            let script2 = document.createElement('script');
+            script2.src = "/assets/ltr/js/main.js";
+            document.body.append(script2); // (*)
+        }
 
         return createApp({render: () => h(app, props)})
             .use(plugin)
@@ -89,4 +88,5 @@ InertiaProgress.init({
     // Whether the NProgress spinner will be shown.
     showSpinner: true
 });
+
 
