@@ -1,7 +1,7 @@
 <script>
-    import { ref, onMounted, toRefs } from "vue";
-    import { Inertia } from "@inertiajs/inertia";
-    import { Head, Link } from "@inertiajs/inertia-vue3";
+    import {ref, onMounted, toRefs} from "vue";
+    import {Inertia} from "@inertiajs/inertia";
+    import {Head, Link} from "@inertiajs/inertia-vue3";
     import ApplicationMark from "@/Components/ApplicationMark.vue";
     import Banner from "@/Components/Banner.vue";
     import Dropdown from "@/Components/Dropdown.vue";
@@ -11,10 +11,9 @@
     import Cart from "@/Pages/GuestLayout/Cart.vue";
     import Notification from "@/Pages/GuestLayout/Notification.vue";
     import setPassword from "@/Pages/Password/setPassword.vue";
-    // import "./../../assets/vendor/owl-carousel/owl.carousel";
     import $ from 'jquery'
-    import { useToast } from "vue-toastification";
-    import { usePage } from "@inertiajs/inertia-vue3";
+    import {useToast} from "vue-toastification";
+    import {usePage} from "@inertiajs/inertia-vue3";
 
     export default {
         components: {
@@ -34,7 +33,7 @@
 
             let app = this;
             $(document).ready(function () {
-                if(app.$page.props.isRtl) {
+                if (app.$page.props.isRtl) {
                     // for lazy importation
                     let script1 = document.createElement('script');
                     script1.src = "/assets/rtl/js/plugins.js";
@@ -44,8 +43,7 @@
                     let script2 = document.createElement('script');
                     script2.src = "/assets/rtl/js/main.js";
                     document.body.append(script2); // (*)
-                }
-                else {
+                } else {
                     // for lazy importation
                     let script1 = document.createElement('script');
                     script1.src = "/assets/ltr/js/plugins.js";
@@ -72,12 +70,12 @@
         methods: {
             trackOrder: function () {
                 this.submited = true;
-                if (this.vOrder) Inertia.get(this.route("trackOrder", { id: this.order_id }));
+                if (this.vOrder) Inertia.get(this.route("trackOrder", {id: this.order_id}));
             },
             setLocale: function (lang) {
                 Inertia.post(
                     route("setLocale"),
-                    { locale: lang },
+                    {locale: lang},
                     {
                         onSuccess: () => window.location.reload(),
                     }
@@ -95,7 +93,7 @@
             setCurrency: function (currency) {
                 Inertia.post(
                     route("setCurrency"),
-                    { currency: currency },
+                    {currency: currency},
                     {
                         onSuccess: () => window.location.reload(),
                     }
@@ -109,8 +107,8 @@
 
 <template>
     <div>
-        <Head :title="title" />
-        <Banner />
+        <Head :title="title"/>
+        <Banner/>
 
         <header class="ltn__header-area ltn__header-4 ltn__header-6 ltn__header-transparent--- gradient-color-2---">
             <!-- ltn__header-top-area start -->
@@ -120,8 +118,10 @@
                         <div class="col-md-7">
                             <div class="ltn__top-bar-menu">
                                 <ul>
-                                    <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i class="icon-mail"></i> info@webmail.com</a></li>
-                                    <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a></li>
+                                    <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i
+                                        class="icon-mail"></i> info@webmail.com</a></li>
+                                    <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -133,14 +133,19 @@
                                             <!-- ltn__language-menu -->
                                             <div class="ltn__drop-menu ltn__currency-menu ltn__language-menu">
                                                 <ul>
-                                                    <li><a href="#" class="dropdown-toggle"><span class="active-currency">English</span></a>
+                                                    <li><a href="#" class="dropdown-toggle"><span
+                                                        class="active-currency">English</span></a>
                                                         <ul>
-                                                            <li><a href="#">Arabic</a></li>
-                                                            <li><a href="#">Bengali</a></li>
-                                                            <li><a href="#">Chinese</a></li>
-                                                            <li><a href="#">English</a></li>
-                                                            <li><a href="#">French</a></li>
-                                                            <li><a href="#">Hindi</a></li>
+                                                            <li
+                                                                v-for="lang in this.$page.props.locales"
+                                                                :key="lang"
+                                                                @click="setLocale(lang)"><a href="#">{{ $t("locales." +
+                                                                lang) }}</a></li>
+                                                            <!--                                                            <li><a href="#">Bengali</a></li>-->
+                                                            <!--                                                            <li><a href="#">Chinese</a></li>-->
+                                                            <!--                                                            <li><a href="#">English</a></li>-->
+                                                            <!--                                                            <li><a href="#">French</a></li>-->
+                                                            <!--                                                            <li><a href="#">Hindi</a></li>-->
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -150,11 +155,15 @@
                                             <!-- ltn__social-media -->
                                             <div class="ltn__social-media">
                                                 <ul>
-                                                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                                    <li><a href="#" title="Facebook"><i
+                                                        class="fab fa-facebook-f"></i></a></li>
+                                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                                    </li>
 
-                                                    <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                                                    <li><a href="#" title="Instagram"><i
+                                                        class="fab fa-instagram"></i></a></li>
+                                                    <li><a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -185,7 +194,8 @@
                                                 <ul>
                                                     <li><a href="index.html">Home Style - 01</a></li>
                                                     <li><a href="index-2.html">Home Style - 02</a></li>
-                                                    <li><a href="index-3.html">Home Style - 03  <span class="menu-item-badge">new</span></a></li>
+                                                    <li><a href="index-3.html">Home Style - 03 <span
+                                                        class="menu-item-badge">new</span></a></li>
                                                     <li><a href="index-4.html">Home Style - 04</a></li>
                                                     <li><a href="index-5.html">Home Style - 05</a></li>
                                                     <li><a href="index-6.html">Home Style - 06</a></li>
@@ -199,7 +209,9 @@
                                                     <li><a href="faq.html">FAQ</a></li>
                                                     <li><a href="coming-soon.html">Coming Soon</a></li>
                                                     <li><a href="404.html">404</a></li>
-                                                    <li><Link :href="route('welcometest')">Contact</Link></li>
+                                                    <li>
+                                                        <Link :href="route('welcometest')">Contact</Link>
+                                                    </li>
                                                 </ul>
                                             </li>
                                             <li class="menu-icon"><a href="#">Products</a>
@@ -209,8 +221,10 @@
                                                     <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>
                                                     <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>
                                                     <li><a href="product-details.html">Product Details</a></li>
-                                                    <li><a href="product-details-no-sidebar.html">Details No Sidebar</a></li>
-                                                    <li><a href="product-details-hover-zoom.html">Details Hover Zoom</a></li>
+                                                    <li><a href="product-details-no-sidebar.html">Details No Sidebar</a>
+                                                    </li>
+                                                    <li><a href="product-details-hover-zoom.html">Details Hover Zoom</a>
+                                                    </li>
                                                     <li><a href="#">Other Pages <span class="float-right">>></span></a>
                                                         <ul>
                                                             <li><a href="cart.html">Cart</a></li>
@@ -229,10 +243,12 @@
                                                     <li>
                                                         <div class="menu-product-item">
                                                             <div class="menu-product-img">
-                                                                <a href="product-details.html"><img src="img/product/13.png" alt="#"></a>
+                                                                <a href="product-details.html"><img
+                                                                    src="img/product/13.png" alt="#"></a>
                                                             </div>
                                                             <div class="product-info">
-                                                                <h2 class="product-title"><a href="product-details.html">Trimmer Kits</a></h2>
+                                                                <h2 class="product-title"><a
+                                                                    href="product-details.html">Trimmer Kits</a></h2>
                                                                 <div class="product-price">
                                                                     <span>$125.00</span>
                                                                     <del>$142.00</del>
@@ -243,10 +259,13 @@
                                                     <li>
                                                         <div class="menu-product-item">
                                                             <div class="menu-product-img">
-                                                                <a href="product-details.html"><img src="img/product/9.png" alt="#"></a>
+                                                                <a href="product-details.html"><img
+                                                                    src="img/product/9.png" alt="#"></a>
                                                             </div>
                                                             <div class="product-info">
-                                                                <h2 class="product-title"><a href="product-details.html">Beard Growth Vitamins</a></h2>
+                                                                <h2 class="product-title"><a
+                                                                    href="product-details.html">Beard Growth
+                                                                    Vitamins</a></h2>
                                                                 <div class="product-price">
                                                                     <span>$135.00</span>
                                                                     <del>$145.00</del>
@@ -257,10 +276,12 @@
                                                     <li>
                                                         <div class="menu-product-item">
                                                             <div class="menu-product-img">
-                                                                <a href="product-details.html"><img src="img/product/15.png" alt="#"></a>
+                                                                <a href="product-details.html"><img
+                                                                    src="img/product/15.png" alt="#"></a>
                                                             </div>
                                                             <div class="product-info">
-                                                                <h2 class="product-title"><a href="product-details.html">Beard Scissors</a></h2>
+                                                                <h2 class="product-title"><a
+                                                                    href="product-details.html">Beard Scissors</a></h2>
                                                                 <div class="product-price">
                                                                     <span>$15.00</span>
                                                                     <del>$18.00</del>
@@ -271,10 +292,12 @@
                                                     <li>
                                                         <div class="menu-product-item">
                                                             <div class="menu-product-img">
-                                                                <a href="product-details.html"><img src="img/product/6.png" alt="#"></a>
+                                                                <a href="product-details.html"><img
+                                                                    src="img/product/6.png" alt="#"></a>
                                                             </div>
                                                             <div class="product-info">
-                                                                <h2 class="product-title"><a href="product-details.html">Beard Care Oil</a></h2>
+                                                                <h2 class="product-title"><a
+                                                                    href="product-details.html">Beard Care Oil</a></h2>
                                                                 <div class="product-price">
                                                                     <span>$149.00</span>
                                                                     <del>$162.00</del>
@@ -294,6 +317,7 @@
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">Contact</a></li>
+                                            <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -304,16 +328,19 @@
                                 <!-- ltn__currency-menu -->
                                 <div class="ltn__drop-menu ltn__currency-menu">
                                     <ul>
-                                        <li><a href="#" class="dropdown-toggle"><span class="active-currency">USD</span></a>
+                                        <li><a href="#" class="dropdown-toggle"><span class="active-currency">{{ $t("currencies." + $page.props.currency) }}</span></a>
                                             <ul>
-                                                <li><a href="login.html">USD - US Dollar</a></li>
-                                                <li><a href="wishlist.html">CAD - Canada Dollar</a></li>
-                                                <li><a href="register.html">EUR - Euro</a></li>
-                                                <li><a href="account.html">GBP - British Pound</a></li>
-                                                <li><a href="wishlist.html">INR - Indian Rupee</a></li>
-                                                <li><a href="wishlist.html">BDT - Bangladesh Taka</a></li>
-                                                <li><a href="wishlist.html">JPY - Japan Yen</a></li>
-                                                <li><a href="wishlist.html">AUD - Australian Dollar</a></li>
+                                                <li
+                                                    v-for="currency in this.$page.props.currencies"
+                                                    :key="currency"
+                                                    @click="setCurrency(currency)"><a href="#">{{ $t("currencies." +currency) }}</a></li>
+                                                <!--                                                <li><a href="wishlist.html">CAD - Canada Dollar</a></li>-->
+                                                <!--                                                <li><a href="register.html">EUR - Euro</a></li>-->
+                                                <!--                                                <li><a href="account.html">GBP - British Pound</a></li>-->
+                                                <!--                                                <li><a href="wishlist.html">INR - Indian Rupee</a></li>-->
+                                                <!--                                                <li><a href="wishlist.html">BDT - Bangladesh Taka</a></li>-->
+                                                <!--                                                <li><a href="wishlist.html">JPY - Japan Yen</a></li>-->
+                                                <!--                                                <li><a href="wishlist.html">AUD - Australian Dollar</a></li>-->
                                             </ul>
                                         </li>
                                     </ul>
@@ -327,7 +354,7 @@
                                         </div>
                                     </div>
                                     <div class="header-search-1-form">
-                                        <form id="#" method="get"  action="#">
+                                        <form id="#" method="get" action="#">
                                             <input type="text" name="search" value="" placeholder="Search here..."/>
                                             <button type="submit">
                                                 <span><i class="icon-search"></i></span>
@@ -360,9 +387,14 @@
                                 <div class="mobile-menu-toggle d-xl-none">
                                     <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
                                         <svg viewBox="0 0 800 600">
-                                            <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+                                            <path
+                                                d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                                                id="top"></path>
                                             <path d="M300,320 L540,320" id="middle"></path>
-                                            <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                                            <path
+                                                d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                                                id="bottom"
+                                                transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
                                         </svg>
                                     </a>
                                 </div>
@@ -458,7 +490,8 @@
                                 <ul class="sub-menu">
                                     <li><a href="index.html">Home Style - 01</a></li>
                                     <li><a href="index-2.html">Home Style - 02</a></li>
-                                    <li><a href="index-3.html">Home Style - 03  <span class="menu-item-badge">new</span></a></li>
+                                    <li><a href="index-3.html">Home Style - 03 <span class="menu-item-badge">new</span></a>
+                                    </li>
                                     <li><a href="index-4.html">Home Style - 04</a></li>
                                     <li><a href="index-5.html">Home Style - 05</a></li>
                                     <li><a href="index-6.html">Home Style - 06</a></li>
@@ -513,6 +546,7 @@
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
+                            <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>
                         </ul>
                     </div>
                     <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
@@ -561,7 +595,7 @@
             <div class="ltn__utilize-overlay"></div>
 
             <main>
-                <slot />
+                <slot/>
             </main>
 
             <!-- FEATURE AREA START ( Feature - 3) -->
@@ -639,7 +673,8 @@
                                             <img src="img/logo.png" alt="Logo">
                                         </div>
                                     </div>
-                                    <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
+                                    <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is
+                                        dummy text of the printing.</p>
                                     <div class="footer-address">
                                         <ul>
                                             <li>
@@ -731,7 +766,8 @@
                                         <form action="#">
                                             <input type="email" name="email" placeholder="Email*">
                                             <div class="btn-wrapper">
-                                                <button class="theme-btn-1 btn" type="submit"><i class="fas fa-location-arrow"></i></button>
+                                                <button class="theme-btn-1 btn" type="submit"><i
+                                                    class="fas fa-location-arrow"></i></button>
                                             </div>
                                         </form>
                                     </div>
@@ -792,9 +828,11 @@
                                                             <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                             <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                             <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a>
+                                                            </li>
                                                             <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                            <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
+                                                            <li class="review-total"><a href="#"> ( 95 Reviews )</a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                     <h3>Brand new product</h3>
@@ -819,11 +857,14 @@
                                                         <ul>
                                                             <li>
                                                                 <div class="cart-plus-minus">
-                                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                                    <input type="text" value="02" name="qtybutton"
+                                                                           class="cart-plus-minus-box">
                                                                 </div>
                                                             </li>
                                                             <li>
-                                                                <a href="#" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
+                                                                <a href="#" class="theme-btn-1 btn btn-effect-1"
+                                                                   title="Add to Cart" data-toggle="modal"
+                                                                   data-target="#add_to_cart_modal">
                                                                     <i class="fas fa-shopping-cart"></i>
                                                                     <span>ADD TO CART</span>
                                                                 </a>
@@ -833,13 +874,16 @@
                                                     <div class="ltn__product-details-menu-3">
                                                         <ul>
                                                             <li>
-                                                                <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                                <a href="#" class="" title="Wishlist"
+                                                                   data-toggle="modal"
+                                                                   data-target="#liton_wishlist_modal">
                                                                     <i class="far fa-heart"></i>
                                                                     <span>Add to Wishlist</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" class="" title="Compare" data-toggle="modal" data-target="#quick_view_modal">
+                                                                <a href="#" class="" title="Compare" data-toggle="modal"
+                                                                   data-target="#quick_view_modal">
                                                                     <i class="fas fa-exchange-alt"></i>
                                                                     <span>Compare</span>
                                                                 </a>
@@ -850,10 +894,14 @@
                                                     <div class="ltn__social-media">
                                                         <ul>
                                                             <li>Share:</li>
-                                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                            <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                                                            <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                                            <li><a href="#" title="Facebook"><i
+                                                                class="fab fa-facebook-f"></i></a></li>
+                                                            <li><a href="#" title="Twitter"><i
+                                                                class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#" title="Linkedin"><i
+                                                                class="fab fa-linkedin"></i></a></li>
+                                                            <li><a href="#" title="Instagram"><i
+                                                                class="fab fa-instagram"></i></a></li>
 
                                                         </ul>
                                                     </div>
@@ -889,15 +937,18 @@
                                                 </div>
                                                 <div class="modal-product-info">
                                                     <h5><a href="product-details.html">Brand new product</a></h5>
-                                                    <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Cart</p>
+                                                    <p class="added-cart"><i class="fa fa-check-circle"></i>
+                                                        Successfully added to your Cart</p>
                                                     <div class="btn-wrapper">
-                                                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                                                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View
+                                                            Cart</a>
                                                         <a href="checkout.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
                                                     </div>
                                                 </div>
                                                 <!-- additional-info -->
                                                 <div class="additional-info d-none">
-                                                    <p>We want to give you <b>10% discount</b> for your first order, <br>  Use discount code at checkout</p>
+                                                    <p>We want to give you <b>10% discount</b> for your first order,
+                                                        <br> Use discount code at checkout</p>
                                                     <div class="payment-method">
                                                         <img src="img/icons/payment.png" alt="#">
                                                     </div>
@@ -933,14 +984,17 @@
                                                 </div>
                                                 <div class="modal-product-info">
                                                     <h5><a href="product-details.html">Brand new product</a></h5>
-                                                    <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Wishlist</p>
+                                                    <p class="added-cart"><i class="fa fa-check-circle"></i>
+                                                        Successfully added to your Wishlist</p>
                                                     <div class="btn-wrapper">
-                                                        <a href="wishlist.html" class="theme-btn-1 btn btn-effect-1">View Wishlist</a>
+                                                        <a href="wishlist.html" class="theme-btn-1 btn btn-effect-1">View
+                                                            Wishlist</a>
                                                     </div>
                                                 </div>
                                                 <!-- additional-info -->
                                                 <div class="additional-info d-none">
-                                                    <p>We want to give you <b>10% discount</b> for your first order, <br>  Use discount code at checkout</p>
+                                                    <p>We want to give you <b>10% discount</b> for your first order,
+                                                        <br> Use discount code at checkout</p>
                                                     <div class="payment-method">
                                                         <img src="img/icons/payment.png" alt="#">
                                                     </div>
