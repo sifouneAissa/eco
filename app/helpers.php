@@ -235,8 +235,8 @@ if (!function_exists('searchInModel')) {
         {
 
 
-                $params = is_array($request) ? $request : $request->only(['query']); // <-- Change the query for testing.
-//                dd($params);
+                $params = is_array($request) ? $request : $request->only(['query']);
+
                 $query = isset($params['query']) ? $params['query'] : null;
 
                 $res = null;

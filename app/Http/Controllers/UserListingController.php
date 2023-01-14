@@ -13,11 +13,13 @@ class UserListingController extends Controller
 
     public function index(Request $request){
 
-        $products = searchInModel($request,Product::class,function ($product){
+        $filerCallback = function ($product){
             $isA = $product->isA();
             $product['isA'] = $isA;
             return $isA['isA'];
-        });
+        };
+
+        $products = searchInModel($request,Product::class,$filerCallback);
 
         $count = Product::query()->count();
 
@@ -25,6 +27,7 @@ class UserListingController extends Controller
         $categories = ProductCategory::get();
 
         $query  = $request->input('query');
+
         return Inertia::render('Listing',[
             'products' => $products,
             'categories' => $categories,

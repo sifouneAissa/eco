@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\MediaTrait;
-use App\Traits\OrdersTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
@@ -21,30 +20,9 @@ class Product extends Model implements HasMedia
     public const SNAME = 'Products';
     public const INAME = 'Product';
 
+    protected $fillable = ['name','price','desc','product_category_id','product_inventory_id'];
+    protected $appends = ['cprice','quantity','modal_ids','fimage','isA'];
 
-    protected $fillable = [
-        'name',
-        'price',
-        'desc',
-        'product_category_id',
-        'product_inventory_id'
-    ];
-
-    protected $appends = [
-        'cprice',
-        'quantity',
-        'modal_ids',
-        'fimage',
-        'isA'
-    ];
-
-    public function getFimageAttribute(){
-        $image = env('APP_URL').'/img/checkout.png';
-
-        if($media = $this->media->first())
-            $image = $media->getFullUrl();
-            return $image;
-    }
     public function category(){
         return $this->belongsTo(ProductCategory::class,'product_category_id');
     }
@@ -56,47 +34,10 @@ class Product extends Model implements HasMedia
         return $this->inventory->isAvailable($this->id);
     }
 
-
-    public function getIsAAttribute(){
-        return $this->isA();
-    }
-
-    public function getCpriceAttribute(){
-
-        $tExchange = Currency::where('code',Session::get('currency'))->first()->exchange_rate;
-        $value = 0;
-
-        try {
-            $value= floor($this->price/$tExchange);
-        } catch (\Exception $e){};
-
-        return $value;
-    }
-
-
-    public function getQuantityAttribute(){
-        return 1;
-    }
-
-
     public  function getModalIdsAttribute(){
-        return [
-            'edit' => 'edit-product',
-            'delete' => 'delete-product',
-            'add' => 'add-product',
-            'show' => 'show-product'
-        ];
+        return [ 'edit' => 'edit-product', 'delete' => 'delete-product','add' => 'add-product','show' => 'show-product'];
     }
 
-
-    // search in model
-    // searchable
-
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array
-     */
     public function toSearchableArray()
     {
         $array = getSearchable($this,[
@@ -108,19 +49,42 @@ class Product extends Model implements HasMedia
         return $array;
     }
 
+    public function getIsAAttribute(){
+        return $this->isA();
+    }
+    public function getCpriceAttribute(){
+
+        $tExchange = Currency::where('code',Session::get('currency'))->first()->exchange_rate;
+        $value = 0;
+
+        try {
+            $value= floor($this->price/$tExchange);
+        } catch (\Exception $e){};
+
+        return $value;
+    }
+    public function getFimageAttribute(){
+        $image = env('APP_URL').'/img/checkout.png';
+
+        if($media = $this->media->first())
+            $image = $media->getFullUrl();
+        return $image;
+    }
+    public function getQuantityAttribute(){
+        return 1;
+    }
     public function buyersCount(){
 
-         $items = $this->orderItems;
-         $q = 0;
-         foreach($items as $item) $q = $q+$item->quantity;
-//         foreach($items as $item) $q = $q+$item->quantity;
-         return $q;
+        $items = $this->orderItems;
+        $q = 0;
+        foreach($items as $item) $q = $q+$item->quantity;
+        return $q;
     }
-
-
     public function orderItems(){
         return $this->hasMany(OrderItem::class,'product_id');
     }
+
+
 
 
 
