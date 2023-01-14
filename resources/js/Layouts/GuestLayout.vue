@@ -134,7 +134,7 @@
                                             <div class="ltn__drop-menu ltn__currency-menu ltn__language-menu">
                                                 <ul>
                                                     <li><a href="#" class="dropdown-toggle"><span
-                                                        class="active-currency">English</span></a>
+                                                        class="active-currency">{{ $t("locales." + $page.props.locale) }}</span></a>
                                                         <ul>
                                                             <li
                                                                 v-for="lang in this.$page.props.locales"

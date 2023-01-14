@@ -8,6 +8,7 @@
     import PrimaryButton from "@/Components/PrimaryButton.vue";
     import TextInput from "@/Components/TextInput.vue";
     import GuestLayout from '@/Layouts/GuestLayout.vue';
+    import breadcrumb from '@/Pages/Common/breadcrumb.vue';
 
     defineProps({
         canResetPassword: Boolean,
@@ -41,26 +42,9 @@
                 {{$t('login.welcome')}}
             </h2>
         </template>
+
         <!-- BREADCRUMB AREA START -->
-        <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 bg-overlay-theme-10--- bg-image" data-bg="img/bg/4.png">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-4 justify-content-between">
-                            <div class="section-title-area">
-                                <h1 class="section-title white-color">Login</h1>
-                            </div>
-                            <div class="ltn__breadcrumb-list">
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li>Login</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <breadcrumb  :title="$t('nav_menu.pages.login')" />
         <!-- BREADCRUMB AREA END -->
         <!-- LOGIN AREA START -->
         <div class="ltn__login-area pb-65">
