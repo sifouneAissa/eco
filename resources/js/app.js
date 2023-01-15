@@ -2,6 +2,13 @@ import './bootstrap';
 import '../css/app.css'
 
 import '../../public/vendor/icofont/icofont.min.css';
+
+import $ from 'jquery'
+import WOW from 'wowjs'
+window.jQuery = $;
+window.$ = $;
+window.WOW = WOW.WOW
+
 import messages from './translation/translation';
 
 import {createApp, h} from 'vue';
@@ -16,7 +23,6 @@ import Pusher from 'pusher-js';
 import Toast from "vue-toastification";
 // Import the CSS or use your own!
 import "vue-toastification/dist/index.css";
-
 window.Pusher = Pusher;
 
 window.Echo = new Echo({
@@ -43,28 +49,39 @@ createInertiaApp({
             messages: messages, // set locale messages
         });
 
-        if(props.initialPage.props.isRtl) {
-            // for lazy importation
-            let script1 = document.createElement('script');
-            script1.src = "/assets/rtl/js/plugins.js";
-            document.body.append(script1); // (*)
 
-            // for lazy importation
-            let script2 = document.createElement('script');
-            script2.src = "/assets/rtl/js/main.js";
-            document.body.append(script2); // (*)
-        }
-        else {
-            // for lazy importation
-            let script1 = document.createElement('script');
-            script1.src = "/assets/ltr/js/plugins.js";
-            document.body.append(script1); // (*)
-
-            // for lazy importation
-            let script2 = document.createElement('script');
-            script2.src = "/assets/ltr/js/main.js";
-            document.body.append(script2); // (*)
-        }
+        // if(props.initialPage.props.isRtl) {
+        //     // for lazy importation
+        //     let script1 = document.createElement('script');
+        //     script1.src = "/assets/rtl/js/plugins.js";
+        //     // script1.defer = true;
+        //     script1.async = false;
+        //     script1.id='script1';
+        //     document.body.append(script1); // (*)
+        //
+        //     // for lazy importation
+        //     let script2 = document.createElement('script');
+        //     script2.src = "/assets/rtl/js/main.js";
+        //     script2.defer = true;
+        //     script2.id='script2';
+        //     document.body.append(script2); // (*)
+        // }
+        // else {
+        //     // for lazy importation
+        //     let script1 = document.createElement('script');
+        //     script1.src = "/assets/ltr/js/plugins.js";
+        //     // script1.defer = true;
+        //     script1.async = false;
+        //     script1.id='script1';
+        //     document.body.append(script1); // (*)
+        //
+        //     // for lazy importation
+        //     let script2 = document.createElement('script');
+        //     script2.src = "/assets/ltr/js/main.js";
+        //     script2.defer = true;
+        //     script2.id='script2';
+        //     document.body.append(script2); // (*)
+        // }
 
         return createApp({render: () => h(app, props)})
             .use(plugin)

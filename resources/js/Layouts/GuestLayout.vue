@@ -1,3 +1,4 @@
+
 <script>
     import {ref, onMounted, toRefs} from "vue";
     import {Inertia} from "@inertiajs/inertia";
@@ -11,7 +12,6 @@
     import Cart from "@/Pages/GuestLayout/Cart.vue";
     import Notification from "@/Pages/GuestLayout/Notification.vue";
     import setPassword from "@/Pages/Password/setPassword.vue";
-    import $ from 'jquery'
     import {useToast} from "vue-toastification";
     import {usePage} from "@inertiajs/inertia-vue3";
 
@@ -33,29 +33,52 @@
 
             let app = this;
 
+            $("#script1").remove();
+            $("#script2").remove();
+
             $(document).ready(function () {
                 if (app.$page.props.isRtl) {
                     // for lazy importation
                     let script1 = document.createElement('script');
                     script1.src = "/assets/rtl/js/plugins.js";
+                    script1.defer = true;
+                    script1.id='script1';
+                    // script1.async = false;
                     document.body.append(script1); // (*)
                     //
                     // for lazy importation
                     let script2 = document.createElement('script');
                     script2.src = "/assets/rtl/js/main.js";
+                    script2.defer = true;
+                    script2.id='script2';
                     document.body.append(script2); // (*)
                 } else {
                     // for lazy importation
                     let script1 = document.createElement('script');
                     script1.src = "/assets/ltr/js/plugins.js";
+                    // script1.defer = true;
+                    script1.async = false;
+                    script1.id='script1';
                     document.body.append(script1); // (*)
 
                     // for lazy importation
                     let script2 = document.createElement('script');
                     script2.src = "/assets/ltr/js/main.js";
+                    // script2.defer = true;
+                    script2.id='script2';
+                    script2.async = true;
                     document.body.append(script2); // (*)
                 }
+
+
             });
+            window.onerror = function(error) {
+                // error about tooltip
+                if(error.includes('tooltip')) {
+                    Inertia.visit(app.$page.url);
+                }
+
+            };
         },
         data() {
             return {
@@ -198,7 +221,7 @@
                                     <nav>
                                         <div class="ltn__main-menu">
                                             <ul>
-                                                <li><Link href="/">Home</Link>
+                                                <li><Link href="/" id="home">Home</Link>
 <!--                                                <li class="menu-icon"><a href="#">Home</a>-->
 <!--                                                    <ul>-->
 <!--                                                        <li><a href="index.html">Home Style - 01</a></li>-->
