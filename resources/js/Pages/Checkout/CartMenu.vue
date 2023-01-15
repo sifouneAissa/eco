@@ -177,6 +177,7 @@ export default {
   data() {
     return {
       // model : this.$page.props.shopping_session
+        tomodel : null
     };
   },
   computed: {

@@ -32,8 +32,40 @@
             CartMenu
         },
         mounted() {
+            // clear interval
+            clearInterval(window.idleIntervalTimer);
+
+            if (this.$page.component === "Listing") {
+                clearInterval(window.idleIntervalTimer);
+                window.idleIntervalTimer = setInterval(function () {
+                    Inertia.reload({
+                        only: ["products"],
+                        preserveScroll: true,
+                    });
+                }, 20000);
+            }
+            // else if (this.$page.component === "Blogs") {
+            //     window.idleIntervalTimer = setInterval(function () {
+            //         Inertia.reload({
+            //             only: ["blogs"],
+            //             preserveScroll: true,
+            //         });
+            //     }, 20000);
+            // }
 
             let app = this;
+
+            let add_to_cart_modal = $("#add_to_cart_modal");
+            let quick_view_modal = $("#quick_view_modal");
+
+
+            add_to_cart_modal.on("hidden.bs.modal", function () {
+                this.$page.props.product=null;
+            });
+            quick_view_modal.on("hidden.bs.modal", function () {
+                this.$page.props.product=null;
+            });
+
 
             $("#script1").remove();
             $("#script2").remove();
@@ -836,8 +868,8 @@
             <!-- FOOTER AREA END -->
 
             <!-- MODAL AREA START (Quick View Modal) -->
-            <div class="ltn__modal-area ltn__quick-view-modal-area">
-                <div class="modal fade" id="quick_view_modal" tabindex="-1">
+            <div v-if="$page.props.product" class="ltn__modal-area ltn__quick-view-modal-area">
+                <div :key="$page.props.product.id" class="modal fade" id="quick_view_modal" tabindex="-1">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -852,7 +884,7 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-12">
                                                 <div class="modal-product-img">
-                                                    <img src="img/product/4.png" alt="#">
+                                                    <img :src="$page.props.product.fimage" alt="#">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
@@ -869,20 +901,20 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <h3>Brand new product</h3>
+                                                    <h3>{{$page.props.product.name}}</h3>
                                                     <div class="product-price">
-                                                        <span>$149.00</span>
+                                                        <span>{{ $page.props.currency_code }} {{ $page.props.product.cprice }}</span>
                                                         <del>$165.00</del>
                                                     </div>
                                                     <div class="modal-product-meta ltn__product-details-menu-1">
                                                         <ul>
                                                             <li>
-                                                                <strong>Categories:</strong>
+                                                                <strong>Category : </strong>
                                                                 <span>
-                                                            <a href="#">Beard</a>
-                                                            <a href="#">Oil</a>
-                                                            <a href="#">Grooming</a>
-                                                            <a href="#">Tools</a>
+                                                                 <a href="#">{{$page.props.product.category.name}}</a>
+<!--                                                            <a href="#">Oil</a>-->
+<!--                                                            <a href="#">Grooming</a>-->
+<!--                                                            <a href="#">Tools</a>-->
                                                         </span>
                                                             </li>
                                                         </ul>
@@ -952,8 +984,8 @@
             <!-- MODAL AREA END -->
 
             <!-- MODAL AREA START (Add To Cart Modal) -->
-            <div class="ltn__modal-area ltn__add-to-cart-modal-area">
-                <div class="modal fade" id="add_to_cart_modal" tabindex="-1">
+            <div  v-if="$page.props.product" class="ltn__modal-area ltn__add-to-cart-modal-area">
+                <div :key="$page.props.product.id" class="modal fade" id="add_to_cart_modal" tabindex="-1">
                     <div class="modal-dialog modal-md" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -967,10 +999,10 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="modal-product-img">
-                                                    <img src="img/product/1.png" alt="#">
+                                                    <img :src="$page.props.product.fimage" alt="#">
                                                 </div>
                                                 <div class="modal-product-info">
-                                                    <h5><a href="product-details.html">Brand new product</a></h5>
+                                                    <h5><a href="product-details.html">{{$page.props.product.name}}</a></h5>
                                                     <p class="added-cart"><i class="fa fa-check-circle"></i>
                                                         Successfully added to your Cart</p>
                                                     <div class="btn-wrapper">

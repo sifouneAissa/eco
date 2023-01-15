@@ -1,6 +1,7 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import ListingLayout from "@/Pages/Listing/Layout.vue";
+import breadcrumb from '@/Pages/Common/breadcrumb.vue';
 
 defineProps({
   products: Array,
@@ -14,6 +15,10 @@ defineProps({
         {{ $t("listing.page_title") }}
       </h2>
     </template>
+
+      <!-- BREADCRUMB AREA START -->
+      <breadcrumb  :title="$t('nav_menu.pages.products')" />
+      <!-- BREADCRUMB AREA END -->
     <ListingLayout :title="$t('listing.page_title')" />
   </GuestLayout>
 </template>

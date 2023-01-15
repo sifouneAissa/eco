@@ -241,7 +241,7 @@ if (!function_exists('searchInModel')) {
 
                 $res = null;
 
-                $data = $builder::get();
+                $data = $builder::with('category')->get();
 
                 if(is_array($query) && $query){
 
@@ -256,10 +256,10 @@ if (!function_exists('searchInModel')) {
 
                     $ids = array_unique($ids);
 
-                    $data = $res->whereIn('id',$ids)->get();
+                    $data = $res->whereIn('id',$ids)->with('category')->get();
                 }
                 else if($query)
-                $data =  $builder::search($query)->get();
+                $data =  $builder::search($query)->with('category')->get();
 
 
 
