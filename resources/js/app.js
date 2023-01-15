@@ -1,4 +1,5 @@
-// import './bootstrap';
+import './bootstrap';
+import '../css/app.css'
 
 import '../../public/vendor/icofont/icofont.min.css';
 import messages from './translation/translation';

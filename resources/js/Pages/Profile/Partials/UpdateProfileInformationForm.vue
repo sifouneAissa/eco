@@ -86,7 +86,7 @@ const clearPhotoFileInput = () => {
             {{$t('profile.info.description')}}
         </template>
 
-        <template #form>
+        <template class="col-12" #form>
             <!-- Profile Photo -->
             <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
@@ -154,7 +154,7 @@ const clearPhotoFileInput = () => {
 
                 <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
                     <p class="text-sm mt-2">
-                        {{$t('profile.info.msg1')}} 
+                        {{$t('profile.info.msg1')}}
                         <Link
                             :href="route('verification.send')"
                             method="post"
@@ -162,12 +162,12 @@ const clearPhotoFileInput = () => {
                             class="underline text-gray-600 hover:text-gray-900"
                             @click.prevent="sendEmailVerification"
                         >
-                        {{$t('profile.info.msg2')}} 
+                        {{$t('profile.info.msg2')}}
                         </Link>
                     </p>
 
                     <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
-                        {{$t('profile.info.msg3')}} 
+                        {{$t('profile.info.msg3')}}
                     </div>
                 </div>
             </div>

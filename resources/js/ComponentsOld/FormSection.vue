@@ -5,11 +5,10 @@ import SectionTitle from './SectionTitle.vue';
 defineEmits(['submitted']);
 
 const hasActions = computed(() => !! useSlots().actions);
-
 </script>
 
 <template>
-    <div class="col-12">
+    <div class="md:grid md:grid-cols-3 md:gap-6">
         <SectionTitle>
             <template #title>
                 <slot name="title" />
