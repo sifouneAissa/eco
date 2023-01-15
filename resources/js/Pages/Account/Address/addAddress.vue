@@ -20,17 +20,20 @@
             // onFinish: () => add_form.reset(),
             onSuccess : function () {
                 $('#add-address-modal').modal('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                 add_form.reset('address_line_1','address_line_2','mobile');
             }
         });
     };
 </script>
 <template>
-    <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog" aria-labelledby="add-address" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div  class="ltn__modal-area">
+    <div class="modal fade" id="add-address-modal" tabindex="-1" >
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="add-address">{{$t("account.addresses.add_card.title")}}</h5>
+                    <h5 class="modal-title m-2" id="add-address">{{$t("account.addresses.add_card.title")}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -38,7 +41,7 @@
                 <div class="modal-body">
                     <form @submit.prevent="submit">
                         <div class="form-row">
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="address_line_1">{{$t("account.addresses.add_card.address1")}}</label>
                                 <div class="input-group">
                                     <input required type="text" v-model="add_form.address_line_1" class="form-control" id="address_line_1" :placeholder="$t('account.addresses.add_card.address1')">
@@ -54,7 +57,7 @@
                                 </div>
 
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="address_line_1">{{$t("account.addresses.add_card.address2")}}</label>
                                 <div class="input-group">
                                     <input required type="text" v-model="add_form.address_line_2" class="form-control" id="address_line_2" :placeholder="$t('account.addresses.add_card.address2')">
@@ -67,7 +70,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="city">{{$t("account.addresses.add_card.city")}}</label>
                                 <div class="input-group">
                                     <input required type="text" v-model="add_form.city" class="form-control" id="city" :placeholder="$t('account.addresses.add_card.city')">
@@ -79,7 +82,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="Country">{{$t("account.addresses.add_card.country")}}</label>
                                 <div class="input-group">
                                     <input required type="text" v-model="add_form.country" class="form-control" id="Country" :placeholder="$t('account.addresses.add_card.country')">
@@ -92,7 +95,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="mobile">{{$t("account.addresses.add_card.mobile")}}</label>
                                 <div class="input-group">
                                     <input required type="text" v-model="add_form.mobile" class="form-control" id="mobile" :placeholder="$t('account.addresses.add_card.mobile')">
@@ -104,7 +107,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="telephone">{{$t("account.addresses.add_card.telephone")}}</label>
                                 <div class="input-group">
                                     <input required type="text" v-model="add_form.telephone" class="form-control" id="telephone" :placeholder="$t('account.addresses.add_card.telephone')">
@@ -116,7 +119,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="postal_code">{{$t("account.addresses.add_card.postal_code")}}</label>
                                 <div class="input-group">
                                     <input required type="text" v-model="add_form.postal_code" class="form-control" id="postal_code" :placeholder="$t('account.addresses.add_card.postal_code')">
@@ -131,12 +134,76 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
-                            </button><button  type="submit" class="btn d-flex w-50 text-center justify-content-center btn-primary">{{$t("account.addresses.add_card.save")}}</button>
+                            <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-warning" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
+                            </button><button  type="submit" class="btn d-flex w-50 text-center justify-content-center btn-warning">{{$t("account.addresses.add_card.save")}}</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+        <!-- Utilize Cart Menu Start -->
+<!--    <div id="ltn__utilize-add-address" class="ltn__utilize ltn__utilize-cart-menu">-->
+<!--        <div class="ltn__utilize-menu-inner ltn__scrollbar">-->
+<!--            <div class="ltn__utilize-menu-head">-->
+<!--                <span class="ltn__utilize-menu-title">Cart</span>-->
+<!--                <button class="ltn__utilize-close">×</button>-->
+<!--            </div>-->
+<!--            <div class="mini-cart-product-area ltn__scrollbar">-->
+<!--                <div class="mini-cart-item clearfix">-->
+<!--                    <div class="mini-cart-img">-->
+<!--                        <a href="#"><img src="img/product/1.png" alt="Image"></a>-->
+<!--                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+<!--                    </div>-->
+<!--                    <div class="mini-cart-info">-->
+<!--                        <h6><a href="#">Beard Care Oil</a></h6>-->
+<!--                        <span class="mini-cart-quantity">1 x $65.00</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="mini-cart-item clearfix">-->
+<!--                    <div class="mini-cart-img">-->
+<!--                        <a href="#"><img src="img/product/15.png" alt="Image"></a>-->
+<!--                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+<!--                    </div>-->
+<!--                    <div class="mini-cart-info">-->
+<!--                        <h6><a href="#">Beard Scissors</a></h6>-->
+<!--                        <span class="mini-cart-quantity">1 x $15.00</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="mini-cart-item clearfix">-->
+<!--                    <div class="mini-cart-img">-->
+<!--                        <a href="#"><img src="img/product/9.png" alt="Image"></a>-->
+<!--                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+<!--                    </div>-->
+<!--                    <div class="mini-cart-info">-->
+<!--                        <h6><a href="#">Beard Shampoo</a></h6>-->
+<!--                        <span class="mini-cart-quantity">1 x $92.00</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="mini-cart-item clearfix">-->
+<!--                    <div class="mini-cart-img">-->
+<!--                        <a href="#"><img src="img/product/4.png" alt="Image"></a>-->
+<!--                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+<!--                    </div>-->
+<!--                    <div class="mini-cart-info">-->
+<!--                        <h6><a href="#">Beard Growth Oil</a></h6>-->
+<!--                        <span class="mini-cart-quantity">1 x $68.00</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="mini-cart-footer">-->
+<!--                <div class="mini-cart-sub-total">-->
+<!--                    <h5>Subtotal: <span>$310.00</span></h5>-->
+<!--                </div>-->
+<!--                <div class="btn-wrapper">-->
+<!--                    <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>-->
+<!--                    <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>-->
+<!--                </div>-->
+<!--                <p>Free Shipping on All Orders Over $100!</p>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
 </template>

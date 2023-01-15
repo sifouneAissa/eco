@@ -1,5 +1,6 @@
 // import './bootstrap';
 
+import '../../public/vendor/icofont/icofont.min.css';
 import messages from './translation/translation';
 
 import {createApp, h} from 'vue';

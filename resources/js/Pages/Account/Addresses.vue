@@ -68,7 +68,7 @@
             <h4 class="font-weight-bold mt-0 mb-4">{{$t('account.addresses.manage_addresses')}}</h4>
 
             <h4>
-                <a class="btn btn-primary"  data-toggle="modal" data-target="#add-address-modal"  href="#"><i class="icofont-ui-add"></i> {{$t('account.addresses.add_button')}}</a>
+                <a class="btn theme-btn-1"  data-toggle="modal" data-target="#add-address-modal"  href="#"><i class="icofont-ui-add"></i> {{$t('account.addresses.add_button')}}</a>
             </h4>
         </div>
         <div  class="row pb-2">

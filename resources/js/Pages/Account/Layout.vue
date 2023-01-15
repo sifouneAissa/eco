@@ -7,6 +7,8 @@ import Offers from "@/Pages/Account/Offers.vue";
 import Payments from "@/Pages/Account/Payments.vue";
 import Addresses from "@/Pages/Account/Addresses.vue";
 import OrderCard from "@/Pages/Account/Order/OrderCard.vue";
+import AddressCard from '@/Pages/Account/Address/AddressCard.vue'
+import addAddress from '@/Pages/Account/Address/addAddress.vue'
 import $ from 'jquery'
 
 export default  {
@@ -18,7 +20,9 @@ export default  {
         Offers,
         Orders,
         Link,
-        Head
+        Head,
+        AddressCard,
+        addAddress
     },
     data (){
         return {
@@ -490,25 +494,13 @@ export default  {
                                         <div class="tab-pane fade" id="liton_tab_1_4">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <p>The following addresses will be used on the checkout page by default.</p>
-                                                <div class="row">
-                                                    <div class="col-md-6 col-12 learts-mb-30">
-                                                        <h4>Billing Address <small><a href="#">edit</a></small></h4>
-                                                        <address>
-                                                            <p><strong>Alex Tuntuni</strong></p>
-                                                            <p>1355 Market St, Suite 900 <br>
-                                                                San Francisco, CA 94103</p>
-                                                            <p>Mobile: (123) 456-7890</p>
-                                                        </address>
-                                                    </div>
-                                                    <div class="col-md-6 col-12 learts-mb-30">
-                                                        <h4>Shipping Address <small><a href="#">edit</a></small></h4>
-                                                        <address>
-                                                            <p><strong>Alex Tuntuni</strong></p>
-                                                            <p>1355 Market St, Suite 900 <br>
-                                                                San Francisco, CA 94103</p>
-                                                            <p>Mobile: (123) 456-7890</p>
-                                                        </address>
-                                                    </div>
+                                                <h4 class="float-right">
+                                                    <a class="btn theme-btn-1"   data-toggle="modal" data-target="#add-address-modal"  href="#"><i class="icofont-ui-add"></i> {{$t('account.addresses.add_button')}}</a>
+                                                </h4>
+                                                <!-- Modal -->
+                                                <addAddress />
+                                                <div class="row col-12">
+                                                    <AddressCard v-for="(model,index) in $page.props.addresses" :key="model.id"  :model="model" />
                                                 </div>
                                             </div>
                                         </div>
