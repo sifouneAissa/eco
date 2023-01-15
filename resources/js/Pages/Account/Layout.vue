@@ -66,7 +66,7 @@ export default  {
 </script>
 
 <template>
-  <Head :title="title" />
+<!--  <Head :title="title" />-->
 <!--  <section class="section pt-4 pb-4 osahan-account-page">-->
 <!--    <div class="container">-->
 <!--      <div class="row">-->
@@ -437,6 +437,7 @@ export default  {
 <!--      </div>-->
 <!--    </div>-->
 <!--  </section>-->
+
     <div class="liton__wishlist-area pb-120">
         <div class="container">
             <div class="row">

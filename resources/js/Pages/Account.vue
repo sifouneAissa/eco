@@ -1,7 +1,8 @@
 <script setup>
     import GuestLayout from '@/Layouts/GuestLayout.vue';
     import AccountLayout from '@/Pages/Account/Layout.vue';
-    import DashboardContent from '@/Pages/Dashboard-components/DashboardContent.vue';
+    import breadcrumb from '@/Pages/Common/breadcrumb.vue';
+
 
     defineProps({
         addresses: Array,
@@ -17,6 +18,9 @@
             </h2>
         </template>
 
+        <!-- BREADCRUMB AREA START -->
+        <breadcrumb  :title="$t('nav_menu.pages.account')" />
+        <!-- BREADCRUMB AREA END -->
         <AccountLayout :title="$t('account.account')" />
 
     </GuestLayout>
