@@ -3,7 +3,7 @@
         <div class="gold-members p-4">
             <a href="#">
                 <div class="media">
-                    <img class="mr-4" :src="model.fimage" alt="Generic placeholder image">
+<!--                    <img class="mr-4" :src="model.fimage" alt="Generic placeholder image">-->
                     <div class="media-body">
                         <span class="float-right text-info">{{model.delivered_date}}<i class="icofont-check-circled text-success"></i></span>
                         <h6 class="mb-2">
