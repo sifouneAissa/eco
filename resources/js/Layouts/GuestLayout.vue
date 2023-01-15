@@ -198,18 +198,19 @@
                                     <nav>
                                         <div class="ltn__main-menu">
                                             <ul>
-                                                <li class="menu-icon"><a href="#">Home</a>
-                                                    <ul>
-                                                        <li><a href="index.html">Home Style - 01</a></li>
-                                                        <li><a href="index-2.html">Home Style - 02</a></li>
-                                                        <li><a href="index-3.html">Home Style - 03 <span
-                                                            class="menu-item-badge">new</span></a></li>
-                                                        <li><a href="index-4.html">Home Style - 04</a></li>
-                                                        <li><a href="index-5.html">Home Style - 05</a></li>
-                                                        <li><a href="index-6.html">Home Style - 06</a></li>
-                                                        <li><a href="index-7.html">Home Style - 07</a></li>
-                                                        <li><a href="index-8.html">Home Style - 08</a></li>
-                                                    </ul>
+                                                <li><Link href="/">Home</Link>
+<!--                                                <li class="menu-icon"><a href="#">Home</a>-->
+<!--                                                    <ul>-->
+<!--                                                        <li><a href="index.html">Home Style - 01</a></li>-->
+<!--                                                        <li><a href="index-2.html">Home Style - 02</a></li>-->
+<!--                                                        <li><a href="index-3.html">Home Style - 03 <span-->
+<!--                                                            class="menu-item-badge">new</span></a></li>-->
+<!--                                                        <li><a href="index-4.html">Home Style - 04</a></li>-->
+<!--                                                        <li><a href="index-5.html">Home Style - 05</a></li>-->
+<!--                                                        <li><a href="index-6.html">Home Style - 06</a></li>-->
+<!--                                                        <li><a href="index-7.html">Home Style - 07</a></li>-->
+<!--                                                        <li><a href="index-8.html">Home Style - 08</a></li>-->
+<!--                                                    </ul>-->
                                                 </li>
                                                 <li class="menu-icon"><a href="#">About Us</a>
                                                     <ul>
@@ -376,10 +377,10 @@
                                             <li>
                                                 <a href="#"><i class="icon-user"></i></a>
                                                 <ul>
-                                                    <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>
-                                                    <li><Link :href="route('register')">{{ $t("nav_menu.pages.register") }}</Link></li>
+                                                    <li v-if="!$page.props.auth"><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>
+                                                    <li v-if="!$page.props.auth"><Link :href="route('register')">{{ $t("nav_menu.pages.register") }}</Link></li>
 <!--                                                    <li><a href="register.html">Register</a></li>-->
-                                                    <li><a href="account.html">My Account</a></li>
+                                                    <li v-if="$page.props.auth"><Link :href="route('account')">My Account</Link></li>
                                                     <li><a href="wishlist.html">Wishlist</a></li>
                                                 </ul>
                                             </li>
@@ -494,18 +495,18 @@
                     </div>
                     <div class="ltn__utilize-menu">
                         <ul>
-                            <li><a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Home Style - 01</a></li>
-                                    <li><a href="index-2.html">Home Style - 02</a></li>
-                                    <li><a href="index-3.html">Home Style - 03 <span class="menu-item-badge">new</span></a>
-                                    </li>
-                                    <li><a href="index-4.html">Home Style - 04</a></li>
-                                    <li><a href="index-5.html">Home Style - 05</a></li>
-                                    <li><a href="index-6.html">Home Style - 06</a></li>
-                                    <li><a href="index-7.html">Home Style - 07</a></li>
-                                    <li><a href="index-8.html">Home Style - 08</a></li>
-                                </ul>
+                            <li><Link :href="route('listing')">Home</Link>
+<!--                                <ul class="sub-menu">-->
+<!--                                    <li><a href="index.html">Home Style - 01</a></li>-->
+<!--                                    <li><a href="index-2.html">Home Style - 02</a></li>-->
+<!--                                    <li><a href="index-3.html">Home Style - 03 <span class="menu-item-badge">new</span></a>-->
+<!--                                    </li>-->
+<!--                                    <li><a href="index-4.html">Home Style - 04</a></li>-->
+<!--                                    <li><a href="index-5.html">Home Style - 05</a></li>-->
+<!--                                    <li><a href="index-6.html">Home Style - 06</a></li>-->
+<!--                                    <li><a href="index-7.html">Home Style - 07</a></li>-->
+<!--                                    <li><a href="index-8.html">Home Style - 08</a></li>-->
+<!--                                </ul>-->
                             </li>
                             <li><a href="about.html">About</a></li>
                             <li><a href="#">Product</a>
@@ -559,7 +560,7 @@
                     </div>
                     <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
                         <ul>
-                            <li>
+                            <li v-if="$page.props.auth">
                                 <Link :href="route('login')" title="Login">
                             <span class="utilize-btn-icon">
                                 <i class="far fa-user"></i>
