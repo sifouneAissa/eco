@@ -45,6 +45,7 @@
                     Inertia.reload({
                         only: ["products"],
                         preserveScroll: true,
+                        // preserveState : true
                     });
                 }, 20000);
             }
@@ -104,7 +105,10 @@
             window.onerror = function(error) {
                 // error about tooltip
                 if(error.includes('tooltip')) {
-                    Inertia.visit(app.$page.url);
+                    Inertia.visit(app.$page.url,{
+                        // preserveState : true,
+                        preserveScroll : true
+                    });
                 }
 
             };

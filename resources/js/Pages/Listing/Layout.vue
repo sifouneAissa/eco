@@ -23,11 +23,13 @@ export default {
           cat.name === this.$page.props.query)
       );
     },
-    submit: function (category, event) {
+    submit: function (category) {
       let app = this;
-      console.log(category.name);
+      console.log('this.$page.props.query');
+      console.log(this.$page.props.query);
+      if(this.$page.props.query)
       useForm({
-        query: event.target.checked ? category.name : "",
+        query: category ? category.name : '',
       }).get(route("listing"));
     },
   },
@@ -205,16 +207,22 @@ export default {
                         <p>20% OFF WITH CODE CYBERMONDAY</p>
                     </div>
                     <div class="ltn__gallery-menu">
-                        <div class="ltn__gallery-filter-menu portfolio-filter text-uppercase text-center mb-50">
-                            <button data-filter="*" class="active">all</button>
+                        <div v-if="$page.props.query" class="ltn__gallery-filter-menu portfolio-filter text-uppercase text-center mb-50">
+                            <button @click="submit(null)" data-filter="*">all</button>
+                            <button
+                                v-for="category in $page.props.categories"
+                                :key="category.id"
+                                @click="submit(category)"
+                                :class="($page.props.query === category.name) ? 'active' : ''"
+                                 :data-filter="'.filter_category_'+category.id">{{category.name}}</button>
+                        </div>
+                        <div v-else  class="ltn__gallery-filter-menu portfolio-filter text-uppercase text-center mb-50">
+                            <button  data-filter="*" class="active">all</button>
 
                             <button
                                 v-for="category in $page.props.categories"
                                 :key="category.id"
-                            :data-filter="'.filter_category_'+category.id">{{category.name}}</button>
-<!--                            <button data-filter=".filter_category_1">Oils & Moisturizers</button>-->
-<!--                            <button data-filter=".filter_category_2">Grooming Tools</button>-->
-<!--                            <button data-filter=".filter_category_3">Clean & Hold</button>-->
+                                :data-filter="'.filter_category_'+category.id">{{category.name}}</button>
                         </div>
                     </div>
                 </div>

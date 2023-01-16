@@ -16,6 +16,7 @@ class UserListingController extends Controller
         $filerCallback = function ($product){
             $isA = $product->isA();
             $product['isA'] = $isA;
+            $product['category'] = $product->categroy;
             return $isA['isA'];
         };
 
@@ -27,6 +28,7 @@ class UserListingController extends Controller
         $categories = ProductCategory::get();
 
         $query  = $request->input('query');
+        $query = ProductCategory::where('name',$query)->count() ? $query : null;
 
         return Inertia::render('Listing',[
             'products' => $products,
