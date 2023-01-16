@@ -3,7 +3,7 @@
     <!-- MODAL AREA START (Quick View Modal) -->
     <div  class="ltn__modal-area ltn__quick-view-modal-area">
         <div  class="modal fade" id="quick_view_modal" tabindex="-1">
-            <div v-if="$page.props.product" :key="$page.props.product.id" class="modal-dialog modal-lg" role="document">
+            <div v-if="$page.props.productTo" :key="$page.props.productTo.id" class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -17,7 +17,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <div class="modal-product-img">
-                                            <img :src="$page.props.product.fimage" alt="#">
+                                            <img :src="$page.props.productTo.fimage" alt="#">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
@@ -34,9 +34,9 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <h3>{{$page.props.product.name}}</h3>
+                                            <h3>{{$page.props.productTo.name}}</h3>
                                             <div class="product-price">
-                                                <span>{{ $page.props.currency_code }} {{ $page.props.product.cprice }}</span>
+                                                <span>{{ $page.props.currency_code }} {{ $page.props.productTo.cprice }}</span>
                                                 <del>$165.00</del>
                                             </div>
                                             <div class="modal-product-meta ltn__product-details-menu-1">
@@ -44,7 +44,7 @@
                                                     <li>
                                                         <strong>Category : </strong>
                                                         <span>
-                                                                 <a href="#">{{$page.props.product.category.name}}</a>
+                                                                 <a href="#">{{$page.props.productTo.category.name}}</a>
                                                             <!--                                                            <a href="#">Oil</a>-->
                                                             <!--                                                            <a href="#">Grooming</a>-->
                                                             <!--                                                            <a href="#">Tools</a>-->
@@ -56,12 +56,12 @@
                                                 <ul>
                                                     <li>
                                                         <div class="cart-plus-minus">
-                                                            <div @click="incrQP($page.props.product, -1)" class="dec qtybutton">-</div>
-                                                            <input type="text" :value="$page.props.product.quantity" name="qtybutton" class="cart-plus-minus-box">
-                                                            <div @click="incrQP($page.props.product, +1)" class="inc qtybutton">+</div>
+                                                            <div @click="incrQP($page.props.productTo, -1)" class="dec qtybutton">-</div>
+                                                            <input type="text" :value="$page.props.productTo.quantity" name="qtybutton" class="cart-plus-minus-box">
+                                                            <div @click="incrQP($page.props.productTo, +1)" class="inc qtybutton">+</div>
                                                         </div>
                                                     </li>
-                                                    <li @click="submit($page.props.product)">
+                                                    <li @click="submit($page.props.productTo)">
                                                         <a href="#" class="theme-btn-1 btn btn-effect-1"
                                                            title="Add to Cart">
 <!--                                                           data-toggle="modal"-->

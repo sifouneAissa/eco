@@ -69,7 +69,7 @@ class HandleInertiaRequests extends Middleware
 
         if(Session::get('setPassword'))
             $set_password = true;
-
+//        dd($shopping->toArray());
         return array_merge(parent::share($request), [
             //
             'locale' => $cLocale,

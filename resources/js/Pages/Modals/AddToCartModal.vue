@@ -3,7 +3,7 @@
     <!-- MODAL AREA START (Add To Cart Modal) -->
     <div   class="ltn__modal-area ltn__add-to-cart-modal-area">
         <div class="modal fade" id="add_to_cart_modal" tabindex="-1">
-            <div v-if="$page.props.product" :key="$page.props.product.id"  class="modal-dialog modal-md" role="document">
+            <div v-if="$page.props.productTo" :key="$page.props.productTo.id"  class="modal-dialog modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -17,10 +17,10 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="modal-product-img">
-                                            <img :src="$page.props.product.fimage" alt="#">
+                                            <img :src="$page.props.productTo.fimage" alt="#">
                                         </div>
                                         <div class="modal-product-info">
-                                            <h5><a href="product-details.html">{{$page.props.product.name}}</a></h5>
+                                            <h5><a href="product-details.html">{{$page.props.productTo.name}}</a></h5>
 
                                             <div class="row">
                                                 <span
@@ -70,7 +70,8 @@
         data () {
             return {
                 form : useForm({
-                })
+                }),
+                product : this.$page.props.productTo
             }
         },
         mounted() {
@@ -82,8 +83,8 @@
             // });
             //
             //
-            add_to_cart_modal.on("show.bs.modal", function (e) {
-                app.submit(app.$page.props.product);
+            add_to_cart_modal.on("shown.bs.modal", function (e) {
+                app.submit(app.$page.props.productTo);
             });
         },
         methods: {
@@ -107,11 +108,15 @@
                 this.form
                     .transform((data) => ({
                         product_id: model.id,
-                        quantity: 1,
+                        quantity: model.quantity,
                     }))
                     .post(route("addProduct"),{
                         onSuccess : function (){
-                            app.$page.props.product = model;
+                            if(app.$page.props.product && (app.$page.props.product.id === model.id))
+                                app.$page.props.productTo = app.$page.props.product;
+                             else
+                             app.$page.props.productTo = model;
+
                         }
                     });
             },

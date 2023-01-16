@@ -67,7 +67,7 @@ Route::middleware([
 
 
     Route::resource('/cartitem',\App\Http\Controllers\CartItemController::class)->only(
-        'update','destroy'
+        'update','destroy','index'
     );
     Route::resource('/order',\App\Http\Controllers\UserOrderController::class)->only(
         'store'

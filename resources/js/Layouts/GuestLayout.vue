@@ -96,6 +96,7 @@ export default {
         document.body.append(script2); // (*)
       }
     });
+
     window.onerror = function (error) {
       // error about tooltip
       if (error.includes("tooltip")) {
@@ -266,7 +267,7 @@ export default {
             <div class="row">
               <div class="col">
                 <div class="site-logo">
-                  <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+                  <a href="index.html"><img src="/img/logo.png" alt="Logo" /></a>
                 </div>
               </div>
               <div class="col header-menu-column">
@@ -285,9 +286,7 @@ export default {
                             <li><a href="coming-soon.html">Coming Soon</a></li>
                             <li><a href="404.html">404</a></li>
                             <li>
-                              <Link :href="route('contact-us')">{{
-                                $t("nav_menu.help.contact_us")
-                              }}</Link>
+                              <Link :href="route('welcometest')">Contact</Link>
                             </li>
                           </ul>
                         </li>
@@ -303,7 +302,7 @@ export default {
                               <div class="menu-product-item">
                                 <div class="menu-product-img">
                                   <a href="product-details.html"
-                                    ><img src="img/product/13.png" alt="#"
+                                    ><img src="/img/product/13.png" alt="#"
                                   /></a>
                                 </div>
                                 <div class="product-info">
@@ -321,7 +320,7 @@ export default {
                               <div class="menu-product-item">
                                 <div class="menu-product-img">
                                   <a href="product-details.html"
-                                    ><img src="img/product/9.png" alt="#"
+                                    ><img src="/img/product/9.png" alt="#"
                                   /></a>
                                 </div>
                                 <div class="product-info">
@@ -341,7 +340,7 @@ export default {
                               <div class="menu-product-item">
                                 <div class="menu-product-img">
                                   <a href="product-details.html"
-                                    ><img src="img/product/15.png" alt="#"
+                                    ><img src="/img/product/15.png" alt="#"
                                   /></a>
                                 </div>
                                 <div class="product-info">
@@ -359,7 +358,7 @@ export default {
                               <div class="menu-product-item">
                                 <div class="menu-product-img">
                                   <a href="product-details.html"
-                                    ><img src="img/product/6.png" alt="#"
+                                    ><img src="/img/product/6.png" alt="#"
                                   /></a>
                                 </div>
                                 <div class="product-info">
@@ -389,7 +388,6 @@ export default {
                             <li><a href="blog-details.html">News details</a></li>
                           </ul>
                         </li>
-                        <!-- <li><a href="contact.html">Contact</a></li> -->
                         <li>
                           <Link :href="route('contact-us')">{{
                             $t("nav_menu.help.contact_us")
@@ -540,7 +538,7 @@ export default {
       <!--                    <div class="mini-cart-product-area ltn__scrollbar">-->
       <!--                        <div class="mini-cart-item clearfix">-->
       <!--                            <div class="mini-cart-img">-->
-      <!--                                <a href="#"><img src="img/product/1.png" alt="Image"></a>-->
+      <!--                                <a href="#"><img src="/img/product/1.png" alt="Image"></a>-->
       <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
       <!--                            </div>-->
       <!--                            <div class="mini-cart-info">-->
@@ -550,7 +548,7 @@ export default {
       <!--                        </div>-->
       <!--                        <div class="mini-cart-item clearfix">-->
       <!--                            <div class="mini-cart-img">-->
-      <!--                                <a href="#"><img src="img/product/15.png" alt="Image"></a>-->
+      <!--                                <a href="#"><img src="/img/product/15.png" alt="Image"></a>-->
       <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
       <!--                            </div>-->
       <!--                            <div class="mini-cart-info">-->
@@ -560,7 +558,7 @@ export default {
       <!--                        </div>-->
       <!--                        <div class="mini-cart-item clearfix">-->
       <!--                            <div class="mini-cart-img">-->
-      <!--                                <a href="#"><img src="img/product/9.png" alt="Image"></a>-->
+      <!--                                <a href="#"><img src="/img/product/9.png" alt="Image"></a>-->
       <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
       <!--                            </div>-->
       <!--                            <div class="mini-cart-info">-->
@@ -570,7 +568,7 @@ export default {
       <!--                        </div>-->
       <!--                        <div class="mini-cart-item clearfix">-->
       <!--                            <div class="mini-cart-img">-->
-      <!--                                <a href="#"><img src="img/product/4.png" alt="Image"></a>-->
+      <!--                                <a href="#"><img src="/img/product/4.png" alt="Image"></a>-->
       <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
       <!--                            </div>-->
       <!--                            <div class="mini-cart-info">-->
@@ -598,7 +596,7 @@ export default {
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
           <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-              <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+              <a href="index.html"><img src="/img/logo.png" alt="Logo" /></a>
             </div>
             <button class="ltn__utilize-close">×</button>
           </div>
@@ -673,7 +671,11 @@ export default {
                   <li><a href="register.html">Register</a></li>
                 </ul>
               </li>
-              <li><a href="contact.html">Contact</a></li>
+              <li>
+                <Link :href="route('contact-us')">{{
+                  $t("nav_menu.help.contact_us")
+                }}</Link>
+              </li>
               <!--                            <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>-->
             </ul>
           </div>
@@ -752,7 +754,7 @@ export default {
                   <div class="col-xl-3 col-md-6 col-12">
                     <div class="ltn__feature-item ltn__feature-item-8">
                       <div class="ltn__feature-icon">
-                        <img src="img/icons/svg/4-track.svg" alt="#" />
+                        <img src="/img/icons/svg/4-track.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
                         <h4>Free home delivery</h4>
@@ -763,7 +765,7 @@ export default {
                   <div class="col-xl-3 col-md-6 col-12">
                     <div class="ltn__feature-item ltn__feature-item-8">
                       <div class="ltn__feature-icon">
-                        <img src="img/icons/svg/5-madel.svg" alt="#" />
+                        <img src="/img/icons/svg/5-madel.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
                         <h4>Quality Products</h4>
@@ -774,7 +776,7 @@ export default {
                   <div class="col-xl-3 col-md-6 col-12">
                     <div class="ltn__feature-item ltn__feature-item-8">
                       <div class="ltn__feature-icon">
-                        <img src="img/icons/svg/6-return.svg" alt="#" />
+                        <img src="/img/icons/svg/6-return.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
                         <h4>3 Days Return</h4>
@@ -785,7 +787,7 @@ export default {
                   <div class="col-xl-3 col-md-6 col-12">
                     <div class="ltn__feature-item ltn__feature-item-8">
                       <div class="ltn__feature-icon">
-                        <img src="img/icons/svg/7-support.svg" alt="#" />
+                        <img src="/img/icons/svg/7-support.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
                         <h4>Online Support</h4>
@@ -810,7 +812,7 @@ export default {
                 <div class="footer-widget footer-about-widget">
                   <div class="footer-logo">
                     <div class="site-logo">
-                      <img src="img/logo.png" alt="Logo" />
+                      <img src="/img/logo.png" alt="Logo" />
                     </div>
                   </div>
                   <p>
@@ -925,7 +927,7 @@ export default {
                     </form>
                   </div>
                   <h5 class="mt-30">We Accept</h5>
-                  <img src="img/icons/payment-4.png" alt="Payment Image" />
+                  <img src="/img/icons/payment-4.png" alt="Payment Image" />
                 </div>
               </div>
             </div>
@@ -977,7 +979,7 @@ export default {
                     <div class="row">
                       <div class="col-12">
                         <div class="modal-product-img">
-                          <img src="img/product/7.png" alt="#" />
+                          <img src="/img/product/7.png" alt="#" />
                         </div>
                         <div class="modal-product-info">
                           <h5><a href="product-details.html">Brand new product</a></h5>
@@ -999,7 +1001,7 @@ export default {
                             Use discount code at checkout
                           </p>
                           <div class="payment-method">
-                            <img src="img/icons/payment.png" alt="#" />
+                            <img src="/img/icons/payment.png" alt="#" />
                           </div>
                         </div>
                       </div>
