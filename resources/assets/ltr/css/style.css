@@ -118,7 +118,8 @@ font-family: 'Roboto', sans-serif;
   /* Darken */
   --ltn__primary-color-3: #133236;
   /* Lighten */
-  --ltn__secondary-color: #FFB400;
+  /* --ltn__secondary-color: #FFB400; */
+  --ltn__secondary-color: #7aa649;
   --ltn__secondary-color-2: #cb3421;
   /* Darken */
   --ltn__secondary-color-3: #fb412a;

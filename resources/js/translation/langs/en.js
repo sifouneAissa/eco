@@ -170,6 +170,8 @@ const en = {
         phone : 'Phone',
         email : 'Email',
         message : 'Message',
+        address : 'Address',
+        note : ' Save my name, email, and website in this browser for the next time I comment.',
     },
     listing:{
       page_title:"Listing",
