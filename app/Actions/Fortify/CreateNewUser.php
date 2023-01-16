@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\ShoppingSession;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -46,6 +47,12 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+        // check shopping session
+        // after login check if the user has a shopping list
+        if(!$user->shoppingSession && $current_shopping = ShoppingSession::where('ip',request()->ip())->first()) {
+            $current_shopping->user_id = $user->id;
+            $current_shopping->save();
+        }
 
         return $user;
     }

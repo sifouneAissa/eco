@@ -156,6 +156,9 @@ if (!function_exists('getShoppingSession')) {
             ],
             [
                 'is_current' , true
+            ],
+            [
+                'user_id', null
             ]
         ])->first();
     }

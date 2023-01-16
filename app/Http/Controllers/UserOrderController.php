@@ -144,7 +144,8 @@ class UserOrderController extends Controller
             $s_session = auth()->user()->shopping_session;
         else {
             $s_session = ShoppingSession::where('ip', $request->ip())->first();
-            if($s_session){
+
+            if($s_session && !$s_session->is_current){
                 $s_session->cartItems()->delete();
                 $s_session->is_current = true;
                 $s_session->save();

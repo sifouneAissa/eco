@@ -26,6 +26,8 @@ class Product extends Model implements HasMedia
     public function category(){
         return $this->belongsTo(ProductCategory::class,'product_category_id');
     }
+
+
     public function inventory(){
         return $this->belongsTo(ProductInventory::class,'product_inventory_id');
     }
