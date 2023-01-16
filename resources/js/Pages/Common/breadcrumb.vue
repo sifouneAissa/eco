@@ -41,7 +41,7 @@ defineProps({
 </template>
 <style scoped>
 .ltn__breadcrumb-area {
-  background-color: #7ca94a;
+  background-color: #7aa649;
   margin-bottom: 100px;
   padding-top: 50px;
   padding-bottom: 50px;
