@@ -1,4 +1,3 @@
-
 <script>
     import {ref, onMounted, toRefs} from "vue";
     import {Inertia} from "@inertiajs/inertia";
@@ -70,7 +69,7 @@
                     let script1 = document.createElement('script');
                     script1.src = "/assets/rtl/js/plugins.js";
                     script1.defer = true;
-                    script1.id='script1';
+                    script1.id = 'script1';
                     // script1.async = false;
                     document.body.append(script1); // (*)
                     //
@@ -78,7 +77,7 @@
                     let script2 = document.createElement('script');
                     script2.src = "/assets/rtl/js/main.js";
                     script2.defer = true;
-                    script2.id='script2';
+                    script2.id = 'script2';
                     document.body.append(script2); // (*)
                 } else {
                     // for lazy importation
@@ -86,28 +85,26 @@
                     script1.src = "/assets/ltr/js/plugins.js";
                     // script1.defer = true;
                     script1.async = false;
-                    script1.id='script1';
+                    script1.id = 'script1';
                     document.body.append(script1); // (*)
 
                     // for lazy importation
                     let script2 = document.createElement('script');
                     script2.src = "/assets/ltr/js/main.js";
                     // script2.defer = true;
-                    script2.id='script2';
+                    script2.id = 'script2';
                     script2.async = true;
                     document.body.append(script2); // (*)
                 }
 
 
-
-
             });
-            window.onerror = function(error) {
+            window.onerror = function (error) {
                 // error about tooltip
-                if(error.includes('tooltip')) {
-                    Inertia.visit(app.$page.url,{
+                if (error.includes('tooltip')) {
+                    Inertia.visit(app.$page.url, {
                         // preserveState : true,
-                        preserveScroll : true
+                        preserveScroll: true
                     });
                 }
 
@@ -165,11 +162,11 @@
 <template>
     <div>
         <!--[if lte IE 9]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
+            href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
         <Head :title="title"/>
         <Banner/>
-
 
 
         <div class="body-wrapper">
@@ -184,7 +181,8 @@
                                     <ul>
                                         <li><a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"><i
                                             class="icon-mail"></i> info@webmail.com</a></li>
-                                        <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a>
+                                        <li><a href="locations.html"><i class="icon-placeholder"></i> 15/A, Nest Tower,
+                                            NYC</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -203,7 +201,8 @@
                                                                 <li
                                                                     v-for="lang in this.$page.props.locales"
                                                                     :key="lang"
-                                                                    @click="setLocale(lang)"><a href="#">{{ $t("locales." +
+                                                                    @click="setLocale(lang)"><a href="#">{{
+                                                                    $t("locales." +
                                                                     lang) }}</a></li>
                                                                 <!--                                                            <li><a href="#">Bengali</a></li>-->
                                                                 <!--                                                            <li><a href="#">Chinese</a></li>-->
@@ -221,7 +220,8 @@
                                                     <ul>
                                                         <li><a href="#" title="Facebook"><i
                                                             class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                                        <li><a href="#" title="Twitter"><i
+                                                            class="fab fa-twitter"></i></a>
                                                         </li>
 
                                                         <li><a href="#" title="Instagram"><i
@@ -254,21 +254,10 @@
                                     <nav>
                                         <div class="ltn__main-menu">
                                             <ul>
-                                                <li><Link href="/" id="home">{{$t('nav_menu.pages.home')}}</Link>
-<!--                                                <li class="menu-icon"><a href="#">Home</a>-->
-<!--                                                    <ul>-->
-<!--                                                        <li><a href="index.html">Home Style - 01</a></li>-->
-<!--                                                        <li><a href="index-2.html">Home Style - 02</a></li>-->
-<!--                                                        <li><a href="index-3.html">Home Style - 03 <span-->
-<!--                                                            class="menu-item-badge">new</span></a></li>-->
-<!--                                                        <li><a href="index-4.html">Home Style - 04</a></li>-->
-<!--                                                        <li><a href="index-5.html">Home Style - 05</a></li>-->
-<!--                                                        <li><a href="index-6.html">Home Style - 06</a></li>-->
-<!--                                                        <li><a href="index-7.html">Home Style - 07</a></li>-->
-<!--                                                        <li><a href="index-8.html">Home Style - 08</a></li>-->
-<!--                                                    </ul>-->
+                                                <li>
+                                                    <Link href="/" id="home">{{$t('nav_menu.pages.home')}}</Link>
                                                 </li>
-                                                <li ><a href="#">About Us</a>
+                                                <li><a href="#">About Us</a>
                                                     <ul>
                                                         <li><a href="about.html">About Us</a></li>
                                                         <li><a href="faq.html">FAQ</a></li>
@@ -279,29 +268,9 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><Link :href="route('listing')">{{$t('nav_menu.pages.products')}}</Link>
-<!--                                                    <ul>-->
-<!--                                                        <li><a href="shop.html">Product</a></li>-->
-<!--                                                        <li><a href="shop-grid.html">Product Grid</a></li>-->
-<!--                                                        <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>-->
-<!--                                                        <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>-->
-<!--                                                        <li><a href="product-details.html">Product Details</a></li>-->
-<!--                                                        <li><a href="product-details-no-sidebar.html">Details No Sidebar</a>-->
-<!--                                                        </li>-->
-<!--                                                        <li><a href="product-details-hover-zoom.html">Details Hover Zoom</a>-->
-<!--                                                        </li>-->
-<!--                                                        <li><a href="#">Other Pages <span class="float-right">>></span></a>-->
-<!--                                                            <ul>-->
-<!--                                                                <li><a href="cart.html">Cart</a></li>-->
-<!--                                                                <li><a href="wishlist.html">Wishlist</a></li>-->
-<!--                                                                <li><a href="checkout.html">Checkout</a></li>-->
-<!--                                                                <li><a href="order-tracking.html">Order Tracking</a></li>-->
-<!--                                                                <li><a href="account.html">My Account</a></li>-->
-<!--                                                                <li><a href="login.html">Sign in</a></li>-->
-<!--                                                                <li><a href="register.html">Register</a></li>-->
-<!--                                                            </ul>-->
-<!--                                                        </li>-->
-<!--                                                    </ul>-->
+                                                <li>
+                                                    <Link :href="route('listing')">{{$t('nav_menu.pages.products')}}
+                                                    </Link>
                                                 </li>
                                                 <li class="menu-icon"><a href="#">Kits</a>
                                                     <ul class="mega-menu">
@@ -313,7 +282,8 @@
                                                                 </div>
                                                                 <div class="product-info">
                                                                     <h2 class="product-title"><a
-                                                                        href="product-details.html">Trimmer Kits</a></h2>
+                                                                        href="product-details.html">Trimmer Kits</a>
+                                                                    </h2>
                                                                     <div class="product-price">
                                                                         <span>$125.00</span>
                                                                         <del>$142.00</del>
@@ -346,7 +316,8 @@
                                                                 </div>
                                                                 <div class="product-info">
                                                                     <h2 class="product-title"><a
-                                                                        href="product-details.html">Beard Scissors</a></h2>
+                                                                        href="product-details.html">Beard Scissors</a>
+                                                                    </h2>
                                                                     <div class="product-price">
                                                                         <span>$15.00</span>
                                                                         <del>$18.00</del>
@@ -362,7 +333,8 @@
                                                                 </div>
                                                                 <div class="product-info">
                                                                     <h2 class="product-title"><a
-                                                                        href="product-details.html">Beard Care Oil</a></h2>
+                                                                        href="product-details.html">Beard Care Oil</a>
+                                                                    </h2>
                                                                     <div class="product-price">
                                                                         <span>$149.00</span>
                                                                         <del>$162.00</del>
@@ -377,12 +349,13 @@
                                                         <li><a href="blog.html">News</a></li>
                                                         <li><a href="blog-grid.html">News Grid</a></li>
                                                         <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
-                                                        <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
+                                                        <li><a href="blog-right-sidebar.html">News Right sidebar</a>
+                                                        </li>
                                                         <li><a href="blog-details.html">News details</a></li>
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
-<!--                                                <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>-->
+                                                <!--                                                <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>-->
                                             </ul>
                                         </div>
                                     </nav>
@@ -398,14 +371,8 @@
                                                     <li
                                                         v-for="currency in this.$page.props.currencies"
                                                         :key="currency"
-                                                        @click="setCurrency(currency)"><a href="#">{{ $t("currencies." +currency) }}</a></li>
-                                                    <!--                                                <li><a href="wishlist.html">CAD - Canada Dollar</a></li>-->
-                                                    <!--                                                <li><a href="register.html">EUR - Euro</a></li>-->
-                                                    <!--                                                <li><a href="account.html">GBP - British Pound</a></li>-->
-                                                    <!--                                                <li><a href="wishlist.html">INR - Indian Rupee</a></li>-->
-                                                    <!--                                                <li><a href="wishlist.html">BDT - Bangladesh Taka</a></li>-->
-                                                    <!--                                                <li><a href="wishlist.html">JPY - Japan Yen</a></li>-->
-                                                    <!--                                                <li><a href="wishlist.html">AUD - Australian Dollar</a></li>-->
+                                                        @click="setCurrency(currency)"><a href="#">{{ $t("currencies."
+                                                        +currency) }}</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -433,11 +400,38 @@
                                             <li>
                                                 <a href="#"><i class="icon-user"></i></a>
                                                 <ul>
-                                                    <li v-if="!$page.props.auth"><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>
-                                                    <li v-if="!$page.props.auth"><Link :href="route('register')">{{ $t("nav_menu.pages.register") }}</Link></li>
-<!--                                                    <li><a href="register.html">Register</a></li>-->
-                                                    <li v-if="$page.props.auth"><Link :href="route('account')">My Account</Link></li>
-                                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                                    <li v-if="!$page.props.auth">
+                                                        <span class="utilize-btn-icon">
+                                                            <i class="icofont-login"></i>
+                                                        </span>
+                                                        <Link :href="route('login')">  {{ $t("nav_menu.pages.login") }}</Link>
+                                                    </li>
+                                                    <li v-if="!$page.props.auth">
+                                                        <span class="utilize-btn-icon">
+                                                            <i class="icofont-user"></i>
+                                                        </span>
+                                                        <Link :href="route('register')">{{ $t("nav_menu.pages.register")
+                                                            }}
+                                                        </Link>
+                                                    </li>
+                                                    <!--                                                    <li><a href="register.html">Register</a></li>-->
+                                                    <li v-if="$page.props.auth">
+                                                        <span class="utilize-btn-icon">
+                                                            <i class="icofont-user"> </i>
+                                                        </span>
+                                                        <Link :href="route('account')"> My Account</Link>
+                                                    </li>
+                                                    <li><a href="wishlist.html"><span class="utilize-btn-icon">
+                                                            <i class="icofont-heart"> </i>
+                                                        </span>Wishlist</a></li>
+
+                                                    <li v-if="$page.props.auth">
+                                                        <a @click="logout()" href="#" title="Logout">
+                                                        <span class="utilize-btn-icon">
+                                                            <i class="icofont-logout"></i>
+                                                        </span> Logout
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -446,7 +440,8 @@
                                     <div class="mini-cart-icon">
                                         <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                             <i class="icon-shopping-cart"></i>
-                                            <sup>{{$page.props.shopping_session ? $page.props.shopping_session.cart_items.length : 0}}</sup>
+                                            <sup>{{$page.props.shopping_session ?
+                                                $page.props.shopping_session.cart_items.length : 0}}</sup>
                                         </a>
                                     </div>
                                     <!-- Mobile Menu Button -->
@@ -472,67 +467,67 @@
                 <!-- ltn__header-middle-area end -->
             </header>
             <!-- Utilize Cart Menu Start -->
-<!--            <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">-->
-<!--                <div class="ltn__utilize-menu-inner ltn__scrollbar">-->
-<!--                    <div class="ltn__utilize-menu-head">-->
-<!--                        <span class="ltn__utilize-menu-title">Cart</span>-->
-<!--                        <button class="ltn__utilize-close">×</button>-->
-<!--                    </div>-->
-<!--                    <div class="mini-cart-product-area ltn__scrollbar">-->
-<!--                        <div class="mini-cart-item clearfix">-->
-<!--                            <div class="mini-cart-img">-->
-<!--                                <a href="#"><img src="img/product/1.png" alt="Image"></a>-->
-<!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
-<!--                            </div>-->
-<!--                            <div class="mini-cart-info">-->
-<!--                                <h6><a href="#">Beard Care Oil</a></h6>-->
-<!--                                <span class="mini-cart-quantity">1 x $65.00</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="mini-cart-item clearfix">-->
-<!--                            <div class="mini-cart-img">-->
-<!--                                <a href="#"><img src="img/product/15.png" alt="Image"></a>-->
-<!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
-<!--                            </div>-->
-<!--                            <div class="mini-cart-info">-->
-<!--                                <h6><a href="#">Beard Scissors</a></h6>-->
-<!--                                <span class="mini-cart-quantity">1 x $15.00</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="mini-cart-item clearfix">-->
-<!--                            <div class="mini-cart-img">-->
-<!--                                <a href="#"><img src="img/product/9.png" alt="Image"></a>-->
-<!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
-<!--                            </div>-->
-<!--                            <div class="mini-cart-info">-->
-<!--                                <h6><a href="#">Beard Shampoo</a></h6>-->
-<!--                                <span class="mini-cart-quantity">1 x $92.00</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="mini-cart-item clearfix">-->
-<!--                            <div class="mini-cart-img">-->
-<!--                                <a href="#"><img src="img/product/4.png" alt="Image"></a>-->
-<!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
-<!--                            </div>-->
-<!--                            <div class="mini-cart-info">-->
-<!--                                <h6><a href="#">Beard Growth Oil</a></h6>-->
-<!--                                <span class="mini-cart-quantity">1 x $68.00</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="mini-cart-footer">-->
-<!--                        <div class="mini-cart-sub-total">-->
-<!--                            <h5>Subtotal: <span>$310.00</span></h5>-->
-<!--                        </div>-->
-<!--                        <div class="btn-wrapper">-->
-<!--                            <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>-->
-<!--                            <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>-->
-<!--                        </div>-->
-<!--                        <p>Free Shipping on All Orders Over $100!</p>-->
-<!--                    </div>-->
+            <!--            <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">-->
+            <!--                <div class="ltn__utilize-menu-inner ltn__scrollbar">-->
+            <!--                    <div class="ltn__utilize-menu-head">-->
+            <!--                        <span class="ltn__utilize-menu-title">Cart</span>-->
+            <!--                        <button class="ltn__utilize-close">×</button>-->
+            <!--                    </div>-->
+            <!--                    <div class="mini-cart-product-area ltn__scrollbar">-->
+            <!--                        <div class="mini-cart-item clearfix">-->
+            <!--                            <div class="mini-cart-img">-->
+            <!--                                <a href="#"><img src="img/product/1.png" alt="Image"></a>-->
+            <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+            <!--                            </div>-->
+            <!--                            <div class="mini-cart-info">-->
+            <!--                                <h6><a href="#">Beard Care Oil</a></h6>-->
+            <!--                                <span class="mini-cart-quantity">1 x $65.00</span>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div class="mini-cart-item clearfix">-->
+            <!--                            <div class="mini-cart-img">-->
+            <!--                                <a href="#"><img src="img/product/15.png" alt="Image"></a>-->
+            <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+            <!--                            </div>-->
+            <!--                            <div class="mini-cart-info">-->
+            <!--                                <h6><a href="#">Beard Scissors</a></h6>-->
+            <!--                                <span class="mini-cart-quantity">1 x $15.00</span>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div class="mini-cart-item clearfix">-->
+            <!--                            <div class="mini-cart-img">-->
+            <!--                                <a href="#"><img src="img/product/9.png" alt="Image"></a>-->
+            <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+            <!--                            </div>-->
+            <!--                            <div class="mini-cart-info">-->
+            <!--                                <h6><a href="#">Beard Shampoo</a></h6>-->
+            <!--                                <span class="mini-cart-quantity">1 x $92.00</span>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div class="mini-cart-item clearfix">-->
+            <!--                            <div class="mini-cart-img">-->
+            <!--                                <a href="#"><img src="img/product/4.png" alt="Image"></a>-->
+            <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
+            <!--                            </div>-->
+            <!--                            <div class="mini-cart-info">-->
+            <!--                                <h6><a href="#">Beard Growth Oil</a></h6>-->
+            <!--                                <span class="mini-cart-quantity">1 x $68.00</span>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="mini-cart-footer">-->
+            <!--                        <div class="mini-cart-sub-total">-->
+            <!--                            <h5>Subtotal: <span>$310.00</span></h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="btn-wrapper">-->
+            <!--                            <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>-->
+            <!--                            <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>-->
+            <!--                        </div>-->
+            <!--                        <p>Free Shipping on All Orders Over $100!</p>-->
+            <!--                    </div>-->
 
-<!--                </div>-->
-<!--            </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
             <CartMenu/>
             <!-- Utilize Mobile Menu Start -->
             <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
@@ -551,35 +546,37 @@
                     </div>
                     <div class="ltn__utilize-menu">
                         <ul>
-                            <li><Link :href="route('listing')">Home</Link>
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li><a href="index.html">Home Style - 01</a></li>-->
-<!--                                    <li><a href="index-2.html">Home Style - 02</a></li>-->
-<!--                                    <li><a href="index-3.html">Home Style - 03 <span class="menu-item-badge">new</span></a>-->
-<!--                                    </li>-->
-<!--                                    <li><a href="index-4.html">Home Style - 04</a></li>-->
-<!--                                    <li><a href="index-5.html">Home Style - 05</a></li>-->
-<!--                                    <li><a href="index-6.html">Home Style - 06</a></li>-->
-<!--                                    <li><a href="index-7.html">Home Style - 07</a></li>-->
-<!--                                    <li><a href="index-8.html">Home Style - 08</a></li>-->
-<!--                                </ul>-->
+                            <li>
+                                <Link :href="route('listing')">Home</Link>
+                                <!--                                <ul class="sub-menu">-->
+                                <!--                                    <li><a href="index.html">Home Style - 01</a></li>-->
+                                <!--                                    <li><a href="index-2.html">Home Style - 02</a></li>-->
+                                <!--                                    <li><a href="index-3.html">Home Style - 03 <span class="menu-item-badge">new</span></a>-->
+                                <!--                                    </li>-->
+                                <!--                                    <li><a href="index-4.html">Home Style - 04</a></li>-->
+                                <!--                                    <li><a href="index-5.html">Home Style - 05</a></li>-->
+                                <!--                                    <li><a href="index-6.html">Home Style - 06</a></li>-->
+                                <!--                                    <li><a href="index-7.html">Home Style - 07</a></li>-->
+                                <!--                                    <li><a href="index-8.html">Home Style - 08</a></li>-->
+                                <!--                                </ul>-->
                             </li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="#">Product</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop.html">Product</a></li>
-                                    <li><a href="shop-grid.html">Product Grid</a></li>
-                                    <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>
-                                    <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="order-tracking.html">Order Tracking</a></li>
-                                    <li><a href="account.html">My Account</a></li>
-                                    <li><a href="login.html">Sign in</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                </ul>
+                            <li>
+                                <Link :href="route('listing')">Product</Link>
+                                <!--                                <ul class="sub-menu">-->
+                                <!--                                    <li><a href="shop.html">Product</a></li>-->
+                                <!--                                    <li><a href="shop-grid.html">Product Grid</a></li>-->
+                                <!--                                    <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>-->
+                                <!--                                    <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>-->
+                                <!--                                    <li><a href="product-details.html">Product Details</a></li>-->
+                                <!--                                    <li><a href="cart.html">Cart</a></li>-->
+                                <!--                                    <li><a href="wishlist.html">Wishlist</a></li>-->
+                                <!--                                    <li><a href="checkout.html">Checkout</a></li>-->
+                                <!--                                    <li><a href="order-tracking.html">Order Tracking</a></li>-->
+                                <!--                                    <li><a href="account.html">My Account</a></li>-->
+                                <!--                                    <li><a href="login.html">Sign in</a></li>-->
+                                <!--                                    <li><a href="register.html">Register</a></li>-->
+                                <!--                                </ul>-->
                             </li>
                             <li><a href="#">News</a>
                                 <ul class="sub-menu">
@@ -611,12 +608,12 @@
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
-<!--                            <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>-->
+                            <!--                            <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>-->
                         </ul>
                     </div>
                     <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
                         <ul>
-                            <li v-if="$page.props.auth">
+                            <li v-if="!$page.props.auth">
                                 <Link :href="route('login')" title="Login">
                             <span class="utilize-btn-icon">
                                 <i class="far fa-user"></i>
@@ -626,13 +623,15 @@
                             </li>
                             <li>
                                 <a href="wishlist.html" title="Wishlist">
-                            <span class="utilize-btn-icon">
+                                  <span class="utilize-btn-icon">
                                 <i class="far fa-heart"></i>
                                 <sup>3</sup>
-                            </span>
+                              </span>
                                     Wishlist
                                 </a>
+
                             </li>
+
                             <li>
                                 <a href="cart.html" title="Shoping Cart">
                             <span class="utilize-btn-icon">
@@ -640,6 +639,15 @@
                                 <sup>5</sup>
                             </span>
                                     Shoping Cart
+                                </a>
+                            </li>
+                            <li v-if="$page.props.auth">
+
+                                <a @click="logout()" href="#" title="Logout">
+                                <span class="utilize-btn-icon">
+                                    <i class="icofont-logout"></i>
+                                </span>
+                                    Logout
                                 </a>
                             </li>
                         </ul>
@@ -867,7 +875,7 @@
             <!-- FOOTER AREA END -->
 
             <AddToCartModal/>
-            <QuickViewModal />
+            <QuickViewModal/>
             <!-- MODAL AREA START (Wishlist Modal) -->
             <div class="ltn__modal-area ltn__add-to-cart-modal-area">
                 <div class="modal fade" id="liton_wishlist_modal" tabindex="-1">

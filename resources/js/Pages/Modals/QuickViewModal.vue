@@ -126,12 +126,12 @@
 
     export default  {
         mounted() {
-            let app = this;
-            let quick_view_modal = $("#quick_view_modal");
-
-            quick_view_modal.on("hidden.bs.modal", function () {
-                app.$page.props.product=null;
-            });
+            // let app = this;
+            // let quick_view_modal = $("#quick_view_modal");
+            //
+            // quick_view_modal.on("hidden.bs.modal", function () {
+            //     // app.$page.props.product=null;
+            // });
         },
         methods: {
             incrQP(item, by) {

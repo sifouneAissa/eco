@@ -77,9 +77,9 @@
             let app = this;
             let add_to_cart_modal = $("#add_to_cart_modal");
 
-            add_to_cart_modal.on("hidden.bs.modal", function () {
-                app.$page.props.product=null;
-            });
+            // add_to_cart_modal.on("hidden.bs.modal", function () {
+            //     app.$page.props.product=null;
+            // });
             //
             //
             add_to_cart_modal.on("show.bs.modal", function (e) {
