@@ -162,7 +162,7 @@
                                     <tbody>
                                     <tr>
                                         <td>Cart Subtotal</td>
-                                        <td>$618.00</td>
+                                        <td>{{$page.props.currency_code }} {{$page.props.shopping_session.citotal}}</td>
                                     </tr>
                                     <tr>
                                         <td>Shipping and Handing</td>
