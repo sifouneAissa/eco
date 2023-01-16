@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CartItem;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CartItemController extends Controller
 {
@@ -17,5 +18,8 @@ class CartItemController extends Controller
         CartItem::find($id)?->delete();
     }
 
+    public function index(Request $request){
+        return Inertia::render('Cart');
+    }
 
 }

@@ -128,7 +128,7 @@
 
                 if ($('#quid').val() > app.$page.props.product.isA.remain) {
                     const toast = useToast();
-                    $('#quid').val(app.$page.props.product.quantity)
+                    $('#quid').val(app.$page.props.product.isA.remain)
                     toast.warning(app.$t("listing.limited")  + app.$page.props.product.name);
                 }
 

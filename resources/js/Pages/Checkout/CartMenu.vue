@@ -31,7 +31,7 @@
                       <h5>{{$t('listing.total')}} : <span>{{ $page.props.currency_code }} {{ model ? model.citotal : 0 }}</span></h5>
                   </div>
                   <div class="btn-wrapper">
-                      <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                      <Link :href="route('cartitem.index')" class="theme-btn-1 btn btn-effect-1">View Cart</Link>
                       <a href="cart.html" class="theme-btn-2 btn btn-effect-2">{{$t('listing.checkout')}}</a>
                   </div>
                   <p>Free Shipping on All Orders Over $100!</p>
