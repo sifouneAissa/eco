@@ -4,7 +4,7 @@
         title : String,
         img : {
             type : String,
-            default : "img/bg/4.png"
+            default : "/img/bg/4.png"
         }
     })
 </script>

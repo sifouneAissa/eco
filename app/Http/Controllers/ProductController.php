@@ -51,6 +51,7 @@ class ProductController extends Controller
         $callback = function ($item){
             $item['isA'] = $item->isA();
             $item['quantity'] = 1;
+            $item['category'] = $item->category;
             return $item;
         };
 
@@ -67,9 +68,9 @@ class ProductController extends Controller
         });
 
         $bestSellers->map($callback);
-
         $product['isA'] = $product->isA();
         $product['quantity'] = 1;
+        $product['category'] = $product->category;
 
         return Inertia::render('ProductDetail',[
             'product' => $product,

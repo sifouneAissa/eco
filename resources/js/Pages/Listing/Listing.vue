@@ -96,41 +96,42 @@
              :key="product.id"
              :class="'ltn__gallery-item col-lg-3 col-md-4 col-sm-6 col-12'+' filter_category_'+product.product_category_id"
              >
-            <div class="ltn__product-item ltn__product-item-3 text-center">
-                <div class="product-img">
-                    <a href="product-details.html"><img style="height: 200px" :src="product.fimage" alt="#"></a>
-                    <div class="product-badge">
-                        <ul>
-                            <li class="sale-badge">New</li>
-                        </ul>
-                    </div>
-                    <div class="product-hover-action">
-                        <ul>
-                            <li @click="$page.props.product=product">
-                                <a href="#" title="Quick View" data-toggle="modal" :data-target="'#quick_view_modal'">
-                                    <i    class="far fa-eye"></i>
-                                </a>
-                            </li>
-                            <li @click="$page.props.product=product">
-                                <a  href="#" title="Add to Cart" data-toggle="modal" :data-target="'#add_to_cart_modal'">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                    <i class="far fa-heart"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-title"><a href="product-details.html">{{product.name}}</a></h2>
-                    <div class="product-price">
-                        <span>$149.00</span>
-                        <del>{{ $page.props.currency_code }} {{ product.cprice }}</del>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="ltn__product-item ltn__product-item-3 text-center">-->
+<!--                <div class="product-img">-->
+<!--                    <a href="product-details.html"><img style="height: 200px" :src="product.fimage" alt="#"></a>-->
+<!--                    <div class="product-badge">-->
+<!--                        <ul>-->
+<!--                            <li class="sale-badge">New</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <div class="product-hover-action">-->
+<!--                        <ul>-->
+<!--                            <li @click="$page.props.product=product">-->
+<!--                                <a href="#" title="Quick View" data-toggle="modal" :data-target="'#quick_view_modal'">-->
+<!--                                    <i    class="far fa-eye"></i>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li @click="$page.props.product=product">-->
+<!--                                <a  href="#" title="Add to Cart" data-toggle="modal" :data-target="'#add_to_cart_modal'">-->
+<!--                                    <i class="fas fa-shopping-cart"></i>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">-->
+<!--                                    <i class="far fa-heart"></i></a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="product-info">-->
+<!--                    <h2 class="product-title"><a href="product-details.html">{{product.name}}</a></h2>-->
+<!--                    <div class="product-price">-->
+<!--                        <span>$149.00</span>-->
+<!--                        <del>{{ $page.props.currency_code }} {{ product.cprice }}</del>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <ProductCard :model="product" />
         </div>
     </div>
 <!--    <div class="ltn__gallery-active row ltn__gallery-style-2 ltn__gallery-info-hide-&#45;&#45;">-->
@@ -718,10 +719,11 @@ import { Inertia } from "@inertiajs/inertia";
 import { useForm, Head, Link } from "@inertiajs/inertia-vue3";
 import Categories from "@/Pages/Listing/Categories.vue";
 import { useToast } from "vue-toastification";
+import ProductCard from "@/Pages/Listing/ProductCard.vue";
 
 export default {
   name: "listing.vue",
-  components: { Categories, Link },
+  components: { Categories, Link,ProductCard },
   date() {
     return {
       quantity: [],

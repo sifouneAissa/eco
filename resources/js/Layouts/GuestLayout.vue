@@ -99,6 +99,7 @@
 
 
             });
+
             window.onerror = function (error) {
                 // error about tooltip
                 if (error.includes('tooltip')) {
@@ -246,7 +247,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                                    <a href="index.html"><img src="/img/logo.png" alt="Logo"></a>
                                 </div>
                             </div>
                             <div class="col header-menu-column">
@@ -278,7 +279,7 @@
                                                             <div class="menu-product-item">
                                                                 <div class="menu-product-img">
                                                                     <a href="product-details.html"><img
-                                                                        src="img/product/13.png" alt="#"></a>
+                                                                        src="/img/product/13.png" alt="#"></a>
                                                                 </div>
                                                                 <div class="product-info">
                                                                     <h2 class="product-title"><a
@@ -295,7 +296,7 @@
                                                             <div class="menu-product-item">
                                                                 <div class="menu-product-img">
                                                                     <a href="product-details.html"><img
-                                                                        src="img/product/9.png" alt="#"></a>
+                                                                        src="/img/product/9.png" alt="#"></a>
                                                                 </div>
                                                                 <div class="product-info">
                                                                     <h2 class="product-title"><a
@@ -312,7 +313,7 @@
                                                             <div class="menu-product-item">
                                                                 <div class="menu-product-img">
                                                                     <a href="product-details.html"><img
-                                                                        src="img/product/15.png" alt="#"></a>
+                                                                        src="/img/product/15.png" alt="#"></a>
                                                                 </div>
                                                                 <div class="product-info">
                                                                     <h2 class="product-title"><a
@@ -329,7 +330,7 @@
                                                             <div class="menu-product-item">
                                                                 <div class="menu-product-img">
                                                                     <a href="product-details.html"><img
-                                                                        src="img/product/6.png" alt="#"></a>
+                                                                        src="/img/product/6.png" alt="#"></a>
                                                                 </div>
                                                                 <div class="product-info">
                                                                     <h2 class="product-title"><a
@@ -476,7 +477,7 @@
             <!--                    <div class="mini-cart-product-area ltn__scrollbar">-->
             <!--                        <div class="mini-cart-item clearfix">-->
             <!--                            <div class="mini-cart-img">-->
-            <!--                                <a href="#"><img src="img/product/1.png" alt="Image"></a>-->
+            <!--                                <a href="#"><img src="/img/product/1.png" alt="Image"></a>-->
             <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
             <!--                            </div>-->
             <!--                            <div class="mini-cart-info">-->
@@ -486,7 +487,7 @@
             <!--                        </div>-->
             <!--                        <div class="mini-cart-item clearfix">-->
             <!--                            <div class="mini-cart-img">-->
-            <!--                                <a href="#"><img src="img/product/15.png" alt="Image"></a>-->
+            <!--                                <a href="#"><img src="/img/product/15.png" alt="Image"></a>-->
             <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
             <!--                            </div>-->
             <!--                            <div class="mini-cart-info">-->
@@ -496,7 +497,7 @@
             <!--                        </div>-->
             <!--                        <div class="mini-cart-item clearfix">-->
             <!--                            <div class="mini-cart-img">-->
-            <!--                                <a href="#"><img src="img/product/9.png" alt="Image"></a>-->
+            <!--                                <a href="#"><img src="/img/product/9.png" alt="Image"></a>-->
             <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
             <!--                            </div>-->
             <!--                            <div class="mini-cart-info">-->
@@ -506,7 +507,7 @@
             <!--                        </div>-->
             <!--                        <div class="mini-cart-item clearfix">-->
             <!--                            <div class="mini-cart-img">-->
-            <!--                                <a href="#"><img src="img/product/4.png" alt="Image"></a>-->
+            <!--                                <a href="#"><img src="/img/product/4.png" alt="Image"></a>-->
             <!--                                <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>-->
             <!--                            </div>-->
             <!--                            <div class="mini-cart-info">-->
@@ -534,7 +535,7 @@
                 <div class="ltn__utilize-menu-inner ltn__scrollbar">
                     <div class="ltn__utilize-menu-head">
                         <div class="site-logo">
-                            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="/img/logo.png" alt="Logo"></a>
                         </div>
                         <button class="ltn__utilize-close">×</button>
                     </div>
@@ -681,7 +682,7 @@
                                     <div class="col-xl-3 col-md-6 col-12">
                                         <div class="ltn__feature-item ltn__feature-item-8">
                                             <div class="ltn__feature-icon">
-                                                <img src="img/icons/svg/4-track.svg" alt="#">
+                                                <img src="/img/icons/svg/4-track.svg" alt="#">
                                             </div>
                                             <div class="ltn__feature-info">
                                                 <h4>Free home delivery</h4>
@@ -693,7 +694,7 @@
                                     <div class="col-xl-3 col-md-6 col-12">
                                         <div class="ltn__feature-item ltn__feature-item-8">
                                             <div class="ltn__feature-icon">
-                                                <img src="img/icons/svg/5-madel.svg" alt="#">
+                                                <img src="/img/icons/svg/5-madel.svg" alt="#">
                                             </div>
                                             <div class="ltn__feature-info">
                                                 <h4>Quality Products</h4>
@@ -705,7 +706,7 @@
                                     <div class="col-xl-3 col-md-6 col-12">
                                         <div class="ltn__feature-item ltn__feature-item-8">
                                             <div class="ltn__feature-icon">
-                                                <img src="img/icons/svg/6-return.svg" alt="#">
+                                                <img src="/img/icons/svg/6-return.svg" alt="#">
                                             </div>
                                             <div class="ltn__feature-info">
                                                 <h4>3 Days Return</h4>
@@ -717,7 +718,7 @@
                                     <div class="col-xl-3 col-md-6 col-12">
                                         <div class="ltn__feature-item ltn__feature-item-8">
                                             <div class="ltn__feature-icon">
-                                                <img src="img/icons/svg/7-support.svg" alt="#">
+                                                <img src="/img/icons/svg/7-support.svg" alt="#">
                                             </div>
                                             <div class="ltn__feature-info">
                                                 <h4>Online Support</h4>
@@ -743,7 +744,7 @@
                                 <div class="footer-widget footer-about-widget">
                                     <div class="footer-logo">
                                         <div class="site-logo">
-                                            <img src="img/logo.png" alt="Logo">
+                                            <img src="/img/logo.png" alt="Logo">
                                         </div>
                                     </div>
                                     <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is
@@ -845,7 +846,7 @@
                                         </form>
                                     </div>
                                     <h5 class="mt-30">We Accept</h5>
-                                    <img src="img/icons/payment-4.png" alt="Payment Image">
+                                    <img src="/img/icons/payment-4.png" alt="Payment Image">
                                 </div>
                             </div>
                         </div>
@@ -892,7 +893,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="modal-product-img">
-                                                    <img src="img/product/7.png" alt="#">
+                                                    <img src="/img/product/7.png" alt="#">
                                                 </div>
                                                 <div class="modal-product-info">
                                                     <h5><a href="product-details.html">Brand new product</a></h5>
@@ -908,7 +909,7 @@
                                                     <p>We want to give you <b>10% discount</b> for your first order,
                                                         <br> Use discount code at checkout</p>
                                                     <div class="payment-method">
-                                                        <img src="img/icons/payment.png" alt="#">
+                                                        <img src="/img/icons/payment.png" alt="#">
                                                     </div>
                                                 </div>
                                             </div>
