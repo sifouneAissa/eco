@@ -254,7 +254,7 @@
                                     <nav>
                                         <div class="ltn__main-menu">
                                             <ul>
-                                                <li><Link href="/" id="home">Home</Link>
+                                                <li><Link href="/" id="home">{{$t('nav_menu.pages.home')}}</Link>
 <!--                                                <li class="menu-icon"><a href="#">Home</a>-->
 <!--                                                    <ul>-->
 <!--                                                        <li><a href="index.html">Home Style - 01</a></li>-->
@@ -268,7 +268,7 @@
 <!--                                                        <li><a href="index-8.html">Home Style - 08</a></li>-->
 <!--                                                    </ul>-->
                                                 </li>
-                                                <li class="menu-icon"><a href="#">About Us</a>
+                                                <li ><a href="#">About Us</a>
                                                     <ul>
                                                         <li><a href="about.html">About Us</a></li>
                                                         <li><a href="faq.html">FAQ</a></li>
@@ -279,29 +279,29 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="menu-icon"><a href="#">Products</a>
-                                                    <ul>
-                                                        <li><a href="shop.html">Product</a></li>
-                                                        <li><a href="shop-grid.html">Product Grid</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>
-                                                        <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>
-                                                        <li><a href="product-details.html">Product Details</a></li>
-                                                        <li><a href="product-details-no-sidebar.html">Details No Sidebar</a>
-                                                        </li>
-                                                        <li><a href="product-details-hover-zoom.html">Details Hover Zoom</a>
-                                                        </li>
-                                                        <li><a href="#">Other Pages <span class="float-right">>></span></a>
-                                                            <ul>
-                                                                <li><a href="cart.html">Cart</a></li>
-                                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                                <li><a href="checkout.html">Checkout</a></li>
-                                                                <li><a href="order-tracking.html">Order Tracking</a></li>
-                                                                <li><a href="account.html">My Account</a></li>
-                                                                <li><a href="login.html">Sign in</a></li>
-                                                                <li><a href="register.html">Register</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                <li><Link :href="route('listing')">{{$t('nav_menu.pages.products')}}</Link>
+<!--                                                    <ul>-->
+<!--                                                        <li><a href="shop.html">Product</a></li>-->
+<!--                                                        <li><a href="shop-grid.html">Product Grid</a></li>-->
+<!--                                                        <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>-->
+<!--                                                        <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>-->
+<!--                                                        <li><a href="product-details.html">Product Details</a></li>-->
+<!--                                                        <li><a href="product-details-no-sidebar.html">Details No Sidebar</a>-->
+<!--                                                        </li>-->
+<!--                                                        <li><a href="product-details-hover-zoom.html">Details Hover Zoom</a>-->
+<!--                                                        </li>-->
+<!--                                                        <li><a href="#">Other Pages <span class="float-right">>></span></a>-->
+<!--                                                            <ul>-->
+<!--                                                                <li><a href="cart.html">Cart</a></li>-->
+<!--                                                                <li><a href="wishlist.html">Wishlist</a></li>-->
+<!--                                                                <li><a href="checkout.html">Checkout</a></li>-->
+<!--                                                                <li><a href="order-tracking.html">Order Tracking</a></li>-->
+<!--                                                                <li><a href="account.html">My Account</a></li>-->
+<!--                                                                <li><a href="login.html">Sign in</a></li>-->
+<!--                                                                <li><a href="register.html">Register</a></li>-->
+<!--                                                            </ul>-->
+<!--                                                        </li>-->
+<!--                                                    </ul>-->
                                                 </li>
                                                 <li class="menu-icon"><a href="#">Kits</a>
                                                     <ul class="mega-menu">

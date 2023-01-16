@@ -16,14 +16,13 @@ class UserListingController extends Controller
         $filerCallback = function ($product){
             $isA = $product->isA();
             $product['isA'] = $isA;
-            $product['category'] = $product->categroy;
+            $product['category'] = $product->category;
             return $isA['isA'];
         };
 
         $products = searchInModel($request,Product::class,$filerCallback);
 
         $count = Product::query()->count();
-
 
         $categories = ProductCategory::get();
 
