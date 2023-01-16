@@ -14,7 +14,7 @@ class CartItemController extends Controller
     }
 
     public function destroy($id){
-        CartItem::find($id)->delete();
+        CartItem::find($id)?->delete();
     }
 
 

@@ -4,6 +4,11 @@
           <div class="ltn__utilize-menu-inner ltn__scrollbar">
               <div class="ltn__utilize-menu-head">
                   <span class="ltn__utilize-menu-title">{{$t('listing.cart')}}</span>
+                  <span v-if="dform.processing"
+                      class="spinner-grow spinner-grow-sm"
+                      role="status"
+                      aria-hidden="true"
+                  ></span>
                   <button  class="ltn__utilize-close">×</button>
               </div>
               <div v-if="model" class="mini-cart-product-area ltn__scrollbar">
@@ -12,11 +17,11 @@
                         :key="item.id"
                       class="mini-cart-item clearfix">
                       <div class="mini-cart-img">
-                          <a href="#"><img :src="item.product.fimage" alt="Image"></a>
+                          <a @click="go(item)" href="javascript: void(0)"><img :src="item.product.fimage" alt="Image"></a>
                           <span @click="submitD(item)" class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
                       </div>
                       <div class="mini-cart-info">
-                          <h6><a href="#">{{item.product.name}}</a></h6>
+                          <h6><a @click="go(item)" href="javascript: void(0)">{{item.product.name}}</a></h6>
                           <span class="mini-cart-quantity">{{item.quantity}} x {{ $page.props.currency_code }} {{ item.qprice }}</span>
                       </div>
                   </div>
@@ -177,7 +182,10 @@ export default {
   data() {
     return {
       // model : this.$page.props.shopping_session
-        tomodel : null
+        tomodel : null,
+        dform : useForm({
+
+        })
     };
   },
   computed: {
@@ -220,7 +228,7 @@ export default {
         );
     },
     submitD(item) {
-      Inertia.delete(
+      this.dform.delete(
         route("cartitem.destroy", {
           id: item.id,
         }),
@@ -232,6 +240,9 @@ export default {
     Pay() {
       this.$emit("Pay");
     },
+      go: function (item) {
+          Inertia.get(route("product.show", { id: item.product_id }));
+      },
   },
 };
 </script>
