@@ -1525,8 +1525,4 @@ export default {
     <!-- BRAND LOGO AREA END -->
   </div>
 </template>
-<style scoped>
-:root {
-  --ltn__secondary-color: #68a51c;
-}
-</style>
+<style scoped></style>

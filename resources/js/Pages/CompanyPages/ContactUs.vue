@@ -1,7 +1,7 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
-
+import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 const form = useForm({
   name: "",
   email: "",
@@ -21,122 +21,81 @@ const submit = () => {
         {{ $t("nav_menu.help.contact_us") }}
       </h2>
     </template>
-    <section
-      class="breadcrumb-osahan pt-5 pb-5 bg-light position-relative text-center"
-      style="
-         background-image: url('https://himpies.com/wp-content/uploads/2021/09/himpies-banner-scaled.jpg');
-      "
-    >
-      <h1 class="text-white">{{ $t("nav_menu.help.contact_us") }}</h1>
-    </section>
-    <section class="section pt-5 pb-5">
+    <breadcrumb :title="$t('nav_menu.help.contact_us')" />
+    <!-- CONTACT MESSAGE AREA START -->
+    <div class="ltn__contact-message-area pt-50 pb-70">
+      <!-- pt-115 -->
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-sm-6 mb-2">
-            <h1 class="text-center">
-              <a title="Dubai, UAE" target="_self" href="#">
-                <i class="fas fa-map-marker-alt"></i>
-              </a>
-            </h1>
-            <h4 class="text-center">{{ $page.props.address }}</h4>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-2">
-            <h1 class="text-center">
-              <a title="+971557658376" target="_self" href="#">
-                <i class="fas fa-phone"></i>
-              </a>
-            </h1>
-            <h4 class="text-center">{{ $page.props.phone }}</h4>
-          </div>
-          <div class="col-md-4 col-sm-6 mb-2">
-            <h1 class="text-center">
-              <a title="a.elnashar1@gmail.com" target="_self" href="#">
-                <i class="fas fa-envelope"></i>
-              </a>
-            </h1>
-            <h4 class="text-center">{{ $page.props.email }}</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section pt-5 pb-5 bg-white becomemember-section border-bottom">
-      <div class="container">
-        <div class="section-header text-center white-text">
-          <h2>{{ $t("nav_menu.help.contact_us") }}</h2>
-          <p>{{ $t("contact_us.send") }}</p>
-          <span class="line"></span>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <form @submit.prevent="submit">
-              <div class="form-group">
-                <input
-                  v-model="form.name"
-                  type="text"
-                  id="inputName"
-                  class="form-control"
-                  :placeholder="$t('contact_us.name')"
-                />
-                <div v-show="form.errors.name">
-                  <p class="text-sm" style="color: red">
-                    {{ form.errors.name }}
-                  </p>
-                </div>
-              </div>
-              <div class="form-group">
-                <input
-                  v-model="form.phone"
-                  type="text"
-                  id="phone"
-                  class="form-control"
-                  :placeholder="$t('contact_us.phone')"
-                />
-                <div v-show="form.errors.phone">
-                  <p class="text-sm" style="color: red">
-                    {{ form.errors.phone }}
-                  </p>
-                </div>
-              </div>
-              <div class="form-group">
-                <input
-                  v-model="form.email"
-                  type="email"
-                  id="inputEmail"
-                  class="form-control"
-                  :placeholder="$t('contact_us.email')"
-                />
-                <div v-show="form.errors.email">
-                  <p class="text-sm text-red-600" style="color: red">
-                    {{ form.errors.email }}
-                  </p>
-                </div>
-              </div>
-              <div class="form-group">
+          <div class="col-lg-8 col-md-7">
+            <div class="ltn__form-box contact-form-box mb-50 box-shadow--- white-bg--">
+              <h3>{{ $t("contact_us.send") }}</h3>
+              <form id="contact-form" action="mail.php" method="post">
+                <input type="text" name="name" :placeholder="$t('contact_us.name')" />
+                <input type="email" name="email" :placeholder="$t('contact_us.email')" />
+                <input type="text" name="phone" :placeholder="$t('contact_us.phone')" />
                 <textarea
-                  v-model="form.message"
                   name="message"
-                  id="message"
-                  cols="30"
-                  rows="10"
-                  class="form-control"
                   :placeholder="$t('contact_us.message')"
                 ></textarea>
-                <div v-show="form.errors.password_confirmation">
-                  <p class="text-sm text-red-600">
-                    {{ form.errors.message }}
-                  </p>
+                <p>
+                  <label class="input-info-save mb-0"
+                    ><input type="checkbox" name="agree" />{{
+                      $t("contact_us.note")
+                    }}</label
+                  >
+                </p>
+                <div class="btn-wrapper mt-0">
+                  <button
+                    class="btn theme-btn-1 btn-effect-1 text-uppercase"
+                    type="submit"
+                  >
+                    {{ $t("contact_us.send") }}
+                  </button>
                 </div>
+                <p class="form-messege mb-0 mt-20"></p>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-5">
+            <div class="ltn__contact-address-area pl-70">
+              <div class="ltn__contact-address-item-4">
+                <h3>{{ $t("contact_us.address") }}</h3>
+                <p>
+                  {{ $page.props.address }}
+                </p>
               </div>
-              <button
-                type="submit"
-                class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-              >
-                {{ $t("contact_us.send") }}
-              </button>
-            </form>
+              <div class="ltn__contact-address-item-4">
+                <h3>{{ $t("contact_us.email") }}</h3>
+                <p>{{ $page.props.email }}</p>
+              </div>
+              <div class="ltn__contact-address-item-4">
+                <h3>{{ $t("contact_us.phone") }}</h3>
+                <p>
+                  {{ $page.props.phone }}
+                </p>
+              </div>
+              <div class="ltn__social-media mt-15">
+                <ul>
+                  <li>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" title="Youtube"><i class="fab fa-youtube"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+    <!-- CONTACT MESSAGE AREA END -->
   </GuestLayout>
 </template>

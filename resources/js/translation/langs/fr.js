@@ -172,6 +172,8 @@ const fr = {
         name : 'Nom',
         email : 'E-mail',
         message : 'Message',
+        address : 'Adresse',
+        note : ' Enregistrez mon nom, mon adresse e-mail et mon site Web dans ce navigateur pour la prochaine fois que je commenterai.',
     },
     listing:{
         page_title:"Liste",
