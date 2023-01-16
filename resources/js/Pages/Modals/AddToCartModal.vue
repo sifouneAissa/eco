@@ -82,7 +82,7 @@
             // });
             //
             //
-            add_to_cart_modal.on("show.bs.modal", function (e) {
+            add_to_cart_modal.on("shown.bs.modal", function (e) {
                 app.submit(app.$page.props.product);
             });
         },
