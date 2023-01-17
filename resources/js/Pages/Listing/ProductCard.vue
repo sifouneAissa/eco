@@ -29,8 +29,8 @@
         <div class="product-info">
             <h2 class="product-title"><a href="product-details.html">{{model.name}}</a></h2>
             <div class="product-price">
-                <span>$149.00</span>
-                <del>{{ $page.props.currency_code }} {{ model.cprice }}</del>
+                <span>{{ $page.props.currency_code }} {{ model.cprice }}</span>
+                <del>{{ $page.props.currency_code }} 00.00</del>
             </div>
         </div>
     </div>
