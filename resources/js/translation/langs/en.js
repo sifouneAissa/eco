@@ -260,6 +260,9 @@ const en = {
         postal_code:"Please insert a valid code postal",
         mobile:"Please insert a valid mobile number",
         telephone:"Please inert a valid telephone number",
+        credentials : {
+            order_tracking : 'The information entered is not associated with any order'
+        }
     }
     ,
     thanks:{

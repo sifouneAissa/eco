@@ -105,7 +105,9 @@ Route::get("/contact-us",function (){
 
         return \inertia("CompanyPages/Faq");
     })->name('faq');
-    Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
+    //    Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
+    Route::get('trackorder',[\App\Http\Controllers\TrackOrderController::class,'index'])->name('trackOrder.index');
+    Route::post('trackorder/redirect',[\App\Http\Controllers\TrackOrderController::class,'redirectTo'])->name('trackOrder.redirect');
 
     Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');
 
