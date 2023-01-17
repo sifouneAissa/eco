@@ -48,14 +48,14 @@ export default {
         });
       }, 20000);
     }
-    // else if (this.$page.component === "Blogs") {
-    //     window.idleIntervalTimer = setInterval(function () {
-    //         Inertia.reload({
-    //             only: ["blogs"],
-    //             preserveScroll: true,
-    //         });
-    //     }, 20000);
-    // }
+    else if (this.$page.component === "Blogs") {
+        window.idleIntervalTimer = setInterval(function () {
+            Inertia.reload({
+                only: ["blogs"],
+                preserveScroll: true,
+            });
+        }, 20000);
+    }
 
     let app = this;
 
@@ -644,7 +644,7 @@ export default {
                 <!--                                    <li><a href="wishlist.html">Wishlist</a></li>-->
                 <!--                                    <li><a href="checkout.html">Checkout</a></li>-->
                 <!--                                    <li><a href="order-tracking.html">Order Tracking</a></li>-->
-                <!--                                    <li><Link :href="route('account')"> 
+                <!--                                    <li><Link :href="route('account')">
                               {{ $t("nav_menu.pages.account") }}</Link
                             ></li>-->
                 <!--                                    <li><a href="login.html">Sign in</a></li>-->
