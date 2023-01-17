@@ -181,12 +181,12 @@ export default {
                     <li>
                       <a
                         href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"
-                        ><i class="icon-mail"></i> info@webmail.com</a
+                        ><i class="icon-mail"></i> {{ $page.props.email }}</a
                       >
                     </li>
                     <li>
                       <a href="locations.html"
-                        ><i class="icon-placeholder"></i> 15/A, Nest Tower, NYC</a
+                        ><i class="icon-placeholder"></i> {{ $page.props.address }}</a
                       >
                     </li>
                   </ul>
@@ -267,7 +267,9 @@ export default {
             <div class="row">
               <div class="col">
                 <div class="site-logo">
-                  <a href="index.html"><img src="/img/logo.png" alt="Logo" /></a>
+                  <a href="index.html"
+                    ><img src="/img/oldlogo-1.png" alt="Logo" style="height: 63px"
+                  /></a>
                 </div>
               </div>
               <div class="col header-menu-column">
@@ -474,7 +476,9 @@ export default {
                             <span class="utilize-btn-icon">
                               <i class="icofont-user"> </i>
                             </span>
-                            <Link :href="route('account')"> My Account</Link>
+                            <Link :href="route('account')">
+                              {{ $t("nav_menu.pages.account") }}</Link
+                            >
                           </li>
                           <li>
                             <a href="wishlist.html"
@@ -599,7 +603,9 @@ export default {
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
           <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-              <a href="index.html"><img src="/img/logo.png" alt="Logo" /></a>
+              <a href="index.html"
+                ><img src="/img/oldlogo-1.png" alt="Logo" style="height: 63px"
+              /></a>
             </div>
             <button class="ltn__utilize-close">×</button>
           </div>
@@ -638,7 +644,9 @@ export default {
                 <!--                                    <li><a href="wishlist.html">Wishlist</a></li>-->
                 <!--                                    <li><a href="checkout.html">Checkout</a></li>-->
                 <!--                                    <li><a href="order-tracking.html">Order Tracking</a></li>-->
-                <!--                                    <li><a href="account.html">My Account</a></li>-->
+                <!--                                    <li><Link :href="route('account')"> 
+                              {{ $t("nav_menu.pages.account") }}</Link
+                            ></li>-->
                 <!--                                    <li><a href="login.html">Sign in</a></li>-->
                 <!--                                    <li><a href="register.html">Register</a></li>-->
                 <!--                                </ul>-->
@@ -669,7 +677,11 @@ export default {
                   <li><a href="wishlist.html">Wishlist</a></li>
                   <li><a href="checkout.html">Checkout</a></li>
                   <li><a href="order-tracking.html">Order Tracking</a></li>
-                  <li><a href="account.html">My Account</a></li>
+                  <li>
+                    <Link :href="route('account')">
+                      {{ $t("nav_menu.pages.account") }}</Link
+                    >
+                  </li>
                   <li><a href="login.html">Sign in</a></li>
                   <li><a href="register.html">Register</a></li>
                 </ul>
@@ -815,7 +827,7 @@ export default {
                 <div class="footer-widget footer-about-widget">
                   <div class="footer-logo">
                     <div class="site-logo">
-                      <img src="/img/logo.png" alt="Logo" />
+                      <img src="/img/oldlogo-1.png" alt="Logo" style="height: 63px" />
                     </div>
                   </div>
                   <p>
@@ -829,7 +841,7 @@ export default {
                           <i class="icon-placeholder"></i>
                         </div>
                         <div class="footer-address-info">
-                          <p>Brooklyn, New York, United States</p>
+                          <p>{{ $page.props.address }}</p>
                         </div>
                       </li>
                       <li>
@@ -837,7 +849,9 @@ export default {
                           <i class="icon-call"></i>
                         </div>
                         <div class="footer-address-info">
-                          <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                          <p>
+                            <a href="tel:+0123-456789"> {{ $page.props.phone }}</a>
+                          </p>
                         </div>
                       </li>
                       <li>
@@ -846,7 +860,9 @@ export default {
                         </div>
                         <div class="footer-address-info">
                           <p>
-                            <a href="mailto:example@example.com">example@example.com</a>
+                            <a href="mailto:example@example.com">
+                              {{ $page.props.email }}</a
+                            >
                           </p>
                         </div>
                       </li>
@@ -872,56 +888,100 @@ export default {
               </div>
               <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                 <div class="footer-widget footer-menu-widget clearfix">
-                  <h4 class="footer-title">Company</h4>
+                  <h4 class="footer-title">{{ $t("footer.company") }}</h4>
                   <div class="footer-menu">
                     <ul>
-                      <li><a href="about.html">About</a></li>
-                      <li><a href="blog.html">Blog</a></li>
-                      <li><a href="shop.html">All Products</a></li>
-                      <li><a href="locations.html">Locations Map</a></li>
-                      <li><a href="faq.html">FAQ</a></li>
-                      <li><a href="contact.html">Contact us</a></li>
+                      <li>
+                        <Link :href="route('about-us')"
+                          >{{ $t("nav_menu.help.about_us") }}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link :href="route('blog.index')"
+                          >{{ $t("blog.page_title") }}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link :href="route('listing')"
+                          >{{ $t("nav_menu.pages.products") }}
+                        </Link>
+                      </li>
+                      <!-- <li><a href="locations.html">Locations Map</a></li> -->
+                      <li>
+                        <Link :href="route('faq')">{{ $t("nav_menu.help.faq") }} </Link>
+                      </li>
+                      <li>
+                        <Link :href="route('contact-us')"
+                          >{{ $t("nav_menu.help.contact_us") }}
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                 <div class="footer-widget footer-menu-widget clearfix">
-                  <h4 class="footer-title">Services.</h4>
+                  <h4 class="footer-title">{{ $t("footer.services") }}</h4>
                   <div class="footer-menu">
                     <ul>
                       <li><a href="order-tracking.html">Order tracking</a></li>
                       <li><a href="wishlist.html">Wish List</a></li>
-                      <li><a href="login.html">Login</a></li>
-                      <li><a href="account.html">My account</a></li>
-                      <li><a href="about.html">Terms & Conditions</a></li>
-                      <li><a href="about.html">Promotional Offers</a></li>
+                      <li>
+                        <Link :href="route('login')">
+                          {{ $t("nav_menu.pages.login") }}</Link
+                        >
+                      </li>
+                      <li>
+                        <Link :href="route('account')">
+                          {{ $t("nav_menu.pages.account") }}</Link
+                        >
+                      </li>
+                      <li>
+                        <Link :href="route('terms-conditions')"
+                          >{{ $t("nav_menu.help.terms_conditions") }}
+                        </Link>
+                      </li>
+                      <!-- <li><a href="about.html">Promotional Offers</a></li> -->
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                 <div class="footer-widget footer-menu-widget clearfix">
-                  <h4 class="footer-title">Customer Care</h4>
+                  <h4 class="footer-title">{{ $t("footer.customer_care") }}</h4>
                   <div class="footer-menu">
                     <ul>
-                      <li><a href="login.html">Login</a></li>
-                      <li><a href="account.html">My account</a></li>
+                      <li>
+                        <Link :href="route('login')">
+                          {{ $t("nav_menu.pages.login") }}</Link
+                        >
+                      </li>
+                      <li>
+                        <Link :href="route('account')">
+                          {{ $t("nav_menu.pages.account") }}</Link
+                        >
+                      </li>
                       <li><a href="wishlist.html">Wish List</a></li>
                       <li><a href="order-tracking.html">Order tracking</a></li>
-                      <li><a href="faq.html">FAQ</a></li>
-                      <li><a href="contact.html">Contact us</a></li>
+                      <li>
+                        <Link :href="route('faq')">{{ $t("nav_menu.help.faq") }} </Link>
+                      </li>
+                      <li>
+                        <Link :href="route('contact-us')"
+                          >{{ $t("nav_menu.help.contact_us") }}
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                 <div class="footer-widget footer-newsletter-widget">
-                  <h4 class="footer-title">Newsletter</h4>
-                  <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
+                  <h4 class="footer-title">{{ $t("footer.newsletter") }}</h4>
+                  <p>{{ $t("footer.subscribe_desc") }}</p>
                   <div class="footer-newsletter">
                     <form action="#">
-                      <input type="email" name="email" placeholder="Email*" />
+                      <input type="email" name="email" :placeholder="$t('login.email')" />
                       <div class="btn-wrapper">
                         <button class="theme-btn-1 btn" type="submit">
                           <i class="fas fa-location-arrow"></i>
@@ -929,7 +989,7 @@ export default {
                       </div>
                     </form>
                   </div>
-                  <h5 class="mt-30">We Accept</h5>
+                  <h5 class="mt-30">{{ $t("listing.checkout_card.accept") }}</h5>
                   <img src="/img/icons/payment-4.png" alt="Payment Image" />
                 </div>
               </div>
@@ -947,9 +1007,17 @@ export default {
               <div class="col-md-6 col-12 align-self-center">
                 <div class="ltn__copyright-menu text-right">
                   <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Claim</a></li>
-                    <li><a href="#">Privacy & Policy</a></li>
+                    <li>
+                      <Link :href="route('terms-conditions')"
+                        >{{ $t("nav_menu.help.terms_conditions") }}
+                      </Link>
+                    </li>
+                    <!-- <li><a href="#">Claim</a></li> -->
+                    <li>
+                      <Link :href="route('privacy-policy')"
+                        >{{ $t("nav_menu.help.privacy_policy") }}
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>
