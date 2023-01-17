@@ -295,7 +295,7 @@ export default {
                             >{{ $t("nav_menu.pages.products") }}
                           </Link>
                         </li>
-                        <li class="menu-icon">
+                        <!-- <li class="menu-icon">
                           <a href="#">Kits</a>
                           <ul class="mega-menu">
                             <li>
@@ -373,10 +373,13 @@ export default {
                               </div>
                             </li>
                           </ul>
-                        </li>
-                        <li class="menu-icon">
-                          <a href="#">News</a>
-                          <ul>
+                        </li> -->
+                        <li>
+                          <Link :href="route('blog.index')">{{
+                            $t("blog.page_title")
+                          }}</Link>
+
+                          <!-- <ul>
                             <li><a href="blog.html">News</a></li>
                             <li><a href="blog-grid.html">News Grid</a></li>
                             <li>
@@ -386,7 +389,7 @@ export default {
                               <a href="blog-right-sidebar.html">News Right sidebar</a>
                             </li>
                             <li><a href="blog-details.html">News details</a></li>
-                          </ul>
+                          </ul> -->
                         </li>
                         <li>
                           <Link :href="route('contact-us')">{{
@@ -641,14 +644,14 @@ export default {
                 <!--                                </ul>-->
               </li>
               <li>
-                <a href="#">News</a>
-                <ul class="sub-menu">
+                <Link :href="route('blog.index')">{{ $t("blog.page_title") }}</Link>
+                <!-- <ul class="sub-menu">
                   <li><a href="blog.html">News</a></li>
                   <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
                   <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
                   <li><a href="blog-grid.html">News Grid</a></li>
                   <li><a href="blog-details.html">News details</a></li>
-                </ul>
+                </ul> -->
               </li>
               <li>
                 <a href="#">Pages</a>

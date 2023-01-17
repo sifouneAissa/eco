@@ -1,55 +1,44 @@
 <template>
-  <div class="col-12">
-    <div class="row">
-      <div
-        v-for="(blog, index) in $page.props.blogs"
-        :key="blog.id"
-        class="col-md-4 col-sm-6 mb-4"
-      >
+  <!-- BLOG AREA START -->
+  <div class="ltn__blog-area ltn__blog-item-3-normal mb-100">
+    <div class="container">
+      <div class="row">
+        <!-- Blog Item -->
         <div
-          class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm"
+          v-for="(blog, index) in $page.props.blogs"
+          :key="blog.id"
+          class="col-lg-4 col-sm-6 col-12"
         >
-          <!-- <div class="list-card-image">
-            <Link :href="route('blog.show', { id: blog.id })">
-            </Link>
-          </div> -->
-          <div class="list-card-image">
-            <Link :href="route('blog.show', { id: blog.id })">
-              <img :src="blog.fimage" class="img-fluid item-img" style="width: 100%; height: 10vw" />
-            </Link>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1">
-                <Link :href="route('blog.show', { id: blog.id })" class="text-black"
-                  >{{ blog.title }}
-                </Link>
-              </h6>
-              <!-- <p class="text-gray mb-2">{{ blog.desc }}</p> -->
-
+          <div class="ltn__blog-item ltn__blog-item-7">
+            <div class="ltn__blog-img">
+              <a href="blog-details.html"><img src="img/blog/1.jpg" alt="#" /></a>
+            </div>
+            <div class="ltn__blog-brief">
+              <div class="ltn__blog-meta">
+                <ul>
+                  <li class="ltn__blog-author">
+                    <a href="#">by: Admin</a>
+                  </li>
+                  <li>
+                    <span>Nov 18, 2020</span>
+                  </li>
+                </ul>
+              </div>
+              <h3 class="ltn__blog-title">
+                <Link :href="route('blog.show', { id: blog.id })">{{ blog.title }} </Link>
+              </h3>
               <p>
-                <span>
-                  <Link
-                    :href="route('blog.show', { id: blog.id })"
-                    class="btn btn-outline-secondary btn-sm m-2 float-right"
-                  >
-                    {{ $t("blog.details") }}
-                  </Link>
-                </span>
+                Predictive analytics is drastically changing the real estate industry.
               </p>
+              <div class="ltn__blog-btn">
+                <Link :href="route('blog.show', { id: blog.id })">
+                  {{ $t("blog.details") }}<i class="fas fa-angle-double-right"></i>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-12 text-center load-more">
-        <button class="btn btn-primary" type="button" disabled>
-          <span
-            class="spinner-grow spinner-grow-sm"
-            role="status"
-            aria-hidden="true"
-          ></span>
-          {{ $t("listing.loading") }}...
-        </button>
+        <!-- Blog Item -->
       </div>
     </div>
   </div>
