@@ -21,6 +21,7 @@ const en = {
         account:"My account",
         products:"Products",
         new:"New",
+        blog:"Blog",
      }
     },
     locales : {
@@ -244,6 +245,7 @@ const en = {
      title:"Blog",
      blogs:"Blogs",
      details:"Details",
+     by:"By:",
     },
     dashboard:{
      page_title:"Dashboard",

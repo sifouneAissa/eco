@@ -21,6 +21,7 @@ const fr = {
            account:"Mon compte",
            products:"Produits",
            new:"Nouveau",
+           blog:"Blog",
         }
        },
     locales : {
@@ -246,6 +247,7 @@ const fr = {
        title:"Blog",
        blogs:"Blogs",
        details:"Détails",
+       by:"Par:",
       },
       dashboard:{
         page_title:"Tableau de bord",

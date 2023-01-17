@@ -23,9 +23,14 @@ class Blog extends Model implements HasMedia
 
     protected $appends = [
         'modal_ids',
-        'fimage'
+        'fimage',
+        'created'
     ];
 
+    public function getCreatedAttribute(){
+       
+        return translateDate($this->created_at);
+    }
     public function getFimageAttribute(){
         $img = '/img/categories.png';
 
@@ -37,9 +42,10 @@ class Blog extends Model implements HasMedia
 
     protected $fillable = [
         'title',
-        'blog'
+        'blog',
+        'description',
+        'created_by',
     ];
-
     public  function getModalIdsAttribute(){
         return [
             'edit' => 'admin.blog.edit',

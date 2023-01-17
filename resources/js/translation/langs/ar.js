@@ -16,11 +16,12 @@ const ar = {
            login:"تسجيل الدخول",
            register:" التسجيل" ,
            home:"الصفحة الرئيسية",
-           logout:"تسجيل خروج",
+           logout:"تسجيل الخروج",
            profile:"الملف الشخصي",
            account:"حسابي",
            products:"المنتجات",
            new:"جديد",
+           blog:"المدونة",
         }
        },
     locales : {
@@ -246,6 +247,7 @@ const ar = {
        title:"المدونة",
        blogs:"مدونة / المدونات",
        details:"تفاصيل",
+       by:"من قبل :",
       },
       dashboard:{
         page_title:"لوحة القيادة",

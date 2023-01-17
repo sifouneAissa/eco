@@ -11,16 +11,20 @@
         >
           <div class="ltn__blog-item ltn__blog-item-7">
             <div class="ltn__blog-img">
-              <a href="blog-details.html"><img src="img/blog/1.jpg" alt="#" /></a>
+              <Link :href="route('blog.show', { id: blog.id })">
+                <img :src="blog.fimage" alt="blog" />
+                <!-- img/blog/1.jpg -->
+              </Link>
             </div>
             <div class="ltn__blog-brief">
               <div class="ltn__blog-meta">
                 <ul>
                   <li class="ltn__blog-author">
-                    <a href="#">by: Admin</a>
+                    <a href="#">{{ $t("blog.by") }} Admin</a>
                   </li>
                   <li>
-                    <span>Nov 18, 2020</span>
+                    <!-- <span>Nov 18, 2020</span> -->
+                    <span>{{ blog.created }}</span>
                   </li>
                 </ul>
               </div>
