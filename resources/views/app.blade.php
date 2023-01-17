@@ -23,7 +23,8 @@
         @else
             @vite(['resources/js/ltr.js'])
         @endif
-        @if(in_array($page['component'],["Profile/Show"]) )
+
+        @if(in_array($page['component'],["Account"]))
             @vite(['resources/css/app.css'])
         @endif
         @inertiaHead

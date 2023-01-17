@@ -121,8 +121,11 @@ class UserOrderController extends Controller
                 'ip' => $request->ip()
             ]);
 
+            try {
+                event(new NewOrder($order));
+            }catch (\Exception $e){
 
-            event(new NewOrder($order));
+            }
 
             return redirect()->route('thanks.show',[
                 'id' => $order->id
@@ -298,7 +301,11 @@ class UserOrderController extends Controller
         $shopping_session->user_id = $user->id;
         $shopping_session->save();
 
-        event(new NewOrder($order));
+        try {
+            event(new NewOrder($order));
+        }catch (\Exception $e){
+
+        }
 
 //        return redirect()->route('listing', [
 //            'query' => $order->products->first()->category->name

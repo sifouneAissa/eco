@@ -1,6 +1,7 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import CheckoutOption from "@/Pages/Checkout/CheckoutOption.vue";
+import breadcrumb from '@/Pages/Common/breadcrumb.vue';
 
 // defineProps({
 //     addresses: Array,
@@ -14,6 +15,11 @@ import CheckoutOption from "@/Pages/Checkout/CheckoutOption.vue";
         {{ $t("listing.checkout") }}
       </h2>
     </template>
+
+
+      <!-- BREADCRUMB AREA START -->
+      <breadcrumb  :title="$t('listing.checkout')" />
+      <!-- BREADCRUMB AREA END -->
 
     <CheckoutOption />
   </GuestLayout>

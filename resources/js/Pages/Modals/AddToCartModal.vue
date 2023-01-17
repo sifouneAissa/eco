@@ -34,9 +34,9 @@
                                                     Successfully added to your Cart</p>
                                             </div>
                                             <div class="btn-wrapper">
-                                                <a @click="go()" href="javascript: void(0)" class="theme-btn-1 btn btn-effect-1">View
+                                                <a @click="go('cartitem.index')" href="javascript: void(0)" class="theme-btn-1 btn btn-effect-1">View
                                                     Cart</a>
-                                                <a href="checkout.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                                                <a @click="go('checkout.show')" href="javascript: void(0)" class="theme-btn-2 btn btn-effect-2">Checkout</a>
                                             </div>
                                         </div>
                                         <!-- additional-info -->
@@ -135,11 +135,11 @@
             Pay() {
                 this.$emit("Pay");
             },
-            go(){
+            go(route){
                 $('#add_to_cart_modal').modal('hide');
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
-                Inertia.visit(this.route('cartitem.index'));
+                Inertia.visit(this.route(route));
             }
         },
     }

@@ -5,8 +5,8 @@
         {{ $t("listing.checkout_card.choose_address") }}
         <button
           v-if="showAdd"
-          class="float-right btn btn-outline-danger"
-          @click="add = true"
+          class="float-right btn btn-outline-dark"
+          @click="add = !add"
         >
           {{ $t("listing.checkout_card.add") }}
         </button>
@@ -35,7 +35,7 @@
                       'btn btn-sm mr-2 ' +
                       (selectedA.id === model.id ||
                       (selectedA.toCreate === true && model.toCreate)
-                        ? 'btn-success'
+                        ? 'theme-btn-1'
                         : 'btn-secondary')
                     "
                   >
@@ -57,10 +57,13 @@
         </div>
       </div>
     </div>
+   <div class="mt-2">
+       <label class="input-info-save mb-0"><input type="checkbox" name="agree"> Create an account?</label>
 
-    <div v-if="add" class="modal-content">
+   </div>
+   <div v-if="add" class="modal-content mt-3">
       <div class="modal-header">
-        <h5 class="modal-title" id="add-address">
+        <h5 class="modal-title m-3" id="add-address">
           {{ $t("account.addresses.add_card.title") }}
         </h5>
       </div>
@@ -213,7 +216,7 @@
         <div class="modal-footer">
           <button
             @click="setSelectedAddress(this.add_form)"
-            class="btn d-flex w-50 text-center justify-content-center btn-primary"
+            class="btn d-flex w-50 text-center justify-content-center theme-btn-1"
           >
             {{ $t("account.addresses.add_card.save") }}
           </button>
