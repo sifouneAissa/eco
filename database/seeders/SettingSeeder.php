@@ -18,12 +18,12 @@ class SettingSeeder extends Seeder
         [
             'name' => 'Phone',
             'code' => 'phone',
-            'content' => '0998899989',
+            'content' => '+971 55 302 4498',
         ],
         [
             'name' => 'Email',
             'code' => 'email',
-            'content' => 'test@gmail.com',
+            'content' => 'example@example.com',
         ],
         [
             'name' => 'Address',

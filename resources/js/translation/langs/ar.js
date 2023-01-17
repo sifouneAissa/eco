@@ -276,8 +276,16 @@ const ar = {
         order: "معرّف طلبك هو",
     }
     ,
-    notifications: {
-        success: "تمت العملية بنجاح",
+    notifications:{
+        success:"تمت العملية بنجاح",
+    },
+    footer:{
+            company:"الشركة",
+            services:"الخدمات",
+            customer_care:" خدمة الزبائن",
+            newsletter:"النشرة الإخبارية",
+            subscribe_desc:"اشترك في النشرة الإخبارية الأسبوعية لدينا وتلقي التحديثات عبر البريد الإلكتروني.",
+
     }
 };
 

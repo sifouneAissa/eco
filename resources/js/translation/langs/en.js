@@ -278,6 +278,13 @@ const en = {
     },
     notifications:{
         success:"Operation successful",
+    },
+    footer:{
+            company:"Company",
+            services:"Services",
+            customer_care:"Customer Care",
+            newsletter:"Newsletter",
+            subscribe_desc:"Subscribe to our weekly Newsletter and receive updates via email.",
     }
 };
 
