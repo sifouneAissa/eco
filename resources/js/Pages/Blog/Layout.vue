@@ -21,7 +21,7 @@ export default {
 
 <template>
   <Head :title="title" />
-  <breadcrumb :title="$t('blog.page_title')" />
+  <breadcrumb :title="$t('nav_menu.pages.blog')" />
   <PBlog />
   <div class="btn-wrapper text-center">
     <a href="#" class="btn btn-transparent btn-effect-3 btn-border">

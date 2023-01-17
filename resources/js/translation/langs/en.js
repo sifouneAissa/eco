@@ -21,6 +21,7 @@ const en = {
         account:"My account",
         products:"Products",
         new:"New",
+        blog:"Blog",
      }
     },
     locales : {
@@ -29,9 +30,9 @@ const en = {
         fr : 'French'
     },
     currencies : {
-        dzd : 'Dinar',
+        dzd : 'DZD',
         euro : 'Euro',
-        dollar : 'Dollar'
+        dollar : 'USD'
     },
     dashboard : "Dashboard 1",
     login : {
@@ -244,6 +245,7 @@ const en = {
      title:"Blog",
      blogs:"Blogs",
      details:"Details",
+     by:"By:",
     },
     dashboard:{
      page_title:"Dashboard",

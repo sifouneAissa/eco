@@ -283,14 +283,20 @@ export default {
                           <Link href="/" id="home">{{ $t("nav_menu.pages.home") }}</Link>
                         </li>
                         <li>
-                          <a href="#">About Us</a>
+                          <a href="#">{{ $t("nav_menu.help.about_us") }}</a>
                           <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                            <li><a href="404.html">404</a></li>
                             <li>
-                              <Link :href="route('welcometest')">Contact</Link>
+                              <a href="#">{{ $t("nav_menu.help.about_us") }}</a>
+                            </li>
+                            <li>
+                              <a href="#">{{ $t("nav_menu.help.faq") }}</a>
+                            </li>
+                            <!-- <li><a href="coming-soon.html">Coming Soon</a></li> -->
+                            <!-- <li><a href="404.html">404</a></li> -->
+                            <li>
+                              <Link :href="route('contact-us')">{{
+                                $t("nav_menu.help.contact_us")
+                              }}</Link>
                             </li>
                           </ul>
                         </li>
@@ -380,7 +386,7 @@ export default {
                         </li> -->
                         <li>
                           <Link :href="route('blog.index')">{{
-                            $t("blog.page_title")
+                            $t("nav_menu.pages.blog")
                           }}</Link>
 
                           <!-- <ul>
@@ -495,7 +501,7 @@ export default {
                               <span class="utilize-btn-icon">
                                 <i class="icofont-logout"></i>
                               </span>
-                              Logout
+                              {{ $t("nav_menu.pages.logout") }}
                             </a>
                           </li>
                         </ul>
@@ -620,7 +626,7 @@ export default {
           <div class="ltn__utilize-menu">
             <ul>
               <li>
-                <Link :href="route('listing')">Home</Link>
+                <Link :href="route('listing')">{{ $t("nav_menu.pages.home") }}</Link>
                 <!--                                <ul class="sub-menu">-->
                 <!--                                    <li><a href="index.html">Home Style - 01</a></li>-->
                 <!--                                    <li><a href="index-2.html">Home Style - 02</a></li>-->
@@ -635,7 +641,7 @@ export default {
               </li>
               <li><a href="about.html">About</a></li>
               <li>
-                <Link :href="route('listing')">Product</Link>
+                <Link :href="route('listing')">{{ $t("nav_menu.pages.products") }}</Link>
                 <!--                                <ul class="sub-menu">-->
                 <!--                                    <li><a href="shop.html">Product</a></li>-->
                 <!--                                    <li><a href="shop-grid.html">Product Grid</a></li>-->
@@ -654,7 +660,7 @@ export default {
                 <!--                                </ul>-->
               </li>
               <li>
-                <Link :href="route('blog.index')">{{ $t("blog.page_title") }}</Link>
+                <Link :href="route('blog.index')">{{ $t("nav_menu.pages.blog") }}</Link>
                 <!-- <ul class="sub-menu">
                   <li><a href="blog.html">News</a></li>
                   <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
@@ -664,28 +670,40 @@ export default {
                 </ul> -->
               </li>
               <li>
-                <a href="#">Pages</a>
+                <a href="#">{{ $t("nav_menu.pages.pages") }}</a>
                 <ul class="sub-menu">
-                  <li><a href="faq.html">FAQ</a></li>
-                  <li><a href="404.html">404</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                  <li><a href="coming-soon.html">Coming Soon</a></li>
-                  <li><a href="shop.html">Shop</a></li>
+                  <li>
+                    <a href="#">{{ $t("nav_menu.help.faq") }}</a>
+                  </li>
+                  <!-- <li><a href="404.html">404</a></li> -->
+                  <li>
+                    <a :href="route('contact-us')">{{
+                      $t("nav_menu.help.contact_us")
+                    }}</a>
+                  </li>
+                  <!-- <li><a href="coming-soon.html">Coming Soon</a></li> -->
+                  <!-- <li><a href="shop.html">Shop</a></li>
                   <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
                   <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
                   <li><a href="shop-grid.html">Shop Grid</a></li>
-                  <li><a href="product-details.html">Shop details </a></li>
-                  <li><a href="cart.html">Cart</a></li>
-                  <li><a href="wishlist.html">Wishlist</a></li>
-                  <li><a href="checkout.html">Checkout</a></li>
-                  <li><a href="order-tracking.html">Order Tracking</a></li>
+                  <li><a href="product-details.html">Shop details </a></li> -->
+                  <li><a href="#">Cart</a></li>
+                  <li><a href="#">Wishlist</a></li>
+                  <li><a href="#">Checkout</a></li>
+                  <li><a href="#">Order Tracking</a></li>
                   <li>
                     <Link :href="route('account')">
                       {{ $t("nav_menu.pages.account") }}</Link
                     >
                   </li>
-                  <li><a href="login.html">Sign in</a></li>
-                  <li><a href="register.html">Register</a></li>
+                  <li>
+                    <Link :href="route('login')"> {{ $t("nav_menu.pages.login") }}</Link>
+                  </li>
+                  <li>
+                    <Link :href="route('register')"
+                      >{{ $t("nav_menu.pages.register") }}
+                    </Link>
+                  </li>
                 </ul>
               </li>
               <li>
@@ -730,7 +748,7 @@ export default {
                   <span class="utilize-btn-icon">
                     <i class="icofont-logout"></i>
                   </span>
-                  Logout
+                  {{ $t("nav_menu.pages.logout") }}
                 </a>
               </li>
             </ul>
@@ -894,13 +912,15 @@ export default {
                   <div class="footer-menu">
                     <ul>
                       <li>
-                        <Link :href="route('about-us')"
-                          >{{ $t("nav_menu.help.about_us") }}
+                        <Link href="#">
+                          <!-- <Link :href="route('about-us')"
+                          > -->
+                          {{ $t("nav_menu.help.about_us") }}
                         </Link>
                       </li>
                       <li>
                         <Link :href="route('blog.index')"
-                          >{{ $t("blog.page_title") }}
+                          >{{ $t("nav_menu.pages.blog") }}
                         </Link>
                       </li>
                       <li>
@@ -910,7 +930,10 @@ export default {
                       </li>
                       <!-- <li><a href="locations.html">Locations Map</a></li> -->
                       <li>
-                        <Link :href="route('faq')">{{ $t("nav_menu.help.faq") }} </Link>
+                        <Link href="#">
+                          <!-- <Link :href="route('faq')"> -->
+                          {{ $t("nav_menu.help.faq") }}
+                        </Link>
                       </li>
                       <li>
                         <Link :href="route('contact-us')"
@@ -926,8 +949,8 @@ export default {
                   <h4 class="footer-title">{{ $t("footer.services") }}</h4>
                   <div class="footer-menu">
                     <ul>
-                      <li><a href="order-tracking.html">Order tracking</a></li>
-                      <li><a href="wishlist.html">Wish List</a></li>
+                      <li><a href="#">Order tracking</a></li>
+                      <li><a href="#">Wish List</a></li>
                       <li>
                         <Link :href="route('login')">
                           {{ $t("nav_menu.pages.login") }}</Link
@@ -939,8 +962,10 @@ export default {
                         >
                       </li>
                       <li>
-                        <Link :href="route('terms-conditions')"
-                          >{{ $t("nav_menu.help.terms_conditions") }}
+                        <Link href="#">
+                          <!-- <Link :href="route('terms-conditions')"
+                          > -->
+                          {{ $t("nav_menu.help.terms_conditions") }}
                         </Link>
                       </li>
                       <!-- <li><a href="about.html">Promotional Offers</a></li> -->
@@ -963,10 +988,13 @@ export default {
                           {{ $t("nav_menu.pages.account") }}</Link
                         >
                       </li>
-                      <li><a href="wishlist.html">Wish List</a></li>
-                      <li><a href="order-tracking.html">Order tracking</a></li>
+                      <li><a href="#">Wish List</a></li>
+                      <li><a href="#">Order tracking</a></li>
                       <li>
-                        <Link :href="route('faq')">{{ $t("nav_menu.help.faq") }} </Link>
+                        <Link href="#">
+                          <!-- <Link :href="route('faq')"> -->
+                          {{ $t("nav_menu.help.faq") }}
+                        </Link>
                       </li>
                       <li>
                         <Link :href="route('contact-us')"
@@ -1010,14 +1038,18 @@ export default {
                 <div class="ltn__copyright-menu text-right">
                   <ul>
                     <li>
-                      <Link :href="route('terms-conditions')"
-                        >{{ $t("nav_menu.help.terms_conditions") }}
+                      <Link href="#">
+                        <!-- <Link :href="route('terms-conditions')"
+                        > -->
+                        {{ $t("nav_menu.help.terms_conditions") }}
                       </Link>
                     </li>
                     <!-- <li><a href="#">Claim</a></li> -->
                     <li>
-                      <Link :href="route('privacy-policy')"
-                        >{{ $t("nav_menu.help.privacy_policy") }}
+                      <Link href="#">
+                        <!-- <Link :href="route('privacy-policy')"
+                        > -->
+                        {{ $t("nav_menu.help.privacy_policy") }}
                       </Link>
                     </li>
                   </ul>
