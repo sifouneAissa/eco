@@ -1,5 +1,5 @@
 import './bootstrap';
-import '../css/app.css'
+// import '../css/app.css'
 
 import '../../public/vendor/icofont/icofont.min.css';
 
