@@ -19,7 +19,7 @@
                             <i class="fas fa-shopping-cart"></i>
                         </a>
                     </li>
-                    <li>
+                    <li @click="$page.props.productTo=model">
                         <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
                             <i class="far fa-heart"></i></a>
                     </li>

@@ -49,6 +49,9 @@ Route::middleware([
         'index','store','update','destroy'
     ]);
 
+    Route::resource('/wishlist',\App\Http\Controllers\WishListController::class)->only(['index','destroy','store'
+    ]);
+
 
     Route::get('redirects', [\App\Http\Controllers\LoginRedirectionController::class,'redirect'])->name('redirects');
 
