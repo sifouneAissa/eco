@@ -30,7 +30,6 @@ class CreateNewUser implements CreatesNewUsers
                     $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
         } else $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
 
-
         Validator::make($input, $rules)->validate();
         $user = null;
 

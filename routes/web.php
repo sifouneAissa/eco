@@ -15,6 +15,8 @@ use Inertia\Inertia;
 |
 */
 
+
+
 Route::get('/', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcome')->middleware('set.password');
 Route::get('/welcometest', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcometest');
 Route::post('/skipsetpassword',function (){
