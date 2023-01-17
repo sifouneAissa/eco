@@ -30,9 +30,9 @@ const fr = {
         fr : 'Français'
     },
     currencies : {
-        dzd : 'Dinar',
+        dzd : 'DZD',
         euro : 'Euro',
-        dollar : 'Dollar'
+        dollar : 'USD'
     },
     dashboard : "Accuil",
     login : {
