@@ -60,11 +60,11 @@
         },
         mounted() {
 
-            console.log(this.Btns);
-
             let app = this;
             let datatable = $("#dataTable").dataTable({
-                dom: 'Bfrtip',
+                // dom: 'Bfrtip',
+                dom: 'B<"clear">lfrtip',
+
                 // responsive: true,
                 // rowReorder: {
                 //     selector: 'td:nth-child(2)'
