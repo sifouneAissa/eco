@@ -39,7 +39,7 @@ class ProductCategory extends Model implements HasMedia
     public function getFimageAttribute(){
         $img = '/img/categories.png';
 
-        if($f = $this->media?->first()?->getFullUrl())
+        if($f = $this->media()->orderBy('order')?->first()?->getFullUrl())
              return $f;
 
         return $img;

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Session;
 use Laravel\Scout\Searchable;
 use Spatie\MediaLibrary\HasMedia;
@@ -16,6 +17,7 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
     use MediaTrait;
     use Searchable;
+
 
     public const SNAME = 'Products';
     public const INAME = 'Product';
@@ -68,7 +70,7 @@ class Product extends Model implements HasMedia
     public function getFimageAttribute(){
         $image = env('APP_URL').'/img/checkout.png';
 
-        if($media = $this->media->first())
+        if($media = $this->media()->orderBy('order')->first())
             $image = $media->getFullUrl();
         return $image;
     }
