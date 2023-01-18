@@ -233,8 +233,9 @@ return [
     ],
     'currencies' => [
         'dzd',
-        'euro',
-        'dollar'
+//        'euro',
+        'dollar',
+        'aed'
     ],
 
     'admin-prefix' => 'admin-dash'

@@ -32,7 +32,8 @@ const en = {
     currencies : {
         dzd : 'DZD',
         euro : 'Euro',
-        dollar : 'USD'
+        dollar : 'USD',
+        aed : 'AED'
     },
     dashboard : "Dashboard 1",
     login : {

@@ -32,7 +32,8 @@ const ar = {
     currencies : {
         dzd : 'الدينار',
         euro : 'الأورو',
-        dollar : 'الدولار'
+        dollar : 'الدولار',
+        aed : 'الدرهم الاماراتي'
     },
     dashboard : "اللصفحة الرئيسية",
     login : {

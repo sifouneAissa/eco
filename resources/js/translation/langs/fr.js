@@ -32,7 +32,8 @@ const fr = {
     currencies : {
         dzd : 'DZD',
         euro : 'Euro',
-        dollar : 'USD'
+        dollar : 'USD',
+        aed : 'AED'
     },
     dashboard : "Accuil",
     login : {

@@ -38,7 +38,14 @@ class CurrencySeeder extends Seeder
                 'exchange_rate' => 145.46,
                 'code' => 'euro',
                 'status' => 1
-            ]
+            ],
+            [
+                'name' => 'United Arab Emirates Dirham',
+                'currency_code' => 'AED',
+                'exchange_rate' => 37.06,
+                'code' => 'aed',
+                'status' => 1
+            ],
         ]);
     }
 }
