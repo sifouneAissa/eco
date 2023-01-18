@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('blogs', function (Blueprint $table) {
             //
-            $table->text('description')->after('blog');
+            $table->text('description')->after('blog')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
