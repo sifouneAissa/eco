@@ -11,10 +11,7 @@
                                 <div class="list-card-image">
                                     <center>
                                         <a target="_blank" :href="media.full_url">
-                                            <img style="{
-                                    width: 100%;
-                                    height: 10vw;
-                                    }" :src="media.full_url" class="item-img">
+                                            <img  :src="media.full_url" class="item-img imgWL">
                                         </a>
                                     </center>
                                 </div>
@@ -86,7 +83,41 @@
         }
     }
 </script>
-
 <style scoped>
-
+    @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+        .imgWL {
+            width: 100%;
+            height: 50vw;
+        }
+    }
+    @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+        .imgWL {
+            width: 100%;
+            height: 50vw;
+        }
+    }
+    @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+        .imgWL {
+            width: 100%;
+            height: 40vw;
+        }
+    }
+    @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+        .imgWL {
+            width: 100%;
+            height: 15vw;
+        }
+    }
+    @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
+        .imgWL {
+            width: 100%;
+            height: 15vw;
+        }
+    }
+    @media (min-width:1281px) { /* hi-res laptops and desktops */
+        .imgWL {
+            width: 100%;
+            height: 15vw;
+        }
+    }
 </style>

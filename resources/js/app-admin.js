@@ -16,6 +16,8 @@ import '../../public/admin/vendor/dataTables/buttons.html5.min.js';
 import '../../public/admin/vendor/dataTables/buttons.print.min.js';
 import '../../public/admin/vendor/dataTables/buttons.colVis';
 import '../../public/admin/vendor/dataTables/css/buttons.bootstrap.css';
+import '../../public/admin/vendor/dataTables/dataTables.rowReorder.min';
+import '../../public/admin/vendor/dataTables/dataTables.responsive.min';
 
 
 // import Multiselect from 'vue-multiselect'
