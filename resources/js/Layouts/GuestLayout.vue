@@ -101,7 +101,7 @@ export default {
 
     window.onerror = function (error) {
       // error about tooltip
-      if (error.includes("tooltip")) {
+      if (error.includes("tooltip") || error.includes('WOW')) {
         Inertia.visit(app.$page.url, {
           // preserveState : true,
           preserveScroll: true,

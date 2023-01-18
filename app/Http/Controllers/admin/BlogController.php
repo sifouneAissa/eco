@@ -69,7 +69,12 @@ class BlogController extends Controller
     public function store(BlogRequest $request){
 
         // get all inputs in the request
-        $inputs = $this->filterRequest($request->all());
+        $inputs = array_merge(
+            $this->filterRequest($request->all()),
+            [
+                'created_by' => auth()->user()->id
+            ]
+        );
 
         Blog::create($inputs);
 

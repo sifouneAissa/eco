@@ -4,11 +4,10 @@ import './bootstrap';
 import '../../public/vendor/icofont/icofont.min.css';
 
 import $ from 'jquery'
-import WOW from 'wowjs'
+// import WOW from 'wowjs'
 window.jQuery = $;
 window.$ = $;
-window.WOW = WOW.WOW
-
+// window.WOW = WOW.WOW
 import messages from './translation/translation';
 
 import {createApp, h} from 'vue';
