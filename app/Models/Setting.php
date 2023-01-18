@@ -36,7 +36,7 @@ class Setting extends Model implements HasMedia
     ];
 
     public function getFimageAttribute(){
-        $img = '/img/shopping.png';
+        $img = '/img/oldlogo-1.png';
 
         if($f = $this->media?->first()?->getFullUrl())
              return $f;
