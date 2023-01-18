@@ -489,11 +489,10 @@ export default {
                             >
                           </li>
                           <li>
-                            <a href="wishlist.html"
+                            <Link v-if="$page.props.auth" :href="route('wishlist.index')"
                               ><span class="utilize-btn-icon">
-                                <i class="icofont-heart"> </i> </span
-                              >Wishlist</a
-                            >
+                                <i class="icofont-heart">({{$page.props.wcount}})</i> </span
+                              >Wishlist</Link>
                           </li>
 
                           <li v-if="$page.props.auth">
@@ -724,14 +723,14 @@ export default {
                   {{ $t("nav_menu.pages.login") }}
                 </Link>
               </li>
-              <li>
-                <a href="wishlist.html" title="Wishlist">
+              <li v-if="$page.props.auth">
+                <Link  :href="route('wishlist.index')" title="Wishlist">
                   <span class="utilize-btn-icon">
                     <i class="far fa-heart"></i>
-                    <sup>3</sup>
+                    <sup>{{$page.props.wcount}}</sup>
                   </span>
                   Wishlist
-                </a>
+                </Link>
               </li>
 
               <li>

@@ -135,4 +135,8 @@ class User extends Authenticatable
     public function getUnregisteredAttribute(){
         return !$this->passwordExist();
     }
+
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class);
+    }
 }

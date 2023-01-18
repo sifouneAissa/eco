@@ -47,6 +47,7 @@ class HandleInertiaRequests extends Middleware
 
         $code = Currency::where("code",$currency)->first()->currency_code;
         $notifications = auth()->user()?->notifications()->orderBy('id','desc')->get();
+        $wcount = auth()->user()?->wishlists?->count();
 
         $shopping = getShoppingSession();
         if($notifications)
@@ -91,6 +92,7 @@ class HandleInertiaRequests extends Middleware
             'address' => getSetting('address')->address,
             'email' => getSetting('email')->email,
             'phone' => getSetting('phone')->phone,
+            'wcount' => $wcount,
             'company_name' => getSetting('company_name')->company_name,
             'shopping_user' => $shopping?->user
         ]);
