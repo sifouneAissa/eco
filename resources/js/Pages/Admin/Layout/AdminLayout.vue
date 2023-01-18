@@ -4,6 +4,9 @@
     import SideBar from '@/Pages/Admin/Navbars/SideBar.vue';
     import Footer from '@/Pages/Admin/Footer.vue';
     import { Head, Link } from "@inertiajs/inertia-vue3";
+    import  {Inertia} from "@inertiajs/inertia";
+
+
     export default {
         components : {
             NavBar,
@@ -28,6 +31,10 @@
                 $("body").toggleClass("sb-sidenav-toggled");
             });
 
+            let app = this;
+            window.onload = function (){
+                Inertia.visit(app.$page.url);
+            };
         }
     }
 </script>

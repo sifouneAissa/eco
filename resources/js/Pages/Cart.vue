@@ -120,7 +120,6 @@
                         <div class="shoping-cart-inner">
                             <div class="shoping-cart-table table-responsive">
                                 <table class="table">
-
                                     <tbody v-if="$page.props.shopping_session">
                                     <tr
                                         v-for="item in $page.props.shopping_session.cart_items"
@@ -162,7 +161,7 @@
                                     <tbody>
                                     <tr>
                                         <td>Cart Subtotal</td>
-                                        <td>{{$page.props.currency_code }} {{$page.props.shopping_session.citotal}}</td>
+                                        <td>{{$page.props.currency_code }} {{$page.props.shopping_session?.citotal}}</td>
                                     </tr>
                                     <tr>
                                         <td>Shipping and Handing</td>
@@ -174,12 +173,12 @@
                                     </tr>
                                     <tr>
                                         <td><strong>Order Total</strong></td>
-                                        <td><strong>{{$page.props.currency_code }} {{$page.props.shopping_session.citotal}}</strong></td>
+                                        <td><strong>{{$page.props.currency_code }} {{$page.props.shopping_session?.citotal}}</strong></td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <div class="btn-wrapper text-right">
-                                    <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
+                                    <Link :href="route('checkout.show')" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</Link>
                                 </div>
                             </div>
                         </div>

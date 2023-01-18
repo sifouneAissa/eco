@@ -18,7 +18,7 @@ import '../../public/admin/vendor/dataTables/buttons.colVis';
 import '../../public/admin/vendor/dataTables/css/buttons.bootstrap.css';
 import '../../public/admin/vendor/dataTables/dataTables.rowReorder.min';
 import '../../public/admin/vendor/dataTables/dataTables.responsive.min';
-
+// import '../../public/admin/vendor/dataTables/dataTables.bulma.min.js';
 
 // import Multiselect from 'vue-multiselect'
 
@@ -35,6 +35,7 @@ import {ZiggyVue} from '../../vendor/tightenco/ziggy/dist/vue.m';
 import {createI18n} from 'vue-i18n'
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
+
 
 window.Pusher = Pusher;
 
@@ -79,7 +80,6 @@ createInertiaApp({
             .use(plugin)
             .use(i18n)
             .use(ZiggyVue, Ziggy);
-
 
         // myApp.component('Multiselect', () => import('vue-multiselect'));
 

@@ -69,6 +69,7 @@ use \Illuminate\Support\Facades\Route;
         Route::get('/media/{model}',[\App\Http\Controllers\admin\MediaController::class,'index'])->name('media.index');
 
         Route::post('/media/{id}',[\App\Http\Controllers\admin\MediaController::class,'update'])->name('media.update');
+        Route::post('/mediaorder',[\App\Http\Controllers\admin\MediaController::class,'orderMedia'])->name('media.order');
 
         Route::resource('/media',\App\Http\Controllers\admin\MediaController::class)->only([
             'store','destroy'

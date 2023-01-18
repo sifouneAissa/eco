@@ -16,6 +16,7 @@
 {{--        <script src="/assets/ltr/js/plugins.js" type="javascript"></script>--}}
 {{--        <script src="/assets/ltr/js/main.js" type="javascript"></script>--}}
         <!-- Scripts -->
+
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @if(isRtl(app()->getLocale()))
@@ -24,7 +25,7 @@
             @vite(['resources/js/ltr.js'])
         @endif
 
-        @if(in_array($page['component'],["Account"]))
+        @if(in_array($page['component'],["Profile/Show"]))
             @vite(['resources/css/app.css'])
         @endif
         @inertiaHead
