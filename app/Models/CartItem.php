@@ -16,7 +16,8 @@ class CartItem extends Model
     ];
 
     protected $appends = [
-        'qprice'
+        'qprice',
+        'oprice'
     ];
 
 
@@ -29,9 +30,12 @@ class CartItem extends Model
     }
 
     public function getPriceAttribute(){
-
         return $this->product->dprice * $this->quantity;
     }
 
+    public function getOpriceAttribute(){
+
+        return $this->product->price * $this->quantity;
+    }
 
 }

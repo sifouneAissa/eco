@@ -30,7 +30,7 @@
                   <div class="mini-cart-sub-total">
                       <h5>{{$t('listing.total')}} : <span>{{ $page.props.currency_code }} {{ model ? model.citotal : 0 }}</span></h5>
                   </div>
-                  <div class="btn-wrapper">
+                  <div class="btn-wrapper mb-4">
                       <Link :href="route('cartitem.index')" class="theme-btn-1 btn btn-effect-1">View Cart</Link>
                       <Link :href="route('checkout.show')" class="theme-btn-2 btn btn-effect-2">{{$t('listing.checkout')}}</Link>
                   </div>

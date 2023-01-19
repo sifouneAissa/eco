@@ -1,12 +1,23 @@
-<script setup>
+<script >
 import { Head, Link } from "@inertiajs/inertia-vue3";
-defineProps({
-  title: String,
-  img: {
-    type: String,
-    default: "img/bg/4.png",
-  },
-});
+import { Inertia } from "@inertiajs/inertia";
+
+export default {
+    props : ['title','img'],
+    components : {
+        Head,
+        Link
+    },
+    methods : {
+        go : function () {
+            let app = this;
+            Inertia.post(this.route('trackOrder.redirect', {
+                mobile: app.$page.props.buyer.mobile,
+                order_id: app.$page.props.buyer.order_id,
+            }))
+        }
+    }
+}
 </script>
 
 <template>
@@ -17,10 +28,10 @@ defineProps({
     <!-- :data-bg="img" -->
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
+          <div class="col-lg-12">
           <div
             class="ltn__breadcrumb-inner ltn__breadcrumb-inner-4 justify-content-between"
-          >
+             >
             <div class="section-title-area">
               <h1 class="section-title white-color">{{ title }}</h1>
             </div>
@@ -31,9 +42,10 @@ defineProps({
                 </li>
                 <li>{{ title }}</li>
               </ul>
-            </div>
+              <div v-if="$page.props.buyer" class="float-right">Thanks for your purchase,<a href="javascript:void(0)" @click="go"><div class="text-white"> Track your order : #{{$page.props.buyer?.order_id}}</div></a></div>
           </div>
         </div>
+       </div>
       </div>
     </div>
   </div>

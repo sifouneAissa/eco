@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Models\Currency;
+use App\Models\OrderDetail;
 use App\Models\ShoppingSession;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -68,6 +70,18 @@ class HandleInertiaRequests extends Middleware
         if(!$addresses) $addresses = $shopping?->user?->addresses;
         $set_password = false;
 
+        $buyer = Session::get('buyer');
+
+        if($buyer) {
+            $time = OrderDetail::find($buyer['order_id'])->created_at;
+            $date = Carbon::now();
+            $min = $date->diffInMinutes($time);
+            if($min >= 10) {
+                Session::forget('buyer');
+                $buyer = null;
+            };
+        }
+//        if($min >= 10) abort(404);
         if(Session::get('setPassword'))
             $set_password = true;
 //        dd($shopping->toArray());
@@ -93,6 +107,7 @@ class HandleInertiaRequests extends Middleware
             'email' => getSetting('email')->email,
             'phone' => getSetting('phone')->phone,
             'wcount' => $wcount,
+            'buyer' => $buyer,
             'company_name' => getSetting('company_name')->company_name,
             'shopping_user' => $shopping?->user
         ]);

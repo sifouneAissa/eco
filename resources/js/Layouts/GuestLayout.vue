@@ -48,14 +48,14 @@ export default {
           preserveScroll: true,
           // preserveState : true
         });
-      }, 20000);
+      }, 200000);
     } else if (this.$page.component === "Blogs") {
       window.idleIntervalTimer = setInterval(function () {
         Inertia.reload({
           only: ["blogs"],
           preserveScroll: true,
         });
-      }, 20000);
+      }, 200000);
     }
 
     let app = this;

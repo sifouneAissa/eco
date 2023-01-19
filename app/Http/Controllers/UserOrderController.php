@@ -81,7 +81,7 @@ class UserOrderController extends Controller
 
 
             $inputs['user_id'] = $user->id;
-            $inputs['total'] = $shopping->ptotal;
+            $inputs['total'] = $shopping->ototal;
             // if payment method === credit
             $this->stripeAmount($shopping->ptotal, $request, $user);
             // create the order
@@ -127,8 +127,10 @@ class UserOrderController extends Controller
 
             }
 
-            return redirect()->route('thanks.show',[
-                'id' => $order->id
+            Session::put('buyer',['order_id' => $order->id,'mobile' => UserAddress::where('id',$inputs['address_id'])->first()?->mobile]);
+
+            return redirect()->route('listing',[
+                'query' => $order->products->first()->category->name
             ]);
 //            return redirect()->route('listing', [
 //                'query' => $order->products->first()->category->name

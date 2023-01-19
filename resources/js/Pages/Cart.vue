@@ -4,11 +4,12 @@
     import breadcrumb from '@/Pages/Common/breadcrumb.vue';
     import {Inertia} from "@inertiajs/inertia";
     import {useToast} from "vue-toastification";
-    import {useForm} from "@inertiajs/inertia-vue3";
+    import {useForm,Link} from "@inertiajs/inertia-vue3";
     export default  {
         components : {
             GuestLayout,
-            breadcrumb
+            breadcrumb,
+            Link
         },
         mounted() {
 

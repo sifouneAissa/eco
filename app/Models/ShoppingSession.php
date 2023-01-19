@@ -28,7 +28,8 @@ class ShoppingSession extends Model
         'fimage',
         'names',
         'citotal',
-        'ptotal'
+        'ptotal',
+        'ototal'
     ];
 
     public function products(){
@@ -124,6 +125,19 @@ class ShoppingSession extends Model
 
         foreach ($items as $item){
             $total = $item->price +  $total;
+        }
+
+
+        return $total;
+    }
+
+    public function getOtotalAttribute(){
+        $total = 0;
+
+        $items = $this->cartItems;
+
+        foreach ($items as $item){
+            $total = $item->oprice +  $total;
         }
 
 
