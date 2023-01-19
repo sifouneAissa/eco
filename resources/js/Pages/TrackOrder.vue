@@ -85,8 +85,8 @@ export default {
                       {{ $t("track_order.paid_via") }}
                       {{
                         !(order.payment_detail.status === "payondelivery")
-                          ? $t("listing.checkout_card.credit_cards")
-                          : $t("listing.checkout_card.pay_on_delivery")
+                          ? $t("listing.checkout_card.pay_on_delivery")
+                          : $t("listing.checkout_card.credit_cards")
                       }}
                       <!--                                        <span-->
                       <!--                                            class="float-right text-danger">$620 {{$t("track_order.off")}}</span>-->
