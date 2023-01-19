@@ -38,22 +38,22 @@
                                   />
                               </div>
                               <div
-                                  v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)"
-                                  class="form-group col-md-12">
-                                  <label>{{ $t("listing.checkout_card.email") }} </label>
-                                  <input
-                                      required
-                                      v-model="payonD.email"
-                                      type="email"
-                                      class="form-control"
-                                      placeholder="xxxx@xxx.xx"
-                                  />
-                                  <div v-show="form.errors.email">
-                                      <p class="text-sm text-red-600" style="color: red">
-                                          {{ form.errors.email }}
-                                      </p>
-                                  </div>
+                              v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)"
+                              class="form-group col-md-12">
+                              <label>{{ $t("listing.checkout_card.email") }} </label>
+                              <input
+                                  required
+                                  v-model="payonD.email"
+                                  type="email"
+                                  class="form-control"
+                                  placeholder="xxxx@xxx.xx"
+                              />
+                              <div v-show="form.errors.email">
+                                  <p class="text-sm text-red-600" style="color: red">
+                                      {{ form.errors.email }}
+                                  </p>
                               </div>
+                          </div>
                               <button type="submit" class="btn btn-success btn-block btn-lg">
                                   {{ $t("listing.checkout_card.pay") }} {{ props.currency_code }}
                                   {{ price }}
@@ -73,9 +73,23 @@
           PayPal <img src="img/icons/payment-3.png" alt="#">
         </h5>
         <div id="faq-item-2-3" class="collapse" data-parent="#checkout_accordion_1">
-          <div class="card-body ">
-            <p class="tab-pane fade show active">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-          </div>
+
+            <div class="col-12 pl-0">
+                <div class="tab-content h-100" id="v-pills-tabContent1">
+                    <div
+                        class="tab-pane fade show active"
+                        id="v-pills-home1"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-home-tab"
+                            >
+
+                        <p>Pay with cash upon delivery.</p>
+                        <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>
+                        <PayPal :creditC="this.netbank" @SelectPaymentMethod="SelectPaymentMethod" />
+
+                    </div>
+                </div>
+           </div>
         </div>
       </div>
       <!-- card -->
@@ -214,12 +228,18 @@
 <script>
 
 import "https://js.stripe.com/v3/";
+import PayPal from "@/Pages/Checkout/paypalCheckout.vue"
 
 export default {
   props: ["disable", "form", "smodel"],
-  mounted() {
+    components : {
+        PayPal
+    },
+    mounted() {
     let app = this;
     $(document).ready(function () {
+
+
       let stripe = Stripe(app.$page.props.STRIPE_KEY);
       let elements = stripe.elements();
       let style = {
@@ -270,15 +290,15 @@ export default {
     });
   },
   computed: {
-    model: function () {
-      return this.smodel ? this.smodel : this.props.shopping_session;
-    },
-    props: function () {
-      return this.$page.props;
-    },
-    price: function () {
-      return this.smodel ? this.smodel.cprice * this.model.quantity : this.model.citotal;
-    },
+      model: function () {
+          return this.smodel ? this.smodel : this.props.shopping_session;
+      },
+      props: function () {
+          return this.$page.props;
+      },
+      price: function () {
+          return this.smodel ? this.smodel.cprice * this.model.quantity : this.model.citotal;
+      },
   },
   data() {
     return {
@@ -291,16 +311,17 @@ export default {
         paymentMethod: null,
         _token: this.csrf,
         email: null,
+
       },
       netbank: {
-        bank: null,
+        paypal : true,
         email: null,
         name: null,
       },
       payonD: {
         email: null,
         name: null,
-      },
+      }
     };
   },
   methods: {
@@ -308,14 +329,14 @@ export default {
       let types = {
         credit: this.credit,
         netbanking: this.netbank,
-        payondelivery: this.payonD,
+        payondelivery: this.payonD
       };
 
       this.$emit("SelectPaymentMethod", {
         data: types[type],
         type: type,
       });
-    },
+    }
   },
 };
 </script>
