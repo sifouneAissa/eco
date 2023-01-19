@@ -97,6 +97,7 @@
             },
             onEnd : function (list,event){
                 let app = this;
+                if(list.length>1)
                 Inertia.post(this.route('admin.media.order'),{
                     ids : list,
                 },{

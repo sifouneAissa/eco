@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="product-info">
-            <h2 class="product-title"><a href="product-details.html">{{model.name}}</a></h2>
+            <h2 class="product-title"><Link :href="route('product.show',{id : model.id})">{{model.name}}</Link></h2>
             <div class="product-price">
                 <span>{{ $page.props.currency_code }} {{ model.cprice }}</span>
                 <del>{{ $page.props.currency_code }} 00.00</del>
@@ -37,13 +37,15 @@
 </template>
 
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
+import { useForm,Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 import { useToast } from "vue-toastification";
 
 export default {
   props: ["model"],
-
+   components : {
+        Link
+    },
   methods: {
     // incrQP(model, by) {
     //   const toast = useToast();

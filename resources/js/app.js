@@ -48,6 +48,15 @@ createInertiaApp({
             messages: messages, // set locale messages
         });
 
+        // for lazy importation
+        let script1 = document.createElement('script');
+        script1.src = "/chat/init.js";
+        document.body.append(script1); // (*)
+
+        // for lazy importation
+        let script2 = document.createElement('script');
+        script2.src = "/chat/widget.js";
+        document.body.append(script2); // (*)
 
         // if(props.initialPage.props.isRtl) {
         //     // for lazy importation
