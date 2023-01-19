@@ -5,24 +5,21 @@
         {{ title }}
       </h2>
     </template>
-    <banner />
+    <breadcrumb :title="$t('blog.details')" />
     <blog-card />
-    <footer />
   </GuestLayout>
 </template>
 
 <script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import footer from "@/Pages/Blog/Details/footer.vue";
-import banner from "@/Pages/Blog/Details/banner.vue";
-import blogCard from "@/Pages/Blog/Details/card.vue";
+import blogCard from "@/Pages/Blog/Details/Card.vue";
+import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 
 export default {
   components: {
     GuestLayout,
-    footer,
-    banner,
     blogCard,
+    breadcrumb,
   },
   props: ["title"],
   name: "Layout.vue",

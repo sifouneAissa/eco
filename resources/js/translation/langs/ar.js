@@ -247,7 +247,10 @@ const ar = {
        page_detail_title:"تفاصيل المدونة",
        title:"المدونة",
        blogs:"مدونة / المدونات",
-       details:"تفاصيل",
+       details:" تفاصيل المدونة" ,
+       related:"منشور ذو صلة",
+       popular:"المدونات الأكثر إنتشار",
+       news:"لا تفوت الأخبار",
        by:"من قبل :",
       },
       dashboard:{
