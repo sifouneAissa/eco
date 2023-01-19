@@ -20,6 +20,7 @@
               <div class="ltn__blog-meta">
                 <ul>
                   <li class="ltn__blog-author">
+                    <!-- <a href="#">{{ $t("blog.by") }} {{ blog.user.name }}</a> -->
                     <a href="#">{{ $t("blog.by") }} Admin</a>
                   </li>
                   <li>
@@ -31,6 +32,9 @@
               <h3 class="ltn__blog-title">
                 <Link :href="route('blog.show', { id: blog.id })">{{ blog.title }} </Link>
               </h3>
+              <!-- <p>
+                {{ blog.description }}
+              </p> -->
               <p>
                 Predictive analytics is drastically changing the real estate industry.
               </p>

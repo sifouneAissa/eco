@@ -3,22 +3,30 @@
   <div class="col-lg-4 col-sm-6 col-12">
     <div class="ltn__blog-item ltn__blog-item-7">
       <div class="ltn__blog-img">
-        <a href="blog-details.html"><img src="img/blog/1.jpg" alt="#" /></a>
+        <Link :href="route('blog.show', { id: model.id })">
+          <img :src="model.fimage" alt="blog" />
+          <!-- img/blog/1.jpg -->
+        </Link>
       </div>
       <div class="ltn__blog-brief">
         <div class="ltn__blog-meta">
           <ul>
             <li class="ltn__blog-author">
-              <a href="#">by: Admin</a>
+              <!-- <a href="#">{{ $t("blog.by") }} {{ model.user.name }}</a> -->
+              <a href="#">{{ $t("blog.by") }} Admin</a>
             </li>
             <li>
-              <span>Nov 18, 2020</span>
+              <!-- <span>Nov 18, 2020</span> -->
+              <span>{{ model.created }}</span>
             </li>
           </ul>
         </div>
         <h3 class="ltn__blog-title">
           <Link :href="route('blog.show', { id: model.id })">{{ model.title }} </Link>
         </h3>
+        <!-- <p>
+                {{ model.description }}
+              </p> -->
         <p>Predictive analytics is drastically changing the real estate industry.</p>
         <div class="ltn__blog-btn">
           <Link :href="route('blog.show', { id: model.id })">

@@ -24,9 +24,11 @@ class Blog extends Model implements HasMedia
     protected $appends = [
         'modal_ids',
         'fimage',
-        'created'
+        'created',
     ];
-
+    public function user(){
+        return $this->belongsTo(User::class,'created_by');
+    }
     public function getCreatedAttribute(){
        
         return translateDate($this->created_at);
