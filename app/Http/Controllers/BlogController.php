@@ -13,7 +13,7 @@ class BlogController extends Controller
 
     public function index(Request $request){
 
-        $blogs = Blog::query()->get();
+        $blogs = Blog::query()->with(['user'])->get();
 
         $count = Blog::query()->count();
 

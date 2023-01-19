@@ -9,9 +9,7 @@
                     <p class="mb-1"> {{$t("thanks.order")}}: <div class="badge badge-success">{{order.id}}</div></p>
                     <p class="mb-5" v-if="order.user.unregistered"> {{$t("thanks.temporary_msg")}} <Link @click="create()"> {{$t("thanks.set_up")}}</Link>  {{$t("thanks.account")}}</p>
                     <p class="mb-5"> {{$t("thanks.send_email")}} : {{order.user.email}}</p>
-                    <Link class="btn btn-primary btn-lg" :href="route('trackOrder',{
-                        id : order.id
-                    })"> {{$t("thanks.view_order")}}<i class="icofont-simple-smile"></i></Link>
+                    <Link class="btn btn-primary btn-lg" :href="route('trackOrder.index')"> {{$t("thanks.view_order")}}<i class="icofont-simple-smile"></i></Link>
                     <Link class="btn btn-success btn-lg" :href="route('listing')">{{$t("thanks.view_shop")}} <i class="icofont-cart"></i></Link>
                 </div>
                 <setPassword />
