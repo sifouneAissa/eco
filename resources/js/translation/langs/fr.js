@@ -247,7 +247,10 @@ const fr = {
        page_detail_title:"Détail du blog",
        title:"Blog",
        blogs:"Blogs",
-       details:"Détails",
+       details:"Détails du blog",
+       related:"Article connexe",
+       popular:"Flux populaires",
+       news:"Ne manquez jamais les nouvelles",
        by:"Par:",
       },
       dashboard:{

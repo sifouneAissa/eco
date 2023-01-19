@@ -5,16 +5,14 @@
         {{ title }}
       </h2>
     </template>
-    <breadcrumb :title="$t('nav_menu.help.contact_us')" />
+    <breadcrumb :title="$t('blog.details')" />
     <blog-card />
   </GuestLayout>
 </template>
 
 <script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import footer from "@/Pages/Blog/Details/footer.vue";
-import banner from "@/Pages/Blog/Details/banner.vue";
-import blogCard from "@/Pages/Blog/Details/card.vue";
+import blogCard from "@/Pages/Blog/Details/Card.vue";
 import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 
 export default {

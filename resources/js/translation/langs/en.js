@@ -245,7 +245,10 @@ const en = {
      page_detail_title:"Blog detail",
      title:"Blog",
      blogs:"Blogs",
-     details:"Details",
+     details:"Blog Details",
+     related:"Related Post",
+     popular:"Popular Feeds",
+     news:"Never Miss News",
      by:"By:",
     },
     dashboard:{

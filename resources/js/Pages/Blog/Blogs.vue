@@ -19,12 +19,11 @@
             <div class="ltn__blog-brief">
               <div class="ltn__blog-meta">
                 <ul>
-                  <li class="ltn__blog-author">
-                    <!-- <a href="#">{{ $t("blog.by") }} {{ blog.user.name }}</a> -->
-                    <a href="#">{{ $t("blog.by") }} Admin</a>
+                  <li v-if="blog.user" class="ltn__blog-author">
+                    <a href="#">{{ $t("blog.by") }} {{ blog.user.name }}</a>
+                    <!-- <a href="#">{{ $t("blog.by") }} Admin</a> -->
                   </li>
                   <li>
-                    <!-- <span>Nov 18, 2020</span> -->
                     <span>{{ blog.created }}</span>
                   </li>
                 </ul>
@@ -32,11 +31,8 @@
               <h3 class="ltn__blog-title">
                 <Link :href="route('blog.show', { id: blog.id })">{{ blog.title }} </Link>
               </h3>
-              <!-- <p>
-                {{ blog.description }}
-              </p> -->
               <p>
-                Predictive analytics is drastically changing the real estate industry.
+                {{ blog.description }}
               </p>
               <div class="ltn__blog-btn">
                 <Link :href="route('blog.show', { id: blog.id })">

@@ -27,9 +27,11 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::query()->findOrFail($id);
+        $blogs = Blog::query()->whereNot('id',$id)->get();
 
         return Inertia::render('BlogDetail',[
             'blog' => $blog,
+            'blogs' => $blogs,
         ]);
     }
 }

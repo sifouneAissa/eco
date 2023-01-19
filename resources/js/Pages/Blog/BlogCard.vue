@@ -1,6 +1,6 @@
 <template>
   <!-- Blog Item -->
-  <div class="col-lg-4 col-sm-6 col-12">
+  <div class="col-md-6 col-12">
     <div class="ltn__blog-item ltn__blog-item-7">
       <div class="ltn__blog-img">
         <Link :href="route('blog.show', { id: model.id })">
@@ -11,12 +11,11 @@
       <div class="ltn__blog-brief">
         <div class="ltn__blog-meta">
           <ul>
-            <li class="ltn__blog-author">
-              <!-- <a href="#">{{ $t("blog.by") }} {{ model.user.name }}</a> -->
-              <a href="#">{{ $t("blog.by") }} Admin</a>
+            <li v-if="model.user" class="ltn__blog-author">
+              <a href="#">{{ $t("blog.by") }} {{ model.user.name }}</a>
+              <!-- <a href="#">{{ $t("blog.by") }} Admin</a> -->
             </li>
             <li>
-              <!-- <span>Nov 18, 2020</span> -->
               <span>{{ model.created }}</span>
             </li>
           </ul>
@@ -24,10 +23,9 @@
         <h3 class="ltn__blog-title">
           <Link :href="route('blog.show', { id: model.id })">{{ model.title }} </Link>
         </h3>
-        <!-- <p>
-                {{ model.description }}
-              </p> -->
-        <p>Predictive analytics is drastically changing the real estate industry.</p>
+        <p>
+          {{ model.description }}
+        </p>
         <div class="ltn__blog-btn">
           <Link :href="route('blog.show', { id: model.id })">
             {{ $t("blog.details") }}<i class="fas fa-angle-double-right"></i>
