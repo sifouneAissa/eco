@@ -34,7 +34,7 @@ export default {
     CartMenu,
     QuickViewModal,
     AddToCartModal,
-    AddToWishListModel
+    AddToWishListModel,
   },
   mounted() {
     // clear interval
@@ -49,14 +49,13 @@ export default {
           // preserveState : true
         });
       }, 20000);
-    }
-    else if (this.$page.component === "Blogs") {
-        window.idleIntervalTimer = setInterval(function () {
-            Inertia.reload({
-                only: ["blogs"],
-                preserveScroll: true,
-            });
-        }, 20000);
+    } else if (this.$page.component === "Blogs") {
+      window.idleIntervalTimer = setInterval(function () {
+        Inertia.reload({
+          only: ["blogs"],
+          preserveScroll: true,
+        });
+      }, 20000);
     }
 
     let app = this;
@@ -65,8 +64,7 @@ export default {
     $("#script2").remove();
     // $("#scrollUp").css('margin', '800px');
     $(document).ready(function () {
-
-        $('#botmanWidgetRoot').css('float','right');
+      $("#botmanWidgetRoot").css("float", "right");
       if (app.$page.props.isRtl) {
         // for lazy importation
         let script1 = document.createElement("script");
@@ -103,7 +101,7 @@ export default {
 
     window.onerror = function (error) {
       // error about tooltip
-      if (error.includes("tooltip") || error.includes('WOW')) {
+      if (error.includes("tooltip") || error.includes("WOW")) {
         Inertia.visit(app.$page.url, {
           // preserveState : true,
           preserveScroll: true,
@@ -288,7 +286,9 @@ export default {
                           <a href="#">{{ $t("nav_menu.help.about_us") }}</a>
                           <ul>
                             <li>
-                              <a href="#">{{ $t("nav_menu.help.about_us") }}</a>
+                              <Link :href="route('about-us')">
+                                {{ $t("nav_menu.help.about_us") }}
+                              </Link>
                             </li>
                             <li>
                               <a href="#">{{ $t("nav_menu.help.faq") }}</a>
@@ -493,8 +493,11 @@ export default {
                           <li>
                             <Link v-if="$page.props.auth" :href="route('wishlist.index')"
                               ><span class="utilize-btn-icon">
-                                <i class="icofont-heart">({{$page.props.wcount}})</i> </span
-                              >Wishlist</Link>
+                                <i class="icofont-heart"
+                                  >({{ $page.props.wcount }})</i
+                                > </span
+                              >Wishlist</Link
+                            >
                           </li>
 
                           <li v-if="$page.props.auth">
@@ -640,7 +643,11 @@ export default {
                 <!--                                    <li><a href="index-8.html">Home Style - 08</a></li>-->
                 <!--                                </ul>-->
               </li>
-              <li><a href="about.html">About</a></li>
+              <li>
+                <Link :href="route('about-us')">
+                  {{ $t("nav_menu.help.about_us") }}
+                </Link>
+              </li>
               <li>
                 <Link :href="route('listing')">{{ $t("nav_menu.pages.products") }}</Link>
                 <!--                                <ul class="sub-menu">-->
@@ -726,10 +733,10 @@ export default {
                 </Link>
               </li>
               <li v-if="$page.props.auth">
-                <Link  :href="route('wishlist.index')" title="Wishlist">
+                <Link :href="route('wishlist.index')" title="Wishlist">
                   <span class="utilize-btn-icon">
                     <i class="far fa-heart"></i>
-                    <sup>{{$page.props.wcount}}</sup>
+                    <sup>{{ $page.props.wcount }}</sup>
                   </span>
                   Wishlist
                 </Link>
@@ -913,9 +920,7 @@ export default {
                   <div class="footer-menu">
                     <ul>
                       <li>
-                        <Link href="#">
-                          <!-- <Link :href="route('about-us')"
-                          > -->
+                        <Link :href="route('about-us')">
                           {{ $t("nav_menu.help.about_us") }}
                         </Link>
                       </li>
@@ -1079,9 +1084,9 @@ export default {
     <!-- preloader area end -->
   </div>
 </template>
-<style >
-    #scrollUp {
-        margin-bottom: 60px;
-        margin-right: 20px;
-    }
+<style>
+#scrollUp {
+  margin-bottom: 60px;
+  margin-right: 20px;
+}
 </style>
