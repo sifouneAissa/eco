@@ -63,8 +63,10 @@ export default {
 
     $("#script1").remove();
     $("#script2").remove();
-
+    // $("#scrollUp").css('margin', '800px');
     $(document).ready(function () {
+
+        $('#botmanWidgetRoot').css('float','right');
       if (app.$page.props.isRtl) {
         // for lazy importation
         let script1 = document.createElement("script");
@@ -1077,3 +1079,9 @@ export default {
     <!-- preloader area end -->
   </div>
 </template>
+<style >
+    #scrollUp {
+        margin-bottom: 60px;
+        margin-right: 20px;
+    }
+</style>

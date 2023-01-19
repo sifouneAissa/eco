@@ -60,13 +60,16 @@
         },
         mounted() {
 
-            console.log(this.Btns);
-
             let app = this;
-
             let datatable = $("#dataTable").dataTable({
-                dom: 'Bfrtip',
-                responsive: true,
+                // dom: 'Bfrtip',
+                dom: 'B<"clear">lfrtip',
+
+                // responsive: true,
+                // rowReorder: {
+                //     selector: 'td:nth-child(2)'
+                // },
+                scrollX: true,
                 buttons: {
                     dom: {
 
@@ -185,7 +188,7 @@
 
                 <ClientFilterBtns v-if="Btns==='ClientFilterBtns'"/>
                 <OrderFilterBtns v-if="Btns==='OrderFilterBtns'"/>
-                <button @click="(!$page.props.model || !$page.props.model.is_page) ? $emit('ShowAddModel',$page.props.model) : $emit('ShowAddPage',$page.props.model) " class="btn btn-primary"><h6><i class="feather-plus"></i>Add
+                <button @click="(!$page.props.model || !$page.props.model.is_page) ? $emit('ShowAddModel',$page.props.model) : $emit('ShowAddPage',$page.props.model) " class="btn btn btn-rounded m-2 btn-primary"><h6><i class="feather-plus"></i>Add
                 </h6></button>
             </div>
         </div>
@@ -203,4 +206,9 @@
     </div>
 
 </template>
-
+<style scoped>
+    div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+</style>

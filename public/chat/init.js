@@ -6,7 +6,7 @@ var botmanWidget = {
     aboutText:'',
     // bubbleBackground:'#c02026',
     headerTextColor: '#fff',
-    bubbleAvatarUrl : '/img/chatbot.png'
+    bubbleAvatarUrl : '/img/chatbot.png',
 }
 
 

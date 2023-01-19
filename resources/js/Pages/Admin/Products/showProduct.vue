@@ -1,7 +1,7 @@
 
 <template>
-    <Show @resetModel="resetModel"  :id="model.modal_ids.edit" title="Show Product">
-        <div  class="modal-body mx-3 bg" >
+    <Show :lg="true"  @resetModel="resetModel"  :id="model.modal_ids.edit" title="Show Product">
+        <div class="modal-body mx-3 bg" >
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
                         <label>Name</label>
@@ -13,7 +13,9 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea disabled class="form-control" v-model="form.desc" placeholder="Desc"></textarea>
+                        <div class="card-body" v-html="model.desc">
+                        </div>
+<!--                        <textarea disabled class="form-control" v-model="form.desc" placeholder="Desc"></textarea>-->
                     </div>
                 </div>
 

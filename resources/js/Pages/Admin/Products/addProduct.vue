@@ -1,7 +1,7 @@
 
 <template>
-    <Add @resetModel="resetModel"  :id="'add-product'" title="Add Product">
-        <div  class="modal-body mx-3 bg" >
+    <Add :lg="true" @resetModel="resetModel"  :id="'add-product'" title="Add Product">
+        <div  class="modal-body mx-3 bg " >
             <form @submit.prevent="submit">
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
@@ -24,7 +24,8 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>
+<!--                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>-->
+                        <Editor @Writing="Writing"/>
                         <div v-show="form.errors.desc">
                             <p class="text-sm text-red-600" style="color: red">
                                 {{ form.errors.desc }}
@@ -86,11 +87,13 @@
     import Add from '@/Pages/Admin/DataTable/Modals/Add.vue';
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
+    import Editor from '@/Pages/Admin/Editor/EditorDesc.vue';
 
     export default  {
         components : {
             Add,
-            Multiselect
+            Multiselect,
+            Editor
         },
         props : {
         },
@@ -120,6 +123,9 @@
         methods : {
             resetModel : function (){
                 this.$emit('ResetModel');
+            },
+            Writing : function(data){
+                this.form.desc = data;
             },
             submit : function () {
                 // this.form

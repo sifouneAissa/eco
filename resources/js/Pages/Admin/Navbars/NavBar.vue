@@ -25,7 +25,7 @@
 </script>
 <template>
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-white shadow-sm">
-        <Link   class="navbar-brand" :href="route('admin.index')"><img alt="logo"  style="width: 40%; height: 3vw" :src="$page.props.logo"></Link>
+        <Link   class="navbar-brand " :href="route('admin.index')"><img alt="logo"  class="logoWl" :src="$page.props.logo"></Link>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -142,3 +142,41 @@
         </ul>
     </nav>
 </template>
+
+<style scoped>
+    @media (min-width:220px)  { /* smartphones, iPhone, portrait 480x320 phones */
+        .logoWl {
+            width: 50%; height: 8vw
+        }
+    }
+    @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+        .logoWl {
+            width: 40%; height: 8vw
+        }
+    }
+    @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+        .logoWl {
+            width: 40%; height: 8vw
+        }
+    }
+    @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+        .logoWl {
+            width: 40%; height: 6vw
+        }
+    }
+    @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+        .logoWl {
+            width: 40%; height: 6vw
+        }
+    }
+    @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
+        .logoWl {
+            width: 40%; height: 3vw
+        }
+    }
+    @media (min-width:1281px) { /* hi-res laptops and desktops */
+        .logoWl {
+            width: 40%; height: 3vw
+        }
+    }
+</style>

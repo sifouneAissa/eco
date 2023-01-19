@@ -1,15 +1,44 @@
-<script setup>
+<script >
 
     import NavBar from '@/Pages/Admin/Navbars/NavBar.vue';
     import SideBar from '@/Pages/Admin/Navbars/SideBar.vue';
     import Footer from '@/Pages/Admin/Footer.vue';
     import { Head, Link } from "@inertiajs/inertia-vue3";
-    defineProps({
-        title : String,
-        urls : Array
-    })
+    import  {Inertia} from "@inertiajs/inertia";
+
+
+    export default {
+        components : {
+            NavBar,
+            SideBar,
+            Footer,
+            Head,
+            Link
+        },
+        props : ['urls','title'],
+        mounted() {
+            // Add active state to sidbar nav links
+            var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+            $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+                if (this.href === path) {
+                    $(this).addClass("active");
+                }
+            });
+
+            // Toggle the side navigation
+            $("#sidebarToggle").on("click", function(e) {
+                e.preventDefault();
+                $("body").toggleClass("sb-sidenav-toggled");
+            });
+
+            let app = this;
+            window.onload = function (){
+                Inertia.visit(app.$page.url);
+            };
+        }
+    }
 </script>
-<template>
+<template >
     <Head :title="title" />
     <NavBar/>
     <div id="layoutSidenav">

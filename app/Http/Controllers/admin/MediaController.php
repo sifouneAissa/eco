@@ -52,7 +52,7 @@ class MediaController extends Controller
                 [
                     'model_id' , $model_id
                 ]
-            ])->orderBy('created_at', 'desc')->get();
+            ])->orderBy('order')->get();
 
 
             // get urls
@@ -81,15 +81,24 @@ class MediaController extends Controller
         $model_id = $request->input('model_id');
         $model = $builder::find($model_id);
 
-        $model ->addMedia($request->file('file'))
+        $media = $model ->addMedia($request->file('file'))
             ->toMediaCollection();
 
+        $media->order = $model->load('media')->media->count();
+        $media->save();
     }
 
     public function destroy(Request $request,$id){
 //        if(!auth()->user()->can('delete '.$request->model.' media')) abort(401);
-
+        $media = CustomMedia::find($id);
+        $builder = app($media->model_type);
+        $model = $builder::find($media->model_id);
         CustomMedia::find($id)->delete();
+        $medias = $model->load('media')->media()->orderBy('order')->get();
+        foreach ($medias as $key => $value){
+            $value->order = $key;
+            $value->save();
+        }
     }
 
     public function update(Request $request,$id){
@@ -141,5 +150,16 @@ class MediaController extends Controller
         /** @var FileManipulator $fileManipulator */
         $fileManipulator = app(FileManipulator::class);
         $fileManipulator->createDerivedFiles($model);
+    }
+
+    public function orderMedia(Request $request){
+        $ids = $request->input('ids');
+
+        foreach ($ids as $key => $value){
+            $media = CustomMedia::find($value);
+            $media->order = $key;
+            $media->save();
+        }
+
     }
 }

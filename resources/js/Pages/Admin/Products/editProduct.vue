@@ -1,6 +1,6 @@
 
 <template>
-    <Update @resetModel="resetModel"  :id="model.modal_ids.edit" title="Edit Product">
+    <Update :lg="true" @resetModel="resetModel"  :id="model.modal_ids.edit" title="Edit Product">
         <div  class="modal-body mx-3 bg" >
             <form @submit.prevent="submit">
                 <div class="mb-5 form-label-group">
@@ -24,7 +24,8 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>
+                        <Editor @Writing="Writing" :initValue="form.desc"/>
+<!--                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>-->
                         <div v-show="form.errors.desc">
                             <p class="text-sm text-red-600" style="color: red">
                                 {{ form.errors.desc }}
@@ -95,11 +96,13 @@
     import Update from '@/Pages/Admin/DataTable/Modals/Update.vue';
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
+    import Editor from '@/Pages/Admin/Editor/EditorDesc.vue';
 
     export default  {
         components : {
             Update,
-            Multiselect
+            Multiselect,
+            Editor
         },
         props : {
             model : Object
@@ -132,6 +135,9 @@
         methods : {
             resetModel : function (){
                 this.$emit('ResetModel');
+            },
+            Writing : function(data){
+                this.form.desc = data;
             },
             submit : function () {
                 // this.form

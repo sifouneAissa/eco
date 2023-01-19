@@ -10,5 +10,4 @@ class CustomMedia extends Media
 {
     use HasFactory;
 
-
 }

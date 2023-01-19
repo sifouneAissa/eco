@@ -1,9 +1,11 @@
 <template>
-        <button v-if="showMe('delivered')" @click="submit('delivered')"  class="mr-1 btn btn-success"><h6><i class="feather-check-circle"></i> Picked up</h6></button>
-        <button v-if="showMe('onway')" @click="submit('onway')" class="mr-1 btn btn-dark"><h6><i class="feather-truck"></i> On Way</h6></button>
-        <button v-if="showMe('received')" @click="submit('received')" class="mr-1 btn btn-danger"><h6><i class="feather-check"></i> Received</h6></button>
-        <button v-if="showMe('waiting')" @click="submit('waiting')" class="mr-1 btn btn-warning"><h6><i class="feather-clock"></i> Waiting</h6></button>
-        <button v-if="showMe(null)" @click="submit()" class="mr-1 btn btn-light"><h6><i class="feather-align-center"></i> All</h6></button>
+<!--    <div >-->
+        <button v-if="showMe('delivered')" @click="submit('delivered')"  class="mr-1 btn btn btn-rounded m-2 btn-success"><h6><i class="feather-check-circle"></i> Picked up</h6></button>
+        <button v-if="showMe('onway')" @click="submit('onway')" class="mr-1 btn btn btn-rounded m-2 btn-dark"><h6><i class="feather-truck"></i> On Way</h6></button>
+        <button v-if="showMe('received')" @click="submit('received')" class="mr-1 btn btn btn-rounded m-2 btn-danger"><h6><i class="feather-check"></i> Received</h6></button>
+        <button v-if="showMe('waiting')" @click="submit('waiting')" class="mr-1 btn btn btn-rounded m-2 btn-warning"><h6><i class="feather-clock"></i> Waiting</h6></button>
+        <button v-if="showMe(null)" @click="submit()" class="mr-1 btn btn btn-rounded m-2 btn-light"><h6><i class="feather-align-center"></i> All</h6></button>
+<!--    </div>-->
 </template>
 
 <script >
@@ -46,3 +48,5 @@
 
 
 </script>
+<style scoped>
+</style>

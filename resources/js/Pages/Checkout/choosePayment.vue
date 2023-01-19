@@ -8,137 +8,61 @@
 <!--    <h6 class="mb-3 text-black-50">{{ $t("listing.checkout_card.desc_payment") }}</h6>-->
     <h4 class="title-2">Payment Method</h4>
     <div id="checkout_accordion_1">
-      <!-- card -->
-<!--      <div class="card">-->
-<!--        <h5 class="collapsed ltn__card-title" data-toggle="collapse" data-target="#faq-item-2-1" aria-expanded="false">-->
-<!--          Check payments-->
-<!--        </h5>-->
-<!--        <div id="faq-item-2-1" class="collapse" data-parent="#checkout_accordion_1">-->
-<!--          <div class="card-body">-->
-<!--            <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>-->
-
-<!--            <div-->
-<!--                    id="v-pills-settings"-->
-<!--                    role="tabpanel"-->
-<!--                    aria-labelledby="v-pills-settings-tab"-->
-<!--            >-->
-<!--              <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.netbanking") }}</h6>-->
-<!--              <form @submit.prevent="SelectPaymentMethod('netbanking')">-->
-<!--                <div class="btn-group btn-group-toggle" data-toggle="buttons">-->
-<!--                  <label class="btn btn-outline-primary active">-->
-<!--                    <input-->
-<!--                            type="radio"-->
-<!--                            name="options"-->
-<!--                            id="option1"-->
-<!--                            autocomplete="off"-->
-<!--                            checked-->
-<!--                    />-->
-<!--                    HDFC <i class="icofont-check-circled"></i>-->
-<!--                  </label>-->
-<!--                  <label class="btn btn-outline-primary">-->
-<!--                    <input type="radio" name="options" id="option2" autocomplete="off" />-->
-<!--                    ICICI <i class="icofont-check-circled"></i>-->
-<!--                  </label>-->
-<!--                  <label class="btn btn-outline-primary">-->
-<!--                    <input type="radio" name="options" id="option3" autocomplete="off" />-->
-<!--                    AXIS <i class="icofont-check-circled"></i>-->
-<!--                  </label>-->
-<!--                </div>-->
-<!--                <hr />-->
-<!--                <div class="form-row">-->
-<!--                  <div class="form-group col-md-12">-->
-<!--                    <label>{{ $t("listing.checkout_card.name_card") }} </label>-->
-<!--                    <input-->
-<!--                            required-->
-<!--                            v-model="netbank.name"-->
-<!--                            type="text"-->
-<!--                            class="form-control"-->
-<!--                            :placeholder="$t('listing.checkout_card.enter_name')"-->
-<!--                    />-->
-<!--                  </div>-->
-<!--                  <div-->
-<!--                          v-if="-->
-<!--                    !(-->
-<!--                      $page.props.shopping_session && $page.props.shopping_session.user_id-->
-<!--                    )-->
-<!--                  "-->
-<!--                          class="form-group col-md-12"-->
-<!--                  >-->
-<!--                    <label>{{ $t("listing.checkout_card.email") }} </label>-->
-<!--                    <input-->
-<!--                            required-->
-<!--                            v-model="netbank.email"-->
-<!--                            type="email"-->
-<!--                            class="form-control"-->
-<!--                            placeholder="xxxx@xxx.xx"-->
-<!--                    />-->
-<!--                  </div>-->
-<!--                  <div class="form-group col-md-12 mb-0">-->
-<!--                    <button type="submit" class="btn btn-success btn-block btn-lg">-->
-<!--                      {{ $t("listing.checkout_card.pay") }} {{ props.currency_code }}-->
-<!--                      {{ price }}-->
-<!--                      <i class="icofont-long-arrow-right"></i>-->
-<!--                    </button>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </form>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--        </div>-->
-<!--      </div>-->
-      <!-- card -->
       <div class="card">
         <h5 class="ltn__card-title" data-toggle="collapse" data-target="#faq-item-2-2" aria-expanded="true">
           Cash on delivery
         </h5>
         <div id="faq-item-2-2" class="collapse show" data-parent="#checkout_accordion_1">
-          <div class="card-body">
-            <p>Pay with cash upon delivery.</p>
-            <div
-                    class="tab-pane"
-                    id="v-pills-cash"
-                    role="tabpanel"
-                    aria-labelledby="v-pills-cash-tab"
-              >
-              <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.cash") }}</h6>
-              <p>{{ $t("listing.checkout_card.cash_desc") }}</p>
-              <hr />
-              <form @submit.prevent="SelectPaymentMethod('payondelivery')">
-                <div class="form-group col-md-12">
-                  <label>{{ $t("listing.checkout_card.name") }} </label>
-                  <input
-                          required
-                          v-model="payonD.name"
-                          type="text"
-                          class="form-control"
-                          :placeholder="$t('listing.checkout_card.enter_your_name')"
-                  />
-                </div>
-                <div
-                        v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)"
-                        class="form-group col-md-12">
-                  <label>{{ $t("listing.checkout_card.email") }} </label>
-                  <input
-                          required
-                          v-model="payonD.email"
-                          type="email"
-                          class="form-control"
-                          placeholder="xxxx@xxx.xx"
-                  />
-                  <div v-show="form.errors.email">
-                    <p class="text-sm text-red-600" style="color: red">
-                      {{ form.errors.email }}
-                    </p>
+          <div class="card-body ">
+
+              <div class="col-12 pl-0">
+                  <div class="tab-content h-100" id="v-pills-tabContent1">
+                      <div
+                          class="tab-pane fade show active"
+                          id="v-pills-home1"
+                          role="tabpanel"
+                          aria-labelledby="v-pills-home-tab"
+                            >
+
+                          <p>Pay with cash upon delivery.</p>
+                          <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>
+                          <form @submit.prevent="SelectPaymentMethod('payondelivery')">
+                              <div class="form-group col-md-12">
+                                  <label>{{ $t("listing.checkout_card.name") }} </label>
+                                  <input
+                                      required
+                                      v-model="payonD.name"
+                                      type="text"
+                                      class="form-control"
+                                      :placeholder="$t('listing.checkout_card.enter_your_name')"
+                                  />
+                              </div>
+                              <div
+                                  v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)"
+                                  class="form-group col-md-12">
+                                  <label>{{ $t("listing.checkout_card.email") }} </label>
+                                  <input
+                                      required
+                                      v-model="payonD.email"
+                                      type="email"
+                                      class="form-control"
+                                      placeholder="xxxx@xxx.xx"
+                                  />
+                                  <div v-show="form.errors.email">
+                                      <p class="text-sm text-red-600" style="color: red">
+                                          {{ form.errors.email }}
+                                      </p>
+                                  </div>
+                              </div>
+                              <button type="submit" class="btn btn-success btn-block btn-lg">
+                                  {{ $t("listing.checkout_card.pay") }} {{ props.currency_code }}
+                                  {{ price }}
+                                  <i class="icofont-long-arrow-right"></i>
+                              </button>
+                          </form>
+                      </div>
                   </div>
-                </div>
-                <button type="submit" class="btn btn-success btn-block btn-lg">
-                  {{ $t("listing.checkout_card.pay") }} {{ props.currency_code }}
-                  {{ price }}
-                  <i class="icofont-long-arrow-right"></i>
-                </button>
-              </form>
-            </div>
+              </div>
           </div>
 
         </div>
@@ -149,115 +73,8 @@
           PayPal <img src="img/icons/payment-3.png" alt="#">
         </h5>
         <div id="faq-item-2-3" class="collapse" data-parent="#checkout_accordion_1">
-          <div class="card-body">
-            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-
-<!--            <div class="col-12 pl-0">-->
-<!--              <div class="tab-content h-100" id="v-pills-tabContent">-->
-<!--                <div-->
-<!--                        class="tab-pane fade show active"-->
-<!--                        id="v-pills-home"-->
-<!--                        role="tabpanel"-->
-<!--                        aria-labelledby="v-pills-home-tab"-->
-<!--                >-->
-<!--                  <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>-->
-<!--                  <p>-->
-<!--                    {{ $t("listing.checkout_card.accept") }}-->
-<!--                    <span class="h2 text-secondary m-2">-->
-<!--                    <i></i>-->
-<!--                    <i class="icofont-visa-alt"></i>-->
-<!--                    <i class="icofont-mastercard-alt"></i>-->
-<!--                    <i class="icofont-american-express-alt"></i>-->
-<!--                    <i class="icofont-payoneer-alt"></i>-->
-<!--                    <i class="icofont-apple-pay-alt"></i>-->
-<!--                    <i class="icofont-bank-transfer-alt"></i>-->
-<!--                    <i class="icofont-discover-alt"></i>-->
-<!--                    <i class="icofont-jcb-alt"></i>-->
-<!--              </span>-->
-<!--                  </p>-->
-<!--                  <form method="post" class="card-form">-->
-<!--                    <div class="form-row">-->
-<!--                      &lt;!&ndash;                                <input type="hidden" name="_token" :value="csrf">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                <input type="hidden" v-model="credit.paymentMethod"  name="payment_method" class="payment-method">&ndash;&gt;-->
-<!--                      <div class="form-group col-md-12">-->
-<!--                        <label>{{ $t("listing.checkout_card.name_card") }}</label>-->
-<!--                        <input-->
-<!--                                name="card_holder_name"-->
-<!--                                required-->
-<!--                                v-model="credit.name"-->
-<!--                                type="text"-->
-<!--                                class="form-control"-->
-<!--                                :placeholder="$t('listing.checkout_card.enter_name')"-->
-<!--                        />-->
-<!--                      </div>-->
-<!--                      <div-->
-<!--                              v-if="-->
-<!--                    !(-->
-<!--                      $page.props.shopping_session && $page.props.shopping_session.user_id-->
-<!--                    )-->
-<!--                  "-->
-<!--                              class="form-group col-md-12"-->
-<!--                      >-->
-<!--                        <label>{{ $t("listing.checkout_card.email") }} </label>-->
-<!--                        <input-->
-<!--                                required-->
-<!--                                v-model="credit.email"-->
-<!--                                type="email"-->
-<!--                                class="form-control"-->
-<!--                                placeholder="xxxx@xxx.xx"-->
-<!--                        />-->
-<!--                      </div>-->
-
-<!--                      <div class="form-group col-md-12">-->
-<!--                        <div id="card-element"></div>-->
-<!--                      </div>-->
-
-<!--                      <div id="card-errors" role="alert"></div>-->
-
-<!--                      &lt;!&ndash;                                <div class="form-group col-md-12">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    <label for="inputPassword4">Card number</label>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    <div class="input-group">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                        <input required v-model="credit.card_number" type="number" class="form-control" placeholder="Card number">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                        <div class="input-group-append">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="icofont-card"></i></button>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                <div class="form-group col-md-8">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    <label>Valid through(MM/YY)&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    </label>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    <input required v-model="credit.date" type="number" class="form-control" placeholder="Enter Valid through(MM/YY)">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                <div class="form-group col-md-4">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    <label>CVV&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    </label>&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                    <input required v-model="credit.cvv" type="number" class="form-control" placeholder="Enter CVV Number">&ndash;&gt;-->
-<!--                      &lt;!&ndash;                                </div>&ndash;&gt;-->
-
-<!--                      <div class="form-group col-md-12">-->
-<!--                        <div class="custom-control custom-checkbox">-->
-<!--                          <input-->
-<!--                                  type="checkbox"-->
-<!--                                  class="custom-control-input"-->
-<!--                                  id="customCheck1"-->
-<!--                          />-->
-<!--                          <label class="custom-control-label" for="customCheck1">{{-->
-<!--                            $t("listing.checkout_card.save_card")-->
-<!--                            }}</label>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <div class="form-group col-md-12 mb-0">-->
-<!--                        <button type="submit" class="btn btn-success btn-block btn-lg pay">-->
-<!--                          {{ $t("listing.checkout_card.pay") }} {{ props.currency_code }}-->
-<!--                          {{ price }}-->
-<!--                          <i class="icofont-long-arrow-right"></i>-->
-<!--                        </button>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
+          <div class="card-body ">
+            <p class="tab-pane fade show active">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
           </div>
         </div>
       </div>
@@ -279,7 +96,6 @@
         </h5>
         <div id="faq-item-2-4" class="collapse" data-parent="#checkout_accordion_1">
           <div class="card-body">
-            <p>Pay via Credit card; you can pay with your credit card if you don’t have a PayPal account.</p>
 
             <div class="col-12 pl-0">
               <div class="tab-content h-100" id="v-pills-tabContent">
@@ -288,8 +104,9 @@
                         id="v-pills-home"
                         role="tabpanel"
                         aria-labelledby="v-pills-home-tab"
-                >
-                  <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>
+                     >
+                    <p>Pay via Credit card; you can pay with your credit card if you don’t have a PayPal account.</p>
+                    <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>
 <!--                  <p>-->
 <!--                    {{ $t("listing.checkout_card.accept") }}-->
 <!--                    <span class="h2 text-secondary m-2">-->

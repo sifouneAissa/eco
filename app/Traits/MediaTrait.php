@@ -3,6 +3,8 @@
 namespace App\Traits;
 
 
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
 trait MediaTrait {
 
     public function mediaProvider(){
@@ -33,6 +35,8 @@ trait MediaTrait {
             ]
         ];
     }
+
+
 
 
 }
