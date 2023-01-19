@@ -1,25 +1,22 @@
 <template>
-
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
+  <footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between small">
+        <div class="text-muted">Himpies © 2023 Developed by Cover Data</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          &middot;
+          <a href="#">Terms &amp; Conditions</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>
-    export default {
-        name: "Footer"
-    }
+export default {
+  name: "Footer",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

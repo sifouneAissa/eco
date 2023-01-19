@@ -38,12 +38,14 @@
 </template>
 
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
+import { useForm, Head, Link } from "@inertiajs/inertia-vue3";
 
 export default {
   props: ["model"],
-
+  components: {
+    Link,
+  },
   methods: {},
 };
 </script>

@@ -1,6 +1,15 @@
-<script setup>
+<script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import breadcrumb from "@/Pages/Common/breadcrumb.vue";
+import PBlog from "@/Pages/Blog/BlogCarousel.vue";
+export default {
+  components: {
+    GuestLayout,
+    PBlog,
+    breadcrumb,
+  },
+};
 </script>
 
 <template>
@@ -10,102 +19,291 @@ import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
         {{ $t("nav_menu.help.faq") }}
       </h2>
     </template>
-    <section
-      class="breadcrumb-osahan pt-5 pb-5 bg-light position-relative text-center"
-      style="
-         background-image: url('https://himpies.com/wp-content/uploads/2021/09/himpies-banner-scaled.jpg');
-      "
-    >
-      <h1 class="text-white">{{ $t("nav_menu.help.faq") }}</h1>
-    </section>
-    <section>
-      <h2 class="text-center m-4">Frequently Asked Questions</h2>
-      <div class="col-md-10 mx-auto bg-light p-5 rounded mb-4">
-        <hr />
-        <h3>Category one</h3>
-        <hr />
-        <section id="questions">
-          <div class="">
-            <a
-              href="#"
-              class="btn-link collapsed"
-              data-toggle="collapse"
-              data-target="#collapseOne"
-              aria-expanded="false"
-              aria-controls="collapseOne"
-            >
-              <h4 class="text-primary">
-                Contact Us <i class="fas fa-angle-down float-right"></i>
-              </h4>
-            </a>
-          </div>
-          <hr />
-          <div class="">
-            <div
-              id="collapseOne"
-              class="collapse"
-              aria-labelledby="headingOne"
-              data-parent="#questions"
-              style=""
-            >
-              <div class="pr-5 pl-5">
-                <h6>
-                  <a
-                    href="#"
-                    class="btn-link collapsed"
+    <breadcrumb :title="$t('nav_menu.help.faq')" />
+    <!-- FAQ AREA START (faq-2) (ID > accordion_2) -->
+    <div class="ltn__faq-area mb-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="ltn__faq-inner ltn__faq-inner-2">
+              <div id="accordion_2">
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
                     data-toggle="collapse"
-                    data-target="#collapseTwo"
+                    data-target="#faq-item-2-1"
                     aria-expanded="false"
-                    aria-controls="collapseTwo"
                   >
-                    <i class="fas fa-angle-right"></i>
-                    I reached out via email or social media but haven't received a
-                    response in over 2 business days!
-                  </a>
-                </h6>
-                <div
-                  id="collapseTwo"
-                  class="collapse pl-4 pr-4"
-                  aria-labelledby="headingTwo"
-                  style=""
-                >
-                  <p>
-                    We're so sorry to hear this! Please make sure your message was sent to
-                    hello@bitetoothpastebits.com. We do our best to get back to everyone
-                    as soon as possible which usually means within 1 to 2 business days
-                    (Monday to Friday, excluding holidays).
-                  </p>
+                    How to buy a product?
+                  </h6>
+                  <div id="faq-item-2-1" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
+                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
+                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
+                        ac orci phasellus. Facilisis gravida neque convallis a cras
+                        semper. Non arcu risus quis varius quam quisque id.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-2"
+                    aria-expanded="true"
+                  >
+                    How can i make refund from your website?
+                  </h6>
+                  <div id="faq-item-2-2" class="collapse show" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <div class="ltn__video-img alignleft">
+                        <img src="/img/bg/17.jpg" alt="video popup bg image" />
+                        <a
+                          class="ltn__video-icon-2 ltn__video-icon-2-small ltn__video-icon-2-border----"
+                          href="https://www.youtube.com/embed/LjCzPp-MK48?autoplay=1&showinfo=0"
+                          data-rel="lightcase:myCollection"
+                        >
+                          <i class="fa fa-play"></i>
+                        </a>
+                      </div>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
+                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
+                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
+                        ac orci phasellus. Facilisis gravida neque convallis a cras
+                        semper. Non arcu risus quis varius quam quisque id.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-3"
+                    aria-expanded="false"
+                  >
+                    I am a new user. How should I start?
+                  </h6>
+                  <div id="faq-item-2-3" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
+                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
+                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
+                        ac orci phasellus. Facilisis gravida neque convallis a cras
+                        semper. Non arcu risus quis varius quam quisque id.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-4"
+                    aria-expanded="false"
+                  >
+                    Returns and refunds
+                  </h6>
+                  <div id="faq-item-2-4" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
+                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
+                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
+                        ac orci phasellus. Facilisis gravida neque convallis a cras
+                        semper. Non arcu risus quis varius quam quisque id.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-5"
+                    aria-expanded="false"
+                  >
+                    Are my details secured?
+                  </h6>
+                  <div id="faq-item-2-5" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
+                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
+                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
+                        ac orci phasellus. Facilisis gravida neque convallis a cras
+                        semper. Non arcu risus quis varius quam quisque id.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-6"
+                    aria-expanded="false"
+                  >
+                    Sale code is not working
+                  </h6>
+                  <div id="faq-item-2-6" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
+                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
+                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
+                        ac orci phasellus. Facilisis gravida neque convallis a cras
+                        semper. Non arcu risus quis varius quam quisque id.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-7"
+                    aria-expanded="false"
+                  >
+                    How do I make payment by my credit card
+                  </h6>
+                  <div id="faq-item-2-7" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
+                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
+                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
+                        ac orci phasellus. Facilisis gravida neque convallis a cras
+                        semper. Non arcu risus quis varius quam quisque id.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <hr />
-              <div class="pr-5 pl-5">
-                <h6>
-                  <a
-                    href="#"
-                    class="btn-link collapsed"
-                    data-toggle="collapse"
-                    data-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
-                    <i class="fas fa-angle-right"></i>
-                    What are Bite's business hours?
-                  </a>
-                </h6>
-                <div
-                  id="collapseThree"
-                  class="collapse pl-4 pr-4"
-                  aria-labelledby="headingThree"
-                  style=""
-                >
-                  <p>10am - 6pm PST, Monday - Friday (excluding holidays)</p>
+              <div class="need-support text-center mt-100">
+                <h2>Still need help? Reach out to support 24/7:</h2>
+                <div class="btn-wrapper mb-30">
+                  <a :href="route('contact-us')" class="theme-btn-1 btn">{{
+                    $t("nav_menu.help.contact_us")
+                  }}</a>
                 </div>
+                <h3><i class="fas fa-phone"></i> {{ $page.props.phone }}</h3>
               </div>
-              <hr />
             </div>
           </div>
-        </section>
+          <div class="col-lg-4">
+            <aside class="sidebar-area ltn__right-sidebar">
+              <!-- Newsletter Widget -->
+              <div class="widget ltn__search-widget ltn__newsletter-widget">
+                <h6 class="ltn__widget-sub-title">// subscribe</h6>
+                <h4 class="ltn__widget-title">Get Newsletter</h4>
+                <form action="#">
+                  <input type="text" name="search" placeholder="Search" />
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="ltn__newsletter-bg-icon">
+                  <i class="fas fa-envelope-open-text"></i>
+                </div>
+              </div>
+              <!-- Banner Widget -->
+              <div class="widget ltn__banner-widget">
+                <a :href="route('listing')"
+                  ><img src="/img/banner/13.jpg" alt="Banner Image"
+                /></a>
+              </div>
+            </aside>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+    <!-- FAQ AREA START -->
+    <!-- COUNTER UP AREA START -->
+    <div
+      class="ltn__counterup-area bg-image bg-overlay-theme-black-10 pt-115 pb-70"
+      data-bg="/img/bg/6.jpg"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12">
+            <div class="section-title-area ltn__section-title-2">
+              <h6 class="section-subtitle white-color">// activity</h6>
+              <h1 class="section-title white-color">It’s Our Journey<span>.</span></h1>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
+            <div class="ltn__counterup-item-3 text-color-white">
+              <div class="counter-icon">//</div>
+              <h1>
+                <span class="counter">733</span><span class="counterUp-icon">+</span>
+              </h1>
+              <h6>Active Clients</h6>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
+            <div class="ltn__counterup-item-3 text-color-white">
+              <div class="counter-icon">//</div>
+              <h1>
+                <span class="counter">33</span><span class="counterUp-letter">K</span
+                ><span class="counterUp-icon">+</span>
+              </h1>
+              <h6>Cup Of Coffee</h6>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
+            <div class="ltn__counterup-item-3 text-color-white">
+              <div class="counter-icon">//</div>
+              <h1>
+                <span class="counter">100</span><span class="counterUp-icon">+</span>
+              </h1>
+              <h6>Get Rewards</h6>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
+            <div class="ltn__counterup-item-3 text-color-white">
+              <div class="counter-icon">//</div>
+              <h1>
+                <span class="counter">21</span><span class="counterUp-icon">+</span>
+              </h1>
+              <h6>Country Cover</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- COUNTER UP AREA END -->
+    <PBlog :models="$page.props.blogs" />
   </GuestLayout>
 </template>

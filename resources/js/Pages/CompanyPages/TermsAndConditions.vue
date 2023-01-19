@@ -1,5 +1,12 @@
-<script setup>
+<script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
+import breadcrumb from "@/Pages/Common/breadcrumb.vue";
+export default {
+  components: {
+    GuestLayout,
+    breadcrumb,
+  },
+};
 </script>
 
 <template>
@@ -9,14 +16,6 @@ import GuestLayout from "@/Layouts/GuestLayout.vue";
         {{ $t("nav_menu.help.terms_conditions") }}
       </h2>
     </template>
-    <section
-      class="breadcrumb-osahan pt-5 pb-5 bg-light position-relative text-center"
-      style="
-         background-image: url('https://himpies.com/wp-content/uploads/2021/09/himpies-banner-scaled.jpg');
-      "
-    >
-      <h1 class="text-white">{{ $t("nav_menu.help.terms_conditions") }}</h1>
-    </section>
-    <section class="section pt-5 pb-5"></section>
+    <breadcrumb :title="$t('nav_menu.help.terms_conditions')" />
   </GuestLayout>
 </template>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\ShoppingSession;
 use App\Models\User;
@@ -94,7 +95,8 @@ class HandleInertiaRequests extends Middleware
             'phone' => getSetting('phone')->phone,
             'wcount' => $wcount,
             'company_name' => getSetting('company_name')->company_name,
-            'shopping_user' => $shopping?->user
+            'shopping_user' => $shopping?->user,
+            'blogs' => Blog::query()->get(),
         ]);
     }
 }
