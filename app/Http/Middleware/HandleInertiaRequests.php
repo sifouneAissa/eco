@@ -53,6 +53,7 @@ class HandleInertiaRequests extends Middleware
         $wcount = auth()->user()?->wishlists?->count();
 
         $shopping = getShoppingSession();
+
         if($notifications)
             $notifications = $notifications->map(function ($item){
                 $item['date'] = translateDate($item->created_at);

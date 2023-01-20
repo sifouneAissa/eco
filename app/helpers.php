@@ -171,17 +171,22 @@ if (!function_exists('getShoppingSession')) {
 
     function getShoppingSession(){
 
-        return auth()->user() ? auth()->user()->shoppingSession : \App\Models\ShoppingSession::where([
-            [
-                'ip',request()->ip()
-            ],
-            [
-                'is_current' , true
-            ],
-            [
-                'user_id', 0
-            ]
-        ])->first();
+        $shopping_id = \Illuminate\Support\Facades\Session::get('shopping_id');
+
+        if($shopping_id) {
+
+            return \App\Models\ShoppingSession::where([
+                [
+                    'id',$shopping_id
+                ],
+                [
+                    'is_current' , true
+                ]
+            ])->first();
+        }
+
+
+        return  auth()->user()?->shoppingSession;
     }
 }
 
@@ -301,6 +306,16 @@ if (!function_exists('makePaginator')) {
     function makePaginator($values,$perpage,$count,$options=[])
     {
         return  new \Illuminate\Pagination\LengthAwarePaginator($values,$count,$perpage,null,$options);
+    }
+}
+
+
+if (!function_exists('getMac')) {
+
+    function getMac()
+    {
+        $string=exec('getmac');
+        return substr($string, 0, 17);
     }
 }
 

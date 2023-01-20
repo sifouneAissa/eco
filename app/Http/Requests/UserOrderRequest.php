@@ -25,7 +25,7 @@ class UserOrderRequest extends FormRequest
     {
         return [
             'address_id' => 'required',
-            'email' => 'unique:users,email'
+            'email' => 'email'
         ];
     }
 }

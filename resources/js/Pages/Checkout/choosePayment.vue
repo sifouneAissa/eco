@@ -25,9 +25,9 @@
                             >
 
                           <p>Pay with cash upon delivery.</p>
-                          <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>
+<!--                          <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>-->
                           <form @submit.prevent="SelectPaymentMethod('payondelivery')">
-                              <div class="form-group col-md-12">
+                              <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
                                   <label>{{ $t("listing.checkout_card.name") }} </label>
                                   <input
                                       required
@@ -83,8 +83,8 @@
                         aria-labelledby="v-pills-home-tab"
                             >
 
-                        <p>Pay with cash upon delivery.</p>
-                        <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>
+                        <p>Pay with Paypal.</p>
+<!--                        <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>-->
                         <PayPal :creditC="this.netbank" @SelectPaymentMethod="SelectPaymentMethod" />
 
                     </div>
@@ -139,7 +139,7 @@
                     <div class="form-row">
                       <!--                                <input type="hidden" name="_token" :value="csrf">-->
                       <!--                                <input type="hidden" v-model="credit.paymentMethod"  name="payment_method" class="payment-method">-->
-                      <div class="form-group col-md-12">
+                      <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
                         <label>{{ $t("listing.checkout_card.name_card") }}</label>
                         <input
                                 name="card_holder_name"
@@ -307,20 +307,20 @@ export default {
         card_number: null,
         date: null,
         cvv: null,
-        name: null,
+        name: this.$page.props.shopping_user?.name,
         paymentMethod: null,
         _token: this.csrf,
-        email: null,
+        email: this.$page.props.shopping_user?.email,
 
       },
       netbank: {
         paypal : true,
-        email: null,
-        name: null,
+        email: this.$page.props.shopping_user?.email,
+        name: this.$page.props.shopping_user?.name,
       },
       payonD: {
-        email: null,
-        name: null,
+          email: this.$page.props.shopping_user?.email,
+          name: this.$page.props.shopping_user?.name,
       }
     };
   },

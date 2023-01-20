@@ -18,6 +18,7 @@ class CreateNewUser implements CreatesNewUsers
     {
 
         $with_shopping = key_exists('check_shopping', $input) && $input['check_shopping'];
+        $check_email = key_exists('check_email', $input) && $input['check_email'];
         $rules = [
             'name' => ['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
@@ -28,10 +29,27 @@ class CreateNewUser implements CreatesNewUsers
             if ($user = getShoppingSession() ?->user)
                 if ($user->email !== $input['email'])
                     $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
-        } else $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
+        } elseif($check_email && $user = User::query()->where('email',$input['email'])->first()) {
+            if(!$user->passwordExist())
+            $rules['email'] = ['required', 'string', 'email', 'max:255'];
+            else $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
+        }
+        else $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
+
+
 
         Validator::make($input, $rules)->validate();
         $user = null;
+
+        if ($check_email && $user = User::query()->where('email', $input['email'])->first()) {
+
+            if(!$user->passwordExist())
+            $user->update([
+                'name' => $input['name'],
+                'password' => Hash::make($input['password']),
+            ]);
+            else $user = null;
+        };
 
         if ($with_shopping) {
 
@@ -41,14 +59,15 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);
-        } else $user = User::create([
+        } elseif(!$user) $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
         // check shopping session
         // after login check if the user has a shopping list
-        if(!$user->shoppingSession && $current_shopping = ShoppingSession::where('ip',request()->ip())->first()) {
+        if(!$user->shoppingSession && $current_shopping = getShoppingSession()) {
             $current_shopping->user_id = $user->id;
             $current_shopping->save();
         }
