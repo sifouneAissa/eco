@@ -36,14 +36,14 @@ export default {
           Inertia.visit(route('listing'))
       },
     SelectPaymentMethod(data) {
-
+      let app = this;
       const toast = useToast();
       this.form.provider = data.type;
       this.form.paymentInfo = data.data;
       this.form.email = data.data.email;
       this.form.post(route("order.store"), {
         onSuccess: () => {
-          toast.success(this.$t("notifications.success"));
+          toast.success(app.$t("notifications.success"));
         },
         onError: (errors) => {
           toast.error(errors.error);
