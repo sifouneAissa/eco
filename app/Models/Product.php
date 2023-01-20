@@ -63,9 +63,9 @@ class Product extends Model implements HasMedia
         return $this->isA();
     }
 
-//    public function getNewAttribute(){
-//        return $this->orderItems->count() > 0;
-//    }
+    public function getNewAttribute(){
+        return $this->orderItems->count() > 0;
+    }
 //    public function getPopularAttribute(){
 //        return populars()->where('id',$this->id) !== null;
 //    }
