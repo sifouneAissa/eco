@@ -23,6 +23,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Old Price</label>
+                        <input v-model="form.old_price" type="number" id="inputEmail" class="form-control" placeholder="0000.0">
+                        <div v-show="form.errors.old_price">
+                            <p class="text-sm text-red-600" style="color: red">
+                                {{ form.errors.old_price }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>Description</label>
                         <Editor @Writing="Writing" :initValue="form.desc"/>
 <!--                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>-->
@@ -122,6 +131,7 @@
                     name: this.model.name,
                     desc: this.model.desc,
                     price: this.model.price,
+                    old_price: this.model.old_price,
                     start_over : !this.model.isA.isA,
                     inventory : {name : this.model.inventory.quantity,id : this.model.inventory.id},
                     category:  {name : this.model.category.name,id : this.model.category.id}
@@ -147,6 +157,7 @@
                     product_inventory_id : data.inventory.id,
                     desc : data.desc,
                     price : data.price,
+                    old_price : data.old_price,
                     start_over : data.start_over
                 })).patch(route('admin.product.update',{
                     id : this.model.id

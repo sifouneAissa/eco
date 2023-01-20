@@ -32,7 +32,7 @@
             <h2 class="product-title"><Link :href="route('product.show',{id : model.id})">{{model.name}}</Link></h2>
             <div class="product-price">
                 <span>{{ $page.props.currency_code }} {{ model.cprice }}</span>
-                <del>{{ $page.props.currency_code }} 00.00</del>
+                <del>{{ $page.props.currency_code }} {{model.coprice}}</del>
             </div>
         </div>
     </div>

@@ -23,6 +23,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Price</label>
+                        <input v-model="form.old_price" type="number" id="inputEmail" class="form-control" placeholder="0000.0">
+                        <div v-show="form.errors.old_price">
+                            <p class="text-sm text-red-600" style="color: red">
+                                {{ form.errors.old_price }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>Description</label>
                         <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>
                         <div v-show="form.errors.desc">
@@ -110,6 +119,7 @@
                     price: '',
                     inventory : null,
                     category: null,
+                    old_price : ''
                 }),
                 selected : null,
                 options1: this.$page.props.categories.map(function (item){return {name : item.name,id : item.id};}),
@@ -128,7 +138,8 @@
                     product_category_id : data.category.id,
                     product_inventory_id : data.inventory.id,
                     desc : data.desc,
-                    price : data.price
+                    price : data.price,
+                    old_price: data.old_price
                 })).post(route('admin.product.store',{}), {
                     onFinish: () => {
                     },

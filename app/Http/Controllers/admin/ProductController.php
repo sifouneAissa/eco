@@ -100,6 +100,7 @@ class ProductController extends Controller
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('name', fn($model) => $model->name)
             ->addColumn('price', fn($model) => $model->price)
+            ->addColumn('old_price', fn($model) => $model->old_price)
             ->addColumn('category', fn($model) => $model->category->name)
             ->addColumn('inventory', fn($model) => $model->inventory->quantity)
             ->addColumn('remain', fn($model) => view('Products.remain', compact('model')))
@@ -121,6 +122,7 @@ class ProductController extends Controller
             ['data' => 'name', 'name' => 'Name'],
 //            ['data' => 'desc' , 'name' => 'Description','searchable' => true],
             ['data' => 'price', 'name' => 'Price', 'searchable' => true],
+            ['data' => 'old_price', 'name' => 'Old Price', 'searchable' => true],
             ['data' => 'category', 'name' => 'Category', 'searchable' => true],
             ['data' => 'inventory', 'name' => 'Inventory', 'searchable' => true],
             ['data' => 'remain', 'name' => 'Remain', 'searchable' => false],
@@ -134,6 +136,7 @@ class ProductController extends Controller
             'ID',
             'Name',
             'Price',
+            'Old Price',
             'Category',
             'Inventory',
             'Remain',

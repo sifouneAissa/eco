@@ -14,8 +14,8 @@
 {{--        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" integrity="sha512-24XP4a9KVoIinPFUbcnjIjAjtS59PUoxQj3GNVpWc86bCqPuy3YxAcxJrxFCxXe4GHtAumCbO2Ze2bddtuxaRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
 
         @routes
-{{--        @vite(['resources/js/app-admin.js', "resources/js/Pages/Admin/{$page['component']}.vue"])--}}
-         {{\Illuminate\Support\Facades\Vite::useHotFile('admin.hot')->useBuildDirectory('build-admin')->withEntryPoints(['resources/js/app-admin.js'])}}
+        @vite(['resources/js/app-admin.js', "resources/js/Pages/Admin/{$page['component']}.vue"])
+{{--         {{\Illuminate\Support\Facades\Vite::useHotFile('admin.hot')->useBuildDirectory('build-admin')->withEntryPoints(['resources/js/app-admin.js'])}}--}}
 {{--        @if(in_array($page['component'],["Profile/Show"]) )--}}
 {{--            @vite(['resources/css/app.css'])--}}
 {{--        @endif--}}
