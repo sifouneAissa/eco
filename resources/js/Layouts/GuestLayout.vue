@@ -291,7 +291,9 @@ export default {
                               </Link>
                             </li>
                             <li>
-                              <a href="#">{{ $t("nav_menu.help.faq") }}</a>
+                              <Link :href="route('faq')">
+                                {{ $t("nav_menu.help.faq") }}
+                              </Link>
                             </li>
                             <!-- <li><a href="coming-soon.html">Coming Soon</a></li> -->
                             <!-- <li><a href="404.html">404</a></li> -->
@@ -681,7 +683,9 @@ export default {
                 <a href="#">{{ $t("nav_menu.pages.pages") }}</a>
                 <ul class="sub-menu">
                   <li>
-                    <a href="#">{{ $t("nav_menu.help.faq") }}</a>
+                    <Link :href="route('faq')">
+                      {{ $t("nav_menu.help.faq") }}
+                    </Link>
                   </li>
                   <!-- <li><a href="404.html">404</a></li> -->
                   <li>
@@ -936,8 +940,7 @@ export default {
                       </li>
                       <!-- <li><a href="locations.html">Locations Map</a></li> -->
                       <li>
-                        <Link href="#">
-                          <!-- <Link :href="route('faq')"> -->
+                        <Link :href="route('faq')">
                           {{ $t("nav_menu.help.faq") }}
                         </Link>
                       </li>
@@ -997,8 +1000,7 @@ export default {
                       <li><a href="#">Wish List</a></li>
                       <li><a href="#">Order tracking</a></li>
                       <li>
-                        <Link href="#">
-                          <!-- <Link :href="route('faq')"> -->
+                        <Link :href="route('faq')">
                           {{ $t("nav_menu.help.faq") }}
                         </Link>
                       </li>
@@ -1037,7 +1039,9 @@ export default {
             <div class="row">
               <div class="col-md-6 col-12">
                 <div class="ltn__copyright-design clearfix">
-                  <p>All Rights Reserved @ Company <span class="current-year"></span></p>
+                  <p>
+                    Himpies © <span class="current-year"></span> Developed by Cover Data
+                  </p>
                 </div>
               </div>
               <div class="col-md-6 col-12 align-self-center">
