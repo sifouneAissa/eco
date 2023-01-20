@@ -7,6 +7,7 @@ import Products from "@/Pages/Dashboard-components/Products.vue";
 import { Inertia } from "@inertiajs/inertia";
 import { ref, onMounted } from "vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import logoarea from "@/Pages/Common/logoarea.vue";
 
 export default {
   components: {
@@ -15,6 +16,7 @@ export default {
     Blogs,
     Products,
     Link,
+    logoarea,
   },
   created() {},
   data() {
@@ -61,7 +63,7 @@ export default {
                       </div>
                       <div class="btn-wrapper animated">
                         <a
-                          href="shop.html"
+                          :href="route('listing')"
                           class="theme-btn-1 btn btn-effect-1 text-uppercase"
                           >Shop now</a
                         >
@@ -71,7 +73,9 @@ export default {
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
                   <div>
-                    <a href="shop.html"><img src="img/slider/11.png" alt="Image" /></a>
+                    <a :href="route('listing')"
+                      ><img src="/img/slider/11.png" alt="Image"
+                    /></a>
                   </div>
                 </div>
               </div>
@@ -85,7 +89,9 @@ export default {
               <div class="row">
                 <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
                   <div>
-                    <a href="shop.html"><img src="img/slider/1-1.png" alt="Image" /></a>
+                    <a :href="route('listing')"
+                      ><img src="/img/slider/1-1.png" alt="Image"
+                    /></a>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
@@ -104,7 +110,7 @@ export default {
                       </div>
                       <div class="btn-wrapper animated">
                         <a
-                          href="shop.html"
+                          :href="route('listing')"
                           class="theme-btn-1 btn btn-effect-1 text-uppercase"
                           >Shop now</a
                         >
@@ -140,7 +146,9 @@ export default {
                 any hagitation because they belive us and always happy
               </p>
               <div class="btn-wrapper">
-                <a href="shop.html" class="theme-btn-3 btn btn-effect-4 text-uppercase"
+                <a
+                  :href="route('listing')"
+                  class="theme-btn-3 btn btn-effect-4 text-uppercase"
                   >View More</a
                 >
               </div>
@@ -171,7 +179,9 @@ export default {
                 Starting?
               </h1>
               <div class="btn-wrapper">
-                <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase"
+                <a
+                  :href="route('listing')"
+                  class="theme-btn-1 btn btn-effect-1 text-uppercase"
                   >Try a growth kit</a
                 >
               </div>
@@ -188,7 +198,9 @@ export default {
                 Beard?
               </h1>
               <div class="btn-wrapper">
-                <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase"
+                <a
+                  :href="route('listing')"
+                  class="theme-btn-1 btn btn-effect-1 text-uppercase"
                   >Try a growth kit</a
                 >
               </div>
@@ -198,11 +210,11 @@ export default {
       </div>
     </div>
     <!-- ABOUT US AREA END -->
-    <Products/>
+    <Products />
     <!-- CALL TO ACTION START (call-to-action-1) -->
     <div
       class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-220 pb-220 mb-110"
-      data-bg="img/bg/3.png"
+      data-bg="/img/bg/3.png"
     >
       <div class="container">
         <div class="row">
@@ -211,7 +223,9 @@ export default {
               <h5 class="text-uppercase">Versatile. powerful. perfect.</h5>
               <h1>ABC LC991 Trimmer</h1>
               <div class="btn-wrapper">
-                <a class="theme-btn-1 btn btn-effect-1 text-uppercase" href="shop.html"
+                <a
+                  class="theme-btn-1 btn btn-effect-1 text-uppercase"
+                  :href="route('listing')"
                   >View More</a
                 >
               </div>
@@ -237,9 +251,9 @@ export default {
           <!-- ltn__product-item -->
           <div class="col-lg-4 col-md-4 col-sm-6 col-6">
             <div class="ltn__product-item ltn__product-item-3 text-center">
-              <div class="product-img">
+              <div class="product-img" style="height: 300px">
                 <a href="product-details.html"
-                  ><img src="img/product/15.png" alt="#"
+                  ><img src="/img/product/15.png" alt="#"
                 /></a>
                 <div class="product-badge">
                   <ul>
@@ -295,9 +309,9 @@ export default {
           <!-- ltn__product-item -->
           <div class="col-lg-4 col-md-4 col-sm-6 col-6">
             <div class="ltn__product-item ltn__product-item-3 text-center">
-              <div class="product-img">
+              <div class="product-img" style="height: 300px">
                 <a href="product-details.html"
-                  ><img src="img/product/14.png" alt="#"
+                  ><img src="/img/product/14.png" alt="#"
                 /></a>
                 <div class="product-badge">
                   <ul>
@@ -353,9 +367,9 @@ export default {
           <!-- ltn__product-item -->
           <div class="col-lg-4 col-md-4 col-sm-6 col-6">
             <div class="ltn__product-item ltn__product-item-3 text-center">
-              <div class="product-img">
+              <div class="product-img" style="height: 300px">
                 <a href="product-details.html"
-                  ><img src="img/product/13.png" alt="#"
+                  ><img src="/img/product/13.png" alt="#"
                 /></a>
                 <div class="product-badge">
                   <ul>
@@ -503,14 +517,14 @@ export default {
           <div class="col-md-6 col-sm-6">
             <div class="ltn__banner-item">
               <div class="ltn__banner-img">
-                <a href="shop.html"><img src="img/banner/3.jpg" alt="Image" /></a>
+                <a :href="route('listing')"><img src="img/banner/3.jpg" alt="Image" /></a>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="ltn__banner-item">
               <div class="ltn__banner-img">
-                <a href="shop.html"><img src="img/banner/4.jpg" alt="Image" /></a>
+                <a :href="route('listing')"><img src="img/banner/4.jpg" alt="Image" /></a>
               </div>
             </div>
           </div>
@@ -543,7 +557,7 @@ export default {
     <!-- NEWSLETTER AREA START -->
     <div
       class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-110 pb-90"
-      data-bg="img/bg/8.jpg"
+      data-bg="/img/bg/8.jpg"
     >
       <div class="container">
         <div class="row">
@@ -573,44 +587,7 @@ export default {
     </div>
     <!-- NEWSLETTER AREA END -->
 
-    <!-- BRAND LOGO AREA START -->
-    <div class="ltn__brand-logo-area ltn__brand-logo-1 pt-110 pb-110 plr--9">
-      <div class="container-fluid">
-        <div class="row ltn__brand-logo-active">
-          <div class="col-lg-12">
-            <div class="ltn__brand-logo-item">
-              <img src="img/brand-logo/1.png" alt="Brand Logo" />
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="ltn__brand-logo-item">
-              <img src="img/brand-logo/2.png" alt="Brand Logo" />
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="ltn__brand-logo-item">
-              <img src="img/brand-logo/3.png" alt="Brand Logo" />
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="ltn__brand-logo-item">
-              <img src="img/brand-logo/4.png" alt="Brand Logo" />
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="ltn__brand-logo-item">
-              <img src="img/brand-logo/5.png" alt="Brand Logo" />
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="ltn__brand-logo-item">
-              <img src="img/brand-logo/3.png" alt="Brand Logo" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- BRAND LOGO AREA END -->
+    <logoarea />
   </div>
 </template>
 <style scoped></style>
