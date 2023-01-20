@@ -86,6 +86,7 @@
             //
             //
             add_to_cart_modal.on("shown.bs.modal", function (e) {
+                console.log("check");
                 app.submit(app.$page.props.productTo);
             });
         },

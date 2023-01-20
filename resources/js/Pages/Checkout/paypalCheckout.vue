@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="form-group col-md-12">
+        <div v-if="!($page.props.shopping_session && $page.props.shopping_session.user_id)" class="form-group col-md-12">
             <label>{{ $t("listing.checkout_card.name_card") }}</label>
             <input
                 name="card_holder_name"
@@ -23,7 +23,7 @@
                 placeholder="xxxx@xxx.xx"
             />
         </div>
-        <div v-show="credit.name"  id="smart-button-container">
+        <div v-show="credit.name && credit.email"  id="smart-button-container">
             <div style="text-align: center;">
                 <div id="paypal-button-container"></div>
             </div>

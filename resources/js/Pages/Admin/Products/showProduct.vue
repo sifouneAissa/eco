@@ -12,6 +12,10 @@
                         <input disabled v-model="form.price" type="number" id="inputEmail" class="form-control" placeholder="0000.0">
                     </div>
                     <div class="form-group">
+                        <label>Old Price</label>
+                        <input disabled v-model="form.old_price" type="number" id="inputEmail" class="form-control" placeholder="0000.0">
+                    </div>
+                    <div class="form-group">
                         <label>Description</label>
                         <div class="card-body" v-html="model.desc">
                         </div>
@@ -88,6 +92,7 @@
                     name: this.model.name,
                     desc: this.model.desc,
                     price: this.model.price,
+                    old_price: this.model.old_price,
                     inventory : {name : this.model.inventory.quantity,id : this.model.inventory.id},
                     category:  {name : this.model.category.name,id : this.model.category.id}
                 }),

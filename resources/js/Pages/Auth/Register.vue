@@ -16,6 +16,7 @@
         password: "",
         password_confirmation: "",
         terms: false,
+        check_email : true,
     });
 
     const submit = () => {

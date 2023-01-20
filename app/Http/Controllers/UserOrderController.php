@@ -18,6 +18,7 @@ use Faker\Provider\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
+use function Termwind\ValueObjects\getMargins;
 
 class UserOrderController extends Controller
 {
@@ -69,9 +70,14 @@ class UserOrderController extends Controller
             if (!auth()->user()) {
                 // create address , account for the user
                 $paymentInfo = $request->input('paymentInfo');
-                if(!$shopping->user_id)
+                if(!$shopping->user_id){
+                    if($email = $request->input('email'))
+                        $user = User::query()->where('email',$email)->first();
+
+                    if(!$user)
                     $user = User::query()->create(filterRequest($paymentInfo, User::class));
-                else $user = User::find($shopping->user_id);
+                }
+                    else $user = User::find($shopping->user_id);
 
                 if (is_array($addressInputs = $request->input('address_id'))) {
                     $addressInputs['user_id'] = $user->id;
@@ -114,7 +120,7 @@ class UserOrderController extends Controller
             $shopping->is_current = false;
             $shopping->save();
 
-            ShoppingSession::query()->create([
+            $shopping = ShoppingSession::query()->create([
                 'user_id' => $user->id,
                 'total' => 0,
                 'current' => true,
@@ -127,7 +133,10 @@ class UserOrderController extends Controller
 
             }
 
-            Session::put('buyer',['order_id' => $order->id,'mobile' => UserAddress::where('id',$inputs['address_id'])->first()?->mobile]);
+            // put the new shopping_id
+            \Illuminate\Support\Facades\Session::put('shopping_id',$shopping->id);
+            // put the buyer
+            \Illuminate\Support\Facades\Session::put('buyer',['order_id' => $order->id,'mobile' => UserAddress::where('id',$inputs['address_id'])->first()?->mobile]);
 
             return redirect()->route('listing',[
                 'query' => $order->products->first()->category->name
@@ -177,6 +186,9 @@ class UserOrderController extends Controller
             'product_id' => $item['product_id'],
             'shopping_session_id' => $s_session->id
         ]);
+
+
+        \Illuminate\Support\Facades\Session::put('shopping_id',$s_session->id);
     }
 
 
@@ -203,7 +215,7 @@ class UserOrderController extends Controller
 
         $categories = $shopping_session ?->products->map(function ($item) {
         return $item->category->id;
-    })->unique();
+         })->unique();
 
         if ($categories?->isNotEmpty()) $products = Product::query()->whereIn('product_category_id', $categories)->get()->filter($callbackIsA)->map($callback);
         else $products = Product::query()->get()->filter($callbackIsA)->map($callback);
@@ -302,6 +314,9 @@ class UserOrderController extends Controller
 
         $shopping_session->user_id = $user->id;
         $shopping_session->save();
+
+
+        \Illuminate\Support\Facades\Session::put('shopping_id',$shopping_session->id);
 
         try {
             event(new NewOrder($order));

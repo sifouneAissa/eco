@@ -1,7 +1,7 @@
 <template>
     <div class="ltn__product-item ltn__product-item-3 text-center">
         <div class="product-img">
-            <a @click="go()" href="javascript: void(0)"><img style="height: 200px" :src="model.fimage" alt="#"></a>
+            <a @click="go()" href="javascript: void(0)"><img style="height: 200px;width: 100%" :src="model.fimage" alt="#"></a>
 <!--            <div class="product-badge ">-->
 <!--                <ul >-->
 <!--                    <li v-if="model.popular" class="sale-badge">Popular</li>-->
@@ -32,7 +32,7 @@
             <h2 class="product-title"><Link :href="route('product.show',{id : model.id})">{{model.name}}</Link></h2>
             <div class="product-price">
                 <span>{{ $page.props.currency_code }} {{ model.cprice }}</span>
-                <del>{{ $page.props.currency_code }} 00.00</del>
+                <del>{{ $page.props.currency_code }} {{model.coprice}}</del>
             </div>
         </div>
     </div>

@@ -26,7 +26,7 @@
                                 <h6><a @click="go(product)" href="javascript: void(0)">{{product.name}}</a></h6>
                                 <div class="product-price">
                                     <span>{{ $page.props.currency_code }} {{ product.cprice }}</span>
-                                    <del>$65.00</del>
+                                    <del>{{ $page.props.currency_code }} {{ product.coprice }}</del>
                                 </div>
                             </div>
                         </div>

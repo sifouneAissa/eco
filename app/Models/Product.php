@@ -22,8 +22,8 @@ class Product extends Model implements HasMedia
     public const SNAME = 'Products';
     public const INAME = 'Product';
 
-    protected $fillable = ['name','price','desc','product_category_id','product_inventory_id'];
-    protected $appends = ['cprice','quantity','modal_ids','fimage','isA','dprice' ,
+    protected $fillable = ['name','price','old_price','desc','product_category_id','product_inventory_id'];
+    protected $appends = ['cprice','quantity','modal_ids','fimage','isA','dprice' , 'coprice'
 //        'new','bests','popular'
     ];
 
@@ -81,6 +81,18 @@ class Product extends Model implements HasMedia
 
         try {
             $value= floor($this->price/$tExchange);
+        } catch (\Exception $e){};
+
+        return $value;
+    }
+
+    public function getCopriceAttribute(){
+
+        $tExchange = Currency::where('code',Session::get('currency'))->first()->exchange_rate;
+        $value = 0;
+
+        try {
+            $value= floor($this->old_price/$tExchange);
         } catch (\Exception $e){};
 
         return $value;

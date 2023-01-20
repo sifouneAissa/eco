@@ -27,6 +27,7 @@ class ProductRequest extends FormRequest
             //
             'name' => ['required','max:255'],
             'price' => ['required','numeric','min:1'],
+            'old_price' => ['required','numeric','min:1'],
             'desc' => ['required'],
             'product_category_id' => ['exists:product_categories,id'],
             'product_inventory_id' => ['exists:product_inventories,id']

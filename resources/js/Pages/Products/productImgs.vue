@@ -38,7 +38,7 @@
                     <h3>{{$page.props.product.name}}</h3>
                     <div class="product-price">
                         <span>{{ $page.props.currency_code }} {{ $page.props.product.cprice }}</span>
-                        <del>$65.00</del>
+                        <del>{{ $page.props.currency_code }} {{ $page.props.product.coprice }}</del>
                     </div>
                     <div class="modal-product-meta ltn__product-details-menu-1">
                         <ul>
@@ -67,22 +67,22 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="ltn__product-details-menu-3">
-                        <ul>
-                            <li>
-                                <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                    <i class="far fa-heart"></i>
-                                    <span>Add to Wishlist</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="" title="Compare" data-toggle="modal" data-target="#quick_view_modal">
-                                    <i class="fas fa-exchange-alt"></i>
-                                    <span>Compare</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+<!--                    <div class="ltn__product-details-menu-3">-->
+<!--                        <ul>-->
+<!--                            <li>-->
+<!--                                <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">-->
+<!--                                    <i class="far fa-heart"></i>-->
+<!--                                    <span>Add to Wishlist</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#" class="" title="Compare" data-toggle="modal" data-target="#quick_view_modal">-->
+<!--                                    <i class="fas fa-exchange-alt"></i>-->
+<!--                                    <span>Compare</span>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                     <hr>
                     <div class="ltn__social-media">
                         <ul>
