@@ -23,7 +23,10 @@ class Product extends Model implements HasMedia
     public const INAME = 'Product';
 
     protected $fillable = ['name','price','desc','product_category_id','product_inventory_id'];
-    protected $appends = ['cprice','quantity','modal_ids','fimage','isA','dprice'];
+    protected $appends = ['cprice','quantity','modal_ids','fimage','isA','dprice' ,
+//        'new','bests','popular'
+    ];
+
 
     public function category(){
         return $this->belongsTo(ProductCategory::class,'product_category_id');
@@ -59,6 +62,18 @@ class Product extends Model implements HasMedia
     public function getIsAAttribute(){
         return $this->isA();
     }
+
+//    public function getNewAttribute(){
+//        return $this->orderItems->count() > 0;
+//    }
+//    public function getPopularAttribute(){
+//        return populars()->where('id',$this->id) !== null;
+//    }
+//    public function getBestsAttribute(){
+//        return BestSellers()->where('id',$this->id) !== null;
+//    }
+
+
     public function getCpriceAttribute(){
 
         $tExchange = Currency::where('code',Session::get('currency'))->first()->exchange_rate;

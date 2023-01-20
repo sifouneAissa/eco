@@ -2,11 +2,13 @@
     <div class="ltn__product-item ltn__product-item-3 text-center">
         <div class="product-img">
             <a @click="go()" href="javascript: void(0)"><img style="height: 200px" :src="model.fimage" alt="#"></a>
-            <div class="product-badge">
-                <ul>
-                    <li class="sale-badge">New</li>
-                </ul>
-            </div>
+<!--            <div class="product-badge ">-->
+<!--                <ul >-->
+<!--                    <li v-if="model.popular" class="sale-badge">Popular</li>-->
+<!--                    <li v-else-if="model.new" class="sale-badge">New</li>-->
+<!--                    <li v-else-if="model.bests" class="sale-badge">Bests</li>-->
+<!--                </ul>-->
+<!--            </div>-->
             <div class="product-hover-action">
                 <ul>
                     <li @click="$page.props.productTo=model">

@@ -23,7 +23,6 @@ class DashboardController extends Controller
         $nproducts = Product::query()->with('category')->whereDoesntHave('orderItems')->get();
         $populars = populars();
 
-
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
