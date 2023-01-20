@@ -29,6 +29,9 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(ProductCategory::class,'product_category_id');
     }
 
+    public function cartItems(){
+        return $this->hasMany(CartItem::class);
+    }
 
     public function inventory(){
         return $this->belongsTo(ProductInventory::class,'product_inventory_id');
@@ -84,6 +87,15 @@ class Product extends Model implements HasMedia
         foreach($items as $item) $q = $q+$item->quantity;
         return $q;
     }
+
+    public function cartCount(){
+
+        $items = $this->cartItems;
+        $q = 0;
+        foreach($items as $item) $q = $q+$item->quantity;
+        return $q;
+    }
+
     public function orderItems(){
         return $this->hasMany(OrderItem::class,'product_id');
     }

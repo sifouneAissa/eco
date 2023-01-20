@@ -72,6 +72,7 @@ if (!function_exists('BestSellers')) {
         $callback = function ($item){
             $item['isA'] = $item->isA();
             $item['quantity'] = 1;
+            $item['category'] = $item->category;
             return $item;
         };
 
@@ -80,7 +81,27 @@ if (!function_exists('BestSellers')) {
         })->take($count)->map($callback);
     }
 }
+if (!function_exists('populars')) {
 
+    function populars($count = 5)
+    {
+
+        $callbackIsA = function ($item){
+            return $item->isA()['isA'];
+        };
+
+        $callback = function ($item){
+            $item['isA'] = $item->isA();
+            $item['quantity'] = 1;
+            $item['category'] = $item->category;
+            return $item;
+        };
+
+        return Product::query()->get()->filter($callbackIsA)->sort(function ($item){
+            return $item->cartCount();
+        })->take($count)->map($callback);
+    }
+}
 
 
 

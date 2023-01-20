@@ -18,8 +18,11 @@ class DashboardController extends Controller
 
         $categories = ProductCategory::get();
         $blogs = Blog::get();
-        $products = Product::get();
+//        $products = Product::get();
         $bestSellers = BestSellers();
+        $nproducts = Product::query()->with('category')->whereDoesntHave('orderItems')->get();
+        $populars = populars();
+
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
@@ -27,9 +30,11 @@ class DashboardController extends Controller
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
             'categories' => $categories,
-            'products' => $products,
+//            'products' => $products,
             'blogs' => $blogs,
-            'bestSellers' => $bestSellers
+            'bestSellers' => $bestSellers,
+            'nproducts' => $nproducts,
+            'populars' => $populars
         ]);
     }
 }
