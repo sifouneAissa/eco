@@ -1,17 +1,70 @@
-<script setup>
+<script >
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import breadcrumb from "@/Pages/Common/breadcrumb.vue";
-const form = useForm({
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-});
+import { useToast } from "vue-toastification";
+ export  default   {
+    components : {
+        GuestLayout,
+        Head,
+        Link,
+        breadcrumb,
+    },
+     data () {
+        return {
+            submited : false,
+            form : useForm({
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
+            }),
+            errors: {
+                message : this.$t("errors.correct_field"),
+                email: this.$t("errors.correct_field"),
+                phone: this.$t("errors.mobile"),
+                name: this.$t("errors.correct_field"),
+            },
+        }
+     },
+     methods : {
+        submit : function (){
+            this.form.post(this.route('contactus.store'),{
+                onSuccess : () => {
+                    const toast = useToast();
+                    toast.success('Your message has been sent successfully');
+                    this.form.reset('name','email','phone','message')
+                }
+            })
+        },
+         emailReg : function (){
+             return String(this.form.email)
+                 .toLowerCase()
+                 .match(
+                     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                 );
+         },
+        vData(){
 
-const submit = () => {
-  // form.post(route(''));
-};
+            this.submited  = true;
+            if(this.isPhone() && this.isName() && this.isMessage() && this.emailReg()){
+                this.submit();
+            }
+        },
+         isPhone: function () {
+             return this.form.phone.match(
+                 /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/g
+             );
+         },
+         isName: function () {
+             return this.form.name.length > 3;
+         },
+         isMessage : function (){
+
+             return this.form.message.length > 3;
+         }
+     }
+}
 </script>
 
 <template>
@@ -30,14 +83,35 @@ const submit = () => {
           <div class="col-lg-8 col-md-7">
             <div class="ltn__form-box contact-form-box mb-50 box-shadow--- white-bg--">
               <h3>{{ $t("contact_us.send") }}</h3>
-              <form id="contact-form" action="mail.php" method="post">
-                <input type="text" name="name" :placeholder="$t('contact_us.name')" />
-                <input type="email" name="email" :placeholder="$t('contact_us.email')" />
-                <input type="text" name="phone" :placeholder="$t('contact_us.phone')" />
+              <form id="contact-form">
+                <input v-model="form.name" type="text" name="name" :placeholder="$t('contact_us.name')" />
+                  <div v-show="this.submited && !isName()">
+                      <p class="text-sm" style="color: red">
+                          {{ this.errors.name }}
+                      </p>
+                  </div>
+                <input v-model="form.email" type="email" name="email" :placeholder="$t('contact_us.email')" />
+                  <div v-show="this.submited && !emailReg()">
+                      <p class="text-sm" style="color: red">
+                          {{ this.errors.email }}
+                      </p>
+                  </div>
+                <input v-model="form.phone" type="text" name="phone" :placeholder="$t('contact_us.phone')" />
+                  <div v-show="this.submited && !isPhone()">
+                      <p class="text-sm" style="color: red">
+                          {{ this.errors.phone }}
+                      </p>
+                  </div>
                 <textarea
+                  v-model="form.message"
                   name="message"
                   :placeholder="$t('contact_us.message')"
                 ></textarea>
+                  <div v-show="this.submited && !isMessage">
+                      <p class="text-sm" style="color: red">
+                          {{ this.errors.message }}
+                      </p>
+                  </div>
                 <p>
                   <label class="input-info-save mb-0"
                     ><input type="checkbox" name="agree" />{{
@@ -48,7 +122,8 @@ const submit = () => {
                 <div class="btn-wrapper mt-0">
                   <button
                     class="btn theme-btn-1 btn-effect-1 text-uppercase"
-                    type="submit"
+                    type="button"
+                    @click="vData"
                   >
                     {{ $t("contact_us.send") }}
                   </button>

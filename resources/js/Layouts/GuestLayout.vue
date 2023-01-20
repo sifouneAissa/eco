@@ -689,9 +689,9 @@ export default {
                   </li>
                   <!-- <li><a href="404.html">404</a></li> -->
                   <li>
-                    <a :href="route('contact-us')">{{
+                    <Link :href="route('contact-us')">{{
                       $t("nav_menu.help.contact_us")
-                    }}</a>
+                    }}</Link>
                   </li>
                   <!-- <li><a href="coming-soon.html">Coming Soon</a></li> -->
                   <!-- <li><a href="shop.html">Shop</a></li>
@@ -699,23 +699,23 @@ export default {
                   <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
                   <li><a href="shop-grid.html">Shop Grid</a></li>
                   <li><a href="product-details.html">Shop details </a></li> -->
-                  <li><a href="#">Cart</a></li>
-                  <li><a href="#">Wishlist</a></li>
-                  <li><a href="#">Checkout</a></li>
-                  <li><a href="#">Order Tracking</a></li>
+                  <li><Link :href="route('cartitem.index')">Cart</Link></li>
+                  <li><Link v-if="$page.props.auth" :href="route('wishlist.index')">Wishlist</Link></li>
+                  <li><Link :href="route('checkout.show')">Checkout</Link></li>
+                  <li><Link :href="route('trackOrder.index')">Order Tracking</Link></li>
                   <li>
-                    <Link :href="route('account')">
+                    <Link v-if="$page.props.auth" :href="route('account')">
                       {{ $t("nav_menu.pages.account") }}</Link
                     >
                   </li>
-                  <li>
-                    <Link :href="route('login')"> {{ $t("nav_menu.pages.login") }}</Link>
-                  </li>
-                  <li>
-                    <Link :href="route('register')"
-                      >{{ $t("nav_menu.pages.register") }}
-                    </Link>
-                  </li>
+<!--                  <li>-->
+<!--                    <Link :href="route('login')"> {{ $t("nav_menu.pages.login") }}</Link>-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <Link :href="route('register')"-->
+<!--                      >{{ $t("nav_menu.pages.register") }}-->
+<!--                    </Link>-->
+<!--                  </li>-->
                 </ul>
               </li>
               <li>

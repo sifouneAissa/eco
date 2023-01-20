@@ -23,6 +23,8 @@ class DashboardController extends Controller
     public function index()
     {
 
+        Carbon::setLocale('en');
+
         $weeks = [
             'first',
             'second',

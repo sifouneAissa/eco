@@ -78,6 +78,10 @@ use \Illuminate\Support\Facades\Route;
         Route::resource('/order',\App\Http\Controllers\admin\OrderDetailController::class)->only([
             'index','show'
         ]);
+        Route::resource('/message',\App\Http\Controllers\admin\UserMessageController::class)->only([
+            'index','destroy'
+        ]);
+        Route::patch('/messageread/{id}',[\App\Http\Controllers\admin\UserMessageController::class,'readAt'])->name('message.read_at');
         Route::get('/orders',[\App\Http\Controllers\admin\OrderDetailController::class,'datatables'])->name('orders.index');
 
         Route::get('/blogs',[\App\Http\Controllers\admin\BlogController::class,'datatables'])->name('blogs.index');

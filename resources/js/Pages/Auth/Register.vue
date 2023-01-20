@@ -61,10 +61,10 @@
                                     class="form-control"
                                     :placeholder="$t('register.name')">
                                 <div v-show="form.errors.name">
-                                    <p class="text-sm" style="color: red">
-                                        {{ form.errors.name }}
-                                    </p>
-                                </div>
+                                <p class="text-sm" style="color: red">
+                                    {{ form.errors.name }}
+                                </p>
+                            </div>
                                 <input
                                     v-model="form.email"
                                     type="email"

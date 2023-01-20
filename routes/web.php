@@ -86,10 +86,8 @@ Route::middleware([
 Route::get('/blogs', [\App\Http\Controllers\BlogController::class,'index'])->name('blog.index');
 Route::get('/blogs/{id}', [\App\Http\Controllers\BlogController::class,'show'])->name('blog.show');
 
-Route::get("/contact-us",function (){
-
-        return \inertia("CompanyPages/ContactUs");
-    })->name('contact-us');
+Route::get("/contact-us",[\App\Http\Controllers\ContactUsController::class,'index'])->name('contact-us');
+Route::post("/contact-us",[\App\Http\Controllers\ContactUsController::class,'store'])->name('contactus.store');
     Route::get("/about-us",function (){
 
         return \inertia("CompanyPages/AboutUs");
