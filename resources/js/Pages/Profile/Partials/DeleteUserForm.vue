@@ -98,3 +98,7 @@ const closeModal = () => {
         </template>
     </ActionSection>
 </template>
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

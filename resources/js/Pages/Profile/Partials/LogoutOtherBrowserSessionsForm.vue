@@ -128,7 +128,7 @@ const closeModal = () => {
                     {{$t('profile.browser.log_out')}}
                 </template>
 
-                <template #content>                    
+                <template #content>
                     {{$t('profile.browser.msg')}}
                     <div class="mt-4">
                         <TextInput
@@ -162,3 +162,7 @@ const closeModal = () => {
         </template>
     </ActionSection>
 </template>
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

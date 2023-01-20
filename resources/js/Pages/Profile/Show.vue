@@ -6,11 +6,16 @@ import SectionBorder from '@/Components/SectionBorder.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+// import {onMounted} from 'vue';
 
 defineProps({
     confirmsTwoFactorAuthentication: Boolean,
     sessions: Array,
 });
+// onMounted(() => {
+//     $("#init.js").remove();
+//     $("#widget").remove();
+// })
 </script>
 
 <template>
@@ -36,9 +41,9 @@ defineProps({
                 </div>
 
                 <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
-                    <TwoFactorAuthenticationForm 
+                    <TwoFactorAuthenticationForm
                         :requires-confirmation="confirmsTwoFactorAuthentication"
-                        class="mt-10 sm:mt-0" 
+                        class="mt-10 sm:mt-0"
                     />
 
                     <SectionBorder />
@@ -55,3 +60,6 @@ defineProps({
         </div>
     </AppLayout>
 </template>
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

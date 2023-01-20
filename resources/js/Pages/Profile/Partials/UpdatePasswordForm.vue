@@ -98,3 +98,7 @@ const updatePassword = () => {
         </template>
     </FormSection>
 </template>
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

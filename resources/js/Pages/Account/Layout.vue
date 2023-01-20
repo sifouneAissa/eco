@@ -59,8 +59,16 @@ export default  {
                     $('#liton_tab_1_2').addClass('active show');
                 }
             });
-        }
-
+        },
+        logout: function () {
+            Inertia.post(
+                route("logout"),
+                {},
+                {
+                    onSuccess: () => window.location.reload(),
+                }
+            );
+        },
     }
 }
 
@@ -452,10 +460,10 @@ export default  {
                                         <div class="nav">
                                             <a  class="active show" data-toggle="tab" href="#liton_tab_1_1">Dashboard <i class="fas fa-home"></i></a>
                                             <a  data-toggle="tab" href="#liton_tab_1_2">Orders <i class="fas fa-file-alt"></i></a>
-                                            <a data-toggle="tab" href="#liton_tab_1_3">Downloads <i class="fas fa-arrow-down"></i></a>
+<!--                                            <a data-toggle="tab" href="#liton_tab_1_3">Downloads <i class="fas fa-arrow-down"></i></a>-->
                                             <a data-toggle="tab" href="#liton_tab_1_4">address <i class="fas fa-map-marker-alt"></i></a>
                                             <a data-toggle="tab" href="#liton_tab_1_5">Account Details <i class="fas fa-user"></i></a>
-                                            <a href="login.html">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                            <a @click="logout()" href="javascript:void(0)">Logout <i class="fas fa-sign-out-alt"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -463,7 +471,7 @@ export default  {
                                     <div class="tab-content">
                                         <div class="tab-pane fade active show" id="liton_tab_1_1">
                                             <div class="ltn__myaccount-tab-content-inner">
-                                                <p>Hello <strong>UserName</strong> (not <strong>UserName</strong>? <small><a href="login-register.html">Log out</a></small> )</p>
+<!--                                                <p>Hello <strong>UserName</strong> (not <strong>UserName</strong>? <small><a href="login-register.html">Log out</a></small> )</p>-->
                                                 <p>From your account dashboard you can view your <span>recent orders</span>, manage your <span>shipping and billing addresses</span>, and <span>edit your password and account details</span>.</p>
                                             </div>
                                         </div>
@@ -473,42 +481,42 @@ export default  {
                                                 <CENTER><button @click="loadOrders()" class="theme-btn-1 btn ">Load more</button></CENTER>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="liton_tab_1_3">
-                                            <div class="ltn__myaccount-tab-content-inner">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Product</th>
-                                                            <th>Date</th>
-                                                            <th>Expire</th>
-                                                            <th>Download</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>Carsafe - Car Service PSD Template</td>
-                                                            <td>Nov 22, 2020</td>
-                                                            <td>Yes</td>
-                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Carsafe - Car Service HTML Template</td>
-                                                            <td>Nov 10, 2020</td>
-                                                            <td>Yes</td>
-                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Carsafe - Car Service WordPress Theme</td>
-                                                            <td>Nov 12, 2020</td>
-                                                            <td>Yes</td>
-                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
+<!--                                        <div class="tab-pane fade" id="liton_tab_1_3">-->
+<!--                                            <div class="ltn__myaccount-tab-content-inner">-->
+<!--                                                <div class="table-responsive">-->
+<!--                                                    <table class="table">-->
+<!--                                                        <thead>-->
+<!--                                                        <tr>-->
+<!--                                                            <th>Product</th>-->
+<!--                                                            <th>Date</th>-->
+<!--                                                            <th>Expire</th>-->
+<!--                                                            <th>Download</th>-->
+<!--                                                        </tr>-->
+<!--                                                        </thead>-->
+<!--                                                        <tbody>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>Carsafe - Car Service PSD Template</td>-->
+<!--                                                            <td>Nov 22, 2020</td>-->
+<!--                                                            <td>Yes</td>-->
+<!--                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>Carsafe - Car Service HTML Template</td>-->
+<!--                                                            <td>Nov 10, 2020</td>-->
+<!--                                                            <td>Yes</td>-->
+<!--                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>Carsafe - Car Service WordPress Theme</td>-->
+<!--                                                            <td>Nov 12, 2020</td>-->
+<!--                                                            <td>Yes</td>-->
+<!--                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>-->
+<!--                                                        </tr>-->
+<!--                                                        </tbody>-->
+<!--                                                    </table>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <div class="tab-pane fade" id="liton_tab_1_4">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <p>The following addresses will be used on the checkout page by default.</p>

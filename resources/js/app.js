@@ -1,5 +1,5 @@
 import './bootstrap';
-import '../css/app.css'
+// import '../css/app.css'
 
 import '../../public/vendor/icofont/icofont.min.css';
 
@@ -51,11 +51,12 @@ createInertiaApp({
         // for lazy importation
         let script1 = document.createElement('script');
         script1.src = "/chat/init.js";
+        script1.id = 'init';
         document.body.append(script1); // (*)
 
         // for lazy importation
         let script2 = document.createElement('script');
-        script2.src = "/chat/widget.js";
+        script2.src = "/chat/widget.js";script1.id = 'widget';
         document.body.append(script2); // (*)
 
         // if(props.initialPage.props.isRtl) {

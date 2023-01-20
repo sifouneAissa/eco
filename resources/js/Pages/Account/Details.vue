@@ -11,13 +11,13 @@
                             <SectionBorder />
                         </div>
 
-                        <div v-if="$page.props.jetstream.canUpdatePassword">
+                        <div v-if="$page.props.jetstream.canUpdatePassword" class="mt-5">
                             <UpdatePasswordForm class="mt-10 sm:mt-0" />
 
                             <SectionBorder />
                         </div>
 
-                        <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
+                        <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication" class="mt-5">
                             <TwoFactorAuthenticationForm
                                 :requires-confirmation="confirmsTwoFactorAuthentication"
                                 class="mt-10 sm:mt-0"
@@ -26,7 +26,7 @@
                             <SectionBorder />
                         </div>
 
-                        <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
+                        <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0 " />
 
                         <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
                             <SectionBorder />
@@ -70,4 +70,5 @@
         },
     }
 </script>
+
 
