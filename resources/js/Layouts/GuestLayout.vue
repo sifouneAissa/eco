@@ -269,7 +269,7 @@ export default {
             <div class="row">
               <div class="col">
                 <div class="site-logo">
-                  <a href="index.html"
+                  <a :href="route('welcome')"
                     ><img src="/img/oldlogo-1.png" alt="Logo" style="height: 63px"
                   /></a>
                 </div>
@@ -617,7 +617,7 @@ export default {
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
           <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-              <a href="index.html"
+              <a :href="route('welcome')"
                 ><img src="/img/oldlogo-1.png" alt="Logo" style="height: 63px"
               /></a>
             </div>
@@ -634,7 +634,7 @@ export default {
               <li>
                 <Link :href="route('listing')">{{ $t("nav_menu.pages.home") }}</Link>
                 <!--                                <ul class="sub-menu">-->
-                <!--                                    <li><a href="index.html">Home Style - 01</a></li>-->
+                <!--                                    <li><a :href="route('welcome')">Home Style - 01</a></li>-->
                 <!--                                    <li><a href="index-2.html">Home Style - 02</a></li>-->
                 <!--                                    <li><a href="index-3.html">Home Style - 03 <span class="menu-item-badge">new</span></a>-->
                 <!--                                    </li>-->
