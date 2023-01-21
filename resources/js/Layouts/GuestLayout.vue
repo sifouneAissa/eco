@@ -481,7 +481,7 @@ export default {
                           type="text"
                           name="search"
                           value=""
-                          placeholder="Search here..."
+                          :placeholder="$t('listing.search')"
                         />
                         <button type="submit">
                           <span><i class="icon-search"></i></span>
@@ -844,8 +844,8 @@ export default {
                         <img src="/img/icons/svg/4-track.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
-                        <h4>Free home delivery</h4>
-                        <p>Provide free home delivery for all product over $100</p>
+                        <h4>{{$t('feature.title4')}}</h4>
+                        <p>{{$t('feature.desc4')}}</p>
                       </div>
                     </div>
                   </div>
@@ -855,8 +855,8 @@ export default {
                         <img src="/img/icons/svg/5-madel.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
-                        <h4>Quality Products</h4>
-                        <p>We ensure the product quality that is our main goal</p>
+                        <h4>{{$t('feature.title3')}}</h4>
+                        <p>{{$t('feature.desc3')}}</p>
                       </div>
                     </div>
                   </div>
@@ -866,8 +866,8 @@ export default {
                         <img src="/img/icons/svg/6-return.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
-                        <h4>3 Days Return</h4>
-                        <p>Return product within 3 days for any product you buy</p>
+                        <h4>{{$t('feature.title2')}}</h4>
+                        <p>{{$t('feature.desc2')}}</p>
                       </div>
                     </div>
                   </div>
@@ -877,8 +877,8 @@ export default {
                         <img src="/img/icons/svg/7-support.svg" alt="#" />
                       </div>
                       <div class="ltn__feature-info">
-                        <h4>Online Support</h4>
-                        <p>We ensure the product quality that you can trust easily</p>
+                        <h4>{{$t('feature.title1')}}</h4>
+                        <p>{{$t('feature.desc1')}}</p>
                       </div>
                     </div>
                   </div>
