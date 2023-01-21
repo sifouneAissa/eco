@@ -104,6 +104,8 @@ use \Illuminate\Support\Facades\Route;
         ]);
 
         Route::post('/reviewsapprove',[\App\Http\Controllers\admin\CommentController::class,'approve'])->name('approve.review');
+        Route::post('/reply',[\App\Http\Controllers\admin\CommentController::class,'reply'])->name('review.reply');
+        Route::patch('/reply/{id}',[\App\Http\Controllers\admin\CommentController::class,'replayUpdate'])->name('review.reply.update');
 
     });
 });

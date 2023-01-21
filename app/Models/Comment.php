@@ -29,7 +29,8 @@ class Comment extends Model
         'name',
         'date',
         'by',
-        'type'
+        'type',
+        'uname'
     ];
 
     protected $casts = [
@@ -41,9 +42,15 @@ class Comment extends Model
             Blog::class => 'Blog',
             Product::class => 'Product'
         ];
-
+        if(in_array($this->commentable_type,$types))
         return $types[$this->commentable_type];
+        return null;
     }
+
+    public function getUnameAttribute(){
+        return $this->commenter->name;
+    }
+
 
     public function getNameAttribute(){
         if(get_class($this->commentable) === Blog::class)
@@ -66,5 +73,12 @@ class Comment extends Model
 
     public function commentable(){
         return $this->morphTo('commentable');
+    }
+
+    public function children()
+    {
+        $children= $this->morphMany(Comment::class, 'commentable')->where('child_id',$this->id)->get();
+
+        return $children;
     }
 }

@@ -23,7 +23,7 @@ const sidebar = [
     {
         name : 'Reviews',
         route : 'admin.reviews.index',
-        permission : 'view messages',
+        permission : 'view reviews',
         icon : 'feather-star'
     },
     {

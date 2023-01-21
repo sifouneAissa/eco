@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReplyRequest;
 use App\Http\Requests\ReviewRequest;
 use App\Models\Blog;
 use App\Models\Comment;
@@ -13,10 +14,24 @@ use Inertia\Inertia;
 
 class CommentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['permission:view reviews'])->only(['index']);
+    }
     //
     public function index(){
-        $comments = Comment::query()->with(['commentable','commenter'])->orderBy('created_at','desc')->paginate(6)->through(function ($item) {
-            return $item->toArray();
+        // only without the child id
+        $comments = Comment::query()->with(['commentable','commenter'])->whereHasMorph('commentable',[
+            Blog::class,
+            Product::class
+        ])->orderBy('created_at','desc')->paginate(6)->through(function ($item) {
+            return array_merge(
+                $item->toArray(),
+                [
+                    'children' => $item->children()
+                ]
+            );
         });
 
         $types = [
@@ -58,6 +73,26 @@ class CommentController extends Controller
         $comment = Comment::query()->find($request->review_id);
         $comment->update(filterRequest($request->all(),Comment::class));
 
+    }
+
+    public function reply(ReplyRequest $request){
+        $parent = Comment::find($request->input('child_id'));
+        Comment::query()->create(array_merge(
+            filterRequest($request->all(),Comment::class),
+            [
+                'commenter_id' => auth()->user()->id,
+                'commenter_type' => User::class
+            ],
+            [
+                'commentable_id' => $parent->id,
+                'commentable_type' => Comment::class
+            ]
+        ));
+    }
+
+    public function replayUpdate(ReplyRequest $request,$id){
+        $comment = Comment::query()->find($id);
+        $comment->update(filterRequest($request->all(),Comment::class));
     }
 
     public function destroy($id){
