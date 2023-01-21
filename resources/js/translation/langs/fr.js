@@ -1,7 +1,7 @@
 const fr = {
     nav_menu:{
         track_by_id:"Suivre la commande par identifiant..",
-        other:"Autres",
+        other:"Autres pages",
         help:{
            help:"Aide",
            contact_us:"Contacter nous",
@@ -22,6 +22,9 @@ const fr = {
            products:"Produits",
            new:"Nouveau",
            blog:"Blog",
+           checkout:"Paiement",
+           order_tracking:"Suivi de commande",
+           wishlist:"Liste de souhaits",
         }
        },
     locales : {
