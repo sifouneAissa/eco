@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,6 +29,14 @@ class BlogController extends Controller
     {
         $blog = Blog::query()->findOrFail($id);
         $blogs = Blog::query()->whereNot('id',$id)->get()->take(4);
+//        $comments = Comment::query()->where([
+//            [
+//                'commentable_type' => Blog::class,
+//                'commentable_id' => $id
+//            ]
+//        ])->where();
+//
+//        dd($comments);
         return Inertia::render('BlogDetail',[
             'blog' => $blog,
             'blogs' => $blogs,

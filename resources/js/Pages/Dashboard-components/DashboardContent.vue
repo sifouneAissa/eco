@@ -237,7 +237,7 @@ export default {
     </div>
     <!-- CALL TO ACTION END -->
 
-      <DashCat />
+      <DashCat v-if="$page.props.dcat" />
 
     <!-- TESTIMONIAL AREA START -->
     <div class="ltn__testimonial-area section-bg-1--- pb-70">
