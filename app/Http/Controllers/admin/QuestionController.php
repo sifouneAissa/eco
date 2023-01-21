@@ -89,8 +89,8 @@ class QuestionController extends Controller
     public function getColumns(){
         return [
             ['data' => 'id','name' => 'Id'],
-            ['data' => 'question' , 'name' => 'Question content','searchable' => true],
-            ['data' => 'answer' , 'name' => 'Answer content','searchable' => true],
+            ['data' => 'question' , 'name' => 'Question'],
+            ['data' => 'answer' , 'name' => 'Answer'],
             ['data' => 'action' , 'name' => 'Action','searchable' => false],
             ];
     }

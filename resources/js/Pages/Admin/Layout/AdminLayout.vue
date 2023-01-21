@@ -33,7 +33,9 @@
 
             let app = this;
             window.onload = function (){
-                Inertia.visit(app.$page.url);
+                Inertia.visit(app.$page.url,{
+                    preserveScroll : true
+                });
             };
         }
     }

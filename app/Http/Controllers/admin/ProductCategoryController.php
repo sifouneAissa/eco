@@ -93,7 +93,7 @@ class ProductCategoryController extends Controller
         return [
             ['data' => 'id','name' => 'Id'],
             ['data' => 'name' , 'name' => 'Name'],
-            ['data' => 'desc' , 'name' => 'Description'],
+            ['data' => 'desc' , 'name' => 'Desc'],
             ['data' => 'action' , 'name' => 'Action','searchable' => false]
         ];
     }

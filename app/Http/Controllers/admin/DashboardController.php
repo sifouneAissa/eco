@@ -137,8 +137,8 @@ class DashboardController extends Controller
     {
         return [
             ['data' => 'id', 'name' => 'Id'],
-            ['data' => 'user_name', 'name' => 'User Name'],
-            ['data' => 'email', 'name' => 'Email', 'searchable' => true],
+            ['data' => 'user_name', 'name' => 'User Name','searchable'=> false],
+            ['data' => 'email', 'name' => 'Email', 'searchable' => false],
             ['data' => 'count', 'name' => 'Products Count', 'searchable' => false],
             ['data' => 'total', 'name' => 'total', 'searchable' => false],
             ['data' => 'status', 'name' => 'Status', 'searchable' => false],
