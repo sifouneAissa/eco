@@ -45,7 +45,13 @@ const fr = {
         password : 'Mot de passe',
         login : 'Connexion',
         register : 'S\'inscrire',
-        remember_me : 'Souviens-toi de moi'
+        remember_me : 'Souviens-toi de moi',
+        sign_in : 'Connectez-vous ',
+        your_account : 'à votre compte',
+        forgot : 'MOT DE PASSE OUBLIÉ?',
+        dont_have_account : "VOUS N'AVEZ PAS DE COMPTE ?",
+        desc1 : "Ajouter des articles à votre liste de souhaits obtenir des recommandations personnalisées.",
+        desc2:"vérifier plus rapidement suivre vos commandes enregistrer",
     },
     register : {
         Welcome : 'Bienvenue',
@@ -54,27 +60,40 @@ const fr = {
         password : 'Mot de passe',
         password_confirmation : 'Confirmation mot de passe',
         sign_up : 'S\'inscrire',
+        register : 'S\'inscrire',
+        your_account : 'votre compte',
+        desc1 : 'En créant un compte, vous acceptez nos',
+        checkbox1 : "Je consens à ce que Himpies traite mes données personnelles afin d'envoyer du matériel marketing personnalisé conformément au formulaire de consentement et à la politique de confidentialité.",
+        checkbox2 : "En cliquant sur 'créer un compte', j'accepte la politique de confidentialité.",
     },
     account:{
         account:"Mon compte",
         edit_button:"Modifier",
+        load_more:"Charger plus",
+        hello:"Bonjour",
         menu:{
             orders:"Commandes ",
-            offers:"Offres",
-            favourites:"Favoris",
-            payments:"Paiements",
+            dashboard:"Tableau de bord",
+            details:"Détails du compte",
             addresses:"Adresses",
+            payments:"Paiements",
         },
         orders:{
-            past_orders:"Commandes passées"
+            past_orders:"Commandes passées",
+            total:"Total payé",
+            order:"Commande",
+            paid:"payé",
+            unpaid:"non payé",
         },
-        offers:{
+        dashboard:{
+            desc:"À partir du tableau de bord de votre compte, vous pouvez afficher vos commandes récentes, gérer vos adresses de livraison et de facturation et modifier votre mot de passe et les détails de votre compte."
         },
         favourites:{
         },
         payments:{
         },
         addresses:{
+            desc:"Les adresses suivantes seront utilisées par défaut sur la page de paiement.",
             manage_addresses:"Gérer les adresses",
             add_button:"Ajouter",
             add_card:{
@@ -181,6 +200,8 @@ const fr = {
         note : ' Enregistrez mon nom, mon adresse e-mail et mon site Web dans ce navigateur pour la prochaine fois que je commenterai.',
     },
     listing:{
+        view_cart:"Voir le panier",
+        cart_desc:"Livraison gratuite sur toutes les commandes de plus de 100 $ !",
         page_title:"Liste",
         page_detail_title:"Les détails du produit",
         add_products:"Ajouter produits",
@@ -295,6 +316,16 @@ const fr = {
             newsletter:"Newsletter",
             subscribe_desc:"Abonnez-vous à notre newsletter hebdomadaire et recevez des mises à jour par e-mail.",
 
+    },
+    feature:{
+        title1:"Support en ligne",
+        title2:"Jours Retour 3",
+        title3:"Produits de qualité",
+        title4:"Livraison gratuite à domicile",
+        desc1:"Retournez le produit dans les 3 jours pour tout produit que vous achetez",
+        desc2:"Retournez le produit dans les 3 jours pour tout produit que vous achetez",
+        desc3:"Nous assurons la qualité du produit qui est notre objectif principal",
+        desc4:"Offrir la livraison à domicile gratuite pour tous les produits de plus de 100 $",
     }
 };
 

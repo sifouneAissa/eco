@@ -45,7 +45,13 @@ const en = {
         password : 'Password',
         login : 'Login',
         register : 'Register',
-        remember_me : 'Remember me'
+        remember_me : 'Remember me',
+        sign_in : 'Sign In',
+        your_account : 'To Your Account',
+        forgot : 'FORGOTTEN YOUR PASSWORD?',
+        dont_have_account : "DON'T HAVE AN ACCOUNT?",
+        desc1 : "Add items to your wishlist get personalised recommendations.",
+        desc2 : "check out more quickly track your orders register",
     },
     register : {
         welcome : "Welcome",
@@ -54,27 +60,41 @@ const en = {
         password : 'Password',
         password_confirmation : 'Password confirmation',
         sign_up : 'Sign up',
+        register : 'Register',
+        your_account : 'Your Account',
+        desc1 : 'By creating an account, you agree to our',
+        checkbox1 : 'I consent to Himpies processing my personal data in order to send personalized marketing material in accordance with the consent form and the privacy policy.',
+        checkbox2 : 'By clicking "create account", I consent to the privacy policy. ',
     },
     account:{
         account:"My Account",
         edit_button:"Edit",
+        load_more:"Load more",
+        hello:"Hello",
         menu:{
             orders:"Orders",
-            offers:"Offers",
-            favourites:"Favourites",
-            payments:"Payments",
+            dashboard:"Dashboard",
+            details:"Account Details",
             addresses:"Addresses",
+            payments:"Payments",
         },
         orders:{
-            past_orders:"Past Orders"
+            past_orders:"Past Orders",
+            total:"Total Paid",
+            order:"Order",
+            paid:"Paid",
+            unpaid:"Unpaid",
+
         },
-        offers:{
+        dashboard:{
+            desc:"From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details. "
         },
         favourites:{
         },
         payments:{
         },
         addresses:{
+            desc:"The following addresses will be used on the checkout page by default. ",
             manage_addresses:"Manage Addresses",
             add_button:"Add",
             add_card:{
@@ -179,6 +199,8 @@ const en = {
         note : ' Save my name, email, and website in this browser for the next time I comment.',
     },
     listing:{
+      view_cart:"View Cart",
+      cart_desc:"Free Shipping on All Orders Over $100!",
       page_title:"Listing",
       page_detail_title:"Product detail",
       add_products:"Add products",
@@ -294,6 +316,16 @@ const en = {
             customer_care:"Customer Care",
             newsletter:"Newsletter",
             subscribe_desc:"Subscribe to our weekly Newsletter and receive updates via email.",
+    },
+    feature:{
+        title1:"Online Support",
+        title2:"Days Return 3",
+        title3:"Quality Products",
+        title4:"Free home delivery",
+        desc1:"We ensure the product quality that you can trust easily",
+        desc2:"Return product within 3 days for any product you buy",
+        desc3:"We ensure the product quality that is our main goal",
+        desc4:"Provide free home delivery for all product over $100",
     }
 };
 
