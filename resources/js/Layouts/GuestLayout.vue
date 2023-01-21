@@ -314,19 +314,24 @@ export default {
                             </li>
                             <li>
                               <a href="#"
-                                >Other Pages <span class="float-right">>></span></a
+                                >{{ $t("nav_menu.other") }}
+                                <span class="float-right">>></span></a
                               >
                               <ul>
                                 <li v-if="$page.props.auth">
-                                  <Link :href="route('wishlist.index')">Wishlist</Link>
+                                  <Link :href="route('wishlist.index')">{{
+                                    $t("nav_menu.pages.wishlist")
+                                  }}</Link>
                                 </li>
                                 <li>
-                                  <Link :href="route('checkout.show')">Checkout</Link>
+                                  <Link :href="route('checkout.show')">{{
+                                    $t("nav_menu.pages.checkout")
+                                  }}</Link>
                                 </li>
                                 <li>
-                                  <Link :href="route('trackOrder.index')"
-                                    >Order Tracking</Link
-                                  >
+                                  <Link :href="route('trackOrder.index')">{{
+                                    $t("nav_menu.pages.order_tracking")
+                                  }}</Link>
                                 </li>
                               </ul>
                             </li>
@@ -521,7 +526,7 @@ export default {
                                 <i class="icofont-heart"
                                   >({{ $page.props.wcount }})</i
                                 > </span
-                              >Wishlist</Link
+                              >{{ $t("nav_menu.pages.wishlist") }}</Link
                             >
                           </li>
 
@@ -684,7 +689,7 @@ export default {
                 <!--                                    <li><a href="cart.html">Cart</a></li>-->
                 <!--                                    <li><a href="wishlist.html">Wishlist</a></li>-->
                 <!--                                    <li><a href="checkout.html">Checkout</a></li>-->
-                <!--                                    <li><a href="order-tracking.html">Order Tracking</a></li>-->
+                <!--                                    <li><a href="order-tracking.html">{{ $t("nav_menu.pages.order_tracking") }}</a></li>-->
                 <!--                                    <li><Link :href="route('account')">
                               {{ $t("nav_menu.pages.account") }}</Link
                             ></li>-->
@@ -724,12 +729,20 @@ export default {
                   <li><a href="product-details.html">Shop details </a></li> -->
                   <li><Link :href="route('cartitem.index')">Cart</Link></li>
                   <li>
-                    <Link v-if="$page.props.auth" :href="route('wishlist.index')"
-                      >Wishlist</Link
-                    >
+                    <Link v-if="$page.props.auth" :href="route('wishlist.index')">{{
+                      $t("nav_menu.pages.wishlist")
+                    }}</Link>
                   </li>
-                  <li><Link :href="route('checkout.show')">Checkout</Link></li>
-                  <li><Link :href="route('trackOrder.index')">Order Tracking</Link></li>
+                  <li>
+                    <Link :href="route('checkout.show')">{{
+                      $t("nav_menu.pages.checkout")
+                    }}</Link>
+                  </li>
+                  <li>
+                    <Link :href="route('trackOrder.index')">{{
+                      $t("nav_menu.pages.order_tracking")
+                    }}</Link>
+                  </li>
                   <li>
                     <Link v-if="$page.props.auth" :href="route('account')">
                       {{ $t("nav_menu.pages.account") }}</Link
@@ -769,7 +782,7 @@ export default {
                     <i class="far fa-heart"></i>
                     <sup>{{ $page.props.wcount }}</sup>
                   </span>
-                  Wishlist
+                  {{ $t("nav_menu.pages.wishlist") }}
                 </Link>
               </li>
 
@@ -986,12 +999,14 @@ export default {
                   <div class="footer-menu">
                     <ul>
                       <li>
-                        <Link :href="route('trackOrder.index')">Order Tracking</Link>
+                        <Link :href="route('trackOrder.index')">{{
+                          $t("nav_menu.pages.order_tracking")
+                        }}</Link>
                       </li>
                       <li>
-                        <Link v-if="$page.props.auth" :href="route('wishlist.index')"
-                          >Wish List</Link
-                        >
+                        <Link v-if="$page.props.auth" :href="route('wishlist.index')">{{
+                          $t("nav_menu.pages.wishlist")
+                        }}</Link>
                       </li>
                       <li>
                         <Link :href="route('login')">
@@ -1031,12 +1046,14 @@ export default {
                         >
                       </li>
                       <li>
-                        <Link v-if="$page.props.auth" :href="route('wishlist.index')"
-                          >Wish List</Link
-                        >
+                        <Link v-if="$page.props.auth" :href="route('wishlist.index')">{{
+                          $t("nav_menu.pages.wishlist")
+                        }}</Link>
                       </li>
                       <li>
-                        <Link :href="route('trackOrder.index')">Order Tracking</Link>
+                        <Link :href="route('trackOrder.index')">{{
+                          $t("nav_menu.pages.order_tracking")
+                        }}</Link>
                       </li>
                       <li>
                         <Link :href="route('faq')">

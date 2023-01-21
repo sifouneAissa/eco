@@ -22,6 +22,9 @@ const ar = {
            products:"المنتجات",
            new:"جديد",
            blog:"المدونة",
+           checkout:"الدفع",
+           order_tracking:"تتبع الطلب",
+           wishlist:"قائمة الرغبات",
         }
        },
     locales : {
