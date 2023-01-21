@@ -134,7 +134,7 @@ if (!function_exists('filterRequest')) {
         $fillable = app($model)->getFillable();
 
         return array_filter($inputs,function ($item) use ($fillable,$inputs){
-            return in_array($item,$fillable) && $inputs[$item] ;
+            return in_array($item,$fillable) && $inputs[$item]!==null ;
         },ARRAY_FILTER_USE_KEY);
     }
 }

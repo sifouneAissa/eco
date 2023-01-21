@@ -21,6 +21,12 @@ const sidebar = [
         icon : 'feather-message-circle'
     },
     {
+        name : 'Reviews',
+        route : 'admin.reviews.index',
+        permission : 'view messages',
+        icon : 'feather-star'
+    },
+    {
         name : 'Clients',
         route : 'admin.client.index',
         permission : 'view clients',

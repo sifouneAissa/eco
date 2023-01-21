@@ -99,6 +99,9 @@ use \Illuminate\Support\Facades\Route;
             'store'
         ]);
 
+        Route::resource('/reviews',\App\Http\Controllers\admin\CommentController::class)->only([
+            'index','update','destroy'
+        ]);
 
     });
 });

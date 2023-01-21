@@ -85,7 +85,6 @@ Route::middleware([
 // Company pages components
 Route::get('/blogs', [\App\Http\Controllers\BlogController::class,'index'])->name('blog.index');
 Route::get('/blogs/{id}', [\App\Http\Controllers\BlogController::class,'show'])->name('blog.show');
-
 Route::get("/contact-us",[\App\Http\Controllers\ContactUsController::class,'index'])->name('contact-us');
 Route::post("/contact-us",[\App\Http\Controllers\ContactUsController::class,'store'])->name('contactus.store');
     Route::get("/about-us",function (){
