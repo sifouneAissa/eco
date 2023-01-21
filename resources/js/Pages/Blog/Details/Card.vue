@@ -1,10 +1,12 @@
 <script>
 import BlogCard from "@/Pages/Blog/BlogCard.vue";
+import commentSection from "@/Pages/Common/comment.vue";
 
 export default {
   name: "BlogDetails.vue",
   components: {
     BlogCard,
+    commentSection,
   },
 };
 </script>
@@ -60,6 +62,8 @@ export default {
                 />
               </div>
             </div>
+
+            <commentSection />
           </div>
         </div>
         <div class="col-lg-4">
