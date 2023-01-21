@@ -112,8 +112,9 @@
 <!--                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>-->
 <!--                </div>-->
 <!--            </li>-->
-           <notifications/>
+
            <messages/>
+           <notifications/>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                 <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

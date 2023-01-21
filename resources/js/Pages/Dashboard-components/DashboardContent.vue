@@ -62,11 +62,10 @@ export default {
                         </p>
                       </div>
                       <div class="btn-wrapper animated">
-                        <a
+                        <Link
                           :href="route('listing')"
                           class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                          >Shop now</a
-                        >
+                          >Shop now</Link>
                       </div>
                     </div>
                   </div>
@@ -109,10 +108,10 @@ export default {
                         </p>
                       </div>
                       <div class="btn-wrapper animated">
-                        <a
+                        <Link
                           :href="route('listing')"
                           class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                          >Shop now</a
+                          >Shop now</Link
                         >
                       </div>
                     </div>
@@ -179,10 +178,10 @@ export default {
                 Starting?
               </h1>
               <div class="btn-wrapper">
-                <a
+                <Link
                   :href="route('listing')"
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                  >Try a growth kit</a
+                  >Try a growth kit</Link
                 >
               </div>
             </div>
@@ -198,10 +197,10 @@ export default {
                 Beard?
               </h1>
               <div class="btn-wrapper">
-                <a
+                <Link
                   :href="route('listing')"
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                  >Try a growth kit</a
+                  >Try a growth kit</Link
                 >
               </div>
             </div>
@@ -223,10 +222,10 @@ export default {
               <h5 class="text-uppercase">Versatile. powerful. perfect.</h5>
               <h1>ABC LC991 Trimmer</h1>
               <div class="btn-wrapper">
-                <a
+                <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
                   :href="route('listing')"
-                  >View More</a
+                  >View More</Link
                 >
               </div>
             </div>
