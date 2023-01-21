@@ -3,16 +3,17 @@
     // import Datatable from '@/Pages/Admin/DataTable/Datatable.vue';
     import {Inertia} from "@inertiajs/inertia";
     import {InertiaLink} from "@inertiajs/inertia-vue3";
-    // import editUser from '@/Pages/Admin/Clients/editUser.vue';
-    // import showRole from '@/Pages/Admin/Roles/showRole.vue';
-    // import deleteBlog from '@/Pages/Admin/Blogs/deleteBlog.vue';
+    import addReview from '@/Pages/Admin/Reviews/addReview.vue';
+    import editReview from '@/Pages/Admin/Reviews/editReview.vue';
     import Main from '@/Pages/Admin/Messages/main.vue';
     import Left from '@/Pages/Admin/Messages/left.vue';
 
     export default {
         components: {
             AdminLayout,
-            InertiaLink
+            InertiaLink,
+            addReview,
+            editReview
             // Main,
             // Left
             // Datatable,
@@ -20,11 +21,19 @@
             // editUser,
             // deleteBlog
         },
-        props: ['datatableUrl', 'datatableColumns', 'datatableHeaders'],
         mounted() {
             console.log(this.$page.props.comments.data);
         },
         methods: {
+            ShowEditModel : function (data){
+                this.modelToUpdate = data;
+            },
+            resetModel : function (){
+                this.modelToUpdate = null;
+                this.modelToShow = null;
+                this.modelToDelete = null;
+                this.modelToAdd = null;
+            },
             dreview: function (id) {
                 Inertia.delete(this.route('admin.reviews.destroy', {
                     review: id
@@ -34,11 +43,13 @@
                     }
                 })
             },
+            ShowAddModel : function (){
+                this.modelToAdd = true;
+            },
             areview: function (rv) {
                 console.log(!rv.approved);
-                Inertia.patch(this.route('admin.reviews.update', {
-                    review: rv.id
-                }), {
+                Inertia.post(this.route('admin.approve.review', {}), {
+                    review_id: rv.id,
                     approved: !rv.approved
                 }, {
                     preserveScroll: true,
@@ -57,7 +68,7 @@
         },
         computed: {
             model: function () {
-                return this.modelToUpdate !== null
+                return this.modelToAdd !== null
             }
         }
     }
@@ -74,6 +85,10 @@
         </template>
         <div class="container-fluid">
             <div class="row">
+                <div  class="ml-auto mr-3">
+                    <button @click="ShowAddModel" class=" btn btn btn-rounded m-2 btn-primary"><h6><i class="feather-plus"></i>Add</h6>
+                    </button>
+                </div>
                 <div class="col-xl-12">
                     <div v-for="review in $page.props.comments.data" :key="review.id" class="card mb-4 order-list">
                         <div class="gold-members p-4">
@@ -97,8 +112,12 @@
                                         <a href="#0" class="btn btn-sm btn-success" data-toggle="modal"
                                            data-target="#edit_booking"><i class="fa fa-fw fa-reply"></i> Reply to this
                                             review</a>
+
+                                        <a href="javascript:void(0)" @click="ShowEditModel(review)"
+                                           class="btn btn-sm btn-warning"><i class="feather-edit"></i>Edit</a>
+
                                         <a href="javascript:void(0)" @click="areview(review)"
-                                           :class="'btn btn-sm ' + (review.approved ? 'btn-warning' : 'btn-primary') "><i
+                                           :class="'btn btn-sm ' + (review.approved ? 'btn-dark' : 'btn-primary') "><i
                                             :class="review.approved ? 'feather-x-circle' : 'feather-check-circle'"></i>
                                             {{review.approved ? 'Disapprove' : 'Approve'}}</a>
                                         <a href="javascript:void(0)" @click="dreview(review.id)"
@@ -136,6 +155,9 @@
                         </div>
                         <!--                            </div>-->
                     </nav>
+                    <addReview @ResetModel="resetModel" v-if="model" :model="modelToAdd"></addReview>
+                    <editReview @ResetModel="resetModel" v-if="modelToUpdate" :model="modelToUpdate"></editReview>
+
                 </div>
             </div>
         </div>

@@ -28,13 +28,22 @@ class Comment extends Model
     protected $appends = [
         'name',
         'date',
-        'by'
+        'by',
+        'type'
     ];
 
     protected $casts = [
         'approved' => 'boolean'
     ];
 
+    public function getTypeAttribute(){
+        $types  = [
+            Blog::class => 'Blog',
+            Product::class => 'Product'
+        ];
+
+        return $types[$this->commentable_type];
+    }
 
     public function getNameAttribute(){
         if(get_class($this->commentable) === Blog::class)

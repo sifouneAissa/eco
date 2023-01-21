@@ -100,8 +100,10 @@ use \Illuminate\Support\Facades\Route;
         ]);
 
         Route::resource('/reviews',\App\Http\Controllers\admin\CommentController::class)->only([
-            'index','update','destroy'
+            'index','update','destroy','store'
         ]);
+
+        Route::post('/reviewsapprove',[\App\Http\Controllers\admin\CommentController::class,'approve'])->name('approve.review');
 
     });
 });
