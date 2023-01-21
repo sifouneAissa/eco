@@ -11,7 +11,9 @@ class CommentController extends Controller
 {
     //
     public function index(){
-        $comments = Comment::query()->with(['commentable','commenter'])->get();
+        $comments = Comment::query()->with(['commentable','commenter'])->paginate(2)->through(function ($item) {
+            return $item->toArray();
+        });
 
         return Inertia::render('Reviews',[
             'comments' => $comments
