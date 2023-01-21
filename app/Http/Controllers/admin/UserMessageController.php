@@ -12,6 +12,12 @@ class UserMessageController extends Controller
 {
     //
 
+
+    public function __construct()
+    {
+        $this->middleware(['permission:view messages'])->only(['index']);
+    }
+
     public function index(){
         $messages = UserMessage::query()->orderBy('created_at','desc')->get();
 

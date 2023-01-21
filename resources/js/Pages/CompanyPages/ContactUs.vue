@@ -29,11 +29,13 @@ import { useToast } from "vue-toastification";
      },
      methods : {
         submit : function (){
+            let app = this;
             this.form.post(this.route('contactus.store'),{
                 onSuccess : () => {
                     const toast = useToast();
                     toast.success('Your message has been sent successfully');
-                    this.form.reset('name','email','phone','message')
+                    app.form.reset('name','email','phone','message')
+                    app.submited = false;
                 }
             })
         },

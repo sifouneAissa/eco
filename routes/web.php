@@ -113,6 +113,7 @@ Route::post("/contact-us",[\App\Http\Controllers\ContactUsController::class,'sto
     Route::post('trackorder/redirect',[\App\Http\Controllers\TrackOrderController::class,'redirectTo'])->name('trackOrder.redirect');
 
     Route::post('/readall/notification',[\App\Http\Controllers\NotificationController::class,'readAll'])->name('notification.readall');
+    Route::post('/readmessages/notification',[\App\Http\Controllers\NotificationController::class,'readAllMessages'])->name('notification.readAllMessages');
 
 });
 

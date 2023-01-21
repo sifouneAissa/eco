@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\NewMessage;
 use App\Events\NewOrder;
 use App\Events\UpdateOrder;
+use App\Listeners\NewMessageListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -25,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         NewOrder::class => [
             \App\Listeners\NewOrder::class
+        ],
+        NewMessage::class => [
+            NewMessageListener::class
         ]
     ];
 

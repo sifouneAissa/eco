@@ -15,6 +15,12 @@ const sidebar = [
         ]
     },
     {
+        name : 'Messages',
+        route : 'admin.message.index',
+        permission : 'view messages',
+        icon : 'feather-message-circle'
+    },
+    {
         name : 'Clients',
         route : 'admin.client.index',
         permission : 'view clients',

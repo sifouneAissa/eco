@@ -179,7 +179,7 @@
                                     </tbody>
                                 </table>
                                 <div class="btn-wrapper text-right">
-                                    <Link v-if="$page.props.shopping_session?.length" :href="route('checkout.show')" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</Link>
+                                    <Link v-if="$page.props.shopping_session && $page.props.shopping_session.cart_items.length" :href="route('checkout.show')" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</Link>
                                     <Link v-else :href="route('listing')" class="theme-btn-1 btn btn-effect-1">Add Products</Link>
                                 </div>
                             </div>

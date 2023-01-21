@@ -13,12 +13,12 @@
 <!--                                          <button type="button" class="btn btn-outline-primary btn-sm rounded">-->
 <!--                                          <i class="feather-video"></i>-->
 <!--                                          </button>-->
-                                          <div class="btn-group">
+                                          <div v-if="$can('delete message')" class="btn-group">
                                              <button type="button" class="btn btn-outline-primary btn-sm rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                              <i class="feather-more-vertical"></i>
                                              </button>
                                              <div class="dropdown-menu dropdown-menu-right">
-                                                <button class="dropdown-item" type="button"><i class="feather-trash"></i> Delete</button>
+                                                <button @click="dmessage($page.props.smessage.id)" class="dropdown-item" type="button"><i class="feather-trash"></i> Delete</button>
 <!--                                                <button class="dropdown-item" type="button"><i class="feather-x-circle"></i> Turn Off</button>-->
                                              </div>
                                           </div>
@@ -109,14 +109,29 @@
                                        </span>
         </div>
     </div>
-    <div v-else>
-        Select a message
+    <div class="col-lg-7 col-xl-8 px-0 d-flex justify-content-center align-items-center"  v-else>
+        <div class="dropzone-custom-content ">
+            <h1><i class='feather-message-circle  d-flex justify-content-center align-items-center'></i></h1>
+            <h3 class="dropzone-custom-title">Select and read message !</h3>
+<!--            <div class="subtitle">...or click to select a file from your computer</div>-->
+        </div>
     </div>
 </template>
 <script>
+    import {Inertia} from "@inertiajs/inertia";
     export default {
         data (){
             return {
+            }
+        },
+        methods : {
+            dmessage(id){
+                Inertia.delete(this.route('admin.message.destroy',{
+                    message : id
+                }),{},{
+                    preserveScroll : true
+                });
+                this.$page.props.smessage = null;
             }
         }
     }

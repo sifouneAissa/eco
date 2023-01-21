@@ -74,7 +74,9 @@ return [
                 'view questions',
                 'edit question',
                 'add question',
-                'delete question'
+                'delete question',
+                'view messages',
+                'delete message'
             ],
             mediaPermissions(\App\Models\Product::class, 'product'),
             mediaPermissions(\App\Models\Setting::class, 'setting'),

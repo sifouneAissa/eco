@@ -4,9 +4,11 @@
     import {Link} from "@inertiajs/inertia-vue3";
 
     import Notifications from "@/Pages/Admin/Navbars/Notifications.vue";
+    import Messages from "@/Pages/Admin/Navbars/Messages.vue";
     export  default {
         components : {
             Notifications,
+            Messages,
             Link
         },
         methods : {
@@ -111,6 +113,7 @@
 <!--                </div>-->
 <!--            </li>-->
            <notifications/>
+           <messages/>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                 <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

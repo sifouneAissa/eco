@@ -2,11 +2,15 @@
 
 namespace App\Http\Middleware;
 
+use App\Events\NewMessage;
+use App\Events\NewOrder;
+use App\Events\UpdateOrder;
 use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\OrderDetail;
 use App\Models\ShoppingSession;
 use App\Models\User;
+use App\Notifications\NewMessageNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -49,7 +53,17 @@ class HandleInertiaRequests extends Middleware
         $currency = Session::get('currency') ? Session::get('currency') : config('app.currency');
 
         $code = Currency::where("code",$currency)->first()->currency_code;
-        $notifications = auth()->user()?->notifications()->orderBy('id','desc')->get();
+
+        $notifications = auth()->user()?->notifications()->whereIn('type',[
+                \App\Notifications\NewOrder::class,
+                \App\Notifications\UpdateOrder::class
+        ])->orderBy('id','desc')->get();
+
+
+        $messages = auth()->user()?->notifications()->whereIn('type',[
+                 NewMessageNotification::class
+        ])->orderBy('id','desc')->get();
+
         $wcount = auth()->user()?->wishlists?->count();
 
         $shopping = getShoppingSession();
@@ -59,6 +73,13 @@ class HandleInertiaRequests extends Middleware
                 $item['date'] = translateDate($item->created_at);
                 return $item;
             });
+        if($messages)
+            $messages = $messages->map(function ($item){
+                $item['date'] = translateDate($item->created_at);
+                return $item;
+            });
+
+//        dd($messages->pluck('data.message'));
 
         $client_secret = null;
 
@@ -93,6 +114,7 @@ class HandleInertiaRequests extends Middleware
             'locales' => config('app.locales.all'),
             'auth' => auth()->user(),
             'notifications' => $notifications,
+            'nmessages' => $messages,
             'isRtl' => isRtl($cLocale),
             'currency' => $currency,
             'currencies' => config('app.currencies'),
