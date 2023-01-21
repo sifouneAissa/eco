@@ -1,7 +1,7 @@
 <template>
     <div class="ltn__product-item ltn__product-item-3 text-center">
         <div class="product-img">
-            <a @click="go()" href="javascript: void(0)"><img style="height: 200px;width: 100%" :src="model.fimage" alt="#"></a>
+            <a @click="go()" href="javascript: void(0)"><img :style="'width: 100%; '+ (img_height ? 'height: ' + img_height + 'px' : 'height:200px')" :src="model.fimage" alt="#"></a>
 <!--            <div class="product-badge ">-->
 <!--                <ul >-->
 <!--                    <li v-if="model.popular" class="sale-badge">Popular</li>-->
@@ -44,7 +44,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { useToast } from "vue-toastification";
 
 export default {
-  props: ["model"],
+  props: ["model","img_height"],
    components : {
         Link
     },

@@ -47,17 +47,23 @@ class ProductCategoryController extends Controller
 
         $inputs = $this->filterRequest($request->all());
         $category = ProductCategory::create($inputs);
-
+        if($category->show_in_dash)
+            ProductCategory::query()->whereNot('id',$category->id)->update([
+                'show_in_dash' => false
+            ]);
     }
 
     public function update(ProductCategoryRequest $request,$id){
-        // dd($request->all());
+
         $inputs = $this->filterRequest($request->all());
 
         $category = ProductCategory::find($id);
 
         $category->update($inputs);
-
+        if($category->show_in_dash)
+            ProductCategory::query()->whereNot('id',$category->id)->update([
+                'show_in_dash' => false
+            ]);
     }
 
     public function destroy($id){
@@ -80,7 +86,11 @@ class ProductCategoryController extends Controller
         $datatables = $this->getDataTables()
             ->addColumn('id', fn($model) => $model->id)
             ->addColumn('name', fn($model) => $model->name)
-            ->addColumn('desc',fn($model) => $model->desc)
+            ->addColumn('desc',function ($model) {
+                $desc = $model->desc;
+                $show_in_dash = $model->show_in_dash;
+                return view('ProductCategories.desc',compact('desc','show_in_dash'));
+            } )
             ->addColumn('action',function ($model) use ($permissions,$without){
                 return view('Datatable.btn',compact('model','permissions','without'));
             })
@@ -93,7 +103,7 @@ class ProductCategoryController extends Controller
         return [
             ['data' => 'id','name' => 'Id'],
             ['data' => 'name' , 'name' => 'Name'],
-            ['data' => 'desc' , 'name' => 'Desc'],
+            ['data' => 'desc' , 'name' => 'Desc','searchable' => false],
             ['data' => 'action' , 'name' => 'Action','searchable' => false]
         ];
     }
@@ -104,6 +114,12 @@ class ProductCategoryController extends Controller
             'Description',
             'Action'
         ];
+    }
+
+
+    public function setCategory(Request $request,$id){
+        $cat = ProductCategory::find($id);
+        $cat->update(filterRequest($request->all(),ProductCategory::class));
     }
 
 }
