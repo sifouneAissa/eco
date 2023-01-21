@@ -95,6 +95,7 @@
             Update,
             Multiselect
         },
+
         computed : {
             reviewsS : function () {
                 return [
@@ -124,6 +125,7 @@
         props : ['model'],
         mounted() {
             this.form.rate = this.reviewsS?.find((item) => item.id === this.model.rate);
+            // this.form.commentable = this.model.commentable;
             let app = this;
             let modal = $('#edit-comment');
             modal.on('hidden.bs.modal',function (){

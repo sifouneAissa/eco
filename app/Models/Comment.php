@@ -42,7 +42,8 @@ class Comment extends Model
             Blog::class => 'Blog',
             Product::class => 'Product'
         ];
-        if(in_array($this->commentable_type,$types))
+
+        if(in_array($this->commentable_type,array_keys($types)))
         return $types[$this->commentable_type];
         return null;
     }
