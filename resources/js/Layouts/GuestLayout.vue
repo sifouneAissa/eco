@@ -317,12 +317,8 @@ export default {
                                 >Other Pages <span class="float-right">>></span></a
                               >
                               <ul>
-                                <li>
-                                  <Link
-                                    v-if="$page.props.auth"
-                                    :href="route('wishlist.index')"
-                                    >Wishlist</Link
-                                  >
+                                <li v-if="$page.props.auth">
+                                  <Link :href="route('wishlist.index')">Wishlist</Link>
                                 </li>
                                 <li>
                                   <Link :href="route('checkout.show')">Checkout</Link>
