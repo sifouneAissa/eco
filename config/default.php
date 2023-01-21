@@ -76,7 +76,16 @@ return [
                 'add question',
                 'delete question',
                 'view messages',
-                'delete message'
+                'delete message',
+                'view reviews',
+                'add review',
+                'replay review',
+                'delete review',
+                'edit review',
+                'edit replay',
+                'delete replay',
+                'view replays',
+
             ],
             mediaPermissions(\App\Models\Product::class, 'product'),
             mediaPermissions(\App\Models\Setting::class, 'setting'),

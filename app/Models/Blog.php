@@ -25,7 +25,19 @@ class Blog extends Model implements HasMedia
         'modal_ids',
         'fimage',
         'created',
+        'cclass',
+        'name'
     ];
+
+
+    public function getCclassAttribute(){
+        return get_class($this);
+    }
+
+    public function getNameAttribute(){
+        return $this->title;
+    }
+
     public function user(){
         return $this->belongsTo(User::class,'created_by');
     }

@@ -99,6 +99,13 @@ use \Illuminate\Support\Facades\Route;
             'store'
         ]);
 
+        Route::resource('/reviews',\App\Http\Controllers\admin\CommentController::class)->only([
+            'index','update','destroy','store'
+        ]);
+
+        Route::post('/reviewsapprove',[\App\Http\Controllers\admin\CommentController::class,'approve'])->name('approve.review');
+        Route::post('/reply',[\App\Http\Controllers\admin\CommentController::class,'reply'])->name('review.reply');
+        Route::patch('/reply/{id}',[\App\Http\Controllers\admin\CommentController::class,'replayUpdate'])->name('review.reply.update');
 
     });
 });
