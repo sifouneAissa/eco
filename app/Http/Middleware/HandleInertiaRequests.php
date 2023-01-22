@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use App\Events\NewMessage;
 use App\Events\NewOrder;
 use App\Events\UpdateOrder;
-use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\OrderDetail;
 use App\Models\ShoppingSession;
@@ -134,7 +133,6 @@ class HandleInertiaRequests extends Middleware
             'buyer' => $buyer,
             'company_name' => getSetting('company_name')->company_name,
             'shopping_user' => $shopping?->user,
-            'blogs' => Blog::query()->get(),
         ]);
     }
 }
