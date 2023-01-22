@@ -23,7 +23,8 @@ class DashboardController extends Controller
         $populars = populars();
 
         $dCat = ProductCategory::where("show_in_dash",true)->first();
-        $dCat['products'] = $dCat->products->load("category")->take(3);
+        if($dCat)
+        $dCat['products'] = $dCat?->products->load("category")->take(3);
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
