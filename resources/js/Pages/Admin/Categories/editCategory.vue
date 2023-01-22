@@ -30,6 +30,12 @@
               </p>
             </div>
           </div>
+            <div class=form-group>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input v-model="form.show_in_dash" type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label " for="customRadioInline1">Show in Dashboard</label>
+                </div>
+            </div>
         </div>
 
         <div class="modal-footer d-flex">
@@ -73,6 +79,7 @@ export default {
       form: useForm({
         name: this.model.name,
         desc: this.model.desc,
+        show_in_dash : this.model.show_in_dash
       }),
     };
   },
@@ -86,6 +93,7 @@ export default {
         .transform((data) => ({
           name: data.name,
           desc: data.desc,
+          show_in_dash:  data.show_in_dash
         }))
         .patch(
           route("admin.category.update", {

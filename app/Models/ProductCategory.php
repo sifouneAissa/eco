@@ -17,11 +17,16 @@ class ProductCategory extends Model implements HasMedia
     protected $fillable = [
         'name',
         'desc',
+        'show_in_dash'
     ];
     protected $appends = [
         'count',
          'fimage',
         'modal_ids',
+    ];
+
+    protected $casts = [
+        'show_in_dash' => 'boolean'
     ];
 
 

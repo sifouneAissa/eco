@@ -3,7 +3,7 @@
         <div v-for="child in review.children"   class="media mt-3 ml-5">
             <div class="col-12">
                 <div>
-                    <div class="mr-4 dropdown-list-image mr-3 d-flex align-items-center bg-danger justify-content-center rounded-circle text-white">{{review.uname[0]}}</div>
+                    <div class="mr-4 dropdown-list-image mr-3 d-flex align-items-center bg-danger justify-content-center rounded-circle text-white">{{child.uname[0]}}</div>
                 </div>
                 <div class="media-body">
                     <a href="#">
@@ -11,7 +11,7 @@
                                             class="feather-clock text-success"></i></span>
                     </a>
                     <i  class="fa fa-fw fa-reply text-primary"></i>
-                    <p class="text-black mb-3"><i class="feather-user"></i> by {{review.by}}
+                    <p class="text-black mb-3"><i class="feather-user"></i> by {{child.by}}
                     </p>
                     <p class="text-black-50">{{child.comment}}</p>
                     <hr>
@@ -19,7 +19,7 @@
 <!--                        <a href="javascript:void(0)" class="btn btn-sm btn-success" @click="ShowReplyModel(child)"><i class="fa fa-fw fa-reply"></i> Reply to this-->
 <!--                            review</a>-->
 
-                        <a  v-if="$can('edit replay') && review.commenter.is_admin" href="javascript:void(0)" @click="ShowEditModel(child)"
+                        <a  v-if="$can('edit replay') && child.commenter &&  child.commenter.is_admin" href="javascript:void(0)" @click="ShowEditModel(child)"
                            class="btn btn-sm btn-warning"><i class="feather-edit"></i>Edit</a>
 
                         <a v-if="$can('edit replay')" href="javascript:void(0)" @click="areview(child)"

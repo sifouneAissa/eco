@@ -25,7 +25,7 @@ class WishListController extends Controller
         Wishlist::create(array_merge(
             filterRequest($request->all(),Wishlist::class),
             [
-                auth()->user()->id
+               'user_id' => auth()->user()->id
             ]
         ));
     }
