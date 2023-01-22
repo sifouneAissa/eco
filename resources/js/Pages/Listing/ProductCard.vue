@@ -5,7 +5,7 @@
         ><img
           :style="
             'width: 100%; ' +
-            (img_height ? 'height: ' + img_height + 'px' : 'height:200px')
+            (img_height ? ('height: ' + img_height + 'px') : 'height:200px')
           "
           :src="model.fimage"
           alt="#"
@@ -74,36 +74,11 @@ export default {
   components: {
     Link,
   },
-  methods: {
-    // incrQP(model, by) {
-    //   const toast = useToast();
-    //
-    //   model.quantity = model.quantity + by;
-    //   if (model.quantity > model.isA.remain) {
-    //     toast.warning(this.$t("listing.limited")  + model.name);
-    //     model.quantity = model.isA.remain;
-    //   }
-    //
-    //   if (!model.quantity) model.quantity = 1;
-    // },
-    // submit: function (model) {
-    //   let app = this;
-    //   let form = useForm({
-    //     product_id: model.id,
-    //     quantity: model.quantity,
-    //   });
-    //
-    //   form
-    //     .transform((data) => ({
-    //       ...data,
-    //     }))
-    //     .post(route("addProduct"), {
-    //       // onFinish: () => add_form.reset(),
-    //       onSuccess: function (res) {
-    //         Inertia.reload();
-    //       },
-    //     });
-    // },
+  mounted() {
+        console.log("tihs.img_height")
+        console.log(this.img_height)
+  },
+    methods: {
     incrQP(model, by) {
       const toast = useToast();
       model.quantity = model.quantity + by;

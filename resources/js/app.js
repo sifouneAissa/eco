@@ -1,7 +1,7 @@
-import './bootstrap';
+// import './bootstrap';
 // import '../css/app.css'
 
-import '../../public/vendor/icofont/icofont.min.css';
+// import '../../public/vendor/icofont/icofont.min.css';
 
 import $ from 'jquery'
 // import WOW from 'wowjs'
@@ -22,6 +22,7 @@ import Pusher from 'pusher-js';
 import Toast from "vue-toastification";
 // Import the CSS or use your own!
 import "vue-toastification/dist/index.css";
+
 window.Pusher = Pusher;
 
 window.Echo = new Echo({

@@ -23,10 +23,14 @@ class DashboardController extends Controller
         $populars = populars();
 
         $dCat = ProductCategory::where("show_in_dash",true)->first();
-        if($dCat)
-        $dCat['products'] = $dCat?->products->load("category")->take(3);
 
-        return Inertia::render('Welcome', [
+        if($dCat){
+            $products = $dCat?->products->load("category")->take(3);
+            $dCat = $dCat->toArray();
+            $dCat['products'] = $products;
+        }
+
+         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,

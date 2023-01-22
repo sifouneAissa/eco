@@ -13,7 +13,7 @@
             <div class="row justify-content-center">
 
                 <div v-for="product in $page.props.dcat.products" class="col-lg-4 col-md-4 col-sm-6 col-6">
-                    <ProductCard :img_height="300" :model="product"/>
+                    <ProductCard  :model="product"/>
                 </div>
                 <!-- ltn__product-item -->
 <!--                <div class="col-lg-4 col-md-4 col-sm-6 col-6">-->
