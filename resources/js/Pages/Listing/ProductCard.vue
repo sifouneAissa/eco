@@ -13,7 +13,7 @@
       <!--            <div class="product-badge ">-->
       <!--                <ul >-->
       <!--                    <li v-if="model.popular" class="sale-badge">Popular</li>-->
-      <li v-if="model.new" class="sale-badge">New</li>
+      <li v-if="model.new" class="sale-badge">{{ $t("listing.new") }}</li>
       <!--                    <li v-else-if="model.bests" class="sale-badge">Bests</li>-->
       <!--                </ul>-->
       <!--            </div>-->
