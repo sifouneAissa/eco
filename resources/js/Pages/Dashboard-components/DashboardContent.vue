@@ -14,7 +14,7 @@ export default {
   components: {
     Categories,
     ProductCard,
-      DashCat,
+    DashCat,
     Blogs,
     Products,
     Link,
@@ -42,10 +42,10 @@ export default {
 <template>
   <div>
     <!-- SLIDER AREA START (slider-1) -->
-    <div class="ltn__slider-area ltn__slider-6 mb-120">
-      <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
-        <!-- ltn__slide-item -->
-        <div
+    <!-- <div class="ltn__slider-area ltn__slider-6 mb-120">
+      <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1"> -->
+    <!-- ltn__slide-item -->
+    <!-- <div
           class="ltn__slide-item section-bg-1"
           style=" background-image: url('/img/slider/11.png')"
         >
@@ -55,15 +55,15 @@ export default {
                 <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
                   <div class="slide-item-info">
                     <div class="slide-item-info-inner ltn__slide-animation">
-                      <h4 class="slide-sub-title animated style_text">
+                      <h4 class="slide-sub-title animated">
                         {{ $t("dashboard.title1") }}
                       </h4>
-                      <h1 class="slide-title animated style_text">
+                      <h1 class="slide-title animated">
                         {{ $t("dashboard.title2") }} <br />
                         {{ $t("dashboard.title3") }}
                       </h1>
                       <div class="slide-brief animated">
-                        <p class="style_text">
+                        <p class="">
                           {{ $t("dashboard.desc1") }}
                         </p>
                       </div>
@@ -79,17 +79,17 @@ export default {
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
                   <div>
-                    <!-- <a :href="route('listing')"
+                    <a :href="route('listing')"
                       ><img src="/img/slider/11.png" alt="Image"
-                    /></a> -->
+                    /></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- ltn__slide-item -->
-        <div
+        </div> -->
+    <!-- ltn__slide-item -->
+    <!-- <div
           class="ltn__slide-item section-bg-1"
           style=" background-image: url('/img/slider/1-1.png')"
         >
@@ -98,9 +98,9 @@ export default {
               <div class="row">
                 <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
                   <div>
-                    <!-- <a :href="route('listing')"
+                    <a :href="route('listing')"
                       ><img src="/img/slider/1-1.png" alt="Image"
-                    /></a> -->
+                    /></a>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
@@ -131,13 +131,49 @@ export default {
               </div>
             </div>
           </div>
+        </div> -->
+    <!-- </div>
+    </div> -->
+    <!-- SLIDER AREA END -->
+
+    <!-- SLIDER AREA START (slider-1) -->
+    <div class="ltn__slider-area ltn__slider-6 mb-120---">
+      <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
+        <!-- ltn__slide-item -->
+        <div
+          class="ltn__slide-item--- ltn__slide-item-9 section-bg-1 bg-image"
+          data-bg="/img/slider/11.png"
+        >
+          <div class="ltn__slide-item-inner right-align">
+            <div
+              class="slide-item-info bg-overlay-theme-black-90 text-color-white text-center"
+            >
+              <div class="slide-item-info-inner ltn__slide-animation">
+                <h1 class="slide-title animated">
+                  {{ $t("dashboard.title1") }}<br />
+                  {{ $t("dashboard.title2") }}
+                </h1>
+                <h4 class="slide-sub-title text-uppercase animated">
+                  {{ $t("dashboard.title3") }}
+                </h4>
+                <div class="btn-wrapper animated">
+                  <Link
+                    :href="route('listing')"
+                    class="theme-btn-1 btn btn-effect-1 text-uppercase"
+                    >{{ $t("dashboard.shop_now") }}</Link
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!--  -->
       </div>
     </div>
     <!-- SLIDER AREA END -->
 
     <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pb-120">
+    <div class="ltn__about-us-area pb-120 pt-110">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
@@ -162,7 +198,7 @@ export default {
           </div>
           <div class="col-lg-6 col-md-6 align-self-center">
             <div class="about-us-img-wrap about-img-right">
-              <img src="img/banner/6.png" alt="Banner Image" />
+              <img src="/img/banner/6.png" alt="Banner Image" />
             </div>
           </div>
         </div>
@@ -176,7 +212,11 @@ export default {
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
             <div
-              class="banner-info-wrap beard-growing-kit text-left bg-image"
+              :class="
+                $page.props.isRtl
+                  ? 'banner-info-wrap beard-growing-kit text-right bg-image'
+                  : 'banner-info-wrap beard-growing-kit text-left bg-image'
+              "
               data-bg="/img/banner/10.png"
             >
               <h5>{{ $t("dashboard.section2.groom") }}</h5>
@@ -195,7 +235,11 @@ export default {
           </div>
           <div class="col-lg-6 col-md-6 align-self-center">
             <div
-              class="banner-info-wrap beard-growing-kit text-right bg-image"
+              :class="
+                $page.props.isRtl
+                  ? 'banner-info-wrap beard-growing-kit text-left bg-image'
+                  : 'banner-info-wrap beard-growing-kit text-right bg-image'
+              "
               data-bg="/img/banner/11.png"
             >
               <h5>{{ $t("dashboard.section2.groom") }}</h5>
@@ -226,13 +270,13 @@ export default {
         <div class="row">
           <div class="col-lg-12">
             <div class="call-to-action-inner beard-trimmer text-center">
-              <h5 class="text-uppercase">Versatile. powerful. perfect.</h5>
-              <h1>ABC LC991 Trimmer</h1>
+              <h5 class="text-uppercase">{{ $t("dashboard.section4.title1") }}</h5>
+              <h1>{{ $t("dashboard.section4.title2") }}</h1>
               <div class="btn-wrapper">
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
                   :href="route('listing')"
-                  >View More</Link
+                  >{{ $t("dashboard.section1.view_more") }}</Link
                 >
               </div>
             </div>
@@ -242,7 +286,7 @@ export default {
     </div>
     <!-- CALL TO ACTION END -->
 
-      <DashCat v-if="$page.props.dcat" />
+    <DashCat v-if="$page.props.dcat" />
 
     <!-- TESTIMONIAL AREA START -->
     <div class="ltn__testimonial-area section-bg-1--- pb-70">
@@ -266,12 +310,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ By Jacob William __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Jacob William __</h4>
                   </div>
                 </div>
               </div>
@@ -281,12 +321,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ Ethan James __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Ethan James __</h4>
                   </div>
                 </div>
               </div>
@@ -296,12 +332,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ Liam Mason __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Liam Mason __</h4>
                   </div>
                 </div>
               </div>
@@ -311,12 +343,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ Noah Alexander __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Noah Alexander __</h4>
                   </div>
                 </div>
               </div>
@@ -380,20 +408,20 @@ export default {
         <div class="row">
           <div class="col-lg-8 offset-lg-2">
             <div class="ltn__newsletter-inner text-center">
-              <h2>We make your inbox better</h2>
+              <h2>{{ $t("dashboard.section6.title") }}</h2>
               <p>
-                Sign up to our newsletter to receive grooming tips, style inspiration,
+                {{ $t("dashboard.section6.desc1") }}
                 <br />
-                exclusive access to pre-launch product pricing and more.
+                {{ $t("dashboard.section6.desc2") }}
               </p>
               <form action="#" class="ltn__form-box">
-                <input type="email" name="email" placeholder="Email*" />
+                <input type="email" name="email" :placeholder="$t('contact_us.email')" />
                 <div class="btn-wrapper">
                   <button
                     class="theme-btn-1 btn btn-effect-1 text-uppercase"
                     type="submit"
                   >
-                    Subscribe
+                    {{ $t("dashboard.section6.subscribe") }}
                   </button>
                 </div>
               </form>

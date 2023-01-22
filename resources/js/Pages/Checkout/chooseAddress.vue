@@ -57,11 +57,13 @@
         </div>
       </div>
     </div>
-   <div class="mt-2">
-       <label class="input-info-save mb-0"><input type="checkbox" name="agree"> Create an account?</label>
-
-   </div>
-   <div v-if="add" class="modal-content mt-3">
+    <div class="mt-2">
+      <label class="input-info-save mb-0"
+        ><input type="checkbox" name="agree" />
+        {{ $t("listing.checkout_card.create_account") }}</label
+      >
+    </div>
+    <div v-if="add" class="modal-content mt-3">
       <div class="modal-header">
         <h5 class="modal-title m-3" id="add-address">
           {{ $t("account.addresses.add_card.title") }}

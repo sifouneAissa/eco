@@ -87,6 +87,7 @@ Route::get('/blogs', [\App\Http\Controllers\BlogController::class,'index'])->nam
 Route::get('/blogs/{id}', [\App\Http\Controllers\BlogController::class,'show'])->name('blog.show');
 Route::get("/contact-us",[\App\Http\Controllers\ContactUsController::class,'index'])->name('contact-us');
 Route::post("/contact-us",[\App\Http\Controllers\ContactUsController::class,'store'])->name('contactus.store');
+Route::get('/faq', [\App\Http\Controllers\FaqController::class,'index'])->name('faq');
     Route::get("/about-us",function (){
 
         return \inertia("CompanyPages/AboutUs");
@@ -103,10 +104,6 @@ Route::post("/contact-us",[\App\Http\Controllers\ContactUsController::class,'sto
 
         return \inertia("CompanyPages/ReturnAndShippingPolicy");
     })->name('shipping-policy');
-    Route::get("/faq",function (){
-
-        return \inertia("CompanyPages/Faq");
-    })->name('faq');
     //    Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
     Route::get('trackorder',[\App\Http\Controllers\TrackOrderController::class,'index'])->name('trackOrder.index');
     Route::post('trackorder/redirect',[\App\Http\Controllers\TrackOrderController::class,'redirectTo'])->name('trackOrder.redirect');
