@@ -107,7 +107,7 @@ export default {
       <div class="container">
         <div class="row">
           <div v-if="show" class="col-lg-12">
-            <div class="ltn__checkout-inner">
+            <!-- <div class="ltn__checkout-inner">
               <div class="ltn__checkout-single-content ltn__returning-customer-wrap">
                 <h5>
                   Returning customer?
@@ -189,7 +189,7 @@ export default {
                 @setSelectedAddress="setSelectedAddress"
                 :models="$page.props.addresses"
               />
-            </div>
+            </div> -->
           </div>
           <div class="col-lg-6">
             <div v-if="show" class="ltn__checkout-payment-method mt-50">

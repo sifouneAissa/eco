@@ -172,7 +172,12 @@ const fr = {
         },
     },
     track_order:{
-        order:"Commande",
+        desc:"Pour suivre votre commande, veuillez entrer votre ID de commande dans la case ci-dessous et appuyez sur le bouton 'Suivre la commande'. Celui-ci vous a été indiqué sur votre reçu et dans l'e-mail de confirmation que vous auriez dû recevoir.",
+        order:"Numéro de commande",
+        track_order:"Suivre la commande",
+        mobile:"Mobile",
+        mobile_label:"Mobile que vous avez utilisé lors du paiement",
+        id_label:"Trouvé dans votre confirmation d'identification de commande",
         help:"Aider",
         items:"Articles",
         details:"Détails de la commande",
@@ -201,7 +206,12 @@ const fr = {
         note : ' Enregistrez mon nom, mon adresse e-mail et mon site Web dans ce navigateur pour la prochaine fois que je commenterai.',
     },
     listing:{
+        description:"Description",
+        top_products:"Produit le mieux noté",
+        related_products:"Produits connexes",
         success_added:"Ajouté avec succès à votre panier",
+        success_added_wishlist:"Ajouté avec succès à votre liste de souhaits",
+        view_wishlist:"Voir la liste de souhaits",
         reviews:"Commentaires",
         share:"Partager",
         view_cart:"Voir le panier",
@@ -285,6 +295,10 @@ const fr = {
        popular:"Flux populaires",
        news:"Ne manquez jamais les nouvelles",
        by:"Par:",
+       comments:"Commentaires",
+       post_comment:"Poster un commentaire",
+     type_comment:"Tapez vos commentaires",
+     desc_comment:"Enregistrez mon nom, mon adresse e-mail et mon site Web dans ce navigateur pour la prochaine fois que je commenterai.",
       },
       dashboard:{
         page_title:"Tableau de bord",
@@ -359,6 +373,8 @@ const fr = {
     ,
     notifications:{
         success:"Opération réussie",
+        success_comment:"Votre commentaire sera examiné par l'administration",
+
     },
     footer:{
             company:"Compagnie",

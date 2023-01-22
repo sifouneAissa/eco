@@ -1,8 +1,10 @@
-<script setup>
+<script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 import logoarea from "@/Pages/Common/logoarea.vue";
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 
 const form = useForm({
   name: "",
@@ -13,6 +15,13 @@ const form = useForm({
 
 const submit = () => {
   // form.post(route(''));
+};
+export default {
+  components: {
+    Link,
+    GuestLayout,
+    breadcrumb,
+  },
 };
 </script>
 
@@ -44,10 +53,10 @@ const submit = () => {
                 any hagitation because they belive us and always happy
               </p>
               <div class="btn-wrapper">
-                <a
+                <Link
                   :href="route('listing')"
                   class="theme-btn-3 btn btn-effect-4 text-uppercase"
-                  >View More</a
+                  >{{ $t("dashboard.section1.view_more") }}</Link
                 >
               </div>
             </div>

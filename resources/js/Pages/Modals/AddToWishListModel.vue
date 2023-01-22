@@ -37,14 +37,14 @@
                           aria-hidden="true"
                         ></span>
                         <i v-if="!form.processing" class="fa fa-check-circle"></i>
-                        Successfully added to your Wishlist
+                        {{ $t("listing.success_added_wishlist") }}
                       </p>
                       <div class="btn-wrapper">
                         <a
                           @click="go('wishlist.index')"
                           href="javascript: void(0)"
                           class="theme-btn-1 btn btn-effect-1"
-                          >View Wishlist</a
+                          >{{ $t("listing.view_wishlist") }}</a
                         >
                       </div>
                     </div>

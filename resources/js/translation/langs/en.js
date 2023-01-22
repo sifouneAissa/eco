@@ -171,7 +171,12 @@ const en = {
         },
     },
     track_order:{
-        order:"Order",
+        desc:"To track your order please enter your Order ID in the box below and press the 'Track Order' button. This was given to you on your receipt and in the confirmation email you should have received.",
+        order:"Order ID",
+        track_order:"Track Order",
+        mobile:"Billing mobile",
+        mobile_label:"Mobile you used during checkout",
+        id_label:"Found in your order id confirmation",
         help:"Help",
         items:"Items",
         details:"Order Details",
@@ -200,7 +205,12 @@ const en = {
         note : ' Save my name, email, and website in this browser for the next time I comment.',
     },
     listing:{
+      description:"Description",
+      top_products:"Top Rated Product",
+      related_products:"Related Products",
       success_added:"Successfully added to your Cart",
+      success_added_wishlist:"Successfully added to your Wishlist",
+      view_wishlist:"View Wishlist",
       reviews:"Reviews",
       share:"Share",
       view_cart:"View Cart",
@@ -284,6 +294,10 @@ const en = {
      popular:"Popular Feeds",
      news:"Never Miss News",
      by:"By:",
+     comments:"Comments",
+     post_comment:"Post comment",
+     type_comment:"Type your comments",
+     desc_comment:"Save my name, email, and website in this browser for the next time I comment.",
     },
     dashboard:{
      page_title:"Dashboard",
@@ -360,6 +374,7 @@ const en = {
     },
     notifications:{
         success:"Operation successful",
+        success_comment:"Your comment will be reviewed by the administration",
     },
     footer:{
             company:"Company",
