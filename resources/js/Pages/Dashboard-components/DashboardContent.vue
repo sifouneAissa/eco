@@ -45,38 +45,43 @@ export default {
     <div class="ltn__slider-area ltn__slider-6 mb-120">
       <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
         <!-- ltn__slide-item -->
-        <div class="ltn__slide-item section-bg-1">
+        <div
+          class="ltn__slide-item section-bg-1"
+          style=" background-image: url('/img/slider/11.png')"
+        >
           <div class="ltn__slide-item-inner">
             <div class="container">
               <div class="row">
                 <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
                   <div class="slide-item-info">
                     <div class="slide-item-info-inner ltn__slide-animation">
-                      <h4 class="slide-sub-title animated">Welcome to our shop</h4>
-                      <h1 class="slide-title animated">
-                        Explore Top Brand <br />
-                        Face Toner!
+                      <h4 class="slide-sub-title animated style_text">
+                        {{ $t("dashboard.title1") }}
+                      </h4>
+                      <h1 class="slide-title animated style_text">
+                        {{ $t("dashboard.title2") }} <br />
+                        {{ $t("dashboard.title3") }}
                       </h1>
                       <div class="slide-brief animated">
-                        <p>
-                          Predictive analytics is drastically changing the real estate
-                          industry. In the past, providing data for quick
+                        <p class="style_text">
+                          {{ $t("dashboard.desc1") }}
                         </p>
                       </div>
                       <div class="btn-wrapper animated">
                         <Link
                           :href="route('listing')"
                           class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                          >Shop now</Link>
+                          >{{ $t("dashboard.shop_now") }}</Link
+                        >
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
                   <div>
-                    <a :href="route('listing')"
+                    <!-- <a :href="route('listing')"
                       ><img src="/img/slider/11.png" alt="Image"
-                    /></a>
+                    /></a> -->
                   </div>
                 </div>
               </div>
@@ -84,36 +89,40 @@ export default {
           </div>
         </div>
         <!-- ltn__slide-item -->
-        <div class="ltn__slide-item section-bg-1">
+        <div
+          class="ltn__slide-item section-bg-1"
+          style=" background-image: url('/img/slider/1-1.png')"
+        >
           <div class="ltn__slide-item-inner">
             <div class="container">
               <div class="row">
                 <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
                   <div>
-                    <a :href="route('listing')"
+                    <!-- <a :href="route('listing')"
                       ><img src="/img/slider/1-1.png" alt="Image"
-                    /></a>
+                    /></a> -->
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
                   <div class="slide-item-info">
                     <div class="slide-item-info-inner ltn__slide-animation">
-                      <h4 class="slide-sub-title animated">Welcome to our shop</h4>
-                      <h1 class="slide-title animated">
-                        Explore Top Brand <br />
-                        Face Toner!
+                      <h4 class="slide-sub-title animated style_text">
+                        {{ $t("dashboard.title1") }}
+                      </h4>
+                      <h1 class="slide-title animated style_text">
+                        {{ $t("dashboard.title2") }} <br />
+                        {{ $t("dashboard.title3") }}
                       </h1>
                       <div class="slide-brief animated">
-                        <p>
-                          Predictive analytics is drastically changing the real estate
-                          industry. In the past, providing data for quick
+                        <p class="style_text">
+                          {{ $t("dashboard.desc1") }}
                         </p>
                       </div>
                       <div class="btn-wrapper animated">
                         <Link
                           :href="route('listing')"
                           class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                          >Shop now</Link
+                          >{{ $t("dashboard.shop_now") }}</Link
                         >
                       </div>
                     </div>
@@ -133,24 +142,20 @@ export default {
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
             <div class="about-us-info-wrap pt-30 pb-30">
-              <h3>Provide the best</h3>
-              <h1>Beard Oil For You</h1>
+              <h3>{{ $t("dashboard.section1.title1") }}</h3>
+              <h1>{{ $t("dashboard.section1.title2") }}</h1>
               <p>
-                We provide the best Beard oil all over the world. We are the worldd best
-                store for Beard Oil. You can buy our product without any hegitation
-                because we always consus about our product quality and always maintain it
-                properly so your can trust and this is our main goal we belive that...
+                {{ $t("dashboard.section1.desc1") }}
               </p>
 
               <p>
-                Some of our customer say’s that they trust us and buy our product without
-                any hagitation because they belive us and always happy
+                {{ $t("dashboard.section1.desc2") }}
               </p>
               <div class="btn-wrapper">
                 <a
                   :href="route('listing')"
                   class="theme-btn-3 btn btn-effect-4 text-uppercase"
-                  >View More</a
+                  >{{ $t("dashboard.section1.view_more") }}</a
                 >
               </div>
             </div>
@@ -172,18 +177,18 @@ export default {
           <div class="col-lg-6 col-md-6 align-self-center">
             <div
               class="banner-info-wrap beard-growing-kit text-left bg-image"
-              data-bg="img/banner/10.png"
+              data-bg="/img/banner/10.png"
             >
-              <h5>Grow it</h5>
+              <h5>{{ $t("dashboard.section2.groom") }}</h5>
               <h1>
-                Just <br />
-                Starting?
+                {{ $t("dashboard.section2.title1") }} <br />
+                {{ $t("dashboard.section2.title2") }}
               </h1>
               <div class="btn-wrapper">
                 <Link
                   :href="route('listing')"
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                  >Try a growth kit</Link
+                  >{{ $t("dashboard.section2.try") }}</Link
                 >
               </div>
             </div>
@@ -191,18 +196,18 @@ export default {
           <div class="col-lg-6 col-md-6 align-self-center">
             <div
               class="banner-info-wrap beard-growing-kit text-right bg-image"
-              data-bg="img/banner/11.png"
+              data-bg="/img/banner/11.png"
             >
-              <h5>Groom IT</h5>
+              <h5>{{ $t("dashboard.section2.groom") }}</h5>
               <h1>
-                Luscious <br />
-                Beard?
+                {{ $t("dashboard.section2.title3") }} <br />
+                {{ $t("dashboard.section2.title4") }}
               </h1>
               <div class="btn-wrapper">
                 <Link
                   :href="route('listing')"
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                  >Try a growth kit</Link
+                  >{{ $t("dashboard.section2.try") }}</Link
                 >
               </div>
             </div>
@@ -403,3 +408,9 @@ export default {
   </div>
 </template>
 <style scoped></style>
+<style scoped>
+.style_text {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+}
+</style>
