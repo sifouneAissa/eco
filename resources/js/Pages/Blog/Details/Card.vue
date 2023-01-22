@@ -32,7 +32,9 @@ export default {
                     <i class="far fa-calendar-alt"></i>{{ $page.props.blog.created }}
                   </li>
                   <li>
-                    <a href="#"><i class="far fa-comments"></i>35 Comments</a>
+                    <a href="#"
+                      ><i class="far fa-comments"></i>35 {{ $t("blog.comments") }}</a
+                    >
                   </li>
                 </ul>
               </div>
