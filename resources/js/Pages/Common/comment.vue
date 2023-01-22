@@ -31,6 +31,41 @@
   <div class="ltn__comment-reply-area ltn__form-box mb-60">
     <h4 class="title-2">Post Comment</h4>
     <form action="#">
+        <div >
+<!--            <h4 class="ltn__widget-title">Add Price</h4>-->
+            <div class="rating">
+                <label>
+                    <input v-model="form.rate" type="radio" name="stars" value="1" />
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input v-model="form.rate" type="radio" name="stars" value="2" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input v-model="form.rate" type="radio" name="stars" value="3" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input v-model="form.rate" type="radio" name="stars" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input v-model="form.rate" type="radio" name="stars" value="5" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+            </div>
+        </div>
       <div class="input-item input-item-textarea ltn__custom-icon">
         <textarea v-model="form.comment" placeholder="Type your comments...."></textarea>
           <div v-show="this.submited && !isComment()">
@@ -123,7 +158,7 @@
                 let app = this;
                 this.form.transform((data) => ({
                     approved : data.approved,
-                    rate : data.rate.id,
+                    rate : data.rate,
                     comment : data.comment,
                     guest_email : data.guest_email,
                     guest_name : data.guest_name,
@@ -141,3 +176,70 @@
         }
     }
 </script>
+<style scoped>
+    .rating {
+        display: inline-block;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        font-size: 50px;
+    }
+
+    .rating label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .rating label:last-child {
+        position: static;
+    }
+
+    .rating label:nth-child(1) {
+        z-index: 5;
+    }
+
+    .rating label:nth-child(2) {
+        z-index: 4;
+    }
+
+    .rating label:nth-child(3) {
+        z-index: 3;
+    }
+
+    .rating label:nth-child(4) {
+        z-index: 2;
+    }
+
+    .rating label:nth-child(5) {
+        z-index: 1;
+    }
+
+    .rating label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .rating label .icon {
+        float: left;
+        color: transparent;
+    }
+
+    .rating label:last-child .icon {
+        color: #000;
+    }
+
+    .rating:not(:hover) label input:checked ~ .icon,
+    .rating:hover label:hover input ~ .icon {
+        color: #86bc31;
+    }
+
+    .rating label input:focus:not(:checked) ~ .icon:last-child {
+        color: #000;
+        text-shadow: 0 0 5px #86bc31;
+    }
+</style>
