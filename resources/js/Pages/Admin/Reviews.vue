@@ -176,7 +176,7 @@
                                         <a v-if="$can('replay review')" href="javascript:void(0)" class="btn btn-sm btn-success" @click="ShowReplyModel(review)"><i class="fa fa-fw fa-reply"></i> Reply to this
                                             review</a>
 
-                                        <a v-if="$can('edit review') && review.commenter.is_admin" href="javascript:void(0)" @click="ShowEditModel(review)"
+                                        <a v-if="$can('edit review')  && (review.commenter && review.commenter.is_admin)" href="javascript:void(0)" @click="ShowEditModel(review)"
                                            class="btn btn-sm btn-warning"><i class="feather-edit"></i>Edit</a>
 
                                         <a v-if="$can('edit review')" href="javascript:void(0)" @click="areview(review)"

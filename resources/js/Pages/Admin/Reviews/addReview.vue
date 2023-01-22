@@ -1,6 +1,6 @@
 
 <template>
-    <Add @resetModel="resetModel"  :id="'edit-comment'" title="Add Review">
+    <Add @resetModel="resetModel"  :id="'add-comment'" title="Add Review">
         <div  class="modal-body mx-3 bg" >
 <!--            <form >-->
                 <div class="mb-5 form-label-group">
@@ -99,7 +99,7 @@
         },
         mounted() {
             let app = this;
-            let modal = $('#edit-comment');
+            let modal = $('#add-comment');
             modal.on('hidden.bs.modal',function (){
                 app.$emit('ResetModel');
             })
@@ -161,12 +161,12 @@
                     comment : data.comment,
                     commentable_type : data.commentable.cclass,
                     commentable_id : data.commentable.id
-                })).post(route('admin.reviews.update',{}), {
+                })).post(route('admin.reviews.store',{}), {
                     onFinish: () => {
                     },
                     onSuccess : () => {
 
-                        $('#edit-comment').modal('hide');
+                        $('#add-comment').modal('hide');
 
                         this.$emit('ResetModel');
                     }

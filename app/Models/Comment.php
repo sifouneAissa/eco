@@ -49,7 +49,11 @@ class Comment extends Model
     }
 
     public function getUnameAttribute(){
-        return $this->commenter->name;
+
+        if($this->commenter?->name)
+            return $this->commenter?->name;
+
+        return $this->guest_name;
     }
 
 
@@ -63,8 +67,8 @@ class Comment extends Model
             return translateDate($this->created_at);
     }
     public function getByAttribute(){
-        if($this->guest_name && $this->gust_email) return $this->guest_name;
-        return $this->commenter->name;
+        if($this->guest_name && $this->guest_email) return $this->guest_name;
+        return $this->commenter?->name;
     }
 
 
@@ -76,10 +80,15 @@ class Comment extends Model
         return $this->morphTo('commentable');
     }
 
-    public function children()
+    public function children($status=false)
     {
-        $children= $this->morphMany(Comment::class, 'commentable')->where('child_id',$this->id)->get();
+        $children= $this->morphMany(Comment::class, 'commentable')->where([
+            ['child_id',$this->id],
+            [
+                'approved', $status
+            ]
+        ])->get();
 
-        return $children;
+        return $children->toArray();
     }
 }

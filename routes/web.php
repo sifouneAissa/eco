@@ -28,7 +28,7 @@ Route::get('/setpassword',function (){
     \Illuminate\Support\Facades\Session::put('time',0);
 })->name('setpassword');
 
-
+Route::post('/reviews',[\App\Http\Controllers\ReviewController::class,'store'])->name('review.store');
 
 
 

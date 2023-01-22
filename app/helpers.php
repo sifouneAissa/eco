@@ -1,6 +1,9 @@
+
 <?php
 
 
+use App\Models\Blog;
+use App\Models\Comment;
 use App\Models\Product;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Carbon;
@@ -321,3 +324,29 @@ if (!function_exists('getMac')) {
 
 
 
+
+
+if (!function_exists('getReviews')) {
+
+    function getReviews($id,$builder)
+    {
+        $comments = Comment::query()->with(['commentable','commenter'])->whereHasMorph('commentable',[
+            $builder
+        ],function ($query)  use ($id){
+            $query->where([
+                [
+                    'id',$id
+                ],
+                [
+                    'approved',true
+                ]
+            ]);
+        })->orderBy('created_at','desc')->get();
+
+        foreach ($comments as $comment){
+            $comment['children'] = $comment->children(true);
+        }
+
+        return$comments;
+    }
+}
