@@ -1,12 +1,12 @@
 
 <template>
-    <Add @resetModel="resetModel"  :id="'add-product'" title="Add Product">
+    <Add @resetModel="resetModel"  :id="'add-user'" title="Add User">
         <div  class="modal-body mx-3 bg" >
             <form @submit.prevent="submit">
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
                         <label>Name</label>
-                        <input v-model="form.name" type="text" class="form-control" placeholder="Product Name">
+                        <input v-model="form.name" type="text" class="form-control" placeholder="User Name">
                         <div v-show="form.errors.name">
                             <p class="text-sm " style="color: red">
                                 {{ form.errors.name }}
@@ -14,69 +14,47 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Price</label>
-                        <input v-model="form.price" type="number" id="inputEmail" class="form-control" placeholder="0000.0">
-                        <div v-show="form.errors.price">
+                        <label>Email</label>
+                        <input v-model="form.email" type="email" id="inputEmail" class="form-control" placeholder="email">
+                        <div v-show="form.errors.email">
                             <p class="text-sm text-red-600" style="color: red">
-                                {{ form.errors.price }}
+                                {{ form.errors.email }}
                             </p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Price</label>
-                        <input v-model="form.old_price" type="number" id="inputEmail" class="form-control" placeholder="0000.0">
-                        <div v-show="form.errors.old_price">
+                        <label>Password</label>
+                        <input v-model="form.password" type="password"  class="form-control" placeholder="********">
+                        <div v-show="form.errors.password">
                             <p class="text-sm text-red-600" style="color: red">
-                                {{ form.errors.old_price }}
+                                {{ form.errors.password }}
                             </p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>
-                        <div v-show="form.errors.desc">
+                        <label>Password confirmation</label>
+                        <input v-model="form.password_confirmation" type="password"  class="form-control" placeholder="********">
+                        <div v-show="form.errors.password_confirmation">
                             <p class="text-sm text-red-600" style="color: red">
-                                {{ form.errors.desc }}
+                                {{ form.errors.password_confirmation }}
                             </p>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
-                        <label>Category</label>
+                        <label>Roles</label>
                         <multiselect
-                            v-model="form.category"
-                            :options="options1"
-                            label="name"
-                            track-by="name"
-                            :multiple="false"
-                            placeholder="Select Category"
-                        ></multiselect>
-                        <div v-show="form.errors.product_category_id">
-                            <p class="text-sm " style="color: red">
-                                {{ form.errors.product_category_id }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="mb-5 form-label-group">
-                    <div class="form-group">
-                        <label>Inventory</label>
-                        <multiselect
-                                    v-model="form.inventory"
-                                    :options="options2"
+                                    v-model="form.roles"
+                                    :options="options"
                                     label="name"
                                     track-by="name"
-                                    :multiple="false"
-                                    placeholder="Select Inventory"
+                                    :multiple="true"
+                                    placeholder="Select Roles"
                         ></multiselect>
-                        <div v-show="form.errors.product_inventory_id">
+                        <div v-show="form.errors.roles">
                             <p class="text-sm " style="color: red">
-                                {{ form.errors.product_inventory_id }}
+                                {{ form.errors.roles }}
                             </p>
                         </div>
                     </div>
@@ -105,7 +83,7 @@
         },
         mounted() {
             let app = this;
-            let modal = $('#add-product');
+            let modal = $('#add-user');
             modal.on('hidden.bs.modal',function (){
                 app.$emit('ResetModel');
             })
@@ -115,15 +93,13 @@
             return {
                 form : useForm({
                     name: '',
-                    desc: '',
-                    price: '',
-                    inventory : null,
-                    category: null,
-                    old_price : ''
+                    email : '',
+                    password: '',
+                    password_confirmation: '',
+                    roles : []
                 }),
                 selected : null,
-                options1: this.$page.props.categories.map(function (item){return {name : item.name,id : item.id};}),
-                options2: this.$page.props.inventories.map(function (item){return {name : item.quantity,id : item.id};})
+                options: this.$page.props.roles.map(function (item){return {name : item.name,id : item.id};})
             }
 
         },
@@ -135,16 +111,16 @@
                 // this.form
                 this.form.transform((data) => ({
                     name : data.name,
-                    product_category_id : data.category.id,
-                    product_inventory_id : data.inventory.id,
-                    desc : data.desc,
-                    price : data.price,
-                    old_price: data.old_price
-                })).post(route('admin.product.store',{}), {
+                    roles : data.roles.map(item => item.id),
+                    email : data.email,
+                    password : data.password,
+                    password_confirmation: data.password_confirmation
+                })).post(route('admin.user.store',{}), {
                     onFinish: () => {
+                        this.form.reset('password', 'password_confirmation')
                     },
                     onSuccess : () => {
-                        $('#add-product').modal('hide');
+                        $('#add-user').modal('hide');
                         $('#dataTable').DataTable().ajax.reload()
                         this.$emit('ResetModel');
                     }
@@ -154,4 +130,4 @@
     }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="../../../../node_modules/vue-multiselect/dist/vue-multiselect.css"></style>

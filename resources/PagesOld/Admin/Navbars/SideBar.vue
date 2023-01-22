@@ -1,6 +1,6 @@
 <script setup>
     import { Head, Link } from "@inertiajs/inertia-vue3";
-    import sidebar from "../../../common/sidebar";
+    import sidebar from "../../../js/common/sidebar";
     import LinkCard from "@/Pages/Admin/NavBars/LinkCard.vue"
 </script>
 <template>

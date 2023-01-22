@@ -107,4 +107,4 @@
     }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="../../../../node_modules/vue-multiselect/dist/vue-multiselect.css"></style>

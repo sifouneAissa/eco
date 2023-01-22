@@ -1,18 +1,6 @@
 <script>
-import { ref, onMounted, toRefs } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-import ApplicationMark from "@/Components/ApplicationMark.vue";
-import Banner from "@/Components/Banner.vue";
-import Dropdown from "@/Components/Dropdown.vue";
-import DropdownLink from "@/Components/DropdownLink.vue";
-import NavLink from "@/Components/NavLink.vue";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import Cart from "@/Pages/GuestLayout/Cart.vue";
-import Notification from "@/Pages/GuestLayout/Notification.vue";
-import setPassword from "@/Pages/Password/setPassword.vue";
-import { useToast } from "vue-toastification";
-import { usePage } from "@inertiajs/inertia-vue3";
 import CartMenu from "@/Pages/Checkout/CartMenu.vue";
 import QuickViewModal from "@/Pages/Modals/QuickViewModal.vue";
 import AddToWishListModel from "@/Pages/Modals/AddToWishListModel.vue";
@@ -20,15 +8,6 @@ import AddToCartModal from "@/Pages/Modals/AddToCartModal.vue";
 
 export default {
   components: {
-    setPassword,
-    Notification,
-    Cart,
-    ResponsiveNavLink,
-    NavLink,
-    DropdownLink,
-    Dropdown,
-    Banner,
-    ApplicationMark,
     Link,
     Head,
     CartMenu,
@@ -167,7 +146,6 @@ export default {
       </p>
     <![endif]-->
     <Head :title="title" />
-    <Banner />
 
     <div class="body-wrapper">
       <header
