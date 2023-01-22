@@ -14,7 +14,7 @@ export default {
   components: {
     Categories,
     ProductCard,
-      DashCat,
+    DashCat,
     Blogs,
     Products,
     Link,
@@ -212,7 +212,11 @@ export default {
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
             <div
-              class="banner-info-wrap beard-growing-kit text-left bg-image"
+              :class="
+                $page.props.isRtl
+                  ? 'banner-info-wrap beard-growing-kit text-right bg-image'
+                  : 'banner-info-wrap beard-growing-kit text-left bg-image'
+              "
               data-bg="/img/banner/10.png"
             >
               <h5>{{ $t("dashboard.section2.groom") }}</h5>
@@ -231,7 +235,11 @@ export default {
           </div>
           <div class="col-lg-6 col-md-6 align-self-center">
             <div
-              class="banner-info-wrap beard-growing-kit text-right bg-image"
+              :class="
+                $page.props.isRtl
+                  ? 'banner-info-wrap beard-growing-kit text-left bg-image'
+                  : 'banner-info-wrap beard-growing-kit text-right bg-image'
+              "
               data-bg="/img/banner/11.png"
             >
               <h5>{{ $t("dashboard.section2.groom") }}</h5>
@@ -262,13 +270,13 @@ export default {
         <div class="row">
           <div class="col-lg-12">
             <div class="call-to-action-inner beard-trimmer text-center">
-              <h5 class="text-uppercase">Versatile. powerful. perfect.</h5>
-              <h1>ABC LC991 Trimmer</h1>
+              <h5 class="text-uppercase">{{ $t("dashboard.section4.title1") }}</h5>
+              <h1>{{ $t("dashboard.section4.title2") }}</h1>
               <div class="btn-wrapper">
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
                   :href="route('listing')"
-                  >View More</Link
+                  >{{ $t("dashboard.section1.view_more") }}</Link
                 >
               </div>
             </div>
@@ -278,7 +286,7 @@ export default {
     </div>
     <!-- CALL TO ACTION END -->
 
-      <DashCat v-if="$page.props.dcat" />
+    <DashCat v-if="$page.props.dcat" />
 
     <!-- TESTIMONIAL AREA START -->
     <div class="ltn__testimonial-area section-bg-1--- pb-70">
@@ -302,12 +310,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ By Jacob William __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Jacob William __</h4>
                   </div>
                 </div>
               </div>
@@ -317,12 +321,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ Ethan James __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Ethan James __</h4>
                   </div>
                 </div>
               </div>
@@ -332,12 +332,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ Liam Mason __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Liam Mason __</h4>
                   </div>
                 </div>
               </div>
@@ -347,12 +343,8 @@ export default {
                     <i class="icon-right-quote"></i>
                   </div>
                   <div class="ltn__testimonial-info">
-                    <p>
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptates consequatur obcaecati nisi similique ipsum molestiae sit
-                      sequi quam odit odio."
-                    </p>
-                    <h4>__ Noah Alexander __</h4>
+                    <p>"{{ $t("dashboard.section5.desc") }}"</p>
+                    <h4>__ {{ $t("blog.by") }} Noah Alexander __</h4>
                   </div>
                 </div>
               </div>
@@ -416,20 +408,20 @@ export default {
         <div class="row">
           <div class="col-lg-8 offset-lg-2">
             <div class="ltn__newsletter-inner text-center">
-              <h2>We make your inbox better</h2>
+              <h2>{{ $t("dashboard.section6.title") }}</h2>
               <p>
-                Sign up to our newsletter to receive grooming tips, style inspiration,
+                {{ $t("dashboard.section6.desc1") }}
                 <br />
-                exclusive access to pre-launch product pricing and more.
+                {{ $t("dashboard.section6.desc2") }}
               </p>
               <form action="#" class="ltn__form-box">
-                <input type="email" name="email" placeholder="Email*" />
+                <input type="email" name="email" :placeholder="$t('contact_us.email')" />
                 <div class="btn-wrapper">
                   <button
                     class="theme-btn-1 btn btn-effect-1 text-uppercase"
                     type="submit"
                   >
-                    Subscribe
+                    {{ $t("dashboard.section6.subscribe") }}
                   </button>
                 </div>
               </form>

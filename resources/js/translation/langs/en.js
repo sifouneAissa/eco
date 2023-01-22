@@ -303,6 +303,30 @@ const en = {
         try:"Try a growth kit",
         groom:"Groom IT",
     },
+     section3:{
+        title:"Our Products",
+        desc:"There are many variations of passages of Lorem Ipsum available.",
+        category1:"Best sale",
+        category2:"New",
+        category3:"Popular",
+        wishlist:"Wishlist",
+        quick_view:"Quick view ",
+        add_cart:"Add to cart ", 
+    },
+     section4:{
+        title1:"Versatile. powerful. perfect.",
+        title2:"ABC LC991 Trimmer",
+    },
+     section5:{
+        desc:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio.",
+    },
+     section6:{
+        title:"We make your inbox better",
+        desc1:"Sign up to our newsletter to receive grooming tips, style inspiration,",
+        desc2:"exclusive access to pre-launch product pricing and more",
+        subscribe:"Subscribe",
+
+    },
     },
     errors:{
         correct_field:"Please correct this field",

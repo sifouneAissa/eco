@@ -304,6 +304,30 @@ const fr = {
            try:"Essayez un kit de croissance",
            groom:"Groom IT",
        },
+       section3:{
+        title:"Nos produits",
+        desc:"Il existe de nombreuses variantes de passages du Lorem Ipsum disponibles.",
+        category1:"Meilleure vente",
+        category2:"Nouveaux",
+        category3:"Populaire",
+        wishlist:"Liste de souhaits",
+        quick_view:"aperçu rapide ",
+        add_cart:"Ajouter au panier ", 
+       },
+       section4:{
+        title1:"Polyvalent. puissant. parfait.",
+        title2:"Tondeuse ABC LC991",
+       },
+       section5:{
+        desc:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio.",
+    },
+    section6:{
+        title:"Nous améliorons votre boîte de réception",
+        desc1:"Inscrivez-vous à notre newsletter pour recevoir des conseils de toilettage,",
+        desc2:" des inspirations de style,accès exclusif aux prix des produits de pré-lancement et plus encore",
+        subscribe:"s'abonner",
+
+    },
        },
        errors:{
         correct_field:"Merci de corriger ce champ",
