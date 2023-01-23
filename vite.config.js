@@ -8,6 +8,8 @@ export default defineConfig({
         // viteCompression(),
         laravel({
             input: [
+
+                'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/js/rtl.js',
                 'resources/js/ltr.js',

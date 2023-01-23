@@ -16,9 +16,9 @@
         @routes
 {{--        @vite(['resources/js/app-admin.js', "resources/js/Pages/Admin/{$page['component']}.vue"])--}}
          {{\Illuminate\Support\Facades\Vite::useHotFile('admin.hot')->useBuildDirectory('build-admin')->withEntryPoints(['resources/js/app-admin.js'])}}
-{{--        @if(in_array($page['component'],["Profile/Show"]) )--}}
-{{--            @vite(['resources/css/app.css'])--}}
-{{--        @endif--}}
+        @if(in_array($page['component'],["Profile/Show"]) )
+            @vite(['resources/css/app.css'])
+        @endif
         @inertiaHead
     </head>
     <body  class="sb-nav-fixed">

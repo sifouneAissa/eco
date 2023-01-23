@@ -1,7 +1,7 @@
 // import './bootstrap';
 // import '../css/app.css'
 
-// import '../../public/vendor/icofont/icofont.min.css';
+import '../../public/vendor/icofont/icofont.min.css';
 
 import $ from 'jquery'
 // import WOW from 'wowjs'

@@ -2,9 +2,6 @@
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import breadcrumb from "@/Pages/Common/breadcrumb.vue";
-import logoarea from "@/Pages/Common/logoarea.vue";
-import GuestLayout from "@/Layouts/GuestLayout.vue";
-import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 
 const form = useForm({
   name: "",

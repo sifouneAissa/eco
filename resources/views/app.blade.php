@@ -13,7 +13,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link rel="stylesheet" href="/vendor/icofont/icofont.min.css&display=swap">
+{{--        <link rel="stylesheet" href="/vendor/icofont/icofont.min.css&display=swap">--}}
 {{--        <script src="/assets/ltr/js/plugins.js" type="javascript"></script>--}}
 {{--        <script src="/assets/ltr/js/main.js" type="javascript"></script>--}}
         <!-- Scripts -->

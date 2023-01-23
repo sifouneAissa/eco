@@ -182,14 +182,15 @@ export default {
                 </div>
               </div>
               <div class="pt-2"></div>
+            </div> -->
+
               <chooseAddress
-                v-if="
+                  v-if="
                   $page.props.shopping_session && $page.props.shopping_session.citotal
                 "
-                @setSelectedAddress="setSelectedAddress"
-                :models="$page.props.addresses"
+                  @setSelectedAddress="setSelectedAddress"
+                  :models="$page.props.addresses"
               />
-            </div> -->
           </div>
           <div class="col-lg-6">
             <div v-if="show" class="ltn__checkout-payment-method mt-50">
