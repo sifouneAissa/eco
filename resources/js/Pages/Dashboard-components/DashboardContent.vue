@@ -172,7 +172,7 @@ export default {
     </div> -->
 
     <div
-      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-80 pb-80"
+      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-80 pb-40"
       data-bg="/img/bg/3.png"
     >
       <!-- style="visibility: visible; background-color: rgba(0, 0, 0, 0.55); opacity: 1" -->
@@ -197,7 +197,7 @@ export default {
     <!-- SLIDER AREA END -->
 
     <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pb-80 pt-80">
+    <div class="ltn__about-us-area pt-40 pb-40">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
@@ -287,7 +287,7 @@ export default {
     <Products />
     <!-- CALL TO ACTION START (call-to-action-1) -->
     <div
-      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-80 pb-80 mb-110"
+      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-80 pb-80 mb-40"
       data-bg="/img/bg/3.png"
     >
       <div class="container">
@@ -313,7 +313,7 @@ export default {
     <DashCat v-if="$page.props.dcat" />
 
     <!-- TESTIMONIAL AREA START -->
-    <div class="ltn__testimonial-area section-bg-1--- pb-80">
+    <div class="ltn__testimonial-area section-bg-1--- pb-40">
       <div class="container">
         <div class="row d-none">
           <div class="col-lg-12">
@@ -380,7 +380,7 @@ export default {
     <!-- TESTIMONIAL AREA END -->
 
     <!-- BANNER AREA START -->
-    <div class="ltn__banner-area pb-80 d-none">
+    <div class="ltn__banner-area pb-40 d-none">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6 col-sm-6">
@@ -403,7 +403,7 @@ export default {
     <!-- BANNER AREA END -->
 
     <!-- VIDEO AREA START -->
-    <div class="ltn__video-area section-bg-1 pt-80 pb-80 d-none">
+    <div class="ltn__video-area section-bg-1 pt-80 pb-40 d-none">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -425,7 +425,7 @@ export default {
 
     <!-- NEWSLETTER AREA START -->
     <div
-      class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-80 pb-80"
+      class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-80 pb-40"
       data-bg="/img/bg/8.jpg"
     >
       <div class="container">
