@@ -166,8 +166,8 @@ export default {
                     </li>
                     <li>
                       <a href="locations.html"
-                        ><i class="icon-placeholder"></i> {{ $page.props.address }}</a
-                      >
+                        ><i class="icon-placeholder"></i> {{ $page.props.address }}
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -209,26 +209,35 @@ export default {
                         <div class="ltn__social-media">
                           <ul>
                             <li>
-                              <a href="#" title="Facebook"
+                              <a
+                                :href="$page.props.facebook"
+                                title="Facebook"
+                                target="_blank"
                                 ><i class="fab fa-facebook-f"></i
                               ></a>
                             </li>
                             <li>
-                              <a href="#" title="Twitter"
+                              <a
+                                :href="$page.props.twitter"
+                                title="Twitter"
+                                target="_blank"
                                 ><i class="fab fa-twitter"></i
                               ></a>
                             </li>
 
                             <li>
-                              <a href="#" title="Instagram"
+                              <a
+                                :href="$page.props.instagram"
+                                title="Instagram"
+                                target="_blank"
                                 ><i class="fab fa-instagram"></i
                               ></a>
                             </li>
-                            <li>
+                            <!-- <li>
                               <a href="#" title="Dribbble"
                                 ><i class="fab fa-dribbble"></i
                               ></a>
-                            </li>
+                            </li> -->
                           </ul>
                         </div>
                       </li>
@@ -921,16 +930,22 @@ export default {
                   <div class="ltn__social-media mt-20">
                     <ul>
                       <li>
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a :href="$page.props.facebook" title="Facebook" target="_blank"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
                       </li>
                       <li>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a :href="$page.props.twitter" title="Twitter" target="_blank"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
                       </li>
-                      <li>
+                      <!-- <li>
                         <a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a>
-                      </li>
+                      </li> -->
                       <li>
-                        <a href="#" title="Youtube"><i class="fab fa-youtube"></i></a>
+                        <a :href="$page.props.youtube" title="Youtube" target="_blank"
+                          ><i class="fab fa-youtube"></i
+                        ></a>
                       </li>
                     </ul>
                   </div>

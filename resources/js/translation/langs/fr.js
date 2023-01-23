@@ -338,8 +338,8 @@ const fr = {
         add_cart:"Ajouter au panier ", 
        },
        section4:{
-        title1:"Polyvalent. puissant. parfait.",
-        title2:"Tondeuse ABC LC991",
+        title1:"Il est temps de changer votre mode de vie",
+        title2:"Notre huile de CBD stimule le système endocannabinoïde du corps et soutient le système immunitaire, la vitalité et le bien-être",
        },
        section5:{
         desc:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio.",
