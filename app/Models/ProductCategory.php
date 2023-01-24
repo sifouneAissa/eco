@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Modules\TransLogic\Traits\ModelTranslationsModel;
 use App\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +14,7 @@ class ProductCategory extends Model implements HasMedia
     use HasFactory;
     use MediaTrait;
     use InteractsWithMedia;
+    use ModelTranslationsModel;
 
     protected $fillable = [
         'name',
@@ -23,6 +25,12 @@ class ProductCategory extends Model implements HasMedia
         'count',
          'fimage',
         'modal_ids',
+        'name_ar',
+        'name_fr',
+        'desc_ar',
+        'desc_fr',
+        'lname',
+        'ldesc'
     ];
 
     protected $casts = [
@@ -58,4 +66,27 @@ class ProductCategory extends Model implements HasMedia
         ];
     }
 
+    public function getDescFrAttribute(){
+        $values = $this->fr_translations()->where('key','desc')->get();
+        if($values->count()) return $values->first()->only('value','id');
+
+        return null;
+    }
+
+    public function getDescArAttribute(){
+        $values = $this->ar_translations()->where('key','desc')->get();
+        if($values->count()) return $values->first()->only('value','id');
+
+        return null;
+    }
+
+
+    public function getLnameAttribute(){
+        return $this->checkAndGetAttr('name');
+    }
+
+
+    public function getLdescAttribute(){
+        return $this->checkAndGetAttr('desc');
+    }
 }

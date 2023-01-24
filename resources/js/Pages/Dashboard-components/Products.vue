@@ -37,7 +37,7 @@ export default {
                 <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
                   <!-- ltn__product-item -->
                   <div v-for="item in $page.props.populars" class="col-lg-12">
-                    <ProductCard :model="item" />
+                    <ProductCard :img_height="300" :model="item" />
                   </div>
 
                   <!--  -->
@@ -49,7 +49,7 @@ export default {
                 <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
                   <!-- ltn__product-item -->
                   <div v-for="item in $page.props.nproducts" class="col-lg-12">
-                    <ProductCard :model="item" />
+                    <ProductCard :img_height="300" :model="item" />
                   </div>
                   <!--  -->
                 </div>
@@ -60,7 +60,7 @@ export default {
                 <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
                   <!-- ltn__product-item -->
                   <div v-for="item in $page.props.bestSellers" class="col-lg-12">
-                    <ProductCard :model="item" />
+                    <ProductCard :img_height="300" :model="item" />
                   </div>
                   <!--  -->
                 </div>

@@ -11,11 +11,14 @@
               class="form-control"
               placeholder="Product Name"
             />
+            <add-t :type="'input'" @write="write" :attr="'Name'" :keyV="'name'" :cvalues="form.langs"/>
+
             <div v-show="form.errors.name">
               <p class="text-sm" style="color: red">
                 {{ form.errors.name }}
               </p>
             </div>
+
           </div>
           <div class="form-group">
             <label>Description</label>
@@ -24,6 +27,8 @@
               v-model="form.desc"
               placeholder="Description"
             ></textarea>
+
+              <add-t :type="'textarea'" @write="write" :attr="'Description'" :keyV="'desc'" :cvalues="form.langs"/>
             <div v-show="form.errors.desc">
               <p class="text-sm text-red-600" style="color: red">
                 {{ form.errors.desc }}
@@ -59,9 +64,11 @@
 import Add from "@/Pages/Admin/DataTable/Modals/Add.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 
+import AddT from '@/Pages/Admin/Translations/addTranslation.vue';
+
 export default {
   components: {
-    Add,
+    Add,AddT
   },
   props: {},
   mounted() {
@@ -71,17 +78,23 @@ export default {
       app.$emit("ResetModel");
     });
     modal.modal("show");
+
+
   },
   data() {
     return {
       form: useForm({
         name: "",
         desc: "",
-        show_in_dash : ""
+        show_in_dash : "",
+        langs:[]
       }),
     };
   },
   methods: {
+      write(ditem){
+          this.form.langs = ditem;
+      },
     resetModel: function () {
       this.$emit("ResetModel");
     },
@@ -91,7 +104,8 @@ export default {
         .transform((data) => ({
           name: data.name,
           desc: data.desc,
-          show_in_dash:  data.show_in_dash
+          show_in_dash:  data.show_in_dash,
+          langs : data.langs
         }))
         .post(route("admin.category.store", {}), {
           onFinish: () => {},

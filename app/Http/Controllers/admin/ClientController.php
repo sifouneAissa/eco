@@ -37,6 +37,7 @@ class ClientController extends Controller
     }
 
     public function store(ClientRequest $request){
+
         // get the role
         $inputs = $this->filterRequest($request->all());
 

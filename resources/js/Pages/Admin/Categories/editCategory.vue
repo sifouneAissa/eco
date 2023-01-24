@@ -11,6 +11,7 @@
               class="form-control"
               placeholder="Product Name"
             />
+             <edit-t :type="'input'" @write="write" :attr="'Name'" :keyV="'name'" :model="this.model" :cvalues="this.form.langs"/>
             <div v-show="form.errors.name">
               <p class="text-sm" style="color: red">
                 {{ form.errors.name }}
@@ -24,6 +25,8 @@
               v-model="form.desc"
               placeholder="Description"
             ></textarea>
+
+              <edit-t :type="'textarea'" @write="write" :attr="'Description'" :keyV="'desc'" :model="this.model" :cvalues="this.form.langs"/>
             <div v-show="form.errors.desc">
               <p class="text-sm text-red-600" style="color: red">
                 {{ form.errors.desc }}
@@ -57,10 +60,11 @@
 <script>
 import Update from "@/Pages/Admin/DataTable/Modals/Update.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import editT from '@/Pages/Admin/Translations/updateTranslation.vue';
 
 export default {
   components: {
-    Update,
+    Update,editT
   },
   props: {
     model: Object,
@@ -79,7 +83,8 @@ export default {
       form: useForm({
         name: this.model.name,
         desc: this.model.desc,
-        show_in_dash : this.model.show_in_dash
+        show_in_dash : this.model.show_in_dash,
+        langs : []
       }),
     };
   },
@@ -87,13 +92,17 @@ export default {
     resetModel: function () {
       this.$emit("ResetModel");
     },
+      write(ditem){
+          this.form.langs = ditem;
+      },
     submit: function () {
       // this.form
       this.form
         .transform((data) => ({
           name: data.name,
           desc: data.desc,
-          show_in_dash:  data.show_in_dash
+          show_in_dash:  data.show_in_dash,
+          langs : data.langs
         }))
         .patch(
           route("admin.category.update", {

@@ -77,9 +77,12 @@
                     email : '',
                     password: '',
                     password_confirmation: '',
-                    roles : []
                 }),
-                selected : null
+                selected : null,
+
+                langs : [
+
+                ]
             }
 
         },

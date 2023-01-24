@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Modules\TransLogic\Traits\ModelTranslationsModel;
 use App\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Setting extends Model implements HasMedia
     use InteractsWithMedia;
     use MediaTrait;
 
+    use ModelTranslationsModel;
 
     public const SNAME = 'Settings';
     public const INAME = 'Setting';
@@ -33,6 +35,12 @@ class Setting extends Model implements HasMedia
         'phone',
         'email',
         'company_name',
+        'name_ar',
+        'name_fr',
+        'content_ar',
+        'content_fr',
+        'lname',
+        'lcontent'
     ];
 
     public function getFimageAttribute(){
@@ -72,6 +80,31 @@ class Setting extends Model implements HasMedia
             'add' => 'add-setting',
             'show' => 'show-setting'
         ];
+    }
+
+
+    public function getContentFrAttribute(){
+        $values = $this->fr_translations()->where('key','content')->get();
+        if($values->count()) return $values->first()->only('value','id');
+
+        return null;
+    }
+
+    public function getContentArAttribute(){
+        $values = $this->ar_translations()->where('key','content')->get();
+        if($values->count()) return $values->first()->only('value','id');
+
+        return null;
+    }
+
+
+    public function getLnameAttribute(){
+        return $this->checkAndGetAttr('name');
+    }
+
+
+    public function getLcontentAttribute(){
+        return $this->checkAndGetAttr('content');
     }
 
 }

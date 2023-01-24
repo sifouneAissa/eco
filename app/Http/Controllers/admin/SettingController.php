@@ -34,7 +34,7 @@ class SettingController extends Controller
         $without = [
             'add'
         ];
-        
+
 
         return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $this->getUrl())
@@ -54,6 +54,8 @@ class SettingController extends Controller
         $inputs = $this->filterRequest($request->all());
         $setting = Setting::create($inputs);
 
+        $setting->addTranslations($request->input('langs'));
+
     }
 
     public function update(SettingRequest $request,$id){
@@ -64,6 +66,7 @@ class SettingController extends Controller
 
         $setting->update($inputs);
 
+        $setting->updateTranslations($request->input('langs'));
     }
 
     public function destroy($id){

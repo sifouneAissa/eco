@@ -44,13 +44,15 @@ class ProductCategoryController extends Controller
     }
 
     public function store(ProductCategoryRequest $request){
-
         $inputs = $this->filterRequest($request->all());
         $category = ProductCategory::create($inputs);
+
         if($category->show_in_dash)
             ProductCategory::query()->whereNot('id',$category->id)->update([
                 'show_in_dash' => false
             ]);
+
+        $category->addTranslations($request->input('langs'));
     }
 
     public function update(ProductCategoryRequest $request,$id){
@@ -64,6 +66,9 @@ class ProductCategoryController extends Controller
             ProductCategory::query()->whereNot('id',$category->id)->update([
                 'show_in_dash' => false
             ]);
+
+        $category->updateTranslations($request->input('langs'));
+
     }
 
     public function destroy($id){

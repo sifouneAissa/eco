@@ -12,7 +12,8 @@
               class="form-control"
               placeholder="Setting Name"
             />
-            <div v-show="form.errors.name">
+              <edit-t :type="'input'" @write="write" :attr="'Name'" :keyV="'name'" :model="this.model" :cvalues="this.form.langs"/>
+              <div v-show="form.errors.name">
               <p class="text-sm" style="color: red">
                 {{ form.errors.name }}
               </p>
@@ -21,7 +22,9 @@
           <div class="form-group">
             <label>Content</label>
             <input v-model="form.content" type="text" id="content" class="form-control" />
-            <div v-show="form.errors.content">
+              <edit-t :type="'textarea'" @write="write" :attr="'Content'" :keyV="'content'" :model="this.model" :cvalues="this.form.langs"/>
+
+              <div v-show="form.errors.content">
               <p class="text-sm text-red-600" style="color: red">
                 {{ form.errors.content }}
               </p>
@@ -47,11 +50,12 @@
 <script>
 import Update from "@/Pages/Admin/DataTable/Modals/Update.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import editT from '@/Pages/Admin/Translations/updateTranslation.vue';
 import Multiselect from "vue-multiselect";
 
 export default {
   components: {
-    Update,
+    Update,editT,
     Multiselect,
   },
   props: {
@@ -72,10 +76,15 @@ export default {
         name: this.model.name,
         content: this.model.content,
         code: this.model.code,
+        langs : []
       }),
     };
   },
   methods: {
+
+      write(ditem){
+          this.form.langs = ditem;
+      },
     resetModel: function () {
       this.$emit("ResetModel");
     },
@@ -85,7 +94,8 @@ export default {
         .transform((data) => ({
           name: data.name,
           content: data.content,
-          code : data.code
+          code : data.code,
+            langs : data.langs
         }))
         .patch(
           route("admin.setting.update", {
