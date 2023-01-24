@@ -150,6 +150,7 @@ export default {
     <div class="body-wrapper">
       <header
         class="ltn__header-area ltn__header-4 ltn__header-6 ltn__header-transparent--- gradient-color-2---"
+        style="z-index: 1000"
       >
         <!-- ltn__header-top-area start -->
         <div class="ltn__header-top-area top-area-color-white">
