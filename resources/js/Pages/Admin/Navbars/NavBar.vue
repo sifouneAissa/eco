@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" :href="route('profile.show')"><i class="feather-edit"></i> My Account</a>
+                    <Link class="dropdown-item" :href="route('admin.profile.show')"><i class="feather-edit"></i> My Account</Link>
 <!--                    <a class="dropdown-item" href="my-profile.html"><i class="feather-settings"></i> Account Settings</a>-->
                     <div class="dropdown-divider"></div>
                     <form @submit.prevent="logout">

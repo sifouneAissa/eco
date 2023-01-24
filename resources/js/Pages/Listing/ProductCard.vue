@@ -73,8 +73,6 @@ export default {
     Link,
   },
   mounted() {
-        console.log("tihs.img_height")
-        console.log(this.img_height)
   },
     computed : {
         cssVars() {

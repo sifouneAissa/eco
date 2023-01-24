@@ -106,9 +106,12 @@ class HandleInertiaRequests extends Middleware
 //        if($min >= 10) abort(404);
         if(Session::get('setPassword'))
             $set_password = true;
-//        dd($shopping->toArray());
+
+        $botS = Session::get('botS');
+
         return array_merge(parent::share($request), [
             //
+            'botS' => $botS,
             'locale' => $cLocale,
             'locales' => config('app.locales.all'),
             'auth' => auth()->user(),

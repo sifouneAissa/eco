@@ -46,11 +46,6 @@ class SettingSeeder extends Seeder
             'content' => 'https://www.instagram.com/himpies/',
         ],
         [
-            'name' => 'Twitter',
-            'code' => 'twitter_link',
-            'content' => 'https://twitter.com/Himpies_dxb',
-        ],
-        [
             'name' => 'Youtube',
             'code' => 'youtube_link',
             'content' => 'https://www.youtube.com/channel/UCLMrtOqRr7kCn8uBvEAX9eQ?view_as=subscriber',

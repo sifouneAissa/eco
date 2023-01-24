@@ -7,6 +7,7 @@ use App\Models\Question;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BotManController extends Controller
 {
@@ -17,9 +18,12 @@ class BotManController extends Controller
      */
     public function handle()
     {
+
         $botman = app('botman');
 
         $botman->typesAndWaits(2);
+
+
 
         $botman->hears('{message}', function ($botman, $message) {
 
@@ -88,6 +92,9 @@ class BotManController extends Controller
     // ...inside the conversation object...
     public function askNextStep($botman,$message)
     {
+
+        Session::put('botS',true);
+
         $questions = Question::all();
 
         $buttons = $questions->map(function ($item) {

@@ -15,6 +15,12 @@ const sidebar = [
         ]
     },
     {
+        name : 'Profile',
+        route : 'admin.profile.show',
+        permission : 'view dashboard',
+        icon : 'feather-user',
+    },
+    {
         name : 'Messages',
         route : 'admin.message.index',
         permission : 'view messages',

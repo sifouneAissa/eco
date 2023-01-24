@@ -17,6 +17,9 @@
         },
         props : ['urls','title'],
         mounted() {
+
+            $("#script1").remove();
+            $("#script2").remove();
             // Add active state to sidbar nav links
             var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
             $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
@@ -50,7 +53,7 @@
         </div>
         <div id="layoutSidenav_content">
             <div class="container-fluid">
-                <div  v-if="($page.props.route.current.name !== 'admin.index') && !urls">
+                <div  v-if="($page.props.route?.current?.name !== 'admin.index') && !urls">
                     <h1 class="mt-4">{{title}}</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><Link :href="route('admin.index')">Dashboard</Link></li>

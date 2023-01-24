@@ -11,7 +11,9 @@ use \Illuminate\Support\Facades\Route;
         Route::get('/dashboard/orders',[\App\Http\Controllers\admin\DashboardController::class,'datatables'])->name('dashboard.orders');
         Route::get('/test',[\App\Http\Controllers\admin\DashboardController::class,'index'])->name('test');
         Route::post('/logout',[\App\Http\Controllers\admin\AdminLoginController::class,'logout'])->name('logout');
-
+        // User & Profile...
+            Route::get('/user/profile', [\Laravel\Jetstream\Http\Controllers\Inertia\UserProfileController::class, 'show'])
+                ->name('profile.show');
         // roles and permissions
 
         Route::resource('/role',\App\Http\Controllers\admin\RoleController::class)->only([
