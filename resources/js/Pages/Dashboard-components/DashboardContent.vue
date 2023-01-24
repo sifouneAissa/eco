@@ -172,7 +172,7 @@ export default {
     </div> -->
 
     <div
-      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-80 pb-40"
+      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-300 pb-300"
       data-bg="/img/bg/3.png"
     >
       <!-- style="visibility: visible; background-color: rgba(0, 0, 0, 0.55); opacity: 1" -->
@@ -181,15 +181,19 @@ export default {
           <div class="col-lg-12">
             <div class="call-to-action-inner beard-trimmer text-center">
               <!--              <h5 class="text-uppercase">{{ $t("dashboard.title1") }}</h5>-->
-              <h1 class="text-uppercase">{{ $page.props.home_page_header_1 }}</h1>
-              <h1 class="text-uppercase">{{ $page.props.home_page_sub_header_1 }}</h1>
+              <h1 class="text-uppercase" style="font-size: 70px">
+                {{ $page.props.home_page_header_1 }}
+              </h1>
+              <h1 class="text-uppercase" style="font-size: 70px">
+                {{ $page.props.home_page_sub_header_1 }}
+              </h1>
               <!--              <h1>{{ $t("dashboard.title2") }}</h1>-->
-              <h5>{{ $page.props.home_page_header_2 }}</h5>
+              <h3>{{ $page.props.home_page_header_2 }}</h3>
               <div class="btn-wrapper">
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
                   :href="route('listing')"
-                  >{{ $t("dashboard.section1.view_more") }}</Link
+                  >{{ $t("dashboard.shop_now") }}</Link
                 >
               </div>
             </div>
@@ -316,7 +320,7 @@ export default {
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
                   :href="route('listing')"
-                  >{{ $t("dashboard.section1.view_more") }}</Link
+                  >{{ $t("dashboard.section4.shop_now") }}</Link
                 >
               </div>
             </div>

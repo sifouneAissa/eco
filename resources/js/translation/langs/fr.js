@@ -25,6 +25,7 @@ const fr = {
            checkout:"Paiement",
            order_tracking:"Suivi de commande",
            wishlist:"Liste de souhaits",
+           cart:"Panier d'achat",
         }
        },
     locales : {
@@ -338,6 +339,7 @@ const fr = {
         add_cart:"Ajouter au panier ", 
        },
        section4:{
+        shop_now:"Aller à la boutique maintenant",
         title1:"Il est temps de changer votre mode de vie",
         title2:"Notre huile de CBD stimule le système endocannabinoïde du corps et soutient le système immunitaire, la vitalité et le bien-être",
        },

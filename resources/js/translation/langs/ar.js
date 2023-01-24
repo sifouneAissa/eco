@@ -25,6 +25,7 @@ const ar = {
            checkout:"الدفع",
            order_tracking:"تتبع الطلب",
            wishlist:"قائمة الرغبات",
+           cart:"عربة التسوق",
         }
        },
     locales : {
@@ -340,6 +341,7 @@ const ar = {
         add_cart:"أضف إلى السلة ", 
        },
        section4:{
+        shop_now:"اذهب للتسوق الآن",
         title1:"حان الوقت لتغيير نمط حياتك",
         title2:"يحفز زيت CBD الخاص بنا نظام endocannabinoid في الجسم ويدعم جهاز المناعة والحيوية والرفاهية",
     },
