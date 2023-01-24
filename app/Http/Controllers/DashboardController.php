@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,6 +24,7 @@ class DashboardController extends Controller
         $populars = populars();
 
         $dCat = ProductCategory::where("show_in_dash",true)->first();
+        $settings = Setting::all();
 
         if($dCat){
             $products = $dCat?->products->load("category")->take(3);

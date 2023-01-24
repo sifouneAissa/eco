@@ -39,6 +39,13 @@ class Setting extends Model implements HasMedia
         'instagram',
         'twitter',
         'youtube',
+        'lcontent',
+        'lname',
+        'name_ar',
+        'name_fr',
+        'content_ar',
+        'content_fr',
+
     ];
 
     public function getFimageAttribute(){

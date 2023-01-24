@@ -5,6 +5,7 @@ namespace App\Modules\TransLogic\Traits;
 
 use App\Modules\TransLogic\Models\Translation;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 trait ModelTranslationsModel {
 
@@ -120,7 +121,7 @@ trait ModelTranslationsModel {
 
     public function checkAndGetAttr($name){
         // ar,en,fr
-        $locale = App::getLocale();
+        $locale = Session::get('locale') ? Session::get('locale') : App::getLocale();
 
         $ename = $this[$name];
         if($locale==="en") return $ename;

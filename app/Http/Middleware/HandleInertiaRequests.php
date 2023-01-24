@@ -123,7 +123,7 @@ class HandleInertiaRequests extends Middleware
             'client_secret' => $client_secret,
             'addresses' => $addresses,
             'setPassword' => $set_password,
-            'logo' => getSetting('logo')->fimage,
+              'logo' => getSetting('logo')->fimage,
             'login_image' => getSetting('login_image')->fimage,
             'register_image' => getSetting('register_image')->fimage,
             'address' => getSetting('address')->address,
@@ -137,6 +137,21 @@ class HandleInertiaRequests extends Middleware
             'buyer' => $buyer,
             'company_name' => getSetting('company_name')->company_name,
             'shopping_user' => $shopping?->user,
+            'home_page_sub_header_1' => getSetting('home_page_sub_header_1')?->lcontent,
+            'home_page_header_1' => getSetting('home_page_sub_header_1')?->lcontent,
+            'home_page_header_2' => getSetting('home_page_header_2')?->lcontent,
+            'home_page_sub_header_2' => getSetting('home_page_sub_header_2')?->lcontent,
+            'home_page_section_1_sub_header_1' => getSetting('home_page_section_1_sub_header_1')?->lcontent,
+            'home_page_section_1_header_1' => getSetting('home_page_section_1_header_1')?->lcontent,
+            'home_page_section_1_description_1' => getSetting('home_page_section_1_description_1')?->lcontent,
+            'home_page_section_1_description_2' => getSetting('home_page_section_1_description_2')?->lcontent,
+            'home_page_section_2_header_left' => getSetting('home_page_section_2_header_left')?->lcontent,
+            'home_page_section_2_header_2_left' => getSetting('home_page_section_2_header_2_left')?->lcontent,
+            'home_page_section_2_header_right' => getSetting('home_page_section_2_header_right')?->lcontent,
+            'home_page_section_2_header_2_right' => getSetting('home_page_section_2_header_2_right')?->lcontent,
+            'home_page_section_3_header' => getSetting('home_page_section_3_header')?->lcontent,
+            'home_page_section_3_sub_header' => getSetting('home_page_section_3_sub_header')?->lcontent
+
         ]);
     }
 }

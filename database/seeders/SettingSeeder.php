@@ -74,7 +74,78 @@ class SettingSeeder extends Seeder
             'name' => 'Register page image',
             'code' => 'register_image',
             'content' => '',
-        ]
+        ],
+        [
+            'name' => 'Home page sub header 1',
+            'code' => 'home_page_sub_header_1',
+            'content' => 'WELCOME TO OUR SHOP'
+        ],
+        [
+            'name' => 'Home page header 1',
+            'code' => 'home_page_header_1',
+            'content' => 'Explore Top Brand'
+        ],
+        [
+            'name' => 'Home page sub header 2',
+            'code' => 'home_page_sub_header_2',
+            'content' => 'Our CBD oil stimulates the body’s endocannabinoid system and supports the immune system, vitality and well-being'
+        ],
+        [
+            'name' => 'Home page header 2',
+            'code' => 'home_page_header_2',
+            'content' => 'IT\'S TIME TO CHANGE YOUR LIFESTYLE'
+        ],
+        [
+            'name' => 'Home page section 1 sub header 1',
+            'code' => 'home_page_section_1_sub_header_1',
+            'content' => 'Provide the best'
+        ],
+        [
+            'name' => 'Home page section 1  header 1',
+            'code' => 'home_page_section_1_header_1',
+            'content' => 'Beard Oil For You'
+        ],
+        [
+            'name' => 'Home page section 1 description 1',
+            'code' => 'home_page_section_1_description_1',
+            'content' => 'We provide the best Beard oil all over the world. We are the worldd best store for Beard Oil. You can buy our product without any hegitation because we always consus about our product quality and always maintain it properly so your can trust and this is our main goal we belive that...'
+        ],
+        [
+            'name' => 'Home page section 1 description 2',
+            'code' => 'home_page_section_1_description_2',
+            'content' => 'Some of our customer say\'s that they trust us and buy our product without any hagitation because they belive us and always happy'
+        ],
+        [
+            'name' => 'Home page section 2 header left',
+            'code' => 'home_page_section_2_header_left',
+            'content' => 'Luscious'
+        ],
+        [
+            'name' => 'Home page section 2 header 2 left',
+            'code' => 'home_page_section_2_header_2_left',
+            'content' => 'Beard?'
+        ],
+        [
+            'name' => 'Home page section 2 header right',
+            'code' => 'home_page_section_2_header_right',
+            'content' => 'Just'
+        ],
+        [
+            'name' => 'Home page section 2 header 2 right',
+            'code' => 'home_page_section_2_header_2_right',
+            'content' => 'Starting?'
+        ],
+        [
+            'name' => 'Home page section 3 header',
+            'code' => 'home_page_section_3_header',
+            'content' => 'Our Products'
+        ],
+        [
+            'name' => 'Home page section 3 sub header',
+            'code' => 'home_page_section_3_sub_header',
+            'content' => 'There are many variations of passages of Lorem Ipsum available.'
+        ],
+
     ];
     /**
      * Run the database seeds.
