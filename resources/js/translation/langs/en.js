@@ -337,6 +337,7 @@ const en = {
         add_cart:"Add to cart ", 
     },
      section4:{
+        shop_now:"Go to shop now",
         title1:"It's time to change your lifestyle ",
         title2:"Our CBD oil stimulates the body’s endocannabinoid system and supports the immune system, vitality and well-being ",
     },
