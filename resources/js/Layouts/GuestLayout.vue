@@ -233,6 +233,14 @@ export default {
                                 ><i class="fab fa-instagram"></i
                               ></a>
                             </li>
+                            <li>
+                              <a
+                                :href="$page.props.youtube"
+                                title="youtube"
+                                target="_blank"
+                                ><i class="fab fa-youtube"></i
+                              ></a>
+                            </li>
                             <!-- <li>
                               <a href="#" title="Dribbble"
                                 ><i class="fab fa-dribbble"></i
@@ -890,8 +898,7 @@ export default {
                     </div>
                   </div>
                   <p>
-                    Lorem Ipsum is simply dummy text of the and typesetting industry.
-                    Lorem Ipsum is dummy text of the printing.
+                    {{ $page.props.company_description }}
                   </p>
                   <div class="footer-address">
                     <ul>
@@ -937,6 +944,11 @@ export default {
                       <li>
                         <a :href="$page.props.twitter" title="Twitter" target="_blank"
                           ><i class="fab fa-twitter"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a :href="$page.props.instagram" title="instagram" target="_blank"
+                          ><i class="fab fa-instagram"></i
                         ></a>
                       </li>
                       <!-- <li>

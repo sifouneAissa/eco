@@ -13,7 +13,12 @@ class SettingSeeder extends Seeder
         [
             'name' => 'Company name',
             'code' => 'company_name',
-            'content' => 'Cover data eco',
+            'content' => 'Himpies',
+        ],
+        [
+            'name' => 'Company description',
+            'code' => 'company_description',
+            'content' => 'Himpies is a hemp brand powered by SESHATA. Based in United Arab Emirates.We bring the best quality of HEMP products over the world to you.',
         ],
         [
             'name' => 'Phone',
@@ -78,21 +83,26 @@ class SettingSeeder extends Seeder
         [
             'name' => 'Home page sub header 1',
             'code' => 'home_page_sub_header_1',
-            'content' => 'WELCOME TO OUR SHOP'
+            'content' => " your life style"
         ],
         [
             'name' => 'Home page header 1',
             'code' => 'home_page_header_1',
-            'content' => 'Explore Top Brand'
-        ],
-        [
-            'name' => 'Home page sub header 2',
-            'code' => 'home_page_sub_header_2',
-            'content' => 'Our CBD oil stimulates the body’s endocannabinoid system and supports the immune system, vitality and well-being'
+            'content' => "it's time to change"
         ],
         [
             'name' => 'Home page header 2',
             'code' => 'home_page_header_2',
+            'content' => "Hemp for life"
+        ],
+        [
+            'name' => 'Home page sub header 3',
+            'code' => 'home_page_sub_header_3',
+            'content' => 'Our CBD oil stimulates the body’s endocannabinoid system and supports the immune system, vitality and well-being'
+        ],
+        [
+            'name' => 'Home page header 3',
+            'code' => 'home_page_header_3',
             'content' => 'IT\'S TIME TO CHANGE YOUR LIFESTYLE'
         ],
         [
@@ -103,12 +113,12 @@ class SettingSeeder extends Seeder
         [
             'name' => 'Home page section 1  header 1',
             'code' => 'home_page_section_1_header_1',
-            'content' => 'Beard Oil For You'
+            'content' => 'Why CBD oil?'
         ],
         [
             'name' => 'Home page section 1 description 1',
             'code' => 'home_page_section_1_description_1',
-            'content' => 'We provide the best Beard oil all over the world. We are the worldd best store for Beard Oil. You can buy our product without any hegitation because we always consus about our product quality and always maintain it properly so your can trust and this is our main goal we belive that...'
+            'content' => 'CBD, short for cannabidiol, is a chemical compound from the cannabis plant. It’s a naturally occurring substance that’s used in our oil. It leads to a feeling of relaxation and calm, unlike the THC (short for tetrahydrocannabinol) it’s not psychoactive.'
         ],
         [
             'name' => 'Home page section 1 description 2',

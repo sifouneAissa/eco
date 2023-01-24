@@ -389,7 +389,7 @@ const fr = {
         title2:"Jours Retour 3",
         title3:"Produits de qualité",
         title4:"Livraison gratuite à domicile",
-        desc1:"Retournez le produit dans les 3 jours pour tout produit que vous achetez",
+        desc1:"Nous assurons la qualité des produits auxquels vous pouvez faire confiance facilement",
         desc2:"Retournez le produit dans les 3 jours pour tout produit que vous achetez",
         desc3:"Nous assurons la qualité du produit qui est notre objectif principal",
         desc4:"Offrir la livraison à domicile gratuite pour tous les produits de plus de 100 $",
