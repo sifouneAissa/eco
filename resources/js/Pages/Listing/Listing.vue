@@ -136,7 +136,7 @@
       <!--                    </div>-->
       <!--                </div>-->
       <!--            </div>-->
-      <ProductCard :model="product" />
+      <ProductCard :model="product" :img_height="200" />
     </div>
   </div>
   <!--    <div class="ltn__gallery-active row ltn__gallery-style-2 ltn__gallery-info-hide-&#45;&#45;">-->
