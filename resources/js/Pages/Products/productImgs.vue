@@ -108,16 +108,29 @@
             <ul>
               <li>{{ $t("listing.share") }}:</li>
               <li>
-                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a :href="$page.props.facebook" target="_blank" title="Facebook"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
               </li>
               <li>
-                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a :href="$page.props.twitter" target="_blank" title="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </li>
+              <!-- <li>
+                <a href="#" target="_blank" title="Linkedin"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+              </li> -->
+              <li>
+                <a :href="$page.props.instagram" target="_blank" title="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
               </li>
               <li>
-                <a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a>
-              </li>
-              <li>
-                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a :href="$page.props.youtube" target="_blank" title="youtube"
+                  ><i class="fab fa-youtube"></i
+                ></a>
               </li>
             </ul>
           </div>

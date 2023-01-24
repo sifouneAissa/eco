@@ -180,10 +180,11 @@ export default {
         <div class="row">
           <div class="col-lg-12">
             <div class="call-to-action-inner beard-trimmer text-center">
-<!--              <h5 class="text-uppercase">{{ $t("dashboard.title1") }}</h5>-->
-              <h5 class="text-uppercase">{{ $page.props.home_page_sub_header_1 }}</h5>
-<!--              <h1>{{ $t("dashboard.title2") }}</h1>-->
-              <h1>{{ $page.props.home_page_header_1 }}</h1>
+              <!--              <h5 class="text-uppercase">{{ $t("dashboard.title1") }}</h5>-->
+              <h1 class="text-uppercase">{{ $page.props.home_page_header_1 }}</h1>
+              <h1 class="text-uppercase">{{ $page.props.home_page_sub_header_1 }}</h1>
+              <!--              <h1>{{ $t("dashboard.title2") }}</h1>-->
+              <h5>{{ $page.props.home_page_header_2 }}</h5>
               <div class="btn-wrapper">
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
@@ -204,18 +205,18 @@ export default {
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
             <div class="about-us-info-wrap pt-30 pb-30">
-<!--              <h3>{{ $t("dashboard.section1.title1") }}</h3>-->
+              <!--              <h3>{{ $t("dashboard.section1.title1") }}</h3>-->
               <h3>{{ $page.props.home_page_section_1_sub_header_1 }}</h3>
-<!--              <h1>{{ $t("dashboard.section1.title2") }}</h1>-->
+              <!--              <h1>{{ $t("dashboard.section1.title2") }}</h1>-->
               <h1>{{ $page.props.home_page_section_1_header_1 }}</h1>
               <p>
-<!--                {{ $t("dashboard.section1.desc1") }}-->
+                <!--                {{ $t("dashboard.section1.desc1") }}-->
                 {{ $page.props.home_page_section_1_description_1 }}
               </p>
 
-              <p>
+              <!-- <p>
                   {{ $page.props.home_page_section_1_description_2 }}
-              </p>
+              </p> -->
               <div class="btn-wrapper">
                 <a
                   :href="route('listing')"
@@ -250,11 +251,11 @@ export default {
             >
               <h5>{{ $t("dashboard.section2.groom") }}</h5>
               <h1>
-<!--                {{ $t("dashboard.section2.title1") }}-->
-                  {{ $page.props.home_page_section_2_header_left }}
-                  <br />
-<!--                {{ $t("dashboard.section2.title2") }}-->
-                    {{$page.props.home_page_section_2_header_2_left}}
+                <!--                {{ $t("dashboard.section2.title1") }}-->
+                {{ $page.props.home_page_section_2_header_left }}
+                <br />
+                <!--                {{ $t("dashboard.section2.title2") }}-->
+                {{ $page.props.home_page_section_2_header_2_left }}
               </h1>
               <div class="btn-wrapper">
                 <Link
@@ -276,12 +277,12 @@ export default {
             >
               <h5>{{ $t("dashboard.section2.groom") }}</h5>
               <h1>
-<!--                {{ $t("dashboard.section2.title3") }} -->
+                <!--                {{ $t("dashboard.section2.title3") }} -->
 
-                  {{ $page.props.home_page_section_2_header_right }}
-                  <br />
-                  {{ $page.props.home_page_section_2_header_2_right }}
-<!--                {{ $t("dashboard.section2.title4") }}-->
+                {{ $page.props.home_page_section_2_header_right }}
+                <br />
+                {{ $page.props.home_page_section_2_header_2_right }}
+                <!--                {{ $t("dashboard.section2.title4") }}-->
               </h1>
               <div class="btn-wrapper">
                 <Link
@@ -306,11 +307,11 @@ export default {
         <div class="row">
           <div class="col-lg-12">
             <div class="call-to-action-inner beard-trimmer text-center">
-<!--              <h1 class="text-uppercase">{{ $t("dashboard.section4.title1") }}</h1>-->
-              <h1 class="text-uppercase">{{ $page.props.home_page_header_2 }}</h1>
-<!--                <h5 class="text-uppercase">{{ $page.props.home_page_sub_header_1 }}</h5>-->
-<!--              <h5>{{ $t("dashboard.section4.title2") }}</h5>-->
-              <h5>{{ $page.props.home_page_sub_header_2 }}</h5>
+              <!--              <h1 class="text-uppercase">{{ $t("dashboard.section4.title1") }}</h1>-->
+              <h1 class="text-uppercase">{{ $page.props.home_page_header_3 }}</h1>
+              <!--                <h5 class="text-uppercase">{{ $page.props.home_page_sub_header_1 }}</h5>-->
+              <!--              <h5>{{ $t("dashboard.section4.title2") }}</h5>-->
+              <h5>{{ $page.props.home_page_sub_header_3 }}</h5>
               <div class="btn-wrapper">
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
