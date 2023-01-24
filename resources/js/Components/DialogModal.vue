@@ -45,3 +45,8 @@ const close = () => {
         </div>
     </Modal>
 </template>
+
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

@@ -15,3 +15,9 @@ import { Link } from '@inertiajs/inertia-vue3';
         </svg>
     </Link>
 </template>
+
+
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

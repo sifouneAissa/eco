@@ -115,3 +115,7 @@ const closeModal = () => {
         </DialogModal>
     </span>
 </template>
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>
