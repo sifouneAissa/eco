@@ -35,12 +35,10 @@ class Setting extends Model implements HasMedia
         'phone',
         'email',
         'company_name',
-        'name_ar',
-        'name_fr',
-        'content_ar',
-        'content_fr',
-        'lname',
-        'lcontent'
+        'facebook',
+        'instagram',
+        'twitter',
+        'youtube',
     ];
 
     public function getFimageAttribute(){
@@ -69,6 +67,26 @@ class Setting extends Model implements HasMedia
     public function getCompanyNameAttribute(){
 
         if($this->code==='company_name')
+             return $this->content;
+    }
+    public function getFacebookAttribute(){
+
+        if($this->code==='facebook_link')
+             return $this->content;
+    }
+    public function getInstagramAttribute(){
+
+        if($this->code==='instagram_link')
+             return $this->content;
+    }
+    public function getTwitterAttribute(){
+
+        if($this->code==='twitter_link')
+             return $this->content;
+    }
+    public function getYoutubeAttribute(){
+
+        if($this->code==='youtube_link')
              return $this->content;
     }
 

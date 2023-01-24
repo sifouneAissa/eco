@@ -337,8 +337,8 @@ const en = {
         add_cart:"Add to cart ", 
     },
      section4:{
-        title1:"Versatile. powerful. perfect.",
-        title2:"ABC LC991 Trimmer",
+        title1:"It's time to change your lifestyle ",
+        title2:"Our CBD oil stimulates the body’s endocannabinoid system and supports the immune system, vitality and well-being ",
     },
      section5:{
         desc:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur obcaecati nisi similique ipsum molestiae sit sequi quam odit odio.",

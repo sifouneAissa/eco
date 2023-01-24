@@ -33,17 +33,27 @@ class SettingSeeder extends Seeder
         [
             'name' => 'Facebook',
             'code' => 'facebook_link',
-            'content' => '',
+            'content' => 'https://www.facebook.com/himpies/',
         ],
         [
             'name' => 'Instagram',
             'code' => 'instagram_link',
-            'content' => '',
+            'content' => 'https://www.instagram.com/himpies/',
         ],
         [
             'name' => 'Twitter',
             'code' => 'twitter_link',
-            'content' => '',
+            'content' => 'https://twitter.com/Himpies_dxb',
+        ],
+        [
+            'name' => 'Youtube',
+            'code' => 'youtube_link',
+            'content' => 'https://www.youtube.com/channel/UCLMrtOqRr7kCn8uBvEAX9eQ?view_as=subscriber',
+        ],
+        [
+            'name' => 'Twitter',
+            'code' => 'twitter_link',
+            'content' => 'https://twitter.com/Himpies_dxb',
         ],
         [
             'name' => 'Max inventory value',

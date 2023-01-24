@@ -137,14 +137,14 @@ export default {
     <!-- SLIDER AREA END -->
 
     <!-- SLIDER AREA START (slider-1) -->
-    <div class="ltn__slider-area ltn__slider-6 mb-120---">
-      <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
-        <!-- ltn__slide-item -->
-        <div
+    <!-- <div class="ltn__slider-area ltn__slider-6 mb-120---">
+      <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1"> -->
+    <!-- ltn__slide-item -->
+    <!-- <div
           class="ltn__slide-item--- ltn__slide-item-9 section-bg-1 bg-image"
           data-bg="/img/slider/11.png"
         >
-          <div class="ltn__slide-item-inner right-align">
+    <div class="ltn__slide-item-inner right-align">
             <div
               class="slide-item-info bg-overlay-theme-black-90 text-color-white text-center"
             >
@@ -166,14 +166,38 @@ export default {
               </div>
             </div>
           </div>
+        </div> -->
+    <!--  -->
+    <!-- </div>
+    </div> -->
+
+    <div
+      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-80 pb-40"
+      data-bg="/img/bg/3.png"
+    >
+      <!-- style="visibility: visible; background-color: rgba(0, 0, 0, 0.55); opacity: 1" -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="call-to-action-inner beard-trimmer text-center">
+              <h5 class="text-uppercase">{{ $t("dashboard.title1") }}</h5>
+              <h1>{{ $t("dashboard.title2") }}</h1>
+              <div class="btn-wrapper">
+                <Link
+                  class="theme-btn-1 btn btn-effect-1 text-uppercase"
+                  :href="route('listing')"
+                  >{{ $t("dashboard.section1.view_more") }}</Link
+                >
+              </div>
+            </div>
+          </div>
         </div>
-        <!--  -->
       </div>
     </div>
     <!-- SLIDER AREA END -->
 
     <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pb-120 pt-110">
+    <div class="ltn__about-us-area pt-40 pb-40">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
@@ -263,15 +287,15 @@ export default {
     <Products />
     <!-- CALL TO ACTION START (call-to-action-1) -->
     <div
-      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-220 pb-220 mb-110"
+      class="call-to-action-area call-to-action-1 bg-image section-bg-2 pt-80 pb-80 mb-40"
       data-bg="/img/bg/3.png"
     >
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="call-to-action-inner beard-trimmer text-center">
-              <h5 class="text-uppercase">{{ $t("dashboard.section4.title1") }}</h5>
-              <h1>{{ $t("dashboard.section4.title2") }}</h1>
+              <h1 class="text-uppercase">{{ $t("dashboard.section4.title1") }}</h1>
+              <h5>{{ $t("dashboard.section4.title2") }}</h5>
               <div class="btn-wrapper">
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
@@ -289,7 +313,7 @@ export default {
     <DashCat v-if="$page.props.dcat" />
 
     <!-- TESTIMONIAL AREA START -->
-    <div class="ltn__testimonial-area section-bg-1--- pb-70">
+    <div class="ltn__testimonial-area section-bg-1--- pb-40">
       <div class="container">
         <div class="row d-none">
           <div class="col-lg-12">
@@ -356,7 +380,7 @@ export default {
     <!-- TESTIMONIAL AREA END -->
 
     <!-- BANNER AREA START -->
-    <div class="ltn__banner-area pb-90 d-none">
+    <div class="ltn__banner-area pb-40 d-none">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6 col-sm-6">
@@ -379,7 +403,7 @@ export default {
     <!-- BANNER AREA END -->
 
     <!-- VIDEO AREA START -->
-    <div class="ltn__video-area section-bg-1 pt-120 pb-120 d-none">
+    <div class="ltn__video-area section-bg-1 pt-80 pb-40 d-none">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -401,7 +425,7 @@ export default {
 
     <!-- NEWSLETTER AREA START -->
     <div
-      class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-110 pb-90"
+      class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-80 pb-40"
       data-bg="/img/bg/8.jpg"
     >
       <div class="container">
