@@ -25,6 +25,7 @@ const ar = {
            checkout:"الدفع",
            order_tracking:"تتبع الطلب",
            wishlist:"قائمة الرغبات",
+           cart:"عربة التسوق",
         }
        },
     locales : {

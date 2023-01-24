@@ -25,6 +25,7 @@ const en = {
         checkout:"Checkout",
         order_tracking:"Order tracking",
         wishlist:"Wish list",
+        cart:"Shopping Cart",
      }
     },
     locales : {

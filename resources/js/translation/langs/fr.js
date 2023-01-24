@@ -25,6 +25,7 @@ const fr = {
            checkout:"Paiement",
            order_tracking:"Suivi de commande",
            wishlist:"Liste de souhaits",
+           cart:"Panier d'achat",
         }
        },
     locales : {

@@ -278,8 +278,10 @@ export default {
                           <Link href="/" id="home">{{ $t("nav_menu.pages.home") }}</Link>
                         </li>
                         <li>
-                          <a href="#">{{ $t("nav_menu.help.about_us") }}</a>
-                          <ul>
+                          <Link :href="route('about-us')">
+                            {{ $t("nav_menu.help.about_us") }}
+                          </Link>
+                          <!-- <ul>
                             <li>
                               <Link :href="route('about-us')">
                                 {{ $t("nav_menu.help.about_us") }}
@@ -290,14 +292,7 @@ export default {
                                 {{ $t("nav_menu.help.faq") }}
                               </Link>
                             </li>
-                            <!-- <li><a href="coming-soon.html">Coming Soon</a></li> -->
-                            <!-- <li><a href="404.html">404</a></li> -->
-                            <!-- <li>
-                              <Link :href="route('contact-us')">{{
-                                $t("nav_menu.help.contact_us")
-                              }}</Link>
-                            </li> -->
-                          </ul>
+                          </ul> -->
                         </li>
                         <li>
                           <a href="#">{{ $t("nav_menu.pages.products") }} </a>
@@ -694,15 +689,13 @@ export default {
               </li>
               <li>
                 <Link :href="route('blog.index')">{{ $t("nav_menu.pages.blog") }}</Link>
-                <!-- <ul class="sub-menu">
-                  <li><a href="blog.html">News</a></li>
-                  <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
-                  <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
-                  <li><a href="blog-grid.html">News Grid</a></li>
-                  <li><a href="blog-details.html">News details</a></li>
-                </ul> -->
               </li>
               <li>
+                <Link :href="route('trackOrder.index')">{{
+                  $t("nav_menu.pages.order_tracking")
+                }}</Link>
+              </li>
+              <!-- <li>
                 <a href="#">{{ $t("nav_menu.pages.pages") }}</a>
                 <ul class="sub-menu">
                   <li>
@@ -710,18 +703,11 @@ export default {
                       {{ $t("nav_menu.help.faq") }}
                     </Link>
                   </li>
-                  <!-- <li><a href="404.html">404</a></li> -->
                   <li>
                     <Link :href="route('contact-us')">{{
                       $t("nav_menu.help.contact_us")
                     }}</Link>
                   </li>
-                  <!-- <li><a href="coming-soon.html">Coming Soon</a></li> -->
-                  <!-- <li><a href="shop.html">Shop</a></li>
-                  <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                  <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                  <li><a href="shop-grid.html">Shop Grid</a></li>
-                  <li><a href="product-details.html">Shop details </a></li> -->
                   <li><Link :href="route('cartitem.index')">Cart</Link></li>
                   <li>
                     <Link v-if="$page.props.auth" :href="route('wishlist.index')">{{
@@ -743,16 +729,8 @@ export default {
                       {{ $t("nav_menu.pages.account") }}</Link
                     >
                   </li>
-                  <!--                  <li>-->
-                  <!--                    <Link :href="route('login')"> {{ $t("nav_menu.pages.login") }}</Link>-->
-                  <!--                  </li>-->
-                  <!--                  <li>-->
-                  <!--                    <Link :href="route('register')"-->
-                  <!--                      >{{ $t("nav_menu.pages.register") }}-->
-                  <!--                    </Link>-->
-                  <!--                  </li>-->
                 </ul>
-              </li>
+              </li> -->
               <li>
                 <Link :href="route('contact-us')">{{
                   $t("nav_menu.help.contact_us")
@@ -771,6 +749,20 @@ export default {
                   {{ $t("nav_menu.pages.login") }}
                 </Link>
               </li>
+              <li v-if="!$page.props.auth">
+                <span class="utilize-btn-icon">
+                  <i class="far fa-user"></i>
+                </span>
+                <Link :href="route('register')"
+                  >{{ $t("nav_menu.pages.register") }}
+                </Link>
+              </li>
+              <li v-if="$page.props.auth">
+                <span class="utilize-btn-icon">
+                  <i class="far fa-user"></i>
+                </span>
+                <Link :href="route('account')"> {{ $t("nav_menu.pages.account") }}</Link>
+              </li>
               <li v-if="$page.props.auth">
                 <Link :href="route('wishlist.index')" title="Wishlist">
                   <span class="utilize-btn-icon">
@@ -787,7 +779,7 @@ export default {
                     <i class="fas fa-shopping-cart"></i>
                     <sup>5</sup>
                   </span>
-                  Shoping Cart
+                  {{ $t("nav_menu.pages.cart") }}
                 </a>
               </li>
               <li v-if="$page.props.auth">
@@ -803,16 +795,25 @@ export default {
           <div class="ltn__social-media-2">
             <ul>
               <li>
-                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a :href="$page.props.facebook" title="Facebook" target="_blank"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
               </li>
               <li>
-                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a :href="$page.props.twitter" title="Twitter" target="_blank"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </li>
+
+              <li>
+                <a :href="$page.props.instagram" title="Instagram" target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
               </li>
               <li>
-                <a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a>
-              </li>
-              <li>
-                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a :href="$page.props.youtube" title="youtube" target="_blank"
+                  ><i class="fab fa-youtube"></i
+                ></a>
               </li>
             </ul>
           </div>

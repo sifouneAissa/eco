@@ -29,7 +29,7 @@ export default {
         {{ $t("nav_menu.help.about_us") }}
       </h2>
     </template>
-    <breadcrumb :title="$t('nav_menu.help.contact_us')" />
+    <breadcrumb :title="$t('nav_menu.help.about_us')" />
     <!-- ABOUT US AREA START -->
     <div class="ltn__about-us-area pt-120-- pb-120">
       <div class="container">
