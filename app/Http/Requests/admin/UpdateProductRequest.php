@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\admin;
 
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class ProductRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +25,11 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+        $product = Product::find($this->product);
+
         return [
             //
-            'name' => ['required','max:255','unique:products'],
+            'name' => ['required','max:255',Rule::unique('products', 'name')->ignore($product->id)],
             'price' => ['required','numeric','min:1'],
             'old_price' => ['required','numeric','min:1'],
             'desc' => ['required'],

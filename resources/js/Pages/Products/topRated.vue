@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     go: function (product) {
-      Inertia.get(route("product.show", { id: product.id }));
+      Inertia.get(product.surl);
     },
   },
 };

@@ -49,7 +49,7 @@
         },
         methods : {
             go: function (item) {
-                Inertia.get(route("product.show", { id: item.product_id }));
+                Inertia.get(item.product.surl);
             },
             incrQP(item, by) {
                 const toast = useToast();

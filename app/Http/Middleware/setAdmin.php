@@ -7,6 +7,7 @@ use Carbon\CarbonImmutable;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\App;
 
 class setAdmin
 {
@@ -26,6 +27,10 @@ class setAdmin
                 return redirect()->route('admin.login');
             abort(404);
         }
+
+        App::setLocale('en');
+        \Illuminate\Support\Carbon::setLocale('en');
+
 
         return $next($request);
     }

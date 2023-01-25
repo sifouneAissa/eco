@@ -52,7 +52,7 @@
     </div>
     <div class="product-info">
       <h2 class="product-title text-truncate ">
-        <Link :href="route('product.show', { id: model.id })">{{ model.lname }}</Link>
+        <Link :href="model.surl">{{ model.lname }}</Link>
       </h2>
       <div class="product-price">
         <span>{{ $page.props.currency_code }} {{ model.cprice }}</span>
@@ -108,7 +108,7 @@ export default {
         });
     },
     go: function () {
-      Inertia.get(route("product.show", { id: this.model.id }));
+      Inertia.get(this.model.surl);
     },
   },
 };

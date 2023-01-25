@@ -40,10 +40,7 @@ class ProductController extends Controller
     public function show(Request $request,$id)
     {
 
-
-        $product = Product::query()->findOrFail($id)->load(['category']);
-//        if(!$product->isA()['isA'])  abort(404);
-
+        $product = Product::query()->where('name',$id)->firstOrFail()->load(['category']);
 
         $callbackIsA = function ($item){
             return $item->isA()['isA'];

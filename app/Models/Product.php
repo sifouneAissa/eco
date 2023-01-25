@@ -26,6 +26,7 @@ class Product extends Model implements HasMedia
 
     protected $fillable = ['name','price','old_price','desc','product_category_id','product_inventory_id'];
     protected $appends = ['cprice','quantity','modal_ids','fimage','isA','dprice' , 'coprice','name_ar','name_fr',
+        'surl',
         'desc_ar',
         'desc_fr',
         'lname',
@@ -166,6 +167,12 @@ class Product extends Model implements HasMedia
 
     public function getLdescAttribute(){
         return $this->checkAndGetAttr('desc');
+    }
+
+    public function getSurlAttribute(){
+        return route('product.show',[
+            'id' => $this->name
+        ]);
     }
 
 }

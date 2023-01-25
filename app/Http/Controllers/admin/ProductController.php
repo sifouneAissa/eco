@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\ProductRequest;
+use App\Http\Requests\admin\UpdateProductRequest;
 use App\Models\CustomRole;
 use App\Models\InventoryOrderItem;
 use App\Models\Product;
@@ -61,7 +62,7 @@ class ProductController extends Controller
         $product->addTranslations($request->input('langs'));
     }
 
-    public function update(ProductRequest $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
 
         $start_over = $request->input('start_over');

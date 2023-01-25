@@ -22,13 +22,13 @@
                     <tr v-for="model in models" :key="model.id">
                       <td @click="submitD(model)" class="cart-product-remove">x</td>
                       <td class="cart-product-image">
-                        <Link :href="route('product.show', { id: model.product_id })"
+                        <Link :href="model.product.surl"
                           ><img :src="model.product.fimage" alt="#"
                         /></Link>
                       </td>
                       <td class="cart-product-info">
                         <h4>
-                          <Link :href="route('product.show', { id: model.product_id })">{{
+                          <Link :href="model.product.surl">{{
                             model.product.lname
                           }}</Link>
                         </h4>

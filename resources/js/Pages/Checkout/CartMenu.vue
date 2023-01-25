@@ -258,7 +258,7 @@ export default {
       this.$emit("Pay");
     },
     go: function (item) {
-      Inertia.get(route("product.show", { id: item.product_id }));
+      Inertia.get(item.product.surl);
     },
   },
 };

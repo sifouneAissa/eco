@@ -82,7 +82,7 @@ export default {
       if (!model.quantity) model.quantity = 1;
     },
     go: function () {
-      Inertia.get(route("product.show", { id: this.model.id }));
+      Inertia.get(this.model.surl);
     },
     submit: function (model) {
       let app = this;

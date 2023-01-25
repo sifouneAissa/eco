@@ -25,7 +25,7 @@
                     <div class="modal-product-info">
                       <h5>
                         <Link
-                          :href="route('product.show', { id: $page.props.productTo.id })"
+                          :href="$page.props.productTo.surl"
                           >{{ $page.props.productTo.lname }}</Link
                         >
                       </h5>
