@@ -395,6 +395,26 @@ const fr = {
         desc2:"Retournez le produit dans les 3 jours pour tout produit que vous achetez",
         desc3:"Nous assurons la qualité du produit qui est notre objectif principal",
         desc4:"Offrir la livraison à domicile gratuite pour tous les produits de plus de 100 $",
+    },
+    about_us:{
+        section1:{
+            read:"Lire la suite",
+            title1:"NOUS POUVONS COMPTER SUR LE NATUREL",
+            title2:"Chez Himpies, nous réunissons la sagesse ancienne et la technologie la plus récente pour améliorer notre vie.",
+            desc1:"Partout dans le monde, les générations plus âgées avaient l'habitude de soigner leur corps en utilisant des remèdes naturels, et le chanvre est l'une de ces plantes puissantes, elle pourrait guérir notre corps et notre esprit en même temps.",
+            desc2:"Chez Himpies, nous croyons que le chanvre peut donner au monde plus qu'ils ne le savent, et c'est ce que nous essayons de montrer.",
+        },
+        section2:{
+            title:"Notre compagnie",
+            desc:"Himpies est une marque de chanvre propulsée par SESHATA. Basé aux Emirats Arabes Unis.Nous vous apportons la meilleure qualité de produits HEMP dans le monde entier.",
+        }
+    },
+    faq:{
+        subscribe:"S'abonner",
+        search:"Chercher",
+        newsletter:"Recevez la newsletter",
+        help:"Encore besoin d'aide? Contactez l'assistance 24h/24 et 7j/7 :",
+        
     }
 };
 

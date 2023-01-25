@@ -214,7 +214,7 @@ export default {
                 </div>
               </div>
               <div class="need-support text-center mt-100">
-                <h2>Still need help? Reach out to support 24/7:</h2>
+                <h2>{{ $t("faq.help") }}</h2>
                 <div class="btn-wrapper mb-30">
                   <a :href="route('contact-us')" class="theme-btn-1 btn">{{
                     $t("nav_menu.help.contact_us")
@@ -228,10 +228,10 @@ export default {
             <aside class="sidebar-area ltn__right-sidebar">
               <!-- Newsletter Widget -->
               <div class="widget ltn__search-widget ltn__newsletter-widget">
-                <h6 class="ltn__widget-sub-title">// subscribe</h6>
-                <h4 class="ltn__widget-title">Get Newsletter</h4>
+                <h6 class="ltn__widget-sub-title">// {{ $t("faq.subscribe") }}</h6>
+                <h4 class="ltn__widget-title">{{ $t("faq.newsletter") }}</h4>
                 <form action="#">
-                  <input type="text" name="search" placeholder="Search" />
+                  <input type="text" name="search" :placeholder="$t('faq.search')" />
                   <button type="submit"><i class="fas fa-search"></i></button>
                 </form>
                 <div class="ltn__newsletter-bg-icon">
