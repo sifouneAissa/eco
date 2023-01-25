@@ -183,7 +183,7 @@ export default {
                       >
                     </li>
                     <li>
-                      <a href="locations.html"
+                      <a href="#"
                         ><i class="icon-placeholder"></i> {{ $page.props.address }}
                       </a>
                     </li>
@@ -295,11 +295,11 @@ export default {
                         <li>
                           <Link href="/" id="home">{{ $t("nav_menu.pages.home") }}</Link>
                         </li>
-                        <li>
+                        <!-- <li>
                           <Link :href="route('about-us')">
                             {{ $t("nav_menu.help.about_us") }}
-                          </Link>
-                          <!-- <ul>
+                          </Link> -->
+                        <!-- <ul>
                             <li>
                               <Link :href="route('about-us')">
                                 {{ $t("nav_menu.help.about_us") }}
@@ -311,10 +311,12 @@ export default {
                               </Link>
                             </li>
                           </ul> -->
-                        </li>
+                        <!-- </li> -->
                         <li>
-                          <a href="#">{{ $t("nav_menu.pages.products") }} </a>
-                          <ul>
+                          <Link :href="route('listing')"
+                            >{{ $t("nav_menu.pages.products") }}
+                          </Link>
+                          <!-- <ul>
                             <li>
                               <Link :href="route('listing')"
                                 >{{ $t("nav_menu.pages.products") }}
@@ -343,110 +345,29 @@ export default {
                                 </li>
                               </ul>
                             </li>
-                          </ul>
+                          </ul> -->
                         </li>
-                        <!-- <li class="menu-icon">
-                          <a href="#">Kits</a>
-                          <ul class="mega-menu">
-                            <li>
-                              <div class="menu-product-item">
-                                <div class="menu-product-img">
-                                  <a href="product-details.html"
-                                    ><img src="/img/product/13.png" alt="#"
-                                  /></a>
-                                </div>
-                                <div class="product-info">
-                                  <h2 class="product-title">
-                                    <a href="product-details.html">Trimmer Kits</a>
-                                  </h2>
-                                  <div class="product-price">
-                                    <span>$125.00</span>
-                                    <del>$142.00</del>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="menu-product-item">
-                                <div class="menu-product-img">
-                                  <a href="product-details.html"
-                                    ><img src="/img/product/9.png" alt="#"
-                                  /></a>
-                                </div>
-                                <div class="product-info">
-                                  <h2 class="product-title">
-                                    <a href="product-details.html"
-                                      >Beard Growth Vitamins</a
-                                    >
-                                  </h2>
-                                  <div class="product-price">
-                                    <span>$135.00</span>
-                                    <del>$145.00</del>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="menu-product-item">
-                                <div class="menu-product-img">
-                                  <a href="product-details.html"
-                                    ><img src="/img/product/15.png" alt="#"
-                                  /></a>
-                                </div>
-                                <div class="product-info">
-                                  <h2 class="product-title">
-                                    <a href="product-details.html">Beard Scissors</a>
-                                  </h2>
-                                  <div class="product-price">
-                                    <span>$15.00</span>
-                                    <del>$18.00</del>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="menu-product-item">
-                                <div class="menu-product-img">
-                                  <a href="product-details.html"
-                                    ><img src="/img/product/6.png" alt="#"
-                                  /></a>
-                                </div>
-                                <div class="product-info">
-                                  <h2 class="product-title">
-                                    <a href="product-details.html">Beard Care Oil</a>
-                                  </h2>
-                                  <div class="product-price">
-                                    <span>$149.00</span>
-                                    <del>$162.00</del>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </li> -->
+
                         <li>
                           <Link :href="route('blog.index')">{{
                             $t("nav_menu.pages.blog")
                           }}</Link>
-
-                          <!-- <ul>
-                            <li><a href="blog.html">News</a></li>
-                            <li><a href="blog-grid.html">News Grid</a></li>
-                            <li>
-                              <a href="blog-left-sidebar.html">News Left sidebar</a>
-                            </li>
-                            <li>
-                              <a href="blog-right-sidebar.html">News Right sidebar</a>
-                            </li>
-                            <li><a href="blog-details.html">News details</a></li>
-                          </ul> -->
+                        </li>
+                        <li>
+                          <Link :href="route('trackOrder.index')">{{
+                            $t("nav_menu.pages.order_tracking")
+                          }}</Link>
                         </li>
                         <li>
                           <Link :href="route('contact-us')">{{
                             $t("nav_menu.help.contact_us")
                           }}</Link>
                         </li>
-                        <!--                                                <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>-->
+                        <li>
+                          <Link :href="route('about-us')">
+                            {{ $t("nav_menu.help.about_us") }}
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </nav>
@@ -669,41 +590,10 @@ export default {
             <ul>
               <li>
                 <Link :href="route('listing')">{{ $t("nav_menu.pages.home") }}</Link>
-                <!--                                <ul class="sub-menu">-->
-                <!--                                    <li><a :href="route('welcome')">Home Style - 01</a></li>-->
-                <!--                                    <li><a href="index-2.html">Home Style - 02</a></li>-->
-                <!--                                    <li><a href="index-3.html">Home Style - 03 <span class="menu-item-badge">new</span></a>-->
-                <!--                                    </li>-->
-                <!--                                    <li><a href="index-4.html">Home Style - 04</a></li>-->
-                <!--                                    <li><a href="index-5.html">Home Style - 05</a></li>-->
-                <!--                                    <li><a href="index-6.html">Home Style - 06</a></li>-->
-                <!--                                    <li><a href="index-7.html">Home Style - 07</a></li>-->
-                <!--                                    <li><a href="index-8.html">Home Style - 08</a></li>-->
-                <!--                                </ul>-->
               </li>
-              <li>
-                <Link :href="route('about-us')">
-                  {{ $t("nav_menu.help.about_us") }}
-                </Link>
-              </li>
+
               <li>
                 <Link :href="route('listing')">{{ $t("nav_menu.pages.products") }}</Link>
-                <!--                                <ul class="sub-menu">-->
-                <!--                                    <li><a href="shop.html">Product</a></li>-->
-                <!--                                    <li><a href="shop-grid.html">Product Grid</a></li>-->
-                <!--                                    <li><a href="shop-left-sidebar.html">Product Left Sidebar</a></li>-->
-                <!--                                    <li><a href="shop-right-sidebar.html">Product Right Sidebar</a></li>-->
-                <!--                                    <li><a href="product-details.html">Product Details</a></li>-->
-                <!--                                    <li><a href="cart.html">Cart</a></li>-->
-                <!--                                    <li><a href="wishlist.html">Wishlist</a></li>-->
-                <!--                                    <li><a href="checkout.html">Checkout</a></li>-->
-                <!--                                    <li><a href="order-tracking.html">{{ $t("nav_menu.pages.order_tracking") }}</a></li>-->
-                <!--                                    <li><Link :href="route('account')">
-                              {{ $t("nav_menu.pages.account") }}</Link
-                            ></li>-->
-                <!--                                    <li><a href="login.html">Sign in</a></li>-->
-                <!--                                    <li><a href="register.html">Register</a></li>-->
-                <!--                                </ul>-->
               </li>
               <li>
                 <Link :href="route('blog.index')">{{ $t("nav_menu.pages.blog") }}</Link>
@@ -754,7 +644,11 @@ export default {
                   $t("nav_menu.help.contact_us")
                 }}</Link>
               </li>
-              <!--                            <li><Link :href="route('login')">{{ $t("nav_menu.pages.login") }}</Link></li>-->
+              <li>
+                <Link :href="route('about-us')">
+                  {{ $t("nav_menu.help.about_us") }}
+                </Link>
+              </li>
             </ul>
           </div>
           <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
