@@ -184,9 +184,9 @@ export default {
               <h1 class="text-uppercase title-size">
                 {{ $page.props.home_page_header_1 }}
               </h1>
-              <h1 class="text-uppercase title-size">
+              <!-- <h1 class="text-uppercase title-size">
                 {{ $page.props.home_page_sub_header_1 }}
-              </h1>
+              </h1> -->
               <!--              <h1>{{ $t("dashboard.title2") }}</h1>-->
               <h2>{{ $page.props.home_page_header_2 }}</h2>
               <div class="btn-wrapper">
