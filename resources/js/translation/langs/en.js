@@ -394,6 +394,19 @@ const en = {
         desc2:"Return product within 3 days for any product you buy",
         desc3:"We ensure the product quality that is our main goal",
         desc4:"Provide free home delivery for all product over $100",
+    },
+    about_us:{
+        section1:{
+            read:"read more",
+            title1:"WE CAN COUNT ON NATURAL",
+            title2:"In Himpies we bring the ancient wisdom and newest technology together to improve our life",
+            desc1:"Around the world, older generations used to heal there bodies using natural remedies, and hemp is one of this powerful plant, it could heal our body and mind at the same time.",
+            desc2:"At Himpies we believe hemp can give the world more than they know, and this is what we are  trying to show.",
+        },
+        section2:{
+            title:"Our Company ",
+            desc:"Himpies is a hemp brand powered by SESHATA. Based in United Arab Emirates.We bring the best quality of HEMP products over the world to you.",
+        }
     }
 };
 
