@@ -29,7 +29,7 @@
             <div class="mini-cart-info">
               <h6>
                 <a @click="go(item)" href="javascript: void(0)">{{
-                  item.product.name
+                  item.product.lname
                 }}</a>
               </h6>
               <span class="mini-cart-quantity"
@@ -219,7 +219,7 @@ export default {
 
       if (item.quantity > product.isA.remain) {
         item.quantity = product.isA.remain;
-        toast.warning(this.$t("listing.limited") + product.name);
+        toast.warning(this.$t("listing.limited") + product.lname);
       }
 
       if (!item.quantity) item.quantity = 1;

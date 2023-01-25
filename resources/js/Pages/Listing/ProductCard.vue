@@ -52,7 +52,7 @@
     </div>
     <div class="product-info">
       <h2 class="product-title text-truncate ">
-        <Link :href="route('product.show', { id: model.id })">{{ model.name }}</Link>
+        <Link :href="route('product.show', { id: model.id })">{{ model.lname }}</Link>
       </h2>
       <div class="product-price">
         <span>{{ $page.props.currency_code }} {{ model.cprice }}</span>
@@ -87,7 +87,7 @@ export default {
       model.quantity = model.quantity + by;
       if (model.quantity > model.isA.remain) {
         model.quantity = model.isA.remain;
-        toast.warning(this.$t("listing.limited") + model.name);
+        toast.warning(this.$t("listing.limited") + model.lname);
       }
 
       if (!model.quantity) model.quantity = 1;

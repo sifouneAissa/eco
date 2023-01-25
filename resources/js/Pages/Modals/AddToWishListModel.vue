@@ -26,7 +26,7 @@
                       <h5>
                         <Link
                           :href="route('product.show', { id: $page.props.productTo.id })"
-                          >{{ $page.props.productTo.name }}</Link
+                          >{{ $page.props.productTo.lname }}</Link
                         >
                       </h5>
                       <p class="added-cart">

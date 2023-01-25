@@ -259,7 +259,7 @@ export default {
                     :key="item.id"
                   >
                     <td>
-                      {{ item.product.name }} <strong>× {{ item.quantity }}</strong>
+                      {{ item.product.lname }} <strong>× {{ item.quantity }}</strong>
                     </td>
                     <td>{{ $page.props.currency_code }} {{ item.qprice }}</td>
                   </tr>

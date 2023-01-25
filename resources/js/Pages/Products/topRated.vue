@@ -32,7 +32,7 @@
                 </ul>
               </div>
               <h6>
-                <a @click="go(product)" href="javascript: void(0)">{{ product.name }}</a>
+                <a @click="go(product)" href="javascript: void(0)">{{ product.lname }}</a>
               </h6>
               <div class="product-price">
                 <span>{{ $page.props.currency_code }} {{ product.cprice }}</span>

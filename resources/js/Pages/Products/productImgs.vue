@@ -49,7 +49,7 @@
               </li>
             </ul>
           </div>
-          <h3>{{ $page.props.product.name }}</h3>
+          <h3>{{ $page.props.product.lname }}</h3>
           <div class="product-price">
             <span>{{ $page.props.currency_code }} {{ $page.props.product.cprice }}</span>
             <del>{{ $page.props.currency_code }} {{ $page.props.product.coprice }}</del>
@@ -59,7 +59,7 @@
               <li>
                 <strong>{{ $t("listing.category") }} : </strong>
                 <span>
-                  <a href="#">{{ $page.props.product.category.name }}</a>
+                  <a href="#">{{ $page.props.product.category.lname }}</a>
                 </span>
               </li>
             </ul>
@@ -164,7 +164,7 @@ export default {
       if ($("#quid").val() > app.$page.props.product.isA.remain) {
         const toast = useToast();
         $("#quid").val(app.$page.props.product.isA.remain);
-        toast.warning(app.$t("listing.limited") + app.$page.props.product.name);
+        toast.warning(app.$t("listing.limited") + app.$page.props.product.lname);
       }
 
       if ($("#quid").val() === "0") $("#quid").val("1");
@@ -180,7 +180,7 @@ export default {
 
       if (item.quantity > product.isA.remain) {
         item.quantity = product.isA.remain;
-        toast.warning(this.$t("listing.limited") + product.name);
+        toast.warning(this.$t("listing.limited") + product.lname);
       }
 
       if (!item.quantity) item.quantity = 1;

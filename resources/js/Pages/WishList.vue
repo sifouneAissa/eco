@@ -29,7 +29,7 @@
                       <td class="cart-product-info">
                         <h4>
                           <Link :href="route('product.show', { id: model.product_id })">{{
-                            model.product.name
+                            model.product.lname
                           }}</Link>
                         </h4>
                       </td>

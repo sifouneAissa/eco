@@ -48,7 +48,7 @@
                           </li>
                         </ul>
                       </div>
-                      <h3>{{ $page.props.productTo.name }}</h3>
+                      <h3>{{ $page.props.productTo.lname }}</h3>
                       <div class="product-price">
                         <span
                           >{{ $page.props.currency_code }}
@@ -64,7 +64,7 @@
                           <li>
                             <strong>{{ $t("listing.category") }} : </strong>
                             <span>
-                              <a href="#">{{ $page.props.productTo.category.name }}</a>
+                              <a href="#">{{ $page.props.productTo.category.lname }}</a>
                               <!--                                                            <a href="#">Oil</a>-->
                               <!--                                                            <a href="#">Grooming</a>-->
                               <!--                                                            <a href="#">Tools</a>-->
@@ -202,7 +202,7 @@ export default {
 
       if (item.quantity > product.isA.remain) {
         item.quantity = product.isA.remain;
-        toast.warning(this.$t("listing.limited") + product.name);
+        toast.warning(this.$t("listing.limited") + product.lname);
       }
 
       if (!item.quantity) item.quantity = 1;
