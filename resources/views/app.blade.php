@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
+<?php //ob_start("ob_gzhandler"); ?>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -19,7 +20,6 @@
 {{--        <script src="/assets/ltr/js/plugins.js" type="javascript"></script>--}}
 {{--        <script src="/assets/ltr/js/main.js" type="javascript"></script>--}}
         <!-- Scripts -->
-
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @if(isRtl(app()->getLocale()))
