@@ -1,7 +1,7 @@
 <script >
     import Editor from '@tinymce/tinymce-vue'
     export default {
-        props : ['initValue'],
+        props : ['initValue','id'],
         components : {
             Editor
         },
@@ -58,6 +58,7 @@
         :init="init"
         name="blog"
         v-model="value"
+        :id="id ? id : 'editorDesc'"
     />
 </template>
 

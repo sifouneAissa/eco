@@ -7,6 +7,7 @@
                     <div class="form-group">
                         <label>Name</label>
                         <input v-model="form.name" type="text" class="form-control" placeholder="Product Name">
+                        <edit-t :type="'input'" @write="write" :attr="'Name'" :keyV="'name'" :model="this.model" :cvalues="this.form.langs"/>
                         <div v-show="form.errors.name">
                             <p class="text-sm " style="color: red">
                                 {{ form.errors.name }}
@@ -35,6 +36,8 @@
                         <label>Description</label>
                         <Editor @Writing="Writing" :initValue="form.desc"/>
 <!--                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>-->
+                        <edit-t :type="'editor'" @write="write" :attr="'Description'" :keyV="'desc'" :model="this.model" :cvalues="this.form.langs"/>
+
                         <div v-show="form.errors.desc">
                             <p class="text-sm text-red-600" style="color: red">
                                 {{ form.errors.desc }}
@@ -106,12 +109,13 @@
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
     import Editor from '@/Pages/Admin/Editor/EditorDesc.vue';
+    import editT from '@/Pages/Admin/Translations/updateTranslation.vue';
 
     export default  {
         components : {
             Update,
             Multiselect,
-            Editor
+            Editor,editT
         },
         props : {
             model : Object
@@ -134,7 +138,8 @@
                     old_price: this.model.old_price,
                     start_over : !this.model.isA.isA,
                     inventory : {name : this.model.inventory.quantity,id : this.model.inventory.id},
-                    category:  {name : this.model.category.name,id : this.model.category.id}
+                    category:  {name : this.model.category.name,id : this.model.category.id},
+                    langs : []
                 }),
                 selected : null,
                 options1: this.$page.props.categories.map(function (item){return {name : item.name,id : item.id};}),
@@ -143,6 +148,9 @@
 
         },
         methods : {
+            write(ditem){
+                this.form.langs = ditem;
+            },
             resetModel : function (){
                 this.$emit('ResetModel');
             },
@@ -158,7 +166,8 @@
                     desc : data.desc,
                     price : data.price,
                     old_price : data.old_price,
-                    start_over : data.start_over
+                    start_over : data.start_over,
+                    langs : data.langs
                 })).patch(route('admin.product.update',{
                     id : this.model.id
                 }), {

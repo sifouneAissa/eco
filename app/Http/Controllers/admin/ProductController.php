@@ -55,10 +55,10 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-
         $inputs = $this->filterRequest($request->all());
         $product = Product::create($inputs);
 
+        $product->addTranslations($request->input('langs'));
     }
 
     public function update(ProductRequest $request, $id)
@@ -79,6 +79,7 @@ class ProductController extends Controller
             InventoryOrderItem::where('inventory_id', $inventory->id)->whereIn('order_item_id', $orderItems->pluck('id'))->delete();
         }
 
+        $product->updateTranslations($request->input('langs'));
     }
 
     public function destroy($id)

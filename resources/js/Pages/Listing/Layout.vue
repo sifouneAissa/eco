@@ -221,7 +221,7 @@ export default {
                 :class="$page.props.query === category.name ? 'active' : ''"
                 :data-filter="'.filter_category_' + category.id"
               >
-                {{ category.name }}
+                {{ category.lname }}
               </button>
             </div>
             <div
@@ -235,7 +235,7 @@ export default {
                 :key="category.id"
                 :data-filter="'.filter_category_' + category.id"
               >
-                {{ category.name }}
+                {{ category.lname }}
               </button>
             </div>
           </div>

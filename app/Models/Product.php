@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Modules\TransLogic\Traits\ModelTranslationsModel;
 use App\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,13 +18,18 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
     use MediaTrait;
     use Searchable;
+    use ModelTranslationsModel;
 
 
     public const SNAME = 'Products';
     public const INAME = 'Product';
 
     protected $fillable = ['name','price','old_price','desc','product_category_id','product_inventory_id'];
-    protected $appends = ['cprice','quantity','modal_ids','fimage','isA','dprice' , 'coprice'
+    protected $appends = ['cprice','quantity','modal_ids','fimage','isA','dprice' , 'coprice','name_ar','name_fr',
+        'desc_ar',
+        'desc_fr',
+        'lname',
+        'ldesc'
 //        'new','bests','popular'
     ];
 
@@ -139,5 +145,27 @@ class Product extends Model implements HasMedia
     }
 
 
+    public function getDescFrAttribute(){
+        $values = $this->fr_translations()->where('key','desc')->get();
+        if($values->count()) return $values->first()->only('value','id');
+
+        return null;
+    }
+
+    public function getDescArAttribute(){
+        $values = $this->ar_translations()->where('key','desc')->get();
+        if($values->count()) return $values->first()->only('value','id');
+
+        return null;
+    }
+
+    public function getLnameAttribute(){
+        return $this->checkAndGetAttr('name');
+    }
+
+
+    public function getLdescAttribute(){
+        return $this->checkAndGetAttr('desc');
+    }
 
 }

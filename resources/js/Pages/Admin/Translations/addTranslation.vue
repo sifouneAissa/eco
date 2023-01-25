@@ -25,16 +25,29 @@
                     @input="writing" :dir="lselected === 'ar' ? 'rtl' : 'ltr'" v-model="data[lselected]"  type="text" class="form-control" :placeholder="attr + ' ' + lselected"
                 ></textarea>
             </div>
+            <div :key="lselected+'_'+keyV" v-else-if="type==='editor' && lselected" class="form-group">
+                <label>{{attr + ' ' + lselected}}</label>
+                <EditorDesc  :initValue="data[lselected]" :id="keyV+'_'+lselected+'edit'"  @Writing="editorWrite"/>
+                </div>
 
         </div>
     </div>
 </template>
 <script >
+    import EditorDesc from '@/Pages/Admin/Editor/EditorDesc.vue';
     export default {
+        components : {
+            EditorDesc
+        },
         props : [
             'attr','keyV','type','cvalues'
         ],
         methods : {
+
+            editorWrite : function(data){
+                this.data[this.lselected] = data;
+                this.writing();
+            },
             writing (){
                 let data = this.$page.props.locales.filter((item) => item!=='en').map((lang) => {
                     return {

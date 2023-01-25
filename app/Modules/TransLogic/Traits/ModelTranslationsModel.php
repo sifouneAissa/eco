@@ -127,8 +127,8 @@ trait ModelTranslationsModel {
         if($locale==="en") return $ename;
         $lname = ($this[$name."_".$locale] ? $this[$name.'_'.$locale]['value'] : null);
 
-        if(!$lname) return $lname;
+        if($lname) return $lname;
 
-        return $lname;
+        return $ename;
     }
 }

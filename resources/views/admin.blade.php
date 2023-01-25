@@ -6,8 +6,9 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
-{{--        {{dd($page)}}--}}
+        <title inertia>{{ config('app.name', 'Laravel') }} Administration</title>
+
+        <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon" />
         <!-- Fonts -->
 {{--        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">--}}
         <!-- Scripts -->

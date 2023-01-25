@@ -7,6 +7,7 @@
                     <div class="form-group">
                         <label>Name</label>
                         <input v-model="form.name" type="text" class="form-control" placeholder="Product Name">
+                        <add-t :type="'input'" @write="write" :attr="'Name'" :keyV="'name'" :cvalues="form.langs"/>
                         <div v-show="form.errors.name">
                             <p class="text-sm " style="color: red">
                                 {{ form.errors.name }}
@@ -35,6 +36,7 @@
                         <label>Description</label>
 <!--                        <textarea class="form-control" v-model="form.desc" placeholder="Desc"></textarea>-->
                         <Editor @Writing="Writing"/>
+                        <add-t :type="'editor'" @write="write" :attr="'Desc'" :keyV="'desc'" :cvalues="form.langs"/>
                         <div v-show="form.errors.desc">
                             <p class="text-sm text-red-600" style="color: red">
                                 {{ form.errors.desc }}
@@ -97,12 +99,13 @@
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
     import Editor from '@/Pages/Admin/Editor/EditorDesc.vue';
+    import AddT from '@/Pages/Admin/Translations/addTranslation.vue';
 
     export default  {
         components : {
             Add,
             Multiselect,
-            Editor
+            Editor,AddT
         },
         props : {
         },
@@ -123,6 +126,7 @@
                     old_price: '',
                     inventory : null,
                     category: null,
+                    langs : []
                 }),
                 selected : null,
                 options1: this.$page.props.categories.map(function (item){return {name : item.name,id : item.id};}),
@@ -131,6 +135,10 @@
 
         },
         methods : {
+            write(ditem){
+                this.form.langs = ditem;
+                console.log(this.form.langs);
+            },
             resetModel : function (){
                 this.$emit('ResetModel');
             },
@@ -145,7 +153,8 @@
                     product_inventory_id : data.inventory.id,
                     desc : data.desc,
                     price : data.price,
-                    old_price : data.old_price
+                    old_price : data.old_price,
+                    langs : data.langs
                 })).post(route('admin.product.store',{}), {
                     onFinish: () => {
                     },
