@@ -408,6 +408,13 @@ const fr = {
             title:"Notre compagnie",
             desc:"Himpies est une marque de chanvre propulsée par SESHATA. Basé aux Emirats Arabes Unis.Nous vous apportons la meilleure qualité de produits HEMP dans le monde entier.",
         }
+    },
+    faq:{
+        subscribe:"S'abonner",
+        search:"Chercher",
+        newsletter:"Recevez la newsletter",
+        help:"Encore besoin d'aide? Contactez l'assistance 24h/24 et 7j/7 :",
+        
     }
 };
 

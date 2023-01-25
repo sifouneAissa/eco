@@ -407,6 +407,13 @@ const en = {
             title:"Our Company ",
             desc:"Himpies is a hemp brand powered by SESHATA. Based in United Arab Emirates.We bring the best quality of HEMP products over the world to you.",
         }
+    },
+    faq:{
+        subscribe:"Subscribe",
+        search:"Search",
+        newsletter:"Get Newsletter",
+        help:"Still need help? Reach out to support 24/7:",
+        
     }
 };
 
