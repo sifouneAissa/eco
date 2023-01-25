@@ -62,6 +62,11 @@ Route::middleware([
 Route::middleware([
  'set.password'
 ])->group(function (){
+
+    Route::get('/user/profile', function (){
+        abort(404);
+    })->name('profile.show');
+
     // product
     Route::post('/addproduct',[\App\Http\Controllers\UserOrderController::class,'addProduct'])->name('addProduct');
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class,'show'])->name('product.show');

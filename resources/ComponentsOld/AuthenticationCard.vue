@@ -9,3 +9,8 @@
         </div>
     </div>
 </template>
+
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

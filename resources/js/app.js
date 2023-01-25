@@ -1,4 +1,4 @@
-// import './bootstrap';
+import './bootstrap';
 // import '../css/app.css'
 
 import '../../public/vendor/icofont/icofont.min.css';
@@ -34,7 +34,7 @@ window.Echo = new Echo({
     disableStats: true,
     cluster: 'mt1',
 });
-
+window.bots = false;
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -58,7 +58,9 @@ createInertiaApp({
         // for lazy importation
         let script2 = document.createElement('script');
         script2.src = "/chat/widget.js";script1.id = 'widget';
+
         document.body.append(script2); // (*)
+
 
         // if(props.initialPage.props.isRtl) {
         //     // for lazy importation

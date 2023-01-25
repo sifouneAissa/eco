@@ -102,3 +102,8 @@ const submit = () => {
         </form>
     </AuthenticationCard>
 </template>
+
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

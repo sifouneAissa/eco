@@ -10,3 +10,7 @@ defineProps({
         <span v-else><slot /></span>
     </label>
 </template>
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

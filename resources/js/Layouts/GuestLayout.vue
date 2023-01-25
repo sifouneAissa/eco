@@ -16,6 +16,8 @@ export default {
     AddToWishListModel,
   },
   mounted() {
+
+    let app = this;
     // clear interval
     clearInterval(window.idleIntervalTimer);
 
@@ -37,13 +39,26 @@ export default {
       }, 200000);
     }
 
-    let app = this;
 
     $("#script1").remove();
     $("#script2").remove();
-    // $("#scrollUp").css('margin', '800px');
+
     $(document).ready(function () {
+        if(!app.$page.props.botS)
+        window.setTimeout(function(){
+            if(botmanChatWidget){
+                botmanChatWidget?.sayAsBot('Hi');
+                window.setTimeout(function() {
+                    botmanChatWidget.whisper('xxxxxxxxxxxxxxxxx');
+                },2000);
+              }
+        }, 10000);
+
+
+
+
       $("#botmanWidgetRoot").css("float", "right");
+
       if (app.$page.props.isRtl) {
         // for lazy importation
         let script1 = document.createElement("script");
@@ -87,6 +102,8 @@ export default {
         });
       }
     };
+
+
   },
   data() {
     return {

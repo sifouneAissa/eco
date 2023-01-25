@@ -12,7 +12,7 @@
     <div class="row ltn__related-product-slider-one-active slick-arrow-1">
       <!-- ltn__product-item -->
       <div v-for="model in models" :key="model.id" class="col-lg-12">
-        <ProductCard :model="model" />
+        <ProductCard :model="model" :img_height="200" />
       </div>
     </div>
   </div>

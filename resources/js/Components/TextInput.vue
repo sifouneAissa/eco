@@ -27,3 +27,7 @@ defineExpose({ focus: () => input.value.focus() });
         @input="$emit('update:modelValue', $event.target.value)"
     >
 </template>
+
+<style lang="postcss"  scoped>
+    @import '@/../css/app.css';
+</style>

@@ -1,4 +1,4 @@
-// import './bootstrap';
+import './bootstrap';
 
 import '../../public/admin/vendor/fontawesome/css/fontawesome.css';
 import '../../public/admin/vendor/icons/feather.css';
@@ -75,6 +75,9 @@ createInertiaApp({
         script.src = "/admin/vendor/dataTables/vfs_fonts.js";
         document.body.append(script); // (*)
 
+
+        $("#script1").remove();
+        $("#script2").remove();
 
         const myApp = createApp({render: () => h(app, props)})
             .use(plugin)
