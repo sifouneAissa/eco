@@ -299,6 +299,7 @@ const fr = {
        comments:"Commentaires",
        post_comment:"Poster un commentaire",
      type_comment:"Tapez vos commentaires",
+     type_name:"Tapez votre nom",
      desc_comment:"Enregistrez mon nom, mon adresse e-mail et mon site Web dans ce navigateur pour la prochaine fois que je commenterai.",
       },
       dashboard:{
@@ -414,6 +415,14 @@ const fr = {
         search:"Chercher",
         newsletter:"Recevez la newsletter",
         help:"Encore besoin d'aide? Contactez l'assistance 24h/24 et 7j/7 :",
+        activity:"activité",
+        journey:"C'est notre parcours",
+        clients:"Clients actifs",
+        coffee:"Tasse de café",
+        rewards:"Obtenir des récompenses",
+        country:"Couverture Pays",
+        blogs:"Dernier blog",
+        
         
     }
 };

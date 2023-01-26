@@ -1,23 +1,25 @@
-<script >
+<script>
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 
 export default {
-    props : ['title','img'],
-    components : {
-        Head,
-        Link
+  props: ["title", "img"],
+  components: {
+    Head,
+    Link,
+  },
+  methods: {
+    go: function () {
+      let app = this;
+      Inertia.post(
+        this.route("trackOrder.redirect", {
+          mobile: app.$page.props.buyer.mobile,
+          order_id: app.$page.props.buyer.order_id,
+        })
+      );
     },
-    methods : {
-        go : function () {
-            let app = this;
-            Inertia.post(this.route('trackOrder.redirect', {
-                mobile: app.$page.props.buyer.mobile,
-                order_id: app.$page.props.buyer.order_id,
-            }))
-        }
-    }
-}
+  },
+};
 </script>
 
 <template>
@@ -28,10 +30,10 @@ export default {
     <!-- :data-bg="img" -->
     <div class="container">
       <div class="row">
-          <div class="col-lg-12">
+        <div class="col-lg-12">
           <div
             class="ltn__breadcrumb-inner ltn__breadcrumb-inner-4 justify-content-between"
-             >
+          >
             <div class="section-title-area">
               <h1 class="section-title white-color">{{ title }}</h1>
             </div>
@@ -42,10 +44,16 @@ export default {
                 </li>
                 <li>{{ title }}</li>
               </ul>
-              <div v-if="$page.props.buyer" class="float-right">Thanks for your purchase,<a href="javascript:void(0)" @click="go"><div class="text-white"> Track your order : #{{$page.props.buyer?.order_id}}</div></a></div>
+              <div v-if="$page.props.buyer" class="float-right">
+                Thanks for your purchase,<a href="javascript:void(0)" @click="go"
+                  ><div class="text-white">
+                    Track your order : #{{ $page.props.buyer?.order_id }}
+                  </div></a
+                >
+              </div>
+            </div>
           </div>
         </div>
-       </div>
       </div>
     </div>
   </div>
@@ -54,7 +62,7 @@ export default {
 <style scoped>
 .ltn__breadcrumb-area {
   background-color: #7aa649;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   padding-top: 50px;
   padding-bottom: 50px;
 }

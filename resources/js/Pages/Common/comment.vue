@@ -92,7 +92,11 @@
         </div>
       </div>
       <div v-if="!$page.props.auth" class="input-item input-item-name ltn__custom-icon">
-        <input v-model="form.guest_name" type="text" placeholder="Type your name...." />
+        <input
+          v-model="form.guest_name"
+          type="text"
+          :placeholder="$t('blog.type_name')"
+        />
         <div v-show="this.submited && !isName()">
           <p class="text-sm" style="color: red">
             {{ this.errors.name }}

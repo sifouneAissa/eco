@@ -1,72 +1,70 @@
-<script >
+<script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 import { useToast } from "vue-toastification";
- export  default   {
-    components : {
-        GuestLayout,
-        Head,
-        Link,
-        breadcrumb,
+export default {
+  components: {
+    GuestLayout,
+    Head,
+    Link,
+    breadcrumb,
+  },
+  data() {
+    return {
+      submited: false,
+      form: useForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      }),
+      errors: {
+        message: this.$t("errors.correct_field"),
+        email: this.$t("errors.correct_field"),
+        phone: this.$t("errors.mobile"),
+        name: this.$t("errors.correct_field"),
+      },
+    };
+  },
+  methods: {
+    submit: function () {
+      let app = this;
+      this.form.post(this.route("contactus.store"), {
+        onSuccess: () => {
+          const toast = useToast();
+          toast.success("Your message has been sent successfully");
+          app.form.reset("name", "email", "phone", "message");
+          app.submited = false;
+        },
+      });
     },
-     data () {
-        return {
-            submited : false,
-            form : useForm({
-                name: "",
-                email: "",
-                phone: "",
-                message: "",
-            }),
-            errors: {
-                message : this.$t("errors.correct_field"),
-                email: this.$t("errors.correct_field"),
-                phone: this.$t("errors.mobile"),
-                name: this.$t("errors.correct_field"),
-            },
-        }
-     },
-     methods : {
-        submit : function (){
-            let app = this;
-            this.form.post(this.route('contactus.store'),{
-                onSuccess : () => {
-                    const toast = useToast();
-                    toast.success('Your message has been sent successfully');
-                    app.form.reset('name','email','phone','message')
-                    app.submited = false;
-                }
-            })
-        },
-         emailReg : function (){
-             return String(this.form.email)
-                 .toLowerCase()
-                 .match(
-                     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                 );
-         },
-        vData(){
-
-            this.submited  = true;
-            if(this.isPhone() && this.isName() && this.isMessage() && this.emailReg()){
-                this.submit();
-            }
-        },
-         isPhone: function () {
-             return this.form.phone.match(
-                 /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/g
-             );
-         },
-         isName: function () {
-             return this.form.name.length > 3;
-         },
-         isMessage : function (){
-
-             return this.form.message.length > 3;
-         }
-     }
-}
+    emailReg: function () {
+      return String(this.form.email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    },
+    vData() {
+      this.submited = true;
+      if (this.isPhone() && this.isName() && this.isMessage() && this.emailReg()) {
+        this.submit();
+      }
+    },
+    isPhone: function () {
+      return this.form.phone.match(
+        /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/g
+      );
+    },
+    isName: function () {
+      return this.form.name.length > 3;
+    },
+    isMessage: function () {
+      return this.form.message.length > 3;
+    },
+  },
+};
 </script>
 
 <template>
@@ -78,42 +76,57 @@ import { useToast } from "vue-toastification";
     </template>
     <breadcrumb :title="$t('nav_menu.help.contact_us')" />
     <!-- CONTACT MESSAGE AREA START -->
-    <div class="ltn__contact-message-area pt-50 pb-70">
+    <div class="ltn__contact-message-area pt-0 pb-80">
       <!-- pt-115 -->
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-7">
-            <div class="ltn__form-box contact-form-box mb-50 box-shadow--- white-bg--">
+            <div class="ltn__form-box contact-form-box mb-0 box-shadow--- white-bg--">
               <h3>{{ $t("contact_us.send") }}</h3>
               <form id="contact-form">
-                <input v-model="form.name" type="text" name="name" :placeholder="$t('contact_us.name')" />
-                  <div v-show="this.submited && !isName()">
-                      <p class="text-sm" style="color: red">
-                          {{ this.errors.name }}
-                      </p>
-                  </div>
-                <input v-model="form.email" type="email" name="email" :placeholder="$t('contact_us.email')" />
-                  <div v-show="this.submited && !emailReg()">
-                      <p class="text-sm" style="color: red">
-                          {{ this.errors.email }}
-                      </p>
-                  </div>
-                <input v-model="form.phone" type="text" name="phone" :placeholder="$t('contact_us.phone')" />
-                  <div v-show="this.submited && !isPhone()">
-                      <p class="text-sm" style="color: red">
-                          {{ this.errors.phone }}
-                      </p>
-                  </div>
+                <input
+                  v-model="form.name"
+                  type="text"
+                  name="name"
+                  :placeholder="$t('contact_us.name')"
+                />
+                <div v-show="this.submited && !isName()">
+                  <p class="text-sm" style="color: red">
+                    {{ this.errors.name }}
+                  </p>
+                </div>
+                <input
+                  v-model="form.email"
+                  type="email"
+                  name="email"
+                  :placeholder="$t('contact_us.email')"
+                />
+                <div v-show="this.submited && !emailReg()">
+                  <p class="text-sm" style="color: red">
+                    {{ this.errors.email }}
+                  </p>
+                </div>
+                <input
+                  v-model="form.phone"
+                  type="text"
+                  name="phone"
+                  :placeholder="$t('contact_us.phone')"
+                />
+                <div v-show="this.submited && !isPhone()">
+                  <p class="text-sm" style="color: red">
+                    {{ this.errors.phone }}
+                  </p>
+                </div>
                 <textarea
                   v-model="form.message"
                   name="message"
                   :placeholder="$t('contact_us.message')"
                 ></textarea>
-                  <div v-show="this.submited && !isMessage">
-                      <p class="text-sm" style="color: red">
-                          {{ this.errors.message }}
-                      </p>
-                  </div>
+                <div v-show="this.submited && !isMessage">
+                  <p class="text-sm" style="color: red">
+                    {{ this.errors.message }}
+                  </p>
+                </div>
                 <p>
                   <label class="input-info-save mb-0"
                     ><input type="checkbox" name="agree" />{{
@@ -155,16 +168,25 @@ import { useToast } from "vue-toastification";
               <div class="ltn__social-media mt-15">
                 <ul>
                   <li>
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a :href="$page.props.facebook" title="Facebook" target="_blank"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
                   </li>
                   <li>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a :href="$page.props.twitter" title="Twitter" target="_blank"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+                  </li>
+
+                  <li>
+                    <a :href="$page.props.instagram" title="Instagram" target="_blank"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
                   </li>
                   <li>
-                    <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
-                  </li>
-                  <li>
-                    <a href="#" title="Youtube"><i class="fab fa-youtube"></i></a>
+                    <a :href="$page.props.youtube" title="youtube" target="_blank"
+                      ><i class="fab fa-youtube"></i
+                    ></a>
                   </li>
                 </ul>
               </div>

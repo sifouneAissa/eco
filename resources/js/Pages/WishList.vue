@@ -11,7 +11,7 @@
     <!-- BREADCRUMB AREA END -->
 
     <!-- WISHLIST AREA START -->
-    <div class="liton__wishlist-area mb-105">
+    <div class="liton__wishlist-area mb-80">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">

@@ -8,14 +8,14 @@ export default {
 </script>
 <template>
   <!-- PRODUCT TAB AREA START (product-item-3) -->
-  <div class="ltn__product-tab-area ltn__product-gutter pt-110 pb-70">
+  <div class="ltn__product-tab-area ltn__product-gutter pt-80 pb-80">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-title-area text-center">
-<!--            <h1 class="section-title">{{ $t("dashboard.section3.title") }}</h1>-->
+            <!--            <h1 class="section-title">{{ $t("dashboard.section3.title") }}</h1>-->
             <h1 class="section-title">{{ $page.props.home_page_section_3_header }}</h1>
-<!--            <p>{{ $t("dashboard.section3.desc") }}</p>-->
+            <!--            <p>{{ $t("dashboard.section3.desc") }}</p>-->
             <p>{{ $page.props.home_page_section_3_sub_header }}</p>
           </div>
           <div

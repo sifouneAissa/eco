@@ -16,7 +16,6 @@ export default {
     AddToWishListModel,
   },
   mounted() {
-
     let app = this;
     // clear interval
     clearInterval(window.idleIntervalTimer);
@@ -39,23 +38,19 @@ export default {
       }, 200000);
     }
 
-
     $("#script1").remove();
     $("#script2").remove();
 
     $(document).ready(function () {
-        if(!app.$page.props.botS)
-        window.setTimeout(function(){
-            if(botmanChatWidget){
-                botmanChatWidget?.sayAsBot('Hi');
-                window.setTimeout(function() {
-                    botmanChatWidget.whisper('xxxxxxxxxxxxxxxxx');
-                },2000);
-              }
+      if (!app.$page.props.botS)
+        window.setTimeout(function () {
+          if (botmanChatWidget) {
+            botmanChatWidget?.sayAsBot("Hi");
+            window.setTimeout(function () {
+              botmanChatWidget.whisper("xxxxxxxxxxxxxxxxx");
+            }, 2000);
+          }
         }, 10000);
-
-
-
 
       $("#botmanWidgetRoot").css("float", "right");
 
@@ -102,8 +97,6 @@ export default {
         });
       }
     };
-
-
   },
   data() {
     return {
@@ -177,8 +170,7 @@ export default {
                 <div class="ltn__top-bar-menu">
                   <ul>
                     <li>
-                      <a
-                        href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you"
+                      <a :href="'mailto:' + $page.props.email"
                         ><i class="icon-mail"></i> {{ $page.props.email }}</a
                       >
                     </li>
@@ -829,7 +821,9 @@ export default {
                         </div>
                         <div class="footer-address-info">
                           <p>
-                            <a href="tel:+0123-456789"> {{ $page.props.phone }}</a>
+                            <a :href="'tel:' + $page.props.phone">
+                              {{ $page.props.phone }}</a
+                            >
                           </p>
                         </div>
                       </li>
@@ -839,7 +833,7 @@ export default {
                         </div>
                         <div class="footer-address-info">
                           <p>
-                            <a href="mailto:example@example.com">
+                            <a :href="'mailto:' + $page.props.email">
                               {{ $page.props.email }}</a
                             >
                           </p>
