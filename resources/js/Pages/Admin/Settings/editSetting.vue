@@ -95,11 +95,11 @@ export default {
           name: data.name,
           content: data.content,
           code : data.code,
-            langs : data.langs
+          langs : JSON.stringify(data.langs)
         }))
         .patch(
           route("admin.setting.update", {
-            id: this.model.id,
+            setting : this.model.id,
           }),
           {
             onFinish: () => {},

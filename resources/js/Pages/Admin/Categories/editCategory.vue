@@ -102,11 +102,11 @@ export default {
           name: data.name,
           desc: data.desc,
           show_in_dash:  data.show_in_dash,
-          langs : data.langs
+          langs : JSON.stringify(data.langs)
         }))
         .patch(
           route("admin.category.update", {
-            id: this.model.id,
+            category : this.model.id,
           }),
           {
             onFinish: () => {},

@@ -14,8 +14,8 @@
         },
         data (){
             return {
-                 value : this.initValue ? this.initValue : null,
-                 init : {
+                value : this.initValue ? this.initValue : null,
+                init : {
                     plugins: 'lists link image table code help wordcount image code fullscreen',
                     file_picker_types: 'image',
                     toolbar: 'undo redo | link image | fullscreen | formatselect | ' +

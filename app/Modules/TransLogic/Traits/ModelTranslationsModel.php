@@ -23,6 +23,9 @@ trait ModelTranslationsModel {
 
     public function addTranslations($data){
 
+        if(is_string($data))
+            $data = json_decode($data,true);
+
         if($data && count($data)) {
 
             foreach($data as $dlang){
@@ -43,6 +46,8 @@ trait ModelTranslationsModel {
 
     public function updateTranslations($data)
     {
+        if(is_string($data))
+            $data = json_decode($data,true);
 
         if ($data && count($data)) {
 

@@ -2,7 +2,7 @@
 <template>
     <Update :lg="true" @resetModel="resetModel"  :id="model.modal_ids.edit" title="Edit Product">
         <div  class="modal-body mx-3 bg" >
-            <form @submit.prevent="submit">
+            <div >
                 <div class="mb-5 form-label-group">
                     <div class="form-group">
                         <label>Name</label>
@@ -97,9 +97,9 @@
 
                 <div class="modal-footer d-flex  ">
                     <button type="button" class="btn btn-outline-warning" @click="resetModel" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
-                    </button><button  type="submit" class="btn btn-warning">{{$t("account.addresses.add_card.save")}}</button>
+                    </button><button  type="button" @click="submit" class="btn btn-warning">{{$t("account.addresses.add_card.save")}}</button>
                 </div>
-            </form>
+            </div>
 
         </div>
     </Update>
@@ -149,7 +149,9 @@
         },
         methods : {
             write(ditem){
+                console.log("check");
                 this.form.langs = ditem;
+                console.log(this.form.langs);
             },
             resetModel : function (){
                 this.$emit('ResetModel');
@@ -158,6 +160,20 @@
                 this.form.desc = data;
             },
             submit : function () {
+                console.log(route('admin.product.update',{
+                    id : this.model.id
+                }));
+                console.log(this.form.langs);
+                console.log(this.form.transform((data) => ({
+                    name : data.name,
+                    product_category_id : data.category.id,
+                    product_inventory_id : data.inventory.id,
+                    desc : data.desc,
+                    price : data.price,
+                    old_price : data.old_price,
+                    start_over : data.start_over,
+                    langs : JSON.stringify(this.form.langs)
+                })));
                 // this.form
                 this.form.transform((data) => ({
                     name : data.name,
@@ -167,10 +183,10 @@
                     price : data.price,
                     old_price : data.old_price,
                     start_over : data.start_over,
-                    langs : data.langs
-                })).patch(route('admin.product.update',{
+                    langs : JSON.stringify(this.form.langs),
                     id : this.model.id
-                }), {
+                })).post(route('admin.product.update'), {
+
                     onFinish: () => {
                     },
                     onSuccess : () => {

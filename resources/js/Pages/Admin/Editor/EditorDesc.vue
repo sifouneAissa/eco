@@ -14,17 +14,18 @@
         },
         data (){
             return {
-                 value : this.initValue ? this.initValue : null,
-                 init : {
+                value : this.initValue ? this.initValue : null,
+                init : {
                     plugins: 'lists link  table code help wordcount  code fullscreen',
                     toolbar: 'undo redo | link | fullscreen | formatselect | ' +
                         'bold italic backcolor | alignleft aligncenter ' +
                         'alignright alignjustify | bullist numlist outdent indent | ' +
                         'removeformat | help',
-                    image_title: false,
+                    // image_title: false,
                     /* enable automatic uploads of images represented by blob or data URIs*/
-                    automatic_uploads: true,
-                    paste_data_images: true, browser_spellcheck: true,
+                    // automatic_uploads: true,
+                    // paste_data_images: true,
+                    // browser_spellcheck: true,
                     selector: 'textarea',
                     setup: function (editor) {
                         editor.on('init', function (event) {
