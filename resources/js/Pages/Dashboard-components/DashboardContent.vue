@@ -365,8 +365,8 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   .hero-img {
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 100px;
+    padding-top: 100px;
   }
   .title-size {
     font-size: 30px;
