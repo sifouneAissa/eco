@@ -1,12 +1,12 @@
 <template>
   <!-- BLOG AREA START (blog-3) -->
-  <div class="ltn__blog-area pt-110 pb-90">
+  <div class="ltn__blog-area pt-80 pb-80">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-title-area text-center">
-            <h1 class="section-title">Latest Blog</h1>
-            <p>There are many variations of passages of Lorem Ipsum available.</p>
+            <h1 class="section-title">{{ $t("faq.blogs") }}</h1>
+            <p>{{ $t("dashboard.section3.desc") }}</p>
           </div>
         </div>
       </div>

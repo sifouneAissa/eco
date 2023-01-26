@@ -10,6 +10,7 @@ use App\Models\Blog;
 use App\Models\CustomRole;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Permission;
 

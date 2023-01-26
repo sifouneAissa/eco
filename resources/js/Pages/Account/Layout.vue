@@ -78,7 +78,7 @@ export default {
 </script>
 
 <template>
-  <div class="liton__wishlist-area pb-120">
+  <div class="liton__wishlist-area pb-80">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">

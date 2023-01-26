@@ -11,7 +11,7 @@
     <!-- BREADCRUMB AREA END -->
 
     <!-- LOGIN AREA START -->
-    <div class="ltn__login-area mb-120">
+    <div class="ltn__login-area mb-80">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 offset-lg-2">

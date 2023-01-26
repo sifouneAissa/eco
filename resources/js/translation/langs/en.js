@@ -298,6 +298,7 @@ const en = {
      comments:"Comments",
      post_comment:"Post comment",
      type_comment:"Type your comments",
+     type_name:"Type your name",
      desc_comment:"Save my name, email, and website in this browser for the next time I comment.",
     },
     dashboard:{
@@ -413,6 +414,13 @@ const en = {
         search:"Search",
         newsletter:"Get Newsletter",
         help:"Still need help? Reach out to support 24/7:",
+        activity:"activity",
+        journey:"It’s Our Journey",
+        clients:"Active Clients",
+        coffee:"Cup Of Coffee",
+        rewards:"Get Rewards",
+        country:"Country Cover",
+        blogs:"Latest Blog",
         
     }
 };

@@ -41,136 +41,6 @@ export default {
 
 <template>
   <div>
-    <!-- SLIDER AREA START (slider-1) -->
-    <!-- <div class="ltn__slider-area ltn__slider-6 mb-120">
-      <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1"> -->
-    <!-- ltn__slide-item -->
-    <!-- <div
-          class="ltn__slide-item section-bg-1"
-          style=" background-image: url('/img/slider/11.png')"
-        >
-          <div class="ltn__slide-item-inner">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
-                  <div class="slide-item-info">
-                    <div class="slide-item-info-inner ltn__slide-animation">
-                      <h4 class="slide-sub-title animated">
-                        {{ $t("dashboard.title1") }}
-                      </h4>
-                      <h1 class="slide-title animated">
-                        {{ $t("dashboard.title2") }} <br />
-                        {{ $t("dashboard.title3") }}
-                      </h1>
-                      <div class="slide-brief animated">
-                        <p class="">
-                          {{ $t("dashboard.desc1") }}
-                        </p>
-                      </div>
-                      <div class="btn-wrapper animated">
-                        <Link
-                          :href="route('listing')"
-                          class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                          >{{ $t("dashboard.shop_now") }}</Link
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
-                  <div>
-                    <a :href="route('listing')"
-                      ><img src="/img/slider/11.png" alt="Image"
-                    /></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-    <!-- ltn__slide-item -->
-    <!-- <div
-          class="ltn__slide-item section-bg-1"
-          style=" background-image: url('/img/slider/1-1.png')"
-        >
-          <div class="ltn__slide-item-inner">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-6 col-md-5 col-sm-5 align-self-center">
-                  <div>
-                    <a :href="route('listing')"
-                      ><img src="/img/slider/1-1.png" alt="Image"
-                    /></a>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-7 col-sm-7 align-self-center">
-                  <div class="slide-item-info">
-                    <div class="slide-item-info-inner ltn__slide-animation">
-                      <h4 class="slide-sub-title animated style_text">
-                        {{ $t("dashboard.title1") }}
-                      </h4>
-                      <h1 class="slide-title animated style_text">
-                        {{ $t("dashboard.title2") }} <br />
-                        {{ $t("dashboard.title3") }}
-                      </h1>
-                      <div class="slide-brief animated">
-                        <p class="style_text">
-                          {{ $t("dashboard.desc1") }}
-                        </p>
-                      </div>
-                      <div class="btn-wrapper animated">
-                        <Link
-                          :href="route('listing')"
-                          class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                          >{{ $t("dashboard.shop_now") }}</Link
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-    <!-- </div>
-    </div> -->
-    <!-- SLIDER AREA END -->
-
-    <!-- SLIDER AREA START (slider-1) -->
-    <!-- <div class="ltn__slider-area ltn__slider-6 mb-120---">
-      <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1"> -->
-    <!-- ltn__slide-item -->
-    <!-- <div
-          class="ltn__slide-item--- ltn__slide-item-9 section-bg-1 bg-image"
-          data-bg="/img/slider/11.png"
-        >
-    <div class="ltn__slide-item-inner right-align">
-            <div
-              class="slide-item-info bg-overlay-theme-black-90 text-color-white text-center"
-            >
-              <div class="slide-item-info-inner ltn__slide-animation">
-                <h1 class="slide-title animated">
-                  {{ $t("dashboard.title1") }}<br />
-                  {{ $t("dashboard.title2") }}
-                </h1>
-                <h4 class="slide-sub-title text-uppercase animated">
-                  {{ $t("dashboard.title3") }}
-                </h4>
-                <div class="btn-wrapper animated">
-                  <Link
-                    :href="route('listing')"
-                    class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                    >{{ $t("dashboard.shop_now") }}</Link
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-    <!--  -->
-    <!-- </div>
-    </div> -->
-
     <div
       class="call-to-action-area call-to-action-1 bg-image section-bg-2 hero-img"
       data-bg="/img/bg/3.png"
@@ -204,7 +74,7 @@ export default {
     <!-- SLIDER AREA END -->
 
     <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pt-40 pb-40">
+    <div class="ltn__about-us-area pt-80 pb-80">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
@@ -423,7 +293,7 @@ export default {
     <!-- BANNER AREA END -->
 
     <!-- VIDEO AREA START -->
-    <div class="ltn__video-area section-bg-1 pt-80 pb-40 d-none">
+    <div class="ltn__video-area section-bg-1 pt-40 pb-40 d-none">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -445,7 +315,7 @@ export default {
 
     <!-- NEWSLETTER AREA START -->
     <div
-      class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-80 pb-40"
+      class="ltn__newsletter-area section-bg-1 bg-overlay-white-30 bg-image pt-40 pb-40"
       data-bg="/img/bg/8.jpg"
     >
       <div class="container">

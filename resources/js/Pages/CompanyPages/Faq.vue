@@ -21,7 +21,7 @@ export default {
     </template>
     <breadcrumb :title="$t('nav_menu.help.faq')" />
     <!-- FAQ AREA START (faq-2) (ID > accordion_2) -->
-    <div class="ltn__faq-area mb-100">
+    <div class="ltn__faq-area mb-80">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
@@ -252,15 +252,17 @@ export default {
     <!-- FAQ AREA START -->
     <!-- COUNTER UP AREA START -->
     <div
-      class="ltn__counterup-area bg-image bg-overlay-theme-black-10 pt-115 pb-70"
+      class="ltn__counterup-area bg-image bg-overlay-theme-black-10 pt-115 pb-80"
       data-bg="/img/bg/6.jpg"
     >
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-12">
             <div class="section-title-area ltn__section-title-2">
-              <h6 class="section-subtitle white-color">// activity</h6>
-              <h1 class="section-title white-color">It’s Our Journey<span>.</span></h1>
+              <h6 class="section-subtitle white-color">// {{ $t("faq.activity") }}</h6>
+              <h1 class="section-title white-color">
+                {{ $t("faq.journey") }}<span>.</span>
+              </h1>
             </div>
           </div>
           <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
@@ -269,7 +271,7 @@ export default {
               <h1>
                 <span class="counter">733</span><span class="counterUp-icon">+</span>
               </h1>
-              <h6>Active Clients</h6>
+              <h6>{{ $t("faq.clients") }}</h6>
             </div>
           </div>
           <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
@@ -279,7 +281,7 @@ export default {
                 <span class="counter">33</span><span class="counterUp-letter">K</span
                 ><span class="counterUp-icon">+</span>
               </h1>
-              <h6>Cup Of Coffee</h6>
+              <h6>{{ $t("faq.coffee") }}</h6>
             </div>
           </div>
           <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
@@ -288,7 +290,7 @@ export default {
               <h1>
                 <span class="counter">100</span><span class="counterUp-icon">+</span>
               </h1>
-              <h6>Get Rewards</h6>
+              <h6>{{ $t("faq.rewards") }}</h6>
             </div>
           </div>
           <div class="col-lg-2 col-md-3 col-sm-6 align-self-center">
@@ -297,7 +299,7 @@ export default {
               <h1>
                 <span class="counter">21</span><span class="counterUp-icon">+</span>
               </h1>
-              <h6>Country Cover</h6>
+              <h6>{{ $t("faq.country") }}</h6>
             </div>
           </div>
         </div>

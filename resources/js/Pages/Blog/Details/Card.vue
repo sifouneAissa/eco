@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <div class="ltn__page-details-area ltn__blog-details-area mb-120">
+  <div class="ltn__page-details-area ltn__blog-details-area mb-80">
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
@@ -138,19 +138,27 @@ export default {
               <div class="ltn__social-media-2">
                 <ul>
                   <li>
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a :href="$page.props.facebook" title="Facebook" target="_blank"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
                   </li>
                   <li>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a :href="$page.props.twitter" title="Twitter" target="_blank"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
                   </li>
                   <li>
-                    <a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a>
+                    <a :href="$page.props.instagram" title="instagram" target="_blank"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
                   </li>
+                  <!-- <li>
+                        <a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a>
+                      </li> -->
                   <li>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                  </li>
-                  <li>
-                    <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+                    <a :href="$page.props.youtube" title="Youtube" target="_blank"
+                      ><i class="fab fa-youtube"></i
+                    ></a>
                   </li>
                 </ul>
               </div>

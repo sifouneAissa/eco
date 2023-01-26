@@ -172,21 +172,25 @@
                     price : data.price,
                     old_price : data.old_price,
                     start_over : data.start_over,
-                    langs : JSON.stringify(this.form.langs)
+                    langs : JSON.stringify({
+                        'langs' : this.form.langs
+                    }),
                 })));
                 // this.form
                 this.form.transform((data) => ({
                     name : data.name,
                     product_category_id : data.category.id,
                     product_inventory_id : data.inventory.id,
-                    desc : data.desc,
+                    desc : JSON.stringify(data.desc),
                     price : data.price,
                     old_price : data.old_price,
                     start_over : data.start_over,
-                    langs : JSON.stringify(this.form.langs),
+                    langs : JSON.stringify({
+                        'langs' : this.form.langs
+                    }),
                     id : this.model.id
-                })).post(route('admin.product.update'), {
-
+                })).post(this.route('admin.product.update'), {
+                    // forceFormData : true,
                     onFinish: () => {
                     },
                     onSuccess : () => {

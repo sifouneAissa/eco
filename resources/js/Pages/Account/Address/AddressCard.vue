@@ -11,7 +11,10 @@ defineProps({
   <updateAddress :model="model" />
   <deleteAddress :model="model" />
   <div class="col-sm-12 col-md-6">
-    <div class="bg-white card addresses-item mb-4 border border-warning shadow">
+    <div
+      class="bg-white card addresses-item mb-4 border border-warning shadow"
+      style="height: 290px"
+    >
       <div class="gold-members p-4">
         <div class="media">
           <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>

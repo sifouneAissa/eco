@@ -103,7 +103,7 @@ export default {
     <!--        </div>-->
     <!--      </div>-->
     <!--    </section>-->
-    <div class="ltn__checkout-area mb-120">
+    <div class="ltn__checkout-area mb-80">
       <div class="container">
         <div class="row">
           <div v-if="show" class="col-lg-12">
@@ -184,13 +184,11 @@ export default {
               <div class="pt-2"></div>
             </div> -->
 
-              <chooseAddress
-                  v-if="
-                  $page.props.shopping_session && $page.props.shopping_session.citotal
-                "
-                  @setSelectedAddress="setSelectedAddress"
-                  :models="$page.props.addresses"
-              />
+            <chooseAddress
+              v-if="$page.props.shopping_session && $page.props.shopping_session.citotal"
+              @setSelectedAddress="setSelectedAddress"
+              :models="$page.props.addresses"
+            />
           </div>
           <div class="col-lg-6">
             <div v-if="show" class="ltn__checkout-payment-method mt-50">
@@ -245,7 +243,7 @@ export default {
             </div>
             <div v-else class="ltn__checkout-payment-method mt-50">
               <button class="btn theme-btn-1 btn-effect-1 text-uppercase" @click="go()">
-                {{ $t("listiong.add_products") }}
+                {{ $t("listing.add_products") }}
               </button>
             </div>
           </div>
