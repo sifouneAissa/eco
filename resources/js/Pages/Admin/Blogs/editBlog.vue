@@ -12,7 +12,8 @@ export default {
   },
   data() {
     return {
-      urls: [
+        csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+        urls: [
         {
           name: "Blogs",
           route: this.route("admin.blog.index"),
@@ -27,6 +28,8 @@ export default {
         title: this.model.title,
         blog: this.model.blog,
         description: this.model.description,
+          _token: this.csrf,
+          method : 'patch'
       }),
     };
   },

@@ -50,11 +50,12 @@ class Handler extends ExceptionHandler
         });
 
         $this->renderable(function (MethodNotAllowedHttpException $e,Request $request) {
+            dd($e->getMessage());
             abort(404);
         });
 
         $this->renderable(function (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e,Request $request) {
-
+            dd($e->getMessage());
         });
 
     }

@@ -94,7 +94,6 @@ class BlogController extends Controller
     }
 
     public function update(BlogRequest $request,$id){
-
         // get all inputs in the request
         $inputs = $this->filterRequest($request->all());
 
