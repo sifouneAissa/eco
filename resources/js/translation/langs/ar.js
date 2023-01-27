@@ -250,6 +250,11 @@ const ar = {
         checkout:"الدفع",
         one_product:"منتج واحد",
         limited:"الكمية محدودة ",
+        cart_subtotal:"المجموع الفرعي لسلة التسوق ",
+        shipping_handing:"الشحن والتسليم",
+        proceed_chechout:"انتقل إلى الدفع",
+        apply_coupon:"تطبيق القسيمة",
+        coupon:"رمز القسيمة",
         tabs:{
             order:"اطلب عبر الإنترنت",
             gallery:"معرض الصور",
@@ -425,6 +430,10 @@ const ar = {
         country:"التغطية في العديد من البلدان",
         blogs:"أحدث مدونة",
         
+    },
+    wishlist:{
+        in_stock:"متوفر في المخزون",
+        not_available:"غير متوفر",
     }
 };
 

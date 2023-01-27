@@ -247,6 +247,11 @@ const en = {
       checkout:"Checkout",
       one_product:"One Product",
       limited:"The quantity is limited ",
+      cart_subtotal:"Cart Subtotal ",
+      shipping_handing:"Shipping and Handing",
+      proceed_chechout:"Proceed to checkout",
+      apply_coupon:"Apply Coupon",
+      coupon:"Coupon code",
       tabs:{
         order:"Order Online",
         gallery:"Gallery",
@@ -422,6 +427,10 @@ const en = {
         country:"Country Cover",
         blogs:"Latest Blog",
         
+    },
+    wishlist:{
+        in_stock:"In Stock",
+        not_available:"Not available",
     }
 };
 

@@ -1057,8 +1057,15 @@ export default {
   </div>
 </template>
 <style>
-#scrollUp {
-  margin-bottom: 60px;
-  margin-right: 20px;
+@media only screen and (min-width: 800px) {
+  #scrollUp {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #scrollUp {
+    margin-bottom: 60px;
+    margin-right: 20px;
+  }
 }
 </style>

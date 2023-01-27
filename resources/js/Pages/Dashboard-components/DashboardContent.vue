@@ -45,20 +45,19 @@ export default {
       class="call-to-action-area call-to-action-1 bg-image section-bg-2 hero-img"
       data-bg="/img/bg/3.png"
     >
-      <!-- style="visibility: visible; background-color: rgba(0, 0, 0, 0.55); opacity: 1" -->
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="call-to-action-inner beard-trimmer text-center">
               <!--              <h5 class="text-uppercase">{{ $t("dashboard.title1") }}</h5>-->
-              <h1 class="text-uppercase title-size">
+              <h1 class="text-uppercase title-size title-margin">
                 {{ $page.props.home_page_header_1 }}
               </h1>
               <!-- <h1 class="text-uppercase title-size">
                 {{ $page.props.home_page_sub_header_1 }}
               </h1> -->
               <!--              <h1>{{ $t("dashboard.title2") }}</h1>-->
-              <h2>{{ $page.props.home_page_header_2 }}</h2>
+              <h2 class="title-margin">{{ $page.props.home_page_header_2 }}</h2>
               <div class="btn-wrapper">
                 <Link
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
@@ -362,6 +361,9 @@ export default {
   .title-size {
     font-size: 48px;
   }
+  .title-margin {
+    margin-bottom: 20px;
+  }
 }
 @media only screen and (max-width: 600px) {
   .hero-img {
@@ -370,6 +372,9 @@ export default {
   }
   .title-size {
     font-size: 30px;
+  }
+  .title-margin {
+    margin-bottom: 20px;
   }
 }
 </style>

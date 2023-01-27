@@ -158,10 +158,14 @@ export default {
                           <input
                             type="text"
                             name="cart-coupon"
-                            placeholder="Coupon code"
+                            class=""
+                            :placeholder="$t('listing.coupon')"
                           />
-                          <button type="submit" class="btn theme-btn-2 btn-effect-2">
-                            Apply Coupon
+                          <button
+                            type="submit"
+                            class="btn theme-btn-2 btn-effect-2 ml-2 mr-2"
+                          >
+                            {{ $t("listing.apply_coupon") }}
                           </button>
                         </div>
                       </td>
@@ -173,18 +177,18 @@ export default {
                 </table>
               </div>
               <div class="shoping-cart-total mt-0">
-                <h4>Cart Totals</h4>
+                <h4>{{ $t("listing.cart_total") }}</h4>
                 <table class="table">
                   <tbody>
                     <tr>
-                      <td>Cart Subtotal</td>
+                      <td>{{ $t("listing.cart_subtotal") }}</td>
                       <td>
                         {{ $page.props.currency_code }}
                         {{ $page.props.shopping_session?.citotal }}
                       </td>
                     </tr>
                     <tr>
-                      <td>Shipping and Handing</td>
+                      <td>{{ $t("listing.shipping_handing") }}</td>
                       <td>{{ $page.props.currency_code }} 00.00</td>
                     </tr>
                     <tr>
@@ -192,7 +196,9 @@ export default {
                       <td>{{ $page.props.currency_code }} 00.00</td>
                     </tr>
                     <tr>
-                      <td><strong>Order Total</strong></td>
+                      <td>
+                        <strong>{{ $t("listing.total") }} </strong>
+                      </td>
                       <td>
                         <strong
                           >{{ $page.props.currency_code }}
@@ -210,13 +216,13 @@ export default {
                     "
                     :href="route('checkout.show')"
                     class="theme-btn-1 btn btn-effect-1"
-                    >Proceed to checkout</Link
-                  >
+                    >{{ $t("listing.proceed_chechout") }}
+                  </Link>
                   <Link
                     v-else
                     :href="route('listing')"
                     class="theme-btn-1 btn btn-effect-1"
-                    >Add Products</Link
+                    >{{ $t("listing.add_products") }}</Link
                   >
                 </div>
               </div>
