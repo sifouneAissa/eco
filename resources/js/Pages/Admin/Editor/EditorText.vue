@@ -73,9 +73,6 @@
 
                         });
                         editor.on("input", function (e) {
-                            // validateInput(this.id);
-
-                            // $emit('Writing')
                         })
                         editor.on('change', function (data) {
                             tinymce.triggerSave();

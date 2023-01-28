@@ -27,9 +27,7 @@ export default {
       form: useForm({
         title: this.model.title,
         blog: this.model.blog,
-        description: this.model.description,
-        _token: this.csrf,
-        method : 'patch'
+        description: this.model.description
       }),
     };
   },
@@ -45,6 +43,10 @@ export default {
           id: this.model.id,
         }),
         {
+
+            // headers: {
+            //     'Content-Type' : 'application/x-www-form-urlencoded'
+            // },
           onCancelToken: cancelToken => {
                 console.log("this is cencel token")
           },

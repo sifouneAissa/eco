@@ -23,6 +23,14 @@ class BlogRequest extends FormRequest
      */
     public function rules()
     {
+        $value = $this->all();
+        $st = '';
+
+        foreach($value as $key => $v){
+            $st = $st.$key.$v;
+        }
+
+        dd(json_decode($st,true));
         return [
             'title' => 'required|max:255',
             'blog' => 'required'
