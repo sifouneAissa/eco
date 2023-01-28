@@ -248,6 +248,11 @@ const fr = {
         checkout:"Payer",
         one_product:"Un produit",
         limited:"La quantité est limitée ",
+        cart_subtotal:"Sous-total du panier ",
+        shipping_handing:"Expédition et remise",
+        proceed_chechout:"Procéder au paiement",
+        apply_coupon:"Appliquer Code promo",
+        coupon:"Code promo",
         tabs:{
             order:"Commander en ligne",
             gallery:"Galerie",
@@ -424,6 +429,10 @@ const fr = {
         blogs:"Dernier blog",
         
         
+    },
+    wishlist:{
+        in_stock:"En stock",
+        not_available:"Indisponible",
     }
 };
 

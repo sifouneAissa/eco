@@ -133,3 +133,15 @@ const submit = () => {
     </div>
   </div>
 </template>
+<style scoped>
+/* a {
+  color: #7aa649;
+}
+.btn-primary {
+  border-color: #7aa649;
+  background-color: #7aa649;
+}
+.bg-primary {
+  background: linear-gradient(45deg, #7aa649 0%, #7aa649 100%);
+} */
+</style>

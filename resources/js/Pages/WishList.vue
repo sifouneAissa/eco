@@ -37,7 +37,11 @@
                         {{ $page.props.currency_code }} {{ model.product.cprice }}
                       </td>
                       <td class="cart-product-stock">
-                        {{ model.product.isA.isA ? "In Stock" : "Not available" }}
+                        {{
+                          model.product.isA.isA
+                            ? $t("wishlist.in_stock")
+                            : $t("wishlist.not_available")
+                        }}
                       </td>
                       <td
                         v-if="model.product.isA.isA"

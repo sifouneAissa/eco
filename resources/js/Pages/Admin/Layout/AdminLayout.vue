@@ -34,12 +34,12 @@
                 $("body").toggleClass("sb-sidenav-toggled");
             });
 
-            let app = this;
-            window.onload = function (){
-                Inertia.visit(app.$page.url,{
-                    preserveScroll : true
-                });
-            };
+            // let app = this;
+            // window.onload = function (){
+            //     Inertia.visit(app.$page.url,{
+            //         preserveScroll : true
+            //     });
+            // };
         }
     }
 </script>

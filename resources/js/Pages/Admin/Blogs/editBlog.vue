@@ -28,8 +28,8 @@ export default {
         title: this.model.title,
         blog: this.model.blog,
         description: this.model.description,
-          _token: this.csrf,
-          method : 'patch'
+        _token: this.csrf,
+        method : 'patch'
       }),
     };
   },
@@ -45,6 +45,12 @@ export default {
           id: this.model.id,
         }),
         {
+          onCancelToken: cancelToken => {
+                console.log("this is cencel token")
+          },
+          onCancel: () => {
+              console.log("this is on cancel")
+          },
           onSuccess: () => {
             Inertia.visit(app.route("admin.blog.index"));
           },
