@@ -218,7 +218,7 @@ export default {
                 v-for="category in $page.props.categories"
                 :key="category.id"
                 @click="submit(category)"
-                :class="$page.props.query === category.name ? 'active' : ''"
+                :class="$page.props.query.includes(category.name) ? 'active' : ''"
                 :data-filter="'.filter_category_' + category.id"
               >
                 {{ category.lname }}

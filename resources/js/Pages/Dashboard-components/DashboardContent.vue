@@ -91,10 +91,10 @@ export default {
                   {{ $page.props.home_page_section_1_description_2 }}
               </p> -->
               <div class="btn-wrapper">
-                <a
+                <Link
                   :href="route('listing')"
                   class="theme-btn-3 btn btn-effect-4 text-uppercase"
-                  >{{ $t("dashboard.section1.view_more") }}</a
+                  >{{ $t("dashboard.section1.view_more") }}</Link
                 >
               </div>
             </div>
@@ -113,16 +113,17 @@ export default {
     <div class="ltn__banner-area section-bg-1">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-6 align-self-center">
+          <div  v-if="$page.props.cLeft" class="col-lg-6 col-md-6 align-self-center">
             <div
               :class="
                 $page.props.isRtl
                   ? 'banner-info-wrap beard-growing-kit text-right bg-image'
                   : 'banner-info-wrap beard-growing-kit text-left bg-image'
               "
-              data-bg="/img/banner/10.png"
+              :data-bg="$page.props.cLeft.fimage"
             >
-              <h5>{{ $t("dashboard.section2.groom") }}</h5>
+<!--              <h5>{{ $t("dashboard.section2.groom")  }}</h5>-->
+              <h5>{{ $page.props.cLeft.lname  }}</h5>
               <h1>
                 <!--                {{ $t("dashboard.section2.title1") }}-->
                 {{ $page.props.home_page_section_2_header_left }}
@@ -131,24 +132,22 @@ export default {
                 {{ $page.props.home_page_section_2_header_2_left }}
               </h1>
               <div class="btn-wrapper">
-                <Link
-                  :href="route('listing')"
-                  class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                  >{{ $t("dashboard.section2.try") }}</Link
-                >
+<!--                <Link :href="route('listing')" class="theme-btn-1 btn btn-effect-1 text-uppercase">{{ $t("dashboard.section2.try") }}</Link>-->
+                <Link :href="route('listing') + '?query=' + $page.props.cLeft.name" class="theme-btn-1 btn btn-effect-1 text-uppercase">{{ $t("dashboard.section2.try")+ ' '+$page.props.cLeft.lname }}</Link>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 align-self-center">
+          <div v-if="$page.props.cRight" class="col-lg-6 col-md-6 align-self-center">
             <div
               :class="
                 $page.props.isRtl
                   ? 'banner-info-wrap beard-growing-kit text-left bg-image'
                   : 'banner-info-wrap beard-growing-kit text-right bg-image'
               "
-              data-bg="/img/banner/11.png"
+              :data-bg="$page.props.cRight.fimage"
             >
-              <h5>{{ $t("dashboard.section2.groom") }}</h5>
+<!--              <h5>{{ $t("dashboard.section2.groom") }}</h5>-->
+              <h5>{{ $page.props.cRight.lname }}</h5>
               <h1>
                 <!--                {{ $t("dashboard.section2.title3") }} -->
 
@@ -159,9 +158,9 @@ export default {
               </h1>
               <div class="btn-wrapper">
                 <Link
-                  :href="route('listing')"
+                  :href="route('listing')+'?query='+$page.props.cRight.name"
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                  >{{ $t("dashboard.section2.try") }}</Link
+                  >{{ $t("dashboard.section2.try") + ' '+ $page.props.cRight.lname }}</Link
                 >
               </div>
             </div>
@@ -275,14 +274,18 @@ export default {
           <div class="col-md-6 col-sm-6">
             <div class="ltn__banner-item">
               <div class="ltn__banner-img">
-                <a :href="route('listing')"><img src="img/banner/3.jpg" alt="Image" /></a>
+                <Link :href="route('listing')"
+                  ><img src="img/banner/3.jpg" alt="Image"
+                /></Link>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="ltn__banner-item">
               <div class="ltn__banner-img">
-                <a :href="route('listing')"><img src="img/banner/4.jpg" alt="Image" /></a>
+                <Link :href="route('listing')"
+                  ><img src="img/banner/4.jpg" alt="Image"
+                /></Link>
               </div>
             </div>
           </div>

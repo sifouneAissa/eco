@@ -8,6 +8,7 @@ export default {
     GuestLayout,
     PBlog,
     breadcrumb,
+    Link,
   },
 };
 </script>
@@ -35,19 +36,12 @@ export default {
                     data-target="#faq-item-2-1"
                     aria-expanded="false"
                   >
-                    How to buy a product?
+                    {{ $t("faq.questions.question1") }}
                   </h6>
                   <div id="faq-item-2-1" class="collapse" data-parent="#accordion_2">
                     <div class="card-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
-                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
-                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
-                        ac orci phasellus. Facilisis gravida neque convallis a cras
-                        semper. Non arcu risus quis varius quam quisque id.
+                        {{ $t("faq.questions.answer1") }}
                       </p>
                     </div>
                   </div>
@@ -60,29 +54,12 @@ export default {
                     data-target="#faq-item-2-2"
                     aria-expanded="true"
                   >
-                    How can i make refund from your website?
+                    {{ $t("faq.questions.question2") }}
                   </h6>
                   <div id="faq-item-2-2" class="collapse show" data-parent="#accordion_2">
                     <div class="card-body">
-                      <div class="ltn__video-img alignleft">
-                        <img src="/img/bg/17.jpg" alt="video popup bg image" />
-                        <a
-                          class="ltn__video-icon-2 ltn__video-icon-2-small ltn__video-icon-2-border----"
-                          href="https://www.youtube.com/embed/LjCzPp-MK48?autoplay=1&showinfo=0"
-                          data-rel="lightcase:myCollection"
-                        >
-                          <i class="fa fa-play"></i>
-                        </a>
-                      </div>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
-                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
-                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
-                        ac orci phasellus. Facilisis gravida neque convallis a cras
-                        semper. Non arcu risus quis varius quam quisque id.
+                        {{ $t("faq.questions.answer2") }}
                       </p>
                     </div>
                   </div>
@@ -95,19 +72,12 @@ export default {
                     data-target="#faq-item-2-3"
                     aria-expanded="false"
                   >
-                    I am a new user. How should I start?
+                    {{ $t("faq.questions.question3") }}?
                   </h6>
                   <div id="faq-item-2-3" class="collapse" data-parent="#accordion_2">
                     <div class="card-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
-                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
-                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
-                        ac orci phasellus. Facilisis gravida neque convallis a cras
-                        semper. Non arcu risus quis varius quam quisque id.
+                        {{ $t("faq.questions.answer3") }}
                       </p>
                     </div>
                   </div>
@@ -120,19 +90,12 @@ export default {
                     data-target="#faq-item-2-4"
                     aria-expanded="false"
                   >
-                    Returns and refunds
+                    {{ $t("faq.questions.question4") }}
                   </h6>
                   <div id="faq-item-2-4" class="collapse" data-parent="#accordion_2">
                     <div class="card-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
-                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
-                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
-                        ac orci phasellus. Facilisis gravida neque convallis a cras
-                        semper. Non arcu risus quis varius quam quisque id.
+                        {{ $t("faq.questions.answer4") }}
                       </p>
                     </div>
                   </div>
@@ -145,19 +108,12 @@ export default {
                     data-target="#faq-item-2-5"
                     aria-expanded="false"
                   >
-                    Are my details secured?
+                    {{ $t("faq.questions.question4") }}
                   </h6>
                   <div id="faq-item-2-5" class="collapse" data-parent="#accordion_2">
                     <div class="card-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
-                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
-                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
-                        ac orci phasellus. Facilisis gravida neque convallis a cras
-                        semper. Non arcu risus quis varius quam quisque id.
+                        {{ $t("faq.questions.answer4") }}
                       </p>
                     </div>
                   </div>
@@ -170,19 +126,12 @@ export default {
                     data-target="#faq-item-2-6"
                     aria-expanded="false"
                   >
-                    Sale code is not working
+                    {{ $t("faq.questions.question5") }}
                   </h6>
                   <div id="faq-item-2-6" class="collapse" data-parent="#accordion_2">
                     <div class="card-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
-                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
-                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
-                        ac orci phasellus. Facilisis gravida neque convallis a cras
-                        semper. Non arcu risus quis varius quam quisque id.
+                        {{ $t("faq.questions.answer5") }}
                       </p>
                     </div>
                   </div>
@@ -195,19 +144,192 @@ export default {
                     data-target="#faq-item-2-7"
                     aria-expanded="false"
                   >
-                    How do I make payment by my credit card
+                    {{ $t("faq.questions.question6") }}
                   </h6>
                   <div id="faq-item-2-7" class="collapse" data-parent="#accordion_2">
                     <div class="card-body">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-                        Proin libero nunc consequat interdum. Condimentum lacinia quis vel
-                        eros donec ac. Mauris sit amet massa vitae tortor. Quisque id diam
-                        vel quam elementum pulvinar. Gravida in fermentum et sollicitudin
-                        ac orci phasellus. Facilisis gravida neque convallis a cras
-                        semper. Non arcu risus quis varius quam quisque id.
+                        {{ $t("faq.questions.answer6") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-8"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question7") }}
+                  </h6>
+                  <div id="faq-item-2-8" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer7") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-9"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question8") }}
+                  </h6>
+                  <div id="faq-item-2-9" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer8") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-10"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question9") }}
+                  </h6>
+                  <div id="faq-item-2-10" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer9") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-11"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question10") }}
+                  </h6>
+                  <div id="faq-item-2-11" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer10") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-12"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question11") }}
+                  </h6>
+                  <div id="faq-item-2-12" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer11") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-13"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question12") }}
+                  </h6>
+                  <div id="faq-item-2-13" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer12") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-14"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question13") }}
+                  </h6>
+                  <div id="faq-item-2-14" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer13") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-15"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question14") }}
+                  </h6>
+                  <div id="faq-item-2-15" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer14") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-16"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question15") }}
+                  </h6>
+                  <div id="faq-item-2-16" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer15") }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+                <div class="card">
+                  <h6
+                    class="collapsed ltn__card-title"
+                    data-toggle="collapse"
+                    data-target="#faq-item-2-17"
+                    aria-expanded="false"
+                  >
+                    {{ $t("faq.questions.question16") }}
+                  </h6>
+                  <div id="faq-item-2-17" class="collapse" data-parent="#accordion_2">
+                    <div class="card-body">
+                      <p>
+                        {{ $t("faq.questions.answer16") }}
                       </p>
                     </div>
                   </div>
@@ -216,9 +338,9 @@ export default {
               <div class="need-support text-center mt-100">
                 <h2>{{ $t("faq.help") }}</h2>
                 <div class="btn-wrapper mb-30">
-                  <a :href="route('contact-us')" class="theme-btn-1 btn">{{
+                  <Link :href="route('contact-us')" class="theme-btn-1 btn">{{
                     $t("nav_menu.help.contact_us")
-                  }}</a>
+                  }}</Link>
                 </div>
                 <h3><i class="fas fa-phone"></i> {{ $page.props.phone }}</h3>
               </div>
@@ -240,9 +362,9 @@ export default {
               </div>
               <!-- Banner Widget -->
               <div class="widget ltn__banner-widget">
-                <a :href="route('listing')"
+                <Link :href="route('listing')"
                   ><img src="/img/banner/13.jpg" alt="Banner Image"
-                /></a>
+                /></Link>
               </div>
             </aside>
           </div>

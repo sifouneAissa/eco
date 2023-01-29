@@ -36,10 +36,29 @@
             </div>
           </div>
 
-            <div class=form-group>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input v-model="form.show_in_dash" type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                    <label class="custom-control-label " for="customRadioInline1">Show in Dashboard</label>
+
+<!--            <div class=form-group>-->
+<!--                <div class="custom-control custom-radio custom-control-inline">-->
+<!--                    <input v-model="form.show_in_dash" type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">-->
+<!--                    <label class="custom-control-label " for="customRadioInline1">Show in Dashboard</label>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="mb-5 form-label-group">
+                <div class="form-group">
+                    <label>Section to show (Dashboard)</label>
+                    <multiselect
+                        v-model="form.show_in_dash"
+                        :options="$page.props.sections"
+                        label="name"
+                        track-by="name"
+                        :multiple="false"
+                        placeholder="Select section"
+                    ></multiselect>
+<!--                    <div v-show="form.errors.product_category_id">-->
+<!--                        <p class="text-sm " style="color: red">-->
+<!--                            {{ form.errors.product_category_id }}-->
+<!--                        </p>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -63,12 +82,12 @@
 <script>
 import Add from "@/Pages/Admin/DataTable/Modals/Add.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
-
+import Multiselect from 'vue-multiselect'
 import AddT from '@/Pages/Admin/Translations/addTranslation.vue';
 
 export default {
   components: {
-    Add,AddT
+    Add,AddT,Multiselect
   },
   props: {},
   mounted() {
@@ -104,7 +123,7 @@ export default {
         .transform((data) => ({
           name: data.name,
           desc: data.desc,
-          show_in_dash:  data.show_in_dash,
+          show_in_dash:  data.show_in_dash.id,
           langs : data.langs
         }))
         .post(route("admin.category.store", {}), {

@@ -23,7 +23,10 @@ class DashboardController extends Controller
         $nproducts = Product::query()->with('category')->whereDoesntHave('orderItems')->get();
         $populars = populars();
 
-        $dCat = ProductCategory::where("show_in_dash",true)->first();
+        $dCat = ProductCategory::where("show_in_dash",'section_center')->first();
+        $cLeft = ProductCategory::where("show_in_dash",'section_left')->first();
+        $cRight = ProductCategory::where("show_in_dash",'section_right')->first();
+
         $settings = Setting::all();
 
         if($dCat){
@@ -42,7 +45,9 @@ class DashboardController extends Controller
             'bestSellers' => $bestSellers,
             'nproducts' => $nproducts,
             'populars' => $populars,
-            'dcat' => $dCat
+            'dcat' => $dCat,
+            'cLeft' => $cLeft,
+            'cRight' => $cRight
         ]);
     }
 }

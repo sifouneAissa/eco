@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('product_categories', function (Blueprint $table) {
             //
-            $table->boolean('show_in_dash')->default(false);
+            $table->enum('show_in_dash',array_map(fn ($item) => $item['id'],config('default.show_in_dash_sections')))->nullable();
         });
     }
 

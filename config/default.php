@@ -1,5 +1,19 @@
 <?php
 return [
+    'show_in_dash_sections' => [
+        [
+            'name' => 'Section to the left',
+            'id' => 'section_left'
+        ],
+        [
+            'name' => 'Section to the right',
+            'id' => 'section_right'
+        ],
+        [
+            'name' => 'Section in center',
+            'id' => 'section_center'
+        ],
+    ],
     'media' => [
         'product' => [
             'builder' => \App\Models\Product::class

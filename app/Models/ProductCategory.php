@@ -33,9 +33,9 @@ class ProductCategory extends Model implements HasMedia
         'ldesc'
     ];
 
-    protected $casts = [
-        'show_in_dash' => 'boolean'
-    ];
+//    protected $casts = [
+//        'show_in_dash' => 'boolean'
+//    ];
 
 
     public const SNAME = 'Product categories';

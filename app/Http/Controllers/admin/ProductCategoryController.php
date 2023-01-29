@@ -31,10 +31,14 @@ class ProductCategoryController extends Controller
 
     public function index(Request $request)
     {
+        $sections = config('default.show_in_dash_sections');
+
         return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())
-            ->with('datatableHeaders', $this->getHeaders());
+            ->with('datatableHeaders', $this->getHeaders())
+            ->with('sections', $sections)
+            ;
     }
 
 
@@ -48,8 +52,10 @@ class ProductCategoryController extends Controller
         $category = ProductCategory::create($inputs);
 
         if($category->show_in_dash)
-            ProductCategory::query()->whereNot('id',$category->id)->update([
-                'show_in_dash' => false
+            ProductCategory::query()->where([
+                ['show_in_dash',$category->show_in_dash]
+            ])->whereNot('id',$category->id)->update([
+                'show_in_dash' => null
             ]);
 
         $category->addTranslations($request->input('langs'));
@@ -63,8 +69,10 @@ class ProductCategoryController extends Controller
 
         $category->update($inputs);
         if($category->show_in_dash)
-            ProductCategory::query()->whereNot('id',$category->id)->update([
-                'show_in_dash' => false
+            ProductCategory::query()->where([
+                ['show_in_dash',$category->show_in_dash]
+            ])->whereNot('id',$category->id)->update([
+                'show_in_dash' => null
             ]);
 
         $category->updateTranslations($request->input('langs'));

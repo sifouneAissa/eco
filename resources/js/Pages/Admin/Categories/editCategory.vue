@@ -33,12 +33,31 @@
               </p>
             </div>
           </div>
-            <div class=form-group>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input v-model="form.show_in_dash" type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                    <label class="custom-control-label " for="customRadioInline1">Show in Dashboard</label>
+
+            <div class="mb-5 form-label-group">
+                <div class="form-group">
+                    <label>Section to show (Dashboard)</label>
+                    <multiselect
+                        v-model="form.show_in_dash"
+                        :options="$page.props.sections"
+                        label="name"
+                        track-by="name"
+                        :multiple="false"
+                        placeholder="Select section"
+                    ></multiselect>
+                    <!--                    <div v-show="form.errors.product_category_id">-->
+                    <!--                        <p class="text-sm " style="color: red">-->
+                    <!--                            {{ form.errors.product_category_id }}-->
+                    <!--                        </p>-->
+                    <!--                    </div>-->
                 </div>
             </div>
+<!--            <div class=form-group>-->
+<!--                <div class="custom-control custom-radio custom-control-inline">-->
+<!--                    <input v-model="form.show_in_dash" type="checkbox" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">-->
+<!--                    <label class="custom-control-label " for="customRadioInline1">Show in Dashboard</label>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
         <div class="modal-footer d-flex">
@@ -62,9 +81,11 @@ import Update from "@/Pages/Admin/DataTable/Modals/Update.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import editT from '@/Pages/Admin/Translations/updateTranslation.vue';
 
+import Multiselect from 'vue-multiselect'
+
 export default {
   components: {
-    Update,editT
+    Update,editT,Multiselect
   },
   props: {
     model: Object,
@@ -83,7 +104,7 @@ export default {
       form: useForm({
         name: this.model.name,
         desc: this.model.desc,
-        show_in_dash : this.model.show_in_dash,
+        show_in_dash : this.$page.props.sections.find((item) => item.id === this.model.show_in_dash),
         langs : []
       }),
     };
@@ -101,7 +122,7 @@ export default {
         .transform((data) => ({
           name: data.name,
           desc: data.desc,
-          show_in_dash:  data.show_in_dash,
+          show_in_dash:  data.show_in_dash.id,
           langs : JSON.stringify(data.langs)
         }))
         .patch(

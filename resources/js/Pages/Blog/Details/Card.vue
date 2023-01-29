@@ -1,12 +1,14 @@
 <script>
 import BlogCard from "@/Pages/Blog/BlogCard.vue";
 import commentSection from "@/Pages/Common/comment.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 
 export default {
   name: "BlogDetails.vue",
   components: {
     BlogCard,
     commentSection,
+    Link,
   },
 };
 </script>
@@ -108,21 +110,22 @@ export default {
                 <li v-for="model in $page.props.blogs" :key="model.id">
                   <div class="popular-post-widget-item clearfix">
                     <div class="popular-post-widget-img">
-                      <a :href="route('blog.show', { id: model.id })"
+                      <Link :href="route('blog.show', { id: model.id })"
                         ><img :src="model.fimage" alt="#"
-                      /></a>
+                      /></Link>
                     </div>
                     <div class="popular-post-widget-brief">
                       <h6>
-                        <a :href="route('blog.show', { id: model.id })">{{
+                        <Link :href="route('blog.show', { id: model.id })">{{
                           model.title
-                        }}</a>
+                        }}</Link>
                       </h6>
                       <div class="ltn__blog-meta">
                         <ul>
                           <li class="ltn__blog-date">
-                            <a :href="route('blog.show', { id: model.id })"
-                              ><i class="far fa-calendar-alt"></i>{{ model.created }}</a
+                            <Link :href="route('blog.show', { id: model.id })"
+                              ><i class="far fa-calendar-alt"></i
+                              >{{ model.created }}</Link
                             >
                           </li>
                         </ul>
@@ -170,9 +173,9 @@ export default {
             </div> -->
             <!-- Banner Widget -->
             <div class="widget ltn__banner-widget">
-              <a :href="route('listing')"
+              <Link :href="route('listing')"
                 ><img src="/img/banner/12.png" alt="Banner Image"
-              /></a>
+              /></Link>
             </div>
           </aside>
         </div>
