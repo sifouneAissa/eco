@@ -49,6 +49,7 @@ class Handler extends ExceptionHandler
 
         });
 
+
         $this->renderable(function (MethodNotAllowedHttpException $e,Request $request) {
 
             abort(404);

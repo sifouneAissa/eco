@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\admin;
 
+use App\Models\Blog;
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Component\Console\Input\Input;
 
 class BlogRequest extends FormRequest
 {
@@ -23,14 +25,9 @@ class BlogRequest extends FormRequest
      */
     public function rules()
     {
-        $value = $this->all();
-        $st = '';
 
-        foreach($value as $key => $v){
-            $st = $st.$key.$v;
-        }
+        setIfString($this);
 
-        dd(json_decode($st,true));
         return [
             'title' => 'required|max:255',
             'blog' => 'required'

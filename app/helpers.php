@@ -15,6 +15,26 @@ if (!function_exists('getLocales')) {
     }
 }
 
+if (!function_exists('setIfString')) {
+
+    function setIfString(&$request)
+    {
+
+        $header  = $request->header('Content-Type');
+        if($header === "application/x-www-form-urlencoded") {
+            $values = $request->all();
+            $st = '';
+            foreach ($values as $key => $v) {
+                $st = $st . $key . $v;
+            }
+            $inputs = json_decode($st, true);
+            $request->replace($inputs);
+        }
+    }
+}
+
+
+
 
 if (!function_exists('getSetting')) {
 
