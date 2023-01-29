@@ -274,9 +274,9 @@ export default {
             <div class="row">
               <div class="col">
                 <div class="site-logo">
-                  <a :href="route('welcome')"
+                  <Link :href="route('welcome')"
                     ><img src="/img/oldlogo-1.png" alt="Logo" style="height: 63px"
-                  /></a>
+                  /></Link>
                 </div>
               </div>
               <div class="col header-menu-column">
@@ -566,9 +566,9 @@ export default {
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
           <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-              <a :href="route('welcome')"
+              <Link :href="route('welcome')"
                 ><img src="/img/oldlogo-1.png" alt="Logo" style="height: 63px"
-              /></a>
+              /></Link>
             </div>
             <button class="ltn__utilize-close">×</button>
           </div>
@@ -678,13 +678,13 @@ export default {
               </li>
 
               <li>
-                <a href="cart.html" title="Shoping Cart">
+                <Link :href="route('cartitem.index')" :title="$t('nav_menu.pages.cart')">
                   <span class="utilize-btn-icon">
                     <i class="fas fa-shopping-cart"></i>
                     <sup>5</sup>
                   </span>
                   {{ $t("nav_menu.pages.cart") }}
-                </a>
+                </Link>
               </li>
               <li v-if="$page.props.auth">
                 <a @click="logout()" href="#" title="Logout">

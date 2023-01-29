@@ -8,6 +8,7 @@ export default {
     GuestLayout,
     PBlog,
     breadcrumb,
+    Link,
   },
 };
 </script>
@@ -337,9 +338,9 @@ export default {
               <div class="need-support text-center mt-100">
                 <h2>{{ $t("faq.help") }}</h2>
                 <div class="btn-wrapper mb-30">
-                  <a :href="route('contact-us')" class="theme-btn-1 btn">{{
+                  <Link :href="route('contact-us')" class="theme-btn-1 btn">{{
                     $t("nav_menu.help.contact_us")
-                  }}</a>
+                  }}</Link>
                 </div>
                 <h3><i class="fas fa-phone"></i> {{ $page.props.phone }}</h3>
               </div>
@@ -361,9 +362,9 @@ export default {
               </div>
               <!-- Banner Widget -->
               <div class="widget ltn__banner-widget">
-                <a :href="route('listing')"
+                <Link :href="route('listing')"
                   ><img src="/img/banner/13.jpg" alt="Banner Image"
-                /></a>
+                /></Link>
               </div>
             </aside>
           </div>

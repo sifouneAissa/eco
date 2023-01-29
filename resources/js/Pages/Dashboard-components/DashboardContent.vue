@@ -91,10 +91,10 @@ export default {
                   {{ $page.props.home_page_section_1_description_2 }}
               </p> -->
               <div class="btn-wrapper">
-                <a
+                <Link
                   :href="route('listing')"
                   class="theme-btn-3 btn btn-effect-4 text-uppercase"
-                  >{{ $t("dashboard.section1.view_more") }}</a
+                  >{{ $t("dashboard.section1.view_more") }}</Link
                 >
               </div>
             </div>
@@ -275,14 +275,18 @@ export default {
           <div class="col-md-6 col-sm-6">
             <div class="ltn__banner-item">
               <div class="ltn__banner-img">
-                <a :href="route('listing')"><img src="img/banner/3.jpg" alt="Image" /></a>
+                <Link :href="route('listing')"
+                  ><img src="img/banner/3.jpg" alt="Image"
+                /></Link>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="ltn__banner-item">
               <div class="ltn__banner-img">
-                <a :href="route('listing')"><img src="img/banner/4.jpg" alt="Image" /></a>
+                <Link :href="route('listing')"
+                  ><img src="img/banner/4.jpg" alt="Image"
+                /></Link>
               </div>
             </div>
           </div>
