@@ -225,7 +225,7 @@ export default {
     },
     setAfter(){
         const toast = useToast();
-        toast.success(this.$t('listing.success'));
+        toast.success(this.$t('notifications.success'));
         $("#checkout_modal").modal("hide");
         this.$page.props.productToCheckout = null;
         $("body").removeClass("modal-open");
@@ -236,13 +236,14 @@ export default {
     },
     Pay(form) {
         let app = this;
+        const toast = useToast();
         form.post(route("order.store"), {
             preserveScroll: true,
             onSuccess: function() {
                 app.setAfter();
             },
             onError: (errors) => {
-                // toast.error(errors.error);
+                toast.error(errors.error);
             },
         });
     },
