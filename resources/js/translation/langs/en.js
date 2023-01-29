@@ -247,6 +247,12 @@ const en = {
       checkout:"Checkout",
       one_product:"One Product",
       limited:"The quantity is limited ",
+      cart_subtotal:"Cart subtotal",
+        shipping_handing:" Shipping and handling",
+        proceed_chechout:"  Go to payment",
+        apply_coupon:"Apply Coupon ",
+        coupon:"coupon code",
+      safe_checkout:"Guaranteed Safe Checkout",
       tabs:{
         order:"Order Online",
         gallery:"Gallery",

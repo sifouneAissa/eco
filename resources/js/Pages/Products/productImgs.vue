@@ -77,7 +77,7 @@
                 <a
                   href="#"
                   class="theme-btn-1 btn btn-effect-1"
-                  title="Add to Cart"
+                  :title="$t('dashboard.section3.add_cart')"
                   data-toggle="modal"
                   data-target="#add_to_cart_modal"
                 >
@@ -86,15 +86,15 @@
                 </a>
               </li>
               <li @click="$page.props.productToCheckout = $page.props.product">
-                    <a
-                        href="#"
-                        class="theme-btn-1 btn btn-effect-1"
-                        :title="'Checkout'"
-                        data-toggle="modal"
-                        :data-target="'#checkout_modal'"
-                    >
-                        <i class="fas fa-money-bill"></i>
-                    </a>
+                <a
+                  href="#"
+                  class="theme-btn-1 btn btn-effect-1"
+                  :title="$t('listing.checkout')"
+                  data-toggle="modal"
+                  :data-target="'#checkout_modal'"
+                >
+                  <i class="fas fa-money-bill"></i>
+                </a>
               </li>
             </ul>
           </div>
@@ -147,7 +147,7 @@
           </div>
           <hr />
           <div class="ltn__safe-checkout">
-            <h5>Guaranteed Safe Checkout</h5>
+            <h5>{{ $t("listing.safe_checkout") }}</h5>
             <img src="/img/icons/payment-2.png" alt="Payment Image" />
           </div>
         </div>

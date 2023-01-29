@@ -128,10 +128,10 @@ const submit = () => {
               <div class="by-agree text-center">
                 <p>{{ $t("register.desc1") }}:</p>
                 <p>
-                  <a href="#"
-                    >{{ $t("nav_menu.help.terms_conditions") }} &nbsp; &nbsp; | &nbsp;
-                    &nbsp; {{ $t("nav_menu.help.privacy_policy") }}</a
-                  >
+                  <Link :href="route('terms-conditions')">
+                    {{ $t("nav_menu.help.terms_conditions") }} </Link
+                  >&nbsp; &nbsp; | &nbsp; &nbsp;
+                  <a href="#"> {{ $t("nav_menu.help.privacy_policy") }}</a>
                 </p>
                 <div class="go-to-btn mt-50">
                   <Link :href="route('login')">{{ $t("login.login") }}</Link>

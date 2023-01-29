@@ -191,10 +191,10 @@ export default {
                       <td>{{ $t("listing.shipping_handing") }}</td>
                       <td>{{ $page.props.currency_code }} 00.00</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td>Vat</td>
                       <td>{{ $page.props.currency_code }} 00.00</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                       <td>
                         <strong>{{ $t("listing.total") }} </strong>
