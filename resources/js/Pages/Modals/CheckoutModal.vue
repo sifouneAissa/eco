@@ -1,10 +1,10 @@
 <template>
-  <!-- MODAL AREA START (Quick View Modal) -->
+  <!-- MODAL AREA START (Checkout View Modal) -->
   <div class="ltn__modal-area ltn__quick-view-modal-area">
-    <div class="modal fade" id="quick_view_modal" tabindex="-1">
+    <div class="modal fade" id="checkout_modal" tabindex="-1">
       <div
-        v-if="$page.props.productTo"
-        :key="$page.props.productTo.id"
+        v-if="$page.props.productToCheckout"
+        :key="$page.props.productToCheckout.id"
         class="modal-dialog modal-lg"
         role="document"
       >
@@ -19,12 +19,7 @@
             <div class="ltn__quick-view-modal-inner">
               <div class="modal-product-item">
                 <div class="row">
-                  <div class="col-lg-6 col-12">
-                    <div class="modal-product-img">
-                      <img :src="$page.props.productTo.fimage" alt="#" />
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-12">
+                  <div class="col-12">
                     <div class="modal-product-info">
                       <div class="product-ratting">
                         <ul>
@@ -48,15 +43,15 @@
                           </li>
                         </ul>
                       </div>
-                      <h3>{{ $page.props.productTo.lname }}</h3>
+                      <h3>{{ $page.props.productToCheckout.lname }}</h3>
                       <div class="product-price">
                         <span
                           >{{ $page.props.currency_code }}
-                          {{ $page.props.productTo.cprice }}</span
+                          {{ $page.props.productToCheckout.cprice }}</span
                         >
                         <del
                           >{{ $page.props.currency_code }}
-                          {{ $page.props.productTo.coprice }}</del
+                          {{ $page.props.productToCheckout.coprice }}</del
                         >
                       </div>
                       <div class="modal-product-meta ltn__product-details-menu-1">
@@ -64,7 +59,7 @@
                           <li>
                             <strong>{{ $t("listing.category") }} : </strong>
                             <span>
-                              <a href="#">{{ $page.props.productTo.category.lname }}</a>
+                              <a href="#">{{ $page.props.productToCheckout.category.lname }}</a>
                               <!--                                                            <a href="#">Oil</a>-->
                               <!--                                                            <a href="#">Grooming</a>-->
                               <!--                                                            <a href="#">Tools</a>-->
@@ -72,35 +67,35 @@
                           </li>
                         </ul>
                       </div>
-                      <div class="ltn__product-details-menu-2 row">
+                      <div class="ltn__product-details-menu-2">
                         <ul>
                           <li>
                             <div class="cart-plus-minus">
                               <div
-                                @click="incrQP($page.props.productTo, -1)"
+                                @click="incrQP($page.props.productToCheckout, -1)"
                                 class="dec qtybutton"
                               >
                                 -
                               </div>
                               <input
                                 type="text"
-                                :value="$page.props.productTo.quantity"
+                                :value="$page.props.productToCheckout.quantity"
                                 name="qtybutton"
                                 class="cart-plus-minus-box"
                               />
                               <div
-                                @click="incrQP($page.props.productTo, +1)"
+                                @click="incrQP($page.props.productToCheckout, +1)"
                                 class="inc qtybutton"
                               >
                                 +
                               </div>
                             </div>
                           </li>
-                          <li @click="submit($page.props.productTo)">
+                          <li @click="submit($page.props.productToCheckout)">
                             <a
                               href="#"
                               class="theme-btn-1 btn btn-effect-1"
-                              :title="$t('dashboard.section3.add_cart')"
+                              title="$t('dashboard.section3.add_cart')"
                             >
                               <!--                                                           data-toggle="modal"-->
                               <!--                                                           data-target="#add_to_cart_modal"-->
@@ -109,37 +104,9 @@
                               <span>{{ $t("dashboard.section3.add_cart") }}</span>
                             </a>
                           </li>
-                            <li @click="$page.props.productToCheckout = $page.props.productTo">
-                                <a
-                                    href="#"
-                                    class="theme-btn-1 btn btn-effect-1"
-                                    :title="'Checkout'"
-                                    data-toggle="modal"
-                                    :data-target="'#checkout_modal'"
-                                ><i class="fas fa-money-bill"></i>
-                                </a>
-                            </li>
                         </ul>
                       </div>
-                      <!--                                            <div class="ltn__product-details-menu-3">-->
-                      <!--                                                <ul>-->
-                      <!--                                                    <li>-->
-                      <!--                                                        <a href="#" class="" title="Wishlist"-->
-                      <!--                                                           data-toggle="modal"-->
-                      <!--                                                           data-target="#liton_wishlist_modal">-->
-                      <!--                                                            <i class="far fa-heart"></i>-->
-                      <!--                                                            <span>Add to Wishlist</span>-->
-                      <!--                                                        </a>-->
-                      <!--                                                    </li>-->
-                      <!--                                                    <li>-->
-                      <!--                                                        <a href="#" class="" title="Compare" data-toggle="modal"-->
-                      <!--                                                           data-target="#quick_view_modal">-->
-                      <!--                                                            <i class="fas fa-exchange-alt"></i>-->
-                      <!--                                                            <span>Compare</span>-->
-                      <!--                                                        </a>-->
-                      <!--                                                    </li>-->
-                      <!--                                                </ul>-->
-                      <!--                                            </div>-->
+
                       <hr />
                       <div class="ltn__social-media">
                         <ul>
@@ -177,8 +144,12 @@
                           </li>
                         </ul>
                       </div>
+
                     </div>
                   </div>
+                    <div class="col-12">
+                        <SCheckoutOption @Pay="Pay" />
+                    </div>
                 </div>
               </div>
             </div>
@@ -193,15 +164,17 @@
 import { useToast } from "vue-toastification";
 import { useForm } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
+import SCheckoutOption from "@/Pages/Checkout/SCheckoutOption.vue";
 
 export default {
-  mounted() {
-    // let app = this;
-    // let quick_view_modal = $("#quick_view_modal");
-    //
-    // quick_view_modal.on("hidden.bs.modal", function () {
-    //     // app.$page.props.product=null;
-    // });
+    components: {SCheckoutOption},
+    mounted() {
+    let app = this;
+    let checkout_modal = $("#checkout_modal");
+
+    checkout_modal.on("hidden.bs.modal", function () {
+        app.$page.props.productToCheckout=null;
+    });
   },
   methods: {
     incrQP(item, by) {
@@ -233,7 +206,7 @@ export default {
         .post(route("addProduct"), {
           // onFinish: () => add_form.reset(),
           onSuccess: function (res) {
-            $("#quick_view_modal").modal("hide");
+            $("#checkout_modal").modal("hide");
             $("body").removeClass("modal-open");
             $(".modal-backdrop").remove();
             Inertia.reload();
@@ -250,8 +223,28 @@ export default {
         }
       );
     },
-    Pay() {
-      this.$emit("Pay");
+    setAfter(){
+        const toast = useToast();
+        toast.success(this.$t('listing.success'));
+        $("#checkout_modal").modal("hide");
+        this.$page.props.productToCheckout = null;
+        $("body").removeClass("modal-open");
+        $(".modal-backdrop").remove();
+        Inertia.reload({
+            preserveScroll : true
+        });
+    },
+    Pay(form) {
+        let app = this;
+        form.post(route("order.store"), {
+            preserveScroll: true,
+            onSuccess: function() {
+                app.setAfter();
+            },
+            onError: (errors) => {
+                // toast.error(errors.error);
+            },
+        });
     },
   },
 };

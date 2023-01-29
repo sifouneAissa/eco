@@ -91,7 +91,7 @@
           data-target="#faq-item-2-3"
           aria-expanded="false"
         >
-          PayPal <img src="img/icons/payment-3.png" alt="#" />
+          PayPal <img src="/img/icons/payment-3.png" alt="#"  />
         </h5>
         <div id="faq-item-2-3" class="collapse" data-parent="#checkout_accordion_1">
           <div class="col-12 pl-0">
@@ -105,6 +105,7 @@
                 <p>{{ $t("listing.checkout_card.pay_with") }} Paypal.</p>
                 <!--                        <h6 class="mb-3 mt-0 mb-3">{{ $t("listing.checkout_card.add_card") }}</h6>-->
                 <PayPal
+                  :smodel="this.smodel"
                   :creditC="this.netbank"
                   @SelectPaymentMethod="SelectPaymentMethod"
                 />

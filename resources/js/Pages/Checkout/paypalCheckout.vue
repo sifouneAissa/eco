@@ -38,7 +38,7 @@
 <script>
     export default {
         name: "paypalCheckout.vue",
-        props : ['creditC'],
+        props : ['creditC','smodel'],
 
         data () {
             return {
@@ -86,7 +86,6 @@
                     },
 
                     createOrder: function(data, actions) {
-                        console.log(actions);
                         return actions.order.create({
                             purchase_units: [{"amount":{"currency_code":"USD","value": app.dprice}}]
                         });

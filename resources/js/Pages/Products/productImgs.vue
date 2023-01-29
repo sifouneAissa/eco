@@ -64,7 +64,7 @@
               </li>
             </ul>
           </div>
-          <div class="ltn__product-details-menu-2">
+          <div class="ltn__product-details-menu-2 row">
             <ul>
               <li>
                 <div id="qid" class="cart-plus-minus">
@@ -84,6 +84,17 @@
                   <i class="fas fa-shopping-cart"></i>
                   <span>{{ $t("dashboard.section3.add_cart") }}</span>
                 </a>
+              </li>
+              <li @click="$page.props.productToCheckout = $page.props.product">
+                    <a
+                        href="#"
+                        class="theme-btn-1 btn btn-effect-1"
+                        :title="'Checkout'"
+                        data-toggle="modal"
+                        :data-target="'#checkout_modal'"
+                    >
+                        <i class="fas fa-money-bill"></i>
+                    </a>
               </li>
             </ul>
           </div>

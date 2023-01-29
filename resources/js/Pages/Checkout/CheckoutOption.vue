@@ -1,7 +1,6 @@
 <script>
 import chooseAddress from "@/Pages/Checkout/chooseAddress.vue";
 import choosePayment from "@/Pages/Checkout/choosePayment.vue";
-import ProductCarousel from "@/Pages/Listing/ProductCarousel.vue";
 import CartMenu from "@/Pages/Checkout/CartMenu.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import { useToast } from "vue-toastification";
@@ -11,7 +10,6 @@ export default {
   components: {
     chooseAddress,
     choosePayment,
-    ProductCarousel,
     CartMenu,
   },
   data() {

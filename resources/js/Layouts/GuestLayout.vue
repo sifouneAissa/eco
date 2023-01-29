@@ -4,6 +4,7 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 import CartMenu from "@/Pages/Checkout/CartMenu.vue";
 import QuickViewModal from "@/Pages/Modals/QuickViewModal.vue";
 import AddToWishListModel from "@/Pages/Modals/AddToWishListModel.vue";
+import CheckoutModal from "@/Pages/Modals/CheckoutModal.vue";
 import AddToCartModal from "@/Pages/Modals/AddToCartModal.vue";
 
 export default {
@@ -14,6 +15,7 @@ export default {
     QuickViewModal,
     AddToCartModal,
     AddToWishListModel,
+    CheckoutModal
   },
   mounted() {
     let app = this;
@@ -1038,6 +1040,7 @@ export default {
       <AddToCartModal />
       <QuickViewModal />
       <AddToWishListModel />
+      <CheckoutModal />
     </div>
 
     <!-- preloader area start -->

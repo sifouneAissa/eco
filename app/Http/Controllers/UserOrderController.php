@@ -42,7 +42,6 @@ class UserOrderController extends Controller
 
     public function store(UserOrderRequest $request)
     {
-
         return startTransaction(function () use ($request) {
 
             $withProduct = $request->input('withProduct');
@@ -324,12 +323,11 @@ class UserOrderController extends Controller
 
         }
 
-//        return redirect()->route('listing', [
-//            'query' => $order->products->first()->category->name
-//        ])->with('thanks',true);
-        return redirect()->route('thanks.show',[
-            'id' => $order->id
-        ]);
+        \Illuminate\Support\Facades\Session::put('buyer',['order_id' => $order->id,'mobile' => UserAddress::where('id',$inputs['address_id'])->first()?->mobile]);
+
+//        return redirect()->route('thanks.show',[
+//            'id' => $order->id
+//        ]);
 
     }
 }
