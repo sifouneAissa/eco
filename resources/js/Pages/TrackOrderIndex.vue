@@ -11,7 +11,7 @@
     <!-- BREADCRUMB AREA END -->
 
     <!-- LOGIN AREA START -->
-    <div class="ltn__login-area mb-80">
+    <div class="ltn__login-area margin-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 offset-lg-2">
@@ -118,3 +118,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-bottom: 40px;
+  }
+}
+</style>

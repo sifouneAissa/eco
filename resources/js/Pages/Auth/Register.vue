@@ -39,7 +39,7 @@ const submit = () => {
     <!-- BREADCRUMB AREA END -->
 
     <!-- LOGIN AREA START (Register) -->
-    <div class="ltn__login-area pb-110">
+    <div class="ltn__login-area padding-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -145,3 +145,17 @@ const submit = () => {
     <!-- LOGIN AREA END -->
   </GuestLayout>
 </template>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .padding-section {
+    padding-bottom: 80px;
+    padding-top: 0px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .padding-section {
+    padding-bottom: 40px;
+    padding-top: 0px;
+  }
+}
+</style>

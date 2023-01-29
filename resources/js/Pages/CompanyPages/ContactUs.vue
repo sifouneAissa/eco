@@ -76,7 +76,7 @@ export default {
     </template>
     <breadcrumb :title="$t('nav_menu.help.contact_us')" />
     <!-- CONTACT MESSAGE AREA START -->
-    <div class="ltn__contact-message-area pt-0 pb-80">
+    <div class="ltn__contact-message-area padding-section">
       <!-- pt-115 -->
       <div class="container">
         <div class="row">
@@ -198,3 +198,17 @@ export default {
     <!-- CONTACT MESSAGE AREA END -->
   </GuestLayout>
 </template>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .padding-section {
+    padding-bottom: 80px;
+    padding-top: 0px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .padding-section {
+    padding-bottom: 40px;
+    padding-top: 0px;
+  }
+}
+</style>

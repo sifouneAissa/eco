@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-80">
+  <div class="margin-section">
     <div class="ltn__gallery-active row ltn__gallery-style-2 ltn__gallery-info-hide---">
       <div class="ltn__gallery-sizer col-1"></div>
       <!-- gallery-item -->
@@ -74,4 +74,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-bottom: 40px;
+  }
+}
+</style>

@@ -101,7 +101,7 @@ export default {
     <!--        </div>-->
     <!--      </div>-->
     <!--    </section>-->
-    <div class="ltn__checkout-area mb-80">
+    <div class="ltn__checkout-area margin-section">
       <div class="container">
         <div class="row">
           <div v-if="show" class="col-lg-12">
@@ -189,7 +189,7 @@ export default {
             />
           </div>
           <div class="col-lg-6">
-            <div v-if="show" class="ltn__checkout-payment-method mt-50">
+            <div v-if="show" class="ltn__checkout-payment-method margin-section2">
               <!--                          <h4 class="title-2">Payment Method</h4>-->
               <!--                          <div id="checkout_accordion_1">-->
               <!--                              &lt;!&ndash; card &ndash;&gt;-->
@@ -239,7 +239,7 @@ export default {
                 @SelectPaymentMethod="SelectPaymentMethod"
               />
             </div>
-            <div v-else class="ltn__checkout-payment-method mt-50">
+            <div v-else class="ltn__checkout-payment-method margin-section2">
               <button class="btn theme-btn-1 btn-effect-1 text-uppercase" @click="go()">
                 {{ $t("listing.add_products") }}
               </button>
@@ -279,3 +279,21 @@ export default {
     </div>
   </div>
 </template>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-bottom: 80px;
+  }
+  .margin-section2 {
+    margin-top: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-bottom: 40px;
+  }
+  .margin-section2 {
+    margin-top: 40px;
+  }
+}
+</style>
