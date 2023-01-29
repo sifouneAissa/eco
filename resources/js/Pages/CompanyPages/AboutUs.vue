@@ -33,7 +33,7 @@ export default {
     </template>
     <breadcrumb :title="$t('nav_menu.help.about_us')" />
     <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pt-100-- pb-100">
+    <div class="ltn__about-us-area pt-80-- pb-80">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
