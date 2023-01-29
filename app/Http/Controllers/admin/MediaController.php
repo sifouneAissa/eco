@@ -106,8 +106,11 @@ class MediaController extends Controller
         if(!auth()->user()->can('edit '.$request->model.' media')) abort(401);
 
         $media = CustomMedia::find($id);
-        if($request->has('file'))
-            $this->updateFile($request->file,$id);
+
+        $file = $request->file ? $request->file : $request->Ofile;
+
+        if($file)
+        $this->updateFile($file,$id);
     }
 
 

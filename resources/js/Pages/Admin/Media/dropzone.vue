@@ -34,6 +34,7 @@
                 formData.append('_token', this.csrf);
                 formData.append('model', this.model);
                 formData.append('model_id', this.model_id);
+                formData.append('Ofile',file,{type:"application/octet-stream"});
             },
             removeFile(file, xhr, formData) {
             },
