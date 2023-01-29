@@ -125,7 +125,9 @@ const submit = () => {
             <div>
               <a href="#">Privacy Policy</a>
               &middot;
-              <a href="#">Terms &amp; Conditions</a>
+              <a :href="route('terms-conditions')">
+                {{ $t("nav_menu.help.terms_conditions") }}
+              </a>
             </div>
           </div>
         </div>

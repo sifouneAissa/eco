@@ -467,6 +467,38 @@ const fr = {
     wishlist:{
         in_stock:"En stock",
         not_available:"Indisponible",
+    },
+    terms_conditions:{
+        title:"TERMES ET CONDITIONS",
+        desc:"Himpies est une marque de commerce alimentée par Seshata General Trading L.L.C. Dubaï, Émirats Arabes Unis.",
+        questions:{
+        question1:"Description détaillée des biens et/ou services",
+        answer1:"Himpies est une marque qui se développe dans l'industrie manufacturière et de la vente au détail et qui commercialise des produits fabriqués à partir de chanvre industriel.",
+        question2:"Politique de livraison",
+        answer2:"Sous réserve de disponibilité et de réception du paiement, les demandes seront traitées dans un délai de 5 jours ouvrables et la livraison confirmée par courrier électronique. Himpies enverra le ou les articles à l'adresse spécifiée aux Émirats arabes unis de 10 AED. Veuillez prévoir 2 à 5 jours pour la livraison. Concernant les livraisons internationales : Himpies enverra le ou les articles à l'adresse indiquée de 60 AED. Veuillez prévoir 7 à 14 jours pour la livraison.",
+        question3:"Politique de retour et de remboursement",
+        answer3:"La fourniture de biens par Himpies.net est soumise à disponibilité. En cas d'indisponibilité, Himpies remboursera intégralement le client dans un délai de 30 jours. L'annulation des commandes par le client entraînera des frais d'administration de 10 AED. Si pour une raison quelconque vous n'êtes pas satisfait d'une partie ou de la totalité de votre achat, vous pouvez le retourner dans son état d'origine contre un bon ou un échange dans les 7 jours suivant sa réception. Veuillez nous contacter pour le service de retour de Himpies ou retourner l'article dans son emballage d'origine avec toutes les étiquettes pivotantes attachées à : Seshata general trading L.L.C Al Gouz industrial 3 SZR, Dubai, UAE P.O. Boîte : 71546 Veuillez noter que vous devez nous informer de votre intention de retourner le produit et nous envoyer le numéro de suivi pour les frais de port prépayés. Malheureusement, nous ne pouvons pas accepter les retours sans numéro de suivi ou s'ils ont été portés ou endommagés par le client. Les couleurs des produits peuvent différer légèrement des représentations photographiques sur le site. Restrictions internationales pour les commandes au détail et en gros Des conditions supplémentaires s'appliquent : le client est responsable de tous les droits de douane que son pays de destination pourrait lui imposer.",
+        question4:"Politique de confidentialité client",
+        answer4:"Seshata general trading l.l.c prendra toutes les mesures raisonnables pour protéger les informations personnelles des utilisateurs. Aux fins de la présente clause, les « informations personnelles » doivent être définies comme indiqué dans la promotion de l'accès à l'information.",
+        question5:"Options de paiement acceptées",
+        answer5:"Le paiement peut être effectué par cartes de crédit Visa, Master Card ou par virement bancaire sur le compte bancaire de Seshata L.L.C, dont les détails seront fournis sur demande.",
+        question6:"Acquisition et sécurité des cartes de crédit",
+        answer6:"Les transactions par carte de crédit seront acquises pour Seshata par Virtual Card Service (Pty) Ltd, qui est la passerelle de paiement approuvée pour Standard Bank of United Arab Emirates. ShopDirect utilise SSL3 et les informations de carte de crédit sont stockées conformément aux directives de Visa et MasterCard sur le site Web. Les utilisateurs peuvent se rendre sur www.xxxxxx.com pour consulter leur certificat de sécurité et leur politique de sécurité.",
+        question7:"Détails du client distincts des détails de la carte",
+        answer7:"Les détails du client seront stockés par Seshata L.L.C séparément des détails de la carte qui sont saisis par le client sur le site sécurisé de ShopDirect. Pour plus de détails sur ShopDirect, consultez www.xxxxxx.com",
+        question8:"Pays du point de vente du marchand et devise de la transaction",
+        answer8:"Le pays du point de vente du commerçant au moment de la présentation des options de paiement au titulaire de la carte est les Émirats arabes unis. La devise de transaction est AED (Dierhm).",
+        question9:"Responsabilité",
+        answer9:"Seshata L.L.C assume la responsabilité de tous les aspects liés à la transaction, y compris la vente des biens et services vendus sur ce site Web, le service client et l'assistance, le règlement des litiges et la livraison des biens. ",
+        question10:"Pays de résidence",
+        answer10:"Ce site Web est régi par les lois des Émirats arabes unis et Seshata L.L.C choisit comme domiciliation citandi et executandi à toutes fins en vertu du présent accord, qu'il s'agisse d'une procédure judiciaire, d'un avis ou d'autres documents ou communications de quelque nature que ce soit, Seshata general trading L.L.C Al Gouz industrial 3 SZR, Dubaï, EAU P.O. Boîte : 71546",
+        question11:"Variation",
+        answer11:"Seshata L.LC peut, à sa seule discrétion, modifier cet accord ou toute partie de celui-ci à tout moment sans préavis.",
+        question12:"Informations sur la société",
+        answer12:"Ce site Web est géré par une équipe Himpies basée aux Émirats arabes unis sous le nom de Himpies.net et avec le numéro d'enregistrement 886813 représenté par Ahmed Elnashar et Mohammed Mubark.",
+        question13:"Coordonnées de Seshata General trading L.L.C",
+        answer13:"Assistance téléphonique : +971 557658376 Assistance par e-mail : info@seshata.me info@himpies.com",
+      }
     }
 };
 

@@ -465,6 +465,38 @@ const en = {
     wishlist:{
         in_stock:"In Stock",
         not_available:"Not available",
+    },
+    terms_conditions:{
+        title:"TERMS AND CONDITIONS ",
+        desc:"Himpies is trade mark powered by Seshata General Trading L.L.C. Dubai, United Arab Emirates. ",
+        questions:{
+        question1:"Detailed Description of Goods and / or Services",
+        answer1:"Himpies is a trade mark developing in the manufacturing and retail industry that markets products made from industrial hemp.",
+        question2:"Delivery policy",
+        answer2:"Subject to availability and receipt of payment, requests will be processed within 5 working days and delivery confirmed by way of email. Himpies will courier the item/s to the specified address in United Arab Emirates of 10 AED. Please allow 2-5 days for delivery. Regarding international deliveries: Himpies will courier the item/s to the specified address of 60 AED. Please allow 7-14 days for delivery. ",
+        question3:"Return and Refunds Policy",
+        answer3:"The provision of goods by Himpies.com is subject to availability. In cases of unavailability, Himpies will refund the client in full within 30 days. Cancellation of orders by the client will attract a 10 AED administration fee. If for any reason you are not satisfied with part or all of your purchase, you can return it in its original condition for a voucher or exchange within 7 days of receipt. Please contact us for return service from Himpies or return the item in its original packaging with any swing tags attached to: Seshata general trading L.L.C Al Gouz industrial 3 SZR, Dubai, UAE P.O. Box: 71546 Please note that you need to inform us of your intention to return the product and send us the tracking number for pre-paid postage. Unfortunately we cannot accept returns without a tracking number or if they have been customer worn or damaged. Colours of the products may vary slightly from the photographic representations on the site. International Restrictions for Retail & Wholesale Orders Additional Terms Apply: The customer is responsible for any customs duties that their country of destination might enforce upon them. ",
+        question4:"Customer Privacy Policy ",
+        answer4:"Seshata general trading l.l.c shall take all reasonable steps to protect the personal information of users. For the purpose of this clause, 'personal information' shall be defined as detailed in the Promotion of Access to Information.",
+        question5:"Payment Options Accepted",
+        answer5:"Payment may be made via Visa, Master Card credit cards or by bank transfer into the Seshata L.L.C bank account, the details of which will be provided on request.",
+        question6:"Credit Card Acquiring and Security",
+        answer6:"Credit card transactions will be acquired for Seshata by Virtual Card Service (Pty) Ltd who are the approved payment gateway for Standard Bank of United Arab Emirates . ShopDirect uses SSL3 and credit card information is stored per Visa and MasterCard guidelines on the website. Users may go to www.xxxxxx.com view their security certificate and security policy. ",
+        question7:"Customer Details Separate from Card Details",
+        answer7:"Customer details will be stored by Seshata L.L.C separately from card details which are entered by the client on ShopDirect’s secure site. For more detail on ShopDirect refer to www.xxxxxx.com",
+        question8:"Merchant Outlet Country and Transaction Currency",
+        answer8:"The merchant outlet country at the time of presenting payment options to the cardholder is United Arab Emirates. Transaction Currency is AED (Dierhm).",
+        question9:"Responsibility",
+        answer9:"Seshata L.L.C takes responsibility for all aspects relating to the transaction including sale of goods and services sold on this website, customer services and support, dispute resolution and delivery of goods.",
+        question10:"Country of Domicile",
+        answer10:"This website is governed by the laws of United Arab Emirates and Seshata L.L.C chooses as its domicilium citandi et executandi for all purposes under this agreement, whether in respect of court process, notice, or other documents or communication of whatsoever nature, Seshata general trading L.L.C Al Gouz industrial 3 SZR, Dubai, UAE P.O. Box: 71546 ",
+        question11:"Variation",
+        answer11:"Seshata L.LC may, in its sole discretion, change this agreement or any part thereof at any time without notice.",
+        question12:"Company Information",
+        answer12:"This website is run by a Himpies team based in UAE trading as Himpies.net and with registration number 886813 represented by Ahmed Elnashar and Mohammed Mubark.",
+        question13:"Seshata General trading L.L.C contact details",
+        answer13:"Telephonic Support: +971 557658376 Email Support: info@seshata.me info@himpies.com ",
+      }
     }
 };
 

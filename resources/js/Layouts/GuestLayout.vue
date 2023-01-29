@@ -931,9 +931,7 @@ export default {
                         >
                       </li>
                       <li>
-                        <Link href="#">
-                          <!-- <Link :href="route('terms-conditions')"
-                          > -->
+                        <Link :href="route('terms-conditions')">
                           {{ $t("nav_menu.help.terms_conditions") }}
                         </Link>
                       </li>
@@ -1016,9 +1014,7 @@ export default {
                 <div class="ltn__copyright-menu text-right">
                   <ul>
                     <li>
-                      <Link href="#">
-                        <!-- <Link :href="route('terms-conditions')"
-                        > -->
+                      <Link :href="route('terms-conditions')">
                         {{ $t("nav_menu.help.terms_conditions") }}
                       </Link>
                     </li>
