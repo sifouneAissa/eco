@@ -107,10 +107,8 @@ class MediaController extends Controller
 
         $media = CustomMedia::find($id);
 
-        $file = $request->file ? $request->file : $request->Ofile;
-
-        if($file)
-        $this->updateFile($file,$id);
+        if($request->has('file'))
+            $this->updateFile($request->file,$id);
     }
 
 

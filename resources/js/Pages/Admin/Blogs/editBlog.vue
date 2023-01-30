@@ -38,8 +38,7 @@ export default {
     },
     submit: function () {
       let app = this;
-      console.log("this.form");
-      console.log(this.form);
+
       Inertia.patch(this.route('admin.blog.update',{
           blog : this.model.id
       }),{
@@ -48,13 +47,13 @@ export default {
           description : this.form.description
       },{
           headers: {
-              // 'Content-Type' : 'application/x-www-form-urlencoded'
+              'Content-Type' : 'application/octet-stream'
           },
           onCancelToken: cancelToken => {
-              console.log("this is cencel token")
+              // console.log("this is cencel token")
           },
           onCancel: () => {
-              console.log("this is on cancel")
+              // console.log("this is on cancel")
           },
           onSuccess: () => {
               Inertia.visit(app.route("admin.blog.index"));

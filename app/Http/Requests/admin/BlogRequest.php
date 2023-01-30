@@ -26,7 +26,7 @@ class BlogRequest extends FormRequest
     public function rules()
     {
 
-        setIfString($this);
+        $this->headers->set('Content-Type','application/json');
 
         return [
             'title' => 'required|max:255',

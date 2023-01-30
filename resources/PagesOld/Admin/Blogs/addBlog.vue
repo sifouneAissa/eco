@@ -38,6 +38,9 @@
             submit : function () {
                 let app = this;
                 this.form.post(this.route('admin.blog.store'),{
+                    headers: {
+                        'Content-Type' : 'application/octet-stream'
+                    },
                     onSuccess : () => {
                         Inertia.visit(app.route('admin.blog.index'))
                     }
