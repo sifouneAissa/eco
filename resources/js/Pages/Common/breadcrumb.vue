@@ -25,7 +25,7 @@ export default {
 <template>
   <!-- BREADCRUMB AREA START -->
   <div
-    class="ltn__breadcrumb-area ltn__breadcrumb-area-4 bg-overlay-theme-10--- bg-image"
+    class="ltn__breadcrumb-area ltn__breadcrumb-area-4 bg-overlay-theme-10--- bg-image margin-section"
   >
     <!-- :data-bg="img" -->
     <div class="container">
@@ -62,8 +62,17 @@ export default {
 <style scoped>
 .ltn__breadcrumb-area {
   background-color: #7aa649;
-  margin-bottom: 80px;
   padding-top: 50px;
   padding-bottom: 50px;
+}
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-bottom: 40px;
+  }
 }
 </style>

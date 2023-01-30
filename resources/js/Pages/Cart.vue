@@ -108,7 +108,7 @@ export default {
     <!-- BREADCRUMB AREA END -->
 
     <!-- SHOPING CART AREA START -->
-    <div class="liton__shoping-cart-area mb-80">
+    <div class="liton__shoping-cart-area margin-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -191,10 +191,10 @@ export default {
                       <td>{{ $t("listing.shipping_handing") }}</td>
                       <td>{{ $page.props.currency_code }} 00.00</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td>Vat</td>
                       <td>{{ $page.props.currency_code }} 00.00</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                       <td>
                         <strong>{{ $t("listing.total") }} </strong>
@@ -234,3 +234,15 @@ export default {
     <!-- SHOPING CART AREA END -->
   </GuestLayout>
 </template>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-bottom: 40px;
+  }
+}
+</style>

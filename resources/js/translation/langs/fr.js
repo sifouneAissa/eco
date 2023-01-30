@@ -248,6 +248,12 @@ const fr = {
         checkout:"Payer",
         one_product:"Un produit",
         limited:"La quantité est limitée ",
+        cart_subtotal:"Sous-total du panier",
+        shipping_handing:"Shipping and handling",
+        proceed_chechout:"Aller au paiement",
+        apply_coupon:"Appliquer code promo",
+        coupon:" code promo",
+        safe_checkout:"Paiement sécurisé garanti",
         tabs:{
             order:"Commander en ligne",
             gallery:"Galerie",

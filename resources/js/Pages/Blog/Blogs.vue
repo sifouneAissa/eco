@@ -1,6 +1,6 @@
 <template>
   <!-- BLOG AREA START -->
-  <div class="mb-80">
+  <div class="margin-section">
     <div class="ltn__blog-area ltn__blog-item-3-normal">
       <div class="container">
         <div class="row">
@@ -84,4 +84,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-bottom: 40px;
+  }
+}
+</style>

@@ -47,7 +47,7 @@ const submit = () => {
     <breadcrumb :title="$t('nav_menu.pages.login')" />
     <!-- BREADCRUMB AREA END -->
     <!-- LOGIN AREA START -->
-    <div class="ltn__login-area pb-65">
+    <div class="ltn__login-area padding-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -116,7 +116,7 @@ const submit = () => {
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="account-create text-center pt-50">
+            <div class="account-create text-center padding-section2">
               <h4>{{ $t("login.dont_have_account") }}</h4>
               <p>
                 {{ $t("login.desc1") }} <br />
@@ -135,3 +135,23 @@ const submit = () => {
     <!-- LOGIN AREA END -->
   </GuestLayout>
 </template>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .padding-section {
+    padding-bottom: 80px;
+    padding-top: 0px;
+  }
+  .padding-section2 {
+    padding-top: 50px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .padding-section {
+    padding-bottom: 40px;
+    padding-top: 0px;
+  }
+  .padding-section2 {
+    padding-top: 0px;
+  }
+}
+</style>

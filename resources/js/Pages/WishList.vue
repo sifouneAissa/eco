@@ -11,7 +11,7 @@
     <!-- BREADCRUMB AREA END -->
 
     <!-- WISHLIST AREA START -->
-    <div class="liton__wishlist-area mb-80">
+    <div class="liton__wishlist-area margin-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -102,3 +102,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-bottom: 40px;
+  }
+}
+</style>

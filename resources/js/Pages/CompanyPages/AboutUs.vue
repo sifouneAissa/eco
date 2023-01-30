@@ -33,11 +33,11 @@ export default {
     </template>
     <breadcrumb :title="$t('nav_menu.help.about_us')" />
     <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pt-80-- pb-80">
+    <div class="ltn__about-us-area padding-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
-            <div class="about-us-info-wrap pt-30 pb-30">
+            <div class="about-us-info-wrap pt-0 pb-20">
               <h3>{{ $t("about_us.section1.title1") }}</h3>
               <h1>{{ $t("about_us.section1.title2") }}</h1>
               <p>
@@ -67,7 +67,7 @@ export default {
     </div>
     <!-- ABOUT US AREA END -->
     <!-- OUR HISTORY AREA START -->
-    <div class="ltn__our-history-area section-bg-1 pt-80 pb-80">
+    <div class="ltn__our-history-area section-bg-1 padding-section">
       <div class="container">
         <div class="ltn__our-history-inner ltn__our-history-inner-2">
           <div class="row">
@@ -104,3 +104,17 @@ export default {
     <logoarea />
   </GuestLayout>
 </template>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .padding-section {
+    padding-bottom: 80px;
+    padding-top: 0px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .padding-section {
+    padding-bottom: 40px;
+    padding-top: 0px;
+  }
+}
+</style>

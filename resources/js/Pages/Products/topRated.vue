@@ -1,5 +1,5 @@
 <template>
-  <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
+  <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar margin-section">
     <!-- Top Rated Product Widget -->
     <div class="widget ltn__top-rated-product-widget">
       <h4 class="ltn__widget-title">{{ $t("listing.top_products") }}</h4>
@@ -67,4 +67,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media only screen and (min-width: 800px) {
+  .margin-section {
+    margin-top: 80px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .margin-section {
+    margin-top: 40px;
+  }
+}
+</style>

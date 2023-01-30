@@ -255,6 +255,7 @@ const ar = {
         proceed_chechout:"انتقل إلى الدفع",
         apply_coupon:"تطبيق القسيمة",
         coupon:"رمز القسيمة",
+        safe_checkout:"ضمان الدفع الآمن",
         tabs:{
             order:"اطلب عبر الإنترنت",
             gallery:"معرض الصور",
