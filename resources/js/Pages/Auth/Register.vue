@@ -12,7 +12,8 @@ import breadcrumb from "@/Pages/Common/breadcrumb.vue";
 
 const form = useForm({
   name: "",
-  email: "",XssSanitization
+  email: "",
+  password: "",
   password_confirmation: "",
   terms: false,
   check_email: true,
