@@ -123,10 +123,13 @@ export default {
         .transform((data) => ({
           name: data.name,
           desc: data.desc,
-          show_in_dash:  data.show_in_dash.id,
+          show_in_dash:  data.show_in_dash?.id,
           langs : data.langs
         }))
         .post(route("admin.category.store", {}), {
+          headers: {
+                'Content-Type' : 'application/octet-stream'
+          },
           onFinish: () => {},
           onSuccess: () => {
             $("#add-product-category").modal("hide");

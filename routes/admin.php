@@ -39,11 +39,9 @@ use \Illuminate\Support\Facades\Route;
         Route::resource('/product',\App\Http\Controllers\admin\ProductController::class)->only([
             'index'
             ,'store'
-//            ,'update'
+            ,'update'
             ,'destroy'
         ]);
-
-        Route::post('/uproduct',[\App\Http\Controllers\admin\ProductController::class,'update'])->name('product.update');
 
         Route::get('/products',[\App\Http\Controllers\admin\ProductController::class,'datatables'])->name('products.index');
         Route::resource('/setting',\App\Http\Controllers\admin\SettingController::class)->only([

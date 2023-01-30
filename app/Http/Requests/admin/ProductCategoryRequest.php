@@ -23,8 +23,9 @@ class ProductCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        
-        
+
+        $this->headers->set('Content-Type','application/json');
+
         return [
             //
             'name' => ['required','string','max:255'],

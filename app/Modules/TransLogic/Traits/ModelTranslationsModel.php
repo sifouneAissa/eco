@@ -26,6 +26,7 @@ trait ModelTranslationsModel {
         if(is_string($data))
             $data = json_decode($data,true);
 
+
         if($data && count($data)) {
 
             foreach($data as $dlang){

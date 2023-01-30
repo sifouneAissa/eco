@@ -23,6 +23,9 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+
+        $this->headers->set('Content-Type','application/json');
+
         return [
             //
             'name' => ['required','max:255','unique:products'],

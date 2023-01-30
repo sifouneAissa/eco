@@ -62,13 +62,13 @@ class ProductController extends Controller
         $product->addTranslations($request->input('langs'));
     }
 
-    public function update(UpdateProductRequest $request)
+    public function update(UpdateProductRequest $request,$id)
     {
         $start_over = $request->input('start_over');
 
         $inputs = $this->filterRequest($request->all());
 
-        $product = Product::find($request->input('id'));
+        $product = Product::find($id);
 
         $product->update($inputs);
 

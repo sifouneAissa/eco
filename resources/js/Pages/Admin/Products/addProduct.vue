@@ -156,6 +156,9 @@
                     old_price : data.old_price,
                     langs : data.langs
                 })).post(route('admin.product.store',{}), {
+                    headers: {
+                        'Content-Type' : 'application/octet-stream'
+                    },
                     onFinish: () => {
                     },
                     onSuccess : () => {

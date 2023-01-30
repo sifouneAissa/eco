@@ -25,7 +25,10 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules()
     {
-        $product = Product::find($this->id);
+
+        $this->headers->set('Content-Type','application/json');
+
+        $product = Product::find($this->product);
 
         return [
             //

@@ -122,14 +122,17 @@ export default {
         .transform((data) => ({
           name: data.name,
           desc: data.desc,
-          show_in_dash:  data.show_in_dash.id,
-          langs : JSON.stringify(data.langs)
+          show_in_dash:  data.show_in_dash?.id,
+          langs : data.langs
         }))
         .patch(
           route("admin.category.update", {
             category : this.model.id,
           }),
           {
+              headers: {
+                  'Content-Type' : 'application/octet-stream'
+              },
             onFinish: () => {},
             onSuccess: () => {
               $("#" + this.model.modal_ids.edit).modal("hide");

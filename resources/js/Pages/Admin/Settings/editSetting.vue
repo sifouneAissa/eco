@@ -95,13 +95,16 @@ export default {
           name: data.name,
           content: data.content,
           code : data.code,
-          langs : JSON.stringify(data.langs)
+          langs : data.langs
         }))
         .patch(
           route("admin.setting.update", {
             setting : this.model.id,
           }),
           {
+           headers: {
+                  'Content-Type' : 'application/octet-stream'
+           },
             onFinish: () => {},
             onSuccess: () => {
               $("#" + this.model.modal_ids.edit).modal("hide");
