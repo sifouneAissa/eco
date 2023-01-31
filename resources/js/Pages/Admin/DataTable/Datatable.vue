@@ -1,10 +1,13 @@
 <script>
     import EditModal from '@/Pages/Admin/DataTable/Modals/Update.vue';
-
+    import Update from '@/Pages/Admin/DataTable/Modals/Update.vue';
     import ClientFilterBtns from '@/Pages/Admin/Clients/FilterBtns.vue';
     import OrderFilterBtns from '@/Pages/Admin/Orders/FilterBtns.vue';
     import Delete from '@/Pages/Admin/DataTable/Modals/Delete.vue'
     import {Inertia} from "@inertiajs/inertia";
+    import {useForm} from "@inertiajs/inertia-vue3";
+
+    import Multiselect from 'vue-multiselect'
 
     export default {
         // props: [
@@ -45,7 +48,9 @@
             },
         },
         components: {
+            Multiselect,
             Delete,
+            Update,
             EditModal,
             ClientFilterBtns,
             OrderFilterBtns
@@ -54,7 +59,25 @@
             return {
                 table: null,
                 modelToUpdate: null,
-                sRows: []
+                sRows: [],
+                form : useForm({
+                    status : '',
+                    ids : []
+                }),
+                options : [
+                    {
+                        name : 'Received',
+                        id : 'instore'
+                    },
+                    {
+                        name : 'Confirmed',
+                        id : 'onway'
+                    },
+                    {
+                        name : 'Picked Up',
+                        id : 'delivered'
+                    }
+                ]
             }
         },
         watch: {
@@ -145,17 +168,6 @@
                             extend: 'colvis',
                             className: 'btn btn-secondary dropdown-toggle'
                         },
-                        // {
-                        //     text: 'Actions',
-                        //     className: 'btn btn-secondary dropdown-toggle',
-                        //     action: function () {
-                        //         // console.log(app.table.fnGetData().filter(item => item.selected === true));
-                        //         app.sRows = [];
-                        //         app.table.api().rows({
-                        //             selected : true
-                        //         }).data().map((item) => app.sRows.push(item));
-                        //     }
-                        // },
                     ]
                 },
 
@@ -168,6 +180,45 @@
                 paging: true,
                 pageLength: 12
             })
+
+            $(document).ready( function () {
+                // if pagination
+                $('#dataTable').on('page.dt', function(){
+                    app.sRows = [];
+
+                    $(".selectAll").prop('checked',false);
+                });
+
+                var  DT1 = $('#dataTable').DataTable();
+
+                $(".selectAll").on( "click", function(e) {
+
+                    if ($(this).is( ":checked" )) {
+                        DT1.rows({page:'current'}  ).select();
+                        setTimeout(function() {
+                            app.sRows = [];
+                            app.table.api().rows({
+                                selected : true
+                            }).data().map((item) => {
+                                app.sRows.push(item)
+                            });
+
+                        }, 20);
+                    } else {
+                        DT1.rows({page:'current'}  ).deselect();
+                        setTimeout(function() {
+                            app.sRows = [];
+                            app.table.api().rows({
+                                selected : true
+                            }).data().map((item) => {
+                                app.sRows.push(item)
+                            });
+
+                        }, 20);
+                    }
+                });
+            } );
+
 
             $('#dataTable tbody').on('click', 'tr', function () {
 
@@ -220,6 +271,24 @@
         },
         methods : {
 
+            submitE : function () {
+                let app = this;
+                this.form.transform((data) => (
+                    {
+                        status : data.status.id,
+                        ids : this.sRows.map((item) => item.id)
+                    }
+                )).post(route('admin.trackorder.updateM'), {
+                    onFinish: () => {
+                    },
+                    onSuccess : () => {
+                        $('#edit-order-multi').modal('hide');
+                        $('#dataTable').DataTable().ajax.reload();
+                        app.sRows = [];
+                        app.form.reset('status');
+                    }
+                });
+            },
             submitD : function () {
                 let app = this;
                 // this.form
@@ -243,17 +312,21 @@
 
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-table mr-1 "></i>
             {{title}}
             <div v-if="$page.component!=='Dashboard' && (!without || !without.some(item => item === 'add'))"
                  class="float-right">
-
                 <button v-if="this.sRows.length!==0" class="btn btn btn-rounded m-2 btn-primary" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h6>
                     <i class="feather-chevron-down"></i>Actions</h6></button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <button v-if="this.$page.props.deleteMUrl" class="dropdown-item text-danger"  data-toggle="modal" data-target="#delete-multi">Delete <i class="feather-trash-2"></i></button>
+                    <button v-if="$page.component==='Orders'" class="dropdown-item text-warning"  data-toggle="modal" data-target="#edit-order-multi">Status <i class="feather-edit-2"></i></button>
                 </div>
+
+                <label class="btn btn btn-rounded m-2 btn-outline-dark ">
+                    <input type="checkbox" class="selectAll" > Select all
+                </label>
                 <ClientFilterBtns v-if="Btns==='ClientFilterBtns'"/>
                 <OrderFilterBtns v-if="Btns==='OrderFilterBtns'"/>
                 <button
@@ -289,6 +362,31 @@
 
             </div>
         </Delete>
+
+        <Update :id="'edit-order-multi'" title="Edit Multiple Orders">
+            <div  class="modal-body mx-3 bg" >
+                <form @submit.prevent="submitE">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <multiselect
+                            v-model="form.status"
+                            :options="options"
+                            label="name"
+                            track-by="name"
+                            :multiple="false"
+                            required
+                            placeholder="Select Status"
+                        ></multiselect>
+                    </div>
+
+                    <div class="modal-footer d-flex">
+                        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">{{$t("account.addresses.add_card.cancel")}}
+                        </button><button  type="submit" class="btn btn-warning">{{$t("account.addresses.add_card.save")}}</button>
+                    </div>
+                </form>
+
+            </div>
+        </Update>
     </div>
 
 </template>
@@ -298,3 +396,5 @@
         margin: 0 auto;
     }
 </style>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>

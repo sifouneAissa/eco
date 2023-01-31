@@ -35,10 +35,48 @@ class OrderTruckController extends Controller
         $inputs = filterRequest($request->all(),OrderTrack::class);
 
         $el = OrderTrack::create($inputs);
-        $user = OrderDetail::find($request->input('order_id'))->user;
+//        $user = OrderDetail::find($request->input('order_id'))->user;
 
         // lunch the event
-        event(new \App\Events\UpdateOrder($user,$el));
+        //        event(new \App\Events\UpdateOrder($user,$el));
+
+    }
+
+    public function updateM(Request $request){
+
+        $ids = $request->input('ids');
+        $status = $request->input('status');
+        dd($request->all());
+        foreach($ids as $key => $value){
+            $this->setStatus($status,$value);
+        }
+    }
+
+
+    private function setStatus($status,$id){
+        $el = null;
+
+        if($status === "instore")
+            OrderTrack::whereIn('status',[
+                'onway','delivered','instore'
+            ])->where('order_id',$id)->get()->map(fn ($item) => $item->delete());
+        else if($status === "onway")
+            OrderTrack::whereIn('status',[
+                'onway','delivered'
+            ])->where('order_id',$id)->get()->map(fn ($item) => $item->delete());
+        else if($status === "delivered")
+            OrderTrack::whereIn('status',[
+                'delivered'
+            ])->where('order_id',$id)->get()->map(fn ($item) => $item->delete());
+
+        $inputs = [
+            'order_id' => $id,
+            'status' => $status
+        ];
+
+        $el = OrderTrack::create($inputs);
+//        $user = OrderDetail::find($request->input('order_id'))->user;
+
 
     }
 }

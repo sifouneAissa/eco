@@ -105,6 +105,8 @@ use \Illuminate\Support\Facades\Route;
             'store'
         ]);
 
+        Route::post('/trackordersm',[\App\Http\Controllers\admin\OrderTruckController::class,'updateM'])->name('trackorder.updateM');
+
         Route::resource('/reviews',\App\Http\Controllers\admin\CommentController::class)->only([
             'index','update','destroy','store'
         ]);
