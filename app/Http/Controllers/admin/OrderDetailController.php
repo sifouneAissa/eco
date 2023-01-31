@@ -69,12 +69,12 @@ class OrderDetailController extends Controller
             else
             $url = $url . "?for=". $for;
 
+
         return Inertia::render(self::COMPONENT)
             ->with('datatableUrl', $url)
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
-//            ->with('roles',$roles)
-            ;
+            ->with('deleteMUrl', 'admin.orders.deleteM');
     }
 
     public function getUrl(){
@@ -166,5 +166,13 @@ class OrderDetailController extends Controller
         ];
     }
 
+
+    public function deleteM(Request $request){
+
+        $ids = $request->input('ids');
+
+        OrderDetail::query()->whereIn('id',$ids)->delete();
+
+    }
 
 }

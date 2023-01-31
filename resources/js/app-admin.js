@@ -18,6 +18,8 @@ import '../../public/admin/vendor/dataTables/buttons.colVis';
 import '../../public/admin/vendor/dataTables/css/buttons.bootstrap.css';
 import '../../public/admin/vendor/dataTables/dataTables.rowReorder.min';
 import '../../public/admin/vendor/dataTables/dataTables.responsive.min';
+import '../../public/admin/vendor/dataTables/dataTables.select.min';
+import '../../public/admin/vendor/dataTables/css/select.dataTables.min.css';
 // import '../../public/admin/vendor/dataTables/dataTables.bulma.min.js';
 
 // import Multiselect from 'vue-multiselect'

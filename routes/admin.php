@@ -81,6 +81,9 @@ use \Illuminate\Support\Facades\Route;
         Route::resource('/order',\App\Http\Controllers\admin\OrderDetailController::class)->only([
             'index','show'
         ]);
+        Route::post('/ordersm',[\App\Http\Controllers\admin\OrderDetailController::class,'deleteM'])->name('orders.deleteM');
+
+
         Route::resource('/message',\App\Http\Controllers\admin\UserMessageController::class)->only([
             'index','destroy'
         ]);
