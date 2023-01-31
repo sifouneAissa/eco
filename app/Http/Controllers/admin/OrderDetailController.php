@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\OrderDetail;
 use App\Models\User;
+use App\Traits\ControllersTrait;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -15,6 +16,7 @@ class OrderDetailController extends Controller
     //
 
     use DatatableTrait;
+    USE ControllersTrait;
 
     public const MODEL = OrderDetail::class;
 
@@ -166,13 +168,5 @@ class OrderDetailController extends Controller
         ];
     }
 
-
-    public function deleteM(Request $request){
-
-        $ids = $request->input('ids');
-
-        OrderDetail::query()->whereIn('id',$ids)->delete();
-
-    }
 
 }
