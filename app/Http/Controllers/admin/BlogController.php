@@ -50,7 +50,8 @@ class BlogController extends Controller
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
             ->with('model',$this->getModel())
-            ->with('deleteMUrl', 'admin.blogs.deleteM');
+            ->with('deleteMUrl', 'admin.blogs.deleteM')
+            ->with('dper', 'delete blog');
     }
 
 

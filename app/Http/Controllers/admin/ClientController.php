@@ -79,7 +79,8 @@ class ClientController extends Controller
             ->with('datatableUrl', $url)
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
-            ->with('deleteMUrl', 'admin.clients.deleteM');
+            ->with('deleteMUrl', 'admin.clients.deleteM')
+            ->with('dper', 'delete client');
 //            ->with('roles',$roles)
             ;
     }

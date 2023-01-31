@@ -40,7 +40,8 @@ class ProductCategoryController extends Controller
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
             ->with('sections', $sections)
-            ->with('deleteMUrl', 'admin.categories.deleteM');
+            ->with('deleteMUrl', 'admin.categories.deleteM')
+            ->with('dper', 'delete product category');
     }
 
 

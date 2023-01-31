@@ -316,12 +316,12 @@
             {{title}}
             <div v-if="$page.component!=='Dashboard' && (!without || !without.some(item => item === 'add'))"
                  class="float-right">
-                <button v-if="this.sRows.length!==0" class="btn btn btn-rounded m-2 btn-primary" type="button"
+                <button v-if="($can($page.props.dper || ($can('update order status') && $page.component==='Orders'))) && this.sRows.length!==0"  class="btn btn btn-rounded m-2 btn-primary" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h6>
                     <i class="feather-chevron-down"></i>Actions</h6></button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button v-if="this.$page.props.deleteMUrl" class="dropdown-item text-danger"  data-toggle="modal" data-target="#delete-multi">Delete <i class="feather-trash-2"></i></button>
-                    <button v-if="$page.component==='Orders'" class="dropdown-item text-warning"  data-toggle="modal" data-target="#edit-order-multi">Status <i class="feather-edit-2"></i></button>
+                    <button v-if="$can($page.props.dper) && this.$page.props.deleteMUrl" class="dropdown-item text-danger"  data-toggle="modal" data-target="#delete-multi">Delete <i class="feather-trash-2"></i></button>
+                    <button v-if="$can('update order status') && $page.component==='Orders'" class="dropdown-item text-warning"  data-toggle="modal" data-target="#edit-order-multi">Status <i class="feather-edit-2"></i></button>
                 </div>
 
                 <label class="btn btn btn-rounded m-2 btn-outline-dark ">

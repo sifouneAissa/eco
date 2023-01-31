@@ -46,8 +46,8 @@ class ProductController extends Controller
             ->with('datatableHeaders', $this->getHeaders())
             ->with('categories', $categories)
             ->with('inventories', $inventories)
-            ->with('deleteMUrl', 'admin.products.deleteM');
-            ;
+            ->with('deleteMUrl', 'admin.products.deleteM')
+            ->with('dper', 'delete product');
     }
 
 

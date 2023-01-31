@@ -40,8 +40,8 @@ class RoleController extends Controller
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
             ->with('permissions',$permissions)
-            ->with('deleteMUrl', 'admin.roles.deleteM');
-            ;
+            ->with('deleteMUrl', 'admin.roles.deleteM')
+            ->with('dper', 'delete role');
     }
 
 

@@ -76,7 +76,8 @@ class OrderDetailController extends Controller
             ->with('datatableUrl', $url)
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
-            ->with('deleteMUrl', 'admin.orders.deleteM');
+            ->with('deleteMUrl', 'admin.orders.deleteM')
+            ->with('dper', 'delete order');
     }
 
     public function getUrl(){

@@ -71,8 +71,8 @@ class UserController extends Controller
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
             ->with('roles', $roles)
-            ->with('deleteMUrl', 'admin.users.deleteM');
-            ;
+            ->with('deleteMUrl', 'admin.users.deleteM')
+            ->with('dper', 'delete user');
     }
 
     public function getUrl()

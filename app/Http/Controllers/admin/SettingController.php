@@ -40,7 +40,8 @@ class SettingController extends Controller
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
-            ->with('without', $without);
+            ->with('without', $without)
+            ;
     }
 
 

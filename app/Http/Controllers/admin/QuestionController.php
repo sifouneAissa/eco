@@ -42,8 +42,8 @@ class QuestionController extends Controller
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
             ->with('model',$this->getModel())
-            ->with('deleteMUrl', 'admin.questions.deleteM');
-            ;
+            ->with('deleteMUrl', 'admin.questions.deleteM')
+            ->with('dper', 'delete question');
     }
 
 
