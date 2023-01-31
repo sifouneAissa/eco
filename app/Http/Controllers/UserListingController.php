@@ -28,8 +28,8 @@ class UserListingController extends Controller
 
         $query  = $request->input('query');
 
-
         $query = ProductCategory::where('name',$query)->count() ? $query : null;
+
 
         return Inertia::render('Listing',[
             'products' => $products,

@@ -88,7 +88,7 @@ class UserOrderController extends Controller
             $inputs['user_id'] = $user->id;
             $inputs['total'] = $shopping->ototal;
             // if payment method === credit
-            $this->stripeAmount($shopping->ptotal, $request, $user);
+            $this->stripeAmount($shopping->ototal, $request, $user);
             // create the order
             $order = OrderDetail::query()->create(filterRequest($inputs, OrderDetail::class));
 
