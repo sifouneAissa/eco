@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\ProductCategoryRequest;
 use App\Models\CustomRole;
 use App\Models\ProductCategory;
+use App\Traits\ControllersTrait;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -14,6 +15,7 @@ use Spatie\Permission\Models\Permission;
 class ProductCategoryController extends Controller
 {
     use DatatableTrait;
+    use ControllersTrait;
 
     //
 
@@ -38,7 +40,7 @@ class ProductCategoryController extends Controller
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
             ->with('sections', $sections)
-            ;
+            ->with('deleteMUrl', 'admin.categories.deleteM');
     }
 
 

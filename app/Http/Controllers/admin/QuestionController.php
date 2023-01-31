@@ -7,6 +7,7 @@ use App\Http\Requests\admin\BlogRequest;
 use App\Http\Requests\admin\QuestionRequest;
 use App\Models\Blog;
 use App\Models\Question;
+use App\Traits\ControllersTrait;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -15,6 +16,7 @@ class QuestionController extends Controller
 {
     //
     use DatatableTrait;
+    use ControllersTrait;
 
 
 
@@ -39,7 +41,9 @@ class QuestionController extends Controller
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
-            ->with('model',$this->getModel());
+            ->with('model',$this->getModel())
+            ->with('deleteMUrl', 'admin.questions.deleteM');
+            ;
     }
 
 

@@ -10,6 +10,7 @@ use App\Models\InventoryOrderItem;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductInventory;
+use App\Traits\ControllersTrait;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -18,7 +19,7 @@ use Spatie\Permission\Models\Permission;
 class ProductController extends Controller
 {
     use DatatableTrait;
-
+    use ControllersTrait;
     //
 
     public const MODEL = Product::class;
@@ -44,7 +45,9 @@ class ProductController extends Controller
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
             ->with('categories', $categories)
-            ->with('inventories', $inventories);
+            ->with('inventories', $inventories)
+            ->with('deleteMUrl', 'admin.products.deleteM');
+            ;
     }
 
 

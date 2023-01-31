@@ -20,6 +20,7 @@ use \Illuminate\Support\Facades\Route;
             'update','index','destroy','store'
         ]);
         Route::get('/roles',[\App\Http\Controllers\admin\RoleController::class,'datatables'])->name('roles.index');
+        Route::post('/rolesm',[\App\Http\Controllers\admin\RoleController::class,'deleteM'])->name('roles.deleteM');
 
         Route::resource('/permission',\App\Http\Controllers\admin\PermissionController::class)->only([
             'index'
@@ -31,10 +32,12 @@ use \Illuminate\Support\Facades\Route;
         ]);
         Route::get('/users',[\App\Http\Controllers\admin\UserController::class,'datatables'])->name('users.index');
 
+        Route::post('/usersm',[\App\Http\Controllers\admin\UserController::class,'deleteM'])->name('users.deleteM');
         Route::resource('/client',\App\Http\Controllers\admin\ClientController::class)->only([
             'index','store','update','destroy'
         ]);
         Route::get('/clients',[\App\Http\Controllers\admin\ClientController::class,'datatables'])->name('clients.index');
+        Route::post('/clientsm',[\App\Http\Controllers\admin\ClientController::class,'deleteM'])->name('clients.deleteM');
 
         Route::resource('/product',\App\Http\Controllers\admin\ProductController::class)->only([
             'index'
@@ -44,6 +47,8 @@ use \Illuminate\Support\Facades\Route;
         ]);
 
         Route::get('/products',[\App\Http\Controllers\admin\ProductController::class,'datatables'])->name('products.index');
+        Route::post('/productsm',[\App\Http\Controllers\admin\ProductController::class,'deleteM'])->name('products.deleteM');
+
         Route::resource('/setting',\App\Http\Controllers\admin\SettingController::class)->only([
             'index'
             // ,'store'
@@ -59,6 +64,7 @@ use \Illuminate\Support\Facades\Route;
              ,'destroy'
         ]);
         Route::get('/questions',[\App\Http\Controllers\admin\QuestionController::class,'datatables'])->name('questions.index');
+        Route::post('/questionsm',[\App\Http\Controllers\admin\QuestionController::class,'deleteM'])->name('questions.deleteM');
 
         Route::resource('/category',\App\Http\Controllers\admin\ProductCategoryController::class)->only([
             'index'
@@ -67,6 +73,7 @@ use \Illuminate\Support\Facades\Route;
             ,'destroy'
         ]);
         Route::get('/categories',[\App\Http\Controllers\admin\ProductCategoryController::class,'datatables'])->name('categories.index');
+        Route::post('/categoriesm',[\App\Http\Controllers\admin\ProductCategoryController::class,'deleteM'])->name('categories.deleteM');
 
         // media
         Route::get('/media/{model}',[\App\Http\Controllers\admin\MediaController::class,'index'])->name('media.index');
@@ -91,6 +98,8 @@ use \Illuminate\Support\Facades\Route;
         Route::get('/orders',[\App\Http\Controllers\admin\OrderDetailController::class,'datatables'])->name('orders.index');
 
         Route::get('/blogs',[\App\Http\Controllers\admin\BlogController::class,'datatables'])->name('blogs.index');
+        Route::post('/blogsm',[\App\Http\Controllers\admin\BlogController::class,'deleteM'])->name('blogs.deleteM');
+
         Route::resource('/blog',\App\Http\Controllers\admin\BlogController::class)->only([
             'index',
             'create'

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\RoleRequest;
 use App\Http\Requests\admin\UpdateRoleRequest;
 use App\Models\CustomRole;
+use App\Traits\ControllersTrait;
 use App\Traits\DatatableTrait;
 use Cassandra\Custom;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ use Spatie\Permission\Models\Permission;
 class RoleController extends Controller
 {
     use DatatableTrait;
+    use ControllersTrait;
 
 
     public const MODEL = CustomRole::class;
@@ -37,7 +39,9 @@ class RoleController extends Controller
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
-            ->with('permissions',$permissions);
+            ->with('permissions',$permissions)
+            ->with('deleteMUrl', 'admin.roles.deleteM');
+            ;
     }
 
 

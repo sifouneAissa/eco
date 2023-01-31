@@ -8,6 +8,7 @@ use App\Http\Requests\admin\RoleRequest;
 use App\Http\Requests\admin\UpdateRoleRequest;
 use App\Models\Blog;
 use App\Models\CustomRole;
+use App\Traits\ControllersTrait;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class BlogController extends Controller
     //
 
     use DatatableTrait;
+    use ControllersTrait;
 
 
 
@@ -47,7 +49,8 @@ class BlogController extends Controller
             ->with('datatableUrl', $this->getUrl())
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
-            ->with('model',$this->getModel());
+            ->with('model',$this->getModel())
+            ->with('deleteMUrl', 'admin.blogs.deleteM');
     }
 
 

@@ -10,6 +10,7 @@ use App\Http\Requests\admin\UpdateUserRequest;
 use App\Http\Requests\admin\UserRequest;
 use App\Models\CustomRole;
 use App\Models\User;
+use App\Traits\ControllersTrait;
 use App\Traits\DatatableTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,7 @@ class ClientController extends Controller
 {
     //
     use DatatableTrait;
+    use ControllersTrait;
 
     public const MODEL = User::class;
 
@@ -77,6 +79,7 @@ class ClientController extends Controller
             ->with('datatableUrl', $url)
             ->with('datatableColumns', $this->getColumns())
             ->with('datatableHeaders', $this->getHeaders())
+            ->with('deleteMUrl', 'admin.clients.deleteM');
 //            ->with('roles',$roles)
             ;
     }
