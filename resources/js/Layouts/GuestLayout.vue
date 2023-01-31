@@ -15,7 +15,7 @@ export default {
     QuickViewModal,
     AddToCartModal,
     AddToWishListModel,
-    CheckoutModal
+    CheckoutModal,
   },
   mounted() {
     let app = this;
@@ -1059,12 +1059,14 @@ export default {
 @media only screen and (min-width: 800px) {
   #scrollUp {
     margin-bottom: 40px;
+    z-index: 2147483646;
   }
 }
 @media only screen and (max-width: 600px) {
   #scrollUp {
     margin-bottom: 60px;
     margin-right: 20px;
+    z-index: 2147483646;
   }
 }
 </style>
