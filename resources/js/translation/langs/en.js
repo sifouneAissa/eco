@@ -496,7 +496,7 @@ const en = {
         question12:"Company Information",
         answer12:"This website is run by a Himpies team based in UAE trading as Himpies.net and with registration number 886813 represented by Ahmed Elnashar and Mohammed Mubark.",
         question13:"Seshata General trading L.L.C contact details",
-        answer13:"Telephonic Support: +971 557658376 Email Support: info@seshata.me info@himpies.com ",
+        answer13:'Telephonic Support: 971 557658376 Email Support: ',
       }
     }
 };

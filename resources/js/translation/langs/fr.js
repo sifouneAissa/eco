@@ -498,7 +498,7 @@ const fr = {
         question12:"Informations sur la société",
         answer12:"Ce site Web est géré par une équipe Himpies basée aux Émirats arabes unis sous le nom de Himpies.net et avec le numéro d'enregistrement 886813 représenté par Ahmed Elnashar et Mohammed Mubark.",
         question13:"Coordonnées de Seshata General trading L.L.C",
-        answer13:"Assistance téléphonique : +971 557658376 Assistance par e-mail : info@seshata.me info@himpies.com",
+        answer13:"Assistance téléphonique : +971 557658376 Assistance par e-mail : ",
       }
     }
 };

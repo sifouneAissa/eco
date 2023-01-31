@@ -102,7 +102,6 @@ Route::get('/faq', [\App\Http\Controllers\FaqController::class,'index'])->name('
         return \inertia("CompanyPages/PrivacyPolicy");
     })->name('privacy-policy');
     Route::get("/terms-conditions",function (){
-
         return \inertia("CompanyPages/TermsAndConditions");
     })->name('terms-conditions');
     Route::get("/shipping-policy",function (){

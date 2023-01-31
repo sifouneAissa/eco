@@ -334,7 +334,7 @@ export default {
                   >
                     <div class="card-body">
                       <p>
-                        {{ $t("terms_conditions.questions.answer13") }}
+                        {{ $t("terms_conditions.questions.answer13")+ ' info@seshata.me info@himpies.com' }}
                       </p>
                     </div>
                   </div>
