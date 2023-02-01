@@ -29,15 +29,15 @@ class BotManController extends Controller
 
             $is_question = Question::search($message)->first();
 
-            if ($message == 'hi') {
+            if ($this->hi($message)) {
                 $this->askName($botman);
-            } else if($message === 'thanks'){
-                $botman->reply('your are welcome.');
+            } else if($this->thanks($message)){
+                $botman->reply(__('boot.welcome'));
             }
-            else if (str_contains($message,'order')) {
+            else if ($this->order($message)) {
                 $this->askForOrder($botman);
             } else if ($is_question) {
-                $botman->reply($is_question->answer);
+                $botman->reply($is_question->lanswer);
             }  else {
                 $this->askNextStep($botman,$message);
             }
@@ -49,7 +49,7 @@ class BotManController extends Controller
     public function askForOrder($botman)
     {
 
-        $botman->ask('Enter your order id', function (Answer $answer) {
+        $botman->ask(__('boot.Enter your order id'), function (Answer $answer) {
 
             $order_id = $answer->getText();
 
@@ -57,11 +57,26 @@ class BotManController extends Controller
 
             if ($order) {
 
-                $this->say('Check this url : '.route('trackOrder', ['id' => $order_id]));
+//                $this->say(__('boot.Check this url : ').route('trackOrder', ['id' => $order_id]));
+
+                $this->ask(__('boot.Enter your order mobile'), function (Answer $answer) use ($order) {
+                    $mobile = $answer->getText();
+
+                    $order =  app(BotManController::class)->validateOrder($mobile,$order->id);
+
+                    if ($order) {
+                        $this->say(__('boot.Check this url : ').' '.route('trackOrder.show', ['order_id' => $order->id,'mobile' => $mobile]));
+                    }
+                    else {
+                        $this->say(__('boot.Please insert a valid mobile.'));
+                    }
+                });
             }
             else {
-                $this->say('Please insert a valid id.');
+                $this->say(__('boot.Please insert a valid id.'));
             }
+
+
         });
     }
 
@@ -70,21 +85,29 @@ class BotManController extends Controller
      */
     public function askName($botman)
     {
-        if (getShoppingSession() && $name = getShoppingSession() ?->user->name)
-        $botman->ask('Hello ' . $name . '! Do you have any questions?', function (Answer $answer) {
+        if (getShoppingSession() && $name = getShoppingSession() ?->user->name){
+        $botman->ask(__('boot.Hello') . ' ' . $name . ' ' . __('boot.! Do you have any questions?'), function (Answer $answer) {
 
             $question = $answer->getText();
             $is_question = Question::search($question)->first();
 
             if ($is_question)
                 $this->say($is_question->answer);
+
+
         });
+
+        $this->askNextStep($botman,'yes');
+        }
         else {
-        $botman->ask('Hello! What is your Name?', function (Answer $answer) {
+
+            $botman->ask(__('boot.Hello! What is your Name?'), function (Answer $answer) use ($botman) {
 
             $name = $answer->getText();
 
-            $this->say('Nice to meet you' . $name . '! Do you have any questions?');
+            $this->say(__('boot.Nice to meet you') .' '. $name);
+
+            app(BotManController::class)->askNextStep($this,'yes');
         });
     }
     }
@@ -98,10 +121,10 @@ class BotManController extends Controller
         $questions = Question::all();
 
         $buttons = $questions->map(function ($item) {
-            return Button::create($item->question)->value($item->answer);
+            return Button::create($item->lquestion)->value($item->lanswer);
         });
 
-        $questionM = $message==="yes" ? 'Choose a question !' : 'Do you have any questions?';
+        $questionM = $this->yes($message) ? __('boot.Choose a question !') : __('boot.Do you have any questions?');
 
         $question = \BotMan\BotMan\Messages\Outgoing\Question::create($questionM)
             ->fallback('Unable to create a new database')
@@ -112,8 +135,81 @@ class BotManController extends Controller
             if ($answer->isInteractiveMessageReply()) {
                 $selectedValue = $answer->getValue(); // will be either 'yes' or 'no'
                 $selectedText = $answer->getText(); // will be either 'Of course' or 'Hell no!'
+
+                if(app(BotManController::class)->order($selectedValue))
+                    app(BotManController::class)->askForOrder($this);
+                else
                 $this->say($selectedValue);
+
             }
         });
+    }
+
+    private function hi($value){
+        return $this->ftext($value,[
+                'اهلا',
+                'أهلا',
+                'hi',
+                'hello',
+                'salut',
+            ]
+        );
+    }
+
+    private function yes($value){
+        return $this->ftext($value,[
+            'نعم',
+            'أجل',
+            'اجل',
+            'yes',
+            'oui'
+            ]
+        );
+    }
+
+    public function order($value){
+        return $this->ftext($value,[
+                'طلب',
+                'الطلب',
+                'تتبع',
+                'order',
+                'truck',
+                'ordre',
+                'suivie',
+                'commande'
+            ]
+        );
+    }
+
+
+    private function thanks($value){
+
+        return $this->ftext($value,[
+                'شكرا',
+                'thanks',
+                'thank you',
+                'merci'
+            ]
+        );
+    }
+
+
+    private function ftext($value,$langs){
+
+        $value = strtolower($value);
+
+        $arrs = array_filter($langs,fn ($lang) => str_contains($lang,$value) || str_contains($value,$lang));
+
+        return count($arrs);
+    }
+
+
+    public function validateOrder($mobile,$id){
+
+        $order = OrderDetail::whereHas('userAddress',function ($builder) use ($mobile){
+            $builder->where("mobile",$mobile);
+        })->where("id",$id)->with(['products','paymentDetail','orderTracks','userAddress','orderItems.product'])->first();
+
+        return $order;
     }
 }

@@ -108,7 +108,8 @@ Route::get('/faq', [\App\Http\Controllers\FaqController::class,'index'])->name('
 
         return \inertia("CompanyPages/ReturnAndShippingPolicy");
     })->name('shipping-policy');
-    //    Route::get('trackorder/{id}',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder');
+
+    Route::get('trackordershow',[\App\Http\Controllers\TrackOrderController::class,'show'])->name('trackOrder.show');
     Route::get('trackorder',[\App\Http\Controllers\TrackOrderController::class,'index'])->name('trackOrder.index');
     Route::post('trackorder/redirect',[\App\Http\Controllers\TrackOrderController::class,'redirectTo'])->name('trackOrder.redirect');
 

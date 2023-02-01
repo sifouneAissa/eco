@@ -6,6 +6,7 @@
                 <div class="mb-5 form-label-group"> <div class="form-group">
                     <label>Question content</label>
                     <input v-model="form.question" type="text" class="form-control" placeholder="Question Content">
+                    <edit-t :type="'input'" @write="write" :attr="'Question'" :keyV="'question'" :model="this.model" :cvalues="this.form.langs"/>
                     <div v-show="form.errors.question">
                         <p class="text-sm " style="color: red">
                             {{ form.errors.question }}
@@ -15,6 +16,7 @@
                     <div class="form-group">
                         <label>Answer content</label>
                         <input v-model="form.answer" type="text" class="form-control" placeholder="Answer Content">
+                        <edit-t :type="'input'" @write="write" :attr="'Answer'" :keyV="'answer'" :model="this.model" :cvalues="this.form.langs"/>
                         <div v-show="form.errors.answer">
                             <p class="text-sm " style="color: red">
                                 {{ form.errors.answer }}
@@ -36,11 +38,13 @@
     import Update from '@/Pages/Admin/DataTable/Modals/Update.vue';
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import Multiselect from 'vue-multiselect'
+    import editT from '@/Pages/Admin/Translations/updateTranslation.vue';
 
     export default  {
         components : {
             Update,
-            Multiselect
+            Multiselect,
+            editT
         },
         props : {
             model : Object
@@ -59,18 +63,29 @@
                 form: useForm({
                     question: this.model.question,
                     answer: this.model.answer,
+                    langs : []
                 })
             }
         },
         methods : {
+            write(ditem){
+                this.form.langs = ditem;
+            },
             resetModel : function (){
                 this.$emit('ResetModel');
             },
             submit : function () {
                 // this.form
-                this.form.patch(route('admin.question.update',{
+                this.form.transform((data) => ({
+                    question: data.question,
+                    answer: data.answer,
+                    langs : data.langs
+                })).patch(route('admin.question.update',{
                     id : this.model.id
                 }), {
+                    headers: {
+                        'Content-Type' : 'application/octet-stream'
+                    },
                     onFinish: () => {
                     },
                     onSuccess : () => {
