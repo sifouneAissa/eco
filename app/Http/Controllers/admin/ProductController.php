@@ -125,12 +125,12 @@ class ProductController extends Controller
             ['data' => 'id', 'name' => 'Id'],
             ['data' => 'name', 'name' => 'Name'],
 //            ['data' => 'desc' , 'name' => 'Description','searchable' => true],
-            ['data' => 'price', 'name' => 'Price', 'searchable' => true],
-            ['data' => 'old_price', 'name' => 'Old Price', 'searchable' => false],
-            ['data' => 'category', 'name' => 'Category', 'searchable' => false],
-            ['data' => 'inventory', 'name' => 'Inventory', 'searchable' => false],
-            ['data' => 'remain', 'name' => 'Remain', 'searchable' => false],
-            ['data' => 'action', 'name' => 'Action', 'searchable' => false]
+            ['data' => 'price', 'name' => 'price', 'searchable' => true],
+            ['data' => 'old_price', 'name' => 'old_price', 'searchable' => true],
+            ['data' => 'category', 'name' => 'Category', 'searchable' => false,'orderable' => false],
+            ['data' => 'inventory', 'name' => 'Inventory', 'searchable' => false,'orderable' => false],
+            ['data' => 'remain', 'name' => 'Remain', 'searchable' => false,'orderable' => false],
+            ['data' => 'action', 'name' => 'Action', 'searchable' => false,'orderable' => false]
         ];
     }
 

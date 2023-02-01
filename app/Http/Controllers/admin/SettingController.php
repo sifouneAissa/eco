@@ -104,7 +104,7 @@ class SettingController extends Controller
             ['data' => 'id','name' => 'Id'],
             ['data' => 'name' , 'name' => 'Name'],
             ['data' => 'content' , 'name' => 'Content'],
-            ['data' => 'action' , 'name' => 'Action','searchable' => false]
+            ['data' => 'action' , 'name' => 'Action','searchable' => false,'orderable' => false]
         ];
     }
 

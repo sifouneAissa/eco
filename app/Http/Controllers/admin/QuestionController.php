@@ -95,7 +95,7 @@ class QuestionController extends Controller
             ['data' => 'id','name' => 'Id'],
             ['data' => 'question' , 'name' => 'Question'],
             ['data' => 'answer' , 'name' => 'Answer'],
-            ['data' => 'action' , 'name' => 'Action','searchable' => false],
+            ['data' => 'action' , 'name' => 'Action','searchable' => false,'orderable' => false],
             ];
     }
 

@@ -100,7 +100,7 @@
                 //     selector: 'td:nth-child(2)'
                 // },
                 columnDefs: [{
-                    orderable: false,
+                    orderable: true,
                     className: 'select-checkbox',
                     targets: 0
                 }],
@@ -108,7 +108,7 @@
                     style: 'multi',
                     selector: 'td:first-child'
                 },
-                // order: [[ 1, 'asc' ]],
+                order: [[ 0, 'desc' ]],
                 scrollX: true,
                 buttons: {
                     dom: {

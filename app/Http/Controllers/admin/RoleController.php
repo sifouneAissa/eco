@@ -101,8 +101,8 @@ class RoleController extends Controller
         return [
             ['data' => 'id','name' => 'Id'],
             ['data' => 'name' , 'name' => 'Name'],
-            ['data' => 'permissions' , 'name' => 'Permissions','searchable' => false],
-            ['data' => 'action' , 'name' => 'Action','searchable' => false],
+            ['data' => 'permissions' , 'name' => 'Permissions','searchable' => false,'orderable' => false],
+            ['data' => 'action' , 'name' => 'Action','searchable' => false,'orderable' => false],
 //            ['data' => 'email']
         ];
     }

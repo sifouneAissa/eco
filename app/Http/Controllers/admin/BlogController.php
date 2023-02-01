@@ -130,7 +130,7 @@ class BlogController extends Controller
             ['data' => 'id','name' => 'Id'],
             ['data' => 'title' , 'name' => 'Title'],
 //            ['data' => 'permissions' , 'name' => 'Permissions','searchable' => false],
-            ['data' => 'action' , 'name' => 'Action','searchable' => false],
+            ['data' => 'action' , 'name' => 'Action','searchable' => false,'orderable' => false],
 //            ['data' => 'email']
         ];
     }

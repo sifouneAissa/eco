@@ -86,7 +86,7 @@ class OrderDetailController extends Controller
 
     public function datatables(Request $request) {
 
-        $builder = (self::MODEL)::query()->orderBy('created_at','desc');
+        $builder = (self::MODEL)::query();
 
         $permissions = [
             'edit' => 'edit order',
@@ -145,13 +145,13 @@ class OrderDetailController extends Controller
         return [
             ['data' => 'id','name' => 'Id'],
             ['data' => 'user_name' , 'name' => 'User name','searchable' => false],
-            ['data' => 'email' , 'name' => 'Email','searchable' => false],
-            ['data' => 'count' , 'name' => 'Products Count','searchable' => false],
-            ['data' => 'total' , 'name' => 'total','searchable' => false],
-            ['data' => 'status' , 'name' => 'Status','searchable' => false],
-            ['data' => 'created_at' , 'name' => 'Created at','searchable' => false],
+            ['data' => 'email' , 'name' => 'Email','searchable' => false,'orderable' => false],
+            ['data' => 'count' , 'name' => 'Products Count','searchable' => false,'orderable' => false],
+            ['data' => 'total' , 'name' => 'total','searchable' => false,'orderable' => false],
+            ['data' => 'status' , 'name' => 'Status','searchable' => false,'orderable' => false],
+            ['data' => 'created_at' , 'name' => 'created_at','searchable' => false],
 //            ['data' => 'roles' , 'name' => 'Roles','searchable' => false],
-            ['data' => 'action' , 'name' => 'Action','searchable' => false]
+            ['data' => 'action' , 'name' => 'Action','searchable' => false,'orderable' => false]
         ];
     }
 

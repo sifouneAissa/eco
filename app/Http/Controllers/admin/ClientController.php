@@ -142,7 +142,7 @@ class ClientController extends Controller
             ['data' => 'name' , 'name' => 'Name'],
             ['data' => 'email' , 'name' => 'Email','searchable' => true],
 //            ['data' => 'roles' , 'name' => 'Roles','searchable' => false],
-            ['data' => 'action' , 'name' => 'Action','searchable' => false]
+            ['data' => 'action' , 'name' => 'Action','searchable' => false,'orderable' => false]
         ];
     }
 

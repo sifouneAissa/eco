@@ -120,7 +120,7 @@ class ProductCategoryController extends Controller
             ['data' => 'id','name' => 'Id'],
             ['data' => 'name' , 'name' => 'Name'],
             ['data' => 'desc' , 'name' => 'Desc','searchable' => false],
-            ['data' => 'action' , 'name' => 'Action','searchable' => false]
+            ['data' => 'action' , 'name' => 'Action','searchable' => false,'orderable' => false]
         ];
     }
     public function getHeaders(){
