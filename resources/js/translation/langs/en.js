@@ -498,6 +498,11 @@ const en = {
         question13:"Seshata General trading L.L.C contact details",
         answer13:'Telephonic Support: 971 557658376 Email Support: ',
       }
+    },
+    privacy_policy:{
+        text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus justo vel feugiat varius. Fusce blandit laoreet felis sit amet tincidunt. Donec vulputate nisl quis iaculis convallis. Duis felis mi, luctus in lectus vel, tristique feugiat dui. Pellentesque nec sapien elit. Praesent ut malesuada massa. Suspendisse tempor, libero molestie maximus pretium, est enim ullamcorper justo, a luctus justo eros imperdiet justo. ",
+        text2:"Aliquam elit massa, pellentesque sed risus cursus, condimentum sollicitudin erat. Aliquam vel vehicula enim, in scelerisque ante. Suspendisse aliquam ornare varius. Ut accumsan imperdiet sapien ac semper. Vivamus aliquet, tortor lobortis aliquam consectetur, massa risus volutpat odio, sit amet egestas ipsum lectus ac sapien. Cras pulvinar augue vitae est dictum commodo. Praesent massa dolor, varius sed dolor eu, accumsan commodo risus. Aenean nec urna id felis suscipit laoreet at in lectus. Maecenas fermentum felis sit amet varius tristique. Fusce imperdiet hendrerit eros at luctus. Aenean tortor sapien, congue ut nulla eu, dictum aliquet elit. Nam auctor interdum lorem malesuada fringilla. Integer non orci eget ligula pulvinar aliquam eget quis erat. ",
+        text3:"Cras molestie diam in ultrices vulputate. Quisque non tincidunt nisi. Curabitur at justo ante. Sed tempor lorem ac nunc condimentum varius. Donec ac libero lectus. Etiam ornare nisi ut eros gravida tristique sit amet quis sapien. Nullam fermentum ullamcorper arcu, vel pulvinar lorem. Aenean ut nulla lobortis, lacinia leo a, aliquet velit. Nulla orci metus, rutrum venenatis pulvinar in, fringilla et nulla. Nam in elit at justo interdum sollicitudin eget nec quam. ",
     }
 };
 

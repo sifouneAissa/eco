@@ -1022,9 +1022,8 @@ export default {
                     </li>
                     <!-- <li><a href="#">Claim</a></li> -->
                     <li>
-                      <Link href="#">
-                        <!-- <Link :href="route('privacy-policy')"
-                        > -->
+                        <Link :href="route('privacy-policy')"
+                        >
                         {{ $t("nav_menu.help.privacy_policy") }}
                       </Link>
                     </li>
