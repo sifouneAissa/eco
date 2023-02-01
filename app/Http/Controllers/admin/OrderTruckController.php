@@ -46,7 +46,7 @@ class OrderTruckController extends Controller
 
         $ids = $request->input('ids');
         $status = $request->input('status');
-        dd($request->all());
+
         foreach($ids as $key => $value){
             $this->setStatus($status,$value);
         }

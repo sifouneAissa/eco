@@ -59,5 +59,9 @@ class Handler extends ExceptionHandler
 //            dd($e->getMessage());
         });
 
+        $this->renderable(function (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e,Request $request) {
+//            dd($e->getMessage());
+        });
+
     }
 }
