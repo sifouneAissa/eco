@@ -56,8 +56,9 @@ class QuestionController extends Controller
     public function store(QuestionRequest $request){
         // get all inputs in the request
         $inputs = $this->filterRequest($request->all());
-        Question::create($inputs);
+        $question = Question::create($inputs);
 
+        $question->addTranslations($request->input('langs'));
     }
 
 
@@ -66,7 +67,12 @@ class QuestionController extends Controller
         // get all inputs in the request
         $inputs = $this->filterRequest($request->all());
 
+        $question = Question::find($id);
+
         Question::find($id)->update($inputs);
+
+
+        $question->updateTranslations($request->input('langs'));
     }
 
     public function datatables(Request $request) {

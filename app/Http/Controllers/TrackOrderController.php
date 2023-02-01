@@ -10,7 +10,7 @@ use Inertia\Inertia;
 class TrackOrderController extends Controller
 {
 
-    public function show(Request $request,$id){
+    public function show(Request $request){
 
         $order = null;
 

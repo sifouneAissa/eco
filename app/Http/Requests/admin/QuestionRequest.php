@@ -23,6 +23,9 @@ class QuestionRequest extends FormRequest
      */
     public function rules()
     {
+
+        $this->headers->set('Content-Type','application/json');
+
         return [
             //
             'question' => 'required|max:255',
