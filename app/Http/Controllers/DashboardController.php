@@ -11,11 +11,15 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Foundation\Application;
 
+
+
 class DashboardController extends Controller
 {
     //
 
     public function index(){
+
+        $seo = gSeo('Himpies','Himpies is a hemp brand powered by SESHATA. Based in United Arab Emirates.We bring the best quality of HEMP products over the world to you.');
 
         $categories = ProductCategory::get();
         $blogs = Blog::get();
@@ -34,7 +38,6 @@ class DashboardController extends Controller
             $dCat = $dCat->toArray();
             $dCat['products'] = $products;
         }
-
          return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
@@ -47,7 +50,9 @@ class DashboardController extends Controller
             'populars' => $populars,
             'dcat' => $dCat,
             'cLeft' => $cLeft,
-            'cRight' => $cRight
+            'cRight' => $cRight,
+             'seo' => $seo
         ]);
     }
+
 }

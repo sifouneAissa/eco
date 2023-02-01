@@ -39,8 +39,11 @@ class ProductController extends Controller
 
     public function show(Request $request,$id)
     {
+        $id = str_replace('-',' ',$id);
 
         $product = Product::query()->where('name',$id)->firstOrFail()->load(['category']);
+
+        $seo = $product->GSEO();
 
         $callbackIsA = function ($item){
             return $item->isA()['isA'];
@@ -73,7 +76,8 @@ class ProductController extends Controller
             'product' => $product,
             'bestSellers' => $bestSellers,
             'sameCategory' => $sameCategory,
-            'query' => $request->input('query')
+            'query' => $request->input('query'),
+            'seo' => $seo
         ]);
     }
 

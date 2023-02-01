@@ -13,6 +13,10 @@ class UserListingController extends Controller
 
     public function index(Request $request){
 
+
+        $seo = gSeo('Himpies Products Page','Himpies is a hemp brand powered by SESHATA. Based in United Arab Emirates.We bring the best quality of HEMP products over the world to you.');
+
+
         $filerCallback = function ($product){
             $isA = $product->isA();
             $product['isA'] = $isA;
@@ -35,7 +39,8 @@ class UserListingController extends Controller
             'products' => $products,
             'categories' => $categories,
             'query' => $query,
-            'count' => $count
+            'count' => $count,
+            'seo' => $seo
         ]);
     }
 

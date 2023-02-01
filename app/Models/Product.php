@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Session;
 use Laravel\Scout\Searchable;
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -20,7 +21,6 @@ class Product extends Model implements HasMedia
     use Searchable;
     use ModelTranslationsModel;
 
-
     public const SNAME = 'Products';
     public const INAME = 'Product';
 
@@ -30,7 +30,8 @@ class Product extends Model implements HasMedia
         'desc_ar',
         'desc_fr',
         'lname',
-        'ldesc'
+        'ldesc',
+        'nameseo'
 //        'new','bests','popular'
     ];
 
@@ -169,10 +170,23 @@ class Product extends Model implements HasMedia
         return $this->checkAndGetAttr('desc');
     }
 
+    public function getNameseoAttribute(){
+        return str_replace(' ','-',$this->name);
+    }
+
     public function getSurlAttribute(){
         return route('product.show',[
-            'id' => $this->name
+            'id' => $this->nameseo
         ]);
+    }
+
+
+    public function GSEO(){
+        return gSeo(
+            $this->nameseo,
+            strip_tags($this->desc),
+            $this->fimage
+        );
     }
 
 }

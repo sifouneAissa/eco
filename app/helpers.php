@@ -369,3 +369,16 @@ if (!function_exists('getReviews')) {
         return$comments;
     }
 }
+
+
+if (!function_exists('gSeo')) {
+
+    function gSeo($title,$description,$img=null)
+    {
+        return new \RalphJSmit\Laravel\SEO\Support\SEOData(
+            title : $title,
+            description: $description,
+            image : $img ? $img : env('APP_URL').'/img/oldlogo-1.png'
+        );
+    }
+}

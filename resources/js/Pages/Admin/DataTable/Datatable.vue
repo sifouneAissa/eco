@@ -390,6 +390,9 @@
     </div>
 
 </template>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+
 <style scoped>
     div.dataTables_wrapper {
         width: 800px;
@@ -397,4 +400,3 @@
     }
 </style>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
