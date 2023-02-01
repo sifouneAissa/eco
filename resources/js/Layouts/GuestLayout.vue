@@ -55,7 +55,7 @@ export default {
         }, 10000);
 
       $("#botmanWidgetRoot").css("float", "right");
-      $("#botmanWidgetRoot").css("zIndex", "2147483657");
+      $("#botmanWidgetRoot").css("z-index", "2147483657");
 
       if (app.$page.props.isRtl) {
         // for lazy importation
