@@ -34,7 +34,8 @@ class UpdateOrder extends Notification
     {
         return [
             'database',
-            'broadcast'
+            'mail',
+            'broadcast',
         ];
     }
 
@@ -47,9 +48,12 @@ class UpdateOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line(__('mail.Himpies forever'))
+            ->line(__('mail.Your order status has been changed').__('mail.'.$this->info->status))
+            ->line(__('mail.Order id : ').$this->info->order->id)
+            ->line(__('mail.Mobile : ').$this->info->order->userAddress->mobile)
+            ->action(__('mail.Track your order'), route('trackOrder.show',['mobile' => $this->info->order->mobile,'order_id' => $this->info->order->id ]))
+            ->line(__('thanks for your purchase'));
     }
 
     /**
