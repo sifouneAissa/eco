@@ -31,9 +31,11 @@ class NewOrder extends Notification
      */
     public function via($notifiable)
     {
+
         return [
             'database',
-            'broadcast'
+            'mail',
+            'broadcast',
         ];
     }
     /**
@@ -45,9 +47,11 @@ class NewOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line(__('mail.Himpies forever'))
+                    ->line(__('mail.Order id : ').$this->info->id)
+                    ->line(__('mail.Mobile : ').$this->info->userAddress->mobile)
+                    ->action(__('mail.Track your order'), route('trackOrder.show',['mobile' => $this->info->userAddress->mobile,'order_id' => $this->info->id ]))
+                    ->line(__('thanks for your purchase'));
     }
 
     /**

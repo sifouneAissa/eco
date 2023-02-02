@@ -35,11 +35,12 @@ class OrderTruckController extends Controller
         $inputs = filterRequest($request->all(),OrderTrack::class);
 
         $el = OrderTrack::create($inputs);
-//        $user = OrderDetail::find($request->input('order_id'))->user;
+        $user = OrderDetail::find($request->input('order_id'))->user;
 
         // lunch the event
-        //        event(new \App\Events\UpdateOrder($user,$el));
-
+        try {
+            event(new \App\Events\UpdateOrder($user,$el));
+        }catch (\Exception $exception){}
     }
 
     public function updateM(Request $request){
@@ -75,8 +76,12 @@ class OrderTruckController extends Controller
         ];
 
         $el = OrderTrack::create($inputs);
-//        $user = OrderDetail::find($request->input('order_id'))->user;
+        $user = OrderDetail::find($id)->user;
 
+        // lunch the event
+        try {
+            event(new \App\Events\UpdateOrder($user,$el));
+        }catch (\Exception $exception){}
 
     }
 }
