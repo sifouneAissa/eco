@@ -138,8 +138,10 @@ class BotManController extends Controller
 
                 if(app(BotManController::class)->order($selectedValue))
                     app(BotManController::class)->askForOrder($this);
-                else
-                $this->say($selectedValue);
+                else {
+                    $this->say($selectedValue);
+                    app(BotManController::class)->askNextStep($this,'yes');
+                }
 
             }
         });
