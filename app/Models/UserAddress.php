@@ -16,7 +16,7 @@ class UserAddress extends Model
         'postal_code',
         'country',
         'mobile',
-        'telephone',
+//        'telephone',
         'user_id'
     ];
 

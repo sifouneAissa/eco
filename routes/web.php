@@ -15,7 +15,9 @@ use Inertia\Inertia;
 |
 */
 
-
+Route::get('/countries-states',function (){
+    return response()->file(resource_path('js\common\countries+states.json'));
+});
 
 Route::get('/', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcome')->middleware('set.password');
 Route::get('/welcometest', [\App\Http\Controllers\DashboardController::class,'index'])->name('welcometest');

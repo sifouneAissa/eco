@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../../../../node_modules/vue-multiselect/dist/vue-multiselect.css">
 <template>
     <Update :lg="true" @resetModel="resetModel" :id="model.modal_ids.edit" title="Edit Product">
         <div class="modal-body mx-3 bg">

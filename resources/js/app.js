@@ -8,6 +8,7 @@ import $ from 'jquery'
 window.jQuery = $;
 window.$ = $;
 // window.WOW = WOW.WOW
+
 import messages from './translation/translation';
 
 import {createApp, h} from 'vue';

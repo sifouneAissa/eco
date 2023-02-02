@@ -72,10 +72,32 @@
       <div class="modal-body">
         <!--                <form >-->
         <div class="form-row">
-          <div class="form-group col-md-6">
+
+            <div class="form-group col-md-6">
+                <label for="Country">{{ $t("account.addresses.add_card.country") }}</label>
+                <v-select :dir="$page.props.isRtl ? 'rtl' : 'ltr'" :placeholder='$t("account.addresses.add_card.country")' v-model="add_form.country" :options="countries" label="name" ></v-select>
+                <div v-if="this.submited && !isText(add_form.country?.name)">
+                    <p class="text-sm" style="color: red">
+                        {{ errors.country }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="city">{{ $t("account.addresses.add_card.city") }}</label>
+                    <v-select :dir="$page.props.isRtl ? 'rtl' : 'ltr'" :placeholder='$t("account.addresses.add_card.city")'  v-model="add_form.city" :options="add_form.country ? add_form.country.states : []" label="name" ></v-select>
+                <div v-if="this.submited && !isText(add_form.city?.name)">
+                    <p class="text-sm" style="color: red">
+                        {{ errors.city }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
             <label for="address_line_1">{{
               $t("account.addresses.add_card.address1")
             }}</label>
+
             <div class="input-group">
               <input
                 required
@@ -116,42 +138,25 @@
             </div>
           </div>
 
-          <div class="form-group col-md-6">
-            <label for="city">{{ $t("account.addresses.add_card.city") }}</label>
-            <div class="input-group">
-              <input
-                required
-                type="text"
-                v-model="add_form.city"
-                class="form-control"
-                id="city"
-                :placeholder="$t('account.addresses.add_card.city')"
-              />
-            </div>
-            <div v-if="this.submited && !isText(add_form.city)">
-              <p class="text-sm" style="color: red">
-                {{ errors.city }}
-              </p>
-            </div>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="Country">{{ $t("account.addresses.add_card.country") }}</label>
-            <div class="input-group">
-              <input
-                required
-                type="text"
-                v-model="add_form.country"
-                class="form-control"
-                id="Country"
-                :placeholder="$t('account.addresses.add_card.country')"
-              />
-            </div>
-            <div v-if="this.submited && !isText(add_form.country)">
-              <p class="text-sm" style="color: red">
-                {{ errors.country }}
-              </p>
-            </div>
-          </div>
+
+<!--          <div class="form-group col-md-6">-->
+<!--            <label for="Country">{{ $t("account.addresses.add_card.country") }}</label>-->
+<!--            <div class="input-group">-->
+<!--              <input-->
+<!--                required-->
+<!--                type="text"-->
+<!--                v-model="add_form.country"-->
+<!--                class="form-control"-->
+<!--                id="Country"-->
+<!--                :placeholder="$t('account.addresses.add_card.country')"-->
+<!--              />-->
+<!--            </div>-->
+<!--            <div v-if="this.submited && !isText(add_form.country)">-->
+<!--              <p class="text-sm" style="color: red">-->
+<!--                {{ errors.country }}-->
+<!--              </p>-->
+<!--            </div>-->
+<!--          </div>-->
 
           <div class="form-group col-md-6">
             <label for="mobile">{{ $t("account.addresses.add_card.mobile") }}</label>
@@ -171,27 +176,27 @@
               </p>
             </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="telephone">{{
-              $t("account.addresses.add_card.telephone")
-            }}</label>
-            <div class="input-group">
-              <input
-                required
-                type="text"
-                v-model="add_form.telephone"
-                class="form-control"
-                id="telephone"
-                :placeholder="$t('account.addresses.add_card.telephone')"
-              />
-            </div>
+<!--          <div class="form-group col-md-6">-->
+<!--            <label for="telephone">{{-->
+<!--              $t("account.addresses.add_card.telephone")-->
+<!--            }}</label>-->
+<!--            <div class="input-group">-->
+<!--              <input-->
+<!--                required-->
+<!--                type="text"-->
+<!--                v-model="add_form.telephone"-->
+<!--                class="form-control"-->
+<!--                id="telephone"-->
+<!--                :placeholder="$t('account.addresses.add_card.telephone')"-->
+<!--              />-->
+<!--            </div>-->
 
-            <div v-if="this.submited && !isPhone(add_form.telephone)">
-              <p class="text-sm" style="color: red">
-                {{ errors.telephone }}
-              </p>
-            </div>
-          </div>
+<!--            <div v-if="this.submited && !isPhone(add_form.telephone)">-->
+<!--              <p class="text-sm" style="color: red">-->
+<!--                {{ errors.telephone }}-->
+<!--              </p>-->
+<!--            </div>-->
+<!--          </div>-->
           <div class="form-group col-md-6">
             <label for="postal_code">{{
               $t("account.addresses.add_card.postal_code")
@@ -232,9 +237,19 @@
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
 
+import vSelect  from "vue-select";
+
 export default {
+    components : {
+        vSelect
+    },
   props: ["models", "card_class"],
   created() {
+      let app = this;
+
+      axios.get('/countries-states').then(response => {
+          app.countries = response.data;
+      });
     if (this.models && this.models.length) {
       this.setSelectedAddress(this.models[0]);
       this.selectedA = this.models[0];
@@ -247,6 +262,7 @@ export default {
       submited: false,
       selectedA: null,
       sModels: this.models ? this.models : [],
+      countries : [],
       add_form: {
         address_line_1: "",
         address_line_2: "",
@@ -254,7 +270,7 @@ export default {
         postal_code: "",
         country: "",
         mobile: "",
-        telephone: "",
+        // telephone: "",
         toCreate: true,
       },
       errors: {
@@ -264,7 +280,7 @@ export default {
         postal_code: this.$t("errors.correct_field"),
         country: this.$t("errors.correct_field"),
         mobile: this.$t("errors.mobile"),
-        telephone: this.$t("errors.telephone"),
+        // telephone: this.$t("errors.telephone"),
       },
       add: false,
     };
@@ -277,7 +293,7 @@ export default {
         this.isText(this.add_form.city) &&
         this.isText(this.add_form.country) &&
         this.isPhone(this.add_form.mobile) &&
-        this.isPhone(this.add_form.telephone) &&
+        // this.isPhone(this.add_form.telephone) &&
         this.postalCode()
       );
     },
@@ -287,6 +303,11 @@ export default {
       }).length;
     },
   },
+  watch : {
+        'add_form.country' : function (o,n){
+            this.add_form.city = null;
+        }
+  },
   methods: {
     isPhone: function (value) {
       return value.match(
@@ -294,6 +315,7 @@ export default {
       );
     },
     isText: function (value) {
+      if(!value) return false;
       return value.length > 2;
     },
     postalCode: function () {
@@ -316,3 +338,6 @@ export default {
   },
 };
 </script>
+<style>
+    @import "vue-select/dist/vue-select.css";
+</style>
