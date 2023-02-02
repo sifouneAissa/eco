@@ -30,7 +30,7 @@ class UserAddressRequest extends FormRequest
             'city' => 'required|max:20',
             'country' => 'required|max:20',
             'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+//            'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'postal_code' =>  'required|regex:/^[0-9]{3,7}$/'
         ];
     }
