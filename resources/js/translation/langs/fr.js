@@ -500,6 +500,11 @@ const fr = {
         question13:"Coordonnées de Seshata General trading L.L.C",
         answer13:"Assistance téléphonique : +971 557658376 Assistance par e-mail : ",
       }
+    },
+    privacy_policy:{
+        text:"",
+        text2:"",
+        text3:"",
     }
 };
 

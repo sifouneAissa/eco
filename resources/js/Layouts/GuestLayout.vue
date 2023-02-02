@@ -55,6 +55,7 @@ export default {
         }, 10000);
 
       $("#botmanWidgetRoot").css("float", "right");
+      $("#botmanWidgetRoot").css("z-index", "2147483657");
 
       if (app.$page.props.isRtl) {
         // for lazy importation
@@ -1022,9 +1023,7 @@ export default {
                     </li>
                     <!-- <li><a href="#">Claim</a></li> -->
                     <li>
-                      <Link href="#">
-                        <!-- <Link :href="route('privacy-policy')"
-                        > -->
+                      <Link :href="route('privacy-policy')">
                         {{ $t("nav_menu.help.privacy_policy") }}
                       </Link>
                     </li>
@@ -1059,14 +1058,12 @@ export default {
 @media only screen and (min-width: 800px) {
   #scrollUp {
     margin-bottom: 40px;
-    z-index: 2147483646;
   }
 }
 @media only screen and (max-width: 600px) {
   #scrollUp {
     margin-bottom: 60px;
     margin-right: 20px;
-    z-index: 2147483646;
   }
 }
 </style>
