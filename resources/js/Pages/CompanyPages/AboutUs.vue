@@ -47,13 +47,6 @@ export default {
               <p>
                 {{ $t("about_us.section1.desc2") }}
               </p>
-              <div class="btn-wrapper">
-                <Link
-                  :href="route('blog.index')"
-                  class="theme-btn-3 btn btn-effect-4 text-uppercase"
-                  >{{ $t("about_us.section1.read") }}</Link
-                >
-              </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 align-self-center">
@@ -82,6 +75,13 @@ export default {
                           <p>
                             {{ $t("about_us.section2.desc") }}
                           </p>
+                          <div class="btn-wrapper">
+                            <Link
+                              :href="route('blog.index')"
+                              class="theme-btn-3 btn btn-effect-4 text-uppercase"
+                              >{{ $t("about_us.section1.read") }}</Link
+                            >
+                          </div>
                         </div>
                       </div>
                       <div class="col-lg-5 col-md-5 align-self-center">
@@ -107,13 +107,13 @@ export default {
 <style scoped>
 @media only screen and (min-width: 800px) {
   .padding-section {
-    padding-bottom: 80px;
+    padding-bottom: 60px;
     padding-top: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
   .padding-section {
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     padding-top: 0px;
   }
 }

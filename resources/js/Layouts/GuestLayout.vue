@@ -55,7 +55,7 @@ export default {
         }, 10000);
 
       $("#botmanWidgetRoot").css("float", "right");
-      $("#botmanWidgetRoot").css("z-index", "2147483657");
+      $("#botmanWidgetRoot").css("zIndex", "2147483657");
 
       if (app.$page.props.isRtl) {
         // for lazy importation
@@ -1005,7 +1005,7 @@ export default {
         </div>
         <div class="ltn__copyright-area ltn__copyright-2 section-bg-2 plr--5">
           <div class="container-fluid ltn__border-top-2">
-            <div class="row">
+            <div class="row ">
               <div class="col-md-6 col-12">
                 <div class="ltn__copyright-design clearfix">
                   <p>
@@ -1013,20 +1013,24 @@ export default {
                   </p>
                 </div>
               </div>
-              <div class="col-md-6 col-12 align-self-center">
-                <div class="ltn__copyright-menu text-right">
+              <!-- align-self-center -->
+              <div class="col-md-6 col-12">
+                <!-- text-right -->
+                <div class="ltn__copyright-menu">
                   <ul>
                     <li>
                       <Link :href="route('terms-conditions')">
                         {{ $t("nav_menu.help.terms_conditions") }}
                       </Link>
                     </li>
-                    <!-- <li><a href="#">Claim</a></li> -->
                     <li>
                       <Link :href="route('privacy-policy')">
                         {{ $t("nav_menu.help.privacy_policy") }}
                       </Link>
                     </li>
+                    <!-- <li>
+                      <a href="#">Claim</a>
+                    </li> -->
                   </ul>
                 </div>
               </div>
