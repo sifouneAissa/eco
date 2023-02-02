@@ -1,6 +1,6 @@
 
 var botmanWidget = {
-    title:'HimpiesBot',
+    title:'Himpies Bot',
     introMessage: 'Hello, I am a Scarlet! I am here to assist you and answer all your questions about our products and services!',
     mainColor:'#7ca94a',
     aboutText:'',

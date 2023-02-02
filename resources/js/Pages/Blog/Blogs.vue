@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div class="btn-wrapper text-center mt-0">
+    <!-- <div class="btn-wrapper text-center mt-0">
       <a href="#" class="btn btn-transparent btn-effect-3 btn-border">
         <span
           class="spinner-grow spinner-grow-sm"
@@ -58,7 +58,7 @@
         ></span>
         {{ $t("listing.loading") }}</a
       >
-    </div>
+    </div> -->
   </div>
 </template>
 
