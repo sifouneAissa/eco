@@ -170,7 +170,7 @@ export default {
       return this.form.guest_name.length > 3;
     },
     isComment: function () {
-      return this.form.comment.length > 10;
+      return this.form.comment.length > 0;
     },
     submit: function () {
       // this.form
