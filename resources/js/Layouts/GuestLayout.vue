@@ -17,6 +17,7 @@ export default {
     AddToWishListModel,
     CheckoutModal,
   },
+
   mounted() {
     let app = this;
     // clear interval
@@ -55,7 +56,6 @@ export default {
         }, 10000);
 
       $("#botmanWidgetRoot").css("float", "right");
-      $("#botmanWidgetRoot").css("zIndex", "2147483657");
 
       if (app.$page.props.isRtl) {
         // for lazy importation
@@ -88,6 +88,14 @@ export default {
         script2.id = "script2";
         script2.async = true;
         document.body.append(script2); // (*)
+
+        // $("#scrollUp").css("z-index", "2147483637");
+
+        $("#botmanWidgetRoot").click(function () {
+          if (!app.isScroll) $("#scrollUp").css("display", "none");
+          else $("#scrollUp").css("display", "block");
+          app.isScroll = !app.isScroll;
+        });
       }
     });
 
@@ -105,6 +113,7 @@ export default {
     return {
       submited: false,
       order_id: "",
+      isScroll: false,
     };
   },
   computed: {
@@ -938,7 +947,10 @@ export default {
                           {{ $t("nav_menu.help.terms_conditions") }}
                         </Link>
                       </li>
-                      <!-- <li><a href="about.html">Promotional Offers</a></li> -->
+                      <li><Link :href="route('privacy-policy')">
+                        {{ $t("nav_menu.help.privacy_policy") }}
+                      </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -1005,7 +1017,7 @@ export default {
         </div>
         <div class="ltn__copyright-area ltn__copyright-2 section-bg-2 plr--5">
           <div class="container-fluid ltn__border-top-2">
-            <div class="row ">
+            <div class="row">
               <div class="col-md-6 col-12">
                 <div class="ltn__copyright-design clearfix">
                   <p>
@@ -1013,10 +1025,9 @@ export default {
                   </p>
                 </div>
               </div>
-              <!-- align-self-center -->
-              <div class="col-md-6 col-12">
-                <!-- text-right -->
-                <div class="ltn__copyright-menu">
+
+              <div class="col-md-6 col-12 align-self-center">
+                <div class="ltn__copyright-menu text-right">
                   <ul>
                     <li>
                       <Link :href="route('terms-conditions')">
@@ -1062,12 +1073,14 @@ export default {
 @media only screen and (min-width: 800px) {
   #scrollUp {
     margin-bottom: 40px;
+    /* z-index: 2147483637; */
   }
 }
 @media only screen and (max-width: 600px) {
   #scrollUp {
     margin-bottom: 60px;
     margin-right: 20px;
+    /* z-index: 2147483637; */
   }
 }
 </style>
