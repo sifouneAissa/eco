@@ -22,28 +22,29 @@ export default {
     // clear interval
     clearInterval(window.idleIntervalTimer);
 
-    if (this.$page.component === "Listing") {
-      clearInterval(window.idleIntervalTimer);
-      window.idleIntervalTimer = setInterval(function () {
-        Inertia.reload({
-          only: ["products"],
-          preserveScroll: true,
-          // preserveState : true
-        });
-      }, 200000);
-    } else if (this.$page.component === "Blogs") {
-      window.idleIntervalTimer = setInterval(function () {
-        Inertia.reload({
-          only: ["blogs"],
-          preserveScroll: true,
-        });
-      }, 200000);
-    }
+    // if (this.$page.component === "Listing") {
+    //   clearInterval(window.idleIntervalTimer);
+    //   window.idleIntervalTimer = setInterval(function () {
+    //     Inertia.reload({
+    //       only: ["products"],
+    //       preserveScroll: true,
+    //       // preserveState : true
+    //     });
+    //   }, 200000);
+    // } else if (this.$page.component === "Blogs") {
+    //   window.idleIntervalTimer = setInterval(function () {
+    //     Inertia.reload({
+    //       only: ["blogs"],
+    //       preserveScroll: true,
+    //     });
+    //   }, 200000);
+    // }
 
     $("#script1").remove();
     $("#script2").remove();
 
     $(document).ready(function () {
+
       if (!app.$page.props.botS)
         window.setTimeout(function () {
           if (botmanChatWidget) {

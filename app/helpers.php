@@ -195,7 +195,8 @@ if (!function_exists('getShoppingSession')) {
 
         $shopping_id = \Illuminate\Support\Facades\Session::get('shopping_id');
 
-        if($shopping_id) {
+        if(!auth()->user() && $shopping_id) {
+
 
             return \App\Models\ShoppingSession::where([
                 [
