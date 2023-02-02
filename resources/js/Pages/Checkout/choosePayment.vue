@@ -71,7 +71,7 @@
                         </p>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success btn-block btn-lg">
+                    <button v-show="payonD.name && emailReg(payonD.email)" type="submit" class="btn btn-success btn-block btn-lg">
                       {{ $t("listing.checkout_card.pay") }} {{ props.currency_code }}
                       {{ price }}
                       <i class="icofont-long-arrow-right"></i>
@@ -207,34 +207,13 @@
                         />
                       </div>
 
-                      <div class="form-group col-md-12">
+                      <div v-show="credit.name && emailReg(credit.email)" class="form-group col-md-12">
                         <div id="card-element"></div>
                       </div>
 
                       <div id="card-errors" role="alert"></div>
-
-                      <!--                                <div class="form-group col-md-12">-->
-                      <!--                                    <label for="inputPassword4">Card number</label>-->
-                      <!--                                    <div class="input-group">-->
-                      <!--                                        <input required v-model="credit.card_number" type="number" class="form-control" placeholder="Card number">-->
-                      <!--                                        <div class="input-group-append">-->
-                      <!--                                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="icofont-card"></i></button>-->
-                      <!--                                        </div>-->
-                      <!--                                    </div>-->
-                      <!--                                </div>-->
-                      <!--                                <div class="form-group col-md-8">-->
-                      <!--                                    <label>Valid through(MM/YY)-->
-                      <!--                                    </label>-->
-                      <!--                                    <input required v-model="credit.date" type="number" class="form-control" placeholder="Enter Valid through(MM/YY)">-->
-                      <!--                                </div>-->
-                      <!--                                <div class="form-group col-md-4">-->
-                      <!--                                    <label>CVV-->
-                      <!--                                    </label>-->
-                      <!--                                    <input required v-model="credit.cvv" type="number" class="form-control" placeholder="Enter CVV Number">-->
-                      <!--                                </div>-->
-
-                      <div class="form-group col-md-12">
-                        <div class="custom-control custom-checkbox">
+                      <div   class="form-group col-md-12">
+                      <div v-show="credit.name && emailReg(credit.email)" class="custom-control custom-checkbox">
                           <input
                             type="checkbox"
                             class="custom-control-input"
@@ -245,7 +224,7 @@
                           }}</label>
                         </div>
                       </div>
-                      <div class="form-group col-md-12 mb-0">
+                      <div v-show="credit.name && emailReg(credit.email)" class="form-group col-md-12 mb-0">
                         <button
                           type="submit"
                           class="btn btn-success btn-block btn-lg pay"
@@ -369,6 +348,13 @@ export default {
     };
   },
   methods: {
+      emailReg: function (value) {
+          return String(value)
+              .toLowerCase()
+              .match(
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              );
+      },
     SelectPaymentMethod: function (type) {
       let types = {
         credit: this.credit,

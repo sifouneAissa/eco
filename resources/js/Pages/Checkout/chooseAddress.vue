@@ -25,12 +25,14 @@
             <div class="media">
               <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>
               <div class="media-body">
-                <h6 class="mb-1 text-secondary">{{ model.city }}</h6>
-                <p>{{ model.address_line_1 }},{{ model.city }},{{ model.country }}</p>
+                <h6 v-if="!model.toCreate" class="mb-1 text-secondary">{{ model.city }}</h6>
+                <h6 v-else class="mb-1 text-secondary">{{ model.city?.name }}</h6>
+                <p  v-if="!model.toCreate">{{ model.address_line_1 }},{{ model.city }},{{ model.country }}</p>
+                <p  v-else>{{ model.address_line_1 }},{{ model.city?.name }},{{ model.country?.name }}</p>
                 <p class="mb-0 text-black font-weight-bold">
                   <a
                     href="javascript: void(0)"
-                    @click="setSelectedAddress(model)"
+                    @click="setSelectedAddress(model,true)"
                     :class="
                       'btn btn-sm mr-2 ' +
                       (selectedA.id === model.id ||
@@ -45,7 +47,8 @@
                 <p v-if="model.toCreate" class="mb-0 text-black font-weight-bold">
                   <a
                     href="javascript: void(0)"
-                    @click="add = true"
+                    @click="setEdit"
+
                     :class="'btn btn-sm mr-2 btn-danger'"
                   >
                     {{ $t("listing.checkout_card.edit") }}</a
@@ -100,6 +103,7 @@
 
             <div class="input-group">
               <input
+                  @input="setSelectedAddress(this.add_form)"
                 required
                 type="text"
                 v-model="add_form.address_line_1"
@@ -123,6 +127,7 @@
             }}</label>
             <div class="input-group">
               <input
+                  @input="setSelectedAddress(this.add_form)"
                 required
                 type="text"
                 v-model="add_form.address_line_2"
@@ -162,6 +167,7 @@
             <label for="mobile">{{ $t("account.addresses.add_card.mobile") }}</label>
             <div class="input-group">
               <input
+                  @input="setSelectedAddress(this.add_form)"
                 required
                 type="text"
                 v-model="add_form.mobile"
@@ -203,6 +209,7 @@
             }}</label>
             <div class="input-group">
               <input
+                  @input="setSelectedAddress(this.add_form)"
                 required
                 type="text"
                 v-model="add_form.postal_code"
@@ -222,7 +229,8 @@
 
         <div class="modal-footer">
           <button
-            @click="setSelectedAddress(this.add_form)"
+            v-if="edit"
+            @click="setSelectedAddress(this.add_form,true)"
             class="btn d-flex w-50 text-center justify-content-center theme-btn-1"
           >
             {{ $t("account.addresses.add_card.save") }}
@@ -262,7 +270,8 @@ export default {
       submited: false,
       selectedA: null,
       sModels: this.models ? this.models : [],
-      countries : [],
+      edit : false,
+        countries : [],
       add_form: {
         address_line_1: "",
         address_line_2: "",
@@ -272,6 +281,7 @@ export default {
         mobile: "",
         // telephone: "",
         toCreate: true,
+
       },
       errors: {
         address_line_1: this.$t("errors.correct_field"),
@@ -290,8 +300,8 @@ export default {
       return (
         this.isText(this.add_form.address_line_1) &&
         this.isText(this.add_form.address_line_2) &&
-        this.isText(this.add_form.city) &&
-        this.isText(this.add_form.country) &&
+        this.isText(this.add_form.city?.name) &&
+        this.isText(this.add_form.country?.name) &&
         this.isPhone(this.add_form.mobile) &&
         // this.isPhone(this.add_form.telephone) &&
         this.postalCode()
@@ -309,6 +319,11 @@ export default {
         }
   },
   methods: {
+      setEdit: function (){
+          this.add = true;
+          this.edit = true;
+          this.$emit("SetSelectedAddress", null);
+      },
     isPhone: function (value) {
       return value.match(
         /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/g
@@ -322,18 +337,22 @@ export default {
       return this.add_form.postal_code.match(/^[0-9]{5}(?:-[0-9]{4})?$/);
     },
 
-    setSelectedAddress(model) {
-      this.submited = model.toCreate === true;
-      if (!model.toCreate || (model.toCreate && this.vData)) {
-        this.selectedA = model;
+    setSelectedAddress(model,force) {
+        if(force || !this.edit){
+            this.submited = model.toCreate === true;
 
-        if (model.toCreate) {
-          if (this.showAdd) this.sModels.push(model);
-          this.add = false;
+            if (!model.toCreate || (model.toCreate && this.vData)) {
+                this.selectedA = model;
+
+                if (model.toCreate) {
+                    if (this.showAdd) this.sModels.push(model);
+                    this.add = false;
+                    this.edit = false;
+                }
+
+                this.$emit("SetSelectedAddress", model);
+            }
         }
-
-        this.$emit("SetSelectedAddress", model);
-      }
     },
   },
 };

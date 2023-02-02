@@ -28,18 +28,26 @@ export default {
   },
   methods: {
     setSelectedAddress(model) {
-      if (model.toCreate) this.form.address_id = model;
+      if(!model) this.form.address_id = null;
+      else if (model.toCreate) this.form.address_id = model;
       else this.form.address_id = model.id;
     },
     go() {
       Inertia.visit(route("listing"));
     },
     SelectPaymentMethod(data) {
+
       let app = this;
       const toast = useToast();
       this.form.provider = data.type;
       this.form.paymentInfo = data.data;
       this.form.email = data.data.email;
+
+      if(this.form.address_id.toCreate){
+          this.form.address_id.city = this.form.address_id.city?.name;
+          this.form.address_id.country = this.form.address_id.country?.name;
+      }
+
       this.form.post(route("order.store"), {
         onSuccess: () => {
           toast.success(app.$t("notifications.success"));

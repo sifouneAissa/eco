@@ -41,6 +41,11 @@
                 this.form.paymentInfo = data.data;
                 this.form.email = data.data.email;
 
+                if(this.form.address_id.toCreate){
+                    this.form.address_id.city = this.form.address_id.city?.name;
+                    this.form.address_id.country = this.form.address_id.country?.name;
+                }
+
                 this.form.withProduct = {
                     product_id: this.$page.props.productToCheckout.id,
                     quantity: this.$page.props.productToCheckout.quantity,

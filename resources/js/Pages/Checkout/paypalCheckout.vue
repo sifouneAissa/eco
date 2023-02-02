@@ -23,7 +23,7 @@
                 placeholder="xxxx@xxx.xx"
             />
         </div>
-        <div v-show="credit.name && credit.email"  id="smart-button-container">
+        <div v-show="credit.name && emailReg()"  id="smart-button-container">
             <div style="text-align: center;">
                 <div id="paypal-button-container"></div>
             </div>
@@ -71,6 +71,14 @@
             },
         },
         methods : {
+
+            emailReg: function () {
+                return String(this.credit.email)
+                    .toLowerCase()
+                    .match(
+                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    );
+            },
             SelectPaymentMethod  :function (payer){
                 this.credit.user = payer;
                 this.$emit("SelectPaymentMethod",'netbanking');
