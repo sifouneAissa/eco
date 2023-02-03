@@ -1,3 +1,3 @@
-$(function(){
-    botmanChatWidget.sayAsBot('Hi there');
-});
+// $(document).ready(function(){
+//     botmanChatWidget.sayAsBot('Hi there');
+// });

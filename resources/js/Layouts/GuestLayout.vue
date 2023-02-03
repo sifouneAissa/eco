@@ -46,17 +46,20 @@ export default {
 
     $(document).ready(function () {
 
-      if (!app.$page.props.botS)
-        window.setTimeout(function () {
-          if (botmanChatWidget) {
-            botmanChatWidget?.sayAsBot("Hi");
-            window.setTimeout(function () {
-              botmanChatWidget.whisper("xxxxxxxxxxxxxxxxx");
-                // $("#scrollUp").css("display", "none");
-                // app.isScroll = true;
-            }, 2000);
-          }
-        }, 10000);
+
+        const setRtimer = function (){
+            const setTimer = function () {
+                botmanChatWidget.whisper("xxxxxxxxxxxxxxxxx");
+            };
+                if (!app.$page.props.botS)
+                window.setTimeout(function () {
+                    if (typeof botmanChatWidget!=='undefined') setTimer();
+                    else setRtimer();
+                }, 20);
+        };
+        window.setTimeout(function (){
+            setRtimer();
+        },10000);
 
       $("#botmanWidgetRoot").css("float", "right");
 

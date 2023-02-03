@@ -62,6 +62,10 @@ createInertiaApp({
 
         document.body.append(script2); // (*)
 
+        // for lazy importation
+        let script3 = document.createElement('script');
+        script3.src = "/chat/act.js";script3.id = 'act';
+        document.body.append(script3); // (*)
 
         // if(props.initialPage.props.isRtl) {
         //     // for lazy importation
