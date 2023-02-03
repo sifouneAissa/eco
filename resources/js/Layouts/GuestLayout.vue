@@ -809,7 +809,7 @@ export default {
       <!-- FEATURE AREA END -->
 
       <!-- FOOTER AREA START -->
-      <footer class="ltn__footer-area">
+      <footer class="ltn__footer-area"  >
         <div class="footer-top-area section-bg-1 plr--5">
           <div class="container-fluid">
             <div class="row">
@@ -1021,7 +1021,7 @@ export default {
             </div>
           </div>
         </div>
-        <div class="ltn__copyright-area ltn__copyright-2 section-bg-2 plr--5">
+        <div class="ltn__copyright-area ltn__copyright-2 section-bg-2 plr--5" style="z-index: 2147483647;position:relative;">
           <div class="container-fluid ltn__border-top-2">
             <div class="row">
               <div class="col-md-6 col-12">
