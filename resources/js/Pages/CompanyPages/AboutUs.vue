@@ -60,7 +60,7 @@ export default {
     </div>
     <!-- ABOUT US AREA END -->
     <!-- OUR HISTORY AREA START -->
-    <div class="ltn__our-history-area section-bg-1 padding-section">
+    <div class="ltn__our-history-area section-bg-1 padding-section2">
       <div class="container">
         <div class="ltn__our-history-inner ltn__our-history-inner-2">
           <div class="row">
@@ -71,7 +71,12 @@ export default {
                     <div class="row">
                       <div class="col-lg-7 col-md-7 align-self-center">
                         <div class="about-us-info-wrap">
-                          <h2>{{ $t("about_us.section2.title") }}</h2>
+                          <h2 class="mt-2">{{ $t("about_us.section2.title") }}</h2>
+                          <div
+                            class="about-us-img-wrap align-self-between mt-4 mb-4 d-sm-block d-md-none d-lg-none"
+                          >
+                            <img src="/img/banner/section2.png" alt="Image" />
+                          </div>
                           <p>
                             {{ $t("about_us.section2.desc") }}
                           </p>
@@ -85,7 +90,9 @@ export default {
                         </div>
                       </div>
                       <div class="col-lg-5 col-md-5 align-self-center">
-                        <div class="about-us-img-wrap">
+                        <div
+                          class="about-us-img-wrap align-self-between d-none d-md-block"
+                        >
                           <!-- <img src="/img/banner/7.png" alt="Image" /> -->
                           <img src="/img/banner/section2.png" alt="Image" />
                         </div>
@@ -110,11 +117,19 @@ export default {
     padding-bottom: 60px;
     padding-top: 0px;
   }
+  .padding-section2 {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
 }
 @media only screen and (max-width: 600px) {
   .padding-section {
     padding-bottom: 30px;
     padding-top: 0px;
+  }
+  .padding-section2 {
+    padding-bottom: 30px;
+    padding-top: 30px;
   }
 }
 </style>
