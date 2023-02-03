@@ -73,17 +73,14 @@ export default {
     <!-- SLIDER AREA END -->
 
     <!-- ABOUT US AREA START -->
-    <div class="ltn__about-us-area pt-80 pb-80">
+    <div class="ltn__about-us-area padding-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
-            <div class="about-us-info-wrap pt-30 pb-30">
-              <!--              <h3>{{ $t("dashboard.section1.title1") }}</h3>-->
-              <h3>{{ $page.props.home_page_section_1_sub_header_1 }}</h3>
-              <!--              <h1>{{ $t("dashboard.section1.title2") }}</h1>-->
+            <div class="about-us-info-wrap padding-section2">
+              <!-- <h3>{{ $page.props.home_page_section_1_sub_header_1 }}</h3> -->
               <h1>{{ $page.props.home_page_section_1_header_1 }}</h1>
               <p>
-                <!--                {{ $t("dashboard.section1.desc1") }}-->
                 {{ $page.props.home_page_section_1_description_1 }}
               </p>
 
@@ -113,7 +110,7 @@ export default {
     <div class="ltn__banner-area section-bg-1">
       <div class="container">
         <div class="row">
-          <div  v-if="$page.props.cLeft" class="col-lg-6 col-md-6 align-self-center">
+          <div v-if="$page.props.cLeft" class="col-lg-6 col-md-6 align-self-center">
             <div
               :class="
                 $page.props.isRtl
@@ -122,8 +119,8 @@ export default {
               "
               :data-bg="$page.props.cLeft.fimage"
             >
-<!--              <h5>{{ $t("dashboard.section2.groom")  }}</h5>-->
-              <h5>{{ $page.props.cLeft.lname  }}</h5>
+              <!--              <h5>{{ $t("dashboard.section2.groom")  }}</h5>-->
+              <h5>{{ $page.props.cLeft.lname }}</h5>
               <h1>
                 <!--                {{ $t("dashboard.section2.title1") }}-->
                 {{ $page.props.home_page_section_2_header_left }}
@@ -132,8 +129,14 @@ export default {
                 {{ $page.props.home_page_section_2_header_2_left }}
               </h1>
               <div class="btn-wrapper">
-<!--                <Link :href="route('listing')" class="theme-btn-1 btn btn-effect-1 text-uppercase">{{ $t("dashboard.section2.try") }}</Link>-->
-                <Link :href="route('listing') + '?query=' + $page.props.cLeft.name" class="theme-btn-1 btn btn-effect-1 text-uppercase">{{ $t("dashboard.section2.try")+ ' '+$page.props.cLeft.lname }}</Link>
+                <!--                <Link :href="route('listing')" class="theme-btn-1 btn btn-effect-1 text-uppercase">{{ $t("dashboard.section2.try") }}</Link>-->
+                <Link
+                  :href="route('listing') + '?query=' + $page.props.cLeft.name"
+                  class="theme-btn-1 btn btn-effect-1 text-uppercase"
+                  >{{
+                    $t("dashboard.section2.try") + " " + $page.props.cLeft.lname
+                  }}</Link
+                >
               </div>
             </div>
           </div>
@@ -146,7 +149,7 @@ export default {
               "
               :data-bg="$page.props.cRight.fimage"
             >
-<!--              <h5>{{ $t("dashboard.section2.groom") }}</h5>-->
+              <!--              <h5>{{ $t("dashboard.section2.groom") }}</h5>-->
               <h5>{{ $page.props.cRight.lname }}</h5>
               <h1>
                 <!--                {{ $t("dashboard.section2.title3") }} -->
@@ -158,9 +161,11 @@ export default {
               </h1>
               <div class="btn-wrapper">
                 <Link
-                  :href="route('listing')+'?query='+$page.props.cRight.name"
+                  :href="route('listing') + '?query=' + $page.props.cRight.name"
                   class="theme-btn-1 btn btn-effect-1 text-uppercase"
-                  >{{ $t("dashboard.section2.try") + ' '+ $page.props.cRight.lname }}</Link
+                  >{{
+                    $t("dashboard.section2.try") + " " + $page.props.cRight.lname
+                  }}</Link
                 >
               </div>
             </div>
@@ -367,6 +372,14 @@ export default {
   .title-margin {
     margin-bottom: 20px;
   }
+  .padding-section {
+    padding-bottom: 80px;
+    padding-top: 80px;
+  }
+  .padding-section2 {
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
 }
 @media only screen and (max-width: 600px) {
   .hero-img {
@@ -378,6 +391,14 @@ export default {
   }
   .title-margin {
     margin-bottom: 20px;
+  }
+  .padding-section {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+  .padding-section2 {
+    padding-bottom: 30px;
+    padding-top: 0px;
   }
 }
 </style>

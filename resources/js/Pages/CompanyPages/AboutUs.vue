@@ -38,8 +38,8 @@ export default {
         <div class="row">
           <div class="col-lg-6 col-md-6 align-self-center">
             <div class="about-us-info-wrap pt-0 pb-20">
-              <h3>{{ $t("about_us.section1.title1") }}</h3>
               <h1>{{ $t("about_us.section1.title2") }}</h1>
+              <!-- <h3>{{ $t("about_us.section1.title1") }}</h3> -->
               <p>
                 {{ $t("about_us.section1.desc1") }}
               </p>
