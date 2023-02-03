@@ -52,6 +52,8 @@ export default {
             botmanChatWidget?.sayAsBot("Hi");
             window.setTimeout(function () {
               botmanChatWidget.whisper("xxxxxxxxxxxxxxxxx");
+                // $("#scrollUp").css("display", "none");
+                // app.isScroll = true;
             }, 2000);
           }
         }, 10000);
@@ -92,13 +94,16 @@ export default {
 
         // $("#scrollUp").css("z-index", "2147483637");
 
-        $("#botmanWidgetRoot").click(function () {
-          if (!app.isScroll) $("#scrollUp").css("display", "none");
-          else $("#scrollUp").css("display", "block");
-          app.isScroll = !app.isScroll;
-        });
+
       }
     });
+
+      // $("#botmanWidgetRoot").click(function () {
+      //
+      //     if (!app.isScroll) $("#scrollUp").css("display", "none");
+      //     else $("#scrollUp").css("display", "block");
+      //     app.isScroll = !app.isScroll;
+      // });
 
     window.onerror = function (error) {
       // error about tooltip
@@ -488,7 +493,7 @@ export default {
                     </a>
                   </div>
                   <!-- Mobile Menu Button -->
-                  <div class="mobile-menu-toggle d-xl-none">
+                  <div class="mobile-menu-toggle d-xl-none" >
                     <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
                       <svg viewBox="0 0 800 600">
                         <path
@@ -575,7 +580,7 @@ export default {
       <!--            </div>-->
       <CartMenu />
       <!-- Utilize Mobile Menu Start -->
-      <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
+      <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu" style="z-index: 2147483647">
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
           <div class="ltn__utilize-menu-head">
             <div class="site-logo">
@@ -594,7 +599,7 @@ export default {
           <div class="ltn__utilize-menu">
             <ul>
               <li>
-                <Link :href="route('listing')">{{ $t("nav_menu.pages.home") }}</Link>
+                <Link :href="route('welcome')">{{ $t("nav_menu.pages.home") }}</Link>
               </li>
 
               <li>
@@ -1079,9 +1084,9 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   #scrollUp {
-    margin-bottom: 60px;
-    margin-right: 20px;
-    /* z-index: 2147483637; */
-  }
+       margin-bottom: 60px;
+       margin-right: 20px;
+       /* z-index: 2147483637; */
+   }
 }
 </style>
