@@ -398,7 +398,7 @@ export default {
   }
   .padding-section2 {
     padding-bottom: 30px;
-    padding-top: 0px;
+    padding-top: 10px;
   }
 }
 </style>
