@@ -50,7 +50,7 @@ export default {
             </div>
           </div>
           <div class="col-lg-6 col-md-6 align-self-center">
-            <div class="about-us-img-wrap about-img-right">
+            <div class="about-us-img-wrap about-img-right mb-2">
               <!-- <img src="/img/banner/6.png" alt="Banner Image" /> -->
               <img src="/img/banner/section1.jpg" alt="Banner Image" />
             </div>
@@ -71,9 +71,10 @@ export default {
                     <div class="row">
                       <div class="col-lg-7 col-md-7 align-self-center">
                         <div class="about-us-info-wrap">
-                          <h2 class="mt-2">{{ $t("about_us.section2.title") }}</h2>
+                          <h2 class="mt-1 mb-1">{{ $t("about_us.section2.title") }}</h2>
                           <div
-                            class="about-us-img-wrap align-self-between mt-4 mb-4 d-sm-block d-md-none d-lg-none"
+                            class="about-us-img-wrap align-self-between d-sm-block d-md-none d-lg-none"
+                            style="padding-bottom: 20px; padding-top: 20px"
                           >
                             <img src="/img/banner/section2.png" alt="Image" />
                           </div>
@@ -124,12 +125,12 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   .padding-section {
-    padding-bottom: 30px;
+    padding-bottom: 0px;
     padding-top: 0px;
   }
   .padding-section2 {
-    padding-bottom: 30px;
-    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
 }
 </style>
