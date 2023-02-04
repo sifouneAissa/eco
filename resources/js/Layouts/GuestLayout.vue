@@ -17,11 +17,10 @@ export default {
     AddToWishListModel,
     CheckoutModal,
   },
-
-  mounted() {
-    let app = this;
-    // clear interval
-    clearInterval(window.idleIntervalTimer);
+    mounted() {
+      let app = this;
+      // clear interval
+      clearInterval(window.idleIntervalTimer);
 
     // if (this.$page.component === "Listing") {
     //   clearInterval(window.idleIntervalTimer);
@@ -46,22 +45,35 @@ export default {
 
     $(document).ready(function () {
 
-
         const setRtimer = function (){
             const setTimer = function () {
-                botmanChatWidget.whisper("xxxxxxxxxxxxxxxxx");
-            };
                 if (!app.$page.props.botS)
+                botmanChatWidget.whisper("xxxxxxxxxxxxxxxxx");
+
+            };
                 window.setTimeout(function () {
                     if (typeof botmanChatWidget!=='undefined') setTimer();
                     else setRtimer();
                 }, 20);
         };
+        const setOpen = function (){
+            $('#botmanWidgetRoot').unbind().on('click',function (){
+                if(botmanChatWidget.isOpen() && !window.botTimer){
+                    botmanChatWidget.toggle();
+                    botmanChatWidget.whisper("xxxxx");
+                    window.botTimer = true;
+                }
+            });
+        };
+
         window.setTimeout(function (){
             setRtimer();
         },10000);
 
-      $("#botmanWidgetRoot").css("float", "right");
+        window.setTimeout(function (){
+          setOpen();
+        },4000);
+
 
       if (app.$page.props.isRtl) {
         // for lazy importation
@@ -111,7 +123,7 @@ export default {
     window.onerror = function (error) {
       // error about tooltip
       if (error.includes("tooltip") || error.includes("WOW")) {
-        Inertia.visit(app.$page.url, {
+          Inertia.visit(app.$page.url, {
           // preserveState : true,
           preserveScroll: true,
         });

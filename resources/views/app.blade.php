@@ -28,7 +28,7 @@
 
         @inertiaHead
     </head>
-    <body >
+    <body  >
         @inertia
     </body>
 </html>

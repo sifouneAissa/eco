@@ -23,6 +23,8 @@ import Pusher from 'pusher-js';
 import Toast from "vue-toastification";
 // Import the CSS or use your own!
 import "vue-toastification/dist/index.css";
+// for bot
+window.botTimer = false;
 
 window.Pusher = Pusher;
 
@@ -58,7 +60,11 @@ createInertiaApp({
 
         // for lazy importation
         let script2 = document.createElement('script');
-        script2.src = "/chat/widget.js";script1.id = 'widget';
+        if(props.initialPage.props.isRtl)
+        script2.src = "/chat/widgetrtl.js";
+        else
+        script2.src = "/chat/widget.js"
+        script2.id = 'widget';
 
         document.body.append(script2); // (*)
 
