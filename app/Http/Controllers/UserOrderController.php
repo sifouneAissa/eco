@@ -23,7 +23,8 @@ use function Termwind\ValueObjects\getMargins;
 class UserOrderController extends Controller
 {
 
-    public function thanks(Request $request,$id){
+    public function thanks(Request $request, $id)
+    {
 
         $order = OrderDetail::query()->findOrFail($id)->load('user');
 
@@ -34,7 +35,7 @@ class UserOrderController extends Controller
 
 //        if($min >= 10) abort(404);
 
-        return Inertia::render('Thanks',[
+        return Inertia::render('Thanks', [
             'order' => $order
         ]);
     }
@@ -70,14 +71,13 @@ class UserOrderController extends Controller
             if (!auth()->user()) {
                 // create address , account for the user
                 $paymentInfo = $request->input('paymentInfo');
-                if(!$shopping->user_id){
-                    if($email = $request->input('email'))
-                        $user = User::query()->where('email',$email)->first();
+                if (!$shopping->user_id) {
+                    if ($email = $request->input('email'))
+                        $user = User::query()->where('email', $email)->first();
 
-                    if(!$user)
-                    $user = User::query()->create(filterRequest($paymentInfo, User::class));
-                }
-                    else $user = User::find($shopping->user_id);
+                    if (!$user)
+                        $user = User::query()->create(filterRequest($paymentInfo, User::class));
+                } else $user = User::find($shopping->user_id);
 
                 if (is_array($addressInputs = $request->input('address_id'))) {
                     $addressInputs['user_id'] = $user->id;
@@ -129,16 +129,16 @@ class UserOrderController extends Controller
 
             try {
                 event(new NewOrder($order));
-            }catch (\Exception $e){
+            } catch (\Exception $e) {
 
             }
 
             // put the new shopping_id
-            \Illuminate\Support\Facades\Session::put('shopping_id',$shopping->id);
+            \Illuminate\Support\Facades\Session::put('shopping_id', $shopping->id);
             // put the buyer
-            \Illuminate\Support\Facades\Session::put('buyer',['order_id' => $order->id,'mobile' => UserAddress::where('id',$inputs['address_id'])->first()?->mobile]);
+            \Illuminate\Support\Facades\Session::put('buyer', ['order_id' => $order->id, 'mobile' => UserAddress::where('id', $inputs['address_id'])->first() ?->mobile]);
 
-            return redirect()->route('listing',[
+            return redirect()->route('listing', [
                 'query' => $order->products->first()->category->name
             ]);
 //            return redirect()->route('listing', [
@@ -159,7 +159,7 @@ class UserOrderController extends Controller
         else {
             $s_session = getShoppingSession();
 
-            if($s_session && !$s_session->is_current){
+            if ($s_session && !$s_session->is_current) {
                 $s_session->cartItems()->delete();
                 $s_session->is_current = true;
                 $s_session->save();
@@ -188,7 +188,7 @@ class UserOrderController extends Controller
         ]);
 
 
-        \Illuminate\Support\Facades\Session::put('shopping_id',$s_session->id);
+        \Illuminate\Support\Facades\Session::put('shopping_id', $s_session->id);
     }
 
 
@@ -215,9 +215,9 @@ class UserOrderController extends Controller
 
         $categories = $shopping_session ?->products->map(function ($item) {
         return $item->category->id;
-         })->unique();
+    })->unique();
 
-        if ($categories?->isNotEmpty()) $products = Product::query()->whereIn('product_category_id', $categories)->get()->filter($callbackIsA)->map($callback);
+        if ($categories ?->isNotEmpty()) $products = Product::query()->whereIn('product_category_id', $categories)->get()->filter($callbackIsA)->map($callback);
         else $products = Product::query()->get()->filter($callbackIsA)->map($callback);
 
 
@@ -273,10 +273,16 @@ class UserOrderController extends Controller
         if (!auth()->user()) {
             // create address , account for the user
             $paymentInfo = $request->input('paymentInfo');
-            if(!$shopping_session->user_id)
-            $user = User::query()->create(filterRequest($paymentInfo, User::class));
-            else $user = User::find($shopping_session->user_id);
 
+            if (!($shopping_session ?->user_id)){
+
+                if ($email = $request->input('email'))
+                    $user = User::query()->where('email', $email)->first();
+
+                if (!$user)
+                    $user = User::query()->create(filterRequest($paymentInfo, User::class));
+            }
+            else $user = User::find($shopping_session->user_id);
             if (is_array($addressInputs = $request->input('address_id'))) {
                 $addressInputs['user_id'] = $user->id;
                 $inputs['address_id'] = UserAddress::query()->create(filterRequest($addressInputs, UserAddress::class))->id;
@@ -312,19 +318,19 @@ class UserOrderController extends Controller
             'order_id' => $order->id
         ]);
 
-        $shopping_session->user_id = $user->id;
-        $shopping_session->save();
-
-
-        \Illuminate\Support\Facades\Session::put('shopping_id',$shopping_session->id);
+        if ($shopping_session) {
+            $shopping_session->user_id = $user->id;
+            $shopping_session->save();
+            \Illuminate\Support\Facades\Session::put('shopping_id', $shopping_session->id);
+        }
 
         try {
             event(new NewOrder($order));
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
 
         }
 
-        \Illuminate\Support\Facades\Session::put('buyer',['order_id' => $order->id,'mobile' => UserAddress::where('id',$inputs['address_id'])->first()?->mobile]);
+        \Illuminate\Support\Facades\Session::put('buyer', ['order_id' => $order->id, 'mobile' => UserAddress::where('id', $inputs['address_id'])->first() ?->mobile]);
 
 //        return redirect()->route('thanks.show',[
 //            'id' => $order->id
