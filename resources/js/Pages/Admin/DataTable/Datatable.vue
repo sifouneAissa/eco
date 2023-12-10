@@ -89,7 +89,6 @@
             //   },
         },
         mounted() {
-            console.log(this.deleteMUrl);
             let app = this;
             this.table = $("#dataTable").dataTable({
                 // dom: 'Bfrtip',
